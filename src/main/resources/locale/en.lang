@@ -1,0 +1,163 @@
+[tile]
+soulcavegrass=Soul Chasm Grass
+soulcaverocktile=Soul Chasm Stone
+soulwoodfloor=Phantom Wood Floor
+soulwoodpath=Phantom Wood Path
+soulwoodtiledfloor=Phantom Wood Tiled Floor
+soulcavefloortile=Soul Chasm Rock Floor
+soulcavebrickfloortile=Soul Chasm Brick Floor
+soulcavetiledfloortile=Soul Chasm Tiled Floor
+asphalttile=Asphalt
+meltedsouls=Molten Spirits
+soulcavecracktile=Soul Crack
+
+[object]
+crystalizedsoul=Crystallized Souls
+
+crystalizedsoulore=Crystallized Souls
+alchemyshard=Alchemy Shard
+soultree=Phantom Tree
+soulcavegrassobject=Soul Chasm Grass
+soulwood=Phantom Wood
+soulbrick=Soul Chasm Brick
+
+soultreesappling=Phantom Tree Sapling
+lunartear=Lunar Tear
+lunartearspath=Lunar Tears Path
+soultorch=Phantom Torch
+soulcrystalbig=Big Soul Crystal
+wispjarobject=Wisp Jar
+fireflyjarobject=Firefly Jar
+soulmonumentobject=Soul Chasm Monument
+soulstonepressureplate=Soul Chasm Stone Pressure Plate
+soulstoneflametrap=Soul Chasm Stone Flame Trap
+soulbricktexturetrap=Soul Chasm Stone Flame Trap
+soullanternobject=Soul Lantern
+oldbarrel=Old Barrel
+soulcavechest=Old Chest
+bigjarobject=Big Glass Jar
+chasmcrates=Old Crate
+statueobject=Knight Statue
+
+soulbossaltarobject=Ancient Altar
+
+soulcaverock=Chasm Stone
+soulwoodwall=Phantom Wood Wall
+soulwooddoor=Phantom Wood Door
+soulbrickwall=Soul Chasm Brick Wall
+soulbrickdoor=Soul Chasm Brick Door
+
+soulwoodbathtub=Phantom Wood Bathtub
+soulwoodbed=Phantom Wood Bed
+soulwoodbench=Phantom Wood Bench
+soulwooddinnertable=Phantom Wood Dinner Table
+soulwoodbookshelf=Phantom Wood Bookshelf
+soulwoodcabinet=Phantom Wood Cabinet
+soulwoodchair=Phantom Wood Chair
+soulwoodchest=Phantom Wood Chest
+soulwoodclock=Phantom Wood Clock
+soulwooddesk=Phantom Wood Desk
+soulwooddisplay=Phantom Wood Display
+soulwooddresser=Phantom Wood Dresser
+soulwoodmodulartable=Phantom Wood Modular Table
+soulwoodtoilet=Phantom Wood Toilet
+soulwoodcandelabra=Phantom Wood Candelabra
+soulwoodfence=Phantom Wood Fence
+soulwoodfencegate=Phantom Wood Fence Gate
+
+[item]
+soulscythe=Soul Reaper
+soulmetalbow=Phantasm Bow
+soulmetalsword=Soulfury
+soulmetalspear=Cursed Pitchfork
+soulmetalrevolver=The Soultaker
+
+soulabsorbshield=Soulbreaker Shield
+soularmorboots=Soulsteel Boots
+soularmorchestplate=Soulsteel Chestplate
+soularmorcrown=Soulsteel Crown
+soularmorhelmet=Soulsteel Helmet
+soularmorhood=Soulsteel Hood
+soularmorhat=Soulsteel Hat
+
+phantomfeathertrinket=Phantom Feather
+soulstealertrinket=Soul Ring
+pickaxeheadtrinket=Old Pickaxe Head
+phantomdasherstrinket=Phantom Dashers
+
+carkeys=Car Keys
+soulsigil=Soul Sigil
+souldragonscales=Ancient Dragon Scales
+
+soulwoodlogitem=Phantom Wood Log
+soulcoreitem=Soul Core
+soulcaverockitem=Soul Chasm Stone
+crystalizedsouloreitem=Crystallized Souls Ore
+soulgrassseeditem=Soul Chasm Grass Seeds
+soulessence=Soul Essence
+
+wispitem=Wisp
+wispjar=Wisp Jar
+fireflyitem=Firefly
+fireflyjar=Firefly Jar
+
+soullantern=Soul Lantern
+soulmetalbar=Soul Metal Bar
+
+meleesoulsealtrinket=Melee Artifact Fragment
+summonsoulsealtrinket=Summon Artifact Fragment
+magicsoulsealtrinket=Magic Artifact Fragment
+rangesoulsealtrinket=Range Artifact Fragment
+soulsealtrinket=Soul Seal
+balancedsealtrinket=Balanced Soul Seal
+
+[itemtooltip]
+soulabsorbshield=Blocking damage shoots burst of flames towards attacker, which damage is scaled based on attack power\nSuccessful block also increases shortly attack speed and resilience gain
+phantomfeathertrinket=Decreases max hp by 25% and grants additional four dash stacks
+soulstealertrinket=When in combat, slowly converts your max health into more damage\nMax -50% max health and +100% damage\nOut of combat process is reversed\nWhile that, greatly increases health regeneration
+pickaxeheadtrinket=Mining slowly increases mining speed, up to 150%
+phantomdasherstrinket=Sprint even faster\nWhile sprinting you take more damage\nGrants water walking
+soularmorsetbonus=Increases attack and movement speed\nAfter buff expires, applies debuff, that decreases both of the stats
+soulsealfragment=Fragment of whole\nCreates projectile that matches your weapon
+soulsealfull=Whole again\nCreates projectile that matches your weapon
+soulsealbalanced=Bonds with new power\nCreates projectile that matches your weapon\nIncreases all damage dealt by 10%
+soulmetalswordtip=Hitting enemy summons spirit swords
+soulscythe=Fully charged attacks instantly kill enemies with less than 30% health
+soulmetalbowtip=Hitting enemy increases attack speed\nOn full attack speed bonus summons spectral arrows
+soulmetalrevolvertip=Converts regular bullets into soul infused ones\nHitting enemy with soul infused bullet marks it\nEnemy marked three times receives additional damage on fourth attack
+soulmetalspeartip=Can be thrown\nCreates small explosion on hit
+soulsigil=Summons the Soul Chasm boss\nMust be used in altar in center of Soul Chasm
+cartip=Summons car mount\nRight-click out of inventory to change colors
+soulsealfollowerbuff=Has heard your call
+bigjarobject=Empty jar\nCatch some glowing bugs and place them in jar to create new light source
+glowingbugs=Small, glowing creature
+glowingjarobject=Provides small amount of light when placed or held
+
+[mob]
+souldragonhead=Ancient Dragon
+souldragonbody=Ancient Dragon
+lostsoul=Lost Soul
+possesedstatue=Possesed Statue
+wisp=Wisp
+firefly=Firefly
+soulpillar=Possesed Pillar
+soulmage=Spirit Summoner
+smallsoulsummon=Lesser Soul
+soulcavecaveling=Soul Chasm Caveling
+carmob=Car
+
+[buff]
+soulfirebuff=Spirit Inferno
+soulabsorbshieldbuff=Absorbed Attack
+souldischargebuff=Soul Conversion
+soularmorcooldown=Soulsteel Armor Cooldown
+soulcharmsummonerbuff=Summoned Spirit
+soulbleedstackbuff=Bleeding Soul
+souldischargesicknessdebuff=Conversion Sickness
+
+[controls]
+senshiactivatetip=Insert Soul Sigil
+
+[biome]
+soulcavernincursionbiome=Soul Chasm
+soulcavernbiome=Soul Chasm
