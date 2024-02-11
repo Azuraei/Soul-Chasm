@@ -1,4 +1,4 @@
-Soul Chasm Mod
+![Soul Chasm](https://i.imgur.com/Zqx1ZqY.png)
 
 Mod for Necesse, developed by Endzio/Azuraei
 
