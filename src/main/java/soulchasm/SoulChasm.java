@@ -21,6 +21,7 @@ import necesse.inventory.recipe.Recipes;
 import necesse.level.gameObject.*;
 import necesse.level.gameObject.furniture.*;
 import necesse.level.maps.biomes.forest.ForestBiome;
+import necesse.level.maps.biomes.plains.PlainsBiome;
 import necesse.level.maps.biomes.swamp.SwampBiome;
 import necesse.level.maps.presets.set.ChestRoomSet;
 import necesse.level.maps.presets.set.WallSet;
@@ -284,8 +285,9 @@ public class SoulChasm {
 
     }
     public void postInit() {
-        ForestBiome.defaultSurfaceCritters.add(50, "firefly");
-        SwampBiome.defaultSurfaceCritters.add(50, "firefly");
+        ForestBiome.defaultSurfaceCritters.add(80, "firefly");
+        PlainsBiome.defaultSurfaceCritters.add(80, "firefly");
+        SwampBiome.surfaceCritters.add(100, "firefly");
         SoulCaveChestRoomSet = new ChestRoomSet("soulcavefloortile", "soulstonepressureplate", WallSet.loadByStringID("soulbrick"), "soulcavechest", "soulstoneflametrap");
 
         //SHRINE MONUMENT LOOT
@@ -409,7 +411,7 @@ public class SoulChasm {
                 1,
                 RecipeTechRegistry.WORKSTATION,
                 new Ingredient[]{
-                        new Ingredient("fireflyitem", 6),
+                        new Ingredient("fireflyitem", 3),
                         new Ingredient("bigjarobject", 1)
                 }
         ).showAfter("torch"));
@@ -419,7 +421,7 @@ public class SoulChasm {
                 1,
                 RecipeTechRegistry.ADVANCED_WORKSTATION,
                 new Ingredient[]{
-                        new Ingredient("wispitem", 6),
+                        new Ingredient("wispitem", 2),
                         new Ingredient("bigjarobject", 1)
                 }
         ).showAfter("fireflyjar"));

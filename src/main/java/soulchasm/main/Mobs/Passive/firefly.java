@@ -4,79 +4,51 @@ import necesse.engine.network.NetworkClient;
 import necesse.engine.network.server.Server;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.tickManager.TickManager;
-import necesse.engine.util.GameMath;
+import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
 import necesse.entity.mobs.PlayerMob;
+import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
+import necesse.entity.mobs.ai.behaviourTree.leaves.EmptyAINode;
 import necesse.entity.mobs.friendly.critters.CritterMob;
-import necesse.entity.trails.Trail;
-import necesse.entity.trails.TrailVector;
+import necesse.entity.particle.Particle;
 import necesse.gfx.camera.GameCamera;
-import necesse.gfx.drawOptions.DrawOptions;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.LootItem;
+import necesse.inventory.lootTable.lootItem.LootItemList;
 import necesse.level.maps.Level;
-import necesse.level.maps.light.GameLight;
+import soulchasm.SoulChasm;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
 import java.util.List;
 
 public class firefly extends CritterMob {
     public static GameTexture texture;
-    public static LootTable lootTable = new LootTable(new LootItem("fireflyitem"));
-    public Trail trail;
-    private float toMove;
-    public float moveAngle;
+    public static LootTable lootTable = new LootTable(new LootItemList(LootItem.between("fireflyitem", 2, 6)));
     public LootTable getLootTable() {
         return lootTable;
     }
 
     public firefly() {
         super(1);
-        this.setSpeed(50.0F);
-        this.setFriction(0.4F);
-        this.accelerationMod = 0.2F;
-        this.decelerationMod = 0.8F;
-        this.collision = new Rectangle(-16, -16, 16, 16);
-        this.hitBox = new Rectangle(-16, -16, 16, 16);
-        this.selectBox = new Rectangle(-16, -16, 32, 32);
+        this.collision = new Rectangle(-32, -32, 64, 64);
+        this.hitBox = new Rectangle(-32, -32, 64, 64);
+        this.selectBox = new Rectangle(-32, -32, 64, 64);
         this.canDespawn = true;
+        this.isStatic = true;
     }
 
     public void init() {
         super.init();
-        if (this.getLevel().isClient()) {
-            this.trail = new Trail(this, this.getLevel(), new Color(188, 255, 23, 255), 8.0F, 150, 0.0F);
-            this.trail.drawOnTop = true;
-            this.trail.removeOnFadeOut = false;
-            this.getLevel().entityManager.addTrail(this.trail);
-        }
+        this.ai = new BehaviourTreeAI<>(this, new EmptyAINode<firefly>() {});
     }
 
     public boolean canDespawn() {
         return this.canDespawn && GameUtils.streamServerClients(this.getLevel()).noneMatch((c) -> this.getDistance(c.playerMob) < (float) (CRITTER_SPAWN_AREA.minSpawnDistance));
     }
-
-    public void tickMovement(float delta) {
-        this.toMove += delta;
-        while(this.toMove > 4.0F) {
-            float oldX = this.x;
-            float oldY = this.y;
-            super.tickMovement(4.0F);
-            this.toMove -= 4.0F;
-            Point2D.Float d = GameMath.normalize(oldX - this.x, oldY - this.y);
-            this.moveAngle = (float)Math.toDegrees(Math.atan2(d.y, d.x)) - 90.0F;
-            if (this.trail != null) {
-                float trailOffset = 0.1F;
-                this.trail.addPoint(new TrailVector(this.x + d.x * trailOffset, this.y + d.y * trailOffset, -d.x, -d.y, this.trail.thickness, 0.0F));
-            }
-        }
-    }
-
     public boolean canTakeDamage() {
         return false;
     }
@@ -108,22 +80,36 @@ public class firefly extends CritterMob {
 
     public void clientTick() {
         super.clientTick();
-        this.getLevel().lightManager.refreshParticleLightFloat(this.x, this.y, new Color(0xEAFF69), 0.7F, 80);
+        if (GameRandom.globalRandom.getChance(0.08F)) {
+            boolean mirror = GameRandom.globalRandom.nextBoolean();
+            this.getLevel().entityManager.addParticle(this.x + GameRandom.globalRandom.getIntBetween(128, -128), this.y + GameRandom.globalRandom.getIntBetween(128, -128), Particle.GType.COSMETIC).sprite(SoulChasm.particleFireflySection).fadesAlpha(0.6F, 0.6F).size((options, lifeTime, timeAlive, lifePercent) -> {
+            }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.5F, 2.5F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F), GameRandom.globalRandom.getFloatBetween(0.5F, 2.5F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F)).sizeFades(15, 20).givesLight(68, 100).givesLight(55).modify((options, lifeTime, timeAlive, lifePercent) -> {
+                options.mirror(mirror, false);
+            }).lifeTime(6000);
+        }
+        if (GameRandom.globalRandom.getChance(0.06F)) {
+            boolean mirror = GameRandom.globalRandom.nextBoolean();
+            this.getLevel().entityManager.addParticle(this.x + GameRandom.globalRandom.getIntBetween(32, -32), this.y + GameRandom.globalRandom.getIntBetween(32, -32), Particle.GType.COSMETIC).sprite(SoulChasm.particleFireflySection).fadesAlpha(0.6F, 0.6F).size((options, lifeTime, timeAlive, lifePercent) -> {
+            }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.1F, 1.0F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F), GameRandom.globalRandom.getFloatBetween(0.1F, 1.0F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F)).sizeFades(15, 20).givesLight(68, 100).givesLight(65).modify((options, lifeTime, timeAlive, lifePercent) -> {
+                options.mirror(mirror, false);
+            }).lifeTime(6000);
+        }
     }
+
+    @Override
+    public void serverTick() {
+        super.serverTick();
+        if(this.getLevel() != null){
+            if(this.getLevel().getServer() != null){
+                if(!this.getLevel().getServer().world.worldEntity.isNight()){
+                    this.dispose();
+                    this.remove();
+                }
+            }
+        }
+    }
+
     protected void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
         super.addDrawables(list, tileList, topList, level, x, y, tickManager, camera, perspective);
-        GameLight light = level.getLightLevel(x / 32, y / 32);
-        int drawX = camera.getDrawX(x) - 3;
-        int drawY = camera.getDrawY(y) - 3;
-        DrawOptions body = texture.initDraw().sprite(GameUtils.getAnim(this.getWorldEntity().getTime(), 2, 1200), 0, 6, 6).light(light.minLevelCopy(80)).pos(drawX, drawY);
-        topList.add((tm) -> body.draw());
-    }
-
-    public void dispose() {
-        super.dispose();
-        if (this.trail != null) {
-            this.trail.removeOnFadeOut = true;
-        }
-
     }
 }
