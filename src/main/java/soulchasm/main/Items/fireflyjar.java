@@ -15,10 +15,15 @@ import java.awt.*;
 public class fireflyjar extends ObjectItem {
     public fireflyjar() {
         super(ObjectRegistry.getObject("fireflyjarobject"), false);
-        this.holdTexture = GameTexture.fromFile("fireflyitem");
         this.stackSize = 20;
         this.rarity = Rarity.UNCOMMON;
 
+    }
+
+    @Override
+    public void loadTextures() {
+        super.loadTextures();
+        this.holdTexture = GameTexture.fromFile("player/holditems/fireflyjar");
     }
     @Override
     public DrawOptions getHoldItemDrawOptions(InventoryItem item, PlayerMob player, int spriteX, int spriteY, int drawX, int drawY, int width, int height, boolean mirrorX, boolean mirrorY, GameLight light, float alpha, GameTexture mask) {

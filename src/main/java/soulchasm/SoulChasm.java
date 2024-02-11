@@ -82,26 +82,30 @@ public class SoulChasm {
 
     public void init() {
         System.out.println("Hope you have a golden day ;)");
-        BiomeRegistry.registerBiome("soulcavernbiome", new soulcavernbiome(), 0, false, "soulcavernbiome");
-        IncursionBiomeRegistry.registerBiome("soulcavernincursionbiome", new soulcavernincursionbiome());
-        LevelRegistry.registerLevel("soulcavernincursionlevel", soulcavernincursionlevel.class);
-
-        //Objects
+        //TILES
+        TileRegistry.registerTile("soulcavegrass", new soulcavegrass(), 1, true);
+        TileRegistry.registerTile("soulcaverocktile", new soulcaverocktile(), 1, true);
+        TileRegistry.registerTile("soulwoodfloor", new soulwoodfloor(), 1, true);
+        TileRegistry.registerTile("soulwoodpath", new soulwoodpath(), 1, true);
+        TileRegistry.registerTile("soulwoodtiledfloor", new soulwoodtiledfloor(), 1, true);
+        TileRegistry.registerTile("soulcavefloortile", new soulcavefloortile(), 1, true);
+        TileRegistry.registerTile("soulcavebrickfloortile", new soulcavebrickfloortile(), 1, true);
+        TileRegistry.registerTile("soulcavetiledfloortile", new soulcavetiledfloortile(), 1, true);
+        TileRegistry.registerTile("asphalttile", new asphalttile(), 1, true);
+        TileRegistry.registerTile("meltedsouls", new meltedsouls(), 0, true);
+        TileRegistry.registerTile("soulcavecracktile", new soulcavecracktile(), 0, true);
+        //OBJECTS
         RockObject soulcaverock;
         ObjectRegistry.registerObject("soulcaverock", soulcaverock = new RockObject("soulcaverock", SoulStoneColor, "soulcaverockitem", 1, 5), 0.0F, false);
         soulcaverock.toolTier = 5;
         SingleRockObject.registerSurfaceRock(soulcaverock, "soulcaverocks", SoulStoneColor);
         ObjectRegistry.registerObject("soulcaverockssmall", new SingleRockSmall(soulcaverock, "soulcaverockssmall", SoulStoneColor), 0.0F, false, false);
         ObjectRegistry.registerObject("soulstonepressureplate", new MaskedPressurePlateObject("pressureplatemask", "soulcavefloortile", SoulStoneColor), 15.0F, true);
-
         WallObject.registerWallObjects("soulwood", "soulwoodtexture", 0, SoulWoodColor, 0.5F, 1);
-
         WallObject.registerWallObjects("soulbrick", "soulbricktexture", 5, SoulStoneColor, 0.5F, 1);
         ObjectRegistry.registerObject("soulstoneflametrap", new WallFlameTrapObject((WallObject)ObjectRegistry.getObject("soulbrickwall")), 50.0F, true);
-
         ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject((RockObject)ObjectRegistry.getObject("soulcaverock"), "oremask", "crystalizedsoulore", SoulStoneColor, "crystalizedsouloreitem"), 0.0F, false);
         ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject((RockObject)ObjectRegistry.getObject("soulcaverock"), "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, false), 0.0F, false);
-
         ObjectRegistry.registerObject("soultree", new soultree(), 0.0F, false);
         ObjectRegistry.registerObject("soultreesappling", new soultreesappling(), 1, true);
         ObjectRegistry.registerObject("lunartear", new lunartear(), 1, true);
@@ -118,7 +122,6 @@ public class SoulChasm {
         ObjectRegistry.registerObject("chasmcrates", new RandomCrateObject("chasmcrates"), 0.0F, false);
         ObjectRegistry.registerObject("statueobject", new statueobject(), 100, true);
         ObjectRegistry.registerObject("soulbossaltarobject", new soulbossaltarobject(), 0.0F, false);
-
         //Furniture
         BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", ToolType.PICKAXE, SoulFurnitureColor, 1);
         BedObject.registerBed("soulwoodbed", "soulwoodbed", ToolType.PICKAXE, SoulFurnitureColor, 1);
@@ -139,67 +142,11 @@ public class SoulChasm {
         int soulwoodFenceID = ObjectRegistry.registerObject("soulwoodfence", new FenceObject("soulwoodfence", SoulFurnitureColor, 12, 10), 2.0F, true);
         FenceGateObject.registerGatePair(soulwoodFenceID, "soulwoodfencegate", "soulwoodfencegate", SoulFurnitureColor, 12, 10, 4.0F);
         ObjectRegistry.registerObject("soulcavechest", new StorageBoxInventoryObject("soulcavechest",40, SoulStoneColor), 10.0F, true);
-
-        //Tiles
-        TileRegistry.registerTile("soulcavegrass", new soulcavegrass(), 1, true);
-        TileRegistry.registerTile("soulcaverocktile", new soulcaverocktile(), 1, true);
-        TileRegistry.registerTile("soulwoodfloor", new soulwoodfloor(), 1, true);
-        TileRegistry.registerTile("soulwoodpath", new soulwoodpath(), 1, true);
-        TileRegistry.registerTile("soulwoodtiledfloor", new soulwoodtiledfloor(), 1, true);
-        TileRegistry.registerTile("soulcavefloortile", new soulcavefloortile(), 1, true);
-        TileRegistry.registerTile("soulcavebrickfloortile", new soulcavebrickfloortile(), 1, true);
-        TileRegistry.registerTile("soulcavetiledfloortile", new soulcavetiledfloortile(), 1, true);
-        TileRegistry.registerTile("asphalttile", new asphalttile(), 1, true);
-        TileRegistry.registerTile("meltedsouls", new meltedsouls(), 0, true);
-        TileRegistry.registerTile("soulcavecracktile", new soulcavecracktile(), 0, true);
-
-        //Items
-        ItemRegistry.registerItem("soulwoodlogitem", new MatItem(999), 1, true);
-        ItemRegistry.registerItem("soulcoreitem", new soulcoreitem(), 15, true);
-        ItemRegistry.registerItem("souldragonscales", new souldragonscales(), 150, true);
-        ItemRegistry.registerItem("soulcaverockitem", new soulcaverockitem(), 1, true);
-        ItemRegistry.registerItem("crystalizedsouloreitem", new crystalizedsouloreitem(), 15, true);
-        ItemRegistry.registerItem("soulgrassseeditem", new GrassSeedItem("soulcavegrass"), 1, true);
-        ItemRegistry.registerItem("wispitem", new wispitem(), 1, true);
-        ItemRegistry.registerItem("wispjar", new wispjar(), 10, true);
-        ItemRegistry.registerItem("fireflyitem", new fireflyitem(), 1, true);
-        ItemRegistry.registerItem("fireflyjar", new fireflyjar(), 10, true);
-        ItemRegistry.registerItem("soullantern", new soullantern(), 20, true);
-        ItemRegistry.registerItem("soulmetalbar", new soulmetalbar(), 80, true);
-        ItemRegistry.registerItem("soulsigil", new soulsigil(), 200, true);
-        ItemRegistry.registerItem("soulessence", new EssenceMatItem(120, Item.Rarity.EPIC, 2), 25.0F, true);
-
-        //TrinketsAndOtherStuff
-        ItemRegistry.registerItem("carkeys", new carkeys(), 2000, true);
-        ItemRegistry.registerItem("phantomfeathertrinket", new phantomfeathertrinket(), 500, true);
-        ItemRegistry.registerItem("soulstealertrinket", new soulstealertrinket(), 500, true);
-        ItemRegistry.registerItem("pickaxeheadtrinket", new pickaxeheadtrinket(), 500, true);
-        ItemRegistry.registerItem("soulabsorbshield", new soulabsorbshield(), 750, true);
-        ItemRegistry.registerItem("phantomdasherstrinket", new phantomdasherstrinket(), 750, true);
-
-        //Weapons
-        ItemRegistry.registerItem("soulscythe", new soulscythe(), 2000, true);
-        ItemRegistry.registerItem("soulmetalbow", new soulmetalbow(), 500, true);
-        ItemRegistry.registerItem("soulmetalsword", new soulmetalsword(), 500, true);
-        ItemRegistry.registerItem("soulmetalspear", new soulmetalspear(), 500, true);
-        ItemRegistry.registerItem("soulmetalrevolver", new soulmetalrevolver(), 500, true);
-        //Armor
-        ItemRegistry.registerItem("soularmorboots", new soularmorboots(), 750, true);
-        ItemRegistry.registerItem("soularmorchestplate", new soularmorchestplate(), 750, true);
-        ItemRegistry.registerItem("soularmorcrown", new soularmorcrown(), 750, true);
-        ItemRegistry.registerItem("soularmorhelmet", new soularmorhelmet(), 750, true);
-        ItemRegistry.registerItem("soularmorhood", new soularmorhood(), 750, true);
-        ItemRegistry.registerItem("soularmorhat", new soularmorhat(),750, true);
-
-        //SealTrinketsItems
-        ItemRegistry.registerItem("meleesoulsealtrinket", new meleesoulsealtrinket(), 200, true);
-        ItemRegistry.registerItem("summonsoulsealtrinket", new summonsoulsealtrinket(), 200, true);
-        ItemRegistry.registerItem("magicsoulsealtrinket", new magicsoulsealtrinket(), 200, true);
-        ItemRegistry.registerItem("rangesoulsealtrinket", new rangesoulsealtrinket(), 200, true);
-        ItemRegistry.registerItem("soulsealtrinket", new soulsealtrinket(), 1000, true);
-        ItemRegistry.registerItem("balancedsealtrinket", new balancedsealtrinket(), 2000, true);
-
-        //Buffs
+        //BIOMES
+        BiomeRegistry.registerBiome("soulcavernbiome", new soulcavernbiome(), 0, false, "soulcavernbiome");
+        IncursionBiomeRegistry.registerBiome("soulcavernincursionbiome", new soulcavernincursionbiome());
+        LevelRegistry.registerLevel("soulcavernincursionlevel", soulcavernincursionlevel.class);
+        //BUFFS
         BuffRegistry.registerBuff("soulstealerbuff", new soulstealerbuff());
         BuffRegistry.registerBuff("phantomfeatherbuff", new phantomfeatherbuff());
         BuffRegistry.registerBuff("soulfirebuff", new soulfirebuff());
@@ -213,7 +160,6 @@ public class SoulChasm {
         BuffRegistry.registerBuff("pickaxeheadstackbuff", new pickaxeheadstackbuff());
         BuffRegistry.registerBuff("phantomdashersactivebuff", new phantomdashersactivebuff());
         BuffRegistry.registerBuff("phantomdashersbuff", new phantomdashersbuff());
-
         //SetBonus
         BuffRegistry.registerBuff("soularmorhelmetsetbonus", new soularmorhelmetsetbonus());
         BuffRegistry.registerBuff("soularmorhoodsetbonus", new soularmorhoodsetbonus());
@@ -228,8 +174,61 @@ public class SoulChasm {
         BuffRegistry.registerBuff("magicsoulsealbuff", new magicsoulsealbuff());
         BuffRegistry.registerBuff("rangesoulsealbuff", new rangesoulsealbuff());
         BuffRegistry.registerBuff("balancedsealbuff", new balancedsealbuff());
-
-        //Projectiles
+        //ITEMS
+        ItemRegistry.registerItem("soulwoodlogitem", new MatItem(999), 1, true);
+        ItemRegistry.registerItem("soulcoreitem", new soulcoreitem(), 15, true);
+        ItemRegistry.registerItem("souldragonscales", new souldragonscales(), 150, true);
+        ItemRegistry.registerItem("soulcaverockitem", new soulcaverockitem(), 1, true);
+        ItemRegistry.registerItem("crystalizedsouloreitem", new crystalizedsouloreitem(), 15, true);
+        ItemRegistry.registerItem("soulgrassseeditem", new GrassSeedItem("soulcavegrass"), 1, true);
+        ItemRegistry.registerItem("wispitem", new wispitem(), 1, true);
+        ItemRegistry.registerItem("wispjar", new wispjar(), 10, true);
+        ItemRegistry.registerItem("fireflyitem", new fireflyitem(), 1, true);
+        ItemRegistry.registerItem("fireflyjar", new fireflyjar(), 10, true);
+        ItemRegistry.registerItem("soullantern", new soullantern(), 20, true);
+        ItemRegistry.registerItem("soulmetalbar", new soulmetalbar(), 80, true);
+        ItemRegistry.registerItem("soulsigil", new soulsigil(), 200, true);
+        ItemRegistry.registerItem("soulessence", new EssenceMatItem(120, Item.Rarity.EPIC, 2), 25.0F, true);
+        //TrinketsAndOtherStuff
+        ItemRegistry.registerItem("carkeys", new carkeys(), 2000, true);
+        ItemRegistry.registerItem("phantomfeathertrinket", new phantomfeathertrinket(), 500, true);
+        ItemRegistry.registerItem("soulstealertrinket", new soulstealertrinket(), 500, true);
+        ItemRegistry.registerItem("pickaxeheadtrinket", new pickaxeheadtrinket(), 500, true);
+        ItemRegistry.registerItem("soulabsorbshield", new soulabsorbshield(), 750, true);
+        ItemRegistry.registerItem("phantomdasherstrinket", new phantomdasherstrinket(), 750, true);
+        //Weapons
+        ItemRegistry.registerItem("soulscythe", new soulscythe(), 2000, true);
+        ItemRegistry.registerItem("soulmetalbow", new soulmetalbow(), 500, true);
+        ItemRegistry.registerItem("soulmetalsword", new soulmetalsword(), 500, true);
+        ItemRegistry.registerItem("soulmetalspear", new soulmetalspear(), 500, true);
+        ItemRegistry.registerItem("soulmetalrevolver", new soulmetalrevolver(), 500, true);
+        //Armor
+        ItemRegistry.registerItem("soularmorboots", new soularmorboots(), 750, true);
+        ItemRegistry.registerItem("soularmorchestplate", new soularmorchestplate(), 750, true);
+        ItemRegistry.registerItem("soularmorcrown", new soularmorcrown(), 750, true);
+        ItemRegistry.registerItem("soularmorhelmet", new soularmorhelmet(), 750, true);
+        ItemRegistry.registerItem("soularmorhood", new soularmorhood(), 750, true);
+        ItemRegistry.registerItem("soularmorhat", new soularmorhat(),750, true);
+        //SealTrinketsItems
+        ItemRegistry.registerItem("meleesoulsealtrinket", new meleesoulsealtrinket(), 200, true);
+        ItemRegistry.registerItem("summonsoulsealtrinket", new summonsoulsealtrinket(), 200, true);
+        ItemRegistry.registerItem("magicsoulsealtrinket", new magicsoulsealtrinket(), 200, true);
+        ItemRegistry.registerItem("rangesoulsealtrinket", new rangesoulsealtrinket(), 200, true);
+        ItemRegistry.registerItem("soulsealtrinket", new soulsealtrinket(), 1000, true);
+        ItemRegistry.registerItem("balancedsealtrinket", new balancedsealtrinket(), 2000, true);
+        //MOBS
+        MobRegistry.registerMob("lostsoul", lostsoul.class, true);
+        MobRegistry.registerMob("carmob", carmob.class, false);
+        MobRegistry.registerMob("possesedstatue", possesedstatue.class, true);
+        MobRegistry.registerMob("wisp", wisp.class, false);
+        MobRegistry.registerMob("firefly", firefly.class, false);
+        MobRegistry.registerMob("soulpillar", soulpillar.class, true);
+        MobRegistry.registerMob("soulmage", soulmage.class, true);
+        MobRegistry.registerMob("smallsoulsummon", smallsoulsummon.class, false);
+        MobRegistry.registerMob("soulcavecaveling", soulcavecaveling.class, true);
+        MobRegistry.registerMob("souldragonhead", souldragonhead.class, true);
+        MobRegistry.registerMob("souldragonbody", souldragonbody.class, false);
+        //PROJECTILES
         ProjectileRegistry.registerProjectile("soulwaveprojectile", soulwaveprojectile.class, "soulwaveprojectile", "shadow_simple");
         ProjectileRegistry.registerProjectile("soularrowprojectile", soularrowprojectile.class, "soularrowprojectile", "shadow_simple");
         ProjectileRegistry.registerProjectile("souldragonfragmentprojectile", souldragonfragmentprojectile.class, "souldragonfragmentprojectile","shadow_simple");
@@ -243,19 +242,6 @@ public class SoulChasm {
         ProjectileRegistry.registerProjectile("soulpointywaveprojectile", soulpointywaveprojectile.class, "soulpointywaveprojectile", "shadow_simple");
         ProjectileRegistry.registerProjectile("soulbigbulletprojectile", soulbigbulletprojectile.class, null, null);
         ProjectileRegistry.registerProjectile("soulbossspikeprojectile", soulbossspikeprojectile.class, "soulbossspikeprojectile","shadow_simple");
-
-        //Mobs
-        MobRegistry.registerMob("lostsoul", lostsoul.class, true);
-        MobRegistry.registerMob("carmob", carmob.class, false);
-        MobRegistry.registerMob("possesedstatue", possesedstatue.class, true);
-        MobRegistry.registerMob("wisp", wisp.class, false);
-        MobRegistry.registerMob("firefly", firefly.class, false);
-        MobRegistry.registerMob("soulpillar", soulpillar.class, true);
-        MobRegistry.registerMob("soulmage", soulmage.class, true);
-        MobRegistry.registerMob("smallsoulsummon", smallsoulsummon.class, false);
-        MobRegistry.registerMob("soulcavecaveling", soulcavecaveling.class, true);
-        MobRegistry.registerMob("souldragonhead", souldragonhead.class, true);
-        MobRegistry.registerMob("souldragonbody", souldragonbody.class, false);
     }
     public void initResources(){
         lostsoul.texture = GameTexture.fromFile("mobs/lostsoul");

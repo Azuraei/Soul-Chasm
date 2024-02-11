@@ -15,11 +15,16 @@ import java.awt.*;
 public class wispjar extends ObjectItem {
     public wispjar() {
         super(ObjectRegistry.getObject("wispjarobject"), false);
-        this.holdTexture = GameTexture.fromFile("wispjaritem");
         this.stackSize = 20;
         this.rarity = Rarity.UNCOMMON;
-
     }
+
+    @Override
+    public void loadTextures() {
+        super.loadTextures();
+        this.holdTexture = GameTexture.fromFile("player/holditems/wispjar");
+    }
+
     @Override
     public DrawOptions getHoldItemDrawOptions(InventoryItem item, PlayerMob player, int spriteX, int spriteY, int drawX, int drawY, int width, int height, boolean mirrorX, boolean mirrorY, GameLight light, float alpha, GameTexture mask) {
         int xOffset = 0;
