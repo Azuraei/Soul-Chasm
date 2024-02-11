@@ -30,16 +30,16 @@ import soulchasm.main.Buffs.PickaxeheadBuffs.pickaxeheadbuff;
 import soulchasm.main.Buffs.PickaxeheadBuffs.pickaxeheadstackbuff;
 import soulchasm.main.Buffs.SealVariantsBuffs.*;
 import soulchasm.main.Buffs.*;
-import soulchasm.main.Items.Armor.*;
 import soulchasm.main.Items.Armor.SetBonusBuffs.*;
+import soulchasm.main.Items.Armor.*;
 import soulchasm.main.Items.Materials.*;
 import soulchasm.main.Items.SealVariantsItems.*;
 import soulchasm.main.Items.Tools.*;
-import soulchasm.main.Items.*;
 import soulchasm.main.Items.Trinkets.phantomdasherstrinket;
 import soulchasm.main.Items.Trinkets.phantomfeathertrinket;
 import soulchasm.main.Items.Trinkets.pickaxeheadtrinket;
 import soulchasm.main.Items.Trinkets.soulstealertrinket;
+import soulchasm.main.Items.*;
 import soulchasm.main.Misc.BiomeMisc.soulcavernbiome;
 import soulchasm.main.Misc.Incursion.soulcavernincursionbiome;
 import soulchasm.main.Misc.Incursion.soulcavernincursionlevel;
@@ -47,7 +47,8 @@ import soulchasm.main.Mobs.Agressive.lostsoul;
 import soulchasm.main.Mobs.Agressive.possesedstatue;
 import soulchasm.main.Mobs.Agressive.soulmage;
 import soulchasm.main.Mobs.Agressive.soulpillar;
-import soulchasm.main.Mobs.Boss.*;
+import soulchasm.main.Mobs.Boss.souldragonbody;
+import soulchasm.main.Mobs.Boss.souldragonhead;
 import soulchasm.main.Mobs.Passive.firefly;
 import soulchasm.main.Mobs.Passive.soulcavecaveling;
 import soulchasm.main.Mobs.Passive.wisp;
@@ -61,7 +62,6 @@ import soulchasm.main.Objects.WoodObjects.soulwoodtiledfloor;
 import soulchasm.main.Projectiles.*;
 
 import java.awt.*;
-
 @ModEntry
 public class SoulChasm {
     public static Color SoulStoneColor = new Color(7,19,23,255);
@@ -81,7 +81,7 @@ public class SoulChasm {
     public static GameTextureSection particlePhantomBodySection;
 
     public void init() {
-        System.out.println("Initializing Soul Chasm Mod \nHope you have a golden day ;)");
+        System.out.println("Hope you have a golden day ;)");
         BiomeRegistry.registerBiome("soulcavernbiome", new soulcavernbiome(), 0, false, "soulcavernbiome");
         IncursionBiomeRegistry.registerBiome("soulcavernincursionbiome", new soulcavernincursionbiome());
         LevelRegistry.registerLevel("soulcavernincursionlevel", soulcavernincursionlevel.class);
