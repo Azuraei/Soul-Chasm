@@ -1,3 +1,5 @@
-An example mod for Necesse.
+Soul Chasm Mod
 
-Check out the [modding wiki page](https://necessewiki.com/Modding) for more.
+Mod for Necesse, developed by Endzio/Azuraei
+
+Check it out on [Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=3123441229)!
