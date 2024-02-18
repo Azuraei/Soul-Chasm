@@ -13,14 +13,12 @@ soulcavecracktile=Soul Crack
 
 [object]
 crystalizedsoul=Crystallized Souls
-
 crystalizedsoulore=Crystallized Souls
 alchemyshard=Alchemy Shard
 soultree=Phantom Tree
 soulcavegrassobject=Soul Chasm Grass
 soulwood=Phantom Wood
 soulbrick=Soul Chasm Brick
-
 soultreesappling=Phantom Tree Sapling
 lunartear=Lunar Tear
 lunartearspath=Lunar Tears Path
@@ -40,13 +38,11 @@ chasmcrates=Old Crate
 statueobject=Knight Statue
 
 soulbossaltarobject=Ancient Altar
-
 soulcaverock=Chasm Stone
 soulwoodwall=Phantom Wood Wall
 soulwooddoor=Phantom Wood Door
 soulbrickwall=Soul Chasm Brick Wall
 soulbrickdoor=Soul Chasm Brick Door
-
 soulwoodbathtub=Phantom Wood Bathtub
 soulwoodbed=Phantom Wood Bed
 soulwoodbench=Phantom Wood Bench
@@ -71,7 +67,6 @@ soulmetalbow=Phantasm Bow
 soulmetalsword=Soulfury
 soulmetalspear=Cursed Pitchfork
 soulmetalrevolver=The Soultaker
-
 soulabsorbshield=Soulbreaker Shield
 soularmorboots=Soulsteel Boots
 soularmorchestplate=Soulsteel Chestplate
@@ -79,31 +74,25 @@ soularmorcrown=Soulsteel Crown
 soularmorhelmet=Soulsteel Helmet
 soularmorhood=Soulsteel Hood
 soularmorhat=Soulsteel Hat
-
 phantomfeathertrinket=Phantom Feather
 soulstealertrinket=Soul Ring
 pickaxeheadtrinket=Old Pickaxe Head
 phantomdasherstrinket=Phantom Dashers
-
 carkeys=Car Keys
 soulsigil=Soul Sigil
 souldragonscales=Ancient Dragon Scales
-
 soulwoodlogitem=Phantom Wood Log
 soulcoreitem=Soul Core
 soulcaverockitem=Soul Chasm Stone
 crystalizedsouloreitem=Crystallized Souls Ore
 soulgrassseeditem=Soul Chasm Grass Seeds
 soulessence=Soul Essence
-
 wispitem=Wisp
 wispjar=Wisp Jar
 fireflyitem=Firefly
 fireflyjar=Firefly Jar
-
 soullantern=Soul Lantern
 soulmetalbar=Soul Metal Bar
-
 meleesoulsealtrinket=Melee Artifact Fragment
 summonsoulsealtrinket=Summon Artifact Fragment
 magicsoulsealtrinket=Magic Artifact Fragment

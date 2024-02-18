@@ -293,7 +293,7 @@ public class SoulChasm {
         //SHRINE MONUMENT LOOT
         soulcavemonumentshrineloottable = new LootTable(new LootItemList(
                 new OneOfLootItems(
-                        new ChanceLootItem(0.6F,"soulsigil"),
+                        new ChanceLootItem(0.8F,"soulsigil"),
                         new ChanceLootItem(0.5F,"phantomfeathertrinket"),
                         new ChanceLootItem(0.5F,"soulstealertrinket"),
                         new ChanceLootItem(0.5F,"pickaxeheadtrinket"),
@@ -305,10 +305,10 @@ public class SoulChasm {
 
         //CAVE CHEST LOOT
         soulcavechestloottable = new LootTable(new LootItemList(
-                LootItem.between("crystalizedsouloreitem", 2, 6),
-                LootItem.between("greaterhealthpotion", 2, 4),
-                LootItem.between("dynamitestick", 0, 6),
-                LootItem.between("coin", 34, 500),
+                LootItem.between("crystalizedsouloreitem", 6, 12),
+                LootItem.between("greaterhealthpotion", 2, 6),
+                LootItem.between("dynamitestick", 0, 8),
+                LootItem.between("coin", 120, 80),
                 new OneOfLootItems(
                         new LootItem("phantomfeathertrinket"),
                         new LootItem("soulstealertrinket"),
@@ -319,17 +319,17 @@ public class SoulChasm {
 
         //CAVE RUINS LOOT
         soulcaveruinsloottable = new LootTable(new LootItem[]{
-                LootItem.between("crystalizedsouloreitem", 2, 3),
-                LootItem.between("greaterhealthpotion", 0, 2),
-                LootItem.between("dynamitestick", 0, 1),
-                LootItem.between("coin", 5, 50)
+                LootItem.between("crystalizedsouloreitem", 2, 6),
+                LootItem.between("greaterhealthpotion", 0, 3),
+                LootItem.between("dynamitestick", 0, 2),
+                LootItem.between("coin", 5, 100)
         });
 
         //DRAGON_LOOT
         LootItemList dragon_loot_list = new LootItemList(
                 LootItem.between("soulcoreitem", 10, 20),
                 LootItem.between("souldragonscales", 15, 20),
-                new ChanceLootItem(0.05F, "soulscythe")
+                new ChanceLootItem(0.06F, "soulscythe")
 
         );
         souldragonhead.lootTable = new LootTable(dragon_loot_list);
@@ -510,6 +510,17 @@ public class SoulChasm {
         ).showAfter("slimeboots"));
 
         Recipes.registerModRecipe(new Recipe(
+                "soularmorhat",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulmetalbar", 4),
+                        new Ingredient("soulcoreitem", 12),
+                        new Ingredient("souldragonscales", 2)
+                }
+        ).showAfter("slimeboots"));
+
+        Recipes.registerModRecipe(new Recipe(
                 "soularmorhood",
                 1,
                 RecipeTechRegistry.FALLEN_WORKSTATION,
@@ -525,7 +536,7 @@ public class SoulChasm {
                 1,
                 RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{
-                        new Ingredient("soulmetalbar", 12),
+                        new Ingredient("soulmetalbar", 10),
                         new Ingredient("soulcoreitem", 4),
                         new Ingredient("souldragonscales", 4)
                 }
