@@ -17,7 +17,6 @@ public class soularmorhat extends SetHelmetArmorItem {
     public soularmorhat() {
         super(24, 1500, "soularmorhat", "soularmorchestplate", "soularmorboots", "soularmorhatsetbonus");
         this.rarity = Rarity.EPIC;
-
     }
 
     public ArmorModifiers getArmorModifiers(InventoryItem item, Mob mob) {
@@ -40,6 +39,4 @@ public class soularmorhat extends SetHelmetArmorItem {
         }
 
     }
-
-
 }

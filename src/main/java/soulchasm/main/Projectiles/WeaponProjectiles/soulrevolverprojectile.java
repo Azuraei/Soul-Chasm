@@ -1,4 +1,4 @@
-package soulchasm.main.Projectiles;
+package soulchasm.main.Projectiles.WeaponProjectiles;
 
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;

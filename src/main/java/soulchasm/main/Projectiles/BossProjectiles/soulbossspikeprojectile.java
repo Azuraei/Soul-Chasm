@@ -1,4 +1,4 @@
-package soulchasm.main.Projectiles;
+package soulchasm.main.Projectiles.BossProjectiles;
 
 import necesse.engine.tickManager.TickManager;
 import necesse.entity.mobs.GameDamage;

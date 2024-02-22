@@ -22,7 +22,6 @@ public class soulcaverocktile extends TerrainSplatterTile {
         synchronized(this.drawRandom) {
             tile = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).nextInt(terrainTexture.getHeight() / 32);
         }
-
         return new Point(0, tile);
     }
 

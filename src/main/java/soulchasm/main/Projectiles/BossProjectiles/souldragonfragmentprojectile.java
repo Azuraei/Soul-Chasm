@@ -1,7 +1,5 @@
-package soulchasm.main.Projectiles;
+package soulchasm.main.Projectiles.BossProjectiles;
 
-import necesse.engine.network.PacketReader;
-import necesse.engine.network.PacketWriter;
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
@@ -10,7 +8,6 @@ import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.projectile.followingProjectile.FollowingProjectile;
-import necesse.entity.trails.Trail;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.EntityDrawable;
@@ -19,7 +16,6 @@ import necesse.gfx.drawables.OrderableDrawables;
 import necesse.level.maps.Level;
 import necesse.level.maps.LevelObjectHit;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.Projectiles.soulmissileprojectile;
 
 import java.awt.*;
 import java.awt.geom.Point2D;

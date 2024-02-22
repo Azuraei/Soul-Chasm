@@ -1,7 +1,6 @@
 package soulchasm.main.Buffs.SealVariantsBuffs;
 
 import necesse.entity.mobs.GameDamage;
-import necesse.entity.mobs.ItemCooldown;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
@@ -11,11 +10,9 @@ import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.item.toolItem.projectileToolItem.bowProjectileToolItem.BowProjectileToolItem;
 import necesse.inventory.item.toolItem.projectileToolItem.gunProjectileToolItem.GunProjectileToolItem;
-import necesse.inventory.item.toolItem.projectileToolItem.throwToolItem.boomerangToolItem.BoomerangToolItem;
-import necesse.inventory.item.toolItem.spearToolItem.SpearToolItem;
-import necesse.inventory.item.toolItem.swordToolItem.SwordToolItem;
 import necesse.level.maps.Level;
-import soulchasm.main.Projectiles.*;
+import soulchasm.main.Projectiles.WeaponProjectiles.soulbigbulletprojectile;
+import soulchasm.main.Projectiles.soularrowprojectile;
 
 public class rangesoulsealbuff extends TrinketBuff {
     private int currentcharge;

@@ -47,7 +47,7 @@ public class soulmissileprojectile extends Projectile {
     }
 
     public Trail getTrail() {
-        return new Trail(this, this.getLevel(), null, 12.0F, 500, this.getHeight()) {
+        return new Trail(this, this.getLevel(), null, 10.0F, 350, this.getHeight()) {
             public Color getColor() {
                 return new Color(0x2C96FF);
             }

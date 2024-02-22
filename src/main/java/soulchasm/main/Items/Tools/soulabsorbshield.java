@@ -2,7 +2,6 @@ package soulchasm.main.Items.Tools;
 
 import necesse.engine.Screen;
 import necesse.engine.localization.Localization;
-import necesse.engine.network.packet.PacketSpawnProjectile;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.util.GameRandom;
@@ -16,11 +15,8 @@ import necesse.gfx.GameResources;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.trinketItem.ShieldTrinketItem;
-import necesse.level.gameObject.GameObject;
-import necesse.level.gameTile.GameTile;
-import necesse.level.gameTile.LiquidTile;
 import necesse.level.maps.Level;
-import soulchasm.main.Projectiles.soulflamethrower;
+import soulchasm.main.Projectiles.BossProjectiles.soulflamethrower;
 
 import java.awt.*;
 

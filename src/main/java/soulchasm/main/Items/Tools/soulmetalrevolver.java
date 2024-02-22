@@ -18,10 +18,9 @@ import necesse.inventory.InventoryItem;
 import necesse.inventory.item.bulletItem.BulletItem;
 import necesse.inventory.item.toolItem.projectileToolItem.gunProjectileToolItem.GunProjectileToolItem;
 import necesse.level.maps.Level;
-import soulchasm.main.Projectiles.soulrevolverprojectile;
+import soulchasm.main.Projectiles.WeaponProjectiles.soulrevolverprojectile;
 
 import java.awt.*;
-import java.util.Objects;
 
 public class soulmetalrevolver extends GunProjectileToolItem {
     public soulmetalrevolver() {

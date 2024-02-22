@@ -48,7 +48,6 @@ public class soulmetalspear extends ThrowToolItem {
         if (level.isServer()) {
             level.getServer().network.sendToClientsAtExcept(new PacketSpawnProjectile(projectile), player.getServerClient(), player.getServerClient());
         }
-
         return item;
     }
 

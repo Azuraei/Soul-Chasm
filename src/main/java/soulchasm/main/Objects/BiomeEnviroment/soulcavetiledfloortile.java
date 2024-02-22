@@ -7,7 +7,9 @@ import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.gfx.gameTexture.GameTextureSection;
 import necesse.level.gameTile.TerrainSplatterTile;
 import necesse.level.maps.Level;
+
 import java.awt.*;
+
 import static soulchasm.SoulChasm.SoulStoneColorLight;
 
 public class soulcavetiledfloortile extends TerrainSplatterTile {
@@ -30,7 +32,6 @@ public class soulcavetiledfloortile extends TerrainSplatterTile {
         synchronized(this.drawRandom) {
             tile = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).nextInt(terrainTexture.getHeight() / 32);
         }
-
         return new Point(0, tile);
     }
 

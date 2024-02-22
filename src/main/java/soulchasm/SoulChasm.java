@@ -20,11 +20,16 @@ import necesse.inventory.recipe.Recipe;
 import necesse.inventory.recipe.Recipes;
 import necesse.level.gameObject.*;
 import necesse.level.gameObject.furniture.*;
+import necesse.level.gameTile.PathTiledTile;
+import necesse.level.gameTile.SimpleFloorTile;
+import necesse.level.gameTile.SimpleTiledFloorTile;
 import necesse.level.maps.biomes.forest.ForestBiome;
 import necesse.level.maps.biomes.plains.PlainsBiome;
 import necesse.level.maps.biomes.swamp.SwampBiome;
 import necesse.level.maps.presets.set.ChestRoomSet;
 import necesse.level.maps.presets.set.WallSet;
+import soulchasm.main.Buffs.BookOfSoulsBuffs.bookofsoulbuff;
+import soulchasm.main.Buffs.BookOfSoulsBuffs.soulofsoulsoverchargebuff;
 import soulchasm.main.Buffs.PhantomDashersBuffs.phantomdashersactivebuff;
 import soulchasm.main.Buffs.PhantomDashersBuffs.phantomdashersbuff;
 import soulchasm.main.Buffs.PickaxeheadBuffs.pickaxeheadbuff;
@@ -57,9 +62,10 @@ import soulchasm.main.Mobs.Summon.carmob;
 import soulchasm.main.Mobs.Summon.smallsoulsummon;
 import soulchasm.main.Objects.BiomeEnviroment.*;
 import soulchasm.main.Objects.OtherObjects.*;
-import soulchasm.main.Objects.WoodObjects.soulwoodfloor;
-import soulchasm.main.Objects.WoodObjects.soulwoodpath;
-import soulchasm.main.Objects.WoodObjects.soulwoodtiledfloor;
+import soulchasm.main.Projectiles.BossProjectiles.soulbossspikeprojectile;
+import soulchasm.main.Projectiles.BossProjectiles.souldragonfragmentprojectile;
+import soulchasm.main.Projectiles.BossProjectiles.soulflamethrower;
+import soulchasm.main.Projectiles.WeaponProjectiles.*;
 import soulchasm.main.Projectiles.*;
 
 import java.awt.*;
@@ -86,10 +92,10 @@ public class SoulChasm {
         //TILES
         TileRegistry.registerTile("soulcavegrass", new soulcavegrass(), 1, true);
         TileRegistry.registerTile("soulcaverocktile", new soulcaverocktile(), 1, true);
-        TileRegistry.registerTile("soulwoodfloor", new soulwoodfloor(), 1, true);
-        TileRegistry.registerTile("soulwoodpath", new soulwoodpath(), 1, true);
-        TileRegistry.registerTile("soulwoodtiledfloor", new soulwoodtiledfloor(), 1, true);
-        TileRegistry.registerTile("soulcavefloortile", new soulcavefloortile(), 1, true);
+        TileRegistry.registerTile("soulwoodfloor", new SimpleFloorTile("soulwoodfloor", SoulChasm.SoulWoodColor), 1, true);
+        TileRegistry.registerTile("soulwoodpath", new PathTiledTile("soulwoodpath", SoulChasm.SoulWoodColor), 1, true);
+        TileRegistry.registerTile("soulwoodtiledfloor", new SimpleTiledFloorTile("soulwoodtiledfloor", SoulChasm.SoulWoodColor), 1, true);
+        TileRegistry.registerTile("soulcavefloortile", new SimpleFloorTile("soulcavefloortile", SoulStoneColorLight), 1, true);
         TileRegistry.registerTile("soulcavebrickfloortile", new soulcavebrickfloortile(), 1, true);
         TileRegistry.registerTile("soulcavetiledfloortile", new soulcavetiledfloortile(), 1, true);
         TileRegistry.registerTile("asphalttile", new asphalttile(), 1, true);
@@ -98,17 +104,17 @@ public class SoulChasm {
         //OBJECTS
         RockObject soulcaverock;
         ObjectRegistry.registerObject("soulcaverock", soulcaverock = new RockObject("soulcaverock", SoulStoneColor, "soulcaverockitem", 1, 5), 0.0F, false);
-        soulcaverock.toolTier = 5;
+        soulcaverock.toolTier = 4;
         SingleRockObject.registerSurfaceRock(soulcaverock, "soulcaverocks", SoulStoneColor);
         ObjectRegistry.registerObject("soulcaverockssmall", new SingleRockSmall(soulcaverock, "soulcaverockssmall", SoulStoneColor), 0.0F, false, false);
         ObjectRegistry.registerObject("soulstonepressureplate", new MaskedPressurePlateObject("pressureplatemask", "soulcavefloortile", SoulStoneColor), 15.0F, true);
         WallObject.registerWallObjects("soulwood", "soulwoodtexture", 0, SoulWoodColor, 0.5F, 1);
-        WallObject.registerWallObjects("soulbrick", "soulbricktexture", 5, SoulStoneColor, 0.5F, 1);
+        WallObject.registerWallObjects("soulbrick", "soulbricktexture", soulcaverock.toolTier, SoulStoneColor, 0.5F, 1);
         ObjectRegistry.registerObject("soulstoneflametrap", new WallFlameTrapObject((WallObject)ObjectRegistry.getObject("soulbrickwall")), 50.0F, true);
         ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject((RockObject)ObjectRegistry.getObject("soulcaverock"), "oremask", "crystalizedsoulore", SoulStoneColor, "crystalizedsouloreitem"), 0.0F, false);
         ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject((RockObject)ObjectRegistry.getObject("soulcaverock"), "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, false), 0.0F, false);
-        ObjectRegistry.registerObject("soultree", new soultree(), 0.0F, false);
-        ObjectRegistry.registerObject("soultreesappling", new soultreesappling(), 1, true);
+        ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesappling", SoulWoodColor, 60,80,100, "soultreeleaves"), 0.0F, false);
+        ObjectRegistry.registerObject("soultreesappling", new TreeSaplingObject("soultreesappling", "soultree", 20, 30, true), 1, true);
         ObjectRegistry.registerObject("lunartear", new lunartear(), 1, true);
         ObjectRegistry.registerObject("lunartearspath", new lunartearspath(), 1, true);
         ObjectRegistry.registerObject("soultorch", new soultorch(), 1, true);
@@ -161,6 +167,8 @@ public class SoulChasm {
         BuffRegistry.registerBuff("pickaxeheadstackbuff", new pickaxeheadstackbuff());
         BuffRegistry.registerBuff("phantomdashersactivebuff", new phantomdashersactivebuff());
         BuffRegistry.registerBuff("phantomdashersbuff", new phantomdashersbuff());
+        BuffRegistry.registerBuff("bookofsoulbuff", new bookofsoulbuff());
+        BuffRegistry.registerBuff("soulofsoulsoverchargebuff", new soulofsoulsoverchargebuff());
         //SetBonus
         BuffRegistry.registerBuff("soularmorhelmetsetbonus", new soularmorhelmetsetbonus());
         BuffRegistry.registerBuff("soularmorhoodsetbonus", new soularmorhoodsetbonus());
@@ -203,6 +211,8 @@ public class SoulChasm {
         ItemRegistry.registerItem("soulmetalsword", new soulmetalsword(), 500, true);
         ItemRegistry.registerItem("soulmetalspear", new soulmetalspear(), 500, true);
         ItemRegistry.registerItem("soulmetalrevolver", new soulmetalrevolver(), 500, true);
+        ItemRegistry.registerItem("bookofsouls", new bookofsouls(), 500, true);
+
         //Armor
         ItemRegistry.registerItem("soularmorboots", new soularmorboots(), 750, true);
         ItemRegistry.registerItem("soularmorchestplate", new soularmorchestplate(), 750, true);
@@ -243,6 +253,8 @@ public class SoulChasm {
         ProjectileRegistry.registerProjectile("soulpointywaveprojectile", soulpointywaveprojectile.class, "soulpointywaveprojectile", "shadow_simple");
         ProjectileRegistry.registerProjectile("soulbigbulletprojectile", soulbigbulletprojectile.class, null, null);
         ProjectileRegistry.registerProjectile("soulbossspikeprojectile", soulbossspikeprojectile.class, "soulbossspikeprojectile","shadow_simple");
+        ProjectileRegistry.registerProjectile("bookofsoulsmainprojectile", bookofsoulsmainprojectile.class, "bookofsoulsmainprojectile","shadow_simple");
+        ProjectileRegistry.registerProjectile("bookofsoulssmallprojectile", bookofsoulssmallprojectile.class, "soulmissileprojectile","shadow_blank");
     }
     public void initResources(){
         lostsoul.texture = GameTexture.fromFile("mobs/lostsoul");
@@ -552,6 +564,18 @@ public class SoulChasm {
                         new Ingredient("soulessence", 5),
                         new Ingredient("soulmetalbar", 12),
                         new Ingredient("soulcoreitem", 8),
+                }
+        ).showAfter("slimeboots"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "bookofsouls",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulessence", 5),
+                        new Ingredient("shadowbolt", 1),
+                        new Ingredient("soulmetalbar", 4),
+                        new Ingredient("soulcoreitem", 12)
                 }
         ).showAfter("slimeboots"));
 

@@ -11,7 +11,7 @@ public class soularmorhatsetbonus extends soularmorsetbonus {
 
     }
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
-        buff.setModifier(BuffModifiers.MAX_MANA, 1.5F);
+        buff.setModifier(BuffModifiers.MAX_MANA, 2.0F);
         buff.setModifier(BuffModifiers.COMBAT_MANA_REGEN, 1.0F);
         buff.setModifier(BuffModifiers.MANA_USAGE, -0.2F);
     }

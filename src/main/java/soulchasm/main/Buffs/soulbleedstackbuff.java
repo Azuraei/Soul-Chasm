@@ -1,8 +1,6 @@
 package soulchasm.main.Buffs;
 
-import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
-import necesse.entity.mobs.Attacker;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
@@ -11,7 +9,6 @@ import necesse.entity.mobs.buffs.staticBuffs.Buff;
 import necesse.entity.particle.Particle;
 
 import java.awt.*;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class soulbleedstackbuff extends Buff {
     public soulbleedstackbuff() {

@@ -1,6 +1,5 @@
 package soulchasm.main.Objects.BiomeEnviroment;
 
-import necesse.inventory.lootTable.LootItemInterface;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.level.gameTile.GrassTile;

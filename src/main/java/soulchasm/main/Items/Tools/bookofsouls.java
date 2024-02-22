@@ -1,0 +1,157 @@
+package soulchasm.main.Items.Tools;
+
+import necesse.engine.Screen;
+import necesse.engine.localization.Localization;
+import necesse.engine.network.PacketReader;
+import necesse.engine.network.gameNetworkData.GNDItemMap;
+import necesse.engine.network.packet.PacketSpawnProjectile;
+import necesse.engine.registries.DamageTypeRegistry;
+import necesse.engine.sound.SoundEffect;
+import necesse.engine.util.GameMath;
+import necesse.engine.util.GameRandom;
+import necesse.entity.mobs.AttackAnimMob;
+import necesse.entity.mobs.GameDamage;
+import necesse.entity.mobs.PlayerMob;
+import necesse.entity.mobs.buffs.ActiveBuff;
+import necesse.entity.projectile.modifiers.ResilienceOnHitProjectileModifier;
+import necesse.gfx.GameResources;
+import necesse.gfx.camera.GameCamera;
+import necesse.gfx.drawOptions.DrawOptions;
+import necesse.gfx.gameTooltips.ListGameTooltips;
+import necesse.inventory.InventoryItem;
+import necesse.inventory.PlayerInventorySlot;
+import necesse.inventory.item.ItemControllerInteract;
+import necesse.inventory.item.ItemInteractAction;
+import necesse.inventory.item.toolItem.projectileToolItem.magicProjectileToolItem.MagicProjectileToolItem;
+import necesse.level.maps.Level;
+import soulchasm.main.Projectiles.WeaponProjectiles.bookofsoulsmainprojectile;
+import soulchasm.main.Projectiles.WeaponProjectiles.bookofsoulssmallprojectile;
+
+import java.awt.*;
+import java.awt.geom.Point2D;
+import java.util.LinkedList;
+public class bookofsouls extends MagicProjectileToolItem implements ItemInteractAction {
+    public bookofsouls() {
+        super(1500);
+        this.rarity = Rarity.EPIC;
+        this.animSpeed = 600;
+        this.attackDamage = new GameDamage(DamageTypeRegistry.MAGIC, 165.0F);
+        this.knockback = 30;
+        this.velocity = 200;
+        this.attackRange = 500;
+        this.attackXOffset = 10;
+        this.attackYOffset = 10;
+        this.manaCost = 4.0F;
+        this.cooldown = 500;
+    }
+
+    protected void addTooltips(ListGameTooltips tooltips, InventoryItem item, boolean isSettlerWeapon) {
+        tooltips.add(Localization.translate("itemtooltip", "bookofsoulstip"), 400);
+        tooltips.add(Localization.translate("itemtooltip", "bookofsoulssecondarytip"), 400);
+    }
+    public boolean getConstantUse(InventoryItem item) {
+        return true;
+    }
+    public boolean animDrawBehindHand() {
+        return true;
+    }
+
+    private void energyCalculations(PlayerMob player, GNDItemMap gndData){
+        float energy = gndData.getFloat("energy");
+        energy = GameMath.limit(energy, 0.0F, 1.0F);
+        gndData.setFloat("energy", energy);
+        player.buffManager.getBuff("bookofsoulbuff").getGndData().setFloat("energy", energy);
+    }
+    public void tickHolding(InventoryItem item, PlayerMob player) {
+        GNDItemMap gndData = item.getGndData();
+        float currentEnergy = gndData.getFloat("energy");
+        player.buffManager.addBuff(new ActiveBuff("bookofsoulbuff", player, 0.2F, null), false);
+        energyCalculations(player,gndData);
+        if(gndData.getBoolean("altFireActive")){
+            if(currentEnergy > 0){
+                gndData.setFloat("energy",(float)(currentEnergy - 0.0005));
+                player.buffManager.addBuff(new ActiveBuff("soulofsoulsoverchargebuff", player, 0.2F, null), false);
+            } else {
+                if(player.getLevel().isClient()){
+                    Screen.playSound(GameResources.fadedeath1, SoundEffect.effect(player).volume(1.0F).pitch(0.6F));
+                }
+                gndData.setBoolean("altFireActive", false);
+            }
+        }
+        super.tickHolding(item, player);
+    }
+
+    public void showAttack(Level level, int x, int y, AttackAnimMob mob, int attackHeight, InventoryItem item, int seed, PacketReader contentReader) {
+        if (level.isClient()) {
+            Screen.playSound(GameResources.magicbolt2, SoundEffect.effect(mob).volume(0.3F).pitch(GameRandom.globalRandom.getFloatBetween(1.5F, 1.6F)));
+        }
+    }
+
+    public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
+        GNDItemMap gndData = item.getGndData();
+        float currentEnergy = item.getGndData().getFloat("energy");
+        if(!gndData.getBoolean("altFireActive") && !player.buffManager.hasBuff("soulofsoulsoverchargebuff")){
+            item.getGndData().setFloat("energy", (float)(currentEnergy + 0.025 * this.getDamage(item).finalDamageMultiplier));
+            bookofsoulsmainprojectile projectile = new bookofsoulsmainprojectile(level, player, player.x, player.y, (float)x, (float)y, this.velocity, 1000, this.getDamage(item), this.getKnockback(item, player));
+            projectile.setModifier(new ResilienceOnHitProjectileModifier(this.getResilienceGain(item)));
+            projectile.resetUniqueID(new GameRandom(seed));
+            projectile.moveDist(30.0);
+            level.entityManager.projectiles.addHidden(projectile);
+            if (level.isServer()) {
+                level.getServer().network.sendToClientsAtExcept(new PacketSpawnProjectile(projectile), player.getServerClient(), player.getServerClient());
+            }
+        } else {
+            item.getGndData().setFloat("energy",(float)(currentEnergy - 0.03));
+            float angle = GameMath.getAngle(new Point2D.Float(player.dx, player.dy));
+            float randomAngleOffset = 80.0F;
+            int projectiles = 4;
+            for(int i = 0; i < projectiles; ++i) {
+                Point2D.Float dir = GameMath.getAngleDir(angle + GameRandom.globalRandom.getFloatBetween(-randomAngleOffset, randomAngleOffset));
+                bookofsoulssmallprojectile projectile = new bookofsoulssmallprojectile(level, player, player.x, player.y, (float)x + dir.x * 80.0F, (float)y + dir.y * 80.0F, this.velocity, 800, this.getDamage(item).modDamage(0.3F), 5);
+                projectile.resetUniqueID(new GameRandom(seed));
+                projectile.moveDist(30.0);
+                level.entityManager.projectiles.addHidden(projectile);
+                if (level.isServer()) {
+                    level.getServer().network.sendToClientsAtExcept(new PacketSpawnProjectile(projectile), player.getServerClient(), player.getServerClient());
+                }
+            }
+        }
+        this.consumeMana(player, item);
+        return item;
+    }
+
+    public boolean canLevelInteract(Level level, int x, int y, PlayerMob player, InventoryItem item) {
+        return true;
+    }
+
+    public InventoryItem onLevelInteract(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int seed, PacketReader contentReader) {
+        GNDItemMap gndData = item.getGndData();
+        boolean altFire = gndData.getBoolean("altFireActive");
+        gndData.setBoolean("altFireActive", !altFire);
+        if (level.isClient()) {
+            if(altFire){
+                Screen.playSound(GameResources.fadedeath1, SoundEffect.effect(player).volume(1.0F).pitch(0.6F));
+            } else {
+                Screen.playSound(GameResources.fadedeath1, SoundEffect.effect(player).volume(1.0F).pitch(1.2F));
+            }
+        }
+        return item;
+    }
+
+    public int getLevelInteractAnimSpeed(InventoryItem item, PlayerMob player) {
+        return 150;
+    }
+
+    public ItemControllerInteract getControllerInteract(Level level, PlayerMob player, InventoryItem item, boolean beforeObjectInteract, int interactDir, LinkedList<Rectangle> mobInteractBoxes, LinkedList<Rectangle> tileInteractBoxes) {
+        Point2D.Float controllerAimDir = player.getControllerAimDir();
+        Point levelPos = this.getControllerAttackLevelPos(level, controllerAimDir.x, controllerAimDir.y, player, item);
+        return new ItemControllerInteract(levelPos.x, levelPos.y) {
+            public DrawOptions getDrawOptions(GameCamera camera) {
+                return null;
+            }
+
+            public void onCurrentlyFocused(GameCamera camera) {
+            }
+        };
+    }
+}

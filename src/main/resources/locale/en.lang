@@ -99,6 +99,7 @@ magicsoulsealtrinket=Magic Artifact Fragment
 rangesoulsealtrinket=Range Artifact Fragment
 soulsealtrinket=Soul Seal
 balancedsealtrinket=Balanced Soul Seal
+bookofsouls=Book Of Souls
 
 [itemtooltip]
 soulabsorbshield=Blocking damage shoots burst of flames towards attacker, which damage is scaled based on attack power\nSuccessful block also increases shortly attack speed and resilience gain
@@ -121,6 +122,8 @@ soulsealfollowerbuff=Has heard your call
 bigjarobject=Empty jar\nCatch some glowing bugs and place them in jar to create new light source
 glowingbugs=Small, glowing creature
 glowingjarobject=Provides small amount of light when placed or held
+bookofsoulstip=Shoots slowly big, homing projectile
+bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow\nWhen in overflow state, shoots rapidly smaller projectiles with low accuracy and provides boost to both speed and health regeneration
 
 [mob]
 souldragonhead=Ancient Dragon
@@ -143,6 +146,8 @@ soularmorcooldown=Soulsteel Armor Cooldown
 soulcharmsummonerbuff=Summoned Spirit
 soulbleedstackbuff=Bleeding Soul
 souldischargesicknessdebuff=Conversion Sickness
+bookofsoulbuff=Soul Energy
+soulofsoulsoverchargebuff=Soul Energy Overflow
 
 [controls]
 senshiactivatetip=Insert Soul Sigil

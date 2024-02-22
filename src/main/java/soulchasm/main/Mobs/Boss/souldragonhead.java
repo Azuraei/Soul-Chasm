@@ -42,12 +42,10 @@ import necesse.gfx.gameTooltips.StringTooltips;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.inventory.lootTable.lootItem.RotationLootItem;
-import necesse.level.gameObject.GameObject;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.Mobs.Agressive.possesedstatue;
-import soulchasm.main.Projectiles.souldragonfragmentprojectile;
-import soulchasm.main.Projectiles.soulflamethrower;
+import soulchasm.main.Projectiles.BossProjectiles.souldragonfragmentprojectile;
+import soulchasm.main.Projectiles.BossProjectiles.soulflamethrower;
 import soulchasm.main.Projectiles.soulhomingprojectile;
 
 import java.awt.*;

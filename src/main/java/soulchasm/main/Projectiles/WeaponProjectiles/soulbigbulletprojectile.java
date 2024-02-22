@@ -1,4 +1,4 @@
-package soulchasm.main.Projectiles;
+package soulchasm.main.Projectiles.WeaponProjectiles;
 
 import necesse.engine.Screen;
 import necesse.engine.sound.SoundEffect;
