@@ -2,6 +2,7 @@ package soulchasm.main.Items.SealVariantsItems;
 
 import necesse.engine.localization.Localization;
 import necesse.engine.registries.BuffRegistry;
+import necesse.engine.util.GameBlackboard;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.staticBuffs.armorBuffs.trinketBuffs.TrinketBuff;
 import necesse.gfx.gameTooltips.ListGameTooltips;
@@ -24,8 +25,8 @@ public class magicsoulsealtrinket extends TrinketItem {
         return new TrinketBuff[]{(TrinketBuff)BuffRegistry.getBuff("magicsoulsealbuff")};
     }
 
-    public ListGameTooltips getTrinketTooltips(InventoryItem item, PlayerMob perspective, boolean equipped) {
-        ListGameTooltips tooltips = super.getTrinketTooltips(item, perspective, equipped);
+    public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
+        ListGameTooltips tooltips = super.getPreEnchantmentTooltips(item, perspective, blackboard);
         tooltips.add(Localization.translate("itemtooltip", "soulsealfragment"));
         return tooltips;
     }

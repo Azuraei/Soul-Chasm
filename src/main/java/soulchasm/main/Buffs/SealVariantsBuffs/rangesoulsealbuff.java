@@ -37,7 +37,7 @@ public class rangesoulsealbuff extends TrinketBuff {
             }else if (item.item instanceof GunProjectileToolItem) {
                 if(currentcharge>=chargesToExplosiveBullet){
                     currentcharge=0;
-                    float velocity = ((GunProjectileToolItem) item.item).velocity * 2.0F;
+                    float velocity = ((GunProjectileToolItem) item.item).getProjectileVelocity(item, player) * 2.0F;
                     GameDamage finalDamage = ((GunProjectileToolItem) item.item).getAttackDamage(item).modFinalMultiplier(1.5F);
                     soulbigbulletprojectile projectile = new soulbigbulletprojectile(player.x, player.y, (float) targetX, (float) targetY, velocity, 1200, finalDamage, 20, player);
                     level.entityManager.projectiles.add(projectile);

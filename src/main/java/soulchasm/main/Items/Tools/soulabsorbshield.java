@@ -4,6 +4,7 @@ import necesse.engine.Screen;
 import necesse.engine.localization.Localization;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameRandom;
 import necesse.entity.Entity;
 import necesse.entity.ParticleTypeSwitcher;
@@ -25,8 +26,9 @@ public class soulabsorbshield extends ShieldTrinketItem {
         super(Rarity.EPIC, 5, 0.15F, 10000, 0.3F, 50, 180, 1000);
 
     }
-    public ListGameTooltips getTrinketTooltips(InventoryItem item, PlayerMob perspective, boolean equipped) {
-        ListGameTooltips tooltips = super.getTrinketTooltips(item, perspective, equipped);
+
+    public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
+        ListGameTooltips tooltips = super.getPreEnchantmentTooltips(item, perspective, blackboard);
         tooltips.add(Localization.translate("itemtooltip", "soulabsorbshield"));
         return tooltips;
     }

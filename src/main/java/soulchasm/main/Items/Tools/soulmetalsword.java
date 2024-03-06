@@ -1,19 +1,14 @@
 package soulchasm.main.Items.Tools;
 
 import necesse.engine.localization.Localization;
-import necesse.engine.network.PacketReader;
-import necesse.engine.registries.DamageTypeRegistry;
+import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.levelEvent.toolItemEvent.ToolItemEvent;
-import necesse.entity.mobs.Attacker;
-import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
-import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
-import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.item.toolItem.swordToolItem.SwordToolItem;
 import necesse.level.maps.Level;
 import soulchasm.main.Projectiles.spiritswordprojectile;
@@ -24,16 +19,18 @@ public class soulmetalsword extends SwordToolItem {
     public soulmetalsword() {
         super(250);
         this.rarity = Rarity.EPIC;
-        this.animSpeed = 350;
-        this.attackDamage = new GameDamage(DamageTypeRegistry.MELEE, 85.0F);
-        this.attackRange = 90;
-        this.knockback = 75;
+        this.attackAnimTime.setBaseValue(350);
+        this.attackDamage.setBaseValue(85.0F).setUpgradedValue(1.0F, 70.0F);
+        this.attackRange.setBaseValue(90);
+        this.knockback.setBaseValue(75);
+        this.resilienceGain.setBaseValue(1.0F);
+        this.enchantCost = 500;
         this.attackXOffset = 8;
         this.attackYOffset = 8;
     }
 
-    public ListGameTooltips getTooltips(InventoryItem item, PlayerMob perspective) {
-        ListGameTooltips tooltips = super.getTooltips(item, perspective);
+    public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
+        ListGameTooltips tooltips = super.getPreEnchantmentTooltips(item, perspective, blackboard);
         tooltips.add(Localization.translate("itemtooltip", "soulmetalswordtip"));
         return tooltips;
     }
@@ -44,7 +41,7 @@ public class soulmetalsword extends SwordToolItem {
             GameRandom random = new GameRandom();
             int randomAngle = random.getIntBetween(0, 360);
             Point2D.Float dir = GameMath.getAngleDir(randomAngle);
-            spiritswordprojectile projectile = new spiritswordprojectile(attacker.getLevel(), target.x + dir.x * 120, target.y +  + dir.y * 120, target.x, target.y, 250 * random.getFloatBetween(0.7F, 1), 300, this.attackDamage.modDamage(0.33F), 10, attacker);
+            spiritswordprojectile projectile = new spiritswordprojectile(attacker.getLevel(), target.x + dir.x * 120, target.y +  + dir.y * 120, target.x, target.y, 250 * random.getFloatBetween(0.7F, 1), 300, this.getAttackDamage(item).modDamage(0.33F), 10, attacker);
             projectile.resetUniqueID(random);
             attacker.getLevel().entityManager.projectiles.add(projectile);
             projectile.moveDist(10.0);

@@ -6,11 +6,10 @@ import necesse.entity.mobs.attackHandler.GreatswordChargeLevel;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
-import necesse.inventory.item.toolItem.swordToolItem.GreatswordToolItem;
 import soulchasm.main.Items.Tools.soulscythe;
 
 public class soulscytheattackhandler extends GreatswordAttackHandler {
-    public soulscytheattackhandler(soulscythe weapon, PlayerMob player, PlayerInventorySlot slot, InventoryItem item, GreatswordToolItem toolItem, int seed, int startX, int startY, GreatswordChargeLevel... chargeLevels) {
+    public soulscytheattackhandler(PlayerMob player, PlayerInventorySlot slot, InventoryItem item, soulscythe toolItem, int seed, int startX, int startY, GreatswordChargeLevel... chargeLevels) {
         super(player, slot, item, toolItem, seed, startX, startY, chargeLevels);
     }
 

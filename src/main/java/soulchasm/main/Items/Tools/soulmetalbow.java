@@ -1,9 +1,7 @@
 package soulchasm.main.Items.Tools;
 
 import necesse.engine.localization.Localization;
-import necesse.engine.registries.DamageTypeRegistry;
-import necesse.entity.mobs.Attacker;
-import necesse.entity.mobs.GameDamage;
+import necesse.engine.util.GameBlackboard;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.gfx.gameTooltips.ListGameTooltips;
@@ -14,11 +12,11 @@ import necesse.inventory.item.toolItem.projectileToolItem.bowProjectileToolItem.
 public class soulmetalbow extends BowProjectileToolItem {
     public soulmetalbow() {
         super(1000);
-        this.animSpeed = 300;
         this.rarity = Rarity.EPIC;
-        this.attackDamage = new GameDamage(DamageTypeRegistry.RANGED, 45.0F);
-        this.velocity = 200;
-        this.attackRange = 600;
+        this.attackAnimTime.setBaseValue(300);
+        this.attackDamage.setBaseValue(45.0F).setUpgradedValue(1.0F, 32.0F);
+        this.attackRange.setBaseValue(600).setUpgradedValue(1.0F, 420);;
+        this.velocity.setBaseValue(200);
         this.attackXOffset = 12;
         this.attackYOffset = 28;
     }
@@ -28,7 +26,9 @@ public class soulmetalbow extends BowProjectileToolItem {
         super.tickHolding(item, player);
     }
 
-    protected void addTooltips(ListGameTooltips tooltips, InventoryItem item, boolean isSettlerWeapon) {
+    public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
+        ListGameTooltips tooltips = super.getPreEnchantmentTooltips(item, perspective, blackboard);
         tooltips.add(Localization.translate("itemtooltip", "soulmetalbowtip"));
+        return tooltips;
     }
 }

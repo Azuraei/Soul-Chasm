@@ -36,7 +36,7 @@ public class soulcavernincursionlevel extends IncursionLevel {
 
     public soulcavernincursionlevel(LevelIdentifier identifier, BiomeMissionIncursionData incursion, WorldEntity worldEntity) {
         super(identifier, 300, 300, incursion, worldEntity);
-        this.biome = BiomeRegistry.getBiome("soulcavernbiome");
+        this.biome = BiomeRegistry.getBiome("soulcavern");
         this.isCave = true;
         this.generateLevel(incursion);
     }
@@ -95,11 +95,10 @@ public class soulcavernincursionlevel extends IncursionLevel {
         });
 
         IncursionBiome.generateEntrance(this, cg.random, 15, cg.rockTile, "soulcavebrickfloortile", "soulcavefloortile", "soullanternobject");
-
         if (incursionData instanceof BiomeExtractionIncursionData) {
             cg.generateGuaranteedOreVeins(100, 8, 16, ObjectRegistry.getObjectID("crystalizedsoul"));
         }
-
+        cg.generateGuaranteedOreVeins(100, 6, 12, ObjectRegistry.getObjectID("upgradeshardsoulcaverock"));
         cg.generateGuaranteedOreVeins(100, 6, 12, ObjectRegistry.getObjectID("alchemyshardsoulcaverock"));
         GameEvents.triggerEvent(new GeneratedCaveStructuresEvent(this, cg, presets));
         GenerationTools.checkValid(this);

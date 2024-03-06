@@ -5,18 +5,11 @@ import necesse.engine.MusicList;
 import necesse.engine.registries.MusicRegistry;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
-import necesse.gfx.GameMusic;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.level.maps.Level;
 import necesse.level.maps.biomes.Biome;
-import necesse.level.maps.biomes.FishingLootTable;
-import necesse.level.maps.biomes.FishingSpot;
 import necesse.level.maps.biomes.MobSpawnTable;
-import necesse.level.maps.biomes.incursions.ForestDeepCaveBiome;
-
-import java.util.Collections;
-
 
 public class soulcavernbiome extends Biome {
     public static MobSpawnTable critters;
@@ -24,35 +17,16 @@ public class soulcavernbiome extends Biome {
 
     public soulcavernbiome() {
     }
-
     public AbstractMusicList getLevelMusic(Level level, PlayerMob perspective) {
         return new MusicList(MusicRegistry.VoidsEmbrace);
-
     }
-
-    @Override
-    public boolean canRain(Level level) {
-        return false;
-    }
-
-    @Override
-    public float getSpawnRateMod(Level level) {
-        return 0.5F;
-    }
-
     public MobSpawnTable getCritterSpawnTable(Level level) {
         return critters;
     }
-
     @Override
     public MobSpawnTable getMobSpawnTable(Level level) {
         return mobs;
     }
-
-    public FishingLootTable getFishingLootTable(FishingSpot spot) {
-        return ForestDeepCaveBiome.defaultCaveFish;
-    }
-
     public LootTable getExtraMobDrops(Mob mob) {
         if (mob.isHostile && !mob.isBoss() && !mob.isSummoned) {
             if (mob.getLevel().getIslandDimension() == -2) {
@@ -61,10 +35,8 @@ public class soulcavernbiome extends Biome {
         }
         return super.getExtraMobDrops(mob);
     }
-
     static {
         critters = (new MobSpawnTable()).add(25, "soulcavecaveling").add(100, "wisp");
         mobs = (new MobSpawnTable()).add(80, "lostsoul").add(80, "soulmage").add(20, "soulpillar").add(10, "possesedstatue");
-
     }
 }

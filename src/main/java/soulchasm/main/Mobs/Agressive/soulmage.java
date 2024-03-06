@@ -15,7 +15,6 @@ import necesse.gfx.drawOptions.itemAttack.ItemAttackDrawOptions;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
-import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 import soulchasm.main.Projectiles.soulmissileprojectile;
@@ -30,7 +29,7 @@ public class soulmage extends HostileMob {
     public soulmage() {
         super(450);
         this.attackCooldown = 500;
-        this.attackAnimSpeed = 200;
+        this.attackAnimTime = 200;
         this.setSpeed(65.0F);
         this.setFriction(3.0F);
         this.setArmor(20);

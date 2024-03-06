@@ -1,6 +1,7 @@
 package soulchasm.main.Items;
 
 import necesse.engine.localization.Localization;
+import necesse.engine.util.GameBlackboard;
 import necesse.entity.mobs.PlayerMob;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
@@ -16,8 +17,9 @@ public class soulsigil extends Item {
         this.worldDrawSize = 32;
     }
 
-    public ListGameTooltips getTooltips(InventoryItem item, PlayerMob perspective) {
-        ListGameTooltips tooltips = super.getTooltips(item, perspective);
+
+    public ListGameTooltips getTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
+        ListGameTooltips tooltips = super.getTooltips(item, perspective, blackboard);
         tooltips.add(Localization.translate("itemtooltip", "soulsigil"));
         return tooltips;
     }

@@ -12,7 +12,6 @@ import necesse.inventory.item.toolItem.projectileToolItem.throwToolItem.boomeran
 import necesse.inventory.item.toolItem.spearToolItem.SpearToolItem;
 import necesse.inventory.item.toolItem.swordToolItem.SwordToolItem;
 import necesse.level.maps.Level;
-import org.lwjgl.system.MathUtil;
 import soulchasm.main.Projectiles.soulboomerangprojectile;
 import soulchasm.main.Projectiles.soulpointywaveprojectile;
 import soulchasm.main.Projectiles.soulwaveprojectile;
@@ -41,7 +40,7 @@ public class meleesoulsealbuff extends TrinketBuff {
                 level.entityManager.projectiles.add(projectile);
             }else if (item.item instanceof BoomerangToolItem) {
                 GameDamage finalDamage = ((BoomerangToolItem) item.item).getAttackDamage(item).modDamage(0.3F);
-                float velocity = ((BoomerangToolItem) item.item).velocity * player.buffManager.getModifier(BuffModifiers.PROJECTILE_VELOCITY);
+                float velocity = ((BoomerangToolItem) item.item).getFlatVelocity(item) * player.buffManager.getModifier(BuffModifiers.PROJECTILE_VELOCITY);
                 for(int i = -1; i <= 1; i++){
                     if(i!=0){
                         soulboomerangprojectile projectile = new soulboomerangprojectile(level, player.x, player.y, (float) targetX, (float) targetY, velocity, 650, finalDamage, player);

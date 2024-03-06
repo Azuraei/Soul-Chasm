@@ -1,6 +1,7 @@
 package soulchasm.main.Items.Armor;
 
 import necesse.engine.modifiers.ModifierValue;
+import necesse.engine.registries.DamageTypeRegistry;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.gfx.gameTexture.GameTexture;
@@ -15,7 +16,7 @@ public class soularmorhood extends SetHelmetArmorItem {
 
 
     public soularmorhood() {
-        super(24, 1500, "soularmorhood", "soularmorchestplate", "soularmorboots", "soularmorhoodsetbonus");
+        super(24, DamageTypeRegistry.RANGED,1500, "soularmorhood", "soularmorchestplate", "soularmorboots", "soularmorhoodsetbonus");
         this.rarity = Rarity.EPIC;
 
     }

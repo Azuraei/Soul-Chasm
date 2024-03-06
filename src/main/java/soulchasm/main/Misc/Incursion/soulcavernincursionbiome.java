@@ -2,24 +2,26 @@ package soulchasm.main.Misc.Incursion;
 
 import necesse.engine.network.server.Server;
 import necesse.engine.registries.ItemRegistry;
-import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.LevelIdentifier;
 import necesse.engine.util.TicketSystemList;
 import necesse.engine.world.WorldEntity;
-import necesse.engine.world.worldData.incursions.GatewayTabletData;
-import necesse.engine.world.worldData.incursions.IncursionDataStats;
+import necesse.inventory.InventoryItem;
 import necesse.inventory.item.Item;
+import necesse.inventory.item.miscItem.GatewayTabletItem;
 import necesse.inventory.lootTable.LootItemInterface;
+import necesse.inventory.lootTable.LootList;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.inventory.lootTable.lootItem.LootItem;
-import necesse.inventory.recipe.Ingredient;
 import necesse.level.maps.IncursionLevel;
 import necesse.level.maps.incursion.*;
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class soulcavernincursionbiome extends IncursionBiome {
@@ -36,21 +38,44 @@ public class soulcavernincursionbiome extends IncursionBiome {
     }
 
     public LootTable getBossDrop() {
-        return new LootTable(LootItem.between("soulessence", 20, 25));
+        return new LootTable(LootItem.between("soulessence", 20, 25), new LootItemInterface() {
+            public void addPossibleLoot(LootList list, Object... extra) {
+                list.add("gatewaytablet");
+            }
+            public void addItems(List<InventoryItem> list, GameRandom random, float lootMultiplier, Object... extra) {
+                InventoryItem gatewayTablet = new InventoryItem("gatewaytablet");
+                int tier = soulcavernincursionbiome.this.tierLevel + 1;
+                if (tier > 3) {
+                    tier = 3;
+                }
+
+                GatewayTabletItem.initializeGatewayTablet(gatewayTablet, random, tier);
+                list.add(gatewayTablet);
+            }
+        });
     }
 
-    public void addIncursions(Collection<IncursionData> list, GatewayTabletData tablet, GameRandom random) {
-        float difficultyPercent = random.getFloatBetween(0.0F, 1.0F);
-        float difficulty = GameMath.lerp(difficultyPercent, 0.6F, 1.4F);
-        Ingredient cost = new Ingredient("slimeessence", getRandomCost(random, difficultyPercent, 5, 20, 5));
-        IncursionDataStats stats = tablet.openedStats.getData(this);
-        TicketSystemList<Supplier<IncursionData>> weights = new TicketSystemList<>();
-        weights.addObject(stats.getCount(BiomeHuntIncursionData.class) + 1, () -> new BiomeHuntIncursionData(difficulty, this, cost));
-        weights.addObject(stats.getCount(BiomeExtractionIncursionData.class) + 1, () -> new BiomeExtractionIncursionData(difficulty, this, cost));
-        list.add((IncursionData)((Supplier<?>)weights.reversed().getRandomObject(random)).get());
+    public TicketSystemList<Supplier<IncursionData>> getAvailableIncursions(int tabletTier) {
+        TicketSystemList<Supplier<IncursionData>> system = new TicketSystemList<>();
+        system.addObject(100, () -> new BiomeHuntIncursionData(1.0F, this, tabletTier));
+        system.addObject(100, () -> new BiomeExtractionIncursionData(1.0F, this, tabletTier));
+        return system;
     }
+
+
 
     public IncursionLevel getNewIncursionLevel(LevelIdentifier identifier, BiomeMissionIncursionData incursion, Server server, WorldEntity worldEntity) {
         return new soulcavernincursionlevel(identifier, incursion, worldEntity);
+    }
+
+    public ArrayList<Color> getFallenAltarGatewayColorsForBiome() {
+        ArrayList<Color> gatewayColors = new ArrayList<>();
+        gatewayColors.add(new Color(0, 100, 130));
+        gatewayColors.add(new Color(0, 188, 252));
+        gatewayColors.add(new Color(0, 151, 212));
+        gatewayColors.add(new Color(0, 209, 255));
+        gatewayColors.add(new Color(102, 255, 255));
+        gatewayColors.add(new Color(236, 240, 255));
+        return gatewayColors;
     }
 }

@@ -5,12 +5,11 @@ import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.network.packet.PacketSpawnProjectile;
-import necesse.engine.registries.DamageTypeRegistry;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.AttackAnimMob;
-import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.projectile.modifiers.ResilienceOnHitProjectileModifier;
@@ -34,20 +33,22 @@ public class bookofsouls extends MagicProjectileToolItem implements ItemInteract
     public bookofsouls() {
         super(1500);
         this.rarity = Rarity.EPIC;
-        this.animSpeed = 600;
-        this.attackDamage = new GameDamage(DamageTypeRegistry.MAGIC, 165.0F);
-        this.knockback = 30;
-        this.velocity = 200;
-        this.attackRange = 500;
+        this.attackAnimTime.setBaseValue(600);
+        this.attackDamage.setBaseValue(165.0F).setUpgradedValue(1.0F, 115.0F);
+        this.attackRange.setBaseValue(500);
+        this.velocity.setBaseValue(200);
+        this.knockback.setBaseValue(30);
         this.attackXOffset = 10;
         this.attackYOffset = 10;
-        this.manaCost = 4.0F;
-        this.cooldown = 500;
+        this.manaCost.setBaseValue(4.0F);
+        this.attackCooldownTime.setBaseValue(500);
     }
 
-    protected void addTooltips(ListGameTooltips tooltips, InventoryItem item, boolean isSettlerWeapon) {
+    public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
+        ListGameTooltips tooltips = super.getPreEnchantmentTooltips(item, perspective, blackboard);
         tooltips.add(Localization.translate("itemtooltip", "bookofsoulstip"), 400);
         tooltips.add(Localization.translate("itemtooltip", "bookofsoulssecondarytip"), 400);
+        return tooltips;
     }
     public boolean getConstantUse(InventoryItem item) {
         return true;
@@ -91,8 +92,8 @@ public class bookofsouls extends MagicProjectileToolItem implements ItemInteract
         GNDItemMap gndData = item.getGndData();
         float currentEnergy = item.getGndData().getFloat("energy");
         if(!gndData.getBoolean("altFireActive") && !player.buffManager.hasBuff("soulofsoulsoverchargebuff")){
-            item.getGndData().setFloat("energy", (float)(currentEnergy + 0.025 * this.getDamage(item).finalDamageMultiplier));
-            bookofsoulsmainprojectile projectile = new bookofsoulsmainprojectile(level, player, player.x, player.y, (float)x, (float)y, this.velocity, 1000, this.getDamage(item), this.getKnockback(item, player));
+            item.getGndData().setFloat("energy", (float)(currentEnergy + 0.025 * this.getAttackDamage(item).finalDamageMultiplier));
+            bookofsoulsmainprojectile projectile = new bookofsoulsmainprojectile(level, player, player.x, player.y, (float)x, (float)y, this.getProjectileVelocity(item, player), 1000, this.getAttackDamage(item), this.getKnockback(item, player));
             projectile.setModifier(new ResilienceOnHitProjectileModifier(this.getResilienceGain(item)));
             projectile.resetUniqueID(new GameRandom(seed));
             projectile.moveDist(30.0);
@@ -107,7 +108,7 @@ public class bookofsouls extends MagicProjectileToolItem implements ItemInteract
             int projectiles = 4;
             for(int i = 0; i < projectiles; ++i) {
                 Point2D.Float dir = GameMath.getAngleDir(angle + GameRandom.globalRandom.getFloatBetween(-randomAngleOffset, randomAngleOffset));
-                bookofsoulssmallprojectile projectile = new bookofsoulssmallprojectile(level, player, player.x, player.y, (float)x + dir.x * 80.0F, (float)y + dir.y * 80.0F, this.velocity, 800, this.getDamage(item).modDamage(0.3F), 5);
+                bookofsoulssmallprojectile projectile = new bookofsoulssmallprojectile(level, player, player.x, player.y, (float)x + dir.x * 80.0F, (float)y + dir.y * 80.0F, this.getProjectileVelocity(item, player), 800, this.getAttackDamage(item).modDamage(0.3F), 5);
                 projectile.resetUniqueID(new GameRandom(seed));
                 projectile.moveDist(30.0);
                 level.entityManager.projectiles.addHidden(projectile);
@@ -136,10 +137,6 @@ public class bookofsouls extends MagicProjectileToolItem implements ItemInteract
             }
         }
         return item;
-    }
-
-    public int getLevelInteractAnimSpeed(InventoryItem item, PlayerMob player) {
-        return 150;
     }
 
     public ItemControllerInteract getControllerInteract(Level level, PlayerMob player, InventoryItem item, boolean beforeObjectInteract, int interactDir, LinkedList<Rectangle> mobInteractBoxes, LinkedList<Rectangle> tileInteractBoxes) {
