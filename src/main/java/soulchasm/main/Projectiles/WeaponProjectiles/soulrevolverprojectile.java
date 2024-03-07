@@ -34,7 +34,6 @@ public class soulrevolverprojectile extends BulletProjectile {
             if (mob != null) {
                 mob.buffManager.addBuff(new ActiveBuff("souldeathmarkstackbuff", mob, 10F, this.getAttackOwner()), true);
             }
-
         }
     }
 

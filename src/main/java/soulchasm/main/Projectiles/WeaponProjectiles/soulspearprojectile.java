@@ -54,7 +54,6 @@ public class soulspearprojectile extends Projectile {
                     options.draw();
                 }
             });
-            this.addShadowDrawables(tileList, drawX, drawY, light, this.getAngle() + 45.0F, 2, 2);
         }
     }
 

@@ -34,6 +34,7 @@ public class smallsoulsummon extends FlyingAttackingFollowingMob {
         this.hitBox = new Rectangle(-18, -15, 36, 36);
         this.selectBox = new Rectangle(-20, -18, 40, 36);
         this.damage = new GameDamage(35);
+        this.isSummoned = true;
     }
 
     public void init() {

@@ -68,7 +68,6 @@ public class soulboomerangprojectile extends BoomerangProjectile {
                     options.draw();
                 }
             });
-            this.addShadowDrawables(tileList, drawX, drawY, light, this.getAngle(), this.shadowTexture.getHeight() / 2);
         }
     }
 

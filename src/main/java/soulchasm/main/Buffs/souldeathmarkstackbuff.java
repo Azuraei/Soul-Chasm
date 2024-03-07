@@ -4,7 +4,8 @@ import necesse.engine.Screen;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
-import necesse.entity.mobs.*;
+import necesse.entity.mobs.Mob;
+import necesse.entity.mobs.MobWasHitEvent;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
 import necesse.entity.mobs.buffs.BuffModifiers;
@@ -22,7 +23,7 @@ public class souldeathmarkstackbuff extends Buff {
     public static FireworksExplosion piercerPopExplosion;
     private int currentStacksPrivate;
     public souldeathmarkstackbuff() {
-        this.isImportant = true;
+        this.isImportant = false;
     }
 
     @Override

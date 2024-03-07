@@ -18,7 +18,7 @@ public class soulsealfollowerbuff extends SummonedCountBuff {
     public void serverTick(ActiveBuff buff) {
         super.serverTick(buff);
         if(!buff.owner.buffManager.hasBuff("summonsoulsealbuff")){
-            buff.owner.buffManager.removeBuff("soulsealfollowerbuff", true);
+            buff.owner.buffManager.removeBuff("soulsealfollowerbuff", false);
         }
     }
     @Override

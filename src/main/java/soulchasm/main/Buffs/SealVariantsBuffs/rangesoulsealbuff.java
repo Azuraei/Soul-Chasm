@@ -15,18 +15,18 @@ import soulchasm.main.Projectiles.WeaponProjectiles.soulbigbulletprojectile;
 import soulchasm.main.Projectiles.soularrowprojectile;
 
 public class rangesoulsealbuff extends TrinketBuff {
-    private int currentcharge;
-    public int chargesToExplosiveBullet;
     public rangesoulsealbuff() {
     }
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
-        this.currentcharge=0;
-        this.chargesToExplosiveBullet=4;
+        buff.getGndData().getInt("currentcharge", 0);
     }
 
     public void onItemAttacked(ActiveBuff buff, int targetX, int targetY, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack) {
         super.onItemAttacked(buff, targetX, targetY, player, attackHeight, item, slot, animAttack);
         Level level = buff.owner.getLevel();
+        int currentcharge = buff.getGndData().getInt("currentcharge");
+        int chargesToExplosiveBullet = 4;
+
         if (level.isServer()) {
             if (item.item instanceof BowProjectileToolItem) {
                 GameDamage finalDamage = ((BowProjectileToolItem) item.item).getAttackDamage(item).modFinalMultiplier(0.6F);
@@ -36,16 +36,15 @@ public class rangesoulsealbuff extends TrinketBuff {
                 level.entityManager.projectiles.add(projectile);
             }else if (item.item instanceof GunProjectileToolItem) {
                 if(currentcharge>=chargesToExplosiveBullet){
-                    currentcharge=0;
+                    buff.getGndData().setInt("currentcharge", 0);
                     float velocity = ((GunProjectileToolItem) item.item).getProjectileVelocity(item, player) * 2.0F;
                     GameDamage finalDamage = ((GunProjectileToolItem) item.item).getAttackDamage(item).modFinalMultiplier(1.5F);
                     soulbigbulletprojectile projectile = new soulbigbulletprojectile(player.x, player.y, (float) targetX, (float) targetY, velocity, 1200, finalDamage, 20, player);
                     level.entityManager.projectiles.add(projectile);
                 }else {
-                    currentcharge++;
+                    buff.getGndData().setInt("currentcharge", currentcharge + 1);
                 }
             }
-
         }
     }
 }

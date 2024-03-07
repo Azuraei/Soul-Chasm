@@ -12,7 +12,6 @@ public class balancedsealbuff extends TrinketBuff {
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
         buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.10F);
     }
-
 }
 
 

@@ -121,7 +121,6 @@ public class bookofsoulsmainprojectile extends FollowingProjectile {
                     options.draw();
                 }
             });
-            this.addShadowDrawables(tileList, drawX, drawY, light, this.getAngle(), 0);
         }
     }
 }

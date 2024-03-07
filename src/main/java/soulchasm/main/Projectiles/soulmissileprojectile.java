@@ -65,7 +65,6 @@ public class soulmissileprojectile extends Projectile {
                     options.draw();
                 }
             });
-            this.addShadowDrawables(tileList, drawX, drawY, light, this.getAngle(), 0);
         }
     }
 

@@ -13,7 +13,7 @@ import soulchasm.main.Misc.soulscytheattackhandler;
 
 public class soulscythe extends GreatswordToolItem {
     public soulscythe() {
-        super(1200, GreatswordToolItem.getThreeChargeLevels(500, 600, 800));
+        super(1200, GreatswordToolItem.getThreeChargeLevels(400, 700, 900));
         this.rarity = Rarity.LEGENDARY;
         this.attackAnimTime.setBaseValue(300);
         this.attackDamage.setBaseValue(250.0F).setUpgradedValue(1.0F, 175.0F);

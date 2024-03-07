@@ -243,21 +243,22 @@ public class SoulChasm {
         MobRegistry.registerMob("souldragonhead", souldragonhead.class, true);
         MobRegistry.registerMob("souldragonbody", souldragonbody.class, false);
         //PROJECTILES
-        ProjectileRegistry.registerProjectile("soulwaveprojectile", soulwaveprojectile.class, "soulwaveprojectile", "shadow_simple");
-        ProjectileRegistry.registerProjectile("soularrowprojectile", soularrowprojectile.class, "soularrowprojectile", "shadow_simple");
+        ProjectileRegistry.registerProjectile("soulwaveprojectile", soulwaveprojectile.class, "soulwaveprojectile", null);
+        ProjectileRegistry.registerProjectile("soularrowprojectile", soularrowprojectile.class, "soularrowprojectile", null);
         ProjectileRegistry.registerProjectile("souldragonfragmentprojectile", souldragonfragmentprojectile.class, "souldragonfragmentprojectile","shadow_simple");
-        ProjectileRegistry.registerProjectile("soulhomingprojectile", soulhomingprojectile.class, "soulhomingprojectile","shadow_simple");
-        ProjectileRegistry.registerProjectile("soulmissileprojectile", soulmissileprojectile.class, "soulmissileprojectile","shadow_simple");
-        ProjectileRegistry.registerProjectile("soulflamethrower", soulflamethrower.class, "shadow_simple","shadow_simple");
-        ProjectileRegistry.registerProjectile("soulspearprojectile", soulspearprojectile.class, "soulspearprojectile","shadow_simple");
-        ProjectileRegistry.registerProjectile("spiritswordprojectile", spiritswordprojectile.class, "spiritswordprojectile","shadow_blank");
+        ProjectileRegistry.registerProjectile("soulhomingprojectile", soulhomingprojectile.class, "soulhomingprojectile",null);
+        ProjectileRegistry.registerProjectile("soulmissileprojectile", soulmissileprojectile.class, "soulmissileprojectile",null);
+        ProjectileRegistry.registerProjectile("soulflamethrower", soulflamethrower.class, "shadow_simple",null);
+        ProjectileRegistry.registerProjectile("soulspearprojectile", soulspearprojectile.class, "soulspearprojectile",null);
+        ProjectileRegistry.registerProjectile("spiritswordprojectile", spiritswordprojectile.class, "spiritswordprojectile",null);
         ProjectileRegistry.registerProjectile("soulrevolverprojectile", soulrevolverprojectile.class, null, null);
-        ProjectileRegistry.registerProjectile("soulboomerangprojectile", soulboomerangprojectile.class, "soulboomerangprojectile", "shadow_simple");
-        ProjectileRegistry.registerProjectile("soulpointywaveprojectile", soulpointywaveprojectile.class, "soulpointywaveprojectile", "shadow_simple");
+        ProjectileRegistry.registerProjectile("soulboomerangprojectile", soulboomerangprojectile.class, "soulboomerangprojectile", null);
+        ProjectileRegistry.registerProjectile("soulpointywaveprojectile", soulpointywaveprojectile.class, "soulpointywaveprojectile", null);
         ProjectileRegistry.registerProjectile("soulbigbulletprojectile", soulbigbulletprojectile.class, null, null);
         ProjectileRegistry.registerProjectile("soulbossspikeprojectile", soulbossspikeprojectile.class, "soulbossspikeprojectile","shadow_simple");
-        ProjectileRegistry.registerProjectile("bookofsoulsmainprojectile", bookofsoulsmainprojectile.class, "bookofsoulsmainprojectile","shadow_simple");
-        ProjectileRegistry.registerProjectile("bookofsoulssmallprojectile", bookofsoulssmallprojectile.class, "soulmissileprojectile","shadow_blank");
+        ProjectileRegistry.registerProjectile("bookofsoulsmainprojectile", bookofsoulsmainprojectile.class, "bookofsoulsmainprojectile",null);
+        ProjectileRegistry.registerProjectile("bookofsoulssmallprojectile", bookofsoulssmallprojectile.class, "soulmissileprojectile",null);
+        ProjectileRegistry.registerProjectile("soulscytheprojectile", soulscytheprojectile.class, "soulscytheprojectile",null);
     }
     public void initResources(){
         lostsoul.texture = GameTexture.fromFile("mobs/lostsoul");
