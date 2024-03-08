@@ -1,6 +1,7 @@
 package soulchasm.main.Mobs.Summon;
 
 import necesse.engine.tickManager.TickManager;
+import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
@@ -8,6 +9,7 @@ import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
 import necesse.entity.mobs.ai.behaviourTree.leaves.CooldownAttackTargetAINode;
 import necesse.entity.mobs.ai.behaviourTree.util.FlyingAIMover;
+import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.summon.summonFollowingMob.attackingFollowingMob.FlyingAttackingFollowingMob;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.DrawOptions;
@@ -33,13 +35,12 @@ public class smallsoulsummon extends FlyingAttackingFollowingMob {
         this.collision = new Rectangle(-18, -15, 36, 30);
         this.hitBox = new Rectangle(-18, -15, 36, 36);
         this.selectBox = new Rectangle(-20, -18, 40, 36);
-        this.damage = new GameDamage(35);
         this.isSummoned = true;
     }
 
     public void init() {
         super.init();
-        this.ai = new BehaviourTreeAI(this, new PlayerFlyingFollowerShooterAI(576, CooldownAttackTargetAINode.CooldownTimer.TICK, 600, 500, 600, 5) {
+        this.ai = new BehaviourTreeAI(this, new PlayerFlyingFollowerShooterAI(576, CooldownAttackTargetAINode.CooldownTimer.TICK, 700, 500, 600, 5) {
             @Override
             protected boolean shootAtTarget(Mob mob, Mob target) {
                 float angle = 15;
@@ -52,6 +53,15 @@ public class smallsoulsummon extends FlyingAttackingFollowingMob {
                 return true;
             }
         }, new FlyingAIMover());
+
+    }
+
+    public void serverTick() {
+        super.serverTick();
+        if(smallsoulsummon.this.getFollowingServerPlayer()!=null){
+            int summonNumber = smallsoulsummon.this.getFollowingServerPlayer().buffManager.getModifier(BuffModifiers.MAX_SUMMONS);
+            this.damage = new GameDamage(7.0F*summonNumber);
+        }
     }
 
     public boolean canBePushed(Mob other) {
@@ -61,10 +71,11 @@ public class smallsoulsummon extends FlyingAttackingFollowingMob {
     protected void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
         super.addDrawables(list, tileList, topList, level, x, y, tickManager, camera, perspective);
         GameLight light = level.getLightLevel(x / 32, y / 32);
-        Point p = new Point(texture.getWidth() / 2, texture.getHeight() / 2);
-        int drawX = camera.getDrawX(x) - p.x;
-        int drawY = camera.getDrawY(y) - p.y;
-        DrawOptions body = texture.initDraw().light(light.minLevelCopy(60)).pos(drawX, drawY).alpha(0.8F);
+        int bobbing = (int)(GameUtils.getBobbing(level.getWorldEntity().getTime(), 1000) * 5.0F);
+        int anim = Math.abs(GameUtils.getAnim(level.getWorldEntity().getTime(), 4, 1000) - 3);
+        int drawX = camera.getDrawX(x) - 16;
+        int drawY = camera.getDrawY(y) + bobbing - 26;
+        DrawOptions body = texture.initDraw().sprite(anim, 0, 32, 46).light(light.minLevelCopy(10)).pos(drawX, drawY).alpha(0.7F);
         topList.add((tm) -> {
             body.draw();
         });

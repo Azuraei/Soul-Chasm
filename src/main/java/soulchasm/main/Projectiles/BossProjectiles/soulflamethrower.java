@@ -94,7 +94,7 @@ public class soulflamethrower extends Projectile {
         super.doHitLogic(mob, object, x, y);
         boolean hitMob = mob != null;
         if (hitMob) {
-            ActiveBuff ab = new ActiveBuff("soulfirebuff", mob, 10.0F, this.getOwner());
+            ActiveBuff ab = new ActiveBuff("soulfirebuff", mob, 5.0F, this.getOwner());
             mob.addBuff(ab, false);
         }
 

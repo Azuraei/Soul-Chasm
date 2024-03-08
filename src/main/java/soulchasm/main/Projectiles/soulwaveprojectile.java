@@ -17,8 +17,6 @@ import necesse.level.maps.light.GameLight;
 import java.awt.*;
 import java.util.List;
 
-
-
 public class soulwaveprojectile extends Projectile {
 
     public soulwaveprojectile() {
@@ -33,7 +31,6 @@ public class soulwaveprojectile extends Projectile {
         this.setDamage(damage);
         this.setOwner(owner);
         this.setDistance(distance);
-
     }
     @Override
     public void init() {
@@ -44,8 +41,6 @@ public class soulwaveprojectile extends Projectile {
         this.isSolid = true;
         this.givesLight = true;
         this.particleRandomOffset = 14.0F;
-
-
     }
 
     @Override

@@ -11,10 +11,10 @@ import necesse.inventory.item.toolItem.projectileToolItem.bowProjectileToolItem.
 
 public class soulmetalbow extends BowProjectileToolItem {
     public soulmetalbow() {
-        super(1000);
+        super(1400);
         this.rarity = Rarity.EPIC;
         this.attackAnimTime.setBaseValue(300);
-        this.attackDamage.setBaseValue(45.0F).setUpgradedValue(1.0F, 32.0F);
+        this.attackDamage.setBaseValue(45.0F).setUpgradedValue(1.0F, 45.0F);
         this.attackRange.setBaseValue(600).setUpgradedValue(1.0F, 420);;
         this.velocity.setBaseValue(200);
         this.attackXOffset = 12;

@@ -23,7 +23,7 @@ import java.awt.*;
 
 public class soulabsorbshield extends ShieldTrinketItem {
     public soulabsorbshield() {
-        super(Rarity.EPIC, 5, 0.15F, 10000, 0.3F, 50, 180, 1000);
+        super(Rarity.EPIC, 5, 0.15F, 10000, 0.3F, 50, 180, 1400);
 
     }
 

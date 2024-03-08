@@ -32,7 +32,6 @@ public class soulpointywaveprojectile extends Projectile {
         this.setDamage(damage);
         this.setOwner(owner);
         this.setDistance(distance);
-
     }
     @Override
     public void init() {
@@ -43,8 +42,6 @@ public class soulpointywaveprojectile extends Projectile {
         this.isSolid = true;
         this.givesLight = true;
         this.particleRandomOffset = 14.0F;
-
-
     }
 
     @Override

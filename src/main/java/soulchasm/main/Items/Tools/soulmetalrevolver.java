@@ -23,10 +23,10 @@ import java.awt.*;
 
 public class soulmetalrevolver extends GunProjectileToolItem {
     public soulmetalrevolver() {
-        super(NORMAL_AMMO_TYPES, 1500);
+        super(NORMAL_AMMO_TYPES, 1400);
         this.rarity = Rarity.EPIC;
         this.attackAnimTime.setBaseValue(700);
-        this.attackDamage.setBaseValue(160.0F).setUpgradedValue(1.0F, 115.0F);
+        this.attackDamage.setBaseValue(160.0F).setUpgradedValue(1.0F, 160.0F);
         this.attackRange.setBaseValue(1200);
         this.velocity.setBaseValue(950);
         this.knockback.setBaseValue(75);

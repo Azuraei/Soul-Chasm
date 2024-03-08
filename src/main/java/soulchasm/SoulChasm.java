@@ -259,6 +259,7 @@ public class SoulChasm {
         ProjectileRegistry.registerProjectile("bookofsoulsmainprojectile", bookofsoulsmainprojectile.class, "bookofsoulsmainprojectile",null);
         ProjectileRegistry.registerProjectile("bookofsoulssmallprojectile", bookofsoulssmallprojectile.class, "soulmissileprojectile",null);
         ProjectileRegistry.registerProjectile("soulscytheprojectile", soulscytheprojectile.class, "soulscytheprojectile",null);
+        ProjectileRegistry.registerProjectile("soulscythesmallprojectile", soulscythesmallprojectile.class, "soulscythesmallprojectile",null);
     }
     public void initResources(){
         lostsoul.texture = GameTexture.fromFile("mobs/lostsoul");
@@ -344,7 +345,7 @@ public class SoulChasm {
         LootItemList dragon_loot_list = new LootItemList(
                 LootItem.between("soulcoreitem", 10, 20),
                 LootItem.between("souldragonscales", 15, 20),
-                new ChanceLootItem(0.06F, "soulscythe")
+                new ChanceLootItem(0.08F, "soulscythe")
 
         );
         souldragonhead.lootTable = new LootTable(dragon_loot_list);

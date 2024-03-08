@@ -7,6 +7,7 @@ import necesse.entity.mobs.buffs.BuffEventSubscriber;
 import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.buffs.staticBuffs.Buff;
 import necesse.entity.particle.Particle;
+import necesse.gfx.GameResources;
 
 import java.awt.*;
 
@@ -25,16 +26,16 @@ public class soulbleedstackbuff extends Buff {
     }
 
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
-        buff.setModifier(BuffModifiers.POISON_DAMAGE_FLAT, 4.0F);
+        buff.setModifier(BuffModifiers.POISON_DAMAGE_FLAT, 8.0F);
+        buff.setModifier(BuffModifiers.ARMOR, -0.5F);
         this.canCancel = false;
     }
 
     public void clientTick(ActiveBuff buff) {
         super.clientTick(buff);
-        if (buff.owner.isVisible()) {
-            Mob owner = buff.owner;
-            owner.getLevel().entityManager.addParticle(owner.x + (float)(GameRandom.globalRandom.nextGaussian() * 6.0), owner.y + (float)(GameRandom.globalRandom.nextGaussian() * 8.0), Particle.GType.IMPORTANT_COSMETIC).movesConstant(owner.dx / 10.0F, owner.dy / 10.0F).color(new Color(105, 211, 255)).givesLight(200.0F, 0.5F).height(16.0F);
+        Mob owner = buff.owner;
+        if (owner.isVisible() && GameRandom.globalRandom.nextInt(2) == 0) {
+            owner.getLevel().entityManager.addParticle(owner.x + (float)(GameRandom.globalRandom.nextGaussian() * 6.0), owner.y + (float)(GameRandom.globalRandom.nextGaussian() * 8.0), Particle.GType.IMPORTANT_COSMETIC).sprite(GameResources.bubbleParticle.sprite(0, 0, 12)).movesConstant(owner.dx / 10.0F, owner.dy / 10.0F).color(new Color(23, 159, 241)).height(16.0F);
         }
-
     }
 }

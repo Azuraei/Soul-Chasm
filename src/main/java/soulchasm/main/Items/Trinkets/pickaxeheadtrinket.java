@@ -11,7 +11,7 @@ import necesse.inventory.item.trinketItem.TrinketItem;
 
 public class pickaxeheadtrinket extends TrinketItem {
     public pickaxeheadtrinket() {
-        super(Rarity.EPIC, 1200);
+        super(Rarity.EPIC, 1000);
     }
 
     public TrinketBuff[] getBuffs(InventoryItem item) {

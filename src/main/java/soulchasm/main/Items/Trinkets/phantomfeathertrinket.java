@@ -13,7 +13,7 @@ import necesse.inventory.item.trinketItem.TrinketItem;
 public class phantomfeathertrinket extends TrinketItem {
     public phantomfeathertrinket() {
 
-        super(Rarity.EPIC, 1200);
+        super(Rarity.EPIC, 1000);
     }
 
     public TrinketBuff[] getBuffs(InventoryItem item) {

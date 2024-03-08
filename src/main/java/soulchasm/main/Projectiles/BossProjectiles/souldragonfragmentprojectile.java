@@ -61,7 +61,7 @@ public class souldragonfragmentprojectile extends FollowingProjectile {
                 projectiles = 12;
             } else {
                 projectiles = 6;
-                mob.buffManager.addBuff(new ActiveBuff("soulbleedstackbuff", mob, 10.0F, this.getOwner()), mob.getLevel().isServerLevel());
+                mob.buffManager.addBuff(new ActiveBuff("soulbleedstackbuff", mob, 3.0F, this.getOwner()), mob.getLevel().isServer());
             }
 
             float startX = x - this.dx * 2.0F;

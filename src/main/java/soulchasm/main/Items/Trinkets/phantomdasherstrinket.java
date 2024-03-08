@@ -11,7 +11,7 @@ import necesse.inventory.item.trinketItem.TrinketItem;
 
 public class phantomdasherstrinket extends TrinketItem {
     public phantomdasherstrinket() {
-        super(Rarity.EPIC, 1600);
+        super(Rarity.EPIC, 1200);
         this.disables.add("zephyrboots");
         this.disables.add("leatherdashers");
     }

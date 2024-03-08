@@ -7,7 +7,7 @@ import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.item.upgradeUtils.IntUpgradeValue;
 
 public class soularmorcrownsetbonus extends soularmorsetbonus {
-    public IntUpgradeValue maxSummons = (new IntUpgradeValue()).setBaseValue(2).setUpgradedValue(1.0F, 4);
+    public IntUpgradeValue maxSummons = (new IntUpgradeValue()).setBaseValue(2).setUpgradedValue(1.0F, 3);
     public soularmorcrownsetbonus() {
 
     }

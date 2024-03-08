@@ -12,7 +12,7 @@ import necesse.inventory.item.trinketItem.TrinketItem;
 
 public class soulstealertrinket extends TrinketItem {
     public soulstealertrinket() {
-        super(Rarity.EPIC, 1200);
+        super(Rarity.EPIC, 1000);
     }
 
     public TrinketBuff[] getBuffs(InventoryItem item) {

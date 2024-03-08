@@ -31,10 +31,10 @@ import java.awt.geom.Point2D;
 import java.util.LinkedList;
 public class bookofsouls extends MagicProjectileToolItem implements ItemInteractAction {
     public bookofsouls() {
-        super(1500);
+        super(1400);
         this.rarity = Rarity.EPIC;
         this.attackAnimTime.setBaseValue(600);
-        this.attackDamage.setBaseValue(165.0F).setUpgradedValue(1.0F, 115.0F);
+        this.attackDamage.setBaseValue(165.0F).setUpgradedValue(1.0F, 165.0F);
         this.attackRange.setBaseValue(500);
         this.velocity.setBaseValue(200);
         this.knockback.setBaseValue(30);

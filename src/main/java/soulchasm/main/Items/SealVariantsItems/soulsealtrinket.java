@@ -13,7 +13,7 @@ import necesse.inventory.item.trinketItem.TrinketItem;
 public class soulsealtrinket extends TrinketItem {
 
     public soulsealtrinket() {
-        super(Rarity.LEGENDARY, 2500);
+        super(Rarity.LEGENDARY, 1200);
         this.disabledBy.add("soulsealtrinket");
         this.disabledBy.add("balancedsealtrinket");
     }

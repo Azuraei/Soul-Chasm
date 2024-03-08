@@ -12,6 +12,7 @@ import necesse.inventory.item.toolItem.projectileToolItem.throwToolItem.boomeran
 import necesse.inventory.item.toolItem.spearToolItem.SpearToolItem;
 import necesse.inventory.item.toolItem.swordToolItem.SwordToolItem;
 import necesse.level.maps.Level;
+import soulchasm.main.Items.Tools.soulscythe;
 import soulchasm.main.Projectiles.soulboomerangprojectile;
 import soulchasm.main.Projectiles.soulpointywaveprojectile;
 import soulchasm.main.Projectiles.soulwaveprojectile;
@@ -29,16 +30,18 @@ public class meleesoulsealbuff extends TrinketBuff {
         Level level = buff.owner.getLevel();
         if (level.isServer()) {
             if (item.item instanceof SwordToolItem) {
-                GameDamage finalDamage = ((SwordToolItem) item.item).getAttackDamage(item).modDamage(0.6F);
-                float velocity = 150.0F * player.buffManager.getModifier(BuffModifiers.PROJECTILE_VELOCITY);
-                soulwaveprojectile projectile = new soulwaveprojectile(level, player.x, player.y, (float) targetX, (float) targetY, velocity, 800, finalDamage, player);
-                level.entityManager.projectiles.add(projectile);
+                if(!(item.item instanceof soulscythe)){
+                    GameDamage finalDamage = ((SwordToolItem) item.item).getAttackDamage(item).modDamage(0.6F);
+                    float velocity = 150.0F * player.buffManager.getModifier(BuffModifiers.PROJECTILE_VELOCITY);
+                    soulwaveprojectile projectile = new soulwaveprojectile(level, player.x, player.y, (float) targetX, (float) targetY, velocity, 800, finalDamage, player);
+                    level.entityManager.projectiles.add(projectile);
+                }
             } else if (item.item instanceof SpearToolItem) {
                 GameDamage finalDamage = ((SpearToolItem) item.item).getAttackDamage(item).modDamage(0.6F);
                 float velocity = 300.0F * player.buffManager.getModifier(BuffModifiers.PROJECTILE_VELOCITY);
                 soulpointywaveprojectile projectile = new soulpointywaveprojectile(level, player.x, player.y, (float) targetX, (float) targetY, velocity, 800, finalDamage, player);
                 level.entityManager.projectiles.add(projectile);
-            }else if (item.item instanceof BoomerangToolItem) {
+            } else if (item.item instanceof BoomerangToolItem) {
                 GameDamage finalDamage = ((BoomerangToolItem) item.item).getAttackDamage(item).modDamage(0.3F);
                 float velocity = ((BoomerangToolItem) item.item).getFlatVelocity(item) * player.buffManager.getModifier(BuffModifiers.PROJECTILE_VELOCITY);
                 for(int i = -1; i <= 1; i++){

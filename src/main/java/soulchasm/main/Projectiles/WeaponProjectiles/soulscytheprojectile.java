@@ -14,6 +14,7 @@ import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.EntityDrawable;
 import necesse.gfx.drawables.LevelSortedDrawable;
 import necesse.gfx.drawables.OrderableDrawables;
+import necesse.level.maps.CollisionFilter;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 
@@ -52,26 +53,37 @@ public class soulscytheprojectile extends Projectile {
     }
     public void init() {
         super.init();
-        this.setWidth(90.0F, true);
+        this.setWidth(160.0F, true);
         this.isCircularHitbox = true;
-        this.isSolid = false;
+        this.isSolid = true;
         this.height = 18.0F;
-        this.piercing = 10;
+        this.piercing = 25;
         this.spawnTime = this.getLevel().getWorldEntity().getTime();
         this.startSpeed = this.speed;
+        this.givesLight = true;
+        this.particleRandomOffset = 24.0F;
     }
 
     public void onMoveTick(Point2D.Float startPos, double movedDist) {
         super.onMoveTick(startPos, movedDist);
         float perc = Math.abs(GameMath.limit(this.traveledDistance / (float)this.distance, 0.0F, 1.0F) - 1.0F);
-        this.speed = Math.max(10.0F, perc * this.startSpeed);
+        this.speed = Math.max(5.0F, perc * this.startSpeed);
     }
 
     public Color getParticleColor() {
+        return new Color(0, 187, 255);
+    }
+
+    @Override
+    public Trail getTrail() {
         return null;
     }
 
-    public Trail getTrail() {
+    public void refreshParticleLight() {
+        this.getLevel().lightManager.refreshParticleLightFloat(this.x, this.y, 260.0F, this.lightSaturation);
+    }
+
+    protected CollisionFilter getLevelCollisionFilter() {
         return null;
     }
     public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, OrderableDrawables overlayList, Level level, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
@@ -82,7 +94,7 @@ public class soulscytheprojectile extends Projectile {
             boolean mirror = this.dx < 0.0F;
             float angle = this.getAngle() * (float)(mirror ? -1 : 1);
             int minLight = 100;
-            final TextureDrawOptions options = this.texture.initDraw().sprite(0, 0, 100).mirror(false, !mirror).light(light.minLevelCopy((float)minLight)).rotate(angle, 50, 50).pos(drawX, drawY);
+            final TextureDrawOptions options = this.texture.initDraw().sprite(0, 0, 100).mirror(false, !mirror).light(light.minLevelCopy((float)minLight)).rotate(angle, 50, 50).pos(drawX, drawY).alpha(0.9F);
             list.add(new EntityDrawable(this) {
                 public void draw(TickManager tickManager) {
                     options.draw();

@@ -17,10 +17,10 @@ import java.awt.geom.Point2D;
 
 public class soulmetalsword extends SwordToolItem {
     public soulmetalsword() {
-        super(250);
+        super(1400);
         this.rarity = Rarity.EPIC;
         this.attackAnimTime.setBaseValue(350);
-        this.attackDamage.setBaseValue(85.0F).setUpgradedValue(1.0F, 70.0F);
+        this.attackDamage.setBaseValue(85.0F).setUpgradedValue(1.0F, 85.0F);
         this.attackRange.setBaseValue(90);
         this.knockback.setBaseValue(75);
         this.resilienceGain.setBaseValue(1.0F);

@@ -13,7 +13,7 @@ import necesse.inventory.item.trinketItem.TrinketItem;
 public class rangesoulsealtrinket extends TrinketItem {
 
     public rangesoulsealtrinket() {
-        super(Rarity.EPIC, 2500);
+        super(Rarity.EPIC, 1000);
         this.disabledBy.add("summonsoulsealtrinket");
         this.disabledBy.add("magicsoulsealtrinket");
         this.disabledBy.add("rangesoulsealtrinket");
