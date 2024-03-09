@@ -19,9 +19,9 @@ import necesse.level.maps.incursion.BiomeMissionIncursionData;
 import necesse.level.maps.incursion.IncursionBiome;
 import necesse.level.maps.presets.Preset;
 import necesse.level.maps.presets.RandomCaveChestRoom;
-import soulchasm.main.Misc.BiomeMisc.soulcavearenapreset;
-import soulchasm.main.Misc.BiomeMisc.soulcaveshrinepreset;
-import soulchasm.main.Misc.BiomeMisc.soulcavesmallruinspreset;
+import soulchasm.main.Misc.Presets.soulcavearenapreset;
+import soulchasm.main.Misc.Presets.soulcaveshrinepreset;
+import soulchasm.main.Misc.Presets.soulcavesmallruinspreset;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

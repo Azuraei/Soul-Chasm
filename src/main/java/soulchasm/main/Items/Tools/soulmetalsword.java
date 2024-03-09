@@ -11,7 +11,7 @@ import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.swordToolItem.SwordToolItem;
 import necesse.level.maps.Level;
-import soulchasm.main.Projectiles.spiritswordprojectile;
+import soulchasm.main.Projectiles.WeaponProjectiles.spiritswordprojectile;
 
 import java.awt.geom.Point2D;
 
@@ -23,7 +23,7 @@ public class soulmetalsword extends SwordToolItem {
         this.attackDamage.setBaseValue(85.0F).setUpgradedValue(1.0F, 85.0F);
         this.attackRange.setBaseValue(90);
         this.knockback.setBaseValue(75);
-        this.resilienceGain.setBaseValue(1.0F);
+        this.resilienceGain.setBaseValue(2.0F);
         this.enchantCost = 500;
         this.attackXOffset = 8;
         this.attackYOffset = 8;

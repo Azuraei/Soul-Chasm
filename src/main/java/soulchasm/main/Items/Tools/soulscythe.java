@@ -10,7 +10,7 @@ import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.item.toolItem.swordToolItem.greatswordToolItem.GreatswordToolItem;
 import necesse.level.maps.Level;
-import soulchasm.main.Misc.soulscytheattackhandler;
+import soulchasm.main.Misc.Others.soulscytheattackhandler;
 
 import java.awt.*;
 
@@ -19,7 +19,7 @@ public class soulscythe extends GreatswordToolItem {
         super(1950, soulscythe.getScytheChargeLevels(300, 600, 900));
         this.rarity = Rarity.LEGENDARY;
         this.attackAnimTime.setBaseValue(300);
-        this.attackDamage.setBaseValue(225.0F).setUpgradedValue(1.0F, 225.0F);
+        this.attackDamage.setBaseValue(215.0F).setUpgradedValue(1.0F, 215.0F);
         this.attackRange.setBaseValue(110);
         this.knockback.setBaseValue(75);
         this.attackXOffset = 6;

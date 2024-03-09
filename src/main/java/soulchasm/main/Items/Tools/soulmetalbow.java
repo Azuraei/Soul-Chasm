@@ -15,8 +15,8 @@ public class soulmetalbow extends BowProjectileToolItem {
         this.rarity = Rarity.EPIC;
         this.attackAnimTime.setBaseValue(300);
         this.attackDamage.setBaseValue(45.0F).setUpgradedValue(1.0F, 45.0F);
-        this.attackRange.setBaseValue(600).setUpgradedValue(1.0F, 420);;
-        this.velocity.setBaseValue(200);
+        this.attackRange.setBaseValue(600);
+        this.velocity.setBaseValue(250).setUpgradedValue(1.0F, 250);
         this.attackXOffset = 12;
         this.attackYOffset = 28;
     }

@@ -1,10 +1,5 @@
 package soulchasm.main.Mobs.Agressive;
 
-import java.awt.Color;
-import java.awt.Rectangle;
-import java.util.List;
-import java.util.function.Supplier;
-
 import necesse.engine.Screen;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.sound.SoundEffect;
@@ -12,14 +7,10 @@ import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.GameDamage;
-import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
 import necesse.entity.mobs.PlayerMob;
-import necesse.entity.mobs.ability.EmptyMobAbility;
 import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
-import necesse.entity.mobs.ai.behaviourTree.leaves.CooldownAttackTargetAINode;
 import necesse.entity.mobs.ai.behaviourTree.trees.CollisionPlayerChaserWandererAI;
-import necesse.entity.mobs.ai.behaviourTree.trees.CollisionShooterPlayerChaserWandererAI;
 import necesse.entity.mobs.ai.behaviourTree.util.FlyingAIMover;
 import necesse.entity.mobs.hostile.FlyingHostileMob;
 import necesse.entity.particle.Particle;
@@ -30,10 +21,12 @@ import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
-import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.Projectiles.soulhomingprojectile;
+
+import java.awt.*;
+import java.util.List;
+import java.util.function.Supplier;
 
 public class lostsoul extends FlyingHostileMob {
     public static LootTable lootTable = new LootTable();
@@ -77,7 +70,7 @@ public class lostsoul extends FlyingHostileMob {
 
     protected void playHitSound() {
         float pitch = GameRandom.globalRandom.getOneOf(0.95F, 1.0F, 1.05F);
-        Screen.playSound(GameResources.swoosh, SoundEffect.effect(this).pitch(pitch).volume(0.15F));
+        Screen.playSound(GameResources.swoosh, SoundEffect.effect(this).pitch(pitch).volume(0.12F));
     }
 
     protected void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {

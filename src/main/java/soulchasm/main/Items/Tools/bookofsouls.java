@@ -36,7 +36,7 @@ public class bookofsouls extends MagicProjectileToolItem implements ItemInteract
         this.attackAnimTime.setBaseValue(600);
         this.attackDamage.setBaseValue(165.0F).setUpgradedValue(1.0F, 165.0F);
         this.attackRange.setBaseValue(500);
-        this.velocity.setBaseValue(200);
+        this.velocity.setBaseValue(200).setUpgradedValue(1.0F, 200);
         this.knockback.setBaseValue(30);
         this.attackXOffset = 10;
         this.attackYOffset = 10;
