@@ -20,7 +20,7 @@ public class soulmetalspear extends ThrowToolItem {
     public soulmetalspear() {
         this.rarity = Rarity.EPIC;
         this.attackAnimTime.setBaseValue(320);
-        this.attackDamage.setBaseValue(140.0F).setUpgradedValue(1.0F, 140.0F);
+        this.attackDamage.setBaseValue(130.0F).setUpgradedValue(1.0F, 130.0F);
         this.velocity.setBaseValue(250).setUpgradedValue(1.0F, 250);
         this.knockback.setBaseValue(75);
         this.resilienceGain.setBaseValue(1.0F);

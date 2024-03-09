@@ -2,14 +2,11 @@ plugins {
     id 'java'
 }
 
-// Change the values below this to your mods values
-// To change the project name, edit the settings.gradle file
-
 project.ext.modID = "endzio.soulchasm"
 project.ext.modName = "Soul Chasm"
-project.ext.modVersion = "1.3"
-project.ext.gameVersion = "0.23.1"
-project.ext.modDescription = "Adds new incursion level: Soul Chasm, as well as new items, mobs and a bit more"
+project.ext.modVersion = "1.4"
+project.ext.gameVersion = "0.24.0"
+project.ext.modDescription = "Adds new incursion, as well as new items, weapons, armor set, mobs and a bit more"
 project.ext.author = "Endzio"
 
 project.ext.clientside = false
