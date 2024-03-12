@@ -1,0 +1,155 @@
+[tile]
+soulcavegrass=Трава Пропасти душ
+soulcaverocktile=Камень Пропасти душ
+soulwoodfloor=Пол из Фантомного дерева
+soulwoodpath=Дорожка из Фантомного дерева
+soulwoodtiledfloor=Плиточный Пол из Фантомного дерева
+soulcavefloortile=Пол из камня пропасти душ
+soulcavebrickfloortile=Кирпичный Пол Камня пропасти душ
+soulcavetiledfloortile=Плиточный Пол из Камня пропасти душ
+asphalttile=Асфальт
+meltedsouls=Расплавленные Духи
+soulcavecracktile=Сломанная Душа
+
+[object]
+crystalizedsoul=Кристаллизованные души
+crystalizedsoulore=Руда Кристаллизованных душ
+soultree=Фантомное дерево
+soulcavegrassobject=Трава Пропасти душ
+soulwood=Фантомная древесина
+soulbrick=Кирпич Пропасти душ
+soultreesappling=Саженец Фантомного дерева
+lunartear=Лунная слеза
+lunartearspath=Дорожка Лунных слёз
+soultorch=Фантомный факел
+soulcrystalbig=Большой кристал души
+wispjarobject=Банка с огоньком
+fireflyjarobject=Банка со светлячком
+soulmonumentobject=Монумент пропасти душ
+soulstonepressureplate=Нажимная плита камня пропасти душ
+soulstoneflametrap=Огненная ловушка из камня пропасти душ
+soulbricktexturetrap=Огненная ловушка из кирпича пропасти душ
+soullanternobject=Фонарь души
+oldbarrel=Старая бочка
+soulcavechest=Стырый сундук
+bigjarobject=Большая стекляная банка
+chasmcrates=Старый ящик
+statueobject=Статуя рыцаря
+soulbossaltarobject=Древний Алтарь
+soulcaverock=Камень пропасти
+soulwoodwall=Стена из Фантомного дерева
+soulwooddoor=Дверь из Фантомного дерева
+soulbrickwall=Стена из кирпича Пропасти душ
+soulbrickdoor=Дверь из кирпича Пропасти душ
+soulwoodbathtub=Ванна из Фантомного дерева
+soulwoodbed=Кровать из Фантомного дерева
+soulwoodbench=Скамейка из Фантомного дерева
+soulwooddinnertable=Обеденный стол из Фантомного дерева
+soulwoodbookshelf=Книжная Полка из Фантомного дерева
+soulwoodcabinet=Шкаф из Фантомного дерева
+soulwoodchair=Стул из Фантомного дерева
+soulwoodchest=Сундук из Фантомного дерева
+soulwoodclock=Часы из Фантомного дерева
+soulwooddesk=Стол из Фантомного дерева
+soulwooddisplay=Витрина из Фантомного дерева
+soulwooddresser=Комод из Фантомного дерева
+soulwoodmodulartable=Модульный Стол из Фантомного дерева
+soulwoodtoilet=Туалет из Фантомного дерева
+soulwoodcandelabra=Канделябр из Фантомного дерева
+soulwoodfence=Забор из Фантомного дерева
+soulwoodfencegate=Калитка из Фантомного дерева
+
+[item]
+soulscythe=Жнец душ
+soulmetalbow=Призрачный лук
+soulmetalsword=Ярость Души
+soulmetalspear=Проклятые вилы
+soulmetalrevolver=Душелов
+soulabsorbshield=Щит душераздирателя
+soularmorboots=Сапоги из стали души
+soularmorchestplate=Нагрудник из стали души
+soularmorcrown=Корона из стали души
+soularmorhelmet=Шлем из стали души
+soularmorhood=Капюшон из стали души
+soularmorhat=Шляпа из стали души
+phantomfeathertrinket=Призрачное перо
+soulstealertrinket=Кольцо души
+pickaxeheadtrinket=Старая голова кирки
+phantomdasherstrinket=Призрачные рывки
+carkeys=Ключ от Машины
+soulsigil=Сигил Души
+souldragonscales=Чешуя древнего дракона
+soulwoodlogitem=Бревно призрачного дерева
+soulcoreitem=Ядро души
+soulcaverockitem=Камень пропасти душ
+crystalizedsouloreitem=Руда кристализованных душ
+soulgrassseeditem=Семена травы пропости душ
+soulessence=Эссенция Душ
+wispitem=Огонёк
+wispjar=Банка огоньков
+fireflyitem=Светлячки
+fireflyjar=Банка Светлячков
+soullantern=Фонарь Души
+soulmetalbar=Слиток Стали души
+meleesoulsealtrinket=Фрагмент артефакта ближнего боя
+summonsoulsealtrinket=Фрагмент артефакта призыва
+magicsoulsealtrinket=Фрагмент артефакта Магии
+rangesoulsealtrinket=Фрагмент артефакта Дальнего боя
+soulsealtrinket=Печать души
+balancedsealtrinket=Сбалансированная печать души
+bookofsouls=Книга Душ
+
+[itemtooltip]
+soulabsorbshield=При блокировании урона в сторону атакующего выбрасывается огненная вспышка,\nурон которой масштабируется в зависимости от силы атаки.\nУспешный блок также на короткое время увеличивает скорость атаки и прирост устойчивости.
+phantomfeathertrinket=Уменьшает максимальное количество здоровья на 25% и дает дополнительные четыре заряда рывка.
+soulstealertrinket=В бою медленно превращает ваше максимальное здоровье в больший урон.\nМакс. -50% максимального здоровья и +100% урона.\nВне боя процесс обратный.\nПри этом значительно увеличивается регенерация здоровья.
+pickaxeheadtrinket=Майнинг медленно увеличивает скорость добычи, до 150%.
+phantomdasherstrinket=Бегите еще быстрее\Во время бега вы получаете больше урона\Дает возможность ходить по воде.
+soularmorsetbonus=Увеличивает скорость атаки и передвижения.\nПосле истечения срока действия баффа накладывает дебафф, который уменьшает обе характеристики.
+soulsealfragment=Фрагмент целого\nСоздает снаряд, соответствующий вашему оружию.
+soulsealfull=Снова целое\nСоздает снаряд, соответствующий вашему оружию.
+soulsealbalanced=Объединяет новую силу.\nСоздает снаряд, соответствующий вашему оружию.\nУвеличивает весь наносимый урон на 10%.
+soulmetalswordtip=Удар по врагу вызывает духовные мечи.
+soulscythe=Полностью заряженные атаки стреляют замедляющимся, пронзающим снарядом.\nЗарядка до второго или более высокого уровня применяет к цели «Кровоточащую душу».\nКровоточащая душа уменьшает броню и наносит дополнительный урон.
+soulmetalbowtip=Удар по врагу увеличивает скорость атаки.\nПри полной скорости атаки бонус вызывает призрачные стрелы.
+soulmetalrevolvertip=Преобразует обычные пули в наполненные душой.\nПопадание во врага пулей, наполненной душой, отмечает его.\nВраг, отмеченный трижды, получает дополнительный урон при четвертой атаке.
+soulmetalspeartip=Можно бросить\nПри попадании создаёт небольшой взрыв.
+soulsigil=Вызывает босса Пропасти Душ\nНеобходимо использовать на алтаре в центре Пропасти Души.
+cartip=Призывает Авто\nНажмите правой кнопкой мыши в инвентаре, чтобы изменить цвет.
+soulsealfollowerbuff=Душа, которая услышала ваш зов
+bigjarobject=Пустая банка\nПоймайте несколько светящихся жуков и поместите их в банку, чтобы создать новый источник света.
+glowingbugs=Светлячок\nМаленькое светящееся существо
+glowingjarobject=Обеспечивает небольшое количество света при размещении или удерживании
+bookofsoulstip=Стреляет медленным большим самонаводящимся снарядом.
+bookofsoulssecondarytip=Нажмите [input=mouse2], чтобы активировать переполнение энергии.\nВ состоянии переполнения быстро стреляет меньшими снарядами с низкой точностью и обеспечивает ускорение как скорости, так и регенерации здоровья.
+
+[mob]
+souldragonhead=Древний дракон
+souldragonbody=Древний 
+lostsoul=Потерянная душа
+possesedstatue=Одержимая статуя
+wisp=Огонёк
+firefly=Светлячки
+soulpillar=Одержимый столб
+soulmage=Призыватель духов
+smallsoulsummon=Малая Душа
+soulcavecaveling=Спелеолог Пропасти душ
+carmob=Автомобиль
+
+[buff]
+soulfirebuff=Дух Инферно
+soulabsorbshieldbuff=Поглощение атак
+souldischargebuff=Преобразование души
+soularmorcooldown=Время восстановления брони из стали души
+soulcharmsummonerbuff=Призванный дух
+soulbleedstackbuff=Кровоточащая душа
+souldischargesicknessdebuff=Конверсионная болезнь
+bookofsoulbuff=Энергия души
+soulofsoulsoverchargebuff=Переполнение энергии души
+
+[controls]
+senshiactivatetip=Вставьте Сигил Души
+
+[biome]
+soulcavernincursionbiome=Пропасть душ
+soulcavernbiome=Пропасть душ
