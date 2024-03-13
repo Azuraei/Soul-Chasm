@@ -50,7 +50,6 @@ public class smallsoulsummon extends FlyingAttackingFollowingMob {
                 return true;
             }
         }, new FlyingAIMover());
-        System.out.println(this.damage.damage);
     }
 
     public boolean canBePushed(Mob other) {return false;}
