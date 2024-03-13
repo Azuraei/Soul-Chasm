@@ -26,6 +26,7 @@ import necesse.level.gameTile.SimpleTiledFloorTile;
 import necesse.level.maps.biomes.forest.ForestBiome;
 import necesse.level.maps.biomes.plains.PlainsBiome;
 import necesse.level.maps.biomes.swamp.SwampBiome;
+import necesse.level.maps.incursion.UniqueIncursionReward;
 import necesse.level.maps.presets.set.ChestRoomSet;
 import necesse.level.maps.presets.set.WallSet;
 import soulchasm.main.Buffs.Debuffs.soulbleedstackbuff;
@@ -94,6 +95,7 @@ public class SoulChasm {
     public static GameTextureSection particleFireflySection;
     public static GameTextureSection particleWispSection;
     public static GameTextureSection particlePhantomBodySection;
+    public static int REROLL_STATION_CONTAINER;
 
     public void init() {
         System.out.println("no idea what to type here, so I will just say amongus");
@@ -268,6 +270,22 @@ public class SoulChasm {
         ProjectileRegistry.registerProjectile("bookofsoulssmallprojectile", bookofsoulssmallprojectile.class, "soulmissileprojectile",null);
         ProjectileRegistry.registerProjectile("soulscytheprojectile", soulscytheprojectile.class, "soulscytheprojectile",null);
         ProjectileRegistry.registerProjectile("soulscythesmallprojectile", soulscythesmallprojectile.class, "soulscythesmallprojectile",null);
+
+        LootTable helmetReward = new LootTable(new LootItemList(new OneOfLootItems(
+                        new LootItem("soularmorhelmet"),
+                        new LootItem("soularmorhood"),
+                        new LootItem("soularmorhat"),
+                        new LootItem("soularmorcrown")
+        )));
+        LootTable armorReward = new LootTable(new LootItemList(new LootItem("soularmorchestplate")));
+        LootTable bootsReward = new LootTable(new LootItemList(new LootItem("soularmorboots")));
+        LootTable scytheReward = new LootTable(new LootItemList(new LootItem("soulscythe")));
+
+        UniqueIncursionRewardsRegistry.registerIncursionHeadArmors("soularmorhead", new UniqueIncursionReward(helmetReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
+        UniqueIncursionRewardsRegistry.registerIncursionBodyArmors("soularmorbody", new UniqueIncursionReward(armorReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
+        UniqueIncursionRewardsRegistry.registerIncursionFeetArmors("soularmorfeet", new UniqueIncursionReward(bootsReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
+
+        UniqueIncursionRewardsRegistry.registerGreatswordWeapon("soulscythereward", new UniqueIncursionReward(scytheReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
     }
     public void initResources(){
         lostsoul.texture = GameTexture.fromFile("mobs/lostsoul");

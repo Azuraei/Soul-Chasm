@@ -2,14 +2,12 @@ package soulchasm.main.Mobs.Summon;
 
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameUtils;
-import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
 import necesse.entity.mobs.ai.behaviourTree.leaves.CooldownAttackTargetAINode;
 import necesse.entity.mobs.ai.behaviourTree.util.FlyingAIMover;
-import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.summon.summonFollowingMob.attackingFollowingMob.FlyingAttackingFollowingMob;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.DrawOptions;
@@ -40,8 +38,7 @@ public class smallsoulsummon extends FlyingAttackingFollowingMob {
 
     public void init() {
         super.init();
-        this.ai = new BehaviourTreeAI(this, new PlayerFlyingFollowerShooterAI(576, CooldownAttackTargetAINode.CooldownTimer.TICK, 700, 500, 600, 5) {
-            @Override
+        this.ai = new BehaviourTreeAI(this, new PlayerFlyingFollowerShooterAI(576, CooldownAttackTargetAINode.CooldownTimer.TICK, 600, 500, 600, 5) {
             protected boolean shootAtTarget(Mob mob, Mob target) {
                 float angle = 15;
                 for (int i = -1; i <= 1; ++i) {
@@ -53,20 +50,12 @@ public class smallsoulsummon extends FlyingAttackingFollowingMob {
                 return true;
             }
         }, new FlyingAIMover());
-
+        System.out.println(this.damage.damage);
     }
 
-    public void serverTick() {
-        super.serverTick();
-        if(smallsoulsummon.this.getFollowingServerPlayer()!=null){
-            int summonNumber = smallsoulsummon.this.getFollowingServerPlayer().buffManager.getModifier(BuffModifiers.MAX_SUMMONS);
-            this.damage = new GameDamage(7.0F*summonNumber);
-        }
-    }
-
-    public boolean canBePushed(Mob other) {
-        return false;
-    }
+    public boolean canBePushed(Mob other) {return false;}
+    @Override
+    protected void playDeathSound() {}
 
     protected void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
         super.addDrawables(list, tileList, topList, level, x, y, tickManager, camera, perspective);
@@ -80,7 +69,5 @@ public class smallsoulsummon extends FlyingAttackingFollowingMob {
             body.draw();
         });
     }
-    @Override
-    protected void playDeathSound() {
-    }
+
 }
