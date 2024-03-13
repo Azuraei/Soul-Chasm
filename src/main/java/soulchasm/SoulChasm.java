@@ -280,11 +280,9 @@ public class SoulChasm {
         LootTable armorReward = new LootTable(new LootItemList(new LootItem("soularmorchestplate")));
         LootTable bootsReward = new LootTable(new LootItemList(new LootItem("soularmorboots")));
         LootTable scytheReward = new LootTable(new LootItemList(new LootItem("soulscythe")));
-
         UniqueIncursionRewardsRegistry.registerIncursionHeadArmors("soularmorhead", new UniqueIncursionReward(helmetReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
         UniqueIncursionRewardsRegistry.registerIncursionBodyArmors("soularmorbody", new UniqueIncursionReward(armorReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
         UniqueIncursionRewardsRegistry.registerIncursionFeetArmors("soularmorfeet", new UniqueIncursionReward(bootsReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
-
         UniqueIncursionRewardsRegistry.registerGreatswordWeapon("soulscythereward", new UniqueIncursionReward(scytheReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
     }
     public void initResources(){
