@@ -34,10 +34,7 @@ import soulchasm.main.Buffs.Debuffs.soulfirebuff;
 import soulchasm.main.Buffs.SetBonusBuffs.*;
 import soulchasm.main.Buffs.ToolBuffs.BookOfSoulsBuffs.bookofsoulbuff;
 import soulchasm.main.Buffs.ToolBuffs.BookOfSoulsBuffs.soulofsoulsoverchargebuff;
-import soulchasm.main.Buffs.ToolBuffs.soulabsorbshieldbuff;
-import soulchasm.main.Buffs.ToolBuffs.soulbowbuff;
-import soulchasm.main.Buffs.ToolBuffs.souldeathmarkstackbuff;
-import soulchasm.main.Buffs.ToolBuffs.soulscythebuff;
+import soulchasm.main.Buffs.ToolBuffs.*;
 import soulchasm.main.Buffs.TrinketsBuffs.PhantomDashersBuffs.phantomdashersactivebuff;
 import soulchasm.main.Buffs.TrinketsBuffs.PhantomDashersBuffs.phantomdashersbuff;
 import soulchasm.main.Buffs.TrinketsBuffs.PickaxeheadBuffs.pickaxeheadbuff;
@@ -98,7 +95,7 @@ public class SoulChasm {
     public static int REROLL_STATION_CONTAINER;
 
     public void init() {
-        System.out.println("no idea what to type here, so I will just say amongus");
+        System.out.println("no idea what to type here, so I will just say hi");
         //TILES
         TileRegistry.registerTile("soulcavegrass", new soulcavegrass(), 1, true);
         TileRegistry.registerTile("soulcaverocktile", new soulcaverocktile(), 1, true);
@@ -182,6 +179,8 @@ public class SoulChasm {
         BuffRegistry.registerBuff("phantomdashersbuff", new phantomdashersbuff());
         BuffRegistry.registerBuff("bookofsoulbuff", new bookofsoulbuff());
         BuffRegistry.registerBuff("soulofsoulsoverchargebuff", new soulofsoulsoverchargebuff());
+        BuffRegistry.registerBuff("soulbowcooldownbuff", new soulbowcooldownbuff());
+
         //SetBonus
         BuffRegistry.registerBuff("soularmorhelmetsetbonus", new soularmorhelmetsetbonus());
         BuffRegistry.registerBuff("soularmorhoodsetbonus", new soularmorhoodsetbonus());
