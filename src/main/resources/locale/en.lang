@@ -111,7 +111,7 @@ soulsealfull=Whole again\nCreates projectile that matches your weapon
 soulsealbalanced=Bonds with new power\nCreates projectile that matches your weapon\nIncreases all damage dealt by 10%
 soulmetalswordtip=Hitting enemy summons spirit swords
 soulscythe=Fully charged attacks shoot a decelerating, piercing projectile\nCharging to second or greater level applies Bleeding Soul on target\nBleeding Soul decreases armor and damages overtime
-soulmetalbowtip=Hitting enemy increases attack speed\nOn full attack speed bonus summons spectral arrows
+soulmetalbowtip=Press [input=mouse2] to activate ballista mode\nWhen in ballista mode, you can shoot up to 3 overcharged arrows\nUpon using all shots or buff expiring, applies cooldown
 soulmetalrevolvertip=Converts regular bullets into soul infused ones\nHitting enemy with soul infused bullet marks it\nEnemy marked three times receives additional damage on fourth attack
 soulmetalspeartip=Can be thrown\nCreates small explosion on hit
 soulsigil=Summons the Soul Chasm boss\nMust be used in altar in center of Soul Chasm

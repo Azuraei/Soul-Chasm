@@ -1,16 +1,17 @@
 package soulchasm.main.Buffs.ToolBuffs.SoulMetalBowBuffs;
 
+import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
-import necesse.entity.ParticleTypeSwitcher;
+import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
 import necesse.entity.mobs.buffs.staticBuffs.Buff;
 import necesse.entity.particle.Particle;
 
 import java.awt.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class soulbowbuff extends Buff {
-    public Color particleColor = new Color(0, 111, 190);
 
     public soulbowbuff() {
     }
@@ -37,14 +38,17 @@ public class soulbowbuff extends Buff {
     public void clientTick(ActiveBuff buff) {
         super.clientTick(buff);
         removeSelf(buff);
-        int particles = 2;
-        float anglePerParticle = 360.0F / (float)particles;
-        ParticleTypeSwitcher typeSwitcher = new ParticleTypeSwitcher(Particle.GType.IMPORTANT_COSMETIC, Particle.GType.COSMETIC);
-        for(int i = 0; i < particles; ++i) {
-            int angle = (int)((float)i * anglePerParticle + GameRandom.globalRandom.nextFloat() * anglePerParticle);
-            float dx = (float)Math.sin(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(30, 50);
-            float dy = (float)Math.cos(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(30, 50) * 0.8F;
-            buff.owner.getLevel().entityManager.addParticle(buff.owner, typeSwitcher.next()).movesFriction(dx, dy, 0.8F).color(particleColor).lifeTime(400);
+        Color color = new Color(51, 147, 255);
+        if (buff.owner.isVisible()) {
+            Mob owner = buff.owner;
+            AtomicReference<Float> currentAngle = new AtomicReference<>(GameRandom.globalRandom.nextFloat() * 360.0F);
+            float distance = 20.0F;
+            owner.getLevel().entityManager.addParticle(owner.x + GameMath.sin(currentAngle.get()) * distance, owner.y + GameMath.cos((Float)currentAngle.get()) * distance * 0.75F, Particle.GType.COSMETIC).color(color).height(0.5F).moves((pos, delta, lifeTime, timeAlive, lifePercent) -> {
+                float angle = currentAngle.accumulateAndGet(delta * 100.0F / 125.0F, Float::sum);
+                float distY = distance * 0.75F;
+                pos.x = owner.x + GameMath.sin(angle) * distance;
+                pos.y = owner.y + GameMath.cos(angle) * distY * 0.75F;
+            }).lifeTime(1000).sizeFades(10, 15);
         }
     }
 }

@@ -26,7 +26,6 @@ public class rangesoulsealbuff extends TrinketBuff {
         Level level = buff.owner.getLevel();
         int currentcharge = buff.getGndData().getInt("currentcharge");
         int chargesToExplosiveBullet = 4;
-
         if (level.isServer()) {
             if (item.item instanceof BowProjectileToolItem) {
                 GameDamage finalDamage = ((BowProjectileToolItem) item.item).getAttackDamage(item).modFinalMultiplier(0.6F);

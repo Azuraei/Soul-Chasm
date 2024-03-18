@@ -67,7 +67,7 @@ public class soulmetalbow extends BowProjectileToolItem implements ItemInteractA
 
     @Override
     public float getAttackMovementMod(InventoryItem item) {
-        return item.getGndData().getBoolean("altFireActive") ? 0.2F : 0.5F;
+        return item.getGndData().getBoolean("altFireActive") ? 0.3F : 0.5F;
     }
 
     public float getItemCooldownPercent(InventoryItem item, PlayerMob perspective) {
@@ -146,8 +146,8 @@ public class soulmetalbow extends BowProjectileToolItem implements ItemInteractA
             return item;
         }
     }
-    public InventoryItem superOnAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
-        return super.onAttack(level, x, y, player, attackHeight, item, slot, animAttack, seed, contentReader);
+    public void superOnAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
+        super.onAttack(level, x, y, player, attackHeight, item, slot, animAttack, seed, contentReader);
     }
     public boolean shouldRunOnAttackedBuffEvent(Level level, int x, int y, PlayerMob player, InventoryItem item, PlayerInventorySlot slot, int animTime, int seed, PacketReader contentReader) {
         return false;
