@@ -146,6 +146,8 @@ soulbleedstackbuff=Bleeding Soul
 souldischargesicknessdebuff=Conversion Sickness
 bookofsoulbuff=Soul Energy
 soulofsoulsoverchargebuff=Soul Energy Overflow
+soulbowbuff=Phantasm's Ballista
+soulbowcooldownbuff=Phantasm Bow Cooldown
 
 [controls]
 senshiactivatetip=Insert Soul Sigil

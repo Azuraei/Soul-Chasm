@@ -30,6 +30,7 @@ import java.util.List;
 public class soularrowprojectile extends Projectile {
     public static FireworksExplosion piercerPopExplosion;
     public boolean showEffects = true;
+    public int explosionRangeMultiplier = 1;
 
     public soularrowprojectile() {
     }
@@ -70,7 +71,7 @@ public class soularrowprojectile extends Projectile {
             targetY = y;
         }
 
-        int range = 80;
+        int range = 80 * explosionRangeMultiplier;
         if (!this.getLevel().isServer()) {
             FireworksExplosion explosion = new FireworksExplosion(FireworksPath.sphere((float) GameRandom.globalRandom.getIntBetween(range - 10, range)));
             explosion.colorGetter = (particle, progress, random) -> ParticleOption.randomizeColor(240.0F, 0.5F, 0.4F, 10.0F, 0.1F, 0.1F);
@@ -86,9 +87,9 @@ public class soularrowprojectile extends Projectile {
         }
 
         if (!this.getLevel().isClient()) {
-            Rectangle targetBox = new Rectangle((int)targetX - range, (int)targetY - range, range * 2, range * 2);
+            Rectangle targetBox = new Rectangle((int)targetX - range, (int)targetY - range, range * 2 * explosionRangeMultiplier, range * 2 * explosionRangeMultiplier);
             this.streamTargets(this.getOwner(), targetBox).filter((m) -> this.canHit(m) && m.getDistance(targetX, targetY) <= (float)range).forEach((m) -> {
-                m.isServerHit(this.getDamage(), m.x - x, m.y - y, (float)this.knockback, this);
+                m.isServerHit(this.getDamage().modDamage((float) 1 /explosionRangeMultiplier), m.x - x, m.y - y, (float)this.knockback, this);
             });
         }
     }

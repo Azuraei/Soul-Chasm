@@ -34,7 +34,11 @@ import soulchasm.main.Buffs.Debuffs.soulfirebuff;
 import soulchasm.main.Buffs.SetBonusBuffs.*;
 import soulchasm.main.Buffs.ToolBuffs.BookOfSoulsBuffs.bookofsoulbuff;
 import soulchasm.main.Buffs.ToolBuffs.BookOfSoulsBuffs.soulofsoulsoverchargebuff;
-import soulchasm.main.Buffs.ToolBuffs.*;
+import soulchasm.main.Buffs.ToolBuffs.SoulMetalBowBuffs.soulbowbuff;
+import soulchasm.main.Buffs.ToolBuffs.SoulMetalBowBuffs.soulbowcooldownbuff;
+import soulchasm.main.Buffs.ToolBuffs.soulabsorbshieldbuff;
+import soulchasm.main.Buffs.ToolBuffs.souldeathmarkstackbuff;
+import soulchasm.main.Buffs.ToolBuffs.soulscythebuff;
 import soulchasm.main.Buffs.TrinketsBuffs.PhantomDashersBuffs.phantomdashersactivebuff;
 import soulchasm.main.Buffs.TrinketsBuffs.PhantomDashersBuffs.phantomdashersbuff;
 import soulchasm.main.Buffs.TrinketsBuffs.PickaxeheadBuffs.pickaxeheadbuff;
@@ -172,13 +176,13 @@ public class SoulChasm {
         BuffRegistry.registerBuff("soulbleedstackbuff", new soulbleedstackbuff());
         BuffRegistry.registerBuff("soulscythebuff", new soulscythebuff());
         BuffRegistry.registerBuff("souldeathmarkstackbuff", new souldeathmarkstackbuff());
-        BuffRegistry.registerBuff("soulbowbuff", new soulbowbuff());
         BuffRegistry.registerBuff("pickaxeheadbuff", new pickaxeheadbuff());
         BuffRegistry.registerBuff("pickaxeheadstackbuff", new pickaxeheadstackbuff());
         BuffRegistry.registerBuff("phantomdashersactivebuff", new phantomdashersactivebuff());
         BuffRegistry.registerBuff("phantomdashersbuff", new phantomdashersbuff());
         BuffRegistry.registerBuff("bookofsoulbuff", new bookofsoulbuff());
         BuffRegistry.registerBuff("soulofsoulsoverchargebuff", new soulofsoulsoverchargebuff());
+        BuffRegistry.registerBuff("soulbowbuff", new soulbowbuff());
         BuffRegistry.registerBuff("soulbowcooldownbuff", new soulbowcooldownbuff());
 
         //SetBonus

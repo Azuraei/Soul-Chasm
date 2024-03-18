@@ -108,13 +108,13 @@ public class soulmetalbowattackhandler extends MousePositionAttackHandler {
             InventoryItem attackItem = this.item.copy();
             attackItem.getGndData().setBoolean("shouldFire", true);
             attackItem.getGndData().setFloat("chargePercent", chargePercent);
-            attackItem.getGndData().setInt("soularrowstacks", this.item.getGndData().getInt("soularrowstacks")-1);
+            ActiveBuff buff =  player.buffManager.getBuff("soulbowbuff");
+            buff.getGndData().setInt("stacks", buff.getGndData().getInt("stacks")+1);
             Packet attackContent = new Packet();
             PacketWriter writer = new PacketWriter(attackContent);
             this.toolItem.setupAttackContentPacket(writer, this.player.getLevel(), this.lastX, this.lastY, this.player, attackItem);
             attackItem.item.showAttack(this.player.getLevel(), this.lastX, this.lastY, this.player, this.player.getCurrentAttackHeight(), attackItem, this.seed, new PacketReader(attackContent));
             this.toolItem.superOnAttack(this.player.getLevel(), this.lastX, this.lastY, this.player, this.player.getCurrentAttackHeight(), attackItem, this.slot, 0, this.seed, new PacketReader(attackContent));
-
             for (ActiveBuff b : this.player.buffManager.getArrayBuffs()) {
                 b.onItemAttacked(this.lastX, this.lastY, this.player, this.player.getCurrentAttackHeight(), attackItem, this.slot, 0);
             }
