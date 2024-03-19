@@ -65,7 +65,6 @@ public class soulmetalbow extends BowProjectileToolItem implements ItemInteractA
         }
     }
 
-    @Override
     public float getAttackMovementMod(InventoryItem item) {
         return item.getGndData().getBoolean("altFireActive") ? 0.3F : 0.5F;
     }
