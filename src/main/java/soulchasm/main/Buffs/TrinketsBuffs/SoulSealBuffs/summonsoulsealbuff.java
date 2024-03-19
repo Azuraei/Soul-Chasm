@@ -53,10 +53,11 @@ public class summonsoulsealbuff extends TrinketBuff {
         this.summonMob(client, mob);
     }
     public void summonMob(ServerClient client, AttackingFollowingMob mob) {
-        client.addFollower("summonsealfollower", mob, FollowPosition.newFlying(0, -80, 1, 1), "soulsealfollowerbuff", 1.0F, 1, null, false);
+        int offset = 65;
+        client.addFollower("summonsealfollower", mob, FollowPosition.newFlying(0, -offset, 1, 1), "soulsealfollowerbuff", 1.0F, 1, null, false);
         mob.updateDamage(attackDamage);
         mob.setEnchantment(enchantment);
-        mob.getLevel().entityManager.addMob(mob, client.playerMob.x, client.playerMob.y - 80);
+        mob.getLevel().entityManager.addMob(mob, client.playerMob.x, client.playerMob.y - offset);
     }
 }
 
