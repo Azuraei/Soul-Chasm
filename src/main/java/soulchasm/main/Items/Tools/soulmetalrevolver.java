@@ -74,6 +74,6 @@ public class soulmetalrevolver extends GunProjectileToolItem {
     }
 
     public void playFireSound(AttackAnimMob mob) {
-        Screen.playSound(GameResources.sniperrifle.setVolumeModifier((float)0.5), SoundEffect.effect(mob));
+        Screen.playSound(GameResources.sniperrifle.setVolumeModifier((float)0.4), SoundEffect.effect(mob));
     }
 }

@@ -24,7 +24,7 @@ public class soulmetalspear extends ThrowToolItem {
         this.velocity.setBaseValue(250).setUpgradedValue(1.0F, 250);
         this.knockback.setBaseValue(75);
         this.resilienceGain.setBaseValue(1.0F);
-        this.enchantCost = 1400;
+        this.enchantCost.setBaseValue(1400);
         this.attackXOffset = 8;
         this.attackYOffset = 8;
         this.setItemCategory("equipment", "weapons", "meleeweapons");

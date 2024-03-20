@@ -14,4 +14,9 @@ public class soulbowcooldownbuff extends Buff {
         this.isImportant = true;
         this.isVisible = true;
     }
+
+    @Override
+    public boolean isVisible(ActiveBuff buff) {
+        return !buff.owner.buffManager.hasBuff("soulbowbuff");
+    }
 }

@@ -5,6 +5,7 @@ import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
+import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.buffs.staticBuffs.Buff;
 import necesse.entity.particle.Particle;
 
@@ -19,25 +20,15 @@ public class soulbowbuff extends Buff {
         this.canCancel = false;
         this.isImportant = true;
         this.isVisible = true;
-        this.isPassive = false;
-        this.shouldSave = true;
-    }
-    private void removeSelf(ActiveBuff buff){
-        if(buff.getGndData().getInt("stacks")>=3){
-            buff.remove();
-        }
+        this.shouldSave = false;
+        buff.setModifier(BuffModifiers.RANGED_ATTACK_SPEED, 0.5F);
+        buff.setModifier(BuffModifiers.PROJECTILE_VELOCITY, 0.5F);
+        buff.setModifier(BuffModifiers.POISON_DAMAGE_FLAT, 0.1F);
+        buff.setModifier(BuffModifiers.ARROW_USAGE, -1.0F);
     }
 
-    @Override
-    public void serverTick(ActiveBuff buff) {
-        super.serverTick(buff);
-        removeSelf(buff);
-    }
-
-    @Override
     public void clientTick(ActiveBuff buff) {
         super.clientTick(buff);
-        removeSelf(buff);
         Color color = new Color(51, 147, 255);
         if (buff.owner.isVisible()) {
             Mob owner = buff.owner;

@@ -23,20 +23,17 @@ public class soulcavernbiome extends Biome {
     public MobSpawnTable getCritterSpawnTable(Level level) {
         return critters;
     }
-    @Override
     public MobSpawnTable getMobSpawnTable(Level level) {
         return mobs;
     }
     public LootTable getExtraMobDrops(Mob mob) {
         if (mob.isHostile && !mob.isBoss() && !mob.isSummoned) {
-            if (mob.getLevel().getIslandDimension() == -2) {
-                return new LootTable(new ChanceLootItem(0.05F, "soulsigil"), super.getExtraMobDrops(mob));
-            }
+            return new LootTable(new ChanceLootItem(0.015F, "soulsigil"), super.getExtraMobDrops(mob));
         }
         return super.getExtraMobDrops(mob);
     }
     static {
         critters = (new MobSpawnTable()).add(25, "soulcavecaveling").add(100, "wisp");
-        mobs = (new MobSpawnTable()).add(80, "lostsoul").add(80, "soulmage").add(20, "soulpillar").add(10, "possesedstatue");
+        mobs = (new MobSpawnTable()).add(80, "lostsoul").add(80, "soulmage").add(40, "soulpillar").add(10, "possesedstatue");
     }
 }

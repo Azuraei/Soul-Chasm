@@ -306,6 +306,7 @@ public class SoulChasm {
         soulcavecaveling.texture_front = GameTexture.fromFile("mobs/soulcavecaveling_front");
         souldragonhead.texture = GameTexture.fromFile("mobs/souldragon");
         souldragonbody.texture = GameTexture.fromFile("mobs/souldragon");
+        souldeathmarkstackbuff.skullTexture = GameTexture.fromFile("particles/skullTexture.png");
 
         //TextureSections
         GameTexture flamethrowerParticleTexture = GameTexture.fromFile("particles/soulfiresparks");

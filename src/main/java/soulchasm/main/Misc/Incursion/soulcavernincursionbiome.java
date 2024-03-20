@@ -29,27 +29,25 @@ public class soulcavernincursionbiome extends IncursionBiome {
         super("souldragonhead");
     }
 
-    public Collection<Item> getExtractionItems() {
+    public Collection<Item> getExtractionItems(IncursionData incursionData) {
         return Collections.singleton(ItemRegistry.getItem("crystalizedsouloreitem"));
     }
 
-    public LootTable getHuntDrop() {
+    public LootTable getHuntDrop(IncursionData incursionData) {
         return new LootTable(new ChanceLootItem(0.8F, "soulcoreitem"));
     }
 
-    public LootTable getBossDrop() {
+    public LootTable getBossDrop(IncursionData incursionData) {
         return new LootTable(LootItem.between("soulessence", 20, 25), new LootItemInterface() {
             public void addPossibleLoot(LootList list, Object... extra) {
-                list.add("gatewaytablet");
+                InventoryItem gatewayTablet = new InventoryItem("gatewaytablet");
+                gatewayTablet.getGndData().setInt("displayTier", soulcavernincursionbiome.this.increaseTabletTierByX(incursionData.getTabletTier(), 1));
+                list.addCustom(gatewayTablet);
             }
+
             public void addItems(List<InventoryItem> list, GameRandom random, float lootMultiplier, Object... extra) {
                 InventoryItem gatewayTablet = new InventoryItem("gatewaytablet");
-                int tier = soulcavernincursionbiome.this.tierLevel + 1;
-                if (tier > 3) {
-                    tier = 3;
-                }
-
-                GatewayTabletItem.initializeGatewayTablet(gatewayTablet, random, tier);
+                GatewayTabletItem.initializeGatewayTablet(gatewayTablet, random, soulcavernincursionbiome.this.increaseTabletTierByX(incursionData.getTabletTier(), 1));
                 list.add(gatewayTablet);
             }
         });

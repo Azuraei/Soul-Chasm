@@ -2,7 +2,10 @@ package soulchasm.main.Mobs.Agressive;
 
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
-import necesse.entity.mobs.*;
+import necesse.entity.mobs.GameDamage;
+import necesse.entity.mobs.Mob;
+import necesse.entity.mobs.MobDrawable;
+import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
 import necesse.entity.mobs.ai.behaviourTree.trees.PlayerChaserWandererAI;
 import necesse.entity.mobs.hostile.HostileMob;
@@ -79,7 +82,7 @@ public class soulmage extends HostileMob {
         Point sprite = this.getAnimSprite(x, y, this.dir);
         drawY += this.getBobbing(x, y);
         drawY += this.getLevel().getTile(x / 32, y / 32).getMobSinkingAmount(this);
-        HumanDrawOptions humanDrawOptions = (new HumanDrawOptions(new HumanTexture(texture, texture, texture))).sprite(sprite).dir(this.dir).light(light);
+        HumanDrawOptions humanDrawOptions = (new HumanDrawOptions(level)).sprite(sprite).dir(this.dir).light(light);
         float animProgress = this.getAttackAnimProgress();
         if (this.isAttacking) {
             ItemAttackDrawOptions attackOptions = ItemAttackDrawOptions.start(this.dir).itemSprite(texture, 0, 9, 32).itemRotatePoint(3, 3).itemEnd().armSprite(texture, 0, 8, 32).swingRotation(animProgress).light(light);

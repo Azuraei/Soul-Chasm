@@ -32,7 +32,7 @@ public class soulrevolverprojectile extends BulletProjectile {
     public void doHitLogic(Mob mob, LevelObjectHit object, float x, float y) {
         if (this.getLevel().isServer()) {
             if (mob != null) {
-                mob.buffManager.addBuff(new ActiveBuff("souldeathmarkstackbuff", mob, 10F, this.getAttackOwner()), true);
+                mob.buffManager.addBuff(new ActiveBuff("souldeathmarkstackbuff", mob, 6F, this.getAttackOwner()), true);
             }
         }
     }

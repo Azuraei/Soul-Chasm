@@ -15,50 +15,44 @@ import necesse.entity.particle.ParticleOption;
 import necesse.entity.particle.fireworks.FireworksExplosion;
 import necesse.entity.particle.fireworks.FireworksPath;
 import necesse.gfx.GameResources;
+import necesse.gfx.gameTexture.GameTexture;
 
 import java.awt.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class souldeathmarkstackbuff extends Buff {
     public static FireworksExplosion piercerPopExplosion;
-    private int currentStacksPrivate;
+    public static GameTexture skullTexture;
     public souldeathmarkstackbuff() {
+    }
+
+    public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
+        this.canCancel = false;
+        this.isVisible =  false;
         this.isImportant = false;
     }
 
-    @Override
     public boolean overridesStackDuration() {
         return true;
     }
 
-    @Override
     public int getStackSize() {
-        return 4;
+        return 3;
     }
 
-    public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
-        buff.setModifier(BuffModifiers.INCOMING_DAMAGE_MOD, 1F);
-        this.canCancel = false;
-        this.isVisible =  false;
-    }
-
-    @Override
     public void onWasHit(ActiveBuff buff, MobWasHitEvent event) {
         super.onWasHit(buff, event);
-        if(currentStacksPrivate + 1 >= 4 && event.attacker!=null && event.attacker.getAttackOwner().isPlayer){
-            event.target.buffManager.addBuff(new ActiveBuff("souldeathmarkstackbuff", event.target, 10F, event.attacker), event.target.getLevel().isServer());
+        if(!event.wasPrevented && buff.owner.getLevel().isClient() && buff.owner.buffManager.getStacks(buff.buff)==3){
+            showEffect(buff);
         }
     }
 
     private void updateBuff(ActiveBuff buff) {
-        int currentStacks;
-        currentStacks = buff.owner.buffManager.getStacks(buff.buff);
-        buff.setModifier(BuffModifiers.INCOMING_DAMAGE_MOD, currentStacks == 3 ? (1.5F) : 1F);
-        currentStacksPrivate = currentStacks;
-        if(buff.owner.buffManager.getStacks(buff.buff)>=4){
-            showEffect(buff);
-            buff.owner.buffManager.removeBuff("souldeathmarkstackbuff", false);
-        }
+        int currentStacks = buff.owner.buffManager.getStacks(buff.buff);
+        boolean stackCheck = currentStacks>=3;
+        buff.setModifier(BuffModifiers.INCOMING_DAMAGE_MOD, stackCheck ? 1.25F : 1F);
+        buff.setModifier(BuffModifiers.POISON_DAMAGE_FLAT, stackCheck ? 0.5F : 0F);
+        buff.setModifier(BuffModifiers.SLOW, stackCheck ? 0.5F : 0F);
         buff.forceManagerUpdate();
     }
 
@@ -72,7 +66,6 @@ public class souldeathmarkstackbuff extends Buff {
         Color color2 = new Color(0x0057B6);
         Color color3 = new Color(0x3393FF);
         Color currentColor;
-
         if (buff.owner.isVisible()) {
             Mob owner = buff.owner;
             AtomicReference<Float> currentAngle = new AtomicReference<>(GameRandom.globalRandom.nextFloat() * 360.0F);
@@ -96,6 +89,9 @@ public class souldeathmarkstackbuff extends Buff {
                 pos.x = owner.x + GameMath.sin(angle) * distance;
                 pos.y = owner.y + GameMath.cos(angle) * distY * 0.75F;
             }).lifeTime(1000).sizeFades(16, 24);
+            if(distance == 20.0F){
+                skullTexture.initDraw().draw(buff.owner.getX(), buff.owner.getY() - 64);
+            }
         }
         this.updateBuff(buff);
     }

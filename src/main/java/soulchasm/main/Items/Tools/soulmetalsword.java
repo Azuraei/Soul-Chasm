@@ -24,7 +24,6 @@ public class soulmetalsword extends SwordToolItem {
         this.attackRange.setBaseValue(90);
         this.knockback.setBaseValue(75);
         this.resilienceGain.setBaseValue(2.0F);
-        this.enchantCost = 500;
         this.attackXOffset = 8;
         this.attackYOffset = 8;
     }

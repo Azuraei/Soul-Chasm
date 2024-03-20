@@ -3,6 +3,7 @@ package soulchasm.main.Buffs.SetBonusBuffs;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.Packet;
 import necesse.engine.registries.BuffRegistry;
+import necesse.engine.util.GameBlackboard;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
@@ -37,8 +38,8 @@ public class soularmorsetbonus extends SetBonusBuff implements BuffAbility {
         return !buff.owner.buffManager.hasBuff("soularmorcooldown");
     }
 
-    @Override
-    public ListGameTooltips getTooltip(ActiveBuff ab) {
+
+    public ListGameTooltips getTooltip(ActiveBuff ab, GameBlackboard blackboard) {
         ListGameTooltips tooltips = new ListGameTooltips();
         tooltips.add(Localization.translate("itemtooltip", "soularmorsetbonus"));
         return tooltips;

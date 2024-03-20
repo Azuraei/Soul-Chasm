@@ -3,8 +3,10 @@ package soulchasm.main.Buffs.SetBonusBuffs;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
 import necesse.entity.mobs.buffs.BuffModifiers;
-import necesse.gfx.gameTooltips.ListGameTooltips;
+import necesse.inventory.item.ItemStatTip;
 import necesse.inventory.item.upgradeUtils.IntUpgradeValue;
+
+import java.util.LinkedList;
 
 public class soularmorcrownsetbonus extends soularmorsetbonus {
     public IntUpgradeValue maxSummons = (new IntUpgradeValue()).setBaseValue(2).setUpgradedValue(1.0F, 3);
@@ -16,10 +18,8 @@ public class soularmorcrownsetbonus extends soularmorsetbonus {
         buff.setModifier(BuffModifiers.MAX_SUMMONS, this.maxSummons.getValue(this.getUpgradeTier(buff)));
     }
 
-    public ListGameTooltips getTooltip(ActiveBuff ab) {
-        ListGameTooltips tooltips = new ListGameTooltips();
-        this.addAllModifierTips(tooltips, ab, false);
-        tooltips.add(super.getTooltip(ab));
-        return tooltips;
+    public void addStatTooltips(LinkedList<ItemStatTip> list, ActiveBuff currentValues, ActiveBuff lastValues) {
+        super.addStatTooltips(list, currentValues, lastValues);
+        currentValues.getModifierTooltipsBuilder(true, true).addLastValues(lastValues).buildToStatList(list);
     }
 }
