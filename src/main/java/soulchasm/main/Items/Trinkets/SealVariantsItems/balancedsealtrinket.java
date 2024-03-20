@@ -31,6 +31,7 @@ public class balancedsealtrinket extends TrinketItem {
     public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = super.getPreEnchantmentTooltips(item, perspective, blackboard);
         tooltips.add(Localization.translate("itemtooltip", "soulsealbalanced"));
+        tooltips.add(Localization.translate("itemtooltip", "soulsealsummonfragment"));
         return tooltips;
     }
 }

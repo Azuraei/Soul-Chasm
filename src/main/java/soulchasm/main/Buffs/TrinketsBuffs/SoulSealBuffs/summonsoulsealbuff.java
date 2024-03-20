@@ -1,14 +1,17 @@
 package soulchasm.main.Buffs.TrinketsBuffs.SoulSealBuffs;
 
+import necesse.engine.Screen;
 import necesse.engine.network.server.FollowPosition;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.MobRegistry;
+import necesse.engine.sound.SoundEffect;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
 import necesse.entity.mobs.buffs.staticBuffs.armorBuffs.trinketBuffs.TrinketBuff;
 import necesse.entity.mobs.summon.summonFollowingMob.attackingFollowingMob.AttackingFollowingMob;
+import necesse.gfx.GameResources;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.enchants.ToolItemEnchantment;
@@ -18,6 +21,7 @@ import necesse.level.maps.Level;
 public class summonsoulsealbuff extends TrinketBuff {
     private GameDamage attackDamage;
     private ToolItemEnchantment enchantment;
+    private AttackingFollowingMob summonedMob;
     public summonsoulsealbuff() {
     }
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
@@ -33,9 +37,20 @@ public class summonsoulsealbuff extends TrinketBuff {
                 attackDamage = ((SummonToolItem) item.item).getAttackDamage(item).modDamage(1.2F);
                 enchantment = ((SummonToolItem) item.item).getEnchantment(item);
                 PlayerMob playerMob = (PlayerMob) buff.owner;
-                runSummon(buff.owner.getLevel(), playerMob.getServerClient());
+                if(playerMob.getServerClient().getFollowerCount("summonsealfollower")==0){
+                    runSummon(buff.owner.getLevel(), playerMob.getServerClient());
+                    playSound(false, summonedMob);
+                } else if(summonedMob!=null) {
+                    playSound(true, summonedMob);
+                    summonedMob.updateDamage(attackDamage);
+                    summonedMob.setEnchantment(enchantment);
+                }
             }
         }
+    }
+
+    private void playSound(boolean onUpdate, AttackingFollowingMob mob){
+        Screen.playSound(onUpdate ? GameResources.fadedeath3 : GameResources.magicbolt4, SoundEffect.effect(mob).volume(0.5F).pitch(onUpdate ? 1.2F : 1.0F));
     }
 
     @Override
@@ -47,13 +62,13 @@ public class summonsoulsealbuff extends TrinketBuff {
         super.onRemoved(buff);
     }
 
-
     public void runSummon(Level level, ServerClient client) {
         AttackingFollowingMob mob = (AttackingFollowingMob) MobRegistry.getMob("smallsoulsummon", level);
         this.summonMob(client, mob);
     }
     public void summonMob(ServerClient client, AttackingFollowingMob mob) {
         int offset = 65;
+        summonedMob = mob;
         client.addFollower("summonsealfollower", mob, FollowPosition.newFlying(0, -offset, 1, 1), "soulsealfollowerbuff", 1.0F, 1, null, false);
         mob.updateDamage(attackDamage);
         mob.setEnchantment(enchantment);

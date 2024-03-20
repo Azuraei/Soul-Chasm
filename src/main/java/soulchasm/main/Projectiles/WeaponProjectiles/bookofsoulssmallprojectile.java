@@ -52,7 +52,7 @@ public class bookofsoulssmallprojectile extends FollowingProjectile {
 
     public void init() {
         super.init();
-        this.turnSpeed = 0.2F;
+        this.turnSpeed = 0.1F;
         this.givesLight = true;
         this.trailOffset = -8.0F;
         this.clearTargetPosWhenAligned = true;

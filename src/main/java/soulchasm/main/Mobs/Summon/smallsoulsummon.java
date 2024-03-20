@@ -1,6 +1,9 @@
 package soulchasm.main.Mobs.Summon;
 
+import necesse.engine.Screen;
+import necesse.engine.sound.SoundEffect;
 import necesse.engine.tickManager.TickManager;
+import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
@@ -9,6 +12,8 @@ import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
 import necesse.entity.mobs.ai.behaviourTree.leaves.CooldownAttackTargetAINode;
 import necesse.entity.mobs.ai.behaviourTree.util.FlyingAIMover;
 import necesse.entity.mobs.summon.summonFollowingMob.attackingFollowingMob.FlyingAttackingFollowingMob;
+import necesse.entity.particle.Particle;
+import necesse.gfx.GameResources;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.DrawOptions;
 import necesse.gfx.drawables.OrderableDrawables;
@@ -53,8 +58,16 @@ public class smallsoulsummon extends FlyingAttackingFollowingMob {
     }
 
     public boolean canBePushed(Mob other) {return false;}
+    public void spawnDeathParticles(float knockbackX, float knockbackY) {
+        for(int i = 0; i < 30; ++i) {
+            this.getLevel().entityManager.addParticle(this.x, this.y, Particle.GType.IMPORTANT_COSMETIC).movesConstant((float)(GameRandom.globalRandom.getIntBetween(5, 20) * (GameRandom.globalRandom.nextBoolean() ? -1 : 1)), (float)(GameRandom.globalRandom.getIntBetween(5, 20) * (GameRandom.globalRandom.nextBoolean() ? -1 : 1))).color(new Color(0, 170, 242));
+        }
+    }
     @Override
-    protected void playDeathSound() {}
+    protected void playDeathSound() {
+        Screen.playSound(GameResources.fadedeath3, SoundEffect.effect(this).volume(0.2F).pitch(1.1F));
+    }
+
 
     protected void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
         super.addDrawables(list, tileList, topList, level, x, y, tickManager, camera, perspective);

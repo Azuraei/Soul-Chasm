@@ -120,7 +120,7 @@ public class soulmetalbow extends BowProjectileToolItem implements ItemInteractA
             return this.getProjectile(level, x, y, owner, item, seed, arrow, consumeAmmo, velocity, range, damage, knockback, resilienceGain, contentReader);
         }
     }
-    @Override
+
     public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
         boolean altFire = item.getGndData().getBoolean("altFireActive");
         if(altFire){

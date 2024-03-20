@@ -95,6 +95,7 @@ public class SoulChasm {
     public static GameTextureSection particleFlamethrowerSection;
     public static GameTextureSection particleFireflySection;
     public static GameTextureSection particleWispSection;
+    public static GameTextureSection particleBookSection;
     public static GameTextureSection particlePhantomBodySection;
     public static int REROLL_STATION_CONTAINER;
 
@@ -316,6 +317,9 @@ public class SoulChasm {
         GameTexture wispParticleTexture = GameTexture.fromFile("particles/wispparticle");
         particleWispSection = GameResources.particlesTextureGenerator.addTexture(wispParticleTexture);
 
+        GameTexture bookParticleTexture = GameTexture.fromFile("particles/bookparticle");
+        particleBookSection = GameResources.particlesTextureGenerator.addTexture(bookParticleTexture);
+
         GameTexture phantomBodyParticleTexture = GameTexture.fromFile("particles/phantombody");
         particlePhantomBodySection = GameResources.particlesTextureGenerator.addTexture(phantomBodyParticleTexture);
 
@@ -336,13 +340,14 @@ public class SoulChasm {
         //SHRINE MONUMENT LOOT
         soulcavemonumentshrineloottable = new LootTable(new LootItemList(
                 new OneOfLootItems(
-                        new ChanceLootItem(0.8F,"soulsigil"),
-                        new ChanceLootItem(0.5F,"phantomfeathertrinket"),
-                        new ChanceLootItem(0.5F,"soulstealertrinket"),
-                        new ChanceLootItem(0.5F,"pickaxeheadtrinket"),
-                        new ChanceLootItem(0.05F,"soularmorhelmet"),
-                        new ChanceLootItem(0.05F,"soularmorcrown"),
-                        new ChanceLootItem(0.2F,"soulmetalsword")
+                        new ChanceLootItem(0.9F,"soulsigil"),
+                        new ChanceLootItem(0.6F,"phantomfeathertrinket"),
+                        new ChanceLootItem(0.6F,"soulstealertrinket"),
+                        new ChanceLootItem(0.6F,"pickaxeheadtrinket"),
+                        new ChanceLootItem(0.1F,"soularmorhelmet"),
+                        new ChanceLootItem(0.1F,"soularmorcrown"),
+                        new ChanceLootItem(0.5F,"soulmetalsword"),
+                        new ChanceLootItem(0.05F, "carkeys")
                 )
         ));
 
@@ -357,7 +362,7 @@ public class SoulChasm {
                         new LootItem("soulstealertrinket"),
                         new LootItem("pickaxeheadtrinket")
                 ),
-                new ChanceLootItem(0.05F, "carkeys")
+                new ChanceLootItem(0.08F, "carkeys")
         ));
 
         //CAVE RUINS LOOT
@@ -372,8 +377,8 @@ public class SoulChasm {
         LootItemList dragon_loot_list = new LootItemList(
                 LootItem.between("soulcoreitem", 10, 20),
                 LootItem.between("souldragonscales", 15, 20),
-                new ChanceLootItem(0.08F, "soulscythe")
-
+                new ChanceLootItem(0.05F, "soulscythe"),
+                new ChanceLootItem(0.08F, "carkeys")
         );
         souldragonhead.lootTable = new LootTable(dragon_loot_list);
 
@@ -382,9 +387,9 @@ public class SoulChasm {
 
         //STATUE_LOOT
         LootItemList statue_loot_list = new LootItemList(
-                new ChanceLootItem(0.01F,"soularmorboots"),
-                new ChanceLootItem(0.01F,"soularmorchestplate"),
-                new ChanceLootItem(0.01F,"soularmorhelmet")
+                new ChanceLootItem(0.02F,"soularmorboots"),
+                new ChanceLootItem(0.02F,"soularmorchestplate"),
+                new ChanceLootItem(0.02F,"soularmorhelmet")
         );
         possesedstatue.lootTable = new LootTable(statue_loot_list);
 

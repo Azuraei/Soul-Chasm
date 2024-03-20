@@ -66,12 +66,12 @@ public class bookofsoulsmainprojectile extends FollowingProjectile {
     }
 
     private void spawnBreakParticles(Level level, float x, float y){
-        for(int i = 0; i < 40; ++i) {
+        for(int i = 0; i < 35; ++i) {
             int angle = GameRandom.globalRandom.nextInt(360);
             Point2D.Float dir = GameMath.getAngleDir((float)angle);
-            level.entityManager.addParticle(x, y, Particle.GType.COSMETIC).sprite(SoulChasm.particleWispSection).fadesAlpha(0.2F, 0.8F).size((options, lifeTime, timeAlive, lifePercent) -> {
-            }).height(18.0F).movesConstant((float)GameRandom.globalRandom.getIntBetween(10, 40) * dir.x, (float)GameRandom.globalRandom.getIntBetween(10, 40) * dir.y).sizeFades(20, 10).modify((options, lifeTime, timeAlive, lifePercent) -> {
-            }).lifeTime(800);
+            level.entityManager.addParticle(x, y, Particle.GType.COSMETIC).sprite(SoulChasm.particleBookSection).fadesAlpha(1.0F, 0.8F).fadesAlphaTime(0, 800).size((options, lifeTime, timeAlive, lifePercent) -> {
+            }).height(12.0F).movesConstant((float)GameRandom.globalRandom.getIntBetween(15, 30) * dir.x, (float)GameRandom.globalRandom.getIntBetween(15, 30) * dir.y).sizeFades(22, 12).modify((options, lifeTime, timeAlive, lifePercent) -> {
+            }).lifeTime(850);
         }
     }
 
