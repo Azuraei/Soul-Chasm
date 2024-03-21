@@ -8,6 +8,7 @@ import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
+import necesse.entity.mobs.MobSpawnLocation;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
 import necesse.entity.mobs.ai.behaviourTree.leaves.EmptyAINode;
@@ -70,10 +71,10 @@ public class firefly extends CritterMob {
     public void spawnDamageText(int dmg, int size, boolean isCrit) {}
 
     public boolean isValidSpawnLocation(Server server, ServerClient client, int targetX, int targetY) {
-        if (!this.getLevel().getServer().world.worldEntity.isNight()){
+        if (!this.getLevel().getServer().world.worldEntity.isNight() || this.getLevel().getServer()==null) {
             return false;
         } else {
-            return super.isValidSpawnLocation(server, client, targetX, targetY);
+            return (new MobSpawnLocation(this, targetX, targetY)).checkLightThreshold(client).checkMobSpawnLocation().validAndApply();
         }
     }
 
