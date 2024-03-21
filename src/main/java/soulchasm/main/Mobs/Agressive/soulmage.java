@@ -2,10 +2,7 @@ package soulchasm.main.Mobs.Agressive;
 
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
-import necesse.entity.mobs.GameDamage;
-import necesse.entity.mobs.Mob;
-import necesse.entity.mobs.MobDrawable;
-import necesse.entity.mobs.PlayerMob;
+import necesse.entity.mobs.*;
 import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
 import necesse.entity.mobs.ai.behaviourTree.trees.PlayerChaserWandererAI;
 import necesse.entity.mobs.hostile.HostileMob;
@@ -16,7 +13,6 @@ import necesse.gfx.drawOptions.DrawOptions;
 import necesse.gfx.drawOptions.human.HumanDrawOptions;
 import necesse.gfx.drawOptions.itemAttack.ItemAttackDrawOptions;
 import necesse.gfx.drawables.OrderableDrawables;
-import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
@@ -27,7 +23,7 @@ import java.util.List;
 
 public class soulmage extends HostileMob {
     public static LootTable lootTable = new LootTable();
-    public static GameTexture texture;
+    public static HumanTexture texture;
 
     public soulmage() {
         super(450);
@@ -69,7 +65,7 @@ public class soulmage extends HostileMob {
 
     public void spawnDeathParticles(float knockbackX, float knockbackY) {
         for(int i = 0; i < 4; ++i) {
-            this.getLevel().entityManager.addParticle(new FleshParticle(this.getLevel(), texture, GameRandom.globalRandom.nextInt(5), 8, 32, this.x, this.y, 10.0F, knockbackX, knockbackY), Particle.GType.IMPORTANT_COSMETIC);
+            this.getLevel().entityManager.addParticle(new FleshParticle(this.getLevel(), texture.body, GameRandom.globalRandom.nextInt(5), 8, 32, this.x, this.y, 10.0F, knockbackX, knockbackY), Particle.GType.IMPORTANT_COSMETIC);
         }
 
     }
@@ -82,10 +78,10 @@ public class soulmage extends HostileMob {
         Point sprite = this.getAnimSprite(x, y, this.dir);
         drawY += this.getBobbing(x, y);
         drawY += this.getLevel().getTile(x / 32, y / 32).getMobSinkingAmount(this);
-        HumanDrawOptions humanDrawOptions = (new HumanDrawOptions(level)).sprite(sprite).dir(this.dir).light(light);
+        HumanDrawOptions humanDrawOptions = (new HumanDrawOptions(level, texture)).sprite(sprite).dir(this.dir).light(light);
         float animProgress = this.getAttackAnimProgress();
         if (this.isAttacking) {
-            ItemAttackDrawOptions attackOptions = ItemAttackDrawOptions.start(this.dir).itemSprite(texture, 0, 9, 32).itemRotatePoint(3, 3).itemEnd().armSprite(texture, 0, 8, 32).swingRotation(animProgress).light(light);
+            ItemAttackDrawOptions attackOptions = ItemAttackDrawOptions.start(this.dir).itemSprite(texture.body, 0, 9, 32).itemRotatePoint(3, 3).itemEnd().armSprite(texture.body, 0, 8, 32).swingRotation(animProgress).light(light);
             humanDrawOptions.attackAnim(attackOptions, animProgress);
         }
 

@@ -21,9 +21,9 @@ public class soulbowbuff extends Buff {
         this.isImportant = true;
         this.isVisible = true;
         this.shouldSave = false;
-        buff.setModifier(BuffModifiers.RANGED_ATTACK_SPEED, 0.5F);
+        buff.setModifier(BuffModifiers.RANGED_ATTACK_SPEED, 1.0F);
         buff.setModifier(BuffModifiers.PROJECTILE_VELOCITY, 0.5F);
-        buff.setModifier(BuffModifiers.POISON_DAMAGE_FLAT, 0.1F);
+        buff.setModifier(BuffModifiers.POISON_DAMAGE_FLAT, 4.0F);
         buff.setModifier(BuffModifiers.ARROW_USAGE, -1.0F);
     }
 

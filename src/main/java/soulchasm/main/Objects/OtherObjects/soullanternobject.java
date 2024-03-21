@@ -1,6 +1,5 @@
 package soulchasm.main.Objects.OtherObjects;
 
-import necesse.engine.localization.Localization;
 import necesse.engine.tickManager.TickManager;
 import necesse.entity.mobs.PlayerMob;
 import necesse.gfx.camera.GameCamera;
@@ -8,7 +7,6 @@ import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.LevelSortedDrawable;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
-import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.ToolType;
 import necesse.inventory.lootTable.LootTable;
@@ -20,7 +18,6 @@ import necesse.level.maps.light.GameLight;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class soullanternobject extends GameObject {
     public static GameTexture texture;
@@ -59,20 +56,16 @@ public class soullanternobject extends GameObject {
         GameLight light = level.getLightLevel(tileX, tileY);
         int drawX = camera.getTileDrawX(tileX);
         int drawY = camera.getTileDrawY(tileY) + 5;
-        int minLight = 100;
-        TextureDrawOptions options = texture.initDraw().light(light).pos(drawX, drawY - (texture.getHeight() - 16));
-        TextureDrawOptions glow = texture.initDraw().light(light.minLevelCopy((float)minLight)).pos(drawX, drawY - (texture.getHeight() - 16));
+        int active = this.isActive(level, tileX, tileY) ? 0 : 1;
+        TextureDrawOptions options = texture.initDraw().sprite(active, 0, 32).light(light).pos(drawX, drawY - (texture.getHeight() - 16));
 
         list.add(new LevelSortedDrawable(this, tileX, tileY) {
-            @Override
             public int getSortY() {
                 return 16;
             }
 
-            @Override
             public void draw(TickManager tickManager) {
                 options.draw();
-                glow.draw();
             }
         });
     }
@@ -84,6 +77,17 @@ public class soullanternobject extends GameObject {
     }
 
     public int getLightLevel(Level level, int x, int y) {
-        return this.lightLevel;
+        return this.isActive(level, x, y) ? this.lightLevel : 0;
+    }
+
+    public boolean isActive(Level level, int x, int y) {
+        byte rotation = level.getObjectRotation(x, y);
+        return this.getMultiTile(rotation).streamIDs(x, y).noneMatch((c) -> level.wireManager.isWireActiveAny(c.tileX, c.tileY));
+    }
+
+    public void onWireUpdate(Level level, int x, int y, int wireID, boolean active) {
+        byte rotation = level.getObjectRotation(x, y);
+        Rectangle rect = this.getMultiTile(rotation).getTileRectangle(x, y);
+        level.lightManager.updateStaticLight(rect.x, rect.y, rect.x + rect.width - 1, rect.y + rect.height - 1, true);
     }
 }

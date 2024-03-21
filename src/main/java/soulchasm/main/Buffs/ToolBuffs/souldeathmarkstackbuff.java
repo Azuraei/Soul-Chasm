@@ -15,6 +15,7 @@ import necesse.entity.particle.ParticleOption;
 import necesse.entity.particle.fireworks.FireworksExplosion;
 import necesse.entity.particle.fireworks.FireworksPath;
 import necesse.gfx.GameResources;
+import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.gameTexture.GameTexture;
 
 import java.awt.*;
@@ -50,8 +51,9 @@ public class souldeathmarkstackbuff extends Buff {
     private void updateBuff(ActiveBuff buff) {
         int currentStacks = buff.owner.buffManager.getStacks(buff.buff);
         boolean stackCheck = currentStacks>=3;
-        buff.setModifier(BuffModifiers.INCOMING_DAMAGE_MOD, stackCheck ? 1.25F : 1F);
-        buff.setModifier(BuffModifiers.POISON_DAMAGE_FLAT, stackCheck ? 0.5F : 0F);
+        buff.setModifier(BuffModifiers.INCOMING_DAMAGE_MOD, stackCheck ? 1.3F : 1F);
+        buff.setModifier(BuffModifiers.ARMOR, stackCheck ? -0.25F : 1F);
+        buff.setModifier(BuffModifiers.POISON_DAMAGE_FLAT, stackCheck ? 50.0F : 0F);
         buff.setModifier(BuffModifiers.SLOW, stackCheck ? 0.5F : 0F);
         buff.forceManagerUpdate();
     }
@@ -90,7 +92,8 @@ public class souldeathmarkstackbuff extends Buff {
                 pos.y = owner.y + GameMath.cos(angle) * distY * 0.75F;
             }).lifeTime(1000).sizeFades(16, 24);
             if(distance == 20.0F){
-                skullTexture.initDraw().draw(buff.owner.getX(), buff.owner.getY() - 64);
+                TextureDrawOptions options = skullTexture.initDraw().pos(buff.owner.getDrawX(), buff.owner.getDrawY() - 64);
+                options.draw();
             }
         }
         this.updateBuff(buff);

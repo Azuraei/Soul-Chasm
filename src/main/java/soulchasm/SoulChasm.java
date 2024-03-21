@@ -2,6 +2,7 @@ package soulchasm;
 
 import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.registries.*;
+import necesse.entity.mobs.HumanTexture;
 import necesse.gfx.GameResources;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTexture.GameTextureSection;
@@ -299,7 +300,8 @@ public class SoulChasm {
         firefly.texture = GameTexture.fromFile("mobs/firefly");
         soulpillar.texture = GameTexture.fromFile("mobs/soulpillar");
         soulpillar.glow = GameTexture.fromFile("mobs/soulpillar_glow");
-        soulmage.texture = GameTexture.fromFile("mobs/soulmage");
+        GameTexture soulmageTexture = GameTexture.fromFile("mobs/soulmage");
+        soulmage.texture = new HumanTexture(soulmageTexture,soulmageTexture,soulmageTexture);
         smallsoulsummon.texture = GameTexture.fromFile("mobs/smallsoul");
         soulcavecaveling.texture = GameTexture.fromFile("mobs/soulcavecaveling");
         soulcavecaveling.texture_back = GameTexture.fromFile("mobs/soulcavecaveling_back");

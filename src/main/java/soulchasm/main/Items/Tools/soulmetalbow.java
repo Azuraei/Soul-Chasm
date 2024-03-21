@@ -5,6 +5,7 @@ import necesse.engine.network.PacketReader;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.registries.ProjectileRegistry;
 import necesse.engine.util.GameBlackboard;
+import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
@@ -17,6 +18,8 @@ import necesse.inventory.item.ItemInteractAction;
 import necesse.inventory.item.arrowItem.ArrowItem;
 import necesse.inventory.item.toolItem.projectileToolItem.bowProjectileToolItem.BowProjectileToolItem;
 import necesse.level.maps.Level;
+
+import java.util.Random;
 
 public class soulmetalbow extends BowProjectileToolItem implements ItemInteractAction {
     public soulmetalbow() {
@@ -54,15 +57,17 @@ public class soulmetalbow extends BowProjectileToolItem implements ItemInteractA
         int knockback = arrow.modKnockback(this.getKnockback(item, owner));
         float resilienceGain = this.getResilienceGain(item);
         if (altFire) {
-            return ProjectileRegistry.getProjectile("soularrowprojectile", level, owner.x, owner.y, (float) x, (float) y, velocity, range, damage, knockback, owner);
-        }else {
+            int randomPosX = GameRandom.getIntBetween(new Random(), -25, 25);
+            int randomPosY = GameRandom.getIntBetween(new Random(), -25, 25);
+            return ProjectileRegistry.getProjectile("soularrowprojectile", level, owner.x + randomPosX, owner.y + randomPosY, (float) x + randomPosX, (float) y + randomPosY, velocity, range, damage, knockback, owner);
+        }  else {
             return this.getProjectile(level, x, y, owner, item, seed, arrow, consumeAmmo, velocity, range, damage, knockback, resilienceGain, contentReader);
         }
     }
 
     public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = super.getPreEnchantmentTooltips(item, perspective, blackboard);
-        tooltips.add(Localization.translate("itemtooltip", "soulmetalbowtip"));
+        tooltips.add(Localization.translate("itemtooltip", "soulmetalbowtip"),400);
         return tooltips;
     }
 }

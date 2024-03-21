@@ -4,7 +4,6 @@ import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
-import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.buffs.staticBuffs.armorBuffs.trinketBuffs.TrinketBuff;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
@@ -29,7 +28,7 @@ public class rangesoulsealbuff extends TrinketBuff {
         if (level.isServer()) {
             if (item.item instanceof BowProjectileToolItem) {
                 GameDamage finalDamage = ((BowProjectileToolItem) item.item).getAttackDamage(item).modFinalMultiplier(0.6F);
-                float velocity = 200.0F * player.buffManager.getModifier(BuffModifiers.PROJECTILE_VELOCITY);
+                float velocity = ((BowProjectileToolItem) item.item).getProjectileVelocity(item, player);
                 soularrowprojectile projectile = new soularrowprojectile(level, player, player.x, player.y, (float) targetX, (float) targetY, velocity, 800, finalDamage, 20);
                 projectile.moveDist(10);
                 level.entityManager.projectiles.add(projectile);
