@@ -69,7 +69,6 @@ public class firefly extends CritterMob {
     protected void playHitSound() {}
     public void spawnDamageText(int dmg, int size, boolean isCrit) {}
 
-    @Override
     public boolean isValidSpawnLocation(Server server, ServerClient client, int targetX, int targetY) {
         if (!this.getLevel().getServer().world.worldEntity.isNight()){
             return false;

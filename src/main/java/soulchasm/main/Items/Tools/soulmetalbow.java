@@ -4,6 +4,7 @@ import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.util.GameBlackboard;
+import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
@@ -19,7 +20,7 @@ import necesse.inventory.item.toolItem.projectileToolItem.bowProjectileToolItem.
 import necesse.level.maps.Level;
 import soulchasm.main.Projectiles.SealProjectiles.soularrowprojectile;
 
-import java.util.Random;
+import java.awt.geom.Point2D;
 
 public class soulmetalbow extends BowProjectileToolItem implements ItemInteractAction {
     public soulmetalbow() {
@@ -57,9 +58,14 @@ public class soulmetalbow extends BowProjectileToolItem implements ItemInteractA
         int knockback = arrow.modKnockback(this.getKnockback(item, owner));
         float resilienceGain = this.getResilienceGain(item);
         if (altFire) {
-            int randomPosX = GameRandom.getIntBetween(new Random(), -20, 20);
-            int randomPosY = GameRandom.getIntBetween(new Random(), -20, 20);
-            return new soularrowprojectile(level, owner, owner.x + randomPosX, owner.y + randomPosY, (float) x + randomPosX * 1.5F, (float) y + randomPosY * 1.5F, velocity, range, damage, knockback);
+            GameRandom random = GameRandom.globalRandom;
+            int randomPosX = GameRandom.getIntBetween(random, -10, 10);
+            int randomPosY = GameRandom.getIntBetween(random, -10, 10);
+            Point2D.Float dir = GameMath.normalize(owner.x - (float)x, owner.y - (float)y);
+            int offsetDistance = random.getIntBetween(0, 15);
+            Point2D.Float offset = new Point2D.Float(-dir.x * (float)offsetDistance, -dir.y * (float)offsetDistance);
+            offset = GameMath.getPerpendicularPoint(offset, (float)random.getIntBetween(-20, 20), dir);
+            return new soularrowprojectile(level, owner, owner.x + offset.x, owner.y + offset.y, (float) x + randomPosX, (float) y + randomPosY, velocity, range, damage, knockback);
         }  else {
             return this.getProjectile(level, x, y, owner, item, seed, arrow, consumeAmmo, velocity, range, damage, knockback, resilienceGain, contentReader);
         }
