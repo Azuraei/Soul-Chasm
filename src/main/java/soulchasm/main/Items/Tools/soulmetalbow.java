@@ -3,7 +3,6 @@ package soulchasm.main.Items.Tools;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.registries.BuffRegistry;
-import necesse.engine.registries.ProjectileRegistry;
 import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.GameDamage;
@@ -18,6 +17,7 @@ import necesse.inventory.item.ItemInteractAction;
 import necesse.inventory.item.arrowItem.ArrowItem;
 import necesse.inventory.item.toolItem.projectileToolItem.bowProjectileToolItem.BowProjectileToolItem;
 import necesse.level.maps.Level;
+import soulchasm.main.Projectiles.SealProjectiles.soularrowprojectile;
 
 import java.util.Random;
 
@@ -26,7 +26,7 @@ public class soulmetalbow extends BowProjectileToolItem implements ItemInteractA
         super(1400);
         this.rarity = Rarity.EPIC;
         this.attackAnimTime.setBaseValue(250);
-        this.attackDamage.setBaseValue(45.0F).setUpgradedValue(1.0F, 45.0F);
+        this.attackDamage.setBaseValue(50.0F).setUpgradedValue(1.0F, 50.0F);
         this.attackRange.setBaseValue(600);
         this.velocity.setBaseValue(250).setUpgradedValue(1.0F, 250);
         this.attackXOffset = 12;
@@ -57,9 +57,9 @@ public class soulmetalbow extends BowProjectileToolItem implements ItemInteractA
         int knockback = arrow.modKnockback(this.getKnockback(item, owner));
         float resilienceGain = this.getResilienceGain(item);
         if (altFire) {
-            int randomPosX = GameRandom.getIntBetween(new Random(), -25, 25);
-            int randomPosY = GameRandom.getIntBetween(new Random(), -25, 25);
-            return ProjectileRegistry.getProjectile("soularrowprojectile", level, owner.x + randomPosX, owner.y + randomPosY, (float) x + randomPosX, (float) y + randomPosY, velocity, range, damage, knockback, owner);
+            int randomPosX = GameRandom.getIntBetween(new Random(), -20, 20);
+            int randomPosY = GameRandom.getIntBetween(new Random(), -20, 20);
+            return new soularrowprojectile(level, owner, owner.x + randomPosX, owner.y + randomPosY, (float) x + randomPosX * 1.5F, (float) y + randomPosY * 1.5F, velocity, range, damage, knockback);
         }  else {
             return this.getProjectile(level, x, y, owner, item, seed, arrow, consumeAmmo, velocity, range, damage, knockback, resilienceGain, contentReader);
         }

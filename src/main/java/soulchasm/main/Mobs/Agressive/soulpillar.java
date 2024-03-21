@@ -5,11 +5,13 @@ import necesse.engine.registries.MobRegistry;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
-import necesse.entity.mobs.*;
+import necesse.entity.mobs.GameDamage;
+import necesse.entity.mobs.Mob;
+import necesse.entity.mobs.MobDrawable;
+import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
 import necesse.entity.mobs.ai.behaviourTree.trees.StationaryPlayerShooterAI;
 import necesse.entity.mobs.hostile.HostileMob;
-import necesse.entity.mobs.hostile.bosses.EvilsPortalMob;
 import necesse.entity.particle.FleshParticle;
 import necesse.entity.particle.Particle;
 import necesse.gfx.GameResources;
@@ -19,15 +21,12 @@ import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
-import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 import soulchasm.SoulChasm;
 import soulchasm.main.Projectiles.soulhomingprojectile;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class soulpillar extends HostileMob {
@@ -52,7 +51,7 @@ public class soulpillar extends HostileMob {
         this.ai = new BehaviourTreeAI<>(this, new StationaryPlayerShooterAI<soulpillar>(620) {
             public void shootTarget(soulpillar mob, Mob target) {
                 for(int i = -1; i<=1; i++){
-                    soulhomingprojectile projectile = new soulhomingprojectile(mob.getLevel(), mob, mob.x, mob.y, target.x, target.y, 60.0F, 712, new GameDamage(50.0F), 50);
+                    soulhomingprojectile projectile = new soulhomingprojectile(mob.getLevel(), mob, mob.x, mob.y, target.x, target.y, 60.0F, 712, new GameDamage(60.0F), 50);
                     projectile.turnSpeed = projectile.turnSpeed * 0.8F;
                     projectile.clearTargetPosWhenAligned = true;
                     projectile.setAngle(projectile.getAngle() + 25 * i);

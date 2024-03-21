@@ -24,7 +24,6 @@ public class soulbowbuff extends Buff {
         buff.setModifier(BuffModifiers.RANGED_ATTACK_SPEED, 1.0F);
         buff.setModifier(BuffModifiers.PROJECTILE_VELOCITY, 0.5F);
         buff.setModifier(BuffModifiers.POISON_DAMAGE_FLAT, 4.0F);
-        buff.setModifier(BuffModifiers.ARROW_USAGE, -1.0F);
     }
 
     public void clientTick(ActiveBuff buff) {
@@ -39,7 +38,7 @@ public class soulbowbuff extends Buff {
                 float distY = distance * 0.75F;
                 pos.x = owner.x + GameMath.sin(angle) * distance;
                 pos.y = owner.y + GameMath.cos(angle) * distY * 0.75F;
-            }).lifeTime(1000).sizeFades(10, 15);
+            }).lifeTime(800).sizeFades(10, 15);
         }
     }
 }

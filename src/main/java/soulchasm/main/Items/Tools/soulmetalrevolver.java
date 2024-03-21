@@ -26,7 +26,7 @@ public class soulmetalrevolver extends GunProjectileToolItem {
         super(NORMAL_AMMO_TYPES, 1400);
         this.rarity = Rarity.EPIC;
         this.attackAnimTime.setBaseValue(700);
-        this.attackDamage.setBaseValue(145.0F).setUpgradedValue(1.0F, 145.0F);
+        this.attackDamage.setBaseValue(135.0F).setUpgradedValue(1.0F, 135.0F);
         this.attackRange.setBaseValue(1200);
         this.velocity.setBaseValue(950);
         this.knockback.setBaseValue(75);

@@ -5,8 +5,8 @@ import necesse.entity.mobs.ai.behaviourTree.composites.SelectorAINode;
 import necesse.entity.mobs.ai.behaviourTree.composites.SequenceAINode;
 import necesse.entity.mobs.ai.behaviourTree.leaves.*;
 
-public abstract class PlayerFlyingFollowerShooterAI<T extends Mob> extends SelectorAINode<T> {
-    public PlayerFlyingFollowerShooterAI(int searchDistance, CooldownAttackTargetAINode.CooldownTimer cooldownTimer, int shootCooldown, int shootDistance, int teleportDistance, int stoppingDistance) {
+public abstract class playerflyingfollowershooterAI<T extends Mob> extends SelectorAINode<T> {
+    public playerflyingfollowershooterAI(int searchDistance, CooldownAttackTargetAINode.CooldownTimer cooldownTimer, int shootCooldown, int shootDistance, int teleportDistance, int stoppingDistance) {
 
         SequenceAINode<T> chaserSequence = new SequenceAINode();
         chaserSequence.addChild(new FollowerBaseSetterAINode());
@@ -15,7 +15,7 @@ public abstract class PlayerFlyingFollowerShooterAI<T extends Mob> extends Selec
         chaserSequence.addChild(targetFinder);
         chaserSequence.addChild(new CooldownAttackTargetAINode<T>(cooldownTimer, shootCooldown, shootDistance) {
             public boolean attackTarget(T mob, Mob target) {
-                return PlayerFlyingFollowerShooterAI.this.shootAtTarget(mob, target);
+                return playerflyingfollowershooterAI.this.shootAtTarget(mob, target);
             }
         });
         this.addChild(chaserSequence);

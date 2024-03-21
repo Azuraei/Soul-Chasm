@@ -76,7 +76,7 @@ public class soularrowprojectile extends Projectile {
             FireworksExplosion explosion = new FireworksExplosion(FireworksPath.sphere((float) GameRandom.globalRandom.getIntBetween(range - 10, range)));
             explosion.colorGetter = (particle, progress, random) -> ParticleOption.randomizeColor(240.0F, 0.5F, 0.4F, 10.0F, 0.1F, 0.1F);
             explosion.trailChance = 0.5F;
-            explosion.particles = 50;
+            explosion.particles = 25;
             explosion.lifetime = 400;
             explosion.popOptions = piercerPopExplosion;
             explosion.particleLightHue = 230.0F;

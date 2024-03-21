@@ -81,7 +81,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         this.movementUpdateCooldown = 100;
         this.movePosTolerance = 400.0F;
         this.setSpeed(150F);
-        this.setArmor(40);
+        this.setArmor(50);
         this.accelerationMod = 1.0F;
         this.decelerationMod = 1.0F;
         this.isHostile = true;
@@ -201,7 +201,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
     }
 
     public int getFlyingHeight() {
-        return 20;
+        return 25;
     }
 
     @Override
@@ -289,7 +289,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
 
     static {
         souldragonCollisionDamage = new GameDamage(80.0F);
-        souldragonFragmentDamage = new GameDamage(60.0F);
+        souldragonFragmentDamage = new GameDamage(65.0F);
         souldragonHomingProjectileDamage = new GameDamage(60.0F);
         souldragonFlamethrowerDamage = new GameDamage(50.0F);
         privateLootTable = new LootTable(uniqueDrops);

@@ -35,7 +35,7 @@ public class possesedstatue extends HostileMob {
         super(400);
         this.setSpeed(90.0F);
         this.setFriction(6.0F);
-        this.setArmor(80);
+        this.setArmor(100);
         this.collision = new Rectangle(-10, -7, 20, 14);
         this.hitBox = new Rectangle(-14, -12, 28, 24);
         this.selectBox = new Rectangle(-14, -55, 28, 48);
@@ -50,7 +50,7 @@ public class possesedstatue extends HostileMob {
     }
 
     protected void changeAI() {
-        CollisionPlayerChaserAI<possesedstatue> wickedsoulAI = new CollisionPlayerChaserAI(800, new GameDamage(65.0F), 25);
+        CollisionPlayerChaserAI<possesedstatue> wickedsoulAI = new CollisionPlayerChaserAI(800, new GameDamage(80.0F), 25);
         this.ai = new BehaviourTreeAI<>(this, wickedsoulAI);
         this.isHostile = true;
     }

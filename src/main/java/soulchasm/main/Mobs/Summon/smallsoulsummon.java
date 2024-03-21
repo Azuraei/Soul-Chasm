@@ -20,7 +20,7 @@ import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.Misc.Others.PlayerFlyingFollowerShooterAI;
+import soulchasm.main.Misc.Others.playerflyingfollowershooterAI;
 import soulchasm.main.Projectiles.soulhomingprojectile;
 
 import java.awt.*;
@@ -43,7 +43,7 @@ public class smallsoulsummon extends FlyingAttackingFollowingMob {
 
     public void init() {
         super.init();
-        this.ai = new BehaviourTreeAI(this, new PlayerFlyingFollowerShooterAI(576, CooldownAttackTargetAINode.CooldownTimer.TICK, 600, 500, 600, 5) {
+        this.ai = new BehaviourTreeAI(this, new playerflyingfollowershooterAI(576, CooldownAttackTargetAINode.CooldownTimer.TICK, 600, 500, 600, 5) {
             protected boolean shootAtTarget(Mob mob, Mob target) {
                 float angle = 15;
                 for (int i = -1; i <= 1; ++i) {
