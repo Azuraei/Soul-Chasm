@@ -397,6 +397,159 @@ public class SoulChasm {
 
         //---CRAFTING---//
         Recipes.registerModRecipe(new Recipe(
+                "soulmetalbar",
+                1,
+                RecipeTechRegistry.FORGE,
+                new Ingredient[]{
+                        new Ingredient("crystalizedsouloreitem", 3)
+                }
+        ).showAfter("ancientfossilbar"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soulessence",
+                2,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("bloodessence", 1)
+                }
+        ).showAfter("slimeessence"));
+
+        //ARMOR_AND_WEAPONS
+        Recipes.registerModRecipe(new Recipe(
+                "soulmetalsword",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulessence", 5),
+                        new Ingredient("soulmetalbar", 12),
+                        new Ingredient("soulcoreitem", 5)
+                }
+        ).showAfter("nightsteelboots"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soulmetalspear",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulessence", 5),
+                        new Ingredient("soulmetalbar", 16),
+                        new Ingredient("soulcoreitem", 5)
+                }
+        ).showAfter("soulmetalsword"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soulmetalrevolver",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulessence", 5),
+                        new Ingredient("handgun", 1),
+                        new Ingredient("soulmetalbar", 12),
+                        new Ingredient("soulcoreitem", 5),
+                }
+        ).showAfter("soulmetalspear"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soulmetalbow",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulessence", 5),
+                        new Ingredient("soulmetalbar", 12),
+                        new Ingredient("soulcoreitem", 5)
+                }
+        ).showAfter("soulmetalrevolver"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "bookofsouls",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulessence", 5),
+                        new Ingredient("shadowbolt", 1),
+                        new Ingredient("soulmetalbar", 4),
+                        new Ingredient("soulcoreitem", 12)
+                }
+        ).showAfter("soulmetalbow"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soulabsorbshield",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulessence", 5),
+                        new Ingredient("soulmetalbar", 12),
+                        new Ingredient("soulcoreitem", 8),
+                }
+        ).showAfter("bookofsouls"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soularmorhelmet",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulmetalbar", 10),
+                        new Ingredient("soulcoreitem", 4),
+                        new Ingredient("souldragonscales", 4)
+                }
+        ).showAfter("soulabsorbshield"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soularmorhood",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulmetalbar", 4),
+                        new Ingredient("soulcoreitem", 12),
+                        new Ingredient("souldragonscales", 2)
+                }
+        ).showAfter("soularmorhelmet"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soularmorhat",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulmetalbar", 4),
+                        new Ingredient("soulcoreitem", 12),
+                        new Ingredient("souldragonscales", 2)
+                }
+        ).showAfter("soularmorhood"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soularmorcrown",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulmetalbar", 8),
+                        new Ingredient("soulcoreitem", 8),
+                        new Ingredient("souldragonscales", 2)
+                }
+        ).showAfter("soularmorhat"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soularmorchestplate",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulmetalbar", 18),
+                        new Ingredient("soulcoreitem", 4),
+                        new Ingredient("souldragonscales", 6)
+                }
+        ).showAfter("soularmorcrown"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soularmorboots",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulmetalbar", 12),
+                        new Ingredient("soulcoreitem", 4),
+                        new Ingredient("souldragonscales", 3)
+                }
+        ).showAfter("soularmorchestplate"));
+
+        Recipes.registerModRecipe(new Recipe(
                 "soulsealtrinket",
                 1,
                 RecipeTechRegistry.FALLEN_WORKSTATION,
@@ -436,6 +589,7 @@ public class SoulChasm {
                 }
         ).showAfter("balancedsealtrinket"));
 
+        //MISC_AND_FURNITURE
         Recipes.registerModRecipe(new Recipe(
                 "asphalttile",
                 50,
@@ -495,163 +649,6 @@ public class SoulChasm {
                         new Ingredient("soultorch", 1)
                 }
         ).showAfter("goldlamp"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulmetalbar",
-                1,
-                RecipeTechRegistry.FORGE,
-                new Ingredient[]{
-                        new Ingredient("crystalizedsouloreitem", 3)
-                }
-        ).showAfter("ancientfossilbar"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulessence",
-                2,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("bloodessence", 1)
-                }
-        ).showAfter("slimeessence"));
-
-        //ARMOR
-
-        Recipes.registerModRecipe(new Recipe(
-                "soularmorboots",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 4),
-                        new Ingredient("souldragonscales", 3)
-                }
-        ).showAfter("slimeboots"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soularmorchestplate",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 18),
-                        new Ingredient("soulcoreitem", 4),
-                        new Ingredient("souldragonscales", 6)
-                }
-        ).showAfter("slimeboots"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soularmorcrown",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 8),
-                        new Ingredient("soulcoreitem", 8),
-                        new Ingredient("souldragonscales", 2)
-                }
-        ).showAfter("slimeboots"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soularmorhat",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 4),
-                        new Ingredient("soulcoreitem", 12),
-                        new Ingredient("souldragonscales", 2)
-                }
-        ).showAfter("slimeboots"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soularmorhood",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 4),
-                        new Ingredient("soulcoreitem", 12),
-                        new Ingredient("souldragonscales", 2)
-                }
-        ).showAfter("slimeboots"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soularmorhelmet",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 10),
-                        new Ingredient("soulcoreitem", 4),
-                        new Ingredient("souldragonscales", 4)
-                }
-        ).showAfter("slimeboots"));
-
-        //Weapons
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulabsorbshield",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 8),
-                }
-        ).showAfter("slimeboots"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "bookofsouls",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("shadowbolt", 1),
-                        new Ingredient("soulmetalbar", 4),
-                        new Ingredient("soulcoreitem", 12)
-                }
-        ).showAfter("slimeboots"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulmetalbow",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 5)
-                }
-        ).showAfter("slimeboots"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulmetalrevolver",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("handgun", 1),
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 5),
-                }
-        ).showAfter("slimeboots"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulmetalspear",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("soulmetalbar", 16),
-                        new Ingredient("soulcoreitem", 5)
-                }
-        ).showAfter("slimeboots"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulmetalsword",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 5)
-                }
-        ).showAfter("slimeboots"));
-
 
         Recipes.registerModRecipe(new Recipe(
                 "soulwoodwall",

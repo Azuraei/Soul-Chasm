@@ -23,7 +23,6 @@ public class soulbowbuff extends Buff {
         this.shouldSave = false;
         buff.setModifier(BuffModifiers.RANGED_ATTACK_SPEED, 1.0F);
         buff.setModifier(BuffModifiers.PROJECTILE_VELOCITY, 0.5F);
-        buff.setModifier(BuffModifiers.POISON_DAMAGE_FLAT, 4.0F);
     }
 
     public void clientTick(ActiveBuff buff) {
