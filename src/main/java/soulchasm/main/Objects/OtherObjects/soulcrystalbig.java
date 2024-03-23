@@ -40,7 +40,7 @@ public class soulcrystalbig extends GameObject {
         this.drawRandom = new GameRandom();
         this.canPlaceOnLiquid = false;
         this.isOre = true;
-        this.isIncursionExtractionObject = true;
+        this.isIncursionExtractionObject = false;
     }
 
     public void loadTextures() {

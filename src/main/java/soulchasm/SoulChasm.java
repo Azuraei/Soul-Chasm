@@ -409,7 +409,7 @@ public class SoulChasm {
                         new Ingredient("souldragonscales", 6),
                         new Ingredient("soulcoreitem", 10),
                 }
-        ));
+        ).showAfter("soularmorboots"));
 
         Recipes.registerModRecipe(new Recipe(
                 "balancedsealtrinket",
@@ -434,7 +434,7 @@ public class SoulChasm {
                         new Ingredient("souldragonscales", 4),
                         new Ingredient("soulcoreitem", 8),
                 }
-        ));
+        ).showAfter("balancedsealtrinket"));
 
         Recipes.registerModRecipe(new Recipe(
                 "asphalttile",
@@ -513,16 +513,6 @@ public class SoulChasm {
                         new Ingredient("bloodessence", 1)
                 }
         ).showAfter("slimeessence"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulsigil",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 4),
-                        new Ingredient("soulcoreitem", 4)
-                }
-        ).showAfter("slimeeggs"));
 
         //ARMOR
 

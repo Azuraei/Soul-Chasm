@@ -28,7 +28,7 @@ public class soulcavernbiome extends Biome {
     }
     public LootTable getExtraMobDrops(Mob mob) {
         if (mob.isHostile && !mob.isBoss() && !mob.isSummoned) {
-            return new LootTable(new ChanceLootItem(0.015F, "soulsigil"), super.getExtraMobDrops(mob));
+            return new LootTable(new ChanceLootItem(0.01F, "soulsigil").preventLootMultiplier(), super.getExtraMobDrops(mob));
         }
         return super.getExtraMobDrops(mob);
     }

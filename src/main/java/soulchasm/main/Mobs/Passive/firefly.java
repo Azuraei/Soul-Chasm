@@ -1,8 +1,6 @@
 package soulchasm.main.Mobs.Passive;
 
 import necesse.engine.network.NetworkClient;
-import necesse.engine.network.server.Server;
-import necesse.engine.network.server.ServerClient;
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
@@ -70,12 +68,9 @@ public class firefly extends CritterMob {
     protected void playHitSound() {}
     public void spawnDamageText(int dmg, int size, boolean isCrit) {}
 
-    public boolean isValidSpawnLocation(Server server, ServerClient client, int targetX, int targetY) {
-        if (!this.getLevel().getServer().world.worldEntity.isNight() || this.getLevel().getServer()==null) {
-            return false;
-        } else {
-            return (new MobSpawnLocation(this, targetX, targetY)).checkLightThreshold(client).checkMobSpawnLocation().validAndApply();
-        }
+    @Override
+    public MobSpawnLocation checkSpawnLocation(MobSpawnLocation location) {
+        return super.checkSpawnLocation(location).checkLocation((x, y) -> getLevel().getWorldEntity().isNight());
     }
 
     public void clientTick() {
@@ -96,7 +91,6 @@ public class firefly extends CritterMob {
         }
     }
 
-    @Override
     public void serverTick() {
         super.serverTick();
         if(this.getLevel() != null){

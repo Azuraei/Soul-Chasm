@@ -32,8 +32,8 @@ public class possesedstatue extends HostileMob {
     private boolean showGlowEyes;
 
     public possesedstatue() {
-        super(400);
-        this.setSpeed(90.0F);
+        super(500);
+        this.setSpeed(120.0F);
         this.setFriction(6.0F);
         this.setArmor(100);
         this.collision = new Rectangle(-10, -7, 20, 14);
