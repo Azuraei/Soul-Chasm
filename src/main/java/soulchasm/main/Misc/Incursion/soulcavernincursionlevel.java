@@ -103,8 +103,7 @@ public class soulcavernincursionlevel extends IncursionLevel {
         GameEvents.triggerEvent(new GeneratedCaveStructuresEvent(this, cg, presets));
         GenerationTools.checkValid(this);
     }
-
     public LootTable getCrateLootTable() {
-        return LootTablePresets.basicDeepCrate;
+        return LootTablePresets.incursionCrate;
     }
 }

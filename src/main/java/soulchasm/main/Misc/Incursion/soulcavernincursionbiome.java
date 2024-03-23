@@ -60,8 +60,6 @@ public class soulcavernincursionbiome extends IncursionBiome {
         return system;
     }
 
-
-
     public IncursionLevel getNewIncursionLevel(LevelIdentifier identifier, BiomeMissionIncursionData incursion, Server server, WorldEntity worldEntity) {
         return new soulcavernincursionlevel(identifier, incursion, worldEntity);
     }
