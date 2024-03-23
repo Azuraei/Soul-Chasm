@@ -76,12 +76,12 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
     protected FloatMobAbility temporarySpeedAbility;
 
     public souldragonhead() {
-        super(45000, waveLength, 100.0F, totalBodyParts, 10.0F, -40.0F);
+        super(50000, waveLength, 100.0F, totalBodyParts, 10.0F, -40.0F);
         this.moveAccuracy = 100;
         this.movementUpdateCooldown = 100;
         this.movePosTolerance = 400.0F;
         this.setSpeed(150F);
-        this.setArmor(50);
+        this.setArmor(45);
         this.accelerationMod = 1.0F;
         this.decelerationMod = 1.0F;
         this.isHostile = true;

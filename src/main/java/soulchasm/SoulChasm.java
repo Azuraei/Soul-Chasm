@@ -98,7 +98,6 @@ public class SoulChasm {
     public static GameTextureSection particleWispSection;
     public static GameTextureSection particleBookSection;
     public static GameTextureSection particlePhantomBodySection;
-    public static int REROLL_STATION_CONTAINER;
 
     public void init() {
         System.out.println("no idea what to type here, so I will just say hi");
@@ -355,8 +354,8 @@ public class SoulChasm {
 
         //CAVE CHEST LOOT
         soulcavechestloottable = new LootTable(new LootItemList(
-                LootItem.between("crystalizedsouloreitem", 6, 12),
-                LootItem.between("greaterhealthpotion", 2, 6),
+                LootItem.between("crystalizedsouloreitem", 8, 22),
+                LootItem.between("greaterhealthpotion", 4, 6),
                 LootItem.between("dynamitestick", 0, 8),
                 LootItem.between("coin", 120, 80),
                 new OneOfLootItems(
