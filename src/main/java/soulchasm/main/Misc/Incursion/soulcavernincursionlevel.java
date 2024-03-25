@@ -16,7 +16,6 @@ import necesse.level.maps.generationModules.GenerationTools;
 import necesse.level.maps.generationModules.PresetGeneration;
 import necesse.level.maps.incursion.BiomeExtractionIncursionData;
 import necesse.level.maps.incursion.BiomeMissionIncursionData;
-import necesse.level.maps.incursion.IncursionBiome;
 import necesse.level.maps.presets.Preset;
 import necesse.level.maps.presets.RandomCaveChestRoom;
 import soulchasm.main.Misc.Presets.soulcavearenapreset;
@@ -90,13 +89,13 @@ public class soulcavernincursionlevel extends IncursionLevel {
             cg.generateRandomCrates(0.03F, ObjectRegistry.getObjectID("chasmcrates"));
 
             GameRandom random = new GameRandom(this.getSeed());
-            (new soulcavearenapreset(45, random)).applyToLevelCentered(this, this.width / 2, this.height / 2);
+            (new soulcavearenapreset(65, random)).applyToLevelCentered(this, this.width / 2, this.height / 2);
 
         });
 
-        IncursionBiome.generateEntrance(this, cg.random, 15, cg.rockTile, "soulcavebrickfloortile", "soulcavefloortile", "soullanternobject");
+        soulcavernincursionbiome.generateEntrance(this, cg.random, 1, cg.rockTile, "soulcavebrickfloortile", "soulcavefloortile", "soullanternobject");
         if (incursionData instanceof BiomeExtractionIncursionData) {
-            cg.generateGuaranteedOreVeins(100, 8, 16, ObjectRegistry.getObjectID("crystalizedsoul"));
+            cg.generateGuaranteedOreVeins(100, 12, 18, ObjectRegistry.getObjectID("crystalizedsoul"));
         }
         cg.generateGuaranteedOreVeins(100, 6, 12, ObjectRegistry.getObjectID("upgradeshardsoulcaverock"));
         cg.generateGuaranteedOreVeins(100, 6, 12, ObjectRegistry.getObjectID("alchemyshardsoulcaverock"));

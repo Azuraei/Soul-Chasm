@@ -144,6 +144,8 @@ public class SoulChasm {
         ObjectRegistry.registerObject("chasmcrates", new RandomCrateObject("chasmcrates"), 0.0F, false);
         ObjectRegistry.registerObject("statueobject", new statueobject(), 100, true);
         ObjectRegistry.registerObject("soulbossaltarobject", new soulbossaltarobject(), 0.0F, false);
+        ObjectRegistry.registerObject("spikeobject", new spikeobject(), 0.0F, false);
+
         //Furniture
         BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", ToolType.PICKAXE, SoulFurnitureColor, 1);
         BedObject.registerBed("soulwoodbed", "soulwoodbed", ToolType.PICKAXE, SoulFurnitureColor, 1);

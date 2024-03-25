@@ -15,6 +15,7 @@ import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.level.maps.IncursionLevel;
+import necesse.level.maps.Level;
 import necesse.level.maps.incursion.*;
 
 import java.awt.*;
@@ -62,6 +63,17 @@ public class soulcavernincursionbiome extends IncursionBiome {
 
     public IncursionLevel getNewIncursionLevel(LevelIdentifier identifier, BiomeMissionIncursionData incursion, Server server, WorldEntity worldEntity) {
         return new soulcavernincursionlevel(identifier, incursion, worldEntity);
+    }
+
+    public static Point generateEntrance(Level level, GameRandom random, int spawnSize, int baseTileID, String brickTileStringID, String floorTileStringID, String columnStringID) {
+        int spawnMidX = level.width / 2;
+        int spawnMidY = level.height / 2;
+        generateEntrance(level, random, spawnMidX, spawnMidY, spawnSize, baseTileID, brickTileStringID, floorTileStringID, columnStringID);
+        return new Point(spawnMidX, spawnMidY);
+    }
+
+    public static void generateEntrance(Level level, GameRandom random, int spawnMidX, int spawnMidY, int spawnSize, int baseTileID, String brickTileStringID, String floorTileStringID, String columnStringID) {
+        addReturnPortalOnTile(level, spawnMidX, spawnMidY);
     }
 
     public ArrayList<Color> getFallenAltarGatewayColorsForBiome() {
