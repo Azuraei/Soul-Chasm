@@ -27,13 +27,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static soulchasm.SoulChasm.SoulCaveChestRoomSet;
 import static soulchasm.SoulChasm.soulcavechestloottable;
 
-public class soulcavernincursionlevel extends IncursionLevel {
+public class soulchasmincursionlevel extends IncursionLevel {
 
-    public soulcavernincursionlevel(LevelIdentifier identifier, int width, int height, WorldEntity worldEntity) {
+    public soulchasmincursionlevel(LevelIdentifier identifier, int width, int height, WorldEntity worldEntity) {
         super(identifier, width, height, worldEntity);
     }
 
-    public soulcavernincursionlevel(LevelIdentifier identifier, BiomeMissionIncursionData incursion, WorldEntity worldEntity) {
+    public soulchasmincursionlevel(LevelIdentifier identifier, BiomeMissionIncursionData incursion, WorldEntity worldEntity) {
         super(identifier, 300, 300, incursion, worldEntity);
         this.biome = BiomeRegistry.getBiome("soulcavern");
         this.isCave = true;
@@ -93,7 +93,7 @@ public class soulcavernincursionlevel extends IncursionLevel {
 
         });
 
-        soulcavernincursionbiome.generateEntrance(this, cg.random, 1, cg.rockTile, "soulcavebrickfloortile", "soulcavefloortile", "soullanternobject");
+        soulchasmincursionbiome.generateEntrance(this, cg.random, 1, cg.rockTile, "soulcavebrickfloortile", "soulcavefloortile", "soullanternobject");
         if (incursionData instanceof BiomeExtractionIncursionData) {
             cg.generateGuaranteedOreVeins(100, 12, 18, ObjectRegistry.getObjectID("crystalizedsoul"));
         }

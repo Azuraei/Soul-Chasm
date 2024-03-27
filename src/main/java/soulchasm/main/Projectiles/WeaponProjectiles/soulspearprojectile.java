@@ -6,6 +6,7 @@ import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
+import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.particle.Particle;
 import necesse.entity.particle.ParticleOption;
 import necesse.entity.particle.ProjectileHitStuckParticle;
@@ -68,7 +69,6 @@ public class soulspearprojectile extends Projectile {
             targetX = x;
             targetY = y;
         }
-
         int range = 80;
         if (!this.getLevel().isServer()) {
             FireworksExplosion explosion = new FireworksExplosion(FireworksPath.sphere((float) GameRandom.globalRandom.getIntBetween(range - 10, range)));
@@ -78,8 +78,10 @@ public class soulspearprojectile extends Projectile {
             explosion.lifetime = 400;
             explosion.popOptions = piercerPopExplosion;
             explosion.particleLightHue = 230.0F;
+            explosion.particleLightSaturation = 0.6F;
+
             explosion.explosionSound = (pos, height, random) -> {
-                Screen.playSound(GameResources.fireworkExplosion, SoundEffect.effect(pos.x, pos.y).pitch((Float)random.getOneOf(new Float[]{0.95F, 1.0F, 1.05F})).volume(0.2F).falloffDistance(1500));
+                Screen.playSound(GameResources.fireworkExplosion, SoundEffect.effect(pos.x, pos.y).pitch(random.getOneOf(0.95F, 1.0F, 1.05F)).volume(0.2F).falloffDistance(1500));
             };
             explosion.spawnExplosion(this.getLevel(), targetX, targetY, this.getHeight(), GameRandom.globalRandom);
         }
@@ -93,33 +95,35 @@ public class soulspearprojectile extends Projectile {
 
         if (this.getLevel().isClient() && this.traveledDistance < (float)this.distance) {
             final float height = this.getHeight();
-            this.getLevel().entityManager.addParticle(new ProjectileHitStuckParticle(mob, this, x, y, mob == null ? 10.0F : 40.0F, 2000L) {
-                public void addDrawables(Mob target, float x, float y, float angle, List<LevelSortedDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
-                    GameLight light = level.getLightLevel(this);
-                    int drawX = camera.getDrawX(x) - 2;
-                    int drawY = camera.getDrawY(y - height) - 2;
-                    float alpha = 1.0F;
-                    long lifeCycleTime = this.getLifeCycleTime();
-                    int fadeTime = 1000;
-                    if (lifeCycleTime >= this.lifeTime - (long)fadeTime) {
-                        alpha = Math.abs((float)(lifeCycleTime - (this.lifeTime - (long)fadeTime)) / (float)fadeTime - 1.0F);
-                    }
-
-                    int cut = target == null ? 10 : 0;
-                    final TextureDrawOptions options = soulspearprojectile.this.texture.initDraw().section(cut, soulspearprojectile.this.texture.getWidth(), cut, soulspearprojectile.this.texture.getHeight()).light(light).rotate(getAngle() + 45.0F, 2, 2).alpha(alpha).pos(drawX, drawY);
-                    EntityDrawable drawable = new EntityDrawable(this) {
-                        public void draw(TickManager tickManager) {
-                            options.draw();
+            if(this.bounced == this.getOwner().buffManager.getModifier(BuffModifiers.PROJECTILE_BOUNCES) || mob != null){
+                this.getLevel().entityManager.addParticle(new ProjectileHitStuckParticle(mob, this, x, y, mob == null ? 10.0F : 40.0F, 2000L) {
+                    public void addDrawables(Mob target, float x, float y, float angle, List<LevelSortedDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
+                        GameLight light = level.getLightLevel(this);
+                        int drawX = camera.getDrawX(x) - 2;
+                        int drawY = camera.getDrawY(y - height) - 2;
+                        float alpha = 1.0F;
+                        long lifeCycleTime = this.getLifeCycleTime();
+                        int fadeTime = 1000;
+                        if (lifeCycleTime >= this.lifeTime - (long)fadeTime) {
+                            alpha = Math.abs((float)(lifeCycleTime - (this.lifeTime - (long)fadeTime)) / (float)fadeTime - 1.0F);
                         }
-                    };
-                    if (target != null) {
-                        topList.add(drawable);
-                    } else {
-                        list.add(drawable);
-                    }
 
-                }
-            }, Particle.GType.IMPORTANT_COSMETIC);
+                        int cut = target == null ? 10 : 0;
+                        final TextureDrawOptions options = soulspearprojectile.this.texture.initDraw().section(cut, soulspearprojectile.this.texture.getWidth(), cut, soulspearprojectile.this.texture.getHeight()).light(light).rotate(getAngle() + 45.0F, 2, 2).alpha(alpha).pos(drawX, drawY);
+                        EntityDrawable drawable = new EntityDrawable(this) {
+                            public void draw(TickManager tickManager) {
+                                options.draw();
+                            }
+                        };
+                        if (target != null) {
+                            topList.add(drawable);
+                        } else {
+                            list.add(drawable);
+                        }
+
+                    }
+                }, Particle.GType.IMPORTANT_COSMETIC);
+            }
         }
 
     }
@@ -136,6 +140,8 @@ public class soulspearprojectile extends Projectile {
         piercerPopExplosion.maxSize = 10;
         piercerPopExplosion.trailChance = 0.0F;
         piercerPopExplosion.popChance = 0.0F;
+        piercerPopExplosion.particleLightHue = 230.0F;
+        piercerPopExplosion.particleLightSaturation = 0.5F;
         piercerPopExplosion.colorGetter = (particle, progress, random) -> ParticleOption.randomizeColor(240.0F, 0.8F, 0.7F, 20.0F, 0.1F, 0.1F);
         piercerPopExplosion.explosionSound = null;
     }

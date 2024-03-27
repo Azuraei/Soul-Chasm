@@ -9,6 +9,7 @@ import necesse.entity.mobs.attackHandler.GreatswordChargeLevel;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.projectile.Projectile;
+import necesse.entity.projectile.modifiers.ResilienceOnHitProjectileModifier;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.enchants.ToolItemModifiers;
@@ -41,6 +42,7 @@ public class soulscytheattackhandler extends GreatswordAttackHandler {
         Projectile projectile = new soulscytheprojectile(this.player.getLevel(),this.player, this.player.x, this.player.y, this.player.x + dir.x * 100.0F, this.player.y + dir.y * 100.0F, finalVelocity, (int)((float)this.toolItem.getAttackRange(this.item) * rangeMod), this.toolItem.getAttackDamage(this.item).modDamage(0.7F), 5);
         GameRandom random = new GameRandom(this.seed);
         projectile.resetUniqueID(random);
+        projectile.setModifier(new ResilienceOnHitProjectileModifier(toolItem.getResilienceGain(item)));
         this.player.getLevel().entityManager.projectiles.add(projectile);
         projectile.moveDist(60.0);
         if (this.player.isServer()) {
@@ -70,6 +72,6 @@ public class soulscytheattackhandler extends GreatswordAttackHandler {
     }
 
     private void applyEffect() {
-        player.buffManager.addBuff(new ActiveBuff("soulscythebuff", player, 0.5F, null), false);
+        player.buffManager.addBuff(new ActiveBuff("soulscythebuff", player, 1.5F, null), false);
     }
 }

@@ -8,11 +8,11 @@ import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.projectile.Projectile;
+import necesse.entity.projectile.modifiers.ResilienceOnHitProjectileModifier;
 import necesse.gfx.gameTexture.GameSprite;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
-import necesse.inventory.item.ItemCategory;
 import necesse.inventory.item.toolItem.projectileToolItem.throwToolItem.ThrowToolItem;
 import necesse.level.maps.Level;
 
@@ -22,13 +22,12 @@ public class soulmetalspear extends ThrowToolItem {
         this.attackAnimTime.setBaseValue(320);
         this.attackDamage.setBaseValue(130.0F).setUpgradedValue(1.0F, 130.0F);
         this.velocity.setBaseValue(250).setUpgradedValue(1.0F, 250);
+        this.attackRange.setBaseValue(2500);
         this.knockback.setBaseValue(75);
         this.resilienceGain.setBaseValue(1.0F);
         this.enchantCost.setBaseValue(1400);
         this.attackXOffset = 8;
         this.attackYOffset = 8;
-        this.setItemCategory("equipment", "weapons", "meleeweapons");
-        this.setItemCategory(ItemCategory.equipmentManager, "weapons", "meleeweapons");
         this.stackSize = 1;
     }
 
@@ -43,9 +42,10 @@ public class soulmetalspear extends ThrowToolItem {
     }
 
     public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
-        Projectile projectile = ProjectileRegistry.getProjectile("soulspearprojectile", level, player.x, player.y, (float)x, (float)y, (float)this.getThrowingVelocity(item, player), 1000, this.getAttackDamage(item), this.getKnockback(item, player), player);
+        Projectile projectile = ProjectileRegistry.getProjectile("soulspearprojectile", level, player.x, player.y, (float)x, (float)y, (float)this.getThrowingVelocity(item, player), this.getAttackRange(item), this.getAttackDamage(item), this.getKnockback(item, player), player);
         projectile.resetUniqueID(new GameRandom(seed));
         projectile.moveDist(30.0);
+        projectile.setModifier(new ResilienceOnHitProjectileModifier(this.getResilienceGain(item)));
         level.entityManager.projectiles.addHidden(projectile);
         if (level.isServer()) {
             level.getServer().network.sendToClientsAtExcept(new PacketSpawnProjectile(projectile), player.getServerClient(), player.getServerClient());

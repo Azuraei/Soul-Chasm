@@ -1,7 +1,5 @@
 package soulchasm.main.Mobs.Passive;
 
-import necesse.engine.Screen;
-import necesse.engine.sound.SoundEffect;
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
@@ -11,7 +9,6 @@ import necesse.entity.mobs.MobDrawable;
 import necesse.entity.mobs.MobWorldPosition;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.particle.Particle;
-import necesse.gfx.GameResources;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.OrderableDrawables;
@@ -26,7 +23,6 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class sphereeffectmob extends Mob {
     public MobWorldPosition target;
-    private float alphaBall;
     public static GameTexture texture_ball;
     private final int heightOffset = 32 * 2;
 
@@ -45,7 +41,6 @@ public class sphereeffectmob extends Mob {
     public void init() {
         super.init();
         this.dir = 0;
-        this.alphaBall = 0.7F;
     }
 
     public boolean canPushMob(Mob other) {
@@ -96,10 +91,6 @@ public class sphereeffectmob extends Mob {
     public void onFollowingAnotherLevel(PlayerMob player) {
     }
 
-    protected void playDeathSound() {
-        Screen.playSound(GameResources.fadedeath3, SoundEffect.effect(this));
-    }
-
     public void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
         super.addDrawables(list, tileList, topList, level, x, y, tickManager, camera, perspective);
         GameLight light = level.getLightLevel(x, y);
@@ -107,7 +98,7 @@ public class sphereeffectmob extends Mob {
         int drawY = camera.getDrawY(y);
         long time = level.getWorldEntity().getTime();
         float rotation = GameUtils.getTimeRotation(time, 4);
-        TextureDrawOptions optionsBall = texture_ball.initDraw().light(light.minLevelCopy(100)).alpha(this.alphaBall).rotate(rotation * (float)(this.dx < 0.0F ? -1 : 1), texture_ball.getWidth() / 2, texture_ball.getHeight() / 2).pos(drawX - 32, drawY - 64 - heightOffset);
+        TextureDrawOptions optionsBall = texture_ball.initDraw().light(light.minLevelCopy(100)).alpha(0.7F).rotate(rotation * (float)(this.dx < 0.0F ? -1 : 1), texture_ball.getWidth() / 2, texture_ball.getHeight() / 2).pos(drawX - 32, drawY - 64 - heightOffset);
         topList.add((tm) -> optionsBall.draw());
     }
 }

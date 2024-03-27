@@ -35,7 +35,6 @@ soulcavechest=Old Chest
 bigjarobject=Big Glass Jar
 chasmcrates=Old Crate
 statueobject=Knight Statue
-soulbossaltarobject=Ancient Altar
 soulcaverock=Chasm Stone
 soulwoodwall=Phantom Wood Wall
 soulwooddoor=Phantom Wood Door
@@ -115,7 +114,7 @@ soulscythe=Fully charged attacks shoot a decelerating, piercing projectile\nChar
 soulmetalbowtip=Press [input=mouse2] to activate overflow mode\nWhen in overflow, you gain significant attack speed bonus
 soulmetalrevolvertip=Converts regular bullets into soul infused ones\nHitting enemy with soul infused bullet marks it\nEnemy marked three times are weakened and take damage over time
 soulmetalspeartip=Can be thrown\nCreates small explosion on hit
-soulsigil=Summons the Soul Chasm boss\nMust be used in altar in center of Soul Chasm
+soulsigil=Summons the Soul Chasm boss\nMust be used in Soul Chasm
 cartip=Summons car mount\nRight-click out of inventory to change colors
 soulsealfollowerbuff=Has heard your call
 bigjarobject=Empty jar\nCatch some glowing bugs and place them in jar to create new light source
@@ -154,5 +153,5 @@ soulbowcooldownbuff=Phantasm Bow Cooldown
 senshiactivatetip=Insert Soul Sigil
 
 [biome]
-soulcavernincursionbiome=Soul Chasm
-soulcavernbiome=Soul Chasm
+soulchasmincursionbiome=Soul Chasm
+soulchasmbiome=Soul Chasm

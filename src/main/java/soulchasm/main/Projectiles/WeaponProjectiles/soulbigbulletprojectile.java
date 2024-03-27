@@ -87,6 +87,8 @@ public class soulbigbulletprojectile extends BulletProjectile {
         piercerPopExplosion.maxSize = 15;
         piercerPopExplosion.trailChance = 0.0F;
         piercerPopExplosion.popChance = 0.0F;
+        piercerPopExplosion.particleLightHue = 230.0F;
+        piercerPopExplosion.particleLightSaturation = 0.5F;
         piercerPopExplosion.colorGetter = (particle, progress, random) -> ParticleOption.randomizeColor(230.0F, 0.8F, 0.7F, 20.0F, 0.1F, 0.1F);
         piercerPopExplosion.explosionSound = null;
     }

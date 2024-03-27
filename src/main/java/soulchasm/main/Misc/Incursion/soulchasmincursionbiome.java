@@ -25,8 +25,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class soulcavernincursionbiome extends IncursionBiome {
-    public soulcavernincursionbiome() {
+public class soulchasmincursionbiome extends IncursionBiome {
+    public soulchasmincursionbiome() {
         super("souldragonhead");
     }
 
@@ -42,13 +42,13 @@ public class soulcavernincursionbiome extends IncursionBiome {
         return new LootTable(LootItem.between("soulessence", 20, 25), new LootItemInterface() {
             public void addPossibleLoot(LootList list, Object... extra) {
                 InventoryItem gatewayTablet = new InventoryItem("gatewaytablet");
-                gatewayTablet.getGndData().setInt("displayTier", soulcavernincursionbiome.this.increaseTabletTierByX(incursionData.getTabletTier(), 1));
+                gatewayTablet.getGndData().setInt("displayTier", soulchasmincursionbiome.this.increaseTabletTierByX(incursionData.getTabletTier(), 1));
                 list.addCustom(gatewayTablet);
             }
 
             public void addItems(List<InventoryItem> list, GameRandom random, float lootMultiplier, Object... extra) {
                 InventoryItem gatewayTablet = new InventoryItem("gatewaytablet");
-                GatewayTabletItem.initializeGatewayTablet(gatewayTablet, random, soulcavernincursionbiome.this.increaseTabletTierByX(incursionData.getTabletTier(), 1));
+                GatewayTabletItem.initializeGatewayTablet(gatewayTablet, random, soulchasmincursionbiome.this.increaseTabletTierByX(incursionData.getTabletTier(), 1));
                 list.add(gatewayTablet);
             }
         });
@@ -62,7 +62,7 @@ public class soulcavernincursionbiome extends IncursionBiome {
     }
 
     public IncursionLevel getNewIncursionLevel(LevelIdentifier identifier, BiomeMissionIncursionData incursion, Server server, WorldEntity worldEntity) {
-        return new soulcavernincursionlevel(identifier, incursion, worldEntity);
+        return new soulchasmincursionlevel(identifier, incursion, worldEntity);
     }
 
     public static Point generateEntrance(Level level, GameRandom random, int spawnSize, int baseTileID, String brickTileStringID, String floorTileStringID, String columnStringID) {

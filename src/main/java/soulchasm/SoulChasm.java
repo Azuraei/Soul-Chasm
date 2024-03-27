@@ -56,9 +56,9 @@ import soulchasm.main.Items.Trinkets.phantomdasherstrinket;
 import soulchasm.main.Items.Trinkets.phantomfeathertrinket;
 import soulchasm.main.Items.Trinkets.pickaxeheadtrinket;
 import soulchasm.main.Items.Trinkets.soulstealertrinket;
-import soulchasm.main.Misc.Incursion.soulcavernbiome;
-import soulchasm.main.Misc.Incursion.soulcavernincursionbiome;
-import soulchasm.main.Misc.Incursion.soulcavernincursionlevel;
+import soulchasm.main.Misc.Incursion.soulchasmbiome;
+import soulchasm.main.Misc.Incursion.soulchasmincursionbiome;
+import soulchasm.main.Misc.Incursion.soulchasmincursionlevel;
 import soulchasm.main.Mobs.Agressive.lostsoul;
 import soulchasm.main.Mobs.Agressive.possesedstatue;
 import soulchasm.main.Mobs.Agressive.soulmage;
@@ -144,7 +144,6 @@ public class SoulChasm {
         ObjectRegistry.registerObject("bigjarobject", new bigjarobject(), 10, true);
         ObjectRegistry.registerObject("chasmcrates", new RandomCrateObject("chasmcrates"), 0.0F, false);
         ObjectRegistry.registerObject("statueobject", new statueobject(), 100, true);
-        ObjectRegistry.registerObject("soulbossaltarobject", new soulbossaltarobject(), 0.0F, false);
         ObjectRegistry.registerObject("spikeobject", new spikeobject(), 0.0F, false);
 
         //Furniture
@@ -168,9 +167,9 @@ public class SoulChasm {
         FenceGateObject.registerGatePair(soulwoodFenceID, "soulwoodfencegate", "soulwoodfencegate", SoulFurnitureColor, 12, 10, 4.0F);
         ObjectRegistry.registerObject("soulcavechest", new StorageBoxInventoryObject("soulcavechest",40, SoulStoneColor), 10.0F, true);
         //BIOMES_AND_LEVELS
-        BiomeRegistry.registerBiome("soulcavern", new soulcavernbiome(), 0, null);
-        IncursionBiomeRegistry.registerBiome("soulcavernincursionbiome", new soulcavernincursionbiome(), 2);
-        LevelRegistry.registerLevel("soulcavernincursionlevel", soulcavernincursionlevel.class);
+        BiomeRegistry.registerBiome("soulcavern", new soulchasmbiome(), 0, null);
+        IncursionBiomeRegistry.registerBiome("soulchasmincursionbiome", new soulchasmincursionbiome(), 2);
+        LevelRegistry.registerLevel("soulchasmincursionlevel", soulchasmincursionlevel.class);
         //BUFFS
         BuffRegistry.registerBuff("soulstealerbuff", new soulstealerbuff());
         BuffRegistry.registerBuff("phantomfeatherbuff", new phantomfeatherbuff());
@@ -216,7 +215,7 @@ public class SoulChasm {
         ItemRegistry.registerItem("fireflyjar", new fireflyjar(), 10, true);
         ItemRegistry.registerItem("soullantern", new soullantern(), 20, true);
         ItemRegistry.registerItem("soulmetalbar", new soulmetalbar(), 80, true);
-        ItemRegistry.registerItem("soulsigil", new soulsigil(), 200, true);
+        ItemRegistry.registerItem("soulsigil", new soulsigil(), 200, false);
         ItemRegistry.registerItem("soulessence", new EssenceMatItem(120, Item.Rarity.EPIC, 2), 25.0F, true);
         //TrinketsAndOtherStuff
         ItemRegistry.registerItem("carkeys", new carkeys(), 2000, true);

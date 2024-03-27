@@ -11,6 +11,7 @@ import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.AttackAnimMob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.projectile.Projectile;
+import necesse.entity.projectile.modifiers.ResilienceOnHitProjectileModifier;
 import necesse.gfx.GameResources;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
@@ -62,6 +63,7 @@ public class soulmetalrevolver extends GunProjectileToolItem {
 
         projectile.dropItem = consumeAmmo;
         projectile.getUniqueID(new GameRandom(seed));
+        projectile.setModifier(new ResilienceOnHitProjectileModifier(this.getResilienceGain(item)));
         level.entityManager.projectiles.addHidden(projectile);
         if (this.moveDist != 0) {
             projectile.moveDist(this.moveDist);
