@@ -21,6 +21,8 @@ import java.awt.*;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+//TODO Fix/remove name or hitbox
+
 public class sphereeffectmob extends Mob {
     public MobWorldPosition target;
     public static GameTexture texture_ball;
@@ -62,7 +64,7 @@ public class sphereeffectmob extends Mob {
             pos.y = y - heightOffset - height + GameMath.cos(angle) * distY * 0.80F + (float) timeAlive/lifeTime * 16;
         }).sizeFades(14, 20).fadesAlpha(1.0F, 0.95F);
     }
-    //
+
     private void spawnBallParticles(Level level, int x, int y){
         if (GameRandom.globalRandom.getChance(0.45F)) {
             spinningParticle(level, x, y, 50F, new Color(0x0081DC), 1.0F, 16);
