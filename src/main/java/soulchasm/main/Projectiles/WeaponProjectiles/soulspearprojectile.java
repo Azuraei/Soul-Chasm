@@ -72,7 +72,7 @@ public class soulspearprojectile extends Projectile {
         int range = 80;
         if (!this.getLevel().isServer()) {
             FireworksExplosion explosion = new FireworksExplosion(FireworksPath.sphere((float) GameRandom.globalRandom.getIntBetween(range - 10, range)));
-            explosion.colorGetter = (particle, progress, random) -> ParticleOption.randomizeColor(240.0F, 0.5F, 0.4F, 10.0F, 0.1F, 0.1F);
+            explosion.colorGetter = (particle, progress, random) -> ParticleOption.randomizeColor(230.0F, 0.5F, 0.4F, 10.0F, 0.1F, 0.1F);
             explosion.trailChance = 0.5F;
             explosion.particles = 50;
             explosion.lifetime = 400;

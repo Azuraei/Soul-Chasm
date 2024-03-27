@@ -54,6 +54,7 @@ public class soulcavearenapreset extends Preset {
 
             }
         }
+        this.addMob("sphereeffectmob", mid, mid, false);
         int spikeOffset = 5;
         this.setObject(mid+spikeOffset, mid, spike, 3);
         this.setObject(mid-spikeOffset, mid, spike, 1);

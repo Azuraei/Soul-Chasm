@@ -67,6 +67,7 @@ import soulchasm.main.Mobs.Boss.souldragonbody;
 import soulchasm.main.Mobs.Boss.souldragonhead;
 import soulchasm.main.Mobs.Passive.firefly;
 import soulchasm.main.Mobs.Passive.soulcavecaveling;
+import soulchasm.main.Mobs.Passive.sphereeffectmob;
 import soulchasm.main.Mobs.Passive.wisp;
 import soulchasm.main.Mobs.Summon.carmob;
 import soulchasm.main.Mobs.Summon.smallsoulsummon;
@@ -258,6 +259,7 @@ public class SoulChasm {
         MobRegistry.registerMob("soulcavecaveling", soulcavecaveling.class, true);
         MobRegistry.registerMob("souldragonhead", souldragonhead.class, true);
         MobRegistry.registerMob("souldragonbody", souldragonbody.class, false);
+        MobRegistry.registerMob("sphereeffectmob", sphereeffectmob.class, false);
         //PROJECTILES
         ProjectileRegistry.registerProjectile("soulwaveprojectile", soulwaveprojectile.class, "soulwaveprojectile", null);
         ProjectileRegistry.registerProjectile("soularrowprojectile", soularrowprojectile.class, "soularrowprojectile", null);
@@ -309,6 +311,7 @@ public class SoulChasm {
         soulcavecaveling.texture_front = GameTexture.fromFile("mobs/soulcavecaveling_front");
         souldragonhead.texture = GameTexture.fromFile("mobs/souldragon");
         souldragonbody.texture = GameTexture.fromFile("mobs/souldragon");
+        sphereeffectmob.texture_ball = GameTexture.fromFile("particles/altarball");
 
         //TextureSections
         GameTexture flamethrowerParticleTexture = GameTexture.fromFile("particles/soulfiresparks");
