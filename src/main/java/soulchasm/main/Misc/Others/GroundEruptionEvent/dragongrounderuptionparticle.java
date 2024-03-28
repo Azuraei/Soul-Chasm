@@ -37,8 +37,8 @@ public class dragongrounderuptionparticle extends Particle {
             int frame = GameUtils.getAnim(frameTime, frameTimes);
             if (frame == -1) {
                 this.remove();
-            } else if (frame < 10) {
-                this.getLevel().lightManager.refreshParticleLightFloat(this.x, this.y, 0.0F, 0.5F);
+            } else if (frame < 20) {
+                this.getLevel().lightManager.refreshParticleLightFloat(this.x, this.y, 230.0F, 0.5F);
             }
         }
 
@@ -49,8 +49,16 @@ public class dragongrounderuptionparticle extends Particle {
         int drawX = camera.getDrawX(this.x);
         int drawY = camera.getDrawY(this.y);
         long eventTime = this.getWorldEntity().getTime() - this.spawnTime;
-        long frameTime = eventTime - this.delay;
-        int frame = GameUtils.getAnim(frameTime, frameTimes);
+        int frame;
+        if (eventTime >= this.delay) {
+            long frameTime = eventTime - this.delay;
+            frame = GameUtils.getAnim(frameTime, frameTimes);
+            if (frame == -1) {
+                return;
+            }
+        } else {
+            frame = 0;
+        }
         frame = Math.max(frame - 5, 0);
         if (frame < 5) {
             float rotation = 0.0F;
@@ -59,10 +67,8 @@ public class dragongrounderuptionparticle extends Particle {
                 rotation = (float)((double)eventTime / 4.0);
                 sizeMod += (float)(Math.sin((double)eventTime / 240.0) / 10.0);
             }
-            TextureDrawOptions shadowOptions = eruption_shadow.initDraw().sprite(frame, 0, 128, 192).mirror(this.mirror, false).rotate(rotation, (int)(64.0F * sizeMod), (int)(96.0F * sizeMod)).size((int)(128.0F * sizeMod), (int)(192.0F * sizeMod)).light(light).posMiddle(drawX, drawY);
-            tileList.add((tm) -> {
-                shadowOptions.draw();
-            });
+            TextureDrawOptions shadowOptions = eruption_shadow.initDraw().sprite(frame, 0, 128, 192).light(light.minLevelCopy(Math.min(light.getLevel() + 100.0F, 150.0F))).mirror(this.mirror, false).rotate(rotation, (int)(64.0F * sizeMod), (int)(96.0F * sizeMod)).size((int)(128.0F * sizeMod), (int)(192.0F * sizeMod)).posMiddle(drawX, drawY);
+            tileList.add((tm) -> shadowOptions.draw());
         }
     }
 }

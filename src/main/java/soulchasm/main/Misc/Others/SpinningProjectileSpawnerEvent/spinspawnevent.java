@@ -61,15 +61,18 @@ public class spinspawnevent extends MobAbilityLevelEvent implements Attacker {
     }
 
     public void clientTick() {
+        ++this.tickCounter;
         if (!this.isOver()) {
             long eventTime = this.level.getWorldEntity().getTime() - this.spawnTime;
             if (eventTime > duration && !this.playedStartSound) {
                 Screen.playSound(GameResources.fireworkCrack, SoundEffect.effect((float)this.x, (float)this.y));
                 this.playedStartSound = true;
             }
+            if(this.tickCounter <= 18 && this.tickCounter % 2 == 0){
+                Screen.playSound(GameResources.magicbolt1, SoundEffect.effect((float)this.x, (float)this.y).volume(0.2F));
+            }
 
             if (eventTime > duration + 200) {
-                Screen.playSound(GameResources.firespell1, SoundEffect.effect((float)this.x, (float)this.y).volume(0.5F));
                 this.over();
             }
 
@@ -80,10 +83,10 @@ public class spinspawnevent extends MobAbilityLevelEvent implements Attacker {
         ++this.tickCounter;
         if (!this.isOver()) {
             long eventTime = this.level.getWorldEntity().getTime() - this.spawnTime;
-            if(this.tickCounter % 3 == 0){
+            if(this.tickCounter <= 18){
                 Point2D.Float dir = GameMath.getAngleDir(shootNextAngle);
                 soulbossspikeprojectile projectile = new soulbossspikeprojectile(this.getLevel(), x, y, x + dir.x * 100.0F, y + dir.y * 100.0F, 800, damage, 40, owner);
-                projectile.moveDist(-25.0);
+                projectile.moveDist(30.0);
                 this.getLevel().entityManager.projectiles.add(projectile);
                 shootNextAngle += 20;
             }

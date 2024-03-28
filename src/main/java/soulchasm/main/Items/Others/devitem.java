@@ -17,7 +17,7 @@ import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnvisual
 public class devitem extends ConsumableItem implements ItemInteractAction {
     public devitem() {
         super(1, false);
-        this.itemCooldownTime.setBaseValue(1000);
+        this.itemCooldownTime.setBaseValue(250);
         this.rarity = Rarity.LEGENDARY;
         this.worldDrawSize = 32;
     }
@@ -50,9 +50,9 @@ public class devitem extends ConsumableItem implements ItemInteractAction {
                     });
                 }
             } else {
-                spinspawnvisualevent event = new spinspawnvisualevent(x, y, 6000);
+                spinspawnvisualevent event = new spinspawnvisualevent(x, y, 3500);
                 level.entityManager.addLevelEvent(event);
-                spinspawnevent event2 = new spinspawnevent(player, x, y, GameRandom.globalRandom.nextSeeded(), new GameDamage(100), 3000);
+                spinspawnevent event2 = new spinspawnevent(player, x, y, GameRandom.globalRandom.nextSeeded(), new GameDamage(100), 1000);
                 level.entityManager.addLevelEvent(event2);
 
             }

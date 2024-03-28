@@ -46,7 +46,7 @@ public class soulbossspikeprojectile extends Projectile {
     public void clientTick() {
         super.clientTick();
         ++this.tickCounter;
-        if (this.tickCounter == 20) {
+        if (this.tickCounter == 40) {
             this.speed = 100;
         }
     }
@@ -54,7 +54,7 @@ public class soulbossspikeprojectile extends Projectile {
     public void serverTick() {
         super.serverTick();
         ++this.tickCounter;
-        if (this.tickCounter == 20) {
+        if (this.tickCounter == 40) {
             this.speed = 100;
         }
     }

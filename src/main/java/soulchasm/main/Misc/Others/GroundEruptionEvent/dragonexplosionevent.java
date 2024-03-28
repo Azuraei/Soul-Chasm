@@ -33,7 +33,7 @@ public class dragonexplosionevent extends ExplosionEvent implements Attacker {
     }
 
     protected void playExplosionEffects() {
-        Screen.playSound(GameResources.explosionHeavy, SoundEffect.effect(this.x, this.y).volume(2.5F).pitch(1.5F));
+        Screen.playSound(GameResources.explosionHeavy, SoundEffect.effect(this.x, this.y).volume(2.0F).pitch(1.5F));
         this.level.getClient().startCameraShake(this.x, this.y, 200, 40, 2.0F, 2.0F, true);
     }
 
