@@ -59,6 +59,9 @@ import soulchasm.main.Items.Trinkets.soulstealertrinket;
 import soulchasm.main.Misc.Incursion.soulchasmbiome;
 import soulchasm.main.Misc.Incursion.soulchasmincursionbiome;
 import soulchasm.main.Misc.Incursion.soulchasmincursionlevel;
+import soulchasm.main.Misc.Others.GroundEruptionEvent.dragonexplosionevent;
+import soulchasm.main.Misc.Others.GroundEruptionEvent.dragongrounderuptionevent;
+import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnevent;
 import soulchasm.main.Mobs.Agressive.lostsoul;
 import soulchasm.main.Mobs.Agressive.possesedstatue;
 import soulchasm.main.Mobs.Agressive.soulmage;
@@ -94,6 +97,7 @@ public class SoulChasm {
     public static LootTable soulcaveruinsloottable;
     public static LootTable soulcavemonumentshrineloottable;
     public static GameTexture[] car_mask;
+    public static GameTexture eruption_shadow;
     public static GameTextureSection particleFlamethrowerSection;
     public static GameTextureSection particleFireflySection;
     public static GameTextureSection particleWispSection;
@@ -246,10 +250,6 @@ public class SoulChasm {
         ItemRegistry.registerItem("rangesoulsealtrinket", new rangesoulsealtrinket(), 200, true);
         ItemRegistry.registerItem("soulsealtrinket", new soulsealtrinket(), 1000, true);
         ItemRegistry.registerItem("balancedsealtrinket", new balancedsealtrinket(), 2000, true);
-
-        //DEV
-        ItemRegistry.registerItem("devitem", new devitem(), 500, false);
-
         //MOBS
         MobRegistry.registerMob("lostsoul", lostsoul.class, true);
         MobRegistry.registerMob("carmob", carmob.class, false);
@@ -295,6 +295,14 @@ public class SoulChasm {
         UniqueIncursionRewardsRegistry.registerIncursionBodyArmors("soularmorbody", new UniqueIncursionReward(armorReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
         UniqueIncursionRewardsRegistry.registerIncursionFeetArmors("soularmorfeet", new UniqueIncursionReward(bootsReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
         UniqueIncursionRewardsRegistry.registerGreatswordWeapon("soulscythereward", new UniqueIncursionReward(scytheReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
+
+        //DEV
+        LevelEventRegistry.registerEvent("dragongrounderuptionevent", dragongrounderuptionevent.class);
+        LevelEventRegistry.registerEvent("dragonexplosionevent", dragonexplosionevent.class);
+        LevelEventRegistry.registerEvent("spinspawnevent", spinspawnevent.class);
+        LevelEventRegistry.registerEvent("spinspawnevent", spinspawnevent.class);
+        ItemRegistry.registerItem("devitem", new devitem(), 500, false);
+
     }
     public void initResources(){
         lostsoul.texture = GameTexture.fromFile("mobs/lostsoul");
@@ -317,6 +325,9 @@ public class SoulChasm {
         sphereeffectmob.texture_ball = GameTexture.fromFile("particles/altarball");
 
         //TextureSections
+
+        eruption_shadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");
+
         GameTexture flamethrowerParticleTexture = GameTexture.fromFile("particles/soulfiresparks");
         particleFlamethrowerSection = GameResources.particlesTextureGenerator.addTexture(flamethrowerParticleTexture);
 
