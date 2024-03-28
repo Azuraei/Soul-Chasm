@@ -246,6 +246,10 @@ public class SoulChasm {
         ItemRegistry.registerItem("rangesoulsealtrinket", new rangesoulsealtrinket(), 200, true);
         ItemRegistry.registerItem("soulsealtrinket", new soulsealtrinket(), 1000, true);
         ItemRegistry.registerItem("balancedsealtrinket", new balancedsealtrinket(), 2000, true);
+
+        //DEV
+        ItemRegistry.registerItem("devitem", new devitem(), 500, false);
+
         //MOBS
         MobRegistry.registerMob("lostsoul", lostsoul.class, true);
         MobRegistry.registerMob("carmob", carmob.class, false);

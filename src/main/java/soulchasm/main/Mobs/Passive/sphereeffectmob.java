@@ -1,19 +1,18 @@
 package soulchasm.main.Mobs.Passive;
 
+import necesse.engine.network.client.Client;
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
-import necesse.entity.mobs.Mob;
-import necesse.entity.mobs.MobDrawable;
-import necesse.entity.mobs.MobWorldPosition;
-import necesse.entity.mobs.PlayerMob;
+import necesse.entity.mobs.*;
 import necesse.entity.particle.Particle;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.level.maps.Level;
+import necesse.level.maps.LevelMap;
 import necesse.level.maps.light.GameLight;
 import soulchasm.SoulChasm;
 
@@ -21,22 +20,16 @@ import java.awt.*;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-//TODO Fix/remove name or hitbox
-
 public class sphereeffectmob extends Mob {
     public MobWorldPosition target;
     public static GameTexture texture_ball;
     private final int heightOffset = 32 * 2;
 
     public sphereeffectmob() {
-        super(100);
-        this.setFriction(1.0F);
+        super(10000);
         this.isSummoned = true;
         this.shouldSave = true;
         this.isStatic = true;
-        this.collision = new Rectangle(-10, -7, 20, 14);
-        this.hitBox = new Rectangle(-14, -12, 28, 24);
-        this.selectBox = new Rectangle(-18, -45, 36, 48);
         this.setKnockbackModifier(0.0F);
     }
 
@@ -51,6 +44,32 @@ public class sphereeffectmob extends Mob {
 
     public boolean canBePushed(Mob other) {
         return false;
+    }
+
+    public boolean canInteract(Mob mob) {
+        return false;
+    }
+
+    public void onFollowingAnotherLevel(PlayerMob player) {}
+
+    public boolean isVisibleOnMap(Client client, LevelMap map) {
+        return false;
+    }
+
+    public boolean isHealthBarVisible() {
+        return false;
+    }
+
+    public boolean countDamageDealt() {
+        return false;
+    }
+
+    public boolean canTakeDamage() {
+        return false;
+    }
+
+    @Override
+    public void remove(float knockbackX, float knockbackY, Attacker attacker, boolean isDeath) {
     }
 
     private void spinningParticle(Level level, int x, int y, float distance, Color color, float speedMultiplier, float height){
@@ -84,13 +103,6 @@ public class sphereeffectmob extends Mob {
     public void clientTick() {
         super.clientTick();
         spawnBallParticles(this.getLevel(), (int) x, (int) y);
-    }
-
-    public boolean canInteract(Mob mob) {
-        return false;
-    }
-
-    public void onFollowingAnotherLevel(PlayerMob player) {
     }
 
     public void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {

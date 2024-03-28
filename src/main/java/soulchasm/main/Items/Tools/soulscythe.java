@@ -22,6 +22,7 @@ public class soulscythe extends GreatswordToolItem {
         this.attackDamage.setBaseValue(215.0F).setUpgradedValue(1.0F, 215.0F);
         this.attackRange.setBaseValue(110);
         this.knockback.setBaseValue(75);
+        this.resilienceGain.setBaseValue(2.5F);
         this.attackXOffset = 6;
         this.attackYOffset = 6;
     }
