@@ -17,14 +17,13 @@ import necesse.level.maps.light.GameLight;
 import java.awt.*;
 import java.util.List;
 
-
 public class soulbossspikeprojectile extends Projectile {
     private int tickCounter;
 
     public soulbossspikeprojectile() {
     }
 
-    public soulbossspikeprojectile(Level level, float x, float y, float targetX, float targetY, float targetSpeed, int distance, GameDamage damage, int knockback, Mob owner) {
+    public soulbossspikeprojectile(Level level, float x, float y, float targetX, float targetY, int distance, GameDamage damage, int knockback, Mob owner) {
         this.setLevel(level);
         this.x = x;
         this.y = y;
@@ -33,8 +32,6 @@ public class soulbossspikeprojectile extends Projectile {
         this.knockback = knockback;
         this.setDistance(distance);
         this.setOwner(owner);
-        this.moveDist(60.0);
-        this.speed = targetSpeed;
     }
 
     public void init() {
@@ -43,25 +40,23 @@ public class soulbossspikeprojectile extends Projectile {
         this.piercing = 0;
         this.trailOffset = -20;
         this.tickCounter = 0;
-        this.speed = 5F;
+        this.speed = 0.1F;
     }
 
     public void clientTick() {
         super.clientTick();
         ++this.tickCounter;
-        if (this.tickCounter == 10) {
-            this.speed = 80;
+        if (this.tickCounter == 20) {
+            this.speed = 100;
         }
-
     }
 
     public void serverTick() {
         super.serverTick();
         ++this.tickCounter;
-        if (this.tickCounter == 10) {
-            this.speed = 80;
+        if (this.tickCounter == 20) {
+            this.speed = 100;
         }
-
     }
 
     public Color getParticleColor() {

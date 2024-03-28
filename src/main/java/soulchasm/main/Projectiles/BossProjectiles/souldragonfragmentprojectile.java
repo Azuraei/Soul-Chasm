@@ -70,13 +70,11 @@ public class souldragonfragmentprojectile extends FollowingProjectile {
 
             for(int i = 0; i < projectiles; ++i) {
                 Point2D.Float dir = GameMath.getAngleDir(angle + (float)i * 360.0F / (float)projectiles);
-                soulbossspikeprojectile projectile = new soulbossspikeprojectile(this.getLevel(), startX, startY, startX + dir.x * 100.0F, startY + dir.y * 100.0F, 80, 1200, this.getDamage().modFinalMultiplier(0.5F), this.knockback, this.getOwner());
+                soulbossspikeprojectile projectile = new soulbossspikeprojectile(this.getLevel(), startX, startY, startX + dir.x * 100.0F, startY + dir.y * 100.0F, 1200, this.getDamage().modFinalMultiplier(0.5F), this.knockback, this.getOwner());
                 if (mob != null) {
                     projectile.startHitCooldown(mob);
                 }
                 this.getLevel().entityManager.projectiles.add(projectile);
-
-
             }
 
         }

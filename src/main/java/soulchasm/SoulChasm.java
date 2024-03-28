@@ -62,6 +62,7 @@ import soulchasm.main.Misc.Incursion.soulchasmincursionlevel;
 import soulchasm.main.Misc.Others.GroundEruptionEvent.dragonexplosionevent;
 import soulchasm.main.Misc.Others.GroundEruptionEvent.dragongrounderuptionevent;
 import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnevent;
+import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
 import soulchasm.main.Mobs.Agressive.lostsoul;
 import soulchasm.main.Mobs.Agressive.possesedstatue;
 import soulchasm.main.Mobs.Agressive.soulmage;
@@ -98,6 +99,7 @@ public class SoulChasm {
     public static LootTable soulcavemonumentshrineloottable;
     public static GameTexture[] car_mask;
     public static GameTexture eruption_shadow;
+    public static GameTextureSection spinspawnvisual;
     public static GameTextureSection particleFlamethrowerSection;
     public static GameTextureSection particleFireflySection;
     public static GameTextureSection particleWispSection;
@@ -300,7 +302,7 @@ public class SoulChasm {
         LevelEventRegistry.registerEvent("dragongrounderuptionevent", dragongrounderuptionevent.class);
         LevelEventRegistry.registerEvent("dragonexplosionevent", dragonexplosionevent.class);
         LevelEventRegistry.registerEvent("spinspawnevent", spinspawnevent.class);
-        LevelEventRegistry.registerEvent("spinspawnevent", spinspawnevent.class);
+        LevelEventRegistry.registerEvent("spinspawnvisualevent", spinspawnvisualevent.class);
         ItemRegistry.registerItem("devitem", new devitem(), 500, false);
 
     }
@@ -327,6 +329,8 @@ public class SoulChasm {
         //TextureSections
 
         eruption_shadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");
+        GameTexture spinspawnvisualtexture = GameTexture.fromFile("projectiles/souldragonfragmentprojectile");
+        spinspawnvisual = GameResources.particlesTextureGenerator.addTexture(spinspawnvisualtexture);
 
         GameTexture flamethrowerParticleTexture = GameTexture.fromFile("particles/soulfiresparks");
         particleFlamethrowerSection = GameResources.particlesTextureGenerator.addTexture(flamethrowerParticleTexture);

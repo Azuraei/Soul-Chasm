@@ -6,12 +6,12 @@ import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.levelEvent.LevelEvent;
 import necesse.entity.particle.Particle;
-import necesse.entity.particle.ParticleOption;
 import necesse.gfx.GameResources;
-import necesse.gfx.drawOptions.texture.SharedTextureDrawOptions;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
+
+import static soulchasm.SoulChasm.spinspawnvisual;
 
 public class spinspawnvisualevent extends LevelEvent {
     long startTime;
@@ -59,18 +59,10 @@ public class spinspawnvisualevent extends LevelEvent {
         super.clientTick();
         if ((float)this.level.getTime() < (float)this.startTime + this.chargeUpDuration) {
             if (!this.mainParticleSpawned) {
-                float height = 25.0F;
+                float height = 15.0F;
                 float var10001 = (float)this.x;
                 float var10002 = (float)this.y;
-                this.getLevel().entityManager.addParticle(var10001, var10002, Particle.GType.CRITICAL).sprite(GameResources.explosiveModifierChargeUp.sprite(0, 0, 32)).rotation(new ParticleOption.FloatGetter() {
-                    public float get(int lifeTime, int timeAlive, float lifePercent) {
-                        return (float)timeAlive * lifePercent + 0.25F;
-                    }
-                }).givesLight(75.0F, 0.5F).fadesAlphaTime(1500, 250).lifeTime(1750).height(height).size(new ParticleOption.DrawModifier() {
-                    public void modify(SharedTextureDrawOptions.Wrapper options, int lifeTime, int timeAlive, float lifePercent) {
-                        options.size(32, 32);
-                    }
-                });
+                this.getLevel().entityManager.addParticle(var10001, var10002, Particle.GType.CRITICAL).sprite(spinspawnvisual).rotation((lifeTime, timeAlive, lifePercent) -> timeAlive * lifePercent + 0.25F).givesLight(230.0F, 0.3F).fadesAlphaTime(250, 50).lifeTime((int) chargeUpDuration).height(height).size((options, lifeTime, timeAlive, lifePercent) -> options.size(40, 40));
                 this.mainParticleSpawned = true;
             }
 
