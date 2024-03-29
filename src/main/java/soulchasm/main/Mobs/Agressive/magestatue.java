@@ -41,30 +41,27 @@ public class magestatue extends HostileMob {
         this.setFriction(3.0F);
         this.setKnockbackModifier(0.0F);
         this.setArmor(60);
-        this.collision = new Rectangle(-16, -48, 36, 32);
-        this.hitBox = new Rectangle(-16, -48, 36, 64);
-        this.selectBox = new Rectangle(-16, -48, 36, 64);
+        this.collision = new Rectangle(-24, -16, 48, 32);
+        this.hitBox = new Rectangle(-24, -16, 48, 32);
+        this.selectBox = new Rectangle(-24, -64, 48, 64 + 16);
     }
 
     public void init() {
         super.init();
-        this.ai = new BehaviourTreeAI<>(this, new StationaryPlayerShooterAI<magestatue>(620) {
+        StationaryPlayerShooterAI<magestatue> mobAI = new StationaryPlayerShooterAI<magestatue>(620) {
             public void shootTarget(magestatue mob, Mob target) {
                 for(int i = -1; i<=1; i++){
                     soulhomingprojectile projectile = new soulhomingprojectile(mob.getLevel(), mob, mob.x, mob.y, target.x, target.y, 60.0F, 712, new GameDamage(60.0F), 50);
                     projectile.turnSpeed = projectile.turnSpeed * 0.8F;
                     projectile.clearTargetPosWhenAligned = true;
                     projectile.setAngle(projectile.getAngle() + 25 * i);
+                    projectile.moveDist(15);
                     magestatue.this.attack((int) (mob.x + projectile.dx * 100.0F), (int) (mob.y + projectile.dy * 100.0F), true);
                     magestatue.this.getLevel().entityManager.projectiles.add(projectile);
-                    if(mob.getLevel().isClient()){
-                        float height = 64.0F;
-                        mob.getLevel().entityManager.addParticle(mob.x, mob.y + 14 + 32, Particle.GType.IMPORTANT_COSMETIC).sprite(spinspawnvisual).givesLight(230.0F, 0.3F).fadesAlphaTime(250, 150).lifeTime(500).height(height).size((options, lifeTime, timeAlive, lifePercent) -> options.size(30, 30));
-
-                    }
                 }
             }
-        });
+        };
+        this.ai = new BehaviourTreeAI<>(this, mobAI);
         this.randomSprite = GameRandom.globalRandom.nextInt(4);
     }
 
@@ -107,10 +104,12 @@ public class magestatue extends HostileMob {
         super.addDrawables(list, tileList, topList, level, x, y, tickManager, camera, perspective);
         GameLight light = level.getLightLevel(x / 32, y / 32);
         int drawX = camera.getDrawX(x) - 32;
-        int drawY = camera.getDrawY(y) - 64;
+        int drawY = camera.getDrawY(y) - 60;
         DrawOptions body = texture.initDraw().sprite(this.randomSprite, 0, 64, 80).light(light.minLevelCopy(20)).pos(drawX, drawY);
-        topList.add((tm) -> {
-            body.draw();
+        list.add(new MobDrawable() {
+            public void draw(TickManager tickManager) {
+                body.draw();
+            }
         });
     }
 
@@ -118,8 +117,9 @@ public class magestatue extends HostileMob {
         super.showAttack(x, y, seed, showAllDirections);
         if (this.getLevel().isClient()) {
             Screen.playSound(GameResources.magicbolt4, SoundEffect.effect(this).pitch(1.2F).volume(0.6F));
+            float height = 64.0F + 32;
+            this.getLevel().entityManager.addParticle(this.x, this.y + 14 + 64, Particle.GType.IMPORTANT_COSMETIC).sprite(spinspawnvisual).givesLight(230.0F, 0.3F).fadesAlphaTime(150, 250).lifeTime(800).height(height).size((options, lifeTime, timeAlive, lifePercent) -> options.size(20, 20));
         }
-
     }
 
     static {
