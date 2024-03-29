@@ -50,9 +50,10 @@ public class devitem extends ConsumableItem implements ItemInteractAction {
                     });
                 }
             } else {
-                spinspawnvisualevent event = new spinspawnvisualevent(x, y, 3500);
+                int duration = 1000;
+                spinspawnvisualevent event = new spinspawnvisualevent(x, y, duration * 3.5F);
                 level.entityManager.addLevelEvent(event);
-                spinspawnevent event2 = new spinspawnevent(player, x, y, GameRandom.globalRandom.nextSeeded(), new GameDamage(100), 1000);
+                spinspawnevent event2 = new spinspawnevent(player, x, y, GameRandom.globalRandom.nextSeeded(), new GameDamage(100), duration);
                 level.entityManager.addLevelEvent(event2);
 
             }
