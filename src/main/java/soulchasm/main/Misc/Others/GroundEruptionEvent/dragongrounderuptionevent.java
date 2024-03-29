@@ -107,7 +107,7 @@ public class dragongrounderuptionevent extends MobAbilityLevelEvent implements A
         if (!this.isOver()) {
             long eventTime = this.level.getWorldEntity().getTime() - this.spawnTime;
             if (eventTime > 1200L) {
-                dragonexplosionevent event = new dragonexplosionevent(x, y, 85, damage, false, 0, owner);
+                dragonexplosionevent event = new dragonexplosionevent(x, y, 100, damage, false, 0, owner);
                 this.getLevel().entityManager.addLevelEvent(event);
                 this.over();
             }

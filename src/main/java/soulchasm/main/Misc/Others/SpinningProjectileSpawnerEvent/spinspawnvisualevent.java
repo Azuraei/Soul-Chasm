@@ -62,7 +62,7 @@ public class spinspawnvisualevent extends LevelEvent {
                 float height = 64.0F;
                 float var10001 = (float)this.x;
                 float var10002 = (float)this.y;
-                this.getLevel().entityManager.addParticle(var10001, var10002 + 14 + 32, Particle.GType.CRITICAL).sprite(spinspawnvisual).rotation((lifeTime, timeAlive, lifePercent) -> timeAlive * 0.50F).givesLight(230.0F, 0.3F).fadesAlphaTime(250, 150).lifeTime((int) chargeUpDuration).height(height).size((options, lifeTime, timeAlive, lifePercent) -> options.size(40, 40));
+                this.getLevel().entityManager.addParticle(var10001, var10002 + 14 + 32, Particle.GType.CRITICAL).sprite(spinspawnvisual).rotation((lifeTime, timeAlive, lifePercent) -> timeAlive * 0.75F).givesLight(230.0F, 0.3F).fadesAlphaTime(250, 150).lifeTime((int) chargeUpDuration).height(height).size((options, lifeTime, timeAlive, lifePercent) -> options.size(40, 40));
                 this.mainParticleSpawned = true;
             }
 

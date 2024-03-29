@@ -27,6 +27,7 @@ public class spinspawnevent extends MobAbilityLevelEvent implements Attacker {
     protected boolean playedStartSound;
     private int shootNextAngle = 0;
     private int tickCounter;
+    private int randomAngleOffset;
 
     public spinspawnevent() {
     }
@@ -58,6 +59,7 @@ public class spinspawnevent extends MobAbilityLevelEvent implements Attacker {
 
     public void init() {
         super.init();
+        this.randomAngleOffset = GameRandom.globalRandom.getIntBetween(-360, 360);
     }
 
     public void clientTick() {
@@ -84,8 +86,8 @@ public class spinspawnevent extends MobAbilityLevelEvent implements Attacker {
         if (!this.isOver()) {
             long eventTime = this.level.getWorldEntity().getTime() - this.spawnTime;
             if(this.tickCounter <= 18){
-                Point2D.Float dir = GameMath.getAngleDir(shootNextAngle);
-                soulbossspikeprojectile projectile = new soulbossspikeprojectile(this.getLevel(), x, y, x + dir.x * 100.0F, y + dir.y * 100.0F, 800, damage, 40, owner);
+                Point2D.Float dir = GameMath.getAngleDir(shootNextAngle + randomAngleOffset);
+                soulbossspikeprojectile projectile = new soulbossspikeprojectile(this.getLevel(), x, y, x + dir.x * 100.0F, y + dir.y * 100.0F, 1200, damage, 20, owner);
                 projectile.moveDist(30.0);
                 this.getLevel().entityManager.projectiles.add(projectile);
                 shootNextAngle += 20;

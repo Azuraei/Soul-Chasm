@@ -327,7 +327,6 @@ public class SoulChasm {
         sphereeffectmob.texture_ball = GameTexture.fromFile("particles/altarball");
 
         //TextureSections
-
         eruption_shadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");
         GameTexture spinspawnvisualtexture = GameTexture.fromFile("projectiles/souldragonfragmentprojectile");
         spinspawnvisual = GameResources.particlesTextureGenerator.addTexture(spinspawnvisualtexture);
