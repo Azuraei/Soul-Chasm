@@ -15,6 +15,7 @@ import necesse.engine.util.GameLinkedList;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.gameAreaSearch.GameAreaStream;
+import necesse.entity.levelEvent.WaitForSecondsEvent;
 import necesse.entity.mobs.*;
 import necesse.entity.mobs.ability.EmptyMobAbility;
 import necesse.entity.mobs.ability.FloatMobAbility;
@@ -44,7 +45,9 @@ import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.inventory.lootTable.lootItem.RotationLootItem;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.Projectiles.BossProjectiles.souldragonfragmentprojectile;
+import soulchasm.main.Misc.Others.GroundEruptionEvent.dragongrounderuptionevent;
+import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnevent;
+import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
 import soulchasm.main.Projectiles.BossProjectiles.soulflamethrower;
 import soulchasm.main.Projectiles.soulhomingprojectile;
 
@@ -66,6 +69,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
     public static GameDamage souldragonHomingProjectileDamage;
     public static GameDamage souldragonFlamethrowerDamage;
     public static GameDamage souldragonCollisionDamage;
+    public static GameDamage souldragonEruptionDamage;
     private static float dragonHeadAngle;
     private static float dragonHeadX;
     private static float dragonHeadY;
@@ -292,6 +296,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         souldragonFragmentDamage = new GameDamage(65.0F);
         souldragonHomingProjectileDamage = new GameDamage(60.0F);
         souldragonFlamethrowerDamage = new GameDamage(50.0F);
+        souldragonEruptionDamage = new GameDamage(80.0F);
         privateLootTable = new LootTable(uniqueDrops);
     }
 
@@ -308,16 +313,24 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
             });
             targetFinder.moveToAttacker = false;
             ChargingCirclingChaserAINode chaserAI;
-            chaserSequence.addChild(chaserAI = new ChargingCirclingChaserAINode(2000, 40));
+            chaserSequence.addChild(chaserAI = new ChargingCirclingChaserAINode(1200, 40));
+
             chaserSequence.addChild(new souldragonhead.IdleTime(2000));
             chaserSequence.addChild(new souldragonhead.FragmentAttackRotation<>());
-            chaserSequence.addChild(new souldragonhead.EnragedState(6000, chaserAI));
+            chaserSequence.addChild(new souldragonhead.IdleTime(3000));
+            chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(3));
+            chaserSequence.addChild(new souldragonhead.IdleTime(2000));
+            chaserSequence.addChild(new souldragonhead.EnragedState(4000, chaserAI));
             chaserSequence.addChild(new souldragonhead.IdleTime(500));
             chaserSequence.addChild(new souldragonhead.FlamethrowerAttackRotation(chaserAI, 6000));
             chaserSequence.addChild(new souldragonhead.IdleTime(3000));
+            chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(5));
+            chaserSequence.addChild(new souldragonhead.IdleTime(2000));
             chaserSequence.addChild(new souldragonhead.FragmentAttackRotation<>());
+            chaserSequence.addChild(new souldragonhead.IdleTime(1000));
             chaserSequence.addChild(new souldragonhead.EnragedState(6000, chaserAI));
             chaserSequence.addChild(new souldragonhead.HomingAttackRotation());
+
             this.addChild(new WandererAINode(0));
         }
     }
@@ -436,12 +449,46 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         }
     }
 
+    public static class EruptionAttackRotation<T extends souldragonhead> extends RunningAINode<T> {
+        public int numberOfAttacks;
+        public EruptionAttackRotation(int numberOfAttacks) {
+            this.numberOfAttacks = numberOfAttacks;
+        }
+        public void start(T mob, Blackboard<T> blackboard) {}
+        public AINodeResult tickRunning(T mob, Blackboard<T> blackboard) {
+            for(int i = 0; i<this.numberOfAttacks; i++){
+                Level level = mob.getLevel();
+                Mob target = blackboard.getObject(Mob.class, "currentTarget");
+                int x = (int) target.x;
+                int y = (int) target.y;
+                level.entityManager.addLevelEventHidden(new WaitForSecondsEvent(0.5F * i) {
+                    public void onWaitOver() {
+                        int range = 300;
+                        int pos_x = x + GameRandom.globalRandom.getIntBetween(-range, range);
+                        int pos_y = y + GameRandom.globalRandom.getIntBetween(-range, range);
+                        dragongrounderuptionevent event = new dragongrounderuptionevent(mob, pos_x, pos_y, GameRandom.globalRandom.nextSeeded(), souldragonEruptionDamage);
+                        level.entityManager.addLevelEvent(event);
+                    }
+                });
+            }
+            return AINodeResult.SUCCESS;
+        }
+        public void end(T mob, Blackboard<T> blackboard) {
+        }
+    }
+
     public static class FragmentAttackRotation<T extends souldragonhead> extends RunningAINode<T> {
         public FragmentAttackRotation() {}
         public void start(T mob, Blackboard<T> blackboard) {}
         public AINodeResult tickRunning(T mob, Blackboard<T> blackboard) {
-            souldragonfragmentprojectile projectile = new souldragonfragmentprojectile(mob.getLevel(), mob.x, mob.y, mob.x, mob.y, 0.1F, 1, souldragonhead.souldragonFragmentDamage, 50, mob);
-            mob.getLevel().entityManager.projectiles.add(projectile);
+            Level level = mob.getLevel();
+            int duration = 1000;
+            int x = (int) mob.x;
+            int y = (int) mob.y;
+            spinspawnvisualevent event = new spinspawnvisualevent(x, y, duration * 3.5F);
+            level.entityManager.addLevelEvent(event);
+            spinspawnevent event2 = new spinspawnevent(mob, x, y, GameRandom.globalRandom.nextSeeded(), souldragonFragmentDamage, duration);
+            level.entityManager.addLevelEvent(event2);
             return AINodeResult.SUCCESS;
         }
         public void end(T mob, Blackboard<T> blackboard) {
