@@ -20,7 +20,6 @@ import necesse.gfx.gameTexture.GameSprite;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.Mobs.Agressive.possesedstatue;
 
 import java.awt.*;
 import java.awt.geom.Point2D;

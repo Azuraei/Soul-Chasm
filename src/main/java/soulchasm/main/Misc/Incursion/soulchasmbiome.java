@@ -29,6 +29,6 @@ public class soulchasmbiome extends Biome {
 
     static {
         critters = (new MobSpawnTable()).add(25, "soulcavecaveling").add(100, "wisp");
-        mobs = (new MobSpawnTable()).add(80, "lostsoul").add(80, "soulmage").add(40, "soulpillar").add(10, "possesedstatue");
+        mobs = (new MobSpawnTable()).add(80, "lostsoul").add(80, "soulmage").add(40, "magestatue").add(10, "meleestatue");
     }
 }

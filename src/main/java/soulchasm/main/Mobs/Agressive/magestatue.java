@@ -1,7 +1,6 @@
 package soulchasm.main.Mobs.Agressive;
 
 import necesse.engine.Screen;
-import necesse.engine.registries.MobRegistry;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
@@ -17,7 +16,6 @@ import necesse.entity.particle.Particle;
 import necesse.gfx.GameResources;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.DrawOptions;
-import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
@@ -29,13 +27,13 @@ import soulchasm.main.Projectiles.soulhomingprojectile;
 import java.awt.*;
 import java.util.List;
 
-public class soulpillar extends HostileMob {
+public class magestatue extends HostileMob {
     public static LootTable lootTable;
     public static GameDamage damage;
     public static GameTexture texture;
-    public static GameTexture glow;
+    private int randomSprite = 0;
 
-    public soulpillar() {
+    public magestatue() {
         super(800);
         this.setSpeed(0.0F);
         this.setFriction(3.0F);
@@ -48,21 +46,21 @@ public class soulpillar extends HostileMob {
 
     public void init() {
         super.init();
-        this.ai = new BehaviourTreeAI<>(this, new StationaryPlayerShooterAI<soulpillar>(620) {
-            public void shootTarget(soulpillar mob, Mob target) {
+        this.ai = new BehaviourTreeAI<>(this, new StationaryPlayerShooterAI<magestatue>(620) {
+            public void shootTarget(magestatue mob, Mob target) {
                 for(int i = -1; i<=1; i++){
                     soulhomingprojectile projectile = new soulhomingprojectile(mob.getLevel(), mob, mob.x, mob.y, target.x, target.y, 60.0F, 712, new GameDamage(60.0F), 50);
                     projectile.turnSpeed = projectile.turnSpeed * 0.8F;
                     projectile.clearTargetPosWhenAligned = true;
                     projectile.setAngle(projectile.getAngle() + 25 * i);
-                    soulpillar.this.attack((int) (mob.x + projectile.dx * 100.0F), (int) (mob.y + projectile.dy * 100.0F), true);
-                    soulpillar.this.getLevel().entityManager.projectiles.add(projectile);
+                    magestatue.this.attack((int) (mob.x + projectile.dx * 100.0F), (int) (mob.y + projectile.dy * 100.0F), true);
+                    magestatue.this.getLevel().entityManager.projectiles.add(projectile);
                 }
             }
         });
+        this.randomSprite = GameRandom.globalRandom.nextInt(4);
     }
 
-    @Override
     public boolean isLavaImmune() {
         return true;
     }
@@ -77,7 +75,7 @@ public class soulpillar extends HostileMob {
 
     public void spawnDeathParticles(float knockbackX, float knockbackY) {
         for (int i = 0; i < 8; i++) {
-            getLevel().entityManager.addParticle(new FleshParticle(getLevel(), possesedstatue.texture, GameRandom.globalRandom.nextInt(5), 8, 32, x, y, 20f, knockbackX, knockbackY), Particle.GType.IMPORTANT_COSMETIC);
+            getLevel().entityManager.addParticle(new FleshParticle(getLevel(), meleestatue.texture, GameRandom.globalRandom.nextInt(5), 8, 32, x, y, 20f, knockbackX, knockbackY), Particle.GType.IMPORTANT_COSMETIC);
         }
     }
 
@@ -93,7 +91,6 @@ public class soulpillar extends HostileMob {
         }
     }
 
-    @Override
     public void clientTick() {
         super.clientTick();
         spawnParticles(this.getTileX(), this.getTileY(), this.getLevel());
@@ -104,24 +101,11 @@ public class soulpillar extends HostileMob {
         GameLight light = level.getLightLevel(x / 32, y / 32);
         int drawX = camera.getDrawX(x) - 32;
         int drawY = camera.getDrawY(y) - 48;
-        DrawOptions body = texture.initDraw().sprite(1, 0, 64).light(light).pos(drawX, drawY);
-        int minLight = 80;
-        DrawOptions eyes = glow.initDraw().sprite(0, 0, 64).alpha(0.9F).light(light.minLevelCopy((float)minLight)).pos(drawX, drawY);
-        this.addShadowDrawables(topList, x, y, light, camera);
+        DrawOptions body = texture.initDraw().sprite(this.randomSprite, 0, 64, 80).light(light.minLevelCopy(20)).pos(drawX, drawY);
         topList.add((tm) -> {
             body.draw();
-            eyes.draw();
         });
     }
-
-    protected TextureDrawOptions getShadowDrawOptions(int x, int y, GameLight light, GameCamera camera) {
-        GameTexture shadowTexture = MobRegistry.Textures.human_big_shadow;
-        int res = shadowTexture.getHeight();
-        int drawX = camera.getDrawX(x) - res / 2;
-        int drawY = camera.getDrawY(y) - res / 2 + 6;
-        return shadowTexture.initDraw().sprite(0, 0, res).light(light).pos(drawX, drawY);
-    }
-
 
     public void showAttack(int x, int y, int seed, boolean showAllDirections) {
         super.showAttack(x, y, seed, showAllDirections);

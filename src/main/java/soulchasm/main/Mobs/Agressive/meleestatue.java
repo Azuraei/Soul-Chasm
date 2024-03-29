@@ -25,13 +25,13 @@ import necesse.level.maps.light.GameLight;
 import java.awt.*;
 import java.util.List;
 
-public class possesedstatue extends HostileMob {
+public class meleestatue extends HostileMob {
     public static LootTable lootTable;
     public static GameTexture texture;
     public static GameTexture glowtexture;
     private boolean showGlowEyes;
 
-    public possesedstatue() {
+    public meleestatue() {
         super(500);
         this.setSpeed(110.0F);
         this.setFriction(6.0F);
@@ -44,13 +44,13 @@ public class possesedstatue extends HostileMob {
 
     public void init() {
         super.init();
-        this.ai = new BehaviourTreeAI<>(this, new EmptyAINode<possesedstatue>() {});
+        this.ai = new BehaviourTreeAI<>(this, new EmptyAINode<meleestatue>() {});
         this.isHostile = false;
         showGlowEyes = false;
     }
 
     protected void changeAI() {
-        CollisionPlayerChaserAI<possesedstatue> wickedsoulAI = new CollisionPlayerChaserAI(800, new GameDamage(80.0F), 25);
+        CollisionPlayerChaserAI<meleestatue> wickedsoulAI = new CollisionPlayerChaserAI(800, new GameDamage(80.0F), 25);
         this.ai = new BehaviourTreeAI<>(this, wickedsoulAI);
         this.isHostile = true;
     }
@@ -92,7 +92,7 @@ public class possesedstatue extends HostileMob {
         super.serverTick();
         showGlowEyes = ai.blackboard.mover.hasMobTarget();
         if(!this.isInCombat() && !ai.blackboard.mover.hasMobTarget()){
-            this.ai = new BehaviourTreeAI<>(this, new EmptyAINode<possesedstatue>() {});
+            this.ai = new BehaviourTreeAI<>(this, new EmptyAINode<meleestatue>() {});
         }
     }
 

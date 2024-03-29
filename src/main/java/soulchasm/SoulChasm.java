@@ -64,9 +64,9 @@ import soulchasm.main.Misc.Others.GroundEruptionEvent.dragongrounderuptionevent;
 import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnevent;
 import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
 import soulchasm.main.Mobs.Agressive.lostsoul;
-import soulchasm.main.Mobs.Agressive.possesedstatue;
+import soulchasm.main.Mobs.Agressive.magestatue;
+import soulchasm.main.Mobs.Agressive.meleestatue;
 import soulchasm.main.Mobs.Agressive.soulmage;
-import soulchasm.main.Mobs.Agressive.soulpillar;
 import soulchasm.main.Mobs.Boss.souldragonbody;
 import soulchasm.main.Mobs.Boss.souldragonhead;
 import soulchasm.main.Mobs.Passive.firefly;
@@ -255,10 +255,10 @@ public class SoulChasm {
         //MOBS
         MobRegistry.registerMob("lostsoul", lostsoul.class, true);
         MobRegistry.registerMob("carmob", carmob.class, false);
-        MobRegistry.registerMob("possesedstatue", possesedstatue.class, true);
+        MobRegistry.registerMob("meleestatue", meleestatue.class, true);
         MobRegistry.registerMob("wisp", wisp.class, false);
         MobRegistry.registerMob("firefly", firefly.class, false);
-        MobRegistry.registerMob("soulpillar", soulpillar.class, true);
+        MobRegistry.registerMob("magestatue", magestatue.class, true);
         MobRegistry.registerMob("soulmage", soulmage.class, true);
         MobRegistry.registerMob("smallsoulsummon", smallsoulsummon.class, false);
         MobRegistry.registerMob("soulcavecaveling", soulcavecaveling.class, true);
@@ -310,12 +310,11 @@ public class SoulChasm {
         lostsoul.texture = GameTexture.fromFile("mobs/lostsoul");
         carmob.texture =  GameTexture.fromFile("mobs/car");
         carmob.texture_top = GameTexture.fromFile("mobs/car_top_mask");
-        possesedstatue.texture = GameTexture.fromFile("mobs/possesedstatue");
-        possesedstatue.glowtexture = GameTexture.fromFile("mobs/possesedstatue_glow");
+        meleestatue.texture = GameTexture.fromFile("mobs/meleestatue");
+        meleestatue.glowtexture = GameTexture.fromFile("mobs/possesedstatue_glow");
         wisp.texture = GameTexture.fromFile("mobs/wisp");
         firefly.texture = GameTexture.fromFile("mobs/firefly");
-        soulpillar.texture = GameTexture.fromFile("mobs/soulpillar");
-        soulpillar.glow = GameTexture.fromFile("mobs/soulpillar_glow");
+        magestatue.texture = GameTexture.fromFile("mobs/magestatue");
         GameTexture soulmageTexture = GameTexture.fromFile("mobs/soulmage");
         soulmage.texture = new HumanTexture(soulmageTexture,soulmageTexture,soulmageTexture);
         smallsoulsummon.texture = GameTexture.fromFile("mobs/smallsoul");
@@ -414,7 +413,7 @@ public class SoulChasm {
                 new ChanceLootItem(0.02F,"soularmorchestplate"),
                 new ChanceLootItem(0.02F,"soularmorhelmet")
         );
-        possesedstatue.lootTable = new LootTable(statue_loot_list);
+        meleestatue.lootTable = new LootTable(statue_loot_list);
 
         //---CRAFTING---//
         Recipes.registerModRecipe(new Recipe(
