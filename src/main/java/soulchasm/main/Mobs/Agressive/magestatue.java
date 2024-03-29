@@ -27,6 +27,8 @@ import soulchasm.main.Projectiles.soulhomingprojectile;
 import java.awt.*;
 import java.util.List;
 
+import static soulchasm.SoulChasm.spinspawnvisual;
+
 public class magestatue extends HostileMob {
     public static LootTable lootTable;
     public static GameDamage damage;
@@ -55,6 +57,11 @@ public class magestatue extends HostileMob {
                     projectile.setAngle(projectile.getAngle() + 25 * i);
                     magestatue.this.attack((int) (mob.x + projectile.dx * 100.0F), (int) (mob.y + projectile.dy * 100.0F), true);
                     magestatue.this.getLevel().entityManager.projectiles.add(projectile);
+                    if(mob.getLevel().isClient()){
+                        float height = 64.0F;
+                        mob.getLevel().entityManager.addParticle(mob.x, mob.y + 14 + 32, Particle.GType.IMPORTANT_COSMETIC).sprite(spinspawnvisual).givesLight(230.0F, 0.3F).fadesAlphaTime(250, 150).lifeTime(500).height(height).size((options, lifeTime, timeAlive, lifePercent) -> options.size(30, 30));
+
+                    }
                 }
             }
         });
@@ -100,7 +107,7 @@ public class magestatue extends HostileMob {
         super.addDrawables(list, tileList, topList, level, x, y, tickManager, camera, perspective);
         GameLight light = level.getLightLevel(x / 32, y / 32);
         int drawX = camera.getDrawX(x) - 32;
-        int drawY = camera.getDrawY(y) - 48;
+        int drawY = camera.getDrawY(y) - 64;
         DrawOptions body = texture.initDraw().sprite(this.randomSprite, 0, 64, 80).light(light.minLevelCopy(20)).pos(drawX, drawY);
         topList.add((tm) -> {
             body.draw();
