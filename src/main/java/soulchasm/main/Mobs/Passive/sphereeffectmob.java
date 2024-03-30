@@ -86,8 +86,11 @@ public class sphereeffectmob extends Mob {
 
     private void spawnBallParticles(Level level, int x, int y){
         if (GameRandom.globalRandom.getChance(0.45F)) {
-            spinningParticle(level, x, y, 50F, new Color(0x0081DC), 1.0F, 16);
-            spinningParticle(level, x, y, 350F, new Color(0x65B9FF), 0.20F, 8);
+            Color color1 = new Color(101, 185, 255);
+            Color color2 = new Color(0, 129, 220);
+            Color color3 = new Color(0, 79, 131);
+            spinningParticle(level, x, y, 50F, color1, 1.0F, 16);
+            spinningParticle(level, x, y, 350F, GameRandom.globalRandom.getOneOf(color1, color2, color3), 0.20F, 8);
         }
         if (GameRandom.globalRandom.getChance(0.08F)) {
             int posX = x + GameRandom.globalRandom.getIntBetween(-8, 8);
