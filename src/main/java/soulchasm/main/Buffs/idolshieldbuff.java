@@ -5,7 +5,7 @@ import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
 import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.buffs.staticBuffs.Buff;
-import soulchasm.main.Misc.idolshieldvisualevent;
+import soulchasm.main.Misc.Others.idolshieldvisualevent;
 
 public class idolshieldbuff extends Buff {
 
