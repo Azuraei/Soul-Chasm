@@ -36,11 +36,11 @@ public class magestatue extends HostileMob {
     private int randomSprite = 0;
 
     public magestatue() {
-        super(800);
+        super(900);
         this.setSpeed(0.0F);
         this.setFriction(3.0F);
         this.setKnockbackModifier(0.0F);
-        this.setArmor(60);
+        this.setArmor(70);
         this.collision = new Rectangle(-24, -16, 48, 32);
         this.hitBox = new Rectangle(-24, -16, 48, 32);
         this.selectBox = new Rectangle(-24, -64, 48, 64 + 16);
@@ -48,14 +48,14 @@ public class magestatue extends HostileMob {
 
     public void init() {
         super.init();
-        StationaryPlayerShooterAI<magestatue> mobAI = new StationaryPlayerShooterAI<magestatue>(620) {
+        StationaryPlayerShooterAI<magestatue> mobAI = new StationaryPlayerShooterAI<magestatue>(400) {
             public void shootTarget(magestatue mob, Mob target) {
                 for(int i = -1; i<=1; i++){
-                    soulhomingprojectile projectile = new soulhomingprojectile(mob.getLevel(), mob, mob.x, mob.y, target.x, target.y, 60.0F, 712, new GameDamage(60.0F), 50);
-                    projectile.turnSpeed = projectile.turnSpeed * 0.8F;
+                    soulhomingprojectile projectile = new soulhomingprojectile(mob.getLevel(), mob, mob.x, mob.y, target.x, target.y, 50.0F, 800, new GameDamage(65.0F), 30);
+                    projectile.turnSpeed = projectile.turnSpeed * 0.55F;
                     projectile.clearTargetPosWhenAligned = true;
                     projectile.setAngle(projectile.getAngle() + 25 * i);
-                    projectile.moveDist(15);
+                    projectile.moveDist(25);
                     magestatue.this.attack((int) (mob.x + projectile.dx * 100.0F), (int) (mob.y + projectile.dy * 100.0F), true);
                     magestatue.this.getLevel().entityManager.projectiles.add(projectile);
                 }
@@ -91,7 +91,7 @@ public class magestatue extends HostileMob {
             level.entityManager.addParticle((float)posX, (float)(posY + 15), Particle.GType.COSMETIC).sprite(SoulChasm.particleWispSection).fadesAlpha(0.6F, 0.6F).size((options, lifeTime, timeAlive, lifePercent) -> {
             }).height(20.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.5F, 1.5F) * GameRandom.globalRandom.getOneOf(1.0F, -1.5F), GameRandom.globalRandom.getFloatBetween(2.0F, 3.0F) * GameRandom.globalRandom.getOneOf(0.1F, -1.5F)).sizeFades(10, 15).modify((options, lifeTime, timeAlive, lifePercent) -> {
                 options.mirror(mirror, false);
-            }).lifeTime(6000).givesLight(60);
+            }).lifeTime(6000).givesLight(30);
         }
     }
 
@@ -105,7 +105,7 @@ public class magestatue extends HostileMob {
         GameLight light = level.getLightLevel(x / 32, y / 32);
         int drawX = camera.getDrawX(x) - 32;
         int drawY = camera.getDrawY(y) - 60;
-        DrawOptions body = texture.initDraw().sprite(this.randomSprite, 0, 64, 80).light(light.minLevelCopy(20)).pos(drawX, drawY);
+        DrawOptions body = texture.initDraw().sprite(this.randomSprite, 0, 64, 80).light(light.minLevelCopy(40)).pos(drawX, drawY);
         list.add(new MobDrawable() {
             public void draw(TickManager tickManager) {
                 body.draw();

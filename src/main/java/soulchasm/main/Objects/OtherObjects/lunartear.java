@@ -1,16 +1,12 @@
 package soulchasm.main.Objects.OtherObjects;
 
-import necesse.engine.Screen;
 import necesse.engine.Settings;
-import necesse.engine.network.packet.PacketHitObject;
 import necesse.engine.registries.TileRegistry;
-import necesse.engine.sound.SoundEffect;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.Attacker;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
-import necesse.gfx.GameResources;
 import necesse.inventory.item.toolItem.ToolType;
 import necesse.level.gameObject.GrassObject;
 import necesse.level.maps.Level;
@@ -34,19 +30,11 @@ public class lunartear extends GrassObject {
         this.lightHue = 240.0F;
         this.lightSat = 0.05F;
     }
+
+    @Override
     public void attackThrough(Level level, int x, int y, GameDamage damage, Attacker attacker) {
-        level.getServer().network.sendToClientsWithTile(new PacketHitObject(level, x, y, this, damage), level, x, y);
     }
 
-    public void attackThrough(Level level, int x, int y, GameDamage damage) {
-        super.attackThrough(level, x, y, damage);
-        level.makeGrassWeave(x, y, 1000, false);
-    }
-    @Override
-    public void playDamageSound(Level level, int x, int y, boolean damageDone) {
-        Screen.playSound(GameResources.grass, SoundEffect.effect((float)(x * 32 + 16), (float)(y * 32 + 16)));
-    }
-    @Override
     public void tick(Mob mob, Level level, int x, int y) {
         super.tick(mob, level, x, y);
         if (Settings.wavyGrass && mob.getFlyingHeight() < 10 && (mob.dx != 0.0F || mob.dy != 0.0F)) {
@@ -67,7 +55,7 @@ public class lunartear extends GrassObject {
             return level.getTileID(x, y) != TileRegistry.getTileID("soulcavegrass") ? "wrongtile" : null;
         }
     }
-    @Override
+
     public boolean isValid(Level level, int x, int y) {
         return super.isValid(level, x, y) && level.getTileID(x, y) == TileRegistry.getTileID("soulcavegrass");
     }

@@ -313,19 +313,16 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
             });
             targetFinder.moveToAttacker = false;
             ChargingCirclingChaserAINode chaserAI;
-            chaserSequence.addChild(chaserAI = new ChargingCirclingChaserAINode(400, 40));
+            chaserSequence.addChild(chaserAI = new ChargingCirclingChaserAINode(300, 40));
 
             chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
             chaserSequence.addChild(new souldragonhead.FragmentAttackRotation<>());
-            chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
             chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(chaserAI,5));
-            chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
             chaserSequence.addChild(new souldragonhead.EnragedState(3000, chaserAI));
             chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
             chaserSequence.addChild(new souldragonhead.FlamethrowerAttackRotation(chaserAI, 6000));
             chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
             chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(chaserAI,8));
-            chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
             chaserSequence.addChild(new souldragonhead.FragmentAttackRotation<>());
             chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
             chaserSequence.addChild(new souldragonhead.EnragedState(4000, chaserAI));
@@ -444,9 +441,9 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
             double targetY = mob().y + distance*Math.sin(Math.toRadians(selfAngle));
             float angle = 40;
             for(int i = -4; i<4; i++){
-                soulhomingprojectile projectile = new soulhomingprojectile(mob.getLevel(), mob, mob.x, mob.y, (float) targetX, (float) targetY, 60, 800,  souldragonhead.souldragonHomingProjectileDamage, 40);
+                soulhomingprojectile projectile = new soulhomingprojectile(mob.getLevel(), mob, mob.x, mob.y, (float) targetX, (float) targetY, 50, 800,  souldragonhead.souldragonHomingProjectileDamage, 20);
                 projectile.setAngle(projectile.getAngle() + angle * i);
-                projectile.turnSpeed = 0.05F;
+                projectile.turnSpeed = 0.025F;
                 mob.getLevel().entityManager.projectiles.add(projectile);
             }
             return AINodeResult.SUCCESS;
@@ -467,12 +464,17 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         public void start(T mob, Blackboard<T> blackboard) {
             for(int i = 0; i<this.numberOfAttacks; i++){
                 Level level = mob.getLevel();
+                int x;
+                int y;
                 Mob target = blackboard.getObject(Mob.class, "currentTarget");
                 if (target != null) {
                     chaserAI.startCircling(mob, blackboard, target, 300);
+                    x = (int) target.x;
+                    y = (int) target.y;
+                } else {
+                    x = (int) mob.x;
+                    y = (int) mob.y;
                 }
-                int x = (int) target.x;
-                int y = (int) target.y;
                 level.entityManager.addLevelEventHidden(new WaitForSecondsEvent(delay * i) {
                     public void onWaitOver() {
                         int range = 300;
@@ -486,7 +488,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         }
         public AINodeResult tickRunning(T mob, Blackboard<T> blackboard) {
             this.timer += 50;
-            return this.timer <= 1000 * this.delay * this.numberOfAttacks ? AINodeResult.RUNNING : AINodeResult.SUCCESS;
+            return this.timer <= 1000 * this.delay * this.numberOfAttacks/50 ? AINodeResult.RUNNING : AINodeResult.SUCCESS;
         }
         public void end(T mob, Blackboard<T> blackboard) {
         }

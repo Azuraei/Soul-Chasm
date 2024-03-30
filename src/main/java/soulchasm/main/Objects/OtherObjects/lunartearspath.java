@@ -1,17 +1,13 @@
 package soulchasm.main.Objects.OtherObjects;
 
-import necesse.engine.Screen;
 import necesse.engine.Settings;
-import necesse.engine.network.packet.PacketHitObject;
 import necesse.engine.registries.TileRegistry;
-import necesse.engine.sound.SoundEffect;
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.Attacker;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
-import necesse.gfx.GameResources;
 import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawOptions.texture.TextureDrawOptionsEnd;
 import necesse.gfx.drawables.LevelSortedDrawable;
@@ -45,19 +41,10 @@ public class lunartearspath extends GrassObject {
         this.lightHue = 240.0F;
         this.lightSat = 0.05F;
     }
-
-    public void attackThrough(Level level, int x, int y, GameDamage damage, Attacker attacker) {
-        level.getServer().network.sendToClientsWithTile(new PacketHitObject(level, x, y, this, damage), level, x, y);
-    }
-    public void attackThrough(Level level, int x, int y, GameDamage damage) {
-        super.attackThrough(level, x, y, damage);
-        level.makeGrassWeave(x, y, 1000, false);
-    }
-
     @Override
-    public void playDamageSound(Level level, int x, int y, boolean damageDone) {
-        Screen.playSound(GameResources.grass, SoundEffect.effect((float)(x * 32 + 16), (float)(y * 32 + 16)));
+    public void attackThrough(Level level, int x, int y, GameDamage damage, Attacker attacker) {
     }
+
     @Override
     public void tick(Mob mob, Level level, int x, int y) {
         super.tick(mob, level, x, y);

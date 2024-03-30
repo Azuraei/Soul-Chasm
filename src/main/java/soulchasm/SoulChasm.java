@@ -77,9 +77,8 @@ import soulchasm.main.Mobs.Summon.carmob;
 import soulchasm.main.Mobs.Summon.smallsoulsummon;
 import soulchasm.main.Objects.BiomeEnviroment.*;
 import soulchasm.main.Objects.OtherObjects.*;
-import soulchasm.main.Projectiles.BossProjectiles.soulbossspikeprojectile;
-import soulchasm.main.Projectiles.BossProjectiles.souldragonfragmentprojectile;
 import soulchasm.main.Projectiles.BossProjectiles.soulflamethrower;
+import soulchasm.main.Projectiles.BossProjectiles.spinspawnspikeprojectile;
 import soulchasm.main.Projectiles.SealProjectiles.*;
 import soulchasm.main.Projectiles.WeaponProjectiles.*;
 import soulchasm.main.Projectiles.soulhomingprojectile;
@@ -268,7 +267,6 @@ public class SoulChasm {
         //PROJECTILES
         ProjectileRegistry.registerProjectile("soulwaveprojectile", soulwaveprojectile.class, "soulwaveprojectile", null);
         ProjectileRegistry.registerProjectile("soularrowprojectile", soularrowprojectile.class, "soularrowprojectile", null);
-        ProjectileRegistry.registerProjectile("souldragonfragmentprojectile", souldragonfragmentprojectile.class, "souldragonfragmentprojectile","shadow_simple");
         ProjectileRegistry.registerProjectile("soulhomingprojectile", soulhomingprojectile.class, "soulhomingprojectile",null);
         ProjectileRegistry.registerProjectile("soulmissileprojectile", soulmissileprojectile.class, "soulmissileprojectile",null);
         ProjectileRegistry.registerProjectile("soulflamethrower", soulflamethrower.class, "shadow_simple",null);
@@ -278,7 +276,7 @@ public class SoulChasm {
         ProjectileRegistry.registerProjectile("soulboomerangprojectile", soulboomerangprojectile.class, "soulboomerangprojectile", null);
         ProjectileRegistry.registerProjectile("soulpointywaveprojectile", soulpointywaveprojectile.class, "soulpointywaveprojectile", null);
         ProjectileRegistry.registerProjectile("soulbigbulletprojectile", soulbigbulletprojectile.class, null, null);
-        ProjectileRegistry.registerProjectile("soulbossspikeprojectile", soulbossspikeprojectile.class, "soulbossspikeprojectile","shadow_simple");
+        ProjectileRegistry.registerProjectile("spinspawnspikeprojectile", spinspawnspikeprojectile.class, "spinspawnspikeprojectile",null);
         ProjectileRegistry.registerProjectile("bookofsoulsmainprojectile", bookofsoulsmainprojectile.class, "bookofsoulsmainprojectile",null);
         ProjectileRegistry.registerProjectile("bookofsoulssmallprojectile", bookofsoulssmallprojectile.class, "soulmissileprojectile",null);
         ProjectileRegistry.registerProjectile("soulscytheprojectile", soulscytheprojectile.class, "soulscytheprojectile",null);
@@ -298,12 +296,14 @@ public class SoulChasm {
         UniqueIncursionRewardsRegistry.registerIncursionFeetArmors("soularmorfeet", new UniqueIncursionReward(bootsReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
         UniqueIncursionRewardsRegistry.registerGreatswordWeapon("soulscythereward", new UniqueIncursionReward(scytheReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
 
-        //DEV
+        //LEVEL_EVENTS
         LevelEventRegistry.registerEvent("dragongrounderuptionevent", dragongrounderuptionevent.class);
         LevelEventRegistry.registerEvent("dragonexplosionevent", dragonexplosionevent.class);
         LevelEventRegistry.registerEvent("spinspawnevent", spinspawnevent.class);
         LevelEventRegistry.registerEvent("spinspawnvisualevent", spinspawnvisualevent.class);
-        ItemRegistry.registerItem("devitem", new devitem(), 500, false);
+
+        //DEV
+        ItemRegistry.registerItem("devitem", new devitem(), 69, false);
 
     }
     public void initResources(){
@@ -327,7 +327,7 @@ public class SoulChasm {
 
         //TextureSections
         eruption_shadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");
-        GameTexture spinspawnvisualtexture = GameTexture.fromFile("projectiles/souldragonfragmentprojectile");
+        GameTexture spinspawnvisualtexture = GameTexture.fromFile("particles/spinspawnvisual");
         spinspawnvisual = GameResources.particlesTextureGenerator.addTexture(spinspawnvisualtexture);
 
         GameTexture flamethrowerParticleTexture = GameTexture.fromFile("particles/soulfiresparks");
@@ -362,13 +362,12 @@ public class SoulChasm {
         //SHRINE MONUMENT LOOT
         soulcavemonumentshrineloottable = new LootTable(new LootItemList(
                 new OneOfLootItems(
-                        new ChanceLootItem(0.9F,"soulsigil"),
-                        new ChanceLootItem(0.6F,"phantomfeathertrinket"),
-                        new ChanceLootItem(0.6F,"soulstealertrinket"),
-                        new ChanceLootItem(0.6F,"pickaxeheadtrinket"),
+                        new ChanceLootItem(0.5F,"phantomfeathertrinket"),
+                        new ChanceLootItem(0.5F,"soulstealertrinket"),
+                        new ChanceLootItem(0.5F,"pickaxeheadtrinket"),
+                        new ChanceLootItem(0.5F,"soulmetalsword"),
                         new ChanceLootItem(0.1F,"soularmorhelmet"),
                         new ChanceLootItem(0.1F,"soularmorcrown"),
-                        new ChanceLootItem(0.5F,"soulmetalsword"),
                         new ChanceLootItem(0.05F, "carkeys")
                 )
         ));
@@ -378,7 +377,7 @@ public class SoulChasm {
                 LootItem.between("crystalizedsouloreitem", 8, 22),
                 LootItem.between("greaterhealthpotion", 4, 6),
                 LootItem.between("dynamitestick", 0, 8),
-                LootItem.between("coin", 120, 80),
+                LootItem.between("coin", 500, 2000),
                 new OneOfLootItems(
                         new LootItem("phantomfeathertrinket"),
                         new LootItem("soulstealertrinket"),
@@ -409,9 +408,9 @@ public class SoulChasm {
 
         //STATUE_LOOT
         LootItemList statue_loot_list = new LootItemList(
-                new ChanceLootItem(0.02F,"soularmorboots"),
-                new ChanceLootItem(0.02F,"soularmorchestplate"),
-                new ChanceLootItem(0.02F,"soularmorhelmet")
+                new ChanceLootItem(0.01F,"soularmorboots"),
+                new ChanceLootItem(0.01F,"soularmorchestplate"),
+                new ChanceLootItem(0.01F,"soularmorhelmet")
         );
         meleestatue.lootTable = new LootTable(statue_loot_list);
 
@@ -612,12 +611,11 @@ public class SoulChasm {
         //MISC_AND_FURNITURE
         Recipes.registerModRecipe(new Recipe(
                 "asphalttile",
-                50,
+                100,
                 RecipeTechRegistry.ALCHEMY,
                 new Ingredient[]{
-                        new Ingredient("anystone", 50),
-                        new Ingredient("watertile", 1),
-                        new Ingredient("speedpotion", 1),
+                        new Ingredient("anystone", 100),
+                        new Ingredient("speedpotion", 2),
                 }
         ));
 

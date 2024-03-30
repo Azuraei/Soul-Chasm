@@ -12,18 +12,17 @@ import necesse.gfx.drawables.EntityDrawable;
 import necesse.gfx.drawables.LevelSortedDrawable;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.level.maps.Level;
-import necesse.level.maps.light.GameLight;
 
 import java.awt.*;
 import java.util.List;
 
-public class soulbossspikeprojectile extends Projectile {
+public class spinspawnspikeprojectile extends Projectile {
     private int tickCounter;
 
-    public soulbossspikeprojectile() {
+    public spinspawnspikeprojectile() {
     }
 
-    public soulbossspikeprojectile(Level level, float x, float y, float targetX, float targetY, int distance, GameDamage damage, int knockback, Mob owner) {
+    public spinspawnspikeprojectile(Level level, float x, float y, float targetX, float targetY, int distance, GameDamage damage, int knockback, Mob owner) {
         this.setLevel(level);
         this.x = x;
         this.y = y;
@@ -73,7 +72,6 @@ public class soulbossspikeprojectile extends Projectile {
 
     public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, OrderableDrawables overlayList, Level level, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
         if (!this.removed()) {
-            GameLight light = level.getLightLevel(this);
             int drawX = camera.getDrawX(this.x) - this.texture.getWidth() / 2;
             int drawY = camera.getDrawY(this.y);
             final TextureDrawOptions options = this.texture.initDraw().rotate(this.getAngle(), this.texture.getWidth() / 2, 0).pos(drawX, drawY - (int)this.getHeight());
@@ -82,7 +80,6 @@ public class soulbossspikeprojectile extends Projectile {
                     options.draw();
                 }
             });
-            this.addShadowDrawables(tileList, drawX, drawY, light, this.getAngle(), 0);
         }
     }
 
