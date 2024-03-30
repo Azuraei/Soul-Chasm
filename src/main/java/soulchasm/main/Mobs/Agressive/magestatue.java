@@ -1,6 +1,7 @@
 package soulchasm.main.Mobs.Agressive;
 
 import necesse.engine.Screen;
+import necesse.engine.registries.BuffRegistry;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
@@ -10,7 +11,10 @@ import necesse.entity.mobs.MobDrawable;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
 import necesse.entity.mobs.ai.behaviourTree.trees.StationaryPlayerShooterAI;
+import necesse.entity.mobs.buffs.ActiveBuff;
+import necesse.entity.mobs.buffs.staticBuffs.Buff;
 import necesse.entity.mobs.hostile.HostileMob;
+import necesse.entity.objectEntity.interfaces.OEVicinityBuff;
 import necesse.entity.particle.FleshParticle;
 import necesse.entity.particle.Particle;
 import necesse.gfx.GameResources;
@@ -26,10 +30,11 @@ import soulchasm.main.Projectiles.soulhomingprojectile;
 
 import java.awt.*;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static soulchasm.SoulChasm.spinspawnvisual;
 
-public class magestatue extends HostileMob {
+public class magestatue extends HostileMob implements OEVicinityBuff {
     public static LootTable lootTable;
     public static GameDamage damage;
     public static GameTexture texture;
@@ -65,6 +70,26 @@ public class magestatue extends HostileMob {
         this.randomSprite = GameRandom.globalRandom.nextInt(4);
     }
 
+    public Buff[] getBuffs() {
+        return new Buff[]{BuffRegistry.HARDENED};
+    }
+
+    public int getBuffRange() {
+        return 350;
+    }
+
+    public boolean shouldBuffPlayers() {
+        return false;
+    }
+
+    public boolean shouldBuffMobs() {
+        return true;
+    }
+
+    public Predicate<Mob> buffMobsFilter() {
+        return (m) -> !m.isBoss() && m.isHostile && !m.isSummoned;
+    }
+
     public boolean isLavaImmune() {
         return true;
     }
@@ -95,9 +120,33 @@ public class magestatue extends HostileMob {
         }
     }
 
+    @Override
+    public void applyBuffs(Mob mob) {
+        Buff[] var2 = this.getBuffs();
+        for (Buff buff : var2) {
+            if (buff != null) {
+                ActiveBuff ab = new ActiveBuff(buff, mob, 100, this);
+                mob.buffManager.addBuff(ab, false);
+            }
+        }
+    }
+
+    public void tickVicinityBuff(Mob mob) {
+        Level level = mob.getLevel();
+        int posX = (int) mob.x;
+        int posY = (int) mob.y;
+        this.tickVicinityBuff(level, posX, posY);
+    }
+
     public void clientTick() {
         super.clientTick();
+        this.tickVicinityBuff(this);
         spawnParticles(this.getTileX(), this.getTileY(), this.getLevel());
+    }
+
+    public void serverTick() {
+        super.serverTick();
+        this.tickVicinityBuff(this);
     }
 
     protected void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {

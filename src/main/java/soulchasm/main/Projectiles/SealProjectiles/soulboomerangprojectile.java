@@ -30,7 +30,6 @@ public class soulboomerangprojectile extends BoomerangProjectile {
         this.setDamage(damage);
         this.setOwner(owner);
         this.setDistance(distance);
-
     }
 
     public void init() {
@@ -39,7 +38,6 @@ public class soulboomerangprojectile extends BoomerangProjectile {
         this.height = 18.0F;
         this.bouncing = 4;
         this.piercing = 0;
-        this.returningToOwner = false;
     }
 
     public Color getParticleColor() {

@@ -42,7 +42,6 @@ public class soulmage extends HostileMob {
         PlayerChaserWandererAI<soulmage> playerChaserAI = new PlayerChaserWandererAI<soulmage>(null, 540, 420, 40000, true, false) {
             public boolean attackTarget(soulmage mob, Mob target) {
                 if (mob.canAttack()) {
-                    //&& !mob.isAccelerating() && !mob.hasCurrentMovement()
                     mob.attack(target.getX(), target.getY(), false);
                     soulboomerangprojectile projectile =  new soulboomerangprojectile(this.mob().getLevel(), mob.x, mob.y, target.x, target.y, 110, 1200, new GameDamage(65.0F), mob);
                     projectile.bouncing = 4;
