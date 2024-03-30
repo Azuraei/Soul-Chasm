@@ -84,7 +84,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         this.moveAccuracy = 100;
         this.movementUpdateCooldown = 100;
         this.movePosTolerance = 400.0F;
-        this.setSpeed(150F);
+        this.setSpeed(125F);
         this.setArmor(45);
         this.accelerationMod = 1.0F;
         this.decelerationMod = 1.0F;
@@ -191,13 +191,13 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         Screen.setMusic(MusicRegistry.Millenium, Screen.MusicPriority.EVENT, 1.5F);
         Screen.registerMobHealthStatusBar(this);
         BossNearbyBuff.applyAround(this);
-        this.setSpeed(this.temporarySpeed >0 ? this.temporarySpeed : 150);
+        this.setSpeed(this.temporarySpeed >0 ? this.temporarySpeed : 125F);
     }
     public void serverTick() {
         super.serverTick();
         this.scaling.serverTick();
         BossNearbyBuff.applyAround(this);
-        this.setSpeed(this.temporarySpeed >0 ? this.temporarySpeed : 150);
+        this.setSpeed(this.temporarySpeed >0 ? this.temporarySpeed : 125F);
     }
 
     public void spawnDeathParticles(float knockbackX, float knockbackY) {
@@ -313,22 +313,22 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
             });
             targetFinder.moveToAttacker = false;
             ChargingCirclingChaserAINode chaserAI;
-            chaserSequence.addChild(chaserAI = new ChargingCirclingChaserAINode(1200, 40));
+            chaserSequence.addChild(chaserAI = new ChargingCirclingChaserAINode(400, 40));
 
-            chaserSequence.addChild(new souldragonhead.IdleTime(2000));
+            chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
             chaserSequence.addChild(new souldragonhead.FragmentAttackRotation<>());
-            chaserSequence.addChild(new souldragonhead.IdleTime(3000));
-            chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(3));
-            chaserSequence.addChild(new souldragonhead.IdleTime(2000));
-            chaserSequence.addChild(new souldragonhead.EnragedState(4000, chaserAI));
-            chaserSequence.addChild(new souldragonhead.IdleTime(500));
+            chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
+            chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(chaserAI,5));
+            chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
+            chaserSequence.addChild(new souldragonhead.EnragedState(3000, chaserAI));
+            chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
             chaserSequence.addChild(new souldragonhead.FlamethrowerAttackRotation(chaserAI, 6000));
-            chaserSequence.addChild(new souldragonhead.IdleTime(3000));
-            chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(5));
-            chaserSequence.addChild(new souldragonhead.IdleTime(2000));
+            chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
+            chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(chaserAI,8));
+            chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
             chaserSequence.addChild(new souldragonhead.FragmentAttackRotation<>());
-            chaserSequence.addChild(new souldragonhead.IdleTime(1000));
-            chaserSequence.addChild(new souldragonhead.EnragedState(6000, chaserAI));
+            chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
+            chaserSequence.addChild(new souldragonhead.EnragedState(4000, chaserAI));
             chaserSequence.addChild(new souldragonhead.HomingAttackRotation());
 
             this.addChild(new WandererAINode(0));
@@ -366,13 +366,19 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
     public static class IdleTime<T extends Mob> extends RunningAINode<T> {
         public int msToIdle;
         private int timer;
+        private ChargingCirclingChaserAINode<T> chaserAI;
 
-        public IdleTime(int msToIdle) {
+        public IdleTime(int msToIdle, ChargingCirclingChaserAINode<T> chaserAI) {
             this.msToIdle = msToIdle;
+            this.chaserAI = chaserAI;
         }
 
         public void start(T mob, Blackboard<T> blackboard) {
             this.timer = 0;
+            Mob target = blackboard.getObject(Mob.class, "currentTarget");
+            if (target != null) {
+                chaserAI.startCircling(mob, blackboard, target, msToIdle/50);
+            }
         }
 
         public AINodeResult tickRunning(T mob, Blackboard<T> blackboard) {
@@ -451,17 +457,23 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
 
     public static class EruptionAttackRotation<T extends souldragonhead> extends RunningAINode<T> {
         public int numberOfAttacks;
-        public EruptionAttackRotation(int numberOfAttacks) {
+        public float delay = 1.0F;
+        private int timer;
+        private ChargingCirclingChaserAINode<T> chaserAI;
+        public EruptionAttackRotation(ChargingCirclingChaserAINode<T> chaserAI, int numberOfAttacks) {
             this.numberOfAttacks = numberOfAttacks;
+            this.chaserAI = chaserAI;
         }
-        public void start(T mob, Blackboard<T> blackboard) {}
-        public AINodeResult tickRunning(T mob, Blackboard<T> blackboard) {
+        public void start(T mob, Blackboard<T> blackboard) {
             for(int i = 0; i<this.numberOfAttacks; i++){
                 Level level = mob.getLevel();
                 Mob target = blackboard.getObject(Mob.class, "currentTarget");
+                if (target != null) {
+                    chaserAI.startCircling(mob, blackboard, target, 300);
+                }
                 int x = (int) target.x;
                 int y = (int) target.y;
-                level.entityManager.addLevelEventHidden(new WaitForSecondsEvent(0.5F * i) {
+                level.entityManager.addLevelEventHidden(new WaitForSecondsEvent(delay * i) {
                     public void onWaitOver() {
                         int range = 300;
                         int pos_x = x + GameRandom.globalRandom.getIntBetween(-range, range);
@@ -471,7 +483,10 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
                     }
                 });
             }
-            return AINodeResult.SUCCESS;
+        }
+        public AINodeResult tickRunning(T mob, Blackboard<T> blackboard) {
+            this.timer += 50;
+            return this.timer <= 1000 * this.delay * this.numberOfAttacks ? AINodeResult.RUNNING : AINodeResult.SUCCESS;
         }
         public void end(T mob, Blackboard<T> blackboard) {
         }
