@@ -65,6 +65,7 @@ import soulchasm.main.Misc.Others.GroundEruptionEvent.dragongrounderuptionevent;
 import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnevent;
 import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
 import soulchasm.main.Misc.Others.decorationobject;
+import soulchasm.main.Misc.idolshieldvisualevent;
 import soulchasm.main.Mobs.Agressive.lostsoul;
 import soulchasm.main.Mobs.Agressive.magestatue;
 import soulchasm.main.Mobs.Agressive.meleestatue;
@@ -305,6 +306,7 @@ public class SoulChasm {
         LevelEventRegistry.registerEvent("dragonexplosionevent", dragonexplosionevent.class);
         LevelEventRegistry.registerEvent("spinspawnevent", spinspawnevent.class);
         LevelEventRegistry.registerEvent("spinspawnvisualevent", spinspawnvisualevent.class);
+        LevelEventRegistry.registerEvent("idolshieldvisualevent", idolshieldvisualevent.class);
 
         //DEV
         ItemRegistry.registerItem("devitem", new devitem(), 69, false);
