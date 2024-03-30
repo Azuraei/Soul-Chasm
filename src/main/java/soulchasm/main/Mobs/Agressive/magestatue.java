@@ -71,7 +71,7 @@ public class magestatue extends HostileMob implements OEVicinityBuff {
     }
 
     public Buff[] getBuffs() {
-        return new Buff[]{BuffRegistry.HARDENED};
+        return new Buff[]{BuffRegistry.getBuff("idolshieldbuff")};
     }
 
     public int getBuffRange() {
@@ -79,7 +79,7 @@ public class magestatue extends HostileMob implements OEVicinityBuff {
     }
 
     public boolean shouldBuffPlayers() {
-        return false;
+        return true;
     }
 
     public boolean shouldBuffMobs() {
@@ -87,7 +87,7 @@ public class magestatue extends HostileMob implements OEVicinityBuff {
     }
 
     public Predicate<Mob> buffMobsFilter() {
-        return (m) -> !m.isBoss() && m.isHostile && !m.isSummoned;
+        return (m) -> !m.isBoss() && m.isHostile && !m.isSummoned && !(m instanceof magestatue);
     }
 
     public boolean isLavaImmune() {

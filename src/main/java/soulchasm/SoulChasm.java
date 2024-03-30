@@ -47,6 +47,7 @@ import soulchasm.main.Buffs.TrinketsBuffs.PickaxeheadBuffs.pickaxeheadstackbuff;
 import soulchasm.main.Buffs.TrinketsBuffs.SoulSealBuffs.*;
 import soulchasm.main.Buffs.TrinketsBuffs.phantomfeatherbuff;
 import soulchasm.main.Buffs.TrinketsBuffs.soulstealerbuff;
+import soulchasm.main.Buffs.idolshieldbuff;
 import soulchasm.main.Items.Armor.*;
 import soulchasm.main.Items.Materials.*;
 import soulchasm.main.Items.Others.*;
@@ -194,6 +195,7 @@ public class SoulChasm {
         BuffRegistry.registerBuff("soulofsoulsoverchargebuff", new soulofsoulsoverchargebuff());
         BuffRegistry.registerBuff("soulbowbuff", new soulbowbuff());
         BuffRegistry.registerBuff("soulbowcooldownbuff", new soulbowcooldownbuff());
+        BuffRegistry.registerBuff("idolshieldbuff", new idolshieldbuff());
 
         //SetBonus
         BuffRegistry.registerBuff("soularmorhelmetsetbonus", new soularmorhelmetsetbonus());
