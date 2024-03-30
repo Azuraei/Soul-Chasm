@@ -43,8 +43,7 @@ public class soulmage extends HostileMob {
             public boolean attackTarget(soulmage mob, Mob target) {
                 if (mob.canAttack()) {
                     mob.attack(target.getX(), target.getY(), false);
-                    soulboomerangprojectile projectile =  new soulboomerangprojectile(this.mob().getLevel(), mob.x, mob.y, target.x, target.y, 180, 1200, new GameDamage(65.0F), mob);
-                    projectile.bouncing = 4;
+                    soulboomerangprojectile projectile =  new soulboomerangprojectile(this.mob().getLevel(), mob.x, mob.y, target.x, target.y, 160, 1200, new GameDamage(65.0F), mob);
                     mob.getLevel().entityManager.projectiles.add(projectile);
                     return true;
                 } else {
