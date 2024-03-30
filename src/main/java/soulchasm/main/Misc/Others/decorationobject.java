@@ -62,6 +62,6 @@ public class decorationobject extends SingleRockSmall {
     }
     @Override
     public LootTable getLootTable(Level level, int tileX, int tileY) {
-        return new LootTable(LootItem.between(this.droppedStone, 5, 10).splitItems(5));
+        return new LootTable(LootItem.between(this.droppedStone, 2, 6));
     }
 }

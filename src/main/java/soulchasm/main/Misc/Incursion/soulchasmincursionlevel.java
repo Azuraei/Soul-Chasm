@@ -52,8 +52,9 @@ public class soulchasmincursionlevel extends IncursionLevel {
             this.liquidManager.calculateShores();
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcaverocks"), 0.005F);
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcaverockssmall"), 0.01F);
+            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcavedecorations"), 0.008F);
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcrystalbig"), 0.005F);
-            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soullanternobject"), 0.0006F);
+            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soullanternobject"), 0.001F);
         });
         GameEvents.triggerEvent(new GeneratedCaveMiniBiomesEvent(this, cg));
         GameEvents.triggerEvent(new GenerateCaveOresEvent(this, cg), (e) -> {
