@@ -10,8 +10,7 @@ import soulchasm.main.Misc.idolshieldvisualevent;
 public class idolshieldbuff extends Buff {
 
     public idolshieldbuff() {
-        this.isVisible = true;
-        this.isImportant = true;
+        this.isVisible = false;
     }
 
     public void serverTick(ActiveBuff buff) {
@@ -25,7 +24,9 @@ public class idolshieldbuff extends Buff {
     }
 
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
-        buff.setModifier(BuffModifiers.INCOMING_DAMAGE_MOD, 0.5F);
+        buff.setModifier(BuffModifiers.INCOMING_DAMAGE_MOD, 0.2F);
+        buff.setModifier(BuffModifiers.SLOW, 0.5F);
+        buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.15F);
         buff.setModifier(BuffModifiers.KNOCKBACK_INCOMING_MOD, 0.0F);
     }
 }

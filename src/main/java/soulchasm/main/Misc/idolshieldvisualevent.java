@@ -8,7 +8,7 @@ import necesse.entity.ParticleTypeSwitcher;
 import necesse.entity.levelEvent.LevelEvent;
 import necesse.entity.mobs.Mob;
 import necesse.entity.particle.Particle;
-import necesse.gfx.GameResources;
+import soulchasm.SoulChasm;
 
 import java.awt.*;
 
@@ -49,7 +49,6 @@ public class idolshieldvisualevent extends LevelEvent {
         if (this.startMob == null || this.endMob == null || this.isServer()) {
             this.over();
         }
-
         this.startTime = this.getLocalTime();
     }
 
@@ -69,7 +68,7 @@ public class idolshieldvisualevent extends LevelEvent {
                 this.level.entityManager.addParticle(particleStartX, particleStartY, this.particleTypeSwitcher.next()).moves((pos, particleDelta, lifeTime, timeAlive, particleLifePercent) -> {
                     pos.x = GameMath.lerp(particleLifePercent, particleStartX, this.endMob.x);
                     pos.y = GameMath.lerp(particleLifePercent, particleStartY, this.endMob.y);
-                }).sprite(GameResources.bubbleParticle.sprite(0, 0, 12)).size((options, lifeTime, timeAlive, particleLifePercent) -> options.size(20, 20)).lifeTime(400).fadesAlpha(1, 1).color(new Color(102, 189, 255)).height(16.0F);
+                }).sprite(SoulChasm.particleWispSection.sprite(0, 0, 16)).size((options, lifeTime, timeAlive, particleLifePercent) -> options.size(20, 20)).lifeTime(400).fadesAlpha(1, 1).fadesAlphaTime(200, 200).color(new Color(102, 189, 255)).height(16.0F);
             }
 
         }

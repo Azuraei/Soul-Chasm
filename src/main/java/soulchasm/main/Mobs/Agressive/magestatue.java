@@ -4,6 +4,7 @@ import necesse.engine.Screen;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.tickManager.TickManager;
+import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
@@ -39,13 +40,17 @@ public class magestatue extends HostileMob implements OEVicinityBuff {
     public static GameDamage damage;
     public static GameTexture texture;
     private int randomSprite = 0;
+    private boolean isBuffingMob;
+    private int buffingTimeOut;
+    private final int armorNormal = 80;
+    private final int armorIncreased = 200;
 
     public magestatue() {
-        super(900);
+        super(1000);
         this.setSpeed(0.0F);
         this.setFriction(3.0F);
         this.setKnockbackModifier(0.0F);
-        this.setArmor(70);
+        this.setArmor(armorNormal);
         this.collision = new Rectangle(-24, -16, 48, 32);
         this.hitBox = new Rectangle(-24, -16, 48, 32);
         this.selectBox = new Rectangle(-24, -64, 48, 64 + 16);
@@ -54,6 +59,11 @@ public class magestatue extends HostileMob implements OEVicinityBuff {
     public void init() {
         super.init();
         StationaryPlayerShooterAI<magestatue> mobAI = new StationaryPlayerShooterAI<magestatue>(400) {
+            public boolean canAttack(magestatue mob) {
+                boolean canAttack = super.canAttack(mob);
+                boolean buffingMob = mob.isBuffingMob;
+                return canAttack && !buffingMob;
+            }
             public void shootTarget(magestatue mob, Mob target) {
                 for(int i = -1; i<=1; i++){
                     soulhomingprojectile projectile = new soulhomingprojectile(mob.getLevel(), mob, mob.x, mob.y, target.x, target.y, 50.0F, 800, new GameDamage(65.0F), 30);
@@ -75,11 +85,11 @@ public class magestatue extends HostileMob implements OEVicinityBuff {
     }
 
     public int getBuffRange() {
-        return 350;
+        return 400;
     }
 
     public boolean shouldBuffPlayers() {
-        return true;
+        return false;
     }
 
     public boolean shouldBuffMobs() {
@@ -120,6 +130,12 @@ public class magestatue extends HostileMob implements OEVicinityBuff {
         }
     }
 
+    private void attackParticle(int lifetime, int fadeIn, int fadeOut){
+        float height = 64.0F + 32;
+        this.getLevel().entityManager.addParticle(this.x, this.y + 14 + 64, Particle.GType.IMPORTANT_COSMETIC).sprite(spinspawnvisual).givesLight(230.0F, 0.3F).fadesAlphaTime(fadeIn, fadeOut).lifeTime(lifetime).height(height).size((options, lifeTime, timeAlive, lifePercent) -> options.size(20, 20));
+
+    }
+
     @Override
     public void applyBuffs(Mob mob) {
         Buff[] var2 = this.getBuffs();
@@ -129,12 +145,25 @@ public class magestatue extends HostileMob implements OEVicinityBuff {
                 mob.buffManager.addBuff(ab, false);
             }
         }
+        if(mob.getLevel().isClient()){
+            attackParticle(65, 0, 0);
+        }
+        this.buffingTimeOut = 10;
     }
 
     public void tickVicinityBuff(Mob mob) {
         Level level = mob.getLevel();
         int posX = (int) mob.x;
         int posY = (int) mob.y;
+
+        --this.buffingTimeOut;
+        this.buffingTimeOut = GameMath.limit(this.buffingTimeOut, 0, 10);
+        this.isBuffingMob = this.buffingTimeOut > 0;
+        if(this.isBuffingMob){
+            this.setArmor(armorIncreased);
+        } else if(this.getArmor()!=armorNormal){
+            this.setArmor(armorNormal);
+        }
         this.tickVicinityBuff(level, posX, posY);
     }
 
@@ -166,8 +195,7 @@ public class magestatue extends HostileMob implements OEVicinityBuff {
         super.showAttack(x, y, seed, showAllDirections);
         if (this.getLevel().isClient()) {
             Screen.playSound(GameResources.magicbolt4, SoundEffect.effect(this).pitch(1.2F).volume(0.6F));
-            float height = 64.0F + 32;
-            this.getLevel().entityManager.addParticle(this.x, this.y + 14 + 64, Particle.GType.IMPORTANT_COSMETIC).sprite(spinspawnvisual).givesLight(230.0F, 0.3F).fadesAlphaTime(150, 250).lifeTime(800).height(height).size((options, lifeTime, timeAlive, lifePercent) -> options.size(20, 20));
+            attackParticle(800, 150, 250);
         }
     }
 
