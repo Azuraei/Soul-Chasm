@@ -1,14 +1,15 @@
 package soulchasm.main.Items.Tools;
 
+import necesse.engine.Screen;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.server.FollowPosition;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.util.GameBlackboard;
+import necesse.engine.util.GameMath;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.summon.summonFollowingMob.attackingFollowingMob.AttackingFollowingMob;
-import necesse.gfx.gameFont.FontManager;
 import necesse.gfx.gameTooltips.GameTooltips;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
@@ -32,16 +33,13 @@ public class soulstatue extends SummonToolItem {
 
     @Override
     public void draw(InventoryItem item, PlayerMob perspective, int x, int y, boolean inInventory) {
-        super.draw(item, perspective, x, y, inInventory);
-        if (this.drawMaxSummons && inInventory) {
-            int maxSummons = this.getMaxSummons(item, perspective)/3;
-            if (maxSummons > 999) {
-                maxSummons = 999;
-            }
-            if (maxSummons != 1) {
-                String amountString = String.valueOf(maxSummons);
-                int width = FontManager.bit.getWidthCeil(amountString, tipFontOptions);
-                FontManager.bit.drawString((float)(x + 28 - width), (float)(y + 16), amountString, tipFontOptions);
+        this.drawIcon(item, perspective, x, y, 32);
+        if (inInventory && perspective != null) {
+            float percentCooldown = this.getItemCooldownPercent(item, perspective);
+            if (percentCooldown > 0.0F) {
+                int size = 34;
+                int pixels = GameMath.limit((int)(percentCooldown * (float)size), 1, size);
+                Screen.initQuadDraw(size, pixels).color(0.0F, 0.0F, 0.0F, 0.5F).draw(x - 1, y + Math.abs(pixels - size) - 1);
             }
         }
     }

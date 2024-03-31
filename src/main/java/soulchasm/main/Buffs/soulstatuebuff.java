@@ -16,8 +16,8 @@ public class soulstatuebuff extends Buff {
 
     public void serverTick(ActiveBuff buff) {
         super.serverTick(buff);
+        Mob owner = buff.owner;
         if(buff.getAttacker()!=null){
-            Mob owner = buff.owner;
             Mob attacker = buff.getAttacker().getAttackOwner();
             if(owner!=null && attacker!=null){
                 idolshieldvisualevent event = new idolshieldvisualevent(attacker, owner);
