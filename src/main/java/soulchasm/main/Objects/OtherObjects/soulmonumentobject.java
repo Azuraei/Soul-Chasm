@@ -4,24 +4,21 @@ import necesse.engine.localization.Localization;
 import necesse.engine.registries.ContainerRegistry;
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
+import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.objectEntity.DisplayStandObjectEntity;
-import necesse.entity.objectEntity.InventoryObjectEntity;
 import necesse.entity.objectEntity.ObjectEntity;
 import necesse.entity.objectEntity.interfaces.OEInventory;
 import necesse.entity.particle.Particle;
-import necesse.gfx.GameResources;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.DrawOptions;
 import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.LevelSortedDrawable;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
-import necesse.gfx.gameTexture.GameTextureSection;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.container.object.OEInventoryContainer;
 import necesse.inventory.item.toolItem.ToolType;
-import necesse.level.gameObject.ObjectHoverHitbox;
 import necesse.level.gameObject.furniture.FurnitureObject;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
@@ -46,7 +43,6 @@ public class soulmonumentobject extends FurnitureObject {
         this.drawRandom = new GameRandom();
     }
 
-    @Override
     public void loadTextures() {
         super.loadTextures();
         texture = GameTexture.fromFile("objects/soulmonumentobject");
@@ -59,8 +55,10 @@ public class soulmonumentobject extends FurnitureObject {
         int drawX = camera.getTileDrawX(tileX);
         int drawY = camera.getTileDrawY(tileY);
         int sprite;
+        int bobbing;
         synchronized(this.drawRandom) {
             sprite = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).nextInt(this.texture.getWidth() / 64);
+            bobbing = (int)(GameUtils.getBobbing(level.getWorldEntity().getTime(), 800 + this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).getIntBetween(0,200)) * 5.0F);
         }
         boolean active = false;
         ObjectEntity ent = level.entityManager.getObjectEntity(tileX, tileY);
@@ -68,7 +66,7 @@ public class soulmonumentobject extends FurnitureObject {
         if (ent != null && ent.implementsOEInventory()) {
             InventoryItem invItem = ((OEInventory)ent).getInventory().getItem(0);
             active = invItem != null;
-            item = invItem != null ? invItem.getWorldDrawOptions(perspective, drawX + 16, drawY - 16, light, 0.0F, 32) : () -> {
+            item = invItem != null ? invItem.getWorldDrawOptions(perspective, drawX + 16, drawY - 16 + bobbing, light, 0.0F, 28) : () -> {
             };
         } else {
             item = () -> {
@@ -77,11 +75,9 @@ public class soulmonumentobject extends FurnitureObject {
         TextureDrawOptions options = texture.initDraw().sprite(sprite, 0, 64, texture.getHeight()).light(light).pos(drawX - 16, drawY - texture.getHeight() + 32);
         TextureDrawOptions glow = glow_texture.initDraw().sprite(sprite, 0, 64, texture.getHeight()).light(light.minLevelCopy(100)).alpha(active ? 1 : 0).pos(drawX - 16, drawY - texture.getHeight() + 32);
         list.add(new LevelSortedDrawable(this, tileX, tileY) {
-            @Override
             public int getSortY() {
                 return 16;
             }
-            @Override
             public void draw(TickManager tickManager) {
                 options.draw();
                 item.draw();

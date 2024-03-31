@@ -111,10 +111,11 @@ public class sphereeffectmob extends Mob {
     public void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
         super.addDrawables(list, tileList, topList, level, x, y, tickManager, camera, perspective);
         GameLight light = level.getLightLevel(x, y);
-        int drawX = camera.getDrawX(x) + 8;
-        int drawY = camera.getDrawY(y);
         long time = level.getWorldEntity().getTime();
+        int bobbing = (int)(GameUtils.getBobbing(time, 1000) * 5.0F);
         float rotation = GameUtils.getTimeRotation(time, 4);
+        int drawX = camera.getDrawX(x) + 8;
+        int drawY = camera.getDrawY(y) + bobbing;
         TextureDrawOptions optionsBall = texture_ball.initDraw().light(light.minLevelCopy(100)).alpha(0.7F).rotate(rotation * (float)(this.dx < 0.0F ? -1 : 1), texture_ball.getWidth() / 2, texture_ball.getHeight() / 2).pos(drawX - 32, drawY - 64 - heightOffset);
         topList.add((tm) -> optionsBall.draw());
     }

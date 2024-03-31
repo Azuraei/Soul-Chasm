@@ -21,8 +21,10 @@ import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
+import soulchasm.main.Misc.Others.meleeghostspawnevent;
 
 import java.awt.*;
+import java.util.HashSet;
 import java.util.List;
 
 public class meleestatue extends HostileMob {
@@ -78,7 +80,6 @@ public class meleestatue extends HostileMob {
         this.showGlowEyes = reader.getNextBoolean();
     }
 
-    @Override
     public MobWasHitEvent isHit(MobWasHitEvent event, Attacker attacker) {
         if(!event.wasPrevented && attacker != null){
             changeAI();
@@ -87,13 +88,22 @@ public class meleestatue extends HostileMob {
         return super.isHit(event, attacker);
     }
 
-    @Override
+    private void spawnSoul(){
+        meleeghostspawnevent event = new meleeghostspawnevent((int) this.x, (int)this.y, 2000);
+        this.getLevel().entityManager.addLevelEvent(event);
+    }
+
     public void serverTick() {
         super.serverTick();
         showGlowEyes = ai.blackboard.mover.hasMobTarget();
         if(!this.isInCombat() && !ai.blackboard.mover.hasMobTarget()){
             this.ai = new BehaviourTreeAI<>(this, new EmptyAINode<meleestatue>() {});
         }
+    }
+
+    protected void onDeath(Attacker attacker, HashSet<Attacker> attackers) {
+        spawnSoul();
+        super.onDeath(attacker, attackers);
     }
 
     protected void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
@@ -115,9 +125,8 @@ public class meleestatue extends HostileMob {
         this.addShadowDrawables(tileList, x, y, light, camera);
     }
 
-    @Override
     public void spawnDeathParticles(float knockbackX, float knockbackY) {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 16; i++) {
             getLevel().entityManager.addParticle(new FleshParticle(getLevel(), texture, GameRandom.globalRandom.nextInt(5), 8, 32, x, y, 20f, knockbackX, knockbackY), Particle.GType.IMPORTANT_COSMETIC);
         }
     }

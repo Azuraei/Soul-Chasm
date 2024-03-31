@@ -66,10 +66,8 @@ import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnevent;
 import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
 import soulchasm.main.Misc.Others.decorationobject;
 import soulchasm.main.Misc.Others.idolshieldvisualevent;
-import soulchasm.main.Mobs.Agressive.lostsoul;
-import soulchasm.main.Mobs.Agressive.magestatue;
-import soulchasm.main.Mobs.Agressive.meleestatue;
-import soulchasm.main.Mobs.Agressive.soulmage;
+import soulchasm.main.Misc.Others.meleeghostspawnevent;
+import soulchasm.main.Mobs.Agressive.*;
 import soulchasm.main.Mobs.Boss.souldragonbody;
 import soulchasm.main.Mobs.Boss.souldragonhead;
 import soulchasm.main.Mobs.Passive.firefly;
@@ -107,6 +105,7 @@ public class SoulChasm {
     public static GameTextureSection particleWispSection;
     public static GameTextureSection particleBookSection;
     public static GameTextureSection particlePhantomBodySection;
+    public static GameTextureSection particleGhostSpawnSection;
 
     public void init() {
         System.out.println("no idea what to type here, so I will just say hi");
@@ -269,6 +268,7 @@ public class SoulChasm {
         MobRegistry.registerMob("souldragonhead", souldragonhead.class, true);
         MobRegistry.registerMob("souldragonbody", souldragonbody.class, false);
         MobRegistry.registerMob("sphereeffectmob", sphereeffectmob.class, false);
+        MobRegistry.registerMob("meleeghost", meleeghost.class, false);
         //PROJECTILES
         ProjectileRegistry.registerProjectile("soulwaveprojectile", soulwaveprojectile.class, "soulwaveprojectile", null);
         ProjectileRegistry.registerProjectile("soularrowprojectile", soularrowprojectile.class, "soularrowprojectile", null);
@@ -307,6 +307,7 @@ public class SoulChasm {
         LevelEventRegistry.registerEvent("spinspawnevent", spinspawnevent.class);
         LevelEventRegistry.registerEvent("spinspawnvisualevent", spinspawnvisualevent.class);
         LevelEventRegistry.registerEvent("idolshieldvisualevent", idolshieldvisualevent.class);
+        LevelEventRegistry.registerEvent("meleeghostspawnevent", meleeghostspawnevent.class);
 
         //DEV
         ItemRegistry.registerItem("devitem", new devitem(), 69, false);
@@ -330,11 +331,15 @@ public class SoulChasm {
         souldragonhead.texture = GameTexture.fromFile("mobs/souldragon");
         souldragonbody.texture = GameTexture.fromFile("mobs/souldragon");
         sphereeffectmob.texture_ball = GameTexture.fromFile("particles/altarball");
+        meleeghost.texture = GameTexture.fromFile("particles/phantombody");
 
         //TextureSections
         eruption_shadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");
         GameTexture spinspawnvisualtexture = GameTexture.fromFile("particles/spinspawnvisual");
         spinspawnvisual = GameResources.particlesTextureGenerator.addTexture(spinspawnvisualtexture);
+
+        GameTexture meleeghostspawnparticle = GameTexture.fromFile("particles/meleeghostspawnparticle");
+        particleGhostSpawnSection = GameResources.particlesTextureGenerator.addTexture(meleeghostspawnparticle);
 
         GameTexture flamethrowerParticleTexture = GameTexture.fromFile("particles/soulfiresparks");
         particleFlamethrowerSection = GameResources.particlesTextureGenerator.addTexture(flamethrowerParticleTexture);

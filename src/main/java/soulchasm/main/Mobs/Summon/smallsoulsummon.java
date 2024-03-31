@@ -63,7 +63,6 @@ public class smallsoulsummon extends FlyingAttackingFollowingMob {
             this.getLevel().entityManager.addParticle(this.x, this.y, Particle.GType.IMPORTANT_COSMETIC).movesConstant((float)(GameRandom.globalRandom.getIntBetween(5, 20) * (GameRandom.globalRandom.nextBoolean() ? -1 : 1)), (float)(GameRandom.globalRandom.getIntBetween(5, 20) * (GameRandom.globalRandom.nextBoolean() ? -1 : 1))).color(new Color(0, 170, 242));
         }
     }
-    @Override
     protected void playDeathSound() {
         Screen.playSound(GameResources.fadedeath3, SoundEffect.effect(this).volume(0.2F).pitch(1.1F));
     }
