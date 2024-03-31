@@ -16,11 +16,13 @@ public class soulstatuebuff extends Buff {
 
     public void serverTick(ActiveBuff buff) {
         super.serverTick(buff);
-        Mob owner = buff.owner;
-        Mob attacker = buff.getAttacker().getAttackOwner();
-        if(owner!=null && attacker!=null){
-            idolshieldvisualevent event = new idolshieldvisualevent(attacker, owner);
-            buff.owner.getLevel().entityManager.addLevelEvent(event);
+        if(buff.getAttacker()!=null){
+            Mob owner = buff.owner;
+            Mob attacker = buff.getAttacker().getAttackOwner();
+            if(owner!=null && attacker!=null){
+                idolshieldvisualevent event = new idolshieldvisualevent(attacker, owner);
+                buff.owner.getLevel().entityManager.addLevelEvent(event);
+            }
         }
     }
 
@@ -29,7 +31,10 @@ public class soulstatuebuff extends Buff {
     }
 
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
-        buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.15F);
-        buff.setModifier(BuffModifiers.SPEED, 0.15F);
+        buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.2F);
+        buff.setModifier(BuffModifiers.CRIT_CHANCE, 0.2F);
+        buff.setModifier(BuffModifiers.CRIT_DAMAGE, 0.2F);
+        buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.2F);
+        buff.setModifier(BuffModifiers.SPEED, 0.2F);
     }
 }

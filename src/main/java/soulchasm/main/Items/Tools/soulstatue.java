@@ -8,6 +8,7 @@ import necesse.engine.registries.MobRegistry;
 import necesse.engine.util.GameBlackboard;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.summon.summonFollowingMob.attackingFollowingMob.AttackingFollowingMob;
+import necesse.gfx.gameFont.FontManager;
 import necesse.gfx.gameTooltips.GameTooltips;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
@@ -17,7 +18,7 @@ import necesse.level.maps.Level;
 
 public class soulstatue extends SummonToolItem {
     public soulstatue() {
-        super("soulstatuesummon", FollowPosition.WALK_CLOSE, 2.0F, 1900);
+        super("soulstatuesummon", FollowPosition.WALK_CLOSE, 3.0F, 1900);
         this.rarity = Rarity.EPIC;
     }
 
@@ -26,7 +27,23 @@ public class soulstatue extends SummonToolItem {
     }
 
     public int getMaxSummons(InventoryItem item, PlayerMob player) {
-        return 1;
+        return 3;
+    }
+
+    @Override
+    public void draw(InventoryItem item, PlayerMob perspective, int x, int y, boolean inInventory) {
+        super.draw(item, perspective, x, y, inInventory);
+        if (this.drawMaxSummons && inInventory) {
+            int maxSummons = this.getMaxSummons(item, perspective)/3;
+            if (maxSummons > 999) {
+                maxSummons = 999;
+            }
+            if (maxSummons != 1) {
+                String amountString = String.valueOf(maxSummons);
+                int width = FontManager.bit.getWidthCeil(amountString, tipFontOptions);
+                FontManager.bit.drawString((float)(x + 28 - width), (float)(y + 16), amountString, tipFontOptions);
+            }
+        }
     }
 
     public void runSummon(Level level, int x, int y, ServerClient client, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
