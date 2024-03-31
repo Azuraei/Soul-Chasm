@@ -14,10 +14,6 @@ public class soulstatuebuff extends Buff {
         this.isImportant = true;
     }
 
-    public int getStackSize() {
-        return 3;
-    }
-
     public void serverTick(ActiveBuff buff) {
         super.serverTick(buff);
         Mob owner = buff.owner;

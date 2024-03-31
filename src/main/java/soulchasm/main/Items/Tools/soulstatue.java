@@ -25,6 +25,10 @@ public class soulstatue extends SummonToolItem {
         return null;
     }
 
+    public int getMaxSummons(InventoryItem item, PlayerMob player) {
+        return 1;
+    }
+
     public void runSummon(Level level, int x, int y, ServerClient client, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
         AttackingFollowingMob mob = (AttackingFollowingMob) MobRegistry.getMob(this.mobStringID, level);
         this.summonMob(client, mob, x, y, attackHeight, item);
