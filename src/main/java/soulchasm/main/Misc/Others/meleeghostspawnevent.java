@@ -1,12 +1,18 @@
 package soulchasm.main.Misc.Others;
 
+import necesse.engine.Screen;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;
+import necesse.engine.sound.SoundEffect;
+import necesse.engine.util.GameRandom;
 import necesse.entity.levelEvent.LevelEvent;
 import necesse.entity.mobs.Mob;
 import necesse.entity.particle.Particle;
+import necesse.gfx.GameResources;
 import soulchasm.SoulChasm;
 import soulchasm.main.Mobs.Agressive.meleeghost;
+
+import java.awt.*;
 
 public class meleeghostspawnevent extends LevelEvent {
     long startTime;
@@ -59,10 +65,14 @@ public class meleeghostspawnevent extends LevelEvent {
                 float height = 64.0F;
                 float var10001 = (float)this.x;
                 float var10002 = (float)this.y;
-                this.getLevel().entityManager.addParticle(var10001, var10002 + 14 + 32, Particle.GType.CRITICAL).sprite(SoulChasm.particleGhostSpawnSection.sprite(0, 0, 32)).rotation((lifeTime, timeAlive, lifePercent) -> timeAlive * lifePercent + 0.50F).givesLight(230.0F, 0.5F).fadesAlphaTime(250, 150).minDrawLight(150).lifeTime((int) chargeUpDuration).height(height).size((options, lifeTime, timeAlive, lifePercent) -> options.size(40, 40));
+                this.getLevel().entityManager.addParticle(var10001, var10002 + 14 + 32, Particle.GType.CRITICAL).sprite(SoulChasm.particleGhostSpawnSection.sprite(0, 0, 32)).rotation((lifeTime, timeAlive, lifePercent) -> timeAlive * lifePercent + 0.50F).givesLight(230.0F, 0.5F).fadesAlphaTime(250, 150).minDrawLight(150).lifeTime((int) chargeUpDuration).height(height).size((options, lifeTime, timeAlive, lifePercent) -> options.size(30, 30));
                 this.mainParticleSpawned = true;
             }
         } else {
+            for(int i = 0; i < 30; ++i) {
+                this.getLevel().entityManager.addParticle(this.x, this.y, Particle.GType.COSMETIC).movesConstant((float)(GameRandom.globalRandom.getIntBetween(5, 20) * (GameRandom.globalRandom.nextBoolean() ? -1 : 1)), (float)(GameRandom.globalRandom.getIntBetween(5, 20) * (GameRandom.globalRandom.nextBoolean() ? -1 : 1))).color(new Color(0, 170, 242));
+            }
+            Screen.playSound(GameResources.swoosh2, SoundEffect.effect(this.x, this.y).pitch(0.5F).volume(0.6F));
             this.over();
         }
     }

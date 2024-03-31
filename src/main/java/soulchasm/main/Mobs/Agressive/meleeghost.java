@@ -8,7 +8,8 @@ import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
-import necesse.entity.mobs.ai.behaviourTree.trees.CollisionPlayerChaserAI;
+import necesse.entity.mobs.ai.behaviourTree.trees.CollisionPlayerChaserWandererAI;
+import necesse.entity.mobs.ai.behaviourTree.util.FlyingAIMover;
 import necesse.entity.mobs.hostile.HostileMob;
 import necesse.entity.particle.Particle;
 import necesse.entity.particle.ParticleOption;
@@ -30,9 +31,10 @@ public class meleeghost extends HostileMob {
 
     public meleeghost() {
         super(400);
-        this.setSpeed(80.0F);
+        this.setSpeed(90.0F);
         this.setFriction(3.0F);
         this.setArmor(20);
+        this.moveAccuracy = 10;
         this.collision = new Rectangle(-10, -7, 20, 14);
         this.hitBox = new Rectangle(-14, -12, 28, 24);
         this.selectBox = new Rectangle(-14, -55, 28, 48);
@@ -41,8 +43,7 @@ public class meleeghost extends HostileMob {
 
     public void init() {
         super.init();
-        CollisionPlayerChaserAI<meleeghost> wickedsoulAI = new CollisionPlayerChaserAI(800, new GameDamage(65.0F), 25);
-        this.ai = new BehaviourTreeAI<>(this, wickedsoulAI);
+        this.ai = new BehaviourTreeAI(this, new CollisionPlayerChaserWandererAI(null, 800, new GameDamage(65.0F), 100, 40000), new FlyingAIMover());
     }
 
     public boolean isLavaImmune() {
