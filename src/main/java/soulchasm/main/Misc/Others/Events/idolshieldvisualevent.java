@@ -68,7 +68,7 @@ public class idolshieldvisualevent extends LevelEvent {
                 this.level.entityManager.addParticle(particleStartX, particleStartY, this.particleTypeSwitcher.next()).moves((pos, particleDelta, lifeTime, timeAlive, particleLifePercent) -> {
                     pos.x = GameMath.lerp(particleLifePercent, particleStartX, this.endMob.x);
                     pos.y = GameMath.lerp(particleLifePercent, particleStartY, this.endMob.y);
-                }).sprite(SoulChasm.particleWispSection.sprite(0, 0, 16)).size((options, lifeTime, timeAlive, particleLifePercent) -> options.size(20, 20)).lifeTime(400).fadesAlpha(1, 1).fadesAlphaTime(200, 200).color(new Color(60, 174, 255)).height(16.0F);
+                }).sprite(SoulChasm.particleWispSection.sprite(0, 0, 16)).size((options, lifeTime, timeAlive, particleLifePercent) -> options.size(20, 20)).lifeTime(400).fadesAlpha(1, 1).fadesAlphaTime(300, 300).color(new Color(60, 174, 255)).height(16.0F);
             }
 
         }

@@ -17,6 +17,7 @@ import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.enchants.ToolItemEnchantment;
 import necesse.inventory.item.toolItem.summonToolItem.SummonToolItem;
 import necesse.level.maps.Level;
+import soulchasm.main.Items.Tools.soulstatue;
 
 public class summonsoulsealbuff extends TrinketBuff {
     private GameDamage attackDamage;
@@ -32,7 +33,7 @@ public class summonsoulsealbuff extends TrinketBuff {
         super.onItemAttacked(buff, targetX, targetY, player, attackHeight, item, slot, animAttack);
         Level level = buff.owner.getLevel();
         if (level.isServer()) {
-            if (item.item instanceof SummonToolItem) {
+            if (item.item instanceof SummonToolItem && !(item.item instanceof soulstatue)) {
                 buff.getGndData().setBoolean("spawned", true);
                 attackDamage = ((SummonToolItem) item.item).getAttackDamage(item).modDamage(1.2F);
                 enchantment = ((SummonToolItem) item.item).getEnchantment(item);

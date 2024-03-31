@@ -124,7 +124,7 @@ glowingbugs=Small, glowing creature
 glowingjarobject=Provides small amount of light when placed or held
 bookofsoulstip=Shoots slowly big, homing projectile
 bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow\nWhen in overflow state, shoots rapidly smaller projectiles with low accuracy and provides boost to both speed and health regeneration
-soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs any nearby player in range\nEffect doesn't stack
+soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nEffect doesn't stack\nRequires three summon slots
 
 [mob]
 souldragonhead=Ancient Dragon

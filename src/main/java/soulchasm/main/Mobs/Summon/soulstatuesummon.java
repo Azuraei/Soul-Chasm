@@ -25,6 +25,7 @@ import soulchasm.main.Mobs.Agressive.meleestatue;
 
 import java.awt.*;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class soulstatuesummon extends AttackingFollowingMob implements OEVicinityBuff {
     public static LootTable lootTable;
@@ -59,7 +60,11 @@ public class soulstatuesummon extends AttackingFollowingMob implements OEVicinit
     }
 
     public boolean shouldBuffMobs() {
-        return false;
+        return true;
+    }
+
+    public Predicate<Mob> buffMobsFilter() {
+        return (m) -> m.isHuman && !m.isSummoned && !m.isHostile;
     }
 
     public boolean canBePushed(Mob other) {
