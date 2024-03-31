@@ -1,4 +1,4 @@
-package soulchasm.main.Misc.Others;
+package soulchasm.main.Misc.Others.Events;
 
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;

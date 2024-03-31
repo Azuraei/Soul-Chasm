@@ -1,4 +1,4 @@
-package soulchasm.main.Misc.Others;
+package soulchasm.main.Misc.Others.Events;
 
 import necesse.engine.Screen;
 import necesse.engine.network.PacketReader;

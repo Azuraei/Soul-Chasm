@@ -7,10 +7,15 @@ import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.buffs.staticBuffs.Buff;
 import soulchasm.main.Misc.Others.Events.idolshieldvisualevent;
 
-public class idolshieldbuff extends Buff {
+public class soulstatuebuff extends Buff {
 
-    public idolshieldbuff() {
-        this.isVisible = false;
+    public soulstatuebuff() {
+        this.isVisible = true;
+        this.isImportant = true;
+    }
+
+    public int getStackSize() {
+        return 3;
     }
 
     public void serverTick(ActiveBuff buff) {
@@ -23,10 +28,12 @@ public class idolshieldbuff extends Buff {
         }
     }
 
+    public boolean shouldDrawDuration(ActiveBuff buff) {
+        return false;
+    }
+
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
-        buff.setModifier(BuffModifiers.INCOMING_DAMAGE_MOD, 0.2F);
-        buff.setModifier(BuffModifiers.SLOW, 0.5F);
         buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.15F);
-        buff.setModifier(BuffModifiers.KNOCKBACK_INCOMING_MOD, 0.0F);
+        buff.setModifier(BuffModifiers.SPEED, 0.15F);
     }
 }

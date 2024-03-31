@@ -48,6 +48,7 @@ import soulchasm.main.Buffs.TrinketsBuffs.SoulSealBuffs.*;
 import soulchasm.main.Buffs.TrinketsBuffs.phantomfeatherbuff;
 import soulchasm.main.Buffs.TrinketsBuffs.soulstealerbuff;
 import soulchasm.main.Buffs.idolshieldbuff;
+import soulchasm.main.Buffs.soulstatuebuff;
 import soulchasm.main.Items.Armor.*;
 import soulchasm.main.Items.Materials.*;
 import soulchasm.main.Items.Others.*;
@@ -60,13 +61,13 @@ import soulchasm.main.Items.Trinkets.soulstealertrinket;
 import soulchasm.main.Misc.Incursion.soulchasmbiome;
 import soulchasm.main.Misc.Incursion.soulchasmincursionbiome;
 import soulchasm.main.Misc.Incursion.soulchasmincursionlevel;
+import soulchasm.main.Misc.Others.Events.idolshieldvisualevent;
+import soulchasm.main.Misc.Others.Events.meleeghostspawnevent;
 import soulchasm.main.Misc.Others.GroundEruptionEvent.dragonexplosionevent;
 import soulchasm.main.Misc.Others.GroundEruptionEvent.dragongrounderuptionevent;
 import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnevent;
 import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
 import soulchasm.main.Misc.Others.decorationobject;
-import soulchasm.main.Misc.Others.idolshieldvisualevent;
-import soulchasm.main.Misc.Others.meleeghostspawnevent;
 import soulchasm.main.Mobs.Agressive.*;
 import soulchasm.main.Mobs.Boss.souldragonbody;
 import soulchasm.main.Mobs.Boss.souldragonhead;
@@ -76,6 +77,7 @@ import soulchasm.main.Mobs.Passive.sphereeffectmob;
 import soulchasm.main.Mobs.Passive.wisp;
 import soulchasm.main.Mobs.Summon.carmob;
 import soulchasm.main.Mobs.Summon.smallsoulsummon;
+import soulchasm.main.Mobs.Summon.soulstatuesummon;
 import soulchasm.main.Objects.BiomeEnviroment.*;
 import soulchasm.main.Objects.OtherObjects.*;
 import soulchasm.main.Projectiles.BossProjectiles.soulflamethrower;
@@ -155,7 +157,6 @@ public class SoulChasm {
         ObjectRegistry.registerObject("spikeobject", new spikeobject(), 0.0F, false);
         ObjectRegistry.registerObject("magestatueobject", new magestatueobject(), 100, true);
 
-
         //Furniture
         BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", ToolType.PICKAXE, SoulFurnitureColor, 1);
         BedObject.registerBed("soulwoodbed", "soulwoodbed", ToolType.PICKAXE, SoulFurnitureColor, 1);
@@ -198,6 +199,7 @@ public class SoulChasm {
         BuffRegistry.registerBuff("soulbowbuff", new soulbowbuff());
         BuffRegistry.registerBuff("soulbowcooldownbuff", new soulbowcooldownbuff());
         BuffRegistry.registerBuff("idolshieldbuff", new idolshieldbuff());
+        BuffRegistry.registerBuff("soulstatuebuff", new soulstatuebuff());
 
         //SetBonus
         BuffRegistry.registerBuff("soularmorhelmetsetbonus", new soularmorhelmetsetbonus());
@@ -242,6 +244,7 @@ public class SoulChasm {
         ItemRegistry.registerItem("soulmetalspear", new soulmetalspear(), 500, true);
         ItemRegistry.registerItem("soulmetalrevolver", new soulmetalrevolver(), 500, true);
         ItemRegistry.registerItem("bookofsouls", new bookofsouls(), 500, true);
+        ItemRegistry.registerItem("soulstatue", new soulstatue(), 500, true);
 
         //Armor
         ItemRegistry.registerItem("soularmorboots", new soularmorboots(), 750, true);
@@ -271,6 +274,7 @@ public class SoulChasm {
         MobRegistry.registerMob("souldragonbody", souldragonbody.class, false);
         MobRegistry.registerMob("sphereeffectmob", sphereeffectmob.class, false);
         MobRegistry.registerMob("meleeghost", meleeghost.class, false);
+        MobRegistry.registerMob("soulstatuesummon", soulstatuesummon.class, false);
         //PROJECTILES
         ProjectileRegistry.registerProjectile("soulwaveprojectile", soulwaveprojectile.class, "soulwaveprojectile", null);
         ProjectileRegistry.registerProjectile("soularrowprojectile", soularrowprojectile.class, "soularrowprojectile", null);
@@ -334,6 +338,7 @@ public class SoulChasm {
         souldragonbody.texture = GameTexture.fromFile("mobs/souldragon");
         sphereeffectmob.texture_ball = GameTexture.fromFile("particles/altarball");
         meleeghost.texture = GameTexture.fromFile("particles/phantombody");
+        soulstatuesummon.texture = GameTexture.fromFile("items/magestatueobject");
 
         //TextureSections
         eruption_shadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");

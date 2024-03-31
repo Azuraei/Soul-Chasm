@@ -21,7 +21,7 @@ import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.Misc.Others.meleeghostspawnevent;
+import soulchasm.main.Misc.Others.Events.meleeghostspawnevent;
 
 import java.awt.*;
 import java.util.HashSet;
