@@ -662,6 +662,15 @@ public class SoulChasm {
         ).showAfter("fireflyjar"));
 
         Recipes.registerModRecipe(new Recipe(
+                "magestatueobject",
+                1,
+                RecipeTechRegistry.ADVANCED_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulcaverockitem", 25)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
                 "soultorch",
                 20,
                 RecipeTechRegistry.ADVANCED_WORKSTATION,
