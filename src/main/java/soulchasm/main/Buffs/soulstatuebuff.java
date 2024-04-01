@@ -16,22 +16,17 @@ public class soulstatuebuff extends Buff {
 
     private void changeBuffMode(ActiveBuff buff){
         if(buff.owner != null){
-            boolean attackModeActive = buff.getGndData().getBoolean("attackModeActive");
             float hp = buff.owner.getHealthPercent();
-            if(hp >= 0.8F && !attackModeActive){
-                buff.getGndData().setBoolean("attackModeActive", true);
+            if(hp >= 0.8F){
                 buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.2F);
                 buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.2F);
                 buff.setModifier(BuffModifiers.COMBAT_HEALTH_REGEN_FLAT, 0.0F);
                 buff.setModifier(BuffModifiers.ARMOR, 0.0F);
-                System.out.println("Attack");
             } else {
-                buff.getGndData().setBoolean("attackModeActive", false);
                 buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.0F);
                 buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.0F);
-                buff.setModifier(BuffModifiers.COMBAT_HEALTH_REGEN_FLAT, 2.0F);
+                buff.setModifier(BuffModifiers.COMBAT_HEALTH_REGEN_FLAT, 2.5F);
                 buff.setModifier(BuffModifiers.ARMOR, 0.4F);
-                System.out.println("Defence");
             }
             buff.owner.buffManager.forceUpdateBuffs();
         }
