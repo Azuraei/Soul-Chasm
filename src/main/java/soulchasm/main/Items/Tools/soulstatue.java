@@ -10,7 +10,9 @@ import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameMath;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.summon.summonFollowingMob.attackingFollowingMob.AttackingFollowingMob;
+import necesse.gfx.gameTooltips.GameTooltips;
 import necesse.gfx.gameTooltips.ListGameTooltips;
+import necesse.gfx.gameTooltips.StringTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.item.toolItem.summonToolItem.SummonToolItem;
@@ -18,7 +20,7 @@ import necesse.level.maps.Level;
 
 public class soulstatue extends SummonToolItem {
     public soulstatue() {
-        super("soulstatuesummon", FollowPosition.WALK_CLOSE, 3.0F, 2200);
+        super("soulstatuesummon", FollowPosition.WALK_CLOSE, 3, 2200);
         this.rarity = Rarity.EPIC;
     }
 
@@ -40,9 +42,20 @@ public class soulstatue extends SummonToolItem {
         this.summonMob(client, mob, x, y, attackHeight, item);
     }
 
+    @Override
+    public GameTooltips getSpaceTakenTooltip(InventoryItem item, PlayerMob perspective) {
+        float spaceTaken = this.getSummonSpaceTaken(item, perspective);
+        return spaceTaken != 1.0F ? new StringTooltips(Localization.translate("itemtooltip", "summonuseslots", "count", (int) spaceTaken)) : null;
+    }
+
     public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = new ListGameTooltips();
         tooltips.add(Localization.translate("itemtooltip", "soulstatuetip"), 400);
+        tooltips.add(Localization.translate("itemtooltip", "summonfocustip"));
+        GameTooltips spaceTaken = this.getSpaceTakenTooltip(item, perspective);
+        if (spaceTaken != null) {
+            tooltips.add(spaceTaken);
+        }
         return tooltips;
     }
 }
