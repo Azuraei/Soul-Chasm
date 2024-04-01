@@ -1,5 +1,6 @@
 package soulchasm.main.Buffs;
 
+import necesse.engine.util.GameMath;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
@@ -12,6 +13,7 @@ public class soulstatuebuff extends Buff {
     public soulstatuebuff() {
         this.isVisible = true;
         this.isImportant = true;
+        this.canCancel = false;
     }
 
     private void changeBuffMode(ActiveBuff buff){
@@ -43,7 +45,7 @@ public class soulstatuebuff extends Buff {
         Mob attacker = null;
         if(buff.getAttacker()!=null){
             attacker = buff.getAttacker().getAttackOwner();
-            if(attacker.hasDied()){
+            if(attacker.hasDied() || GameMath.getExactDistance(owner.x, owner.y, attacker.x, attacker.y)>250){
                 buff.owner.buffManager.removeBuff("soulstatuebuff", true);
             }
         }

@@ -10,7 +10,6 @@ import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameMath;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.summon.summonFollowingMob.attackingFollowingMob.AttackingFollowingMob;
-import necesse.gfx.gameTooltips.GameTooltips;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
@@ -19,16 +18,8 @@ import necesse.level.maps.Level;
 
 public class soulstatue extends SummonToolItem {
     public soulstatue() {
-        super("soulstatuesummon", FollowPosition.WALK_CLOSE, 3.0F, 1900);
+        super("soulstatuesummon", FollowPosition.WALK_CLOSE, 3.0F, 2200);
         this.rarity = Rarity.EPIC;
-    }
-
-    public GameTooltips getSpaceTakenTooltip(InventoryItem item, PlayerMob perspective) {
-        return null;
-    }
-
-    public int getMaxSummons(InventoryItem item, PlayerMob player) {
-        return 3;
     }
 
     @Override
