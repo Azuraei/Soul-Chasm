@@ -515,6 +515,17 @@ public class SoulChasm {
         ).showAfter("soulmetalbow"));
 
         Recipes.registerModRecipe(new Recipe(
+                "soulstatue",
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soulessence", 6),
+                        new Ingredient("soulmetalbar", 10),
+                        new Ingredient("soulcoreitem", 12)
+                }
+        ).showAfter("bookofsouls"));
+
+        Recipes.registerModRecipe(new Recipe(
                 "soulabsorbshield",
                 1,
                 RecipeTechRegistry.FALLEN_WORKSTATION,
@@ -523,7 +534,7 @@ public class SoulChasm {
                         new Ingredient("soulmetalbar", 12),
                         new Ingredient("soulcoreitem", 8),
                 }
-        ).showAfter("bookofsouls"));
+        ).showAfter("soulstatue"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soularmorhelmet",
