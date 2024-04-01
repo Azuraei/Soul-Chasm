@@ -16,13 +16,22 @@ public class soulstatuebuff extends Buff {
 
     private void changeBuffMode(ActiveBuff buff){
         if(buff.owner != null){
+            boolean attackModeActive = buff.getGndData().getBoolean("attackModeActive");
             float hp = buff.owner.getHealthPercent();
-            if(hp >= 0.8F){
+            if(hp >= 0.8F && !attackModeActive){
+                buff.getGndData().setBoolean("attackModeActive", true);
                 buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.2F);
                 buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.2F);
+                buff.setModifier(BuffModifiers.COMBAT_HEALTH_REGEN_FLAT, 0.0F);
+                buff.setModifier(BuffModifiers.ARMOR, 0.0F);
+                System.out.println("Attack");
             } else {
-                buff.setModifier(BuffModifiers.COMBAT_HEALTH_REGEN, 2.0F);
+                buff.getGndData().setBoolean("attackModeActive", false);
+                buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.0F);
+                buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.0F);
+                buff.setModifier(BuffModifiers.COMBAT_HEALTH_REGEN_FLAT, 2.0F);
                 buff.setModifier(BuffModifiers.ARMOR, 0.4F);
+                System.out.println("Defence");
             }
             buff.owner.buffManager.forceUpdateBuffs();
         }
@@ -55,6 +64,10 @@ public class soulstatuebuff extends Buff {
     }
 
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
+        buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.0F);
+        buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.0F);
+        buff.setModifier(BuffModifiers.COMBAT_HEALTH_REGEN, 0.0F);
+        buff.setModifier(BuffModifiers.ARMOR, 0.0F);
 
     }
 }
