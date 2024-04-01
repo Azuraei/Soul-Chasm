@@ -51,7 +51,7 @@ public class soulstatue extends SummonToolItem {
 
     public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = new ListGameTooltips();
-        tooltips.add(Localization.translate("itemtooltip", "soulstatuetip"), 300);
+        tooltips.add(Localization.translate("itemtooltip", "soulstatuetip"), 400);
         return tooltips;
     }
 }

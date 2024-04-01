@@ -1,6 +1,8 @@
 package soulchasm.main.Mobs.Summon;
 
+import necesse.engine.Screen;
 import necesse.engine.registries.BuffRegistry;
+import necesse.engine.sound.SoundEffect;
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.Mob;
@@ -14,6 +16,7 @@ import necesse.entity.mobs.summon.summonFollowingMob.attackingFollowingMob.Attac
 import necesse.entity.objectEntity.interfaces.OEVicinityBuff;
 import necesse.entity.particle.FleshParticle;
 import necesse.entity.particle.Particle;
+import necesse.gfx.GameResources;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.DrawOptions;
 import necesse.gfx.drawables.OrderableDrawables;
@@ -69,6 +72,10 @@ public class soulstatuesummon extends AttackingFollowingMob implements OEVicinit
 
     public boolean canBePushed(Mob other) {
         return false;
+    }
+
+    protected void playDeathSound() {
+        Screen.playSound(GameResources.fadedeath3, SoundEffect.effect(this).volume(0.2F).pitch(1.1F));
     }
 
     public void spawnDeathParticles(float knockbackX, float knockbackY) {
