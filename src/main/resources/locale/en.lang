@@ -99,6 +99,7 @@ soulsealtrinket=Soul Seal
 balancedsealtrinket=Balanced Soul Seal
 bookofsouls=Book Of Souls
 soulstatue=Soul Idol
+lunartearflowerhead=Lunar Tear Flower
 
 [itemtooltip]
 soulabsorbshield=Blocking damage shoots burst of flames towards attacker, which damage is scaled based on attack power\nSuccessful block also increases shortly attack speed and resilience gain
@@ -124,7 +125,7 @@ glowingbugs=Small, glowing creature
 glowingjarobject=Provides small amount of light when placed or held
 bookofsoulstip=Shoots slowly big, homing projectile
 bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow\nWhen in overflow state, shoots rapidly smaller projectiles with low accuracy and provides boost to both speed and health regeneration
-soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nEffect doesn't stack\nRequires three summon slots
+soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, else increases armor and hp regeneration\nRequires three summon slots\nOnly one can be summoned per player
 
 [mob]
 souldragonhead=Ancient Dragon
@@ -152,7 +153,7 @@ bookofsoulbuff=Soul Energy
 soulofsoulsoverchargebuff=Soul Energy Overflow
 soulbowbuff=Phantasm's Overflow
 soulbowcooldownbuff=Phantasm Bow Cooldown
-soulstatuebuff=Idol Buff
+soulstatuebuff=Idol's Blessing
 
 [controls]
 senshiactivatetip=Insert Soul Sigil

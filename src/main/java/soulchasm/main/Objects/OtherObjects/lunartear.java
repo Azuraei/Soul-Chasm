@@ -4,6 +4,8 @@ import necesse.engine.registries.TileRegistry;
 import necesse.entity.mobs.Attacker;
 import necesse.entity.mobs.GameDamage;
 import necesse.inventory.item.toolItem.ToolType;
+import necesse.inventory.lootTable.LootTable;
+import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.level.gameObject.GrassObject;
 import necesse.level.maps.Level;
 
@@ -15,6 +17,12 @@ public class lunartear extends GrassObject {
         this.lightLevel = 30;
         this.lightHue = 240.0F;
         this.lightSat = 0.05F;
+    }
+
+    public LootTable getLootTable(Level level, int tileX, int tileY) {
+        LootTable lootTableBase = super.getLootTable(level, tileX, tileY);
+        lootTableBase.items.add(new ChanceLootItem(0.01F, "lunartearflowerhead"));
+        return lootTableBase;
     }
 
     @Override

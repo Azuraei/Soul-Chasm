@@ -3,10 +3,13 @@ package soulchasm;
 import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.registries.*;
 import necesse.entity.mobs.HumanTexture;
+import necesse.entity.mobs.gameDamageType.DamageType;
 import necesse.gfx.GameResources;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTexture.GameTextureSection;
 import necesse.inventory.item.Item;
+import necesse.inventory.item.armorItem.ArmorItem;
+import necesse.inventory.item.armorItem.HelmetArmorItem;
 import necesse.inventory.item.matItem.EssenceMatItem;
 import necesse.inventory.item.matItem.MatItem;
 import necesse.inventory.item.placeableItem.tileItem.GrassSeedItem;
@@ -260,6 +263,8 @@ public class SoulChasm {
         ItemRegistry.registerItem("rangesoulsealtrinket", new rangesoulsealtrinket(), 200, true);
         ItemRegistry.registerItem("soulsealtrinket", new soulsealtrinket(), 1000, true);
         ItemRegistry.registerItem("balancedsealtrinket", new balancedsealtrinket(), 2000, true);
+        //Other
+        ItemRegistry.registerItem("lunartearflowerhead", new HelmetArmorItem(0, (DamageType)null, 0, Item.Rarity.UNCOMMON, "lunartearflowerhead").hairDrawMode(ArmorItem.HairDrawMode.OVER_HAIR), 50.0F, true);
         //MOBS
         MobRegistry.registerMob("lostsoul", lostsoul.class, true);
         MobRegistry.registerMob("carmob", carmob.class, false);

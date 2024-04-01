@@ -14,6 +14,25 @@ public class soulstatuebuff extends Buff {
         this.isImportant = true;
     }
 
+    private void changeBuffMode(ActiveBuff buff){
+        if(buff.owner != null){
+            float hp = buff.owner.getHealthPercent();
+            if(hp >= 0.8F){
+                buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.2F);
+                buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.2F);
+            } else {
+                buff.setModifier(BuffModifiers.COMBAT_HEALTH_REGEN, 2.0F);
+                buff.setModifier(BuffModifiers.ARMOR, 0.4F);
+            }
+            buff.owner.buffManager.forceUpdateBuffs();
+        }
+    }
+
+    public void clientTick(ActiveBuff buff) {
+        super.clientTick(buff);
+        changeBuffMode(buff);
+    }
+
     public void serverTick(ActiveBuff buff) {
         super.serverTick(buff);
         Mob owner = buff.owner;
@@ -28,6 +47,7 @@ public class soulstatuebuff extends Buff {
             idolshieldvisualevent event = new idolshieldvisualevent(attacker, owner);
             buff.owner.getLevel().entityManager.addLevelEvent(event);
         }
+        changeBuffMode(buff);
     }
 
     public boolean shouldDrawDuration(ActiveBuff buff) {
@@ -35,8 +55,6 @@ public class soulstatuebuff extends Buff {
     }
 
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
-        buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.2F);
-        buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.2F);
-        buff.setModifier(BuffModifiers.ARMOR, 0.4F);
+
     }
 }
