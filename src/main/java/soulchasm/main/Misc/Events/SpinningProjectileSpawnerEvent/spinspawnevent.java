@@ -1,4 +1,4 @@
-package soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent;
+package soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent;
 
 import necesse.engine.Screen;
 import necesse.engine.localization.message.GameMessage;

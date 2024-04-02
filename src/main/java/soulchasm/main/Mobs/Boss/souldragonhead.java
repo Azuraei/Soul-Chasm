@@ -45,9 +45,9 @@ import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.inventory.lootTable.lootItem.RotationLootItem;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.Misc.Others.GroundEruptionEvent.dragongrounderuptionevent;
-import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnevent;
-import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
+import soulchasm.main.Misc.Events.GroundEruptionEvent.dragongrounderuptionevent;
+import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.spinspawnevent;
+import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
 import soulchasm.main.Projectiles.BossProjectiles.soulflamethrower;
 import soulchasm.main.Projectiles.soulhomingprojectile;
 

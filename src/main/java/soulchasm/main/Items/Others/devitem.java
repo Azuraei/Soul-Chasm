@@ -10,9 +10,9 @@ import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.item.ItemInteractAction;
 import necesse.inventory.item.placeableItem.consumableItem.ConsumableItem;
 import necesse.level.maps.Level;
-import soulchasm.main.Misc.Others.GroundEruptionEvent.dragongrounderuptionevent;
-import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnevent;
-import soulchasm.main.Misc.Others.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
+import soulchasm.main.Misc.Events.GroundEruptionEvent.dragongrounderuptionevent;
+import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.spinspawnevent;
+import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
 
 public class devitem extends ConsumableItem implements ItemInteractAction {
     public devitem() {

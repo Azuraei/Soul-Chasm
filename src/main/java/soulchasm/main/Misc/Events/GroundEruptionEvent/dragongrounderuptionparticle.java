@@ -1,4 +1,4 @@
-package soulchasm.main.Misc.Others.GroundEruptionEvent;
+package soulchasm.main.Misc.Events.GroundEruptionEvent;
 
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;

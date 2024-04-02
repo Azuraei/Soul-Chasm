@@ -1,4 +1,4 @@
-package soulchasm.main.Buffs;
+package soulchasm.main.Buffs.Buffs;
 
 import necesse.engine.util.GameMath;
 import necesse.entity.mobs.Mob;
@@ -6,7 +6,7 @@ import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
 import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.buffs.staticBuffs.Buff;
-import soulchasm.main.Misc.Others.Events.idolshieldvisualevent;
+import soulchasm.main.Misc.Events.idolshieldvisualevent;
 
 public class soulstatuebuff extends Buff {
 
