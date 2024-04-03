@@ -21,9 +21,7 @@ public class soularmorsetbonus extends SetBonusBuff implements BuffAbility {
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
     }
 
-    @Override
     public void tickEffect(ActiveBuff buff, Mob owner) {
-        super.tickEffect(buff, owner);
     }
 
     public void runAbility(PlayerMob player, ActiveBuff buff, Packet content) {
@@ -40,7 +38,7 @@ public class soularmorsetbonus extends SetBonusBuff implements BuffAbility {
 
 
     public ListGameTooltips getTooltip(ActiveBuff ab, GameBlackboard blackboard) {
-        ListGameTooltips tooltips = new ListGameTooltips();
+        ListGameTooltips tooltips = super.getTooltip(ab, blackboard);
         tooltips.add(Localization.translate("itemtooltip", "soularmorsetbonus"));
         return tooltips;
     }

@@ -102,6 +102,7 @@ public class bigjarobject extends GameObject {
     public ListGameTooltips getItemTooltips(InventoryItem item, PlayerMob perspective) {
         ListGameTooltips tooltips = super.getItemTooltips(item, perspective);
         tooltips.add(Localization.translate("itemtooltip", "bigjarobject"));
+        tooltips.add(Localization.translate("itemtooltip", "coolingboxtip"));
         return tooltips;
     }
 
@@ -110,5 +111,4 @@ public class bigjarobject extends GameObject {
         int drawY = camera.getTileDrawY(tileY);
         texture.initDraw().sprite(0, 0, 32, texture.getHeight()).alpha(alpha).draw(drawX, drawY - (texture.getHeight() - 16));
     }
-
 }

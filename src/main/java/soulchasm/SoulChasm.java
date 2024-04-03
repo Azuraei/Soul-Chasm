@@ -690,7 +690,7 @@ public class SoulChasm {
                 new Ingredient[]{
                         new Ingredient("soulcaverockitem", 25)
                 }
-        ));
+        ).showAfter("soulcavetiledfloortile"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soultorch",
@@ -701,6 +701,16 @@ public class SoulChasm {
                         new Ingredient("soulcoreitem", 1)
                 }
         ).showAfter("torch"));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soultikitorchobject",
+                1,
+                RecipeTechRegistry.ADVANCED_WORKSTATION,
+                new Ingredient[]{
+                        new Ingredient("soultorch", 1),
+                        new Ingredient("soulwoodlogitem", 1)
+                }
+        ).showAfter("tikitorch"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soullantern",

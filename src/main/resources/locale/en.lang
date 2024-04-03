@@ -103,12 +103,12 @@ soulstatue=Soul Idol
 lunartearflowerhead=Lunar Tear Flower
 
 [itemtooltip]
-soulabsorbshield=Blocking damage shoots burst of flames towards attacker, which damage is scaled based on attack power\nSuccessful block also increases shortly attack speed and resilience gain
+soulabsorbshield=Blocking damage shoots burst of flames towards attacker\nSuccessful block also increases shortly attack speed and resilience gain
 phantomfeathertrinket=Decreases max hp by 25% and grants additional four dash stacks
-soulstealertrinket=When in combat, slowly converts your max health into more damage\nMax -50% max health and +100% damage\nOut of combat process is reversed\nWhile that, greatly increases health regeneration
+soulstealertrinket=When in combat, slowly converts your max health into more damage\nOut of combat process is reversed
 pickaxeheadtrinket=Mining slowly increases mining speed, up to 150%
 phantomdasherstrinket=Sprint even faster\nWhile sprinting you take more damage\nGrants water walking
-soularmorsetbonus=Increases attack and movement speed\nAfter buff expires, applies debuff, that decreases both of the stats
+soularmorsetbonus=Press [input=setability] to increase attack and movement speed, but after using receive debuff
 soulsealfragment=Fragment of whole\nCreates projectile that matches your weapon
 soulsealsummonfragment=Using summon weapon summons spirit to aid you in battle\nSpirit's strength is based on weapon's stats
 soulsealfull=Whole again\nCreates projectile that matches your weapon
@@ -119,13 +119,13 @@ soulmetalbowtip=Press [input=mouse2] to activate overflow mode\nWhen in overflow
 soulmetalrevolvertip=Converts regular bullets into soul infused ones\nHitting enemy with soul infused bullet marks it\nEnemy marked three times are weakened and take damage over time
 soulmetalspeartip=Can be thrown\nCreates small explosion on hit
 soulsigil=Summons the Soul Chasm boss\nMust be used in Soul Chasm
-cartip=Summons car mount\nRight-click out of inventory to change colors
+cartip=Summons car mount\nPress [input=mouse2] out of inventory to change colors
 soulsealfollowerbuff=Has heard your call
-bigjarobject=Empty jar\nCatch some glowing bugs and place them in jar to create new light source
+bigjarobject=Can be used to store and display item
 glowingbugs=Small, glowing creature
 glowingjarobject=Provides small amount of light when placed or held
 bookofsoulstip=Shoots slowly big, homing projectile
-bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow\nWhen in overflow state, shoots rapidly smaller projectiles with low accuracy and provides boost to both speed and health regeneration
+bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow and shoot rapidly smaller, homing projectiles
 soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, else increases armor and hp regeneration\nEffect doesn't stack
 
 [mob]
