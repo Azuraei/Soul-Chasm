@@ -19,7 +19,7 @@ import necesse.inventory.item.toolItem.ToolType;
 import necesse.level.gameObject.GameObject;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.Misc.Others.JarObjectEntity;
+import soulchasm.main.Misc.Others.jarobjectentity;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -94,7 +94,7 @@ public class bigjarobject extends GameObject {
         }
     }
     public ObjectEntity getNewObjectEntity(Level level, int x, int y) {
-        JarObjectEntity objectEntity = new JarObjectEntity(level, x, y);
+        jarobjectentity objectEntity = new jarobjectentity(level, x, y);
         objectEntity.inventory.spoilRateModifier = 0.5F;
         return objectEntity;
     }

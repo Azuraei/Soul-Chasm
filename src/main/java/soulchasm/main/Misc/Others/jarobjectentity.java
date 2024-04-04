@@ -3,8 +3,8 @@ package soulchasm.main.Misc.Others;
 import necesse.entity.objectEntity.InventoryObjectEntity;
 import necesse.level.maps.Level;
 
-public class JarObjectEntity extends InventoryObjectEntity {
-    public JarObjectEntity(Level level, int x, int y) {
+public class jarobjectentity extends InventoryObjectEntity {
+    public jarobjectentity(Level level, int x, int y) {
         super(level, x, y, 1);
     }
 
