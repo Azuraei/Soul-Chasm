@@ -56,7 +56,7 @@ public class soularmorsetbonus extends SetBonusBuff implements BuffAbility {
                 int angle = (int)((float)i * anglePerParticle + GameRandom.globalRandom.nextFloat() * anglePerParticle);
                 float dx = (float)Math.sin(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(40, 60);
                 float dy = (float)Math.cos(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(40, 60) * 0.8F;
-                level.entityManager.addParticle(playerMob, typeSwitcher.next()).movesFriction(dx, dy, 0.2F).color(color).heightMoves(0.0F, 10.0F).lifeTime(1500);
+                level.entityManager.addParticle(playerMob, typeSwitcher.next()).movesFriction(dx, dy, 0.2F).color(color).heightMoves(0.0F, 10.0F).lifeTime(500);
             }
             Screen.playSound(GameResources.magicbolt4, SoundEffect.effect(playerMob).volume(0.1F).pitch(2.5F));
         }
