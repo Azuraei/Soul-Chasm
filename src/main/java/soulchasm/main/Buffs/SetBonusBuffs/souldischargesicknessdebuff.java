@@ -27,7 +27,9 @@ public class souldischargesicknessdebuff extends Buff {
     }
 
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
-        buff.setModifier(BuffModifiers.ALL_DAMAGE, -0.1F);
-        buff.setModifier(BuffModifiers.ATTACK_SPEED, -0.2F);
+        buff.setModifier(BuffModifiers.INCOMING_DAMAGE_MOD, 1.2F);
+        buff.setModifier(BuffModifiers.STAMINA_USAGE, 0.1F);
+        buff.setModifier(BuffModifiers.ALL_DAMAGE, -0.05F);
+        buff.setModifier(BuffModifiers.ATTACK_SPEED, -0.05F);
     }
 }

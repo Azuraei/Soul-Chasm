@@ -29,7 +29,7 @@ public class soularmorsetbonus extends SetBonusBuff implements BuffAbility {
         Mob owner = buff.owner;
         Level level = player.getLevel();
         float active = 10.0F;
-        float cooldown = 5.0F;
+        float cooldown = 6.0F;
         owner.buffManager.addBuff(new ActiveBuff(BuffRegistry.getBuff("souldischargebuff"), owner, active, null), false);
         owner.buffManager.addBuff(new ActiveBuff(BuffRegistry.getBuff("soularmorcooldown"), owner, cooldown, null), false);
     }
@@ -37,7 +37,6 @@ public class soularmorsetbonus extends SetBonusBuff implements BuffAbility {
     public boolean canRunAbility(PlayerMob player, ActiveBuff buff, Packet content) {
         return !buff.owner.buffManager.hasBuff("soularmorcooldown");
     }
-
 
     public ListGameTooltips getTooltip(ActiveBuff ab, GameBlackboard blackboard) {
         ListGameTooltips tooltips = super.getTooltip(ab, blackboard);
