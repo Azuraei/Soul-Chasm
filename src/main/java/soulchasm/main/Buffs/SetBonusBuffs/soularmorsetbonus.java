@@ -11,6 +11,7 @@ import necesse.entity.mobs.buffs.BuffAbility;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
 import necesse.entity.mobs.buffs.staticBuffs.armorBuffs.setBonusBuffs.SetBonusBuff;
 import necesse.gfx.gameTooltips.ListGameTooltips;
+import necesse.level.maps.Level;
 
 public class soularmorsetbonus extends SetBonusBuff implements BuffAbility {
     public soularmorsetbonus() {
@@ -26,8 +27,9 @@ public class soularmorsetbonus extends SetBonusBuff implements BuffAbility {
 
     public void runAbility(PlayerMob player, ActiveBuff buff, Packet content) {
         Mob owner = buff.owner;
-        float active = 15.0F;
-        float cooldown = 60F;
+        Level level = player.getLevel();
+        float active = 10.0F;
+        float cooldown = 5.0F;
         owner.buffManager.addBuff(new ActiveBuff(BuffRegistry.getBuff("souldischargebuff"), owner, active, null), false);
         owner.buffManager.addBuff(new ActiveBuff(BuffRegistry.getBuff("soularmorcooldown"), owner, cooldown, null), false);
     }

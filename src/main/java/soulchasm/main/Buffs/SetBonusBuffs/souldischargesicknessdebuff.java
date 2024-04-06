@@ -1,6 +1,5 @@
 package soulchasm.main.Buffs.SetBonusBuffs;
 
-import necesse.engine.Screen;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
 import necesse.entity.mobs.buffs.BuffModifiers;
@@ -15,15 +14,20 @@ public class souldischargesicknessdebuff extends Buff {
         this.isImportant =  true;
     }
 
-    @Override
+    public int getStackSize() {
+        return 4;
+    }
+
+    public boolean overridesStackDuration() {
+        return true;
+    }
+
     public void clientTick(ActiveBuff buff) {
         super.clientTick(buff);
-        Screen.setSceneShade(0.9F, 0.9F, 0.9F);
     }
 
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
-        buff.setModifier(BuffModifiers.SPEED, -0.2F);
-        buff.setModifier(BuffModifiers.ATTACK_SPEED, -0.4F);
+        buff.setModifier(BuffModifiers.ALL_DAMAGE, -0.1F);
+        buff.setModifier(BuffModifiers.ATTACK_SPEED, -0.2F);
     }
-
 }
