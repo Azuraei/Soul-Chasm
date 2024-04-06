@@ -137,11 +137,9 @@ public class SoulChasm {
         WallObject.registerWallObjects("soulbrick", "soulbricktexture", soulcaverock.toolTier, SoulStoneColor, 0.5F, 1);
         ObjectRegistry.registerObject("soulstoneflametrap", new WallFlameTrapObject((WallObject)ObjectRegistry.getObject("soulbrickwall")), 50.0F, true);
         ObjectRegistry.registerObject("soulcavedecorations", new decorationobject(soulcaverock, "soulcavedecorations", SoulStoneColor), 0.0F, false, false);
-
         ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject((RockObject)ObjectRegistry.getObject("soulcaverock"), "oremask", "crystalizedsoulore", SoulStoneColor, "crystalizedsouloreitem"), 0.0F, false);
         ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject((RockObject)ObjectRegistry.getObject("soulcaverock"), "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, false), 0.0F, false);
         ObjectRegistry.registerObject("upgradeshardsoulcaverock", new RockOreObject(soulcaverock, "oremask", "upgradeshardore", new Color(0, 27, 107), "upgradeshard", 1, 1, false), 0.0F, false);
-
         ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesappling", SoulWoodColor, 60,80,100, "soultreeleaves"), 0.0F, false);
         ObjectRegistry.registerObject("soultreesappling", new TreeSaplingObject("soultreesappling", "soultree", 20, 30, true), 1, true);
         ObjectRegistry.registerObject("lunartear", new lunartear(), 1, true);
@@ -160,7 +158,6 @@ public class SoulChasm {
         ObjectRegistry.registerObject("spikeobject", new spikeobject(), 0.0F, false);
         ObjectRegistry.registerObject("magestatueobject", new magestatueobject(), 100, true);
         ObjectRegistry.registerObject("soultikitorchobject", new soultikitorchobject(), 2.0F, true);
-
         //Furniture
         BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", ToolType.PICKAXE, SoulFurnitureColor, 1);
         BedObject.registerBed("soulwoodbed", "soulwoodbed", ToolType.PICKAXE, SoulFurnitureColor, 1);
@@ -204,7 +201,6 @@ public class SoulChasm {
         BuffRegistry.registerBuff("soulbowcooldownbuff", new soulbowcooldownbuff());
         BuffRegistry.registerBuff("idolshieldbuff", new idolshieldbuff());
         BuffRegistry.registerBuff("soulstatuebuff", new soulstatuebuff());
-
         //SetBonus
         BuffRegistry.registerBuff("soularmorhelmetsetbonus", new soularmorhelmetsetbonus());
         BuffRegistry.registerBuff("soularmorhoodsetbonus", new soularmorhoodsetbonus());
@@ -249,7 +245,6 @@ public class SoulChasm {
         ItemRegistry.registerItem("soulmetalrevolver", new soulmetalrevolver(), 500, true);
         ItemRegistry.registerItem("bookofsouls", new bookofsouls(), 500, true);
         ItemRegistry.registerItem("soulstatue", new soulstatue(), 500, true);
-
         //Armor
         ItemRegistry.registerItem("soularmorboots", new soularmorboots(), 750, true);
         ItemRegistry.registerItem("soularmorchestplate", new soularmorchestplate(), 750, true);
@@ -298,7 +293,7 @@ public class SoulChasm {
         ProjectileRegistry.registerProjectile("bookofsoulssmallprojectile", bookofsoulssmallprojectile.class, "soulmissileprojectile",null);
         ProjectileRegistry.registerProjectile("soulscytheprojectile", soulscytheprojectile.class, "soulscytheprojectile",null);
         ProjectileRegistry.registerProjectile("soulscythesmallprojectile", soulscythesmallprojectile.class, "soulscythesmallprojectile",null);
-
+        //INCURSION_LOOT
         LootTable helmetReward = new LootTable(new LootItemList(new OneOfLootItems(
                         new LootItem("soularmorhelmet"),
                         new LootItem("soularmorhood"),
@@ -312,7 +307,6 @@ public class SoulChasm {
         UniqueIncursionRewardsRegistry.registerIncursionBodyArmors("soularmorbody", new UniqueIncursionReward(armorReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
         UniqueIncursionRewardsRegistry.registerIncursionFeetArmors("soularmorfeet", new UniqueIncursionReward(bootsReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
         UniqueIncursionRewardsRegistry.registerGreatswordWeapon("soulscythereward", new UniqueIncursionReward(scytheReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
-
         //LEVEL_EVENTS
         LevelEventRegistry.registerEvent("dragongrounderuptionevent", dragongrounderuptionevent.class);
         LevelEventRegistry.registerEvent("dragonexplosionevent", dragonexplosionevent.class);
@@ -320,10 +314,8 @@ public class SoulChasm {
         LevelEventRegistry.registerEvent("spinspawnvisualevent", spinspawnvisualevent.class);
         LevelEventRegistry.registerEvent("idolshieldvisualevent", idolshieldvisualevent.class);
         LevelEventRegistry.registerEvent("meleeghostspawnevent", meleeghostspawnevent.class);
-
         //DEV
         ItemRegistry.registerItem("devitem", new devitem(), 69, false);
-
     }
     public void initResources(){
         lostsoul.texture = GameTexture.fromFile("mobs/lostsoul");
