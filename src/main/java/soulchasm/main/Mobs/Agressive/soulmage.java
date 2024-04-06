@@ -27,7 +27,7 @@ public class soulmage extends HostileMob {
 
     public soulmage() {
         super(450);
-        this.attackCooldown = 500;
+        this.attackCooldown = 800;
         this.attackAnimTime = 200;
         this.setSpeed(65.0F);
         this.setFriction(3.0F);
@@ -39,11 +39,11 @@ public class soulmage extends HostileMob {
 
     public void init() {
         super.init();
-        PlayerChaserWandererAI<soulmage> playerChaserAI = new PlayerChaserWandererAI<soulmage>(null, 540, 420, 40000, true, false) {
+        PlayerChaserWandererAI<soulmage> playerChaserAI = new PlayerChaserWandererAI<soulmage>(null, 540, 320, 40000, true, false) {
             public boolean attackTarget(soulmage mob, Mob target) {
                 if (mob.canAttack()) {
                     mob.attack(target.getX(), target.getY(), false);
-                    soulboomerangprojectile projectile =  new soulboomerangprojectile(this.mob().getLevel(), mob.x, mob.y, target.x, target.y, 160, 1200, new GameDamage(65.0F), mob);
+                    soulboomerangprojectile projectile =  new soulboomerangprojectile(this.mob().getLevel(), mob.x, mob.y, target.x, target.y, 160, 500, new GameDamage(60.0F), mob);
                     mob.getLevel().entityManager.projectiles.add(projectile);
                     return true;
                 } else {
