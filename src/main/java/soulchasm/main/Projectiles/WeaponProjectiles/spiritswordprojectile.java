@@ -1,14 +1,11 @@
 package soulchasm.main.Projectiles.WeaponProjectiles;
 
-import necesse.engine.Screen;
-import necesse.engine.sound.SoundEffect;
 import necesse.engine.tickManager.TickManager;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.projectile.Projectile;
 import necesse.entity.trails.Trail;
-import necesse.gfx.GameResources;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.EntityDrawable;
@@ -85,6 +82,5 @@ public class spiritswordprojectile extends Projectile {
     }
 
     protected void playHitSound(float x, float y) {
-        Screen.playSound(GameResources.tap, SoundEffect.effect(x, y).volume(0.3F).pitch(0.8F));
     }
 }

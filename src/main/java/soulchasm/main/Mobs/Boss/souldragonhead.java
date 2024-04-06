@@ -84,7 +84,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         this.moveAccuracy = 100;
         this.movementUpdateCooldown = 100;
         this.movePosTolerance = 400.0F;
-        this.setSpeed(125F);
+        this.setSpeed(115F);
         this.setArmor(45);
         this.accelerationMod = 1.0F;
         this.decelerationMod = 1.0F;
@@ -191,13 +191,13 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         Screen.setMusic(MusicRegistry.Millenium, Screen.MusicPriority.EVENT, 1.5F);
         Screen.registerMobHealthStatusBar(this);
         BossNearbyBuff.applyAround(this);
-        this.setSpeed(this.temporarySpeed >0 ? this.temporarySpeed : 125F);
+        this.setSpeed(this.temporarySpeed > 0 ? this.temporarySpeed : 115F);
     }
     public void serverTick() {
         super.serverTick();
         this.scaling.serverTick();
         BossNearbyBuff.applyAround(this);
-        this.setSpeed(this.temporarySpeed >0 ? this.temporarySpeed : 125F);
+        this.setSpeed(this.temporarySpeed > 0 ? this.temporarySpeed : 115F);
     }
 
     public void spawnDeathParticles(float knockbackX, float knockbackY) {
@@ -315,16 +315,17 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
             ChargingCirclingChaserAINode chaserAI;
             chaserSequence.addChild(chaserAI = new ChargingCirclingChaserAINode(300, 40));
 
-            chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
+            chaserSequence.addChild(new souldragonhead.IdleTime(4000, chaserAI));
             chaserSequence.addChild(new souldragonhead.FragmentAttackRotation<>());
-            chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(chaserAI,5));
+            chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(chaserAI,4));
+            chaserSequence.addChild(new souldragonhead.IdleTime(2000, chaserAI));
             chaserSequence.addChild(new souldragonhead.EnragedState(3000, chaserAI));
             chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
             chaserSequence.addChild(new souldragonhead.FlamethrowerAttackRotation(chaserAI, 6000));
             chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
-            chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(chaserAI,8));
+            chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(chaserAI,6));
             chaserSequence.addChild(new souldragonhead.FragmentAttackRotation<>());
-            chaserSequence.addChild(new souldragonhead.IdleTime(1000, chaserAI));
+            chaserSequence.addChild(new souldragonhead.IdleTime(3000, chaserAI));
             chaserSequence.addChild(new souldragonhead.EnragedState(4000, chaserAI));
             chaserSequence.addChild(new souldragonhead.HomingAttackRotation());
 
@@ -345,7 +346,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         public void start(T mob, Blackboard<T> blackboard) {
             this.timer = 0;
             mob.roarAbility.runAndSend();
-            mob.temporarySpeedAbility.runAndSend(300);
+            mob.temporarySpeedAbility.runAndSend(250);
             Mob target = blackboard.getObject(Mob.class, "currentTarget");
             if (target != null) {
                 chaserAI.startCharge(mob, blackboard, target);
