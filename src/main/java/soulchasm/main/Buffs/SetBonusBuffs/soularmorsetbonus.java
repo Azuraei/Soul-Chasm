@@ -40,7 +40,7 @@ public class soularmorsetbonus extends SetBonusBuff implements BuffAbility {
         owner.buffManager.addBuff(new ActiveBuff(BuffRegistry.getBuff("souldischargebuff"), owner, active, null), false);
         owner.buffManager.addBuff(new ActiveBuff(BuffRegistry.getBuff("soularmorcooldown"), owner, cooldown, null), false);
         spawnProjectiles(player);
-        if(GameRandom.globalRandom.getChance(0.5)){
+        if(GameRandom.globalRandom.getChance(0.5) && owner.buffManager.hasBuff("souldischargebuff")){
             buff.owner.buffManager.addBuff(new ActiveBuff(BuffRegistry.getBuff("souldischargesicknessdebuff"), buff.owner, 30F, null), false);
         }
     }

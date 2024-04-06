@@ -108,7 +108,7 @@ phantomfeathertrinket=Decreases max hp by 25% and grants additional four dash st
 soulstealertrinket=When in combat, slowly converts your max health into more damage\nOut of combat process is reversed
 pickaxeheadtrinket=Mining slowly increases mining speed, up to 150%
 phantomdasherstrinket=Sprint even faster\nWhile sprinting you take more damage\nGrants water walking
-soularmorsetbonus=Press [input=setability] to increase attack and movement speed, but after using receive debuff
+soularmorsetbonus=Press [input=setability] to increase attack and movement speed for short time\nUsing ability when buffed extends its time, but has 50% chance of applying debuff
 soulsealfragment=Fragment of whole\nCreates projectile that matches your weapon
 soulsealsummonfragment=Using summon weapon summons spirit to aid you in battle\nSpirit's strength is based on weapon's stats
 soulsealfull=Whole again\nCreates projectile that matches your weapon
