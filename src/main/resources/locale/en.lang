@@ -10,7 +10,6 @@ soulcavetiledfloortile=Soul Chasm Tiled Floor
 asphalttile=Asphalt
 meltedsouls=Molten Spirits
 soulcavecracktile=Soul Crack
-
 [object]
 crystalizedsoul=Crystallized Souls
 crystalizedsoulore=Crystallized Souls
@@ -157,8 +156,6 @@ soulbowcooldownbuff=Phantasm Bow Cooldown
 soulstatuebuff=Idol's Blessing
 
 [controls]
-senshiactivatetip=Insert Soul Sigil
-
 [biome]
 soulchasmincursionbiome=Soul Chasm
 soulchasmbiome=Soul Chasm
