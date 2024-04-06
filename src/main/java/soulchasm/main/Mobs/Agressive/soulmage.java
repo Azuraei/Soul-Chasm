@@ -27,9 +27,9 @@ public class soulmage extends HostileMob {
 
     public soulmage() {
         super(450);
-        this.attackCooldown = 800;
+        this.attackCooldown = 1000;
         this.attackAnimTime = 200;
-        this.setSpeed(65.0F);
+        this.setSpeed(55.0F);
         this.setFriction(3.0F);
         this.setArmor(20);
         this.collision = new Rectangle(-10, -7, 20, 14);
@@ -41,7 +41,7 @@ public class soulmage extends HostileMob {
         super.init();
         PlayerChaserWandererAI<soulmage> playerChaserAI = new PlayerChaserWandererAI<soulmage>(null, 540, 320, 40000, true, false) {
             public boolean attackTarget(soulmage mob, Mob target) {
-                if (mob.canAttack()) {
+                if (mob.canAttack() && !mob.isAccelerating() && !mob.hasCurrentMovement()) {
                     mob.attack(target.getX(), target.getY(), false);
                     soulboomerangprojectile projectile =  new soulboomerangprojectile(this.mob().getLevel(), mob.x, mob.y, target.x, target.y, 160, 500, new GameDamage(60.0F), mob);
                     mob.getLevel().entityManager.projectiles.add(projectile);
@@ -54,7 +54,6 @@ public class soulmage extends HostileMob {
         this.ai = new BehaviourTreeAI<>(this, playerChaserAI);
     }
 
-    @Override
     public boolean isLavaImmune() {
         return true;
     }
@@ -93,6 +92,7 @@ public class soulmage extends HostileMob {
         });
         this.addShadowDrawables(tileList, x, y, light, camera);
     }
+
     public int getRockSpeed() {
         return 20;
     }

@@ -16,7 +16,10 @@ public class idolshieldbuff extends Buff {
     public void serverTick(ActiveBuff buff) {
         super.serverTick(buff);
         Mob owner = buff.owner;
-        Mob attacker = buff.getAttacker().getAttackOwner();
+        Mob attacker = null;
+        if(buff.getAttacker()!=null){
+            attacker = buff.getAttacker().getAttackOwner();
+        }
         if(owner!=null && attacker!=null){
             idolshieldvisualevent event = new idolshieldvisualevent(attacker, owner);
             buff.owner.getLevel().entityManager.addLevelEvent(event);
