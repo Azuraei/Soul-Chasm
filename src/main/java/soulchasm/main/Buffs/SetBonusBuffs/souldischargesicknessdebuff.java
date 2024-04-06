@@ -10,7 +10,7 @@ public class souldischargesicknessdebuff extends Buff {
     public souldischargesicknessdebuff() {
         this.canCancel = false;
         this.isVisible = true;
-        this.shouldSave = true;
+        this.shouldSave = false;
         this.isImportant =  true;
     }
 
