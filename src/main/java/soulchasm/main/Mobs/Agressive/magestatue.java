@@ -43,7 +43,7 @@ public class magestatue extends HostileMob implements OEVicinityBuff {
     private boolean isBuffingMob;
     private int buffingTimeOut;
     private final int armorNormal = 80;
-    private final int armorIncreased = 200;
+    private final int armorIncreased = 160;
 
     public magestatue() {
         super(1000);
@@ -85,7 +85,7 @@ public class magestatue extends HostileMob implements OEVicinityBuff {
     }
 
     public int getBuffRange() {
-        return 400;
+        return 350;
     }
 
     public boolean shouldBuffPlayers() {

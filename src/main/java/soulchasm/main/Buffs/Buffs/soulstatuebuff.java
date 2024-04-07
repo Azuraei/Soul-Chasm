@@ -27,7 +27,7 @@ public class soulstatuebuff extends Buff {
             } else {
                 buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.0F);
                 buff.setModifier(BuffModifiers.CRIT_CHANCE, 0.0F);
-                buff.setModifier(BuffModifiers.COMBAT_HEALTH_REGEN_FLAT, 2.5F);
+                buff.setModifier(BuffModifiers.COMBAT_HEALTH_REGEN_FLAT, 3.5F);
                 buff.setModifier(BuffModifiers.ARMOR, 0.4F);
             }
             buff.owner.buffManager.forceUpdateBuffs();

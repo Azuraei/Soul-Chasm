@@ -16,7 +16,7 @@ import necesse.gfx.drawables.OrderableDrawables;
 import necesse.inventory.lootTable.LootTable;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.Projectiles.SealProjectiles.soulboomerangprojectile;
+import soulchasm.main.Projectiles.souldiscprojectile;
 
 import java.awt.*;
 import java.util.List;
@@ -43,7 +43,7 @@ public class soulmage extends HostileMob {
             public boolean attackTarget(soulmage mob, Mob target) {
                 if (mob.canAttack() && !mob.isAccelerating() && !mob.hasCurrentMovement()) {
                     mob.attack(target.getX(), target.getY(), false);
-                    soulboomerangprojectile projectile =  new soulboomerangprojectile(this.mob().getLevel(), mob.x, mob.y, target.x, target.y, 160, 500, new GameDamage(60.0F), mob);
+                    souldiscprojectile projectile =  new souldiscprojectile(this.mob().getLevel(), mob.x, mob.y, target.x, target.y, 160, 500, new GameDamage(60.0F), mob);
                     mob.getLevel().entityManager.projectiles.add(projectile);
                     return true;
                 } else {

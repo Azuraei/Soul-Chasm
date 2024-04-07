@@ -5,6 +5,7 @@ import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.util.GameRandom;
+import necesse.engine.util.GameUtils;
 import necesse.entity.levelEvent.LevelEvent;
 import necesse.entity.mobs.Mob;
 import necesse.entity.particle.Particle;
@@ -15,19 +16,21 @@ import soulchasm.main.Mobs.Agressive.meleeghost;
 import java.awt.*;
 
 public class meleeghostspawnevent extends LevelEvent {
-    long startTime;
-    float chargeUpDuration;
-    int x;
-    int y;
-    boolean mainParticleSpawned;
+    public long startTime;
+    public float chargeUpDuration;
+    public int x;
+    public int y;
+    public boolean mainParticleSpawned;
+    public Mob sourceMob;
 
     public meleeghostspawnevent() {
     }
 
-    public meleeghostspawnevent(int x, int y, float duration) {
+    public meleeghostspawnevent(int x, int y, float duration, Mob sourceMob) {
         this.x = x;
         this.y = y;
         this.chargeUpDuration = duration;
+        this.sourceMob = sourceMob;
     }
 
     public void init() {
@@ -42,6 +45,7 @@ public class meleeghostspawnevent extends LevelEvent {
         writer.putNextLong(this.startTime);
         writer.putNextInt(this.x);
         writer.putNextInt(this.y);
+        writer.putNextInt(this.sourceMob.getUniqueID());
     }
 
     public void applySpawnPacket(PacketReader reader) {
@@ -50,11 +54,15 @@ public class meleeghostspawnevent extends LevelEvent {
         this.startTime = reader.getNextLong();
         this.x = reader.getNextInt();
         this.y = reader.getNextInt();
+        this.sourceMob = GameUtils.getLevelMob(reader.getNextInt(), this.level);
     }
 
     private void spawnMob(){
         Mob mob = new meleeghost();
+        Mob source = sourceMob;
         mob.isSummoned = true;
+        mob.setMaxHealth((int)(source.getMaxHealth() * 0.8F));
+        mob.setArmor((int)source.getArmor());
         this.getLevel().entityManager.addMob(mob, this.x, this.y);
     }
 

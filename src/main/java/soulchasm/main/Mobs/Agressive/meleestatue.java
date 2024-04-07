@@ -89,7 +89,7 @@ public class meleestatue extends HostileMob {
     }
 
     private void spawnSoul(){
-        meleeghostspawnevent event = new meleeghostspawnevent((int) this.x, (int)this.y, 2000);
+        meleeghostspawnevent event = new meleeghostspawnevent((int) this.x, (int)this.y, 2000, this);
         this.getLevel().entityManager.addLevelEvent(event);
     }
 

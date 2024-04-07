@@ -30,7 +30,7 @@ public class meleeghost extends HostileMob {
     private float particleBuffer;
 
     public meleeghost() {
-        super(400);
+        super(550);
         this.setSpeed(90.0F);
         this.setFriction(3.0F);
         this.setArmor(20);
@@ -43,7 +43,7 @@ public class meleeghost extends HostileMob {
 
     public void init() {
         super.init();
-        this.ai = new BehaviourTreeAI(this, new CollisionPlayerChaserWandererAI(null, 800, new GameDamage(65.0F), 100, 40000), new FlyingAIMover());
+        this.ai = new BehaviourTreeAI(this, new CollisionPlayerChaserWandererAI(null, 800, new GameDamage(70.0F), 100, 40000), new FlyingAIMover());
     }
 
     public boolean isLavaImmune() {

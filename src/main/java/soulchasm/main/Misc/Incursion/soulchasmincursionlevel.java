@@ -48,19 +48,19 @@ public class soulchasmincursionlevel extends IncursionLevel {
         });
         GameEvents.triggerEvent(new GeneratedCaveLayoutEvent(this, cg));
         GameEvents.triggerEvent(new GenerateCaveMiniBiomesEvent(this, cg), (e) -> {
-            GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.03F, 2, 7.0F, 20.0F, 3.0F, 8.0F, TileRegistry.getTileID("meltedsouls"), 1.0F, true);
+            GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.04F, 2, 7.0F, 25.0F, 3.0F, 12.0F, TileRegistry.getTileID("meltedsouls"), 1.0F, true);
             this.liquidManager.calculateShores();
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcaverocks"), 0.005F);
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcaverockssmall"), 0.01F);
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcavedecorations"), 0.008F);
-            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcrystalbig"), 0.005F);
-            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soullanternobject"), 0.001F);
+            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcrystalbig"), 0.006F);
+            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soullanternobject"), 0.0015F);
         });
         GameEvents.triggerEvent(new GeneratedCaveMiniBiomesEvent(this, cg));
         GameEvents.triggerEvent(new GenerateCaveOresEvent(this, cg), (e) -> {
             cg.generateOreVeins(0.16F, 3, 6, ObjectRegistry.getObjectID("crystalizedsoul"));
         });
-        GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.05F, 4, 3.0F, 6.0F, 2.0F, 4.0F, TileRegistry.getTileID("soulcavecracktile"), 0.8F, false);
+        GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.06F, 4, 4.0F, 8.0F, 3.0F, 6.0F, TileRegistry.getTileID("soulcavecracktile"), 0.8F, false);
         GameEvents.triggerEvent(new GeneratedCaveOresEvent(this, cg));
 
         PresetGeneration presets = new PresetGeneration(this);

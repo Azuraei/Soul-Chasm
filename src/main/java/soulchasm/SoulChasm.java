@@ -15,10 +15,8 @@ import necesse.inventory.item.matItem.MatItem;
 import necesse.inventory.item.placeableItem.tileItem.GrassSeedItem;
 import necesse.inventory.item.toolItem.ToolType;
 import necesse.inventory.lootTable.LootTable;
-import necesse.inventory.lootTable.lootItem.ChanceLootItem;
-import necesse.inventory.lootTable.lootItem.LootItem;
-import necesse.inventory.lootTable.lootItem.LootItemList;
-import necesse.inventory.lootTable.lootItem.OneOfLootItems;
+import necesse.inventory.lootTable.lootItem.*;
+import necesse.inventory.lootTable.presets.IncursionCrateLootTable;
 import necesse.inventory.recipe.Ingredient;
 import necesse.inventory.recipe.Recipe;
 import necesse.inventory.recipe.Recipes;
@@ -67,6 +65,8 @@ import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.spinspawnevent;
 import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
 import soulchasm.main.Misc.Events.idolshieldvisualevent;
 import soulchasm.main.Misc.Events.meleeghostspawnevent;
+import soulchasm.main.Misc.Incursion.HauntedModifier.hauntedincursionmodifier;
+import soulchasm.main.Misc.Incursion.HauntedModifier.hauntedmodifierlevelevent;
 import soulchasm.main.Misc.Incursion.soulchasmbiome;
 import soulchasm.main.Misc.Incursion.soulchasmincursionbiome;
 import soulchasm.main.Misc.Incursion.soulchasmincursionlevel;
@@ -87,6 +87,7 @@ import soulchasm.main.Projectiles.BossProjectiles.soulflamethrower;
 import soulchasm.main.Projectiles.BossProjectiles.spinspawnspikeprojectile;
 import soulchasm.main.Projectiles.SealProjectiles.*;
 import soulchasm.main.Projectiles.WeaponProjectiles.*;
+import soulchasm.main.Projectiles.souldiscprojectile;
 import soulchasm.main.Projectiles.soulhomingprojectile;
 
 import java.awt.*;
@@ -293,6 +294,8 @@ public class SoulChasm {
         ProjectileRegistry.registerProjectile("bookofsoulssmallprojectile", bookofsoulssmallprojectile.class, "soulmissileprojectile",null);
         ProjectileRegistry.registerProjectile("soulscytheprojectile", soulscytheprojectile.class, "soulscytheprojectile",null);
         ProjectileRegistry.registerProjectile("soulscythesmallprojectile", soulscythesmallprojectile.class, "soulscythesmallprojectile",null);
+        ProjectileRegistry.registerProjectile("souldiscprojectile", souldiscprojectile.class, "soulboomerangprojectile", null);
+
         //INCURSION_LOOT
         LootTable helmetReward = new LootTable(new LootItemList(new OneOfLootItems(
                         new LootItem("soularmorhelmet"),
@@ -314,6 +317,9 @@ public class SoulChasm {
         LevelEventRegistry.registerEvent("spinspawnvisualevent", spinspawnvisualevent.class);
         LevelEventRegistry.registerEvent("idolshieldvisualevent", idolshieldvisualevent.class);
         LevelEventRegistry.registerEvent("meleeghostspawnevent", meleeghostspawnevent.class);
+        LevelEventRegistry.registerEvent("hauntedmodifierlevelevent", hauntedmodifierlevelevent.class);
+        //INCURSION_MODS
+        UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new hauntedincursionmodifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
         //DEV
         ItemRegistry.registerItem("devitem", new devitem(), 69, false);
     }
@@ -374,41 +380,44 @@ public class SoulChasm {
         PlainsBiome.defaultSurfaceCritters.add(80, "firefly");
         SwampBiome.surfaceCritters.add(100, "firefly");
         SoulCaveChestRoomSet = new ChestRoomSet("soulcavefloortile", "soulstonepressureplate", WallSet.loadByStringID("soulbrick"), "soulcavechest", "soulstoneflametrap");
+        OneOfTicketLootItems oneOfItems = new OneOfTicketLootItems(new Object[]{50, LootItem.offset("bonearrow", 20, 15), 100, LootItem.between("greaterhealthpotion", 2, 8), 50, LootItem.between("greatermanapotion", 2, 8), 25, LootItem.offset("soultorch", 20, 3), 25, new LootItem("travelscroll")});
+        OneOfTicketLootItems oneOfPotions = new OneOfTicketLootItems(new Object[]{50, IncursionCrateLootTable.greaterPotions, 25, IncursionCrateLootTable.potions});
 
         //SHRINE MONUMENT LOOT
         soulcavemonumentshrineloottable = new LootTable(new LootItemList(
                 new OneOfLootItems(
-                        new ChanceLootItem(0.5F,"phantomfeathertrinket"),
-                        new ChanceLootItem(0.5F,"soulstealertrinket"),
-                        new ChanceLootItem(0.5F,"pickaxeheadtrinket"),
-                        new ChanceLootItem(0.5F,"soulmetalsword"),
-                        new ChanceLootItem(0.1F,"soularmorhelmet"),
-                        new ChanceLootItem(0.1F,"soularmorcrown"),
+                        new ChanceLootItem(0.8F,"phantomfeathertrinket"),
+                        new ChanceLootItem(0.8F,"soulstealertrinket"),
+                        new ChanceLootItem(0.8F,"pickaxeheadtrinket"),
+                        new ChanceLootItem(0.2F,"soulmetalsword"),
                         new ChanceLootItem(0.05F, "carkeys")
                 )
         ));
 
         //CAVE CHEST LOOT
         soulcavechestloottable = new LootTable(new LootItemList(
-                LootItem.between("crystalizedsouloreitem", 8, 22),
-                LootItem.between("greaterhealthpotion", 4, 6),
-                LootItem.between("dynamitestick", 0, 8),
-                LootItem.between("coin", 500, 2000),
                 new OneOfLootItems(
                         new LootItem("phantomfeathertrinket"),
                         new LootItem("soulstealertrinket"),
                         new LootItem("pickaxeheadtrinket")
                 ),
-                new ChanceLootItem(0.08F, "carkeys")
+                LootItem.between("crystalizedsouloreitem", 8, 22),
+                oneOfItems,
+                oneOfPotions,
+                oneOfPotions,
+                oneOfPotions,
+                LootItem.offset("coin", 400, 100),
+                new ChanceLootItem(0.05F, "carkeys")
         ));
 
         //CAVE RUINS LOOT
-        soulcaveruinsloottable = new LootTable(new LootItem[]{
+        soulcaveruinsloottable = new LootTable(new LootItemList(
                 LootItem.between("crystalizedsouloreitem", 2, 6),
-                LootItem.between("greaterhealthpotion", 0, 3),
-                LootItem.between("dynamitestick", 0, 2),
-                LootItem.between("coin", 5, 100)
-        });
+                oneOfItems,
+                oneOfPotions,
+                oneOfPotions,
+                LootItem.offset("coin", 40, 10)
+        ));
 
         //DRAGON_LOOT
         LootItemList dragon_loot_list = new LootItemList(

@@ -27,8 +27,8 @@ public class idolshieldbuff extends Buff {
     }
 
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
-        buff.setModifier(BuffModifiers.INCOMING_DAMAGE_MOD, 0.2F);
-        buff.setModifier(BuffModifiers.SLOW, 0.5F);
+        buff.setModifier(BuffModifiers.INCOMING_DAMAGE_MOD, 0.25F);
+        buff.setModifier(BuffModifiers.SLOW, 0.8F);
         buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.15F);
         buff.setModifier(BuffModifiers.KNOCKBACK_INCOMING_MOD, 0.0F);
     }

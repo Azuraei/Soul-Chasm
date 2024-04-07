@@ -17,7 +17,7 @@ public class idolshieldvisualevent extends LevelEvent {
     public Mob endMob;
     public long startTime;
     public int particlesSpawned = 0;
-    public int particleCount = 8;
+    public int particleCount = 6;
     public int eventLifeTime = 800;
     ParticleTypeSwitcher particleTypeSwitcher;
 

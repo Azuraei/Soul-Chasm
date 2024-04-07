@@ -170,7 +170,10 @@ soulbowbuff=Phantasm's Overflow
 soulbowcooldownbuff=Phantasm Bow Cooldown
 soulstatuebuff=Idol's Blessing
 
-[controls]
+[ui]
+incursionmodifierhaunted=Haunted
+incursionmodifierhauntedinfo=When enemies die, a ghost manifests.
+
 [biome]
 soulcavernincursionbiome=Пропасть душ
 soulcavernbiome=Пропасть душ
