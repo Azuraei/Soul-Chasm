@@ -263,6 +263,8 @@ public class SoulChasm {
         ItemRegistry.registerItem("balancedsealtrinket", new balancedsealtrinket(), 2000, true);
         //Other
         ItemRegistry.registerItem("lunartearflowerhead", new HelmetArmorItem(0, (DamageType)null, 0, Item.Rarity.RARE, "lunartearflowerhead").hairDrawMode(ArmorItem.HairDrawMode.OVER_HAIR), 50.0F, true);
+        ItemRegistry.registerItem("tobeblindfold", new HelmetArmorItem(0, (DamageType)null, 0, Item.Rarity.EPIC, "tobeblindfold").hairDrawMode(ArmorItem.HairDrawMode.UNDER_HAIR), 150.0F, true);
+
         //MOBS
         MobRegistry.registerMob("lostsoul", lostsoul.class, true);
         MobRegistry.registerMob("carmob", carmob.class, false);
