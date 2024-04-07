@@ -19,7 +19,7 @@ public class hauntedmodifierlevelevent extends LevelEvent implements MobDeathLis
     }
 
     public void onLevelMobDied(final Mob mob, Attacker attacker, HashSet<Attacker> attackers) {
-        if (!mob.isPlayer && mob.isHostile && !mob.isBoss() && mob.shouldSendSpawnPacket() && !(mob instanceof meleestatue)) {
+        if (!mob.isPlayer && mob.isHostile && !mob.isSummoned && !mob.isBoss() && mob.shouldSendSpawnPacket() && !(mob instanceof meleestatue)) {
             meleeghostspawnevent event = new meleeghostspawnevent(mob.getX(), mob.getY(), 3000, mob);
             this.getLevel().entityManager.addLevelEvent(event);
             Screen.playSound(GameResources.swoosh, SoundEffect.effect(mob).volume(0.8F));

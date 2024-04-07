@@ -3,6 +3,7 @@ package soulchasm.main.Mobs.Agressive;
 import necesse.engine.Screen;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.tickManager.TickManager;
+import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
@@ -30,20 +31,20 @@ public class meleeghost extends HostileMob {
     private float particleBuffer;
 
     public meleeghost() {
-        super(550);
-        this.setSpeed(90.0F);
-        this.setFriction(3.0F);
-        this.setArmor(20);
+        super(500);
+        this.setSpeed(95.0F);
+        this.setFriction(0.8F);
+        this.setKnockbackModifier(0.2F);
+        this.setArmor(0);
         this.moveAccuracy = 10;
         this.collision = new Rectangle(-10, -7, 20, 14);
         this.hitBox = new Rectangle(-14, -12, 28, 24);
         this.selectBox = new Rectangle(-14, -55, 28, 48);
-        this.isHostile = true;
     }
 
     public void init() {
         super.init();
-        this.ai = new BehaviourTreeAI(this, new CollisionPlayerChaserWandererAI(null, 800, new GameDamage(70.0F), 100, 40000), new FlyingAIMover());
+        this.ai = new BehaviourTreeAI(this, new CollisionPlayerChaserWandererAI(null, 500, new GameDamage(65.0F), 100, 40000), new FlyingAIMover());
     }
 
     public boolean isLavaImmune() {
@@ -52,18 +53,20 @@ public class meleeghost extends HostileMob {
     public boolean canBePushed(Mob other) {
         return false;
     }
+
     protected void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
         super.addDrawables(list, tileList, topList, level, x, y, tickManager, camera, perspective);
-        GameLight light = level.getLightLevel(this.getTileX(), this.getTileY());
+        GameLight light = level.getLightLevel(x / 32, y / 32);
+        int bobbing = (int)(GameUtils.getBobbing(level.getWorldEntity().getTime(), 1000) * 5.0F);
         int drawX = camera.getDrawX(x) - 32;
-        int drawY = camera.getDrawY(y) - 55;
-        Point sprite = this.getAnimSprite(x, y, this.dir);
-        drawY += this.getLevel().getTile(this.getTileX(), this.getTileY()).getMobSinkingAmount(this);
-        DrawOptions drawOptions = texture.initDraw().sprite(0, sprite.y, 64).light(light.minLevelCopy(100)).alpha(0.5F).pos(drawX, drawY);
-        list.add(new MobDrawable() {
-            public void draw(TickManager tickManager) {
-                drawOptions.draw();
-            }
+        int drawY = camera.getDrawY(y) - 48 + bobbing;
+        int anim = Math.abs(GameUtils.getAnim(level.getWorldEntity().getTime(), 4, 1000) - 3);
+        int minLight = 100;
+        DrawOptions body = texture.initDraw().sprite(0, anim, 64).mirror(this.moveX < 0.0F, false).alpha(0.7F).light(light).size(55).pos(drawX, drawY);
+        DrawOptions eyes = texture.initDraw().sprite(1, anim, 64).mirror(this.moveX < 0.0F, false).alpha(0.7F).light(light.minLevelCopy((float)minLight)).size(55).pos(drawX, drawY);
+        topList.add((tm) -> {
+            body.draw();
+            eyes.draw();
         });
     }
 
@@ -77,10 +80,10 @@ public class meleeghost extends HostileMob {
         if (owner.isClient() && (owner.dx != 0.0F || owner.dy != 0.0F)) {
             float speed = owner.getCurrentSpeed() * delta / 250.0F;
             float particleBuffer = this.particleBuffer + speed;
-            if (particleBuffer >= 25.0F) {
-                particleBuffer -= 25.0F;
-                ParticleOption.DrawModifier mod = (wrapper, i, i1, v) -> wrapper.size(75);
-                owner.getLevel().entityManager.addParticle(owner.x, owner.y - 16, Particle.GType.IMPORTANT_COSMETIC).sprite(SoulChasm.particlePhantomBodySection.sprite(0, owner.dir, 64)).size(mod).fadesAlpha(0.1F, 1.0F).fadesAlphaTime(100, 800).minDrawLight(100).dontRotate().lifeTime(900);
+            if (particleBuffer >= 35.0F) {
+                particleBuffer -= 35.0F;
+                ParticleOption.DrawModifier mod = (wrapper, i, i1, v) -> wrapper.size(65);
+                owner.getLevel().entityManager.addParticle(owner.x, owner.y - 16, Particle.GType.IMPORTANT_COSMETIC).sprite(SoulChasm.particleMeleeGhostParticleSection.sprite(0, this.moveX < 0.0F ? 1 : 0, 64)).size(mod).fadesAlpha(0.1F, 1.0F).fadesAlphaTime(100, 600).minDrawLight(100).dontRotate().lifeTime(700);
             }
             this.particleBuffer = particleBuffer;
         }

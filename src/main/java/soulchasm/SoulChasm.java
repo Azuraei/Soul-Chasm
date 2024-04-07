@@ -112,6 +112,7 @@ public class SoulChasm {
     public static GameTextureSection particleBookSection;
     public static GameTextureSection particlePhantomBodySection;
     public static GameTextureSection particleGhostSpawnSection;
+    public static GameTextureSection particleMeleeGhostParticleSection;
 
     public void init() {
         System.out.println("no idea what to type here, so I will just say hi");
@@ -341,7 +342,7 @@ public class SoulChasm {
         souldragonhead.texture = GameTexture.fromFile("mobs/souldragon");
         souldragonbody.texture = GameTexture.fromFile("mobs/souldragon");
         sphereeffectmob.texture_ball = GameTexture.fromFile("particles/altarball");
-        meleeghost.texture = GameTexture.fromFile("particles/phantombody");
+        meleeghost.texture = GameTexture.fromFile("mobs/lostsoul");
         soulstatuesummon.texture = GameTexture.fromFile("items/magestatueobject");
 
         //TextureSections
@@ -366,6 +367,9 @@ public class SoulChasm {
 
         GameTexture phantomBodyParticleTexture = GameTexture.fromFile("particles/phantombody");
         particlePhantomBodySection = GameResources.particlesTextureGenerator.addTexture(phantomBodyParticleTexture);
+
+        GameTexture meleeGhostParticleTexture = GameTexture.fromFile("particles/meleeghostparticle");
+        particleMeleeGhostParticleSection = GameResources.particlesTextureGenerator.addTexture(meleeGhostParticleTexture);
 
         GameTexture car_mask_sprites = GameTexture.fromFile("mobs/car_mask");
         int carSprites = car_mask_sprites.getHeight() / 64;

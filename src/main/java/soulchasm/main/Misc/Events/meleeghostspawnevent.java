@@ -61,8 +61,7 @@ public class meleeghostspawnevent extends LevelEvent {
         Mob mob = new meleeghost();
         Mob source = sourceMob;
         mob.isSummoned = true;
-        mob.setMaxHealth((int)(source.getMaxHealth() * 0.8F));
-        mob.setArmor((int)source.getArmor());
+        mob.setMaxHealth(source.getMaxHealth());
         this.getLevel().entityManager.addMob(mob, this.x, this.y);
     }
 
