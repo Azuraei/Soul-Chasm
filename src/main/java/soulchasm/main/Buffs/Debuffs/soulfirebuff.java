@@ -24,11 +24,9 @@ public class soulfirebuff extends Buff {
 
     public void clientTick(ActiveBuff buff) {
         Mob owner = buff.owner;
-
         if (buff.owner.isVisible()) {
             owner.getLevel().entityManager.addParticle(owner.x + (float)(GameRandom.globalRandom.nextGaussian() * 6.0D), owner.y + (float)(GameRandom.globalRandom.nextGaussian() * 8.0D), Particle.GType.IMPORTANT_COSMETIC).movesConstant(owner.dx / 10.0F, owner.dy / 10.0F).color(new Color(0, 139, 225)).givesLight(0.0F, 0.5F).height(16.0F);
         }
-
     }
 
     public Attacker getSource(Attacker source) {

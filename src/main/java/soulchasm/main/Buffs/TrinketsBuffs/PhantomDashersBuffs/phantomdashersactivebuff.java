@@ -10,7 +10,6 @@ import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.buffs.MovementTickBuff;
 import necesse.entity.mobs.buffs.staticBuffs.Buff;
 import necesse.entity.particle.Particle;
-import necesse.entity.particle.ParticleOption;
 import necesse.gfx.GameResources;
 import soulchasm.SoulChasm;
 
@@ -34,10 +33,9 @@ public class phantomdashersactivebuff extends Buff implements MovementTickBuff {
             GNDItemMap gndData = buff.getGndData();
             float particleBuffer = gndData.getFloat("particleBuffer") + speed;
             float xOffset;
-            if (particleBuffer >= 25.0F) {
-                particleBuffer -= 25.0F;
-                ParticleOption.DrawModifier mod = (wrapper, i, i1, v) -> wrapper.size(80);
-                owner.getLevel().entityManager.addParticle(owner.x, owner.y - 16, Particle.GType.IMPORTANT_COSMETIC).sprite(SoulChasm.particlePhantomBodySection.sprite(0, owner.dir, 64)).size(mod).fadesAlpha(0.1F, 1.0F).fadesAlphaTime(100, 1600).minDrawLight(100).dontRotate().lifeTime(1800);
+            if (particleBuffer >= 20.0F) {
+                particleBuffer -= 20.0F;
+                owner.getLevel().entityManager.addParticle(owner.x, owner.y - 20, Particle.GType.IMPORTANT_COSMETIC).sprite(SoulChasm.particlePhantomBodySection.sprite(0, owner.dir, 64)).size((wrapper, i, i1, v) -> wrapper.size(64)).fadesAlpha(0.1F, 1.0F).fadesAlphaTime(100, 1000).minDrawLight(100).dontRotate().lifeTime(1200);
             }
             gndData.setFloat("particleBuffer", particleBuffer);
             xOffset = gndData.getFloat("soundBuffer") + Math.min(speed, 80.0F * delta / 250.0F);
