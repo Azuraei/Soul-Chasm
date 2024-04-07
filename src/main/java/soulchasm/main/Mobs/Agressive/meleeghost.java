@@ -32,7 +32,7 @@ public class meleeghost extends HostileMob {
 
     public meleeghost() {
         super(500);
-        this.setSpeed(95.0F);
+        this.setSpeed(120.0F);
         this.setFriction(0.8F);
         this.setKnockbackModifier(0.2F);
         this.setArmor(0);
@@ -80,9 +80,9 @@ public class meleeghost extends HostileMob {
         if (owner.isClient() && (owner.dx != 0.0F || owner.dy != 0.0F)) {
             float speed = owner.getCurrentSpeed() * delta / 250.0F;
             float particleBuffer = this.particleBuffer + speed;
-            if (particleBuffer >= 35.0F) {
-                particleBuffer -= 35.0F;
-                ParticleOption.DrawModifier mod = (wrapper, i, i1, v) -> wrapper.size(65);
+            if (particleBuffer >= 25.0F) {
+                particleBuffer -= 25.0F;
+                ParticleOption.DrawModifier mod = (wrapper, i, i1, v) -> wrapper.size(55);
                 owner.getLevel().entityManager.addParticle(owner.x, owner.y - 16, Particle.GType.IMPORTANT_COSMETIC).sprite(SoulChasm.particleMeleeGhostParticleSection.sprite(0, this.moveX < 0.0F ? 1 : 0, 64)).size(mod).fadesAlpha(0.1F, 1.0F).fadesAlphaTime(100, 600).minDrawLight(100).dontRotate().lifeTime(700);
             }
             this.particleBuffer = particleBuffer;

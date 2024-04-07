@@ -320,7 +320,7 @@ public class SoulChasm {
         LevelEventRegistry.registerEvent("meleeghostspawnevent", meleeghostspawnevent.class);
         LevelEventRegistry.registerEvent("hauntedmodifierlevelevent", hauntedmodifierlevelevent.class);
         //INCURSION_MODS
-        UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new hauntedincursionmodifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
+        UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new hauntedincursionmodifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Medium));
         //DEV
         ItemRegistry.registerItem("devitem", new devitem(), 69, false);
     }
