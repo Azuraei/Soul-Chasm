@@ -12,7 +12,7 @@ public class soulcaverocktile extends TerrainSplatterTile {
 
     public soulcaverocktile() {
         super(false, "soulcaverocktile");
-        this.mapColor = new Color(48, 52, 54);
+        this.mapColor = new Color(17, 45, 57, 255);
         this.canBeMined = true;
         this.drawRandom = new GameRandom();
     }
@@ -26,7 +26,7 @@ public class soulcaverocktile extends TerrainSplatterTile {
     }
 
     public int getTerrainPriority() {
-        return 100;
+        return 200;
     }
 }
 

@@ -7,11 +7,9 @@ import necesse.level.maps.Level;
 
 public class soulcavegrassobject extends GrassObject {
     public soulcavegrassobject() {
-        super("soulcavegrassobject", 2);
+        super("soulcavegrassobject", 3);
     }
-
-    @Override
     public LootTable getLootTable(Level level, int tileX, int tileY) {
-        return new LootTable(new ChanceLootItem(0.08F, "soulgrassseeditem"));
+        return new LootTable(new ChanceLootItem(0.04F, "soulgrassseeditem"));
     }
 }

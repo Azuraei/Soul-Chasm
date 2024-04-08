@@ -20,6 +20,7 @@ import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTexture.GameTextureSection;
 import necesse.level.gameTile.LiquidTile;
 import necesse.level.maps.Level;
+import soulchasm.SoulChasm;
 
 import java.awt.*;
 import java.util.List;
@@ -29,12 +30,11 @@ public class meltedsouls extends LiquidTile {
     protected final GameRandom drawRandom;
 
     public meltedsouls() {
-        super(new Color(21, 193, 238));
+        super(SoulChasm.SoulMagmaStone);
         this.lightLevel = 100;
         this.lightHue = 220.0F;
         this.lightSat = 0.4F;
         this.drawRandom = new GameRandom();
-
     }
 
     protected void loadTextures() {
@@ -42,9 +42,8 @@ public class meltedsouls extends LiquidTile {
         this.texture = tileTextures.addTexture(GameTexture.fromFile("tiles/meltedsouls"));
     }
 
-    @Override
     public Color getLiquidColor(Level level, int i, int i1) {
-        return new Color(21, 193, 238);
+        return SoulChasm.SoulMagmaStone;
     }
 
     public double getPathCost(Level level, int tileX, int tileY, Mob mob) {

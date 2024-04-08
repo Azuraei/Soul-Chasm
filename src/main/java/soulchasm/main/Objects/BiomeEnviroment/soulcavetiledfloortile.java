@@ -23,9 +23,8 @@ public class soulcavetiledfloortile extends TerrainSplatterTile {
     }
 
     public ModifierValue<Float> getSpeedModifier(Mob mob) {
-        return mob.isFlying() ? super.getSpeedModifier(mob) : new ModifierValue(BuffModifiers.SPEED, 0.3F);
+        return mob.isFlying() ? super.getSpeedModifier(mob) : new ModifierValue<>(BuffModifiers.SPEED, 0.3F);
     }
-
 
     public Point getTerrainSprite(GameTextureSection terrainTexture, Level level, int tileX, int tileY) {
         int tile;
@@ -36,6 +35,6 @@ public class soulcavetiledfloortile extends TerrainSplatterTile {
     }
 
     public int getTerrainPriority() {
-        return 110;
+        return 250;
     }
 }

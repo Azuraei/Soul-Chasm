@@ -58,7 +58,6 @@ soulwoodfence=Phantom Wood Fence
 soulwoodfencegate=Phantom Wood Fence Gate
 magestatueobject=Mage Statue
 soultikitorchobject=Soul Tiki Torch
-
 [item]
 soulscythe=Soul Reaper
 soulmetalbow=Phantasm Bow
@@ -101,7 +100,6 @@ bookofsouls=Book Of Souls
 soulstatue=Soul Idol
 lunartearflowerhead=Lunar Tear Flower
 tobeblindfold=Black Blindfold
-
 [itemtooltip]
 soulabsorbshield=Blocking damage shoots burst of flames towards attacker\nSuccessful block also increases shortly attack speed and resilience gain
 phantomfeathertrinket=Decreases max hp by 25% and grants additional four dash stacks
@@ -127,7 +125,6 @@ glowingjarobject=Provides small amount of light when placed or held
 bookofsoulstip=Shoots slowly big, homing projectile
 bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow and shoot rapidly smaller, homing projectiles
 soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, else increases armor and hp regeneration\nEffect doesn't stack
-
 [mob]
 souldragonhead=Ancient Dragon
 souldragonbody=Ancient Dragon
@@ -141,7 +138,6 @@ soulmage=Spirit Summoner
 smallsoulsummon=Lesser Soul
 soulcavecaveling=Soul Chasm Caveling
 carmob=Car
-
 [buff]
 soulfirebuff=Spirit Inferno
 soulabsorbshieldbuff=Absorbed Attack
@@ -155,11 +151,9 @@ soulofsoulsoverchargebuff=Soul Energy Overflow
 soulbowbuff=Phantasm's Overflow
 soulbowcooldownbuff=Phantasm Bow Cooldown
 soulstatuebuff=Idol's Blessing
-
 [ui]
 incursionmodifierhaunted=Haunted
 incursionmodifierhauntedinfo=When enemies die, a ghost manifests.
-
 [biome]
 soulchasmincursionbiome=Soul Chasm
 soulchasmbiome=Soul Chasm

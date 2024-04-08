@@ -93,12 +93,13 @@ import soulchasm.main.Projectiles.soulhomingprojectile;
 import java.awt.*;
 @ModEntry
 public class SoulChasm {
-    public static Color SoulStoneColor = new Color(7,19,23,255);
-    public static Color SoulMagmaStone = new Color(29, 80, 96,255);
-    public static Color SoulStoneColorLight = new Color(28, 53, 61,255);
-    public static Color SoulWoodColor = new Color(35, 120, 134,255);
-    public static Color SoulCrystalColor = new Color(35, 200, 232,255);
-    public static Color SoulFurnitureColor = new Color(99, 187, 213, 255);
+    public static Color SoulStoneColor = new Color(1,48,65,255);
+    public static Color SoulStoneColorLight = new Color(2, 59, 80,255);
+    public static Color SoulMagmaStone = new Color(7, 207, 255,255);
+    public static Color SoulCrystalColor = new Color(0, 134, 203,255);
+    public static Color SoulWoodColor = new Color(117, 165, 183,255);
+    public static Color SoulFurnitureColor = new Color(98, 153, 173, 255);
+    public static Color SoulGrassColor = new Color(93, 132, 143, 255);
     public static ChestRoomSet SoulCaveChestRoomSet;
     public static LootTable soulcavechestloottable;
     public static LootTable soulcaveruinsloottable;
@@ -123,11 +124,11 @@ public class SoulChasm {
         TileRegistry.registerTile("soulwoodpath", new PathTiledTile("soulwoodpath", SoulChasm.SoulWoodColor), 1, true);
         TileRegistry.registerTile("soulwoodtiledfloor", new SimpleTiledFloorTile("soulwoodtiledfloor", SoulChasm.SoulWoodColor), 1, true);
         TileRegistry.registerTile("soulcavefloortile", new SimpleFloorTile("soulcavefloortile", SoulStoneColorLight), 1, true);
-        TileRegistry.registerTile("soulcavebrickfloortile", new soulcavebrickfloortile(), 1, true);
         TileRegistry.registerTile("soulcavetiledfloortile", new soulcavetiledfloortile(), 1, true);
         TileRegistry.registerTile("asphalttile", new asphalttile(), 1, true);
         TileRegistry.registerTile("meltedsouls", new meltedsouls(), 0, true);
-        TileRegistry.registerTile("soulcavecracktile", new soulcavecracktile(), 0, true);
+        TileRegistry.registerTile("soulcavecracktile", new soulcavecracktile(), 0, false);
+        TileRegistry.registerTile("soulcavebrickfloortile", new SimpleFloorTile("soulcavebrickfloortile", SoulStoneColorLight), 1, true);
         //OBJECTS
         RockObject soulcaverock;
         ObjectRegistry.registerObject("soulcaverock", soulcaverock = new RockObject("soulcaverock", SoulStoneColor, "soulcaverockitem", 1, 5), 0.0F, false);
