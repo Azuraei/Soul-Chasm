@@ -93,8 +93,8 @@ import soulchasm.main.Projectiles.soulhomingprojectile;
 import java.awt.*;
 @ModEntry
 public class SoulChasm {
-    public static Color SoulStoneColor = new Color(1,48,65,255);
-    public static Color SoulStoneColorLight = new Color(2, 59, 80,255);
+    public static Color SoulStoneColor = new Color(1, 37, 51,255);
+    public static Color SoulStoneColorLight = new Color(2, 68, 93,255);
     public static Color SoulMagmaStone = new Color(7, 207, 255,255);
     public static Color SoulCrystalColor = new Color(0, 134, 203,255);
     public static Color SoulWoodColor = new Color(117, 165, 183,255);

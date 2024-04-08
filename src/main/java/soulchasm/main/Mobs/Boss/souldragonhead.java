@@ -292,11 +292,11 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
     }
 
     static {
-        souldragonCollisionDamage = new GameDamage(80.0F);
-        souldragonFragmentDamage = new GameDamage(65.0F);
-        souldragonHomingProjectileDamage = new GameDamage(60.0F);
+        souldragonCollisionDamage = new GameDamage(75.0F);
+        souldragonFragmentDamage = new GameDamage(60.0F);
+        souldragonHomingProjectileDamage = new GameDamage(55.0F);
         souldragonFlamethrowerDamage = new GameDamage(50.0F);
-        souldragonEruptionDamage = new GameDamage(80.0F);
+        souldragonEruptionDamage = new GameDamage(70.0F);
         privateLootTable = new LootTable(uniqueDrops);
     }
 
