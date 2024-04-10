@@ -58,4 +58,5 @@ public class soulstatue extends SummonToolItem {
         }
         return tooltips;
     }
+    //TODO RANGE TEXTURE + SPAWN ON CURSOR
 }
