@@ -62,7 +62,7 @@ soultikitorchobject=Soul Tiki Torch
 soulscythe=Soul Reaper
 soulmetalbow=Phantasm Bow
 soulmetalsword=Soulfury
-soulmetalspear=Cursed Pitchfork
+soulmetalspear=Cursed Trident
 soulmetalrevolver=The Soultaker
 soulabsorbshield=Soulbreaker Shield
 soularmorboots=Soulsteel Boots
@@ -112,8 +112,8 @@ soulsealsummonfragment=Using summon weapon summons spirit to aid you in battle\n
 soulsealfull=Whole again\nCreates projectile that matches your weapon
 soulsealbalanced=Bonds with new power\nCreates projectile that matches your weapon\nIncreases all damage dealt by 10%
 soulmetalswordtip=Hitting enemy summons spirit swords
-soulscythe=Fully charged attacks shoot a decelerating, piercing projectile\nCharging to second or greater level applies Bleeding Soul on target\nBleeding Soul decreases armor and damages overtime
-soulmetalbowtip=Press [input=mouse2] to activate overflow mode\nWhen in overflow, you gain significant attack speed bonus
+soulscythe=Charging to second or greater level applies Bleeding Soul on target\nBleeding Soul decreases armor and damages overtime\nFully charged attacks shoot a decelerating, piercing projectile
+soulmetalbowtip=Press [input=mouse2] to activate overcharge mode\nWhen in overcharge, you gain significant attack speed bonus
 soulmetalrevolvertip=Converts regular bullets into soul infused ones\nHitting enemy with soul infused bullet marks it\nEnemy marked three times are weakened and take damage over time
 soulmetalspeartip=Can be thrown\nCreates small explosion on hit
 soulsigil=Summons the Soul Chasm boss\nMust be used in Soul Chasm
@@ -133,7 +133,7 @@ meleestatue=Warrior Statue
 meleeghost=Ghost
 wisp=Wisp
 firefly=Fireflies
-magestatue=Mage Statue
+magestatue=Soul Idol
 soulmage=Spirit Summoner
 smallsoulsummon=Lesser Soul
 soulcavecaveling=Soul Chasm Caveling
@@ -148,7 +148,7 @@ soulbleedstackbuff=Bleeding Soul
 souldischargesicknessdebuff=Conversion Sickness
 bookofsoulbuff=Soul Energy
 soulofsoulsoverchargebuff=Soul Energy Overflow
-soulbowbuff=Phantasm's Overflow
+soulbowbuff=Phantasm's Overcharge
 soulbowcooldownbuff=Phantasm Bow Cooldown
 soulstatuebuff=Idol's Blessing
 [ui]
