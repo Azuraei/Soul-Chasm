@@ -20,8 +20,9 @@ import necesse.level.maps.Level;
 
 public class soulstatue extends SummonToolItem {
     public soulstatue() {
-        super("soulstatuesummon", FollowPosition.WALK_CLOSE, 3, 2200);
+        super("soulstatuesummon", FollowPosition.newFlying(0, 0, 1, 1), 3, 2200);
         this.rarity = Rarity.EPIC;
+        //FollowPosition.WALK_CLOSE
     }
 
     @Override

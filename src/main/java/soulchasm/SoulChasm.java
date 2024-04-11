@@ -346,6 +346,7 @@ public class SoulChasm {
         sphereeffectmob.texture_ball = GameTexture.fromFile("particles/altarball");
         meleeghost.texture = GameTexture.fromFile("mobs/lostsoul");
         soulstatuesummon.texture = GameTexture.fromFile("items/magestatueobject");
+        soulstatuesummon.texture_ring = GameTexture.fromFile("particles/soulstatuering");
 
         //TextureSections
         eruption_shadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");

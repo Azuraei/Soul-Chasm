@@ -33,6 +33,7 @@ import java.util.function.Predicate;
 public class soulstatuesummon extends AttackingFollowingMob implements OEVicinityBuff {
     public static LootTable lootTable;
     public static GameTexture texture;
+    public static GameTexture texture_ring;
 
     public soulstatuesummon() {
         super(1);
@@ -117,6 +118,12 @@ public class soulstatuesummon extends AttackingFollowingMob implements OEVicinit
         int drawX = camera.getDrawX(x) - 32;
         int drawY = camera.getDrawY(y) - 60;
         DrawOptions body = texture.initDraw().sprite(0, 0, 64, 64).light(light.minLevelCopy(40)).pos(drawX, drawY);
+        DrawOptions ring = texture_ring.initDraw().sprite(0, 0, 256, 256).size(512).alpha(0.4F).light(light.minLevelCopy(80)).pos(camera.getDrawX(x) - 256, camera.getDrawY(y) - 256);
+        tileList.add(new MobDrawable() {
+            public void draw(TickManager tickManager) {
+                ring.draw();
+            }
+        });
         list.add(new MobDrawable() {
             public void draw(TickManager tickManager) {
                 body.draw();
