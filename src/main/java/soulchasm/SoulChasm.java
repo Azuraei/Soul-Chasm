@@ -5,6 +5,7 @@ import necesse.engine.registries.*;
 import necesse.entity.mobs.HumanTexture;
 import necesse.entity.mobs.gameDamageType.DamageType;
 import necesse.gfx.GameResources;
+import necesse.gfx.gameSound.GameSound;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTexture.GameTextureSection;
 import necesse.inventory.item.Item;
@@ -114,6 +115,8 @@ public class SoulChasm {
     public static GameTextureSection particlePhantomBodySection;
     public static GameTextureSection particleGhostSpawnSection;
     public static GameTextureSection particleMeleeGhostParticleSection;
+    public static GameSound argemiaplushie_meow;
+    public static GameSound plushie_squeak;
 
     public void init() {
         System.out.println("no idea what to type here, so I will just say hi");
@@ -161,6 +164,7 @@ public class SoulChasm {
         ObjectRegistry.registerObject("spikeobject", new spikeobject(), 0.0F, false);
         ObjectRegistry.registerObject("magestatueobject", new magestatueobject(), 100, true);
         ObjectRegistry.registerObject("soultikitorchobject", new soultikitorchobject(), 2.0F, true);
+        ObjectRegistry.registerObject("argemiaplushieobject", new argemiaplushieobject(), 10.0F, true);
         //Furniture
         BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", ToolType.PICKAXE, SoulFurnitureColor, 1);
         BedObject.registerBed("soulwoodbed", "soulwoodbed", ToolType.PICKAXE, SoulFurnitureColor, 1);
@@ -381,6 +385,9 @@ public class SoulChasm {
         for(int i = 0; i < carSprites; ++i) {
             car_mask[i] = new GameTexture(car_mask_sprites, 0, i, 64);
         }
+
+        argemiaplushie_meow = GameSound.fromFile("argemiaplushie_meow");
+        plushie_squeak = GameSound.fromFile("plushie_squeak");
     }
     public void postInit() {
         ForestBiome.defaultSurfaceCritters.add(80, "firefly");

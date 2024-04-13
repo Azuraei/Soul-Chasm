@@ -58,6 +58,7 @@ soulwoodfence=Phantom Wood Fence
 soulwoodfencegate=Phantom Wood Fence Gate
 magestatueobject=Mage Statue
 soultikitorchobject=Soul Tiki Torch
+argemiaplushieobject=Argemia Plushie
 [item]
 soulscythe=Soul Reaper
 soulmetalbow=Phantasm Bow
@@ -125,6 +126,7 @@ glowingjarobject=Provides small amount of light when placed or held
 bookofsoulstip=Shoots slowly big, homing projectile
 bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow and shoot rapidly smaller, homing projectiles
 soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, regenerates hp and resilience
+argemiaplushieobject=Loves shrimp
 [mob]
 souldragonhead=Ancient Dragon
 souldragonbody=Ancient Dragon
@@ -154,6 +156,7 @@ soulstatuebuff=Idol's Blessing
 [ui]
 incursionmodifierhaunted=Haunted
 incursionmodifierhauntedinfo=After an enemy dies, his ghost appears.
+argplush_tip=Pet
 [biome]
 soulchasmincursionbiome=Soul Chasm
 soulchasmbiome=Soul Chasm
