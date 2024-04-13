@@ -20,8 +20,9 @@ import necesse.level.maps.Level;
 import java.awt.geom.Point2D;
 
 public class soulstatue extends SummonToolItem {
+    private static final int summonCost = 2;
     public soulstatue() {
-        super("soulstatuesummon", FollowPosition.WALK_CLOSE, 3, 2200);
+        super("soulstatuesummon", FollowPosition.WALK_CLOSE, summonCost, 2200);
         this.rarity = Rarity.EPIC;
     }
 
@@ -33,8 +34,8 @@ public class soulstatue extends SummonToolItem {
             if (maxSummons > 999) {
                 maxSummons = 999;
             }
-            if (maxSummons % 3 == 0) {
-                String amountString = String.valueOf(maxSummons / 3);
+            if (maxSummons % summonCost == 0) {
+                String amountString = String.valueOf(maxSummons / summonCost);
                 int width = FontManager.bit.getWidthCeil(amountString, tipFontOptions);
                 FontManager.bit.drawString((float)(x + 28 - width), (float)(y + 16), amountString, tipFontOptions);
             }
