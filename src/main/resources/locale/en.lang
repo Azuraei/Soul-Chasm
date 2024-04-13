@@ -108,7 +108,7 @@ pickaxeheadtrinket=Mining slowly increases mining speed, up to 150%
 phantomdasherstrinket=Sprint even faster\nWhile sprinting you take more damage\nGrants water walking
 soularmorsetbonus=Press [input=setability] to increase attack and movement speed for short time\nUsing ability when buffed extends its time, but has 50% chance of applying debuff
 soulsealfragment=Fragment of whole\nCreates projectile that matches your weapon
-soulsealsummonfragment=Using summon weapon summons spirit to aid you in battle\nSpirit's strength is based on weapon's stats
+soulsealsummonfragment=Using summoner weapon summons spirit to aid you in battle\nSpirit's strength is based on weapon's stats
 soulsealfull=Whole again\nCreates projectile that matches your weapon
 soulsealbalanced=Bonds with new power\nCreates projectile that matches your weapon\nIncreases all damage dealt by 10%
 soulmetalswordtip=Hitting enemy summons spirit swords
@@ -124,7 +124,7 @@ glowingbugs=Small, glowing creature
 glowingjarobject=Provides small amount of light when placed or held
 bookofsoulstip=Shoots slowly big, homing projectile
 bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow and shoot rapidly smaller, homing projectiles
-soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, else increases armor and hp regeneration\nEffect doesn't stack
+soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, else increases armor and hp regeneration
 [mob]
 souldragonhead=Ancient Dragon
 souldragonbody=Ancient Dragon
@@ -157,5 +157,3 @@ incursionmodifierhauntedinfo=When enemies die, a ghost manifests.
 [biome]
 soulchasmincursionbiome=Soul Chasm
 soulchasmbiome=Soul Chasm
-
-//TODO SYNC WITH ru
