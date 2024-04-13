@@ -100,7 +100,7 @@ soulsealtrinket=Печать души
 balancedsealtrinket=Сбалансированная печать души
 bookofsouls=Книга Душ
 
-soulstatue=Soul Idol
+soulstatue=Soul Idol //if you aren't sure how to translate idol, just use totem or sth similar. Its reference (and inspiration) to Idol enemy from Ultrakill, thats why I used it
 lunartearflowerhead=Lunar Tear Flower
 tobeblindfold=Black Blindfold
 
@@ -139,7 +139,7 @@ glowingjarobject=Обеспечивает небольшое количеств�
 
 bookofsoulstip=Shoots slowly big, homing projectile
 bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow and shoot rapidly smaller, homing projectiles
-soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, else increases armor and hp regeneration
+soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, else regenerates hp and resilience
 
 [mob]
 souldragonhead=Древний дракон
@@ -176,7 +176,7 @@ soulstatuebuff=Idol's Blessing
 
 [ui]
 incursionmodifierhaunted=Haunted
-incursionmodifierhauntedinfo=When enemies die, a ghost manifests.
+incursionmodifierhauntedinfo=After an enemy dies, his ghost appears.
 
 [biome]
 soulcavernincursionbiome=Пропасть душ

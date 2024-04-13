@@ -23,12 +23,12 @@ public class soulstatuebuff extends Buff {
                 buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.25F);
                 buff.setModifier(BuffModifiers.CRIT_CHANCE, 0.15F);
                 buff.setModifier(BuffModifiers.COMBAT_HEALTH_REGEN_FLAT, 0.0F);
-                buff.setModifier(BuffModifiers.ARMOR, 0.0F);
+                buff.setModifier(BuffModifiers.RESILIENCE_REGEN_FLAT, 0.0F);
             } else {
                 buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.0F);
                 buff.setModifier(BuffModifiers.CRIT_CHANCE, 0.0F);
                 buff.setModifier(BuffModifiers.COMBAT_HEALTH_REGEN_FLAT, 3.5F);
-                buff.setModifier(BuffModifiers.ARMOR, 0.4F);
+                buff.setModifier(BuffModifiers.RESILIENCE_REGEN_FLAT, 1.0F);
             }
             buff.owner.buffManager.forceUpdateBuffs();
         }

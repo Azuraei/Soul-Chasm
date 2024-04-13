@@ -124,7 +124,7 @@ glowingbugs=Small, glowing creature
 glowingjarobject=Provides small amount of light when placed or held
 bookofsoulstip=Shoots slowly big, homing projectile
 bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow and shoot rapidly smaller, homing projectiles
-soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, else increases armor and hp regeneration
+soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, regenerates hp and resilience
 [mob]
 souldragonhead=Ancient Dragon
 souldragonbody=Ancient Dragon
@@ -153,7 +153,7 @@ soulbowcooldownbuff=Phantasm Bow Cooldown
 soulstatuebuff=Idol's Blessing
 [ui]
 incursionmodifierhaunted=Haunted
-incursionmodifierhauntedinfo=When enemies die, a ghost manifests.
+incursionmodifierhauntedinfo=After an enemy dies, his ghost appears.
 [biome]
 soulchasmincursionbiome=Soul Chasm
 soulchasmbiome=Soul Chasm
