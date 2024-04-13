@@ -5,6 +5,7 @@ import necesse.engine.registries.BuffRegistry;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
+import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
 import necesse.entity.mobs.PlayerMob;
@@ -115,10 +116,11 @@ public class soulstatuesummon extends AttackingFollowingMob implements OEVicinit
     protected void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
         super.addDrawables(list, tileList, topList, level, x, y, tickManager, camera, perspective);
         GameLight light = level.getLightLevel(x / 32, y / 32);
+        float alpha = GameUtils.getAnimFloatContinuous(level.lastWorldTime, 4000);
         int drawX = camera.getDrawX(x) - 32;
         int drawY = camera.getDrawY(y) - 60;
-        DrawOptions body = texture.initDraw().sprite(0, 0, 64, 64).light(light.minLevelCopy(40)).pos(drawX, drawY);
-        DrawOptions ring = texture_ring.initDraw().sprite(0, 0, 256, 256).size(512).alpha(0.4F).light(light.minLevelCopy(80)).pos(camera.getDrawX(x) - 256, camera.getDrawY(y) - 256);
+        DrawOptions body = texture.initDraw().sprite(0, 0, 64, 64).light(light.minLevelCopy(80)).pos(drawX, drawY);
+        DrawOptions ring = texture_ring.initDraw().sprite(0, 0, 512, 512).alpha(0.2F + 0.3F * alpha).light(light.minLevelCopy(Math.min(light.getLevel() + 100.0F, 150.0F))).pos(camera.getDrawX(x) - 256, camera.getDrawY(y) - 256);
         tileList.add(new MobDrawable() {
             public void draw(TickManager tickManager) {
                 ring.draw();

@@ -1,15 +1,14 @@
 package soulchasm.main.Items.Tools;
 
-import necesse.engine.Screen;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.server.FollowPosition;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.util.GameBlackboard;
-import necesse.engine.util.GameMath;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.summon.summonFollowingMob.attackingFollowingMob.AttackingFollowingMob;
+import necesse.gfx.gameFont.FontManager;
 import necesse.gfx.gameTooltips.GameTooltips;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.gfx.gameTooltips.StringTooltips;
@@ -18,24 +17,38 @@ import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.item.toolItem.summonToolItem.SummonToolItem;
 import necesse.level.maps.Level;
 
+import java.awt.geom.Point2D;
+
 public class soulstatue extends SummonToolItem {
     public soulstatue() {
-        super("soulstatuesummon", FollowPosition.newFlying(0, 0, 1, 1), 3, 2200);
+        super("soulstatuesummon", FollowPosition.WALK_CLOSE, 3, 2200);
         this.rarity = Rarity.EPIC;
-        //FollowPosition.WALK_CLOSE
     }
 
     @Override
     public void draw(InventoryItem item, PlayerMob perspective, int x, int y, boolean inInventory) {
-        this.drawIcon(item, perspective, x, y, 32);
-        if (inInventory && perspective != null) {
-            float percentCooldown = this.getItemCooldownPercent(item, perspective);
-            if (percentCooldown > 0.0F) {
-                int size = 34;
-                int pixels = GameMath.limit((int)(percentCooldown * (float)size), 1, size);
-                Screen.initQuadDraw(size, pixels).color(0.0F, 0.0F, 0.0F, 0.5F).draw(x - 1, y + Math.abs(pixels - size) - 1);
+        super.draw(item, perspective, x, y, inInventory);
+        if (this.drawMaxSummons && inInventory) {
+            int maxSummons = this.getMaxSummons(item, perspective);
+            if (maxSummons > 999) {
+                maxSummons = 999;
+            }
+            if (maxSummons % 3 == 0) {
+                String amountString = String.valueOf(maxSummons / 3);
+                int width = FontManager.bit.getWidthCeil(amountString, tipFontOptions);
+                FontManager.bit.drawString((float)(x + 28 - width), (float)(y + 16), amountString, tipFontOptions);
             }
         }
+    }
+
+    @Override
+    public void summonMob(ServerClient client, AttackingFollowingMob mob, int x, int y, int attackHeight, InventoryItem item) {
+        client.addFollower(this.summonType, mob, this.followPosition, "summonedmob", this.getSummonSpaceTaken(item, client.playerMob), (p) -> this.getMaxSummons(item, p), null, false);
+        Point2D.Float spawnPoint = new Point2D.Float(x, y);
+        mob.updateDamage(this.getAttackDamage(item));
+        mob.setEnchantment(this.getEnchantment(item));
+        this.beforeSpawn(mob, item, client.playerMob);
+        mob.getLevel().entityManager.addMob(mob, spawnPoint.x, spawnPoint.y);
     }
 
     public void runSummon(Level level, int x, int y, ServerClient client, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
@@ -52,12 +65,14 @@ public class soulstatue extends SummonToolItem {
     public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = new ListGameTooltips();
         tooltips.add(Localization.translate("itemtooltip", "soulstatuetip"), 400);
-        tooltips.add(Localization.translate("itemtooltip", "summonfocustip"));
         GameTooltips spaceTaken = this.getSpaceTakenTooltip(item, perspective);
         if (spaceTaken != null) {
             tooltips.add(spaceTaken);
         }
         return tooltips;
     }
-    //TODO RANGE TEXTURE + SPAWN ON CURSOR
+
+    public boolean canLevelInteract(Level level, int x, int y, PlayerMob player, InventoryItem item) {
+        return false;
+    }
 }
