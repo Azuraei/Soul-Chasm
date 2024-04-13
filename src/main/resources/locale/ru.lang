@@ -9,7 +9,7 @@ soulcavebrickfloortile=Кирпичный Пол Камня пропасти д�
 soulcavetiledfloortile=Плиточный Пол из Камня пропасти душ
 asphalttile=Асфальт
 meltedsouls=Расплавленные Духи
-soulcavecracktile=Сломанная Душа
+soulcavecracktile=Cracks
 [object]
 crystalizedsoul=Кристаллизованные души
 crystalizedsoulore=Руда Кристаллизованных душ
@@ -56,10 +56,8 @@ soulwoodtoilet=Туалет из Фантомного дерева
 soulwoodcandelabra=Канделябр из Фантомного дерева
 soulwoodfence=Забор из Фантомного дерева
 soulwoodfencegate=Калитка из Фантомного дерева
-
 magestatueobject=Mage Statue
 soultikitorchobject=Soul Tiki Torch
-
 [item]
 soulscythe=Жнец душ
 soulmetalbow=Призрачный лук
@@ -99,85 +97,63 @@ rangesoulsealtrinket=Фрагмент артефакта Дальнего боя
 soulsealtrinket=Печать души
 balancedsealtrinket=Сбалансированная печать души
 bookofsouls=Книга Душ
-
 soulstatue=Soul Idol //if you aren't sure how to translate idol, just use totem or sth similar. Its reference (and inspiration) to Idol enemy from Ultrakill, thats why I used it
 lunartearflowerhead=Lunar Tear Flower
 tobeblindfold=Black Blindfold
-
 [itemtooltip]
 soulabsorbshield=Blocking damage shoots burst of flames towards attacker\nSuccessful block also increases shortly attack speed and resilience gain
-
 phantomfeathertrinket=Уменьшает максимальное количество здоровья на 25% и дает дополнительные четыре заряда рывка.
-
 soulstealertrinket=When in combat, slowly converts your max health into more damage\nOut of combat process is reversed
-
 pickaxeheadtrinket=Майнинг медленно увеличивает скорость добычи, до 150%.
 phantomdasherstrinket=Бегите еще быстрее\Во время бега вы получаете больше урона\Дает возможность ходить по воде.
-
 soularmorsetbonus=Press [input=setability] to increase attack and movement speed for short time\nUsing ability when buffed extends its time, but has 50% chance of applying debuff
 soulsealfragment=Fragment of whole\nCreates projectile that matches your weapon
 soulsealsummonfragment=Using summoner weapon summons spirit to aid you in battle\nSpirit's strength is based on weapon's stats
-
-soulsealbalanced=Объединяет новую силу.\nСоздает снаряд, соответствующий вашему оружию.\nУвеличивает весь наносимый урон на 10%.
+soulsealfull=Whole again\nCreates projectile that matches your weapon
+soulsealbalanced=Bonds with new power\nCreates projectile that matches your weapon\nIncreases all damage dealt by 10%
 soulmetalswordtip=Удар по врагу вызывает духовные мечи.
-
 soulscythe=Charging to second or greater level applies Bleeding Soul on target\nBleeding Soul decreases armor and damages overtime\nFully charged attacks shoot a decelerating, piercing projectile
 soulmetalbowtip=Press [input=mouse2] to activate overcharge mode\nWhen in overcharge, you gain significant attack speed bonus
 soulmetalrevolvertip=Converts regular bullets into soul infused ones\nHitting enemy with soul infused bullet marks it\nEnemy marked three times are weakened and take damage over time
-
 soulmetalspeartip=Можно бросить\nПри попадании создаёт небольшой взрыв.
-
 soulsigil=Summons the Soul Chasm boss\nMust be used in Soul Chasm
-
 cartip=Призывает Авто\nНажмите правой кнопкой мыши в инвентаре, чтобы изменить цвет.
 soulsealfollowerbuff=Душа, которая услышала ваш зов
-
 bigjarobject=Can be used to store and display item
-
 glowingbugs=Светлячок\nМаленькое светящееся существо
 glowingjarobject=Обеспечивает небольшое количество света при размещении или удерживании
-
 bookofsoulstip=Shoots slowly big, homing projectile
 bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow and shoot rapidly smaller, homing projectiles
 soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, else regenerates hp and resilience
-
 [mob]
 souldragonhead=Древний дракон
 souldragonbody=Древний 
 lostsoul=Потерянная душа
-
 meleestatue=Warrior Statue
 meleeghost=Ghost
-
 wisp=Огонёк
 firefly=Светлячки
-
 magestatue=Soul Idol
-
 soulmage=Призыватель духов
 smallsoulsummon=Малая Душа
 soulcavecaveling=Спелеолог Пропасти душ
 carmob=Автомобиль
-
 [buff]
 soulfirebuff=Дух Инферно
 soulabsorbshieldbuff=Поглощение атак
 souldischargebuff=Преобразование души
 soularmorcooldown=Время восстановления брони из стали души
-soulcharmsummonerbuff=Призванный дух
+soulsealfollowerbuff=Summoned Spirit
 soulbleedstackbuff=Кровоточащая душа
 souldischargesicknessdebuff=Конверсионная болезнь
 bookofsoulbuff=Энергия души
 soulofsoulsoverchargebuff=Переполнение энергии души
-
 soulbowbuff=Phantasm's Overcharge
 soulbowcooldownbuff=Phantasm Bow Cooldown
 soulstatuebuff=Idol's Blessing
-
 [ui]
 incursionmodifierhaunted=Haunted
 incursionmodifierhauntedinfo=After an enemy dies, his ghost appears.
-
 [biome]
 soulcavernincursionbiome=Пропасть душ
 soulcavernbiome=Пропасть душ
