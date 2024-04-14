@@ -60,6 +60,7 @@ magestatueobject=Mage Statue
 soultikitorchobject=Soul Tiki Torch
 argemiaplushieobject=Argemia Plushie
 fairplushieobject=Fair Plushie
+v1plushieobject=V1 Plushie
 [item]
 soulscythe=Soul Reaper
 soulmetalbow=Phantasm Bow
@@ -129,6 +130,7 @@ bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow and sho
 soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, regenerates hp and resilience
 argemiaplushieobject=Loves shrimp
 fairplushieobject="Making Necesse :)"
+v1plushieobject=§6Blood is fuel
 [mob]
 souldragonhead=Ancient Dragon
 souldragonbody=Ancient Dragon

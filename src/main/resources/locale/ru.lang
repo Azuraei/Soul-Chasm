@@ -60,6 +60,7 @@ magestatueobject=Статуя Мага
 soultikitorchobject=Факел Души Тики
 argemiaplushieobject=Аргемия Плюшевая
 fairplushieobject=Fair Плюшевая
+v1plushieobject=V1 Плюшевая
 [item]
 soulscythe=Жнец душ
 soulmetalbow=Призрачный лук
@@ -129,6 +130,7 @@ bookofsoulssecondarytip=Нажмите [input=mouse2], чтобы активир
 soulstatuetip=Призывает Идола Души, чтобы помочь вам в бою.\nИдол усиливает ближайших игроков в радиусе действия\При уровне здоровья более 80% усиливает урон и скорость атаки, в противном случае восстанавливает здоровье и устойчивость.
 argemiaplushieobject=Любит креветки
 fairplushieobject="Making Necesse :)"
+v1plushieobject=§6Blood is fuel
 [mob]
 souldragonhead=Древний дракон
 souldragonbody=Древний 

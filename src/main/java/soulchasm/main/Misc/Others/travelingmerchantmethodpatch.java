@@ -20,9 +20,9 @@ public class travelingmerchantmethodpatch {
             GameRandom random = new GameRandom(mob.getShopSeed()).nextSeeded(42);
             items.add(ShopItem.item("tobeblindfold", random.getIntBetween(500, 600)));
         }
-        if(client.characterStats().completed_incursions.getOpened()>1 && seededRandom1.getChance(0.5F)){
+        if(client.characterStats().completed_incursions.getOpened()>0 && seededRandom1.getChance(0.5F)){
             GameRandom random = new GameRandom(mob.getShopSeed()).nextSeeded(42);
-            String plushie = random.getOneOf("argemiaplushieobject", "fairplushieobject");
+            String plushie = random.getOneOf("argemiaplushieobject", "fairplushieobject", "v1plushieobject");
             items.add(ShopItem.item(plushie, random.getIntBetween(500, 1000)));
         }
     }
