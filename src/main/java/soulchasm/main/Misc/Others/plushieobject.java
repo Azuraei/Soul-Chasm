@@ -29,6 +29,7 @@ public class plushieobject extends GameObject {
     public GameTexture texture;
     public final GameRandom drawRandom;
     public final String textureName;
+    public String[] texts = {"pet"};
 
     public plushieobject(String textureName, Color mapColor) {
         super(new Rectangle(11, 11, 10, 10));
@@ -63,12 +64,20 @@ public class plushieobject extends GameObject {
     }
     public void interact(Level level, int x, int y, PlayerMob player) {
         if(level.isClient()){
-            float pitch = GameRandom.globalRandom.getFloatBetween(0.8F, 1.6F);
-            Screen.playSound(SoulChasm.plushie_squeak, SoundEffect.effect(x * 32, y * 32).volume(0.5F).pitch(pitch));
+            playSqueak(x * 32 + 16, y * 32 + 16);
         } else {
-            String message = GameRandom.globalRandom.getOneOf("pet", "^-^", "yippie!", ":)");
-            player.getServerClient().sendUniqueFloatText(player.getX(), player.getY() - 32, new StaticMessage(message), null, 4);
+            spawnFunniText(player, x * 32 + 16, y * 32 + 16);
         }
+    }
+
+    public void playSqueak(int x, int y){
+        float pitch = GameRandom.globalRandom.getFloatBetween(0.8F, 1.6F);
+        Screen.playSound(SoulChasm.plushie_squeak, SoundEffect.effect(x, y).volume(0.4F).pitch(pitch));
+    }
+
+    public void spawnFunniText(PlayerMob player, int x, int y){
+        String message = GameRandom.globalRandom.getOneOf(texts);
+        player.getServerClient().sendUniqueFloatText(x, y, new StaticMessage(message), null, 4);
     }
 
     public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList, Level level, int tileX, int tileY, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
