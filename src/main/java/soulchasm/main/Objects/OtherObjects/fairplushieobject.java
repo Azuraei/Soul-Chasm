@@ -6,6 +6,6 @@ import java.awt.*;
 
 public class fairplushieobject extends plushieobject {
     public fairplushieobject() {
-        super("fairplushieobject", new Color(159, 108, 0));
+        super("fairplushieobject", new Color(161, 129, 103));
     }
 }

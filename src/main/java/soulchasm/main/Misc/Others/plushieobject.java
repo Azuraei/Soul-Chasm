@@ -14,6 +14,7 @@ import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
+import necesse.inventory.item.Item;
 import necesse.inventory.item.toolItem.ToolType;
 import necesse.level.gameObject.GameObject;
 import necesse.level.maps.Level;
@@ -29,7 +30,7 @@ public class plushieobject extends GameObject {
     public final String textureName;
 
     public plushieobject(String textureName, Color mapColor) {
-        super(new Rectangle(0, 0, 0, 0));
+        super(new Rectangle(0, 0, 14, 14));
         this.hoverHitbox = new Rectangle(0, 0, 28, 28);
         this.objectHealth = 1;
         this.toolType = ToolType.ALL;
@@ -39,6 +40,7 @@ public class plushieobject extends GameObject {
         this.mapColor = mapColor;
         this.textureName = textureName;
         this.drawRandom = new GameRandom();
+        this.rarity = Item.Rarity.EPIC;
     }
 
     public void loadTextures() {
@@ -75,7 +77,7 @@ public class plushieobject extends GameObject {
         }
         int drawX = camera.getTileDrawX(tileX) + drawRandomX;
         int drawY = camera.getTileDrawY(tileY) + drawRandomY;
-        float sizeMod = 0.65F;
+        float sizeMod = 0.7F;
         int sizeX = (int) (62 * sizeMod);
         int sizeY = (int) (64 * sizeMod);
         TextureDrawOptions options = texture.initDraw().sprite(0, 0, 62, 64).size(sizeX, sizeY).light(light).pos(drawX - sizeX/2 + 16, drawY - sizeY/2);
@@ -97,7 +99,7 @@ public class plushieobject extends GameObject {
         }
         int drawX = camera.getTileDrawX(tileX) + drawRandomX;
         int drawY = camera.getTileDrawY(tileY) + drawRandomY;
-        float sizeMod = 0.65F;
+        float sizeMod = 0.7F;
         int sizeX = (int) (62 * sizeMod);
         int sizeY = (int) (64 * sizeMod);
         texture.initDraw().sprite(0, 0, 62, 64).size(sizeX, sizeY).alpha(alpha).draw(drawX - sizeX/2 + 16, drawY - sizeY/2);
