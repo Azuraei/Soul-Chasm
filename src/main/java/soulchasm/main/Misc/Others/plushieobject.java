@@ -30,8 +30,8 @@ public class plushieobject extends GameObject {
     public final String textureName;
 
     public plushieobject(String textureName, Color mapColor) {
-        super(new Rectangle(0, 0, 14, 14));
-        this.hoverHitbox = new Rectangle(0, 0, 28, 28);
+        super(new Rectangle(11, 11, 10, 10));
+        this.hoverHitbox = new Rectangle(3, -6, 24, 24);
         this.objectHealth = 1;
         this.toolType = ToolType.ALL;
         this.isLightTransparent = true;
@@ -72,15 +72,12 @@ public class plushieobject extends GameObject {
         int drawRandomX;
         int drawRandomY;
         synchronized(this.drawRandom) {
-            drawRandomX = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).getIntBetween(-3,3);
-            drawRandomY = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).getIntBetween(-3,3);
+            drawRandomX = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).getIntBetween(-2,2);
+            drawRandomY = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).getIntBetween(-2,2);
         }
         int drawX = camera.getTileDrawX(tileX) + drawRandomX;
         int drawY = camera.getTileDrawY(tileY) + drawRandomY;
-        float sizeMod = 0.7F;
-        int sizeX = (int) (62 * sizeMod);
-        int sizeY = (int) (64 * sizeMod);
-        TextureDrawOptions options = texture.initDraw().sprite(0, 0, 62, 64).size(sizeX, sizeY).light(light).pos(drawX - sizeX/2 + 16, drawY - sizeY/2);
+        TextureDrawOptions options = texture.initDraw().sprite(0, 0, 31, 32).light(light).pos(drawX, drawY - 12);
         list.add(new LevelSortedDrawable(this, tileX, tileY) {
             public int getSortY() {
                 return 16;
@@ -94,15 +91,12 @@ public class plushieobject extends GameObject {
         int drawRandomX;
         int drawRandomY;
         synchronized(this.drawRandom) {
-            drawRandomX = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).getIntBetween(-3,3);
-            drawRandomY = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).getIntBetween(-3,3);
+            drawRandomX = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).getIntBetween(-2,2);
+            drawRandomY = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).getIntBetween(-2,2);
         }
         int drawX = camera.getTileDrawX(tileX) + drawRandomX;
         int drawY = camera.getTileDrawY(tileY) + drawRandomY;
-        float sizeMod = 0.7F;
-        int sizeX = (int) (62 * sizeMod);
-        int sizeY = (int) (64 * sizeMod);
-        texture.initDraw().sprite(0, 0, 62, 64).size(sizeX, sizeY).alpha(alpha).draw(drawX - sizeX/2 + 16, drawY - sizeY/2);
+        texture.initDraw().sprite(0, 0, 31, 32).alpha(alpha).draw(drawX, drawY - 12);
     }
 
     public ObjectEntity getNewObjectEntity(Level level, int x, int y) {
