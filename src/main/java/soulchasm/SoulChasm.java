@@ -165,6 +165,8 @@ public class SoulChasm {
         ObjectRegistry.registerObject("magestatueobject", new magestatueobject(), 100, true);
         ObjectRegistry.registerObject("soultikitorchobject", new soultikitorchobject(), 2.0F, true);
         ObjectRegistry.registerObject("argemiaplushieobject", new argemiaplushieobject(), 10.0F, true);
+        ObjectRegistry.registerObject("fairplushieobject", new fairplushieobject(), 10.0F, true);
+
         //Furniture
         BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", ToolType.PICKAXE, SoulFurnitureColor, 1);
         BedObject.registerBed("soulwoodbed", "soulwoodbed", ToolType.PICKAXE, SoulFurnitureColor, 1);
