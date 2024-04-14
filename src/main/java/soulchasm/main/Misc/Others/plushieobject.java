@@ -2,6 +2,7 @@ package soulchasm.main.Misc.Others;
 
 import necesse.engine.Screen;
 import necesse.engine.localization.Localization;
+import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
@@ -64,6 +65,9 @@ public class plushieobject extends GameObject {
         if(level.isClient()){
             float pitch = GameRandom.globalRandom.getFloatBetween(0.8F, 1.6F);
             Screen.playSound(SoulChasm.plushie_squeak, SoundEffect.effect(x * 32, y * 32).volume(0.5F).pitch(pitch));
+        } else {
+            String message = GameRandom.globalRandom.getOneOf("pet", "^-^", "yippie!", ":)");
+            player.getServerClient().sendUniqueFloatText(player.getX(), player.getY() - 32, new StaticMessage(message), null, 4);
         }
     }
 

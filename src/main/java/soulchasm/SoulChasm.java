@@ -117,6 +117,7 @@ public class SoulChasm {
     public static GameTextureSection particleMeleeGhostParticleSection;
     public static GameSound argemiaplushie_meow;
     public static GameSound plushie_squeak;
+    public static GameSound ultra_parry;
 
     public void init() {
         System.out.println("no idea what to type here, so I will just say hi");
@@ -391,6 +392,7 @@ public class SoulChasm {
 
         argemiaplushie_meow = GameSound.fromFile("argemiaplushie_meow");
         plushie_squeak = GameSound.fromFile("plushie_squeak");
+        ultra_parry = GameSound.fromFile("ultra_parry");
     }
     public void postInit() {
         ForestBiome.defaultSurfaceCritters.add(80, "firefly");
