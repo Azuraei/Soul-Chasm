@@ -77,7 +77,7 @@ public class plushieobject extends GameObject {
 
     public void spawnFunniText(PlayerMob player, int x, int y){
         String message = GameRandom.globalRandom.getOneOf(texts);
-        player.getServerClient().sendUniqueFloatText(x, y, new StaticMessage(message), null, 4);
+        player.getServerClient().sendUniqueFloatText(x, y, new StaticMessage(message), null, 3);
     }
 
     public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList, Level level, int tileX, int tileY, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
