@@ -9,7 +9,7 @@ soulcavebrickfloortile=Кирпичный Пол Камня пропасти д�
 soulcavetiledfloortile=Плиточный Пол из Камня пропасти душ
 asphalttile=Асфальт
 meltedsouls=Расплавленные Духи
-soulcavecracktile=Cracks
+soulcavecracktile=Трещины
 [object]
 crystalizedsoul=Кристаллизованные души
 crystalizedsoulore=Руда Кристаллизованных душ
@@ -56,8 +56,9 @@ soulwoodtoilet=Туалет из Фантомного дерева
 soulwoodcandelabra=Канделябр из Фантомного дерева
 soulwoodfence=Забор из Фантомного дерева
 soulwoodfencegate=Калитка из Фантомного дерева
-magestatueobject=Mage Statue
-soultikitorchobject=Soul Tiki Torch
+magestatueobject=Статуя Мага
+soultikitorchobject=Факел Души Тики
+argemiaplushieobject=Аргемия Плюшевая
 [item]
 soulscythe=Жнец душ
 soulmetalbow=Призрачный лук
@@ -75,7 +76,7 @@ phantomfeathertrinket=Призрачное перо
 soulstealertrinket=Кольцо души
 pickaxeheadtrinket=Старая голова кирки
 phantomdasherstrinket=Призрачные рывки
-carkeys=Ключ от Машины
+carkeys=Ключ от Автомобиля
 soulsigil=Сигил Души
 souldragonscales=Чешуя древнего дракона
 soulwoodlogitem=Бревно призрачного дерева
@@ -97,43 +98,44 @@ rangesoulsealtrinket=Фрагмент артефакта Дальнего боя
 soulsealtrinket=Печать души
 balancedsealtrinket=Сбалансированная печать души
 bookofsouls=Книга Душ
-soulstatue=Soul Idol //if you aren't sure how to translate idol, just use totem or sth similar. Its reference (and inspiration) to Idol enemy from Ultrakill, thats why I used it
-lunartearflowerhead=Lunar Tear Flower
-tobeblindfold=Black Blindfold
+soulstatue=Идол души
+lunartearflowerhead=Цветок Лунных слёз
+tobeblindfold=Черная повязка на глаза
 [itemtooltip]
-soulabsorbshield=Blocking damage shoots burst of flames towards attacker\nSuccessful block also increases shortly attack speed and resilience gain
+soulabsorbshield=Блокирование урона выпускает вспышку пламени в сторону атакующего\nУспешный блок также кратковременно увеличивает скорость атаки и прирост устойчивости
 phantomfeathertrinket=Уменьшает максимальное количество здоровья на 25% и дает дополнительные четыре заряда рывка.
-soulstealertrinket=When in combat, slowly converts your max health into more damage\nOut of combat process is reversed
+soulstealertrinket=В бою ваше максимальное здоровье медленно преобразуется в больший урон\nВне боя процесс обратный
 pickaxeheadtrinket=Майнинг медленно увеличивает скорость добычи, до 150%.
-phantomdasherstrinket=Бегите еще быстрее\Во время бега вы получаете больше урона\Дает возможность ходить по воде.
-soularmorsetbonus=Press [input=setability] to increase attack and movement speed for short time\nUsing ability when buffed extends its time, but has 50% chance of applying debuff
-soulsealfragment=Fragment of whole\nCreates projectile that matches your weapon
-soulsealsummonfragment=Using summoner weapon summons spirit to aid you in battle\nSpirit's strength is based on weapon's stats
-soulsealfull=Whole again\nCreates projectile that matches your weapon
-soulsealbalanced=Bonds with new power\nCreates projectile that matches your weapon\nIncreases all damage dealt by 10%
+phantomdasherstrinket=Бегите еще быстрее\nВо время бега вы получаете больше урона\nДает возможность ходить по воде.
+soularmorsetbonus=Нажмите [input=setability], чтобы на короткое время увеличить скорость атаки и передвижения\nИспользование способности при усилении продлевает время ее действия, но имеет 50% шанс наложения дебаффа
+soulsealfragment=Фрагмент целого\nСоздает снаряд, соответствующий вашему оружию.
+soulsealsummonfragment=Использование оружия призывателя вызывает дух, который поможет вам в бою.\nСила духа зависит от характеристик оружия.
+soulsealfull=Вновь целое\nСоздает снаряд, соответствующий вашему оружию.
+soulsealbalanced=Объединяет новую силу\nСоздает снаряд, соответствующий вашему оружию.\nУвеличивает весь наносимый урон на 10%.
 soulmetalswordtip=Удар по врагу вызывает духовные мечи.
-soulscythe=Charging to second or greater level applies Bleeding Soul on target\nBleeding Soul decreases armor and damages overtime\nFully charged attacks shoot a decelerating, piercing projectile
-soulmetalbowtip=Press [input=mouse2] to activate overcharge mode\nWhen in overcharge, you gain significant attack speed bonus
-soulmetalrevolvertip=Converts regular bullets into soul infused ones\nHitting enemy with soul infused bullet marks it\nEnemy marked three times are weakened and take damage over time
+soulscythe=При зарядке до второго или более высокого уровня к цели применяется «Кровоточащая душа»\nКровоточащая душа уменьшает броню и наносит дополнительный урон\nПолностью заряженные атаки стреляют замедляющим, пронзающим снарядом.
+soulmetalbowtip=Нажмите [input=mouse2], чтобы активировать режим перезарядки\nПри перезарядке вы получаете значительный бонус к скорости атаки.
+soulmetalrevolvertip=Преобразует обычные пули в наполненные душой\nПопадание во врага пулей, наполненной душой, отмечает его\nВраг, отмеченный трижды, ослабляется и получает постепенный урон.
 soulmetalspeartip=Можно бросить\nПри попадании создаёт небольшой взрыв.
-soulsigil=Summons the Soul Chasm boss\nMust be used in Soul Chasm
-cartip=Призывает Авто\nНажмите правой кнопкой мыши в инвентаре, чтобы изменить цвет.
+soulsigil=Вызывает босса Пропасти души\Необходимо использовать в Пропасти души.
+cartip=Призывает Автомобиль\nНажмите правой кнопкой мыши в инвентаре, чтобы изменить цвет.
 soulsealfollowerbuff=Душа, которая услышала ваш зов
-bigjarobject=Can be used to store and display item
+bigjarobject=Может использоваться для хранения и отображения предметов.
 glowingbugs=Светлячок\nМаленькое светящееся существо
 glowingjarobject=Обеспечивает небольшое количество света при размещении или удерживании
-bookofsoulstip=Shoots slowly big, homing projectile
-bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow and shoot rapidly smaller, homing projectiles
-soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, else regenerates hp and resilience
+bookofsoulstip=Стреляет медленным большим самонаводящимся снарядом.
+bookofsoulssecondarytip=Нажмите [input=mouse2], чтобы активировать перелив энергии и быстро стрелять меньшими самонаводящимися снарядами.
+soulstatuetip=Призывает Идола Души, чтобы помочь вам в бою.\nИдол усиливает ближайших игроков в радиусе действия\При уровне здоровья более 80% усиливает урон и скорость атаки, в противном случае восстанавливает здоровье и устойчивость.
+argemiaplushieobject=Любит креветки
 [mob]
 souldragonhead=Древний дракон
 souldragonbody=Древний 
 lostsoul=Потерянная душа
-meleestatue=Warrior Statue
-meleeghost=Ghost
+meleestatue=Статуя Воина
+meleeghost=Призрак
 wisp=Огонёк
 firefly=Светлячки
-magestatue=Soul Idol
+magestatue=Идол Души
 soulmage=Призыватель духов
 smallsoulsummon=Малая Душа
 soulcavecaveling=Спелеолог Пропасти душ
@@ -143,17 +145,18 @@ soulfirebuff=Дух Инферно
 soulabsorbshieldbuff=Поглощение атак
 souldischargebuff=Преобразование души
 soularmorcooldown=Время восстановления брони из стали души
-soulsealfollowerbuff=Summoned Spirit
+soulsealfollowerbuff=Призванный дух
 soulbleedstackbuff=Кровоточащая душа
 souldischargesicknessdebuff=Конверсионная болезнь
 bookofsoulbuff=Энергия души
 soulofsoulsoverchargebuff=Переполнение энергии души
-soulbowbuff=Phantasm's Overcharge
-soulbowcooldownbuff=Phantasm Bow Cooldown
-soulstatuebuff=Idol's Blessing
+soulbowbuff=Перезаряд Фантазма
+soulbowcooldownbuff=Время восстановления Лука Фантазма
+soulstatuebuff=Благословение идола
 [ui]
-incursionmodifierhaunted=Haunted
-incursionmodifierhauntedinfo=After an enemy dies, his ghost appears.
+incursionmodifierhaunted=Населенный призраками
+incursionmodifierhauntedinfo=После смерти врага появляется его призрак
+argplush_tip=Питомец
 [biome]
 soulcavernincursionbiome=Пропасть душ
 soulcavernbiome=Пропасть душ
