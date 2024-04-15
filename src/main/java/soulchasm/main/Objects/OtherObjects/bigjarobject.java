@@ -40,6 +40,7 @@ public class bigjarobject extends GameObject {
         this.canPlaceOnShore = true;
         this.replaceRotations = false;
         this.collision = new Rectangle(8, 4, 16, 16);
+        this.hoverHitbox = new Rectangle(2, -14, 28, 28);
     }
     @Override
     public void loadTextures() {

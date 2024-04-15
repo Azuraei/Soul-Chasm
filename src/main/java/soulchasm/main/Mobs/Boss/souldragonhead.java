@@ -442,7 +442,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
             double targetY = mob().y + distance*Math.sin(Math.toRadians(selfAngle));
             float angle = 40;
             for(int i = -4; i<4; i++){
-                soulhomingprojectile projectile = new soulhomingprojectile(mob.getLevel(), mob, mob.x, mob.y, (float) targetX, (float) targetY, 50, 800,  souldragonhead.souldragonHomingProjectileDamage, 20);
+                soulhomingprojectile projectile = new soulhomingprojectile(mob.getLevel(), mob, mob.x, mob.y, (float) targetX, (float) targetY, 40, 600,  souldragonhead.souldragonHomingProjectileDamage, 20);
                 projectile.setAngle(projectile.getAngle() + angle * i);
                 projectile.turnSpeed = 0.025F;
                 mob.getLevel().entityManager.projectiles.add(projectile);

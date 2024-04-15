@@ -11,7 +11,7 @@ import java.awt.*;
 public class argemiaplushieobject extends plushieobject {
     public argemiaplushieobject() {
         super("argemiaplushieobject", new Color(255, 0, 92));
-        this.texts = new String[]{"pet", "meow", "shrimp", ">^-^<", "prank", "dr. kel"};
+        this.texts = new String[]{"pet", "meow", "shrimp", ">^-^<", ":)", "dr. kel"};
     }
     public void playSqueak(int x, int y) {
         if(GameRandom.globalRandom.getChance(0.1F)){
