@@ -17,7 +17,7 @@ import necesse.level.maps.generationModules.PresetGeneration;
 import necesse.level.maps.incursion.BiomeExtractionIncursionData;
 import necesse.level.maps.incursion.BiomeMissionIncursionData;
 import necesse.level.maps.presets.Preset;
-import necesse.level.maps.presets.RandomCaveChestRoom;
+import soulchasm.main.Misc.Others.chasmchestroom;
 import soulchasm.main.Misc.Presets.soulcavearenapreset;
 import soulchasm.main.Misc.Presets.soulcaveshrinepreset;
 import soulchasm.main.Misc.Presets.soulcavesmallruinspreset;
@@ -82,7 +82,7 @@ public class soulchasmincursionlevel extends IncursionLevel {
             int chestRoomAmount = cg.random.getIntBetween(10, 15);
 
             for(int ix = 0; ix < chestRoomAmount; ++ix) {
-                Preset chestRoom = new RandomCaveChestRoom(cg.random, soulcavechestloottable, chestRoomRotation, SoulCaveChestRoomSet);
+                Preset chestRoom = new chasmchestroom(cg.random, soulcavechestloottable, chestRoomRotation, SoulCaveChestRoomSet);
                 chestRoom.replaceTile(TileRegistry.getTileID("soulcavefloortile"), cg.random.getOneOf(TileRegistry.getTileID("soulcavefloortile"), TileRegistry.getTileID("soulcavebrickfloortile")));
                 presets.findRandomValidPositionAndApply(cg.random, 6, chestRoom, 10, true, true);
             }

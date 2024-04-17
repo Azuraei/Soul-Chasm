@@ -445,17 +445,6 @@ public class SoulChasm {
         );
         souldragonhead.lootTable = new LootTable(dragon_loot_list);
 
-        //SOUL_MAGE_LOOT
-        soulmage.lootTable.items.add(new ChanceLootItem(0.01F, "soularmorhat"));
-
-        //STATUE_LOOT
-        LootItemList statue_loot_list = new LootItemList(
-                new ChanceLootItem(0.01F,"soularmorboots"),
-                new ChanceLootItem(0.01F,"soularmorchestplate"),
-                new ChanceLootItem(0.01F,"soularmorhelmet")
-        );
-        meleestatue.lootTable = new LootTable(statue_loot_list);
-
         //---CRAFTING---//
         Recipes.registerModRecipe(new Recipe(
                 "soulmetalbar",
