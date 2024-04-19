@@ -28,7 +28,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class meleestatue extends HostileMob {
-    public static LootTable lootTable;
+    public static LootTable lootTable = new LootTable();
     public static GameTexture texture;
     public static GameTexture glowtexture;
     private boolean showGlowEyes;
@@ -57,15 +57,12 @@ public class meleestatue extends HostileMob {
         this.isHostile = true;
     }
 
-    @Override
     public boolean isLavaImmune() {
         return true;
     }
-    @Override
     public boolean canBePushed(Mob other) {
         return false;
     }
-    @Override
     public LootTable getLootTable() {
         return lootTable;
     }
