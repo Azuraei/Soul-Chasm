@@ -42,7 +42,6 @@ public class soulstatue extends SummonToolItem {
         }
     }
 
-    @Override
     public void summonMob(ServerClient client, AttackingFollowingMob mob, int x, int y, int attackHeight, InventoryItem item) {
         client.addFollower(this.summonType, mob, this.followPosition, "summonedmob", this.getSummonSpaceTaken(item, client.playerMob), (p) -> this.getMaxSummons(item, p), null, false);
         Point2D.Float spawnPoint = new Point2D.Float(x, y);
