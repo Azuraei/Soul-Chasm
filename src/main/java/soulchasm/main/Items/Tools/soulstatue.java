@@ -6,8 +6,10 @@ import necesse.engine.network.server.FollowPosition;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.util.GameBlackboard;
+import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.summon.summonFollowingMob.attackingFollowingMob.AttackingFollowingMob;
+import necesse.entity.mobs.summon.summonFollowingMob.attackingFollowingMob.ToolItemSummonedMob;
 import necesse.gfx.gameFont.FontManager;
 import necesse.gfx.gameTooltips.GameTooltips;
 import necesse.gfx.gameTooltips.ListGameTooltips;
@@ -42,13 +44,15 @@ public class soulstatue extends SummonToolItem {
         }
     }
 
-    public void summonMob(ServerClient client, AttackingFollowingMob mob, int x, int y, int attackHeight, InventoryItem item) {
-        client.addFollower(this.summonType, mob, this.followPosition, "summonedmob", this.getSummonSpaceTaken(item, client.playerMob), (p) -> this.getMaxSummons(item, p), null, false);
+    @Override
+    public void summonMob(ServerClient client, ToolItemSummonedMob mob, int x, int y, int attackHeight, InventoryItem item) {
+        Mob castedMob = (Mob)mob;
+        client.addFollower(this.summonType, castedMob, this.followPosition, "summonedmob", this.getSummonSpaceTaken(item, client.playerMob), (p) -> this.getMaxSummons(item, p), null, false);
         Point2D.Float spawnPoint = new Point2D.Float(x, y);
         mob.updateDamage(this.getAttackDamage(item));
         mob.setEnchantment(this.getEnchantment(item));
         this.beforeSpawn(mob, item, client.playerMob);
-        mob.getLevel().entityManager.addMob(mob, spawnPoint.x, spawnPoint.y);
+        castedMob.getLevel().entityManager.addMob(castedMob, spawnPoint.x, spawnPoint.y);
     }
 
     public void runSummon(Level level, int x, int y, ServerClient client, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {

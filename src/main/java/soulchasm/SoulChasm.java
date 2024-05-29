@@ -137,12 +137,12 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soulcaverock", soulcaverock = new RockObject("soulcaverock", SoulStoneColor, "soulcaverockitem", 1, 5), 0.0F, false);
         soulcaverock.toolTier = 4;
         SingleRockObject.registerSurfaceRock(soulcaverock, "soulcaverocks", SoulStoneColor);
-        ObjectRegistry.registerObject("soulcaverockssmall", new SingleRockSmall(soulcaverock, "soulcaverockssmall", SoulStoneColor), 0.0F, false, false);
+        ObjectRegistry.registerObject("soulcaverockssmall", new SingleRockSmall(soulcaverock, "soulcaverockssmall", SoulStoneColor), 0.0F, false);
         ObjectRegistry.registerObject("soulstonepressureplate", new MaskedPressurePlateObject("pressureplatemask", "soulcavefloortile", SoulStoneColor), 15.0F, true);
         WallObject.registerWallObjects("soulwood", "soulwoodtexture", 0, SoulWoodColor, 0.5F, 1);
         WallObject.registerWallObjects("soulbrick", "soulbricktexture", soulcaverock.toolTier, SoulStoneColor, 0.5F, 1);
         ObjectRegistry.registerObject("soulstoneflametrap", new WallFlameTrapObject((WallObject)ObjectRegistry.getObject("soulbrickwall")), 50.0F, true);
-        ObjectRegistry.registerObject("soulcavedecorations", new decorationobject(soulcaverock, "soulcavedecorations", SoulStoneColor), 0.0F, false, false);
+        ObjectRegistry.registerObject("soulcavedecorations", new decorationobject(soulcaverock, "soulcavedecorations", SoulStoneColor), 0.0F, false);
         ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject((RockObject)ObjectRegistry.getObject("soulcaverock"), "oremask", "crystalizedsoulore", SoulStoneColor, "crystalizedsouloreitem"), 0.0F, false);
         ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject((RockObject)ObjectRegistry.getObject("soulcaverock"), "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, false), 0.0F, false);
         ObjectRegistry.registerObject("upgradeshardsoulcaverock", new RockOreObject(soulcaverock, "oremask", "upgradeshardore", new Color(0, 27, 107), "upgradeshard", 1, 1, false), 0.0F, false);
