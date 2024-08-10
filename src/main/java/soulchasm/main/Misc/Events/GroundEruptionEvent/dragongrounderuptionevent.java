@@ -1,11 +1,11 @@
 package soulchasm.main.Misc.Events.GroundEruptionEvent;
 
-import necesse.engine.Screen;
 import necesse.engine.localization.message.GameMessage;
 import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameRandom;
 import necesse.entity.ParticleTypeSwitcher;
 import necesse.entity.levelEvent.mobAbilityLevelEvent.MobAbilityLevelEvent;
@@ -90,12 +90,12 @@ public class dragongrounderuptionevent extends MobAbilityLevelEvent implements A
         if (!this.isOver()) {
             long eventTime = this.level.getWorldEntity().getTime() - this.spawnTime;
             if (eventTime > 1000L && !this.playedStartSound) {
-                Screen.playSound(GameResources.fireworkCrack, SoundEffect.effect((float)this.x, (float)this.y));
+                SoundManager.playSound(GameResources.fireworkCrack, SoundEffect.effect((float)this.x, (float)this.y));
                 this.playedStartSound = true;
             }
 
             if (eventTime > 1200L) {
-                Screen.playSound(GameResources.firespell1, SoundEffect.effect((float)this.x, (float)this.y).volume(0.5F));
+                SoundManager.playSound(GameResources.firespell1, SoundEffect.effect((float)this.x, (float)this.y).volume(0.5F));
                 spawnSprayParticles(120);
                 this.over();
             }

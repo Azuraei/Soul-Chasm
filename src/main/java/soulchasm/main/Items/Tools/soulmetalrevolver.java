@@ -1,11 +1,11 @@
 package soulchasm.main.Items.Tools;
 
-import necesse.engine.Screen;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.packet.PacketSpawnProjectile;
 import necesse.engine.registries.ItemRegistry;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.AttackAnimMob;
@@ -76,6 +76,6 @@ public class soulmetalrevolver extends GunProjectileToolItem {
     }
 
     public void playFireSound(AttackAnimMob mob) {
-        Screen.playSound(GameResources.sniperrifle.setVolumeModifier((float)0.4), SoundEffect.effect(mob));
+        SoundManager.playSound(GameResources.sniperrifle.setVolumeModifier((float)0.4), SoundEffect.effect(mob));
     }
 }

@@ -1,8 +1,8 @@
 package soulchasm.main.Mobs.Agressive;
 
-import necesse.engine.Screen;
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.sound.SoundEffect;
-import necesse.engine.tickManager.TickManager;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
@@ -90,11 +90,11 @@ public class meleeghost extends HostileMob {
     }
 
     protected void playDeathSound() {
-        Screen.playSound(GameResources.fadedeath3, SoundEffect.effect(this).volume(0.2F).pitch(0.9F));
+        SoundManager.playSound(GameResources.fadedeath3, SoundEffect.effect(this).volume(0.2F).pitch(0.9F));
     }
 
     protected void playHitSound() {
-        Screen.playSound(GameResources.swoosh, SoundEffect.effect(this).pitch(0.7F).volume(0.2F));
+        SoundManager.playSound(GameResources.swoosh, SoundEffect.effect(this).pitch(0.7F).volume(0.2F));
     }
 
     public void spawnDeathParticles(float knockbackX, float knockbackY) {

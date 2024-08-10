@@ -1,11 +1,11 @@
 package soulchasm.main.Mobs.Boss;
 
+import necesse.engine.gameLoop.tickManager.TickManager;
+import necesse.engine.gameLoop.tickManager.TicksPerSecond;
 import necesse.engine.localization.message.GameMessage;
 import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.modifiers.ModifierValue;
 import necesse.engine.registries.MobRegistry;
-import necesse.engine.tickManager.TickManager;
-import necesse.engine.tickManager.TicksPerSecond;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.*;

@@ -1,7 +1,7 @@
 package soulchasm.main.Buffs.ToolBuffs;
 
-import necesse.engine.Screen;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.Mob;
@@ -100,7 +100,7 @@ public class souldeathmarkstackbuff extends Buff {
         explosion.popOptions = piercerPopExplosion;
         explosion.particleLightHue = 211.0F;
         explosion.explosionSound = (pos, height, random) -> {
-            Screen.playSound(GameResources.fireworkExplosion, SoundEffect.effect(pos.x, pos.y).pitch((Float)random.getOneOf(new Float[]{0.95F, 1.0F, 1.05F})).volume(0.2F).falloffDistance(1500));
+            SoundManager.playSound(GameResources.fireworkExplosion, SoundEffect.effect(pos.x, pos.y).pitch((Float)random.getOneOf(new Float[]{0.95F, 1.0F, 1.05F})).volume(0.2F).falloffDistance(1500));
         };
         explosion.spawnExplosion(buff.owner.getLevel(), buff.owner.x, buff.owner.y, 10, GameRandom.globalRandom);
     }

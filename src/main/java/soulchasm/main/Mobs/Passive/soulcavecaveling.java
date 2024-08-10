@@ -1,8 +1,8 @@
 package soulchasm.main.Mobs.Passive;
 
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.registries.ObjectRegistry;
-import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.HumanTexture;
 import necesse.entity.mobs.MobDrawable;
@@ -49,7 +49,7 @@ public class soulcavecaveling extends CavelingMob {
         int drawX = camera.getDrawX(x) - 32;
         int drawY = camera.getDrawY(y) - 48;
         HumanTexture texture = soulcavecaveling.texture != null ? new HumanTexture(soulcavecaveling.texture, soulcavecaveling.texture, soulcavecaveling.texture) : MobRegistry.Textures.stoneCaveling;
-        Point sprite = this.getAnimSprite(x, y, this.dir);
+        Point sprite = this.getAnimSprite(x, y, this.getDir());
         drawY += this.getBobbing(x, y);
         drawY += this.getLevel().getTile(x / 32, y / 32).getMobSinkingAmount(this);
         boolean asRock = false;

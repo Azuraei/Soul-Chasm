@@ -1,8 +1,8 @@
 package soulchasm.main.Projectiles.WeaponProjectiles;
 
-import necesse.engine.Screen;
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.sound.SoundEffect;
-import necesse.engine.tickManager.TickManager;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
@@ -81,7 +81,7 @@ public class soulspearprojectile extends Projectile {
             explosion.particleLightSaturation = 0.6F;
 
             explosion.explosionSound = (pos, height, random) -> {
-                Screen.playSound(GameResources.fireworkExplosion, SoundEffect.effect(pos.x, pos.y).pitch(random.getOneOf(0.95F, 1.0F, 1.05F)).volume(0.2F).falloffDistance(1500));
+                SoundManager.playSound(GameResources.fireworkExplosion, SoundEffect.effect(pos.x, pos.y).pitch(random.getOneOf(0.95F, 1.0F, 1.05F)).volume(0.2F).falloffDistance(1500));
             };
             explosion.spawnExplosion(this.getLevel(), targetX, targetY, this.getHeight(), GameRandom.globalRandom);
         }
@@ -129,7 +129,7 @@ public class soulspearprojectile extends Projectile {
     }
 
     protected void playHitSound(float x, float y) {
-        Screen.playSound(GameResources.tap, SoundEffect.effect(x, y).volume(0.5F).pitch(0.8F));
+        SoundManager.playSound(GameResources.tap, SoundEffect.effect(x, y).volume(0.5F).pitch(0.8F));
     }
 
     static {

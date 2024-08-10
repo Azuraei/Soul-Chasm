@@ -1,11 +1,11 @@
 package soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent;
 
-import necesse.engine.Screen;
 import necesse.engine.localization.message.GameMessage;
 import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.levelEvent.mobAbilityLevelEvent.MobAbilityLevelEvent;
@@ -67,11 +67,11 @@ public class spinspawnevent extends MobAbilityLevelEvent implements Attacker {
         if (!this.isOver()) {
             long eventTime = this.level.getWorldEntity().getTime() - this.spawnTime;
             if (eventTime > duration && !this.playedStartSound) {
-                Screen.playSound(GameResources.fireworkCrack, SoundEffect.effect((float)this.x, (float)this.y));
+                SoundManager.playSound(GameResources.fireworkCrack, SoundEffect.effect((float)this.x, (float)this.y));
                 this.playedStartSound = true;
             }
             if(this.tickCounter <= 18 && this.tickCounter % 2 == 0){
-                Screen.playSound(GameResources.magicbolt1, SoundEffect.effect((float)this.x, (float)this.y).volume(0.2F));
+                SoundManager.playSound(GameResources.magicbolt1, SoundEffect.effect((float)this.x, (float)this.y).volume(0.2F));
             }
 
             if (eventTime > duration + 200) {

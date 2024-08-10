@@ -1,11 +1,11 @@
 package soulchasm.main.Mobs.Summon;
 
+import necesse.engine.gameLoop.tickManager.TickManager;
+import necesse.engine.gameLoop.tickManager.TicksPerSecond;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;
 import necesse.engine.registries.MobRegistry;
-import necesse.engine.tickManager.TickManager;
-import necesse.engine.tickManager.TicksPerSecond;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.Mob;
@@ -69,7 +69,7 @@ public class carmob extends MountFollowingMob {
             float dirX2;
             float dirY2;
             while (this.particleTicks.shouldTick()) {
-                switch (this.dir){
+                switch (this.getDir()){
                     case 0:
                         dirY = -2.0F;
                         dirY2 = -2.0F;
@@ -132,7 +132,7 @@ public class carmob extends MountFollowingMob {
         GameLight light = level.getLightLevel(x / 32, y / 32);
         int drawX = camera.getDrawX(x) - 31;
         int drawY = camera.getDrawY(y) - 40;
-        Point sprite = this.getAnimSprite(x, y, this.dir);
+        Point sprite = this.getAnimSprite(x, y, this.getDir());
         drawY += this.getBobbing(x, y);
         final DrawOptions options = texture.initDraw().sprite(textureColorIndex, sprite.y, 64).light(light).pos(drawX , drawY);
         final DrawOptions options_top = texture_top.initDraw().sprite(0, sprite.y, 64).light(light).pos(drawX , drawY);
@@ -148,7 +148,7 @@ public class carmob extends MountFollowingMob {
     }
 
     protected TextureDrawOptions getShadowDrawOptions(int x, int y, GameLight light, GameCamera camera) {
-        return getShadowDrawOptions(this, x, y, 0, dir, light, camera);
+        return getShadowDrawOptions(this, x, y, 0, this.getDir(), light, camera);
     }
 
     public static TextureDrawOptions getShadowDrawOptions(Mob mob, int x, int y, int yOffset, int dir, GameLight light, GameCamera camera) {
@@ -197,6 +197,6 @@ public class carmob extends MountFollowingMob {
         return -13;
     }
     public GameTexture getRiderMask() {
-        return car_mask[GameMath.limit(dir, 0, car_mask.length - 1)];
+        return car_mask[GameMath.limit(this.getDir(), 0, car_mask.length - 1)];
     }
 }

@@ -1,7 +1,7 @@
 package soulchasm.main.Mobs.Passive;
 
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.network.client.Client;
-import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
@@ -35,7 +35,7 @@ public class sphereeffectmob extends Mob {
 
     public void init() {
         super.init();
-        this.dir = 0;
+        this.setDir(0);
     }
 
     public boolean canPushMob(Mob other) {

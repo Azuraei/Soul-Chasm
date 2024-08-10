@@ -1,10 +1,10 @@
 package soulchasm.main.Mobs.Agressive;
 
-import necesse.engine.Screen;
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;
 import necesse.engine.sound.SoundEffect;
-import necesse.engine.tickManager.TickManager;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.*;
 import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
@@ -80,7 +80,7 @@ public class meleestatue extends HostileMob {
     public MobWasHitEvent isHit(MobWasHitEvent event, Attacker attacker) {
         if(!event.wasPrevented && attacker != null){
             changeAI();
-            Screen.playSound(GameResources.fadedeath3, SoundEffect.effect(this).pitch(0.5F).volume(0.6F));
+            SoundManager.playSound(GameResources.fadedeath3, SoundEffect.effect(this).pitch(0.5F).volume(0.6F));
         }
         return super.isHit(event, attacker);
     }
@@ -108,7 +108,7 @@ public class meleestatue extends HostileMob {
         GameLight light = level.getLightLevel(this.getTileX(), this.getTileY());
         int drawX = camera.getDrawX(x) - 32;
         int drawY = camera.getDrawY(y) - 55;
-        Point sprite = this.getAnimSprite(x, y, this.dir);
+        Point sprite = this.getAnimSprite(x, y, this.getDir());
         drawY += this.getBobbing(x, y);
         drawY += this.getLevel().getTile(this.getTileX(), this.getTileY()).getMobSinkingAmount(this);
         DrawOptions drawOptions = texture.initDraw().sprite(sprite.x, sprite.y, 64).light(light).pos(drawX, drawY);

@@ -1,8 +1,8 @@
 package soulchasm.main.Buffs.TrinketsBuffs.PhantomDashersBuffs;
 
-import necesse.engine.Screen;
 import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
@@ -35,13 +35,13 @@ public class phantomdashersactivebuff extends Buff implements MovementTickBuff {
             float xOffset;
             if (particleBuffer >= 20.0F) {
                 particleBuffer -= 20.0F;
-                owner.getLevel().entityManager.addParticle(owner.x, owner.y - 20, Particle.GType.IMPORTANT_COSMETIC).sprite(SoulChasm.particlePhantomBodySection.sprite(0, owner.dir, 64)).size((wrapper, i, i1, v) -> wrapper.size(64)).fadesAlpha(0.1F, 1.0F).fadesAlphaTime(100, 1000).minDrawLight(100).dontRotate().lifeTime(1200);
+                owner.getLevel().entityManager.addParticle(owner.x, owner.y - 20, Particle.GType.IMPORTANT_COSMETIC).sprite(SoulChasm.particlePhantomBodySection.sprite(0, owner.getDir(), 64)).size((wrapper, i, i1, v) -> wrapper.size(64)).fadesAlpha(0.1F, 1.0F).fadesAlphaTime(100, 1000).minDrawLight(100).dontRotate().lifeTime(1200);
             }
             gndData.setFloat("particleBuffer", particleBuffer);
             xOffset = gndData.getFloat("soundBuffer") + Math.min(speed, 80.0F * delta / 250.0F);
             if (xOffset >= 85.0F) {
                 xOffset -= 85.0F;
-                Screen.playSound(GameResources.swoosh, SoundEffect.effect(owner).volume(0.1F).pitch(0.8F));
+                SoundManager.playSound(GameResources.swoosh, SoundEffect.effect(owner).volume(0.1F).pitch(0.8F));
             }
             gndData.setFloat("soundBuffer", xOffset);
         }

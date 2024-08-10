@@ -1,7 +1,7 @@
 package soulchasm.main.Buffs.TrinketsBuffs.PhantomDashersBuffs;
 
 import necesse.engine.Settings;
-import necesse.engine.control.Control;
+import necesse.engine.input.Control;
 import necesse.engine.network.Packet;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;

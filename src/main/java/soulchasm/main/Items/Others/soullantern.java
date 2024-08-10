@@ -1,6 +1,7 @@
 package soulchasm.main.Items.Others;
 
 import necesse.engine.registries.ObjectRegistry;
+import necesse.entity.mobs.MaskShaderOptions;
 import necesse.entity.mobs.PlayerMob;
 import necesse.gfx.GameResources;
 import necesse.gfx.drawOptions.DrawOptions;
@@ -25,7 +26,7 @@ public class soullantern extends ObjectItem {
         this.holdTexture = GameTexture.fromFile("player/holditems/soullantern");
     }
     @Override
-    public DrawOptions getHoldItemDrawOptions(InventoryItem item, PlayerMob player, int spriteX, int spriteY, int drawX, int drawY, int width, int height, boolean mirrorX, boolean mirrorY, GameLight light, float alpha, GameTexture mask) {
+    public DrawOptions getHoldItemDrawOptions(InventoryItem item, PlayerMob player, int spriteX, int spriteY, int drawX, int drawY, int width, int height, boolean mirrorX, boolean mirrorY, GameLight light, float alpha, MaskShaderOptions mask) {
         int xOffset = 0;
         int yOffset = 0;
         TextureDrawOptionsEnd options;
@@ -42,7 +43,7 @@ public class soullantern extends ObjectItem {
             options = this.holdTexture.initDraw().sprite(spriteX, spriteY, 64);
         }
         float minLight = 150;
-        options = options.light(light.minLevelCopy((float)minLight)).alpha(alpha).size(width, height).mirror(mirrorX, mirrorY).addShaderTextureFit(mask, 1);
+        options = options.light(light.minLevelCopy((float)minLight)).alpha(alpha).size(width, height).mirror(mirrorX, mirrorY).addMaskShader(mask);
         return options.pos(drawX + xOffset, drawY + yOffset);
     }
 

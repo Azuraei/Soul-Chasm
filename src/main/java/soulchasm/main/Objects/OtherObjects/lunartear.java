@@ -29,8 +29,8 @@ public class lunartear extends GrassObject {
     public void attackThrough(Level level, int x, int y, GameDamage damage, Attacker attacker) {
     }
 
-    public String canPlace(Level level, int x, int y, int rotation) {
-        String error = super.canPlace(level, x, y, rotation);
+    public String canPlace(Level level, int x, int y, int rotation, boolean byPlayer) {
+        String error = super.canPlace(level, x, y, rotation, byPlayer);
         if (error != null) {
             return error;
         } else {

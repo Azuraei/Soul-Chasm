@@ -1,7 +1,7 @@
 package soulchasm.main.Misc.Incursion.HauntedModifier;
 
-import necesse.engine.Screen;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.entity.levelEvent.LevelEvent;
 import necesse.entity.manager.MobDeathListenerEntityComponent;
 import necesse.entity.mobs.Attacker;
@@ -23,7 +23,7 @@ public class hauntedmodifierlevelevent extends LevelEvent implements MobDeathLis
         if (!mob.isPlayer && mob.isHostile && !mob.isSummoned && !mob.isBoss() && mob.shouldSendSpawnPacket() && !(mob instanceof meleestatue) && !(mob instanceof lostsoul)) {
             meleeghostspawnevent event = new meleeghostspawnevent(mob.getX(), mob.getY(), 1500, mob);
             this.getLevel().entityManager.addLevelEvent(event);
-            Screen.playSound(GameResources.swoosh, SoundEffect.effect(mob).volume(0.8F));
+            SoundManager.playSound(GameResources.swoosh, SoundEffect.effect(mob).volume(0.8F));
         }
     }
 }

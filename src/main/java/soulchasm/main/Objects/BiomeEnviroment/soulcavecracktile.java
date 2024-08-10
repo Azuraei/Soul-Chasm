@@ -47,8 +47,8 @@ public class soulcavecracktile extends TerrainSplatterTile {
     }
 
     @Override
-    public String canPlace(Level level, int x, int y) {
-        String canPlace = super.canPlace(level, x, y);
+    public String canPlace(Level level, int x, int y, boolean byPlayer) {
+        String canPlace = super.canPlace(level, x, y, byPlayer);
         if (canPlace != null) {
             return canPlace;
         } else {
@@ -57,8 +57,8 @@ public class soulcavecracktile extends TerrainSplatterTile {
     }
 
     @Override
-    public void placeTile(Level level, int x, int y) {
-        super.placeTile(level, x, y);
+    public void placeTile(Level level, int x, int y, boolean byPlayer) {
+        super.placeTile(level, x, y, byPlayer);
         if (level.isLoadingComplete()) {
             for(int i = -1; i <= 1; ++i) {
                 int tileX = x + i;

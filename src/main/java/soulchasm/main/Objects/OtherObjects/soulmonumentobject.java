@@ -1,8 +1,8 @@
 package soulchasm.main.Objects.OtherObjects;
 
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.localization.Localization;
 import necesse.engine.registries.ContainerRegistry;
-import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.PlayerMob;

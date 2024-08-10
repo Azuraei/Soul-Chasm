@@ -1,21 +1,11 @@
 package soulchasm.main.Mobs.Passive;
 
-import java.awt.*;
-import java.awt.geom.Point2D;
-import java.util.List;
-
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.network.NetworkClient;
-import necesse.engine.network.server.Server;
-import necesse.engine.network.server.ServerClient;
-import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameMath;
-import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
 import necesse.entity.mobs.PlayerMob;
-import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
-import necesse.entity.mobs.ai.behaviourTree.leaves.WandererAINode;
-import necesse.entity.mobs.ai.behaviourTree.trees.CritterAI;
 import necesse.entity.mobs.friendly.critters.CritterMob;
 import necesse.entity.trails.Trail;
 import necesse.entity.trails.TrailVector;
@@ -26,8 +16,11 @@ import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.level.maps.Level;
-import necesse.level.maps.levelData.jobs.HuntMobLevelJob;
 import necesse.level.maps.light.GameLight;
+
+import java.awt.*;
+import java.awt.geom.Point2D;
+import java.util.List;
 
 public class wisp extends CritterMob {
     public static GameTexture texture;

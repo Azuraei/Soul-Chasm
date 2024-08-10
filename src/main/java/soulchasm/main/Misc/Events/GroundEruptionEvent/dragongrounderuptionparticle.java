@@ -1,6 +1,6 @@
 package soulchasm.main.Misc.Events.GroundEruptionEvent;
 
-import necesse.engine.tickManager.TickManager;
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.PlayerMob;
@@ -44,10 +44,10 @@ public class dragongrounderuptionparticle extends Particle {
 
     }
 
-    public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, OrderableDrawables overlayList, Level level, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
+    public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables orderableDrawables, OrderableDrawables orderableDrawables1, OrderableDrawables orderableDrawables2, Level level, TickManager tickManager, GameCamera gameCamera, PlayerMob playerMob) {
         GameLight light = level.getLightLevel(this.getX() / 32, this.getY() / 32);
-        int drawX = camera.getDrawX(this.x);
-        int drawY = camera.getDrawY(this.y);
+        int drawX = gameCamera.getDrawX(this.x);
+        int drawY = gameCamera.getDrawY(this.y);
         long eventTime = this.getWorldEntity().getTime() - this.spawnTime;
         int frame;
         if (eventTime >= this.delay) {
@@ -68,7 +68,7 @@ public class dragongrounderuptionparticle extends Particle {
                 sizeMod += (float)(Math.sin((double)eventTime / 240.0) / 10.0);
             }
             TextureDrawOptions shadowOptions = eruption_shadow.initDraw().sprite(frame, 0, 128, 192).light(light.minLevelCopy(Math.min(light.getLevel() + 100.0F, 150.0F))).mirror(this.mirror, false).rotate(rotation, (int)(64.0F * sizeMod), (int)(96.0F * sizeMod)).size((int)(128.0F * sizeMod), (int)(192.0F * sizeMod)).posMiddle(drawX, drawY);
-            tileList.add((tm) -> shadowOptions.draw());
+            orderableDrawables.add((tm) -> shadowOptions.draw());
         }
     }
 }

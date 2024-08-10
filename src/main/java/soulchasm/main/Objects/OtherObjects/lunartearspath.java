@@ -1,7 +1,7 @@
 package soulchasm.main.Objects.OtherObjects;
 
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.registries.TileRegistry;
-import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.Attacker;
 import necesse.entity.mobs.GameDamage;
@@ -34,12 +34,12 @@ public class lunartearspath extends GrassObject {
     public void attackThrough(Level level, int x, int y, GameDamage damage, Attacker attacker) {
     }
 
-    public String canPlace(Level level, int x, int y, int rotation) {
-        String error = super.canPlace(level, x, y, rotation);
+    public String canPlace(Level level, int x, int y, int rotation, boolean byPlayer) {
+        String error = super.canPlace(level, x, y, rotation, byPlayer);
         if (error != null) {
             return error;
         } else {
-            return level.getTileID(x, y) != TileRegistry.getTileID("soulcavegrass") ? "wrongtile" : null;
+            return !level.getTile(x, y).getStringID().equals("soulcavegrass") ? "wrongtile" : null;
         }
     }
 

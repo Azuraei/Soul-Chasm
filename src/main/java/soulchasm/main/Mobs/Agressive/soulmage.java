@@ -1,6 +1,6 @@
 package soulchasm.main.Mobs.Agressive;
 
-import necesse.engine.tickManager.TickManager;
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.*;
 import necesse.entity.mobs.ai.behaviourTree.BehaviourTreeAI;
@@ -74,13 +74,13 @@ public class soulmage extends HostileMob {
         GameLight light = level.getLightLevel(x / 32, y / 32);
         int drawX = camera.getDrawX(x) - 22 - 10;
         int drawY = camera.getDrawY(y) - 44 - 7;
-        Point sprite = this.getAnimSprite(x, y, this.dir);
+        Point sprite = this.getAnimSprite(x, y, this.getDir());
         drawY += this.getBobbing(x, y);
         drawY += this.getLevel().getTile(x / 32, y / 32).getMobSinkingAmount(this);
-        HumanDrawOptions humanDrawOptions = (new HumanDrawOptions(level, texture)).sprite(sprite).dir(this.dir).light(light);
+        HumanDrawOptions humanDrawOptions = (new HumanDrawOptions(level, texture)).sprite(sprite).dir(this.getDir()).light(light);
         float animProgress = this.getAttackAnimProgress();
         if (this.isAttacking) {
-            ItemAttackDrawOptions attackOptions = ItemAttackDrawOptions.start(this.dir).itemSprite(texture.body, 0, 9, 32).itemRotatePoint(3, 3).itemEnd().armSprite(texture.body, 0, 8, 32).swingRotation(animProgress).light(light);
+            ItemAttackDrawOptions attackOptions = ItemAttackDrawOptions.start(this.getDir()).itemSprite(texture.body, 0, 9, 32).itemRotatePoint(3, 3).itemEnd().armSprite(texture.body, 0, 8, 32).swingRotation(animProgress).light(light);
             humanDrawOptions.attackAnim(attackOptions, animProgress);
         }
 

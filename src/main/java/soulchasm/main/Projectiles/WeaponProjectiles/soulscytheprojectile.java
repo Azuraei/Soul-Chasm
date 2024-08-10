@@ -1,8 +1,8 @@
 package soulchasm.main.Projectiles.WeaponProjectiles;
 
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;
-import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameMath;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;

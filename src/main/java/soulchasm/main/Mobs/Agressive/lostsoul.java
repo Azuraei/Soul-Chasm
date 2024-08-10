@@ -1,9 +1,9 @@
 package soulchasm.main.Mobs.Agressive;
 
-import necesse.engine.Screen;
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.sound.SoundEffect;
-import necesse.engine.tickManager.TickManager;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.GameDamage;
@@ -70,7 +70,7 @@ public class lostsoul extends FlyingHostileMob {
 
     protected void playHitSound() {
         float pitch = GameRandom.globalRandom.getOneOf(0.95F, 1.0F, 1.05F);
-        Screen.playSound(GameResources.swoosh, SoundEffect.effect(this).pitch(pitch).volume(0.12F));
+        SoundManager.playSound(GameResources.swoosh, SoundEffect.effect(this).pitch(pitch).volume(0.12F));
     }
 
     protected void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {

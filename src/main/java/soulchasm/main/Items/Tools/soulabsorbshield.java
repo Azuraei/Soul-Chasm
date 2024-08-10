@@ -1,9 +1,9 @@
 package soulchasm.main.Items.Tools;
 
-import necesse.engine.Screen;
 import necesse.engine.localization.Localization;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameRandom;
 import necesse.entity.Entity;
@@ -42,7 +42,7 @@ public class soulabsorbshield extends ShieldTrinketItem {
                 this.playHitSound(item, mob, hitEvent);
             }
             if(attacker instanceof Mob || attacker instanceof Projectile){
-                Screen.playSound(GameResources.firespell1, SoundEffect.effect(mob).volume(0.4F));
+                SoundManager.playSound(GameResources.firespell1, SoundEffect.effect(mob).volume(0.4F));
             }
         } else if (hitEvent.attacker instanceof Mob) {
             Mob attackOwner = (Mob)hitEvent.attacker;

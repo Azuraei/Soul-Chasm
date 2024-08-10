@@ -1,7 +1,7 @@
 package soulchasm.main.Mobs.Passive;
 
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.network.NetworkClient;
-import necesse.engine.tickManager.TickManager;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.Mob;

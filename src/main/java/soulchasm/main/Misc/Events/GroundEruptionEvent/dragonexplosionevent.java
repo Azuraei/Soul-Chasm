@@ -1,7 +1,7 @@
 package soulchasm.main.Misc.Events.GroundEruptionEvent;
 
-import necesse.engine.Screen;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.ParticleTypeSwitcher;
@@ -33,7 +33,7 @@ public class dragonexplosionevent extends ExplosionEvent implements Attacker {
     }
 
     protected void playExplosionEffects() {
-        Screen.playSound(GameResources.explosionHeavy, SoundEffect.effect(this.x, this.y).volume(2.0F).pitch(1.5F));
+        SoundManager.playSound(GameResources.explosionHeavy, SoundEffect.effect(this.x, this.y).volume(2.0F).pitch(1.5F));
         this.level.getClient().startCameraShake(this.x, this.y, 200, 40, 2.0F, 2.0F, true);
     }
 

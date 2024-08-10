@@ -1,10 +1,10 @@
 package soulchasm.main.Misc.Others;
 
-import necesse.engine.Screen;
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.localization.Localization;
 import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.sound.SoundEffect;
-import necesse.engine.tickManager.TickManager;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.objectEntity.ObjectEntity;
@@ -72,7 +72,7 @@ public class plushieobject extends GameObject {
 
     public void playSqueak(int x, int y){
         float pitch = GameRandom.globalRandom.getFloatBetween(0.8F, 1.6F);
-        Screen.playSound(SoulChasm.plushie_squeak, SoundEffect.effect(x, y).volume(0.4F).pitch(pitch));
+        SoundManager.playSound(SoulChasm.plushie_squeak, SoundEffect.effect(x, y).volume(0.4F).pitch(pitch));
     }
 
     public void spawnFunniText(PlayerMob player, int x, int y){

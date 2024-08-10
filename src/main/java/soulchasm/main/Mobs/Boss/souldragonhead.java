@@ -1,6 +1,6 @@
 package soulchasm.main.Mobs.Boss;
 
-import necesse.engine.Screen;
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.modifiers.ModifierValue;
 import necesse.engine.network.PacketReader;
@@ -9,7 +9,7 @@ import necesse.engine.network.packet.PacketChatMessage;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.registries.MusicRegistry;
 import necesse.engine.sound.SoundEffect;
-import necesse.engine.tickManager.TickManager;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.ComputedObjectValue;
 import necesse.engine.util.GameLinkedList;
 import necesse.engine.util.GameMath;
@@ -95,14 +95,14 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         this.roarAbility = this.registerAbility(new EmptyMobAbility() {
             protected void run() {
                 if (souldragonhead.this.getLevel().isClient()) {
-                    Screen.playSound(GameResources.roar, SoundEffect.globalEffect().volume(0.7F).pitch(0.7F));
+                    SoundManager.playSound(GameResources.roar, SoundEffect.globalEffect().volume(0.7F).pitch(0.7F));
                 }
             }
         });
         this.roarAbility2 = this.registerAbility(new EmptyMobAbility() {
             protected void run() {
                 if (souldragonhead.this.getLevel().isClient()) {
-                    Screen.playSound(GameResources.magicroar, SoundEffect.globalEffect().volume(0.3F).pitch(0.5F));
+                    SoundManager.playSound(GameResources.magicroar, SoundEffect.globalEffect().volume(0.3F).pitch(0.5F));
                 }
             }
         });
@@ -142,7 +142,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
     }
 
     protected void playMoveSound() {
-        Screen.playSound(GameResources.shake, SoundEffect.effect(this).falloffDistance(1000));
+        SoundManager.playSound(GameResources.shake, SoundEffect.effect(this).falloffDistance(1000));
     }
 
     protected souldragonbody createNewBodyPart(int index) {
@@ -170,7 +170,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         super.init();
         this.ai = new BehaviourTreeAI(this, new SoulDragonHeadAI(), new FlyingAIMover());
         if (this.getLevel().isClient()) {
-            Screen.playSound(GameResources.roar, SoundEffect.globalEffect().pitch(0.9F));
+            SoundManager.playSound(GameResources.roar, SoundEffect.globalEffect().pitch(0.9F));
         }
     }
 
@@ -188,8 +188,8 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
 
     public void clientTick() {
         super.clientTick();
-        Screen.setMusic(MusicRegistry.Millenium, Screen.MusicPriority.EVENT, 1.5F);
-        Screen.registerMobHealthStatusBar(this);
+        SoundManager.setMusic(MusicRegistry.Millenium, SoundManager.MusicPriority.EVENT, 1.5F);
+        //.registerMobHealthStatusBar(this);
         BossNearbyBuff.applyAround(this);
         this.setSpeed(this.temporarySpeed > 0 ? this.temporarySpeed : 115F);
     }
@@ -285,7 +285,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
 
     protected void onDeath(Attacker attacker, HashSet<Attacker> attackers) {
         super.onDeath(attacker, attackers);
-        Screen.playSound(GameResources.roar, SoundEffect.globalEffect().volume(0.7F).pitch(0.7F));
+        SoundManager.playSound(GameResources.roar, SoundEffect.globalEffect().volume(0.7F).pitch(0.7F));
         attackers.stream().map(Attacker::getAttackOwner).filter((m) -> m != null && m.isPlayer).distinct().forEach((m) -> {
             this.getLevel().getServer().network.sendPacket(new PacketChatMessage(new LocalMessage("misc", "bossdefeat", "name", this.getLocalization())), ((PlayerMob)m).getServerClient());
         });

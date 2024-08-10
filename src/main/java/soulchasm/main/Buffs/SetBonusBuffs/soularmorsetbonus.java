@@ -1,10 +1,10 @@
 package soulchasm.main.Buffs.SetBonusBuffs;
 
-import necesse.engine.Screen;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.Packet;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameRandom;
 import necesse.entity.ParticleTypeSwitcher;
@@ -58,7 +58,7 @@ public class soularmorsetbonus extends SetBonusBuff implements BuffAbility {
                 float dy = (float)Math.cos(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(40, 60) * 0.8F;
                 level.entityManager.addParticle(playerMob, typeSwitcher.next()).movesFriction(dx, dy, 0.2F).color(color).heightMoves(0.0F, 10.0F).lifeTime(500);
             }
-            Screen.playSound(GameResources.magicbolt4, SoundEffect.effect(playerMob).volume(0.1F).pitch(2.5F));
+            SoundManager.playSound(GameResources.magicbolt4, SoundEffect.effect(playerMob).volume(0.1F).pitch(2.5F));
         }
     }
 

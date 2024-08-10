@@ -1,8 +1,8 @@
 package soulchasm.main.Mobs.Summon;
 
-import necesse.engine.Screen;
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.sound.SoundEffect;
-import necesse.engine.tickManager.TickManager;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.Mob;
@@ -64,7 +64,7 @@ public class smallsoulsummon extends FlyingAttackingFollowingMob {
         }
     }
     protected void playDeathSound() {
-        Screen.playSound(GameResources.fadedeath3, SoundEffect.effect(this).volume(0.2F).pitch(1.1F));
+        SoundManager.playSound(GameResources.fadedeath3, SoundEffect.effect(this).volume(0.2F).pitch(1.1F));
     }
 
 

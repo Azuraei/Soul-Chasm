@@ -1,10 +1,10 @@
 package soulchasm.main.Buffs.TrinketsBuffs.SoulSealBuffs;
 
-import necesse.engine.Screen;
 import necesse.engine.network.server.FollowPosition;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
@@ -51,7 +51,7 @@ public class summonsoulsealbuff extends TrinketBuff {
     }
 
     private void playSound(boolean onUpdate, AttackingFollowingMob mob){
-        Screen.playSound(onUpdate ? GameResources.fadedeath3 : GameResources.magicbolt4, SoundEffect.effect(mob).volume(0.5F).pitch(onUpdate ? 1.2F : 1.0F));
+        SoundManager.playSound(onUpdate ? GameResources.fadedeath3 : GameResources.magicbolt4, SoundEffect.effect(mob).volume(0.5F).pitch(onUpdate ? 1.2F : 1.0F));
     }
 
     @Override

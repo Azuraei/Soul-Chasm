@@ -1,9 +1,9 @@
 package soulchasm.main.Mobs.Agressive;
 
-import necesse.engine.Screen;
+import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.sound.SoundEffect;
-import necesse.engine.tickManager.TickManager;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.GameDamage;
@@ -194,7 +194,7 @@ public class magestatue extends HostileMob implements OEVicinityBuff {
     public void showAttack(int x, int y, int seed, boolean showAllDirections) {
         super.showAttack(x, y, seed, showAllDirections);
         if (this.getLevel().isClient()) {
-            Screen.playSound(GameResources.magicbolt4, SoundEffect.effect(this).pitch(1.2F).volume(0.6F));
+            SoundManager.playSound(GameResources.magicbolt4, SoundEffect.effect(this).pitch(1.2F).volume(0.6F));
             attackParticle(800, 150, 250);
         }
     }

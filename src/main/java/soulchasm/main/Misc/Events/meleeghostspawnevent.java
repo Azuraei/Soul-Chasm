@@ -1,9 +1,9 @@
 package soulchasm.main.Misc.Events;
 
-import necesse.engine.Screen;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
 import necesse.entity.levelEvent.LevelEvent;
@@ -80,7 +80,7 @@ public class meleeghostspawnevent extends LevelEvent {
             for(int i = 0; i < 30; ++i) {
                 this.getLevel().entityManager.addParticle(this.x, this.y, Particle.GType.COSMETIC).movesConstant((float)(GameRandom.globalRandom.getIntBetween(5, 20) * (GameRandom.globalRandom.nextBoolean() ? -1 : 1)), (float)(GameRandom.globalRandom.getIntBetween(5, 20) * (GameRandom.globalRandom.nextBoolean() ? -1 : 1))).color(new Color(0, 170, 242));
             }
-            Screen.playSound(GameResources.swoosh2, SoundEffect.effect(this.x, this.y).pitch(0.5F).volume(0.6F));
+            SoundManager.playSound(GameResources.swoosh2, SoundEffect.effect(this.x, this.y).pitch(0.5F).volume(0.6F));
             this.over();
         }
     }

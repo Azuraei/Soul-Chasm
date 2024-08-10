@@ -1,11 +1,11 @@
 package soulchasm.main.Items.Tools;
 
-import necesse.engine.Screen;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.network.packet.PacketSpawnProjectile;
 import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
@@ -74,7 +74,7 @@ public class bookofsouls extends MagicProjectileToolItem implements ItemInteract
                 player.buffManager.addBuff(new ActiveBuff("soulofsoulsoverchargebuff", player, 0.2F, null), false);
             } else {
                 if(player.getLevel().isClient()){
-                    Screen.playSound(GameResources.fadedeath1, SoundEffect.effect(player).volume(1.0F).pitch(0.6F));
+                    SoundManager.playSound(GameResources.fadedeath1, SoundEffect.effect(player).volume(1.0F).pitch(0.6F));
                 }
                 gndData.setBoolean("altFireActive", false);
             }
@@ -84,7 +84,7 @@ public class bookofsouls extends MagicProjectileToolItem implements ItemInteract
 
     public void showAttack(Level level, int x, int y, AttackAnimMob mob, int attackHeight, InventoryItem item, int seed, PacketReader contentReader) {
         if (level.isClient()) {
-            Screen.playSound(GameResources.magicbolt2, SoundEffect.effect(mob).volume(0.3F).pitch(GameRandom.globalRandom.getFloatBetween(1.5F, 1.6F)));
+            SoundManager.playSound(GameResources.magicbolt2, SoundEffect.effect(mob).volume(0.3F).pitch(GameRandom.globalRandom.getFloatBetween(1.5F, 1.6F)));
         }
     }
 
@@ -131,9 +131,9 @@ public class bookofsouls extends MagicProjectileToolItem implements ItemInteract
         gndData.setBoolean("altFireActive", !altFire);
         if (level.isClient()) {
             if(altFire){
-                Screen.playSound(GameResources.fadedeath1, SoundEffect.effect(player).volume(1.0F).pitch(0.6F));
+                SoundManager.playSound(GameResources.fadedeath1, SoundEffect.effect(player).volume(1.0F).pitch(0.6F));
             } else {
-                Screen.playSound(GameResources.fadedeath1, SoundEffect.effect(player).volume(1.0F).pitch(1.2F));
+                SoundManager.playSound(GameResources.fadedeath1, SoundEffect.effect(player).volume(1.0F).pitch(1.2F));
             }
         }
         return item;
