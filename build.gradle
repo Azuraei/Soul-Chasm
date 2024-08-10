@@ -4,8 +4,8 @@ plugins {
 
 project.ext.modID = "endzio.soulchasm"
 project.ext.modName = "Soul Chasm"
-project.ext.modVersion = "2.2"
-project.ext.gameVersion = "0.25.1"
+project.ext.modVersion = "2.2.1"
+project.ext.gameVersion = "0.26.0"
 project.ext.modDescription = "Adds new incursion, as well as new items, weapons, armor set, mobs and more"
 project.ext.author = "Endzio"
 
@@ -72,7 +72,7 @@ task createModInfoFile(type: JavaExec) {
 
     classpath = files(gameDirectory + "/Necesse.jar")
 
-    main "CreateModInfoFile"
+    main = "CreateModInfoFile"
     args "-file", "${sourceSets.main.java.outputDir}/mod.info",
             "-id", "${project.ext.modID}",
             "-name", "${project.ext.modName}",
@@ -87,16 +87,6 @@ task createModInfoFile(type: JavaExec) {
 // Makes compiling also create mod info file
 classes.dependsOn("createModInfoFile")
 
-task preAntialiasTextures(type: JavaExec) {
-    group "necesse"
-    description "Creates the mod info file"
-
-    classpath = files(gameDirectory + "/Necesse.jar")
-
-    main "PreAntialiasTextures"
-    args "-folders", "${sourceSets.main.resources.srcDirs.stream().map {file -> file.path}.toArray().join(";")}"
-}
-
 task runClient(type: JavaExec) {
     group "necesse"
     description "Run client with current mod"
@@ -105,7 +95,7 @@ task runClient(type: JavaExec) {
     classpath = files(gameDirectory + "/Necesse.jar")
 
     main = "StartClient"
-    jvmArgs "-Xms512m", "-Xmx3G", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseG1GC", "-XX:G1NewSizePercent=20", "-XX:G1ReservePercent=20", "-XX:MaxGCPauseMillis=50", "-XX:G1HeapRegionSize=32M"
+    jvmArgs "-Xms512m", "-Xmx4G", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseG1GC", "-XX:G1NewSizePercent=20", "-XX:G1ReservePercent=20", "-XX:MaxGCPauseMillis=50", "-XX:G1HeapRegionSize=32M"
     args "-dev", "-mod \"${buildLocation}\""
 }
 
@@ -117,7 +107,7 @@ task runDevClient(type: JavaExec) {
     classpath = files(gameDirectory + "/Necesse.jar")
 
     main = "StartClient"
-    jvmArgs "-Xms512m", "-Xmx3G", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseG1GC", "-XX:G1NewSizePercent=20", "-XX:G1ReservePercent=20", "-XX:MaxGCPauseMillis=50", "-XX:G1HeapRegionSize=32M"
+    jvmArgs "-Xms512m", "-Xmx4G", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseG1GC", "-XX:G1NewSizePercent=20", "-XX:G1ReservePercent=20", "-XX:MaxGCPauseMillis=50", "-XX:G1HeapRegionSize=32M"
     args "-dev 1", "-mod \"${buildLocation}\""
 }
 
@@ -129,8 +119,8 @@ task runServer(type: JavaExec) {
     classpath = files(gameDirectory + "/Server.jar")
 
     main = "StartServer"
-    jvmArgs "-Xms512m", "-Xmx3G", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseG1GC", "-XX:G1NewSizePercent=20", "-XX:G1ReservePercent=20", "-XX:MaxGCPauseMillis=50", "-XX:G1HeapRegionSize=32M"
-    args "-dev", "-mod \"${buildLocation}\""
+    jvmArgs "-Xms512m", "-Xmx4G", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseG1GC", "-XX:G1NewSizePercent=20", "-XX:G1ReservePercent=20", "-XX:MaxGCPauseMillis=50", "-XX:G1HeapRegionSize=32M"
+    args "-mod \"${buildLocation}\""
 }
 
 task buildModJar(type: Jar) {
