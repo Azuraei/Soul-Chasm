@@ -12,6 +12,9 @@ import necesse.inventory.item.armorItem.SetHelmetArmorItem;
 public class soularmorhat extends SetHelmetArmorItem {
     public soularmorhat() {
         super(24, DamageTypeRegistry.MAGIC,1500, Rarity.EPIC, "soularmorhat", "soularmorchestplate", "soularmorboots", "soularmorhatsetbonus");
+        this.hairDrawOptions = HairDrawMode.OVER_HAIR;
+        this.facialFeatureDrawOptions = FacialFeatureDrawMode.OVER_FACIAL_FEATURE;
+        this.hairMaskTextureName = "magehat_voidhat_hairmask";
     }
 
     public ArmorModifiers getArmorModifiers(InventoryItem item, Mob mob) {
