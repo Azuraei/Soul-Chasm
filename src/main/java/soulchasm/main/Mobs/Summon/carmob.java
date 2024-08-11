@@ -185,7 +185,7 @@ public class carmob extends MountFollowingMob {
     }
     public int getRiderDrawXOffset(){ return 1; }
     public int getRiderDrawYOffset() {
-        return -2;
+        return -4;
     }
     public int getRiderArmSpriteX() {
         return 0;
@@ -194,7 +194,7 @@ public class carmob extends MountFollowingMob {
         return 0;
     }
     public int getRiderMaskYOffset() {
-        return -13;
+        return -14;
     }
     public GameTexture getRiderMask() {
         return car_mask[GameMath.limit(this.getDir(), 0, car_mask.length - 1)];
