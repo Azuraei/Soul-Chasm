@@ -13,8 +13,7 @@ import static necesse.inventory.item.armorItem.ArmorItem.HairDrawMode.OVER_HAIR;
 
 public class soularmorcrown extends SetHelmetArmorItem {
     public soularmorcrown() {
-        super(16, DamageTypeRegistry.SUMMON,1500, "soularmorcrown", "soularmorchestplate", "soularmorboots", "soularmorcrownsetbonus");
-        this.rarity = Rarity.EPIC;
+        super(16, DamageTypeRegistry.SUMMON,1500, Rarity.EPIC, "soularmorcrown", "soularmorchestplate", "soularmorboots", "soularmorcrownsetbonus");
         this.hairDrawOptions = OVER_HAIR;
     }
 

@@ -8,11 +8,10 @@ import necesse.inventory.InventoryItem;
 import necesse.inventory.item.armorItem.ArmorModifiers;
 import necesse.inventory.item.armorItem.SetHelmetArmorItem;
 
-
 public class soularmorhelmet extends SetHelmetArmorItem {
     public soularmorhelmet() {
-        super(30, DamageTypeRegistry.MELEE,1500, "soularmorhelmet", "soularmorchestplate", "soularmorboots", "soularmorhelmetsetbonus");
-        this.rarity = Rarity.EPIC;
+        super(30, DamageTypeRegistry.MELEE, 1500, Rarity.EPIC, "soularmorhelmet", "soularmorchestplate", "soularmorboots", "soularmorhelmetsetbonus");
+        this.hairDrawOptions = HairDrawMode.NO_HEAD;
     }
 
     public ArmorModifiers getArmorModifiers(InventoryItem item, Mob mob) {

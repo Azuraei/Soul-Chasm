@@ -10,8 +10,7 @@ import necesse.inventory.item.armorItem.BootsArmorItem;
 
 public class soularmorboots extends BootsArmorItem {
     public soularmorboots() {
-        super(22, 1500, "soularmorboots");
-        this.rarity = Rarity.EPIC;
+        super(22, 1500, Rarity.EPIC, "soularmorboots");
     }
 
     public ArmorModifiers getArmorModifiers(InventoryItem item, Mob mob) {

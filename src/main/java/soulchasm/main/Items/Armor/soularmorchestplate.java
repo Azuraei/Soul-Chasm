@@ -11,13 +11,10 @@ import necesse.inventory.item.armorItem.ChestArmorItem;
 public class soularmorchestplate extends ChestArmorItem {
 
     public soularmorchestplate() {
-        super(36, 1500, "soularmorchestplate", "soularmorarms");
-        this.rarity = Rarity.EPIC;
+        super(36, 1500, Rarity.EPIC, "soularmorchestplate", "soularmorarms");
     }
 
     public ArmorModifiers getArmorModifiers(InventoryItem item, Mob mob) {
         return new ArmorModifiers(new ModifierValue(BuffModifiers.ALL_DAMAGE, 0.1F));
     }
-
-
 }

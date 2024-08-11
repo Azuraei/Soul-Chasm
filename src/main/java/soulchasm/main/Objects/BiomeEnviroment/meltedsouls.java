@@ -31,7 +31,7 @@ public class meltedsouls extends LiquidTile {
     protected final GameRandom drawRandom;
 
     public meltedsouls() {
-        super(SoulChasm.SoulMagmaStone);
+        super(SoulChasm.SoulMagmaStone, "meltedsouls");
         this.lightLevel = 100;
         this.lightHue = 220.0F;
         this.lightSat = 0.4F;
