@@ -1,5 +1,6 @@
 package soulchasm.main.Mobs.Boss;
 
+import necesse.engine.eventStatusBars.EventStatusBarManager;
 import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.modifiers.ModifierValue;
@@ -189,7 +190,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
     public void clientTick() {
         super.clientTick();
         SoundManager.setMusic(MusicRegistry.Millenium, SoundManager.MusicPriority.EVENT, 1.5F);
-        //.registerMobHealthStatusBar(this);
+        EventStatusBarManager.registerMobHealthStatusBar(this);
         BossNearbyBuff.applyAround(this);
         this.setSpeed(this.temporarySpeed > 0 ? this.temporarySpeed : 115F);
     }
