@@ -35,6 +35,6 @@ public class soulcavetiledfloortile extends TerrainSplatterTile {
     }
 
     public int getTerrainPriority() {
-        return 250;
+        return 400;
     }
 }

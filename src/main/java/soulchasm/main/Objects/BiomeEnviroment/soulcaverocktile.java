@@ -26,7 +26,7 @@ public class soulcaverocktile extends TerrainSplatterTile {
     }
 
     public int getTerrainPriority() {
-        return 200;
+        return 0;
     }
 }
 

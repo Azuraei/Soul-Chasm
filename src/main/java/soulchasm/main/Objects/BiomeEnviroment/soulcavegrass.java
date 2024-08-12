@@ -13,6 +13,7 @@ public class soulcavegrass extends GrassTile {
         this.mapColor = SoulChasm.SoulGrassColor;
         this.canBeMined = true;
         this.terrainTextureName = "soulcavegrass";
+        this.isFloor = false;
     }
 
     public LootTable getLootTable(Level level, int tileX, int tileY) {
