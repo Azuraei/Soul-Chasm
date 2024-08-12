@@ -115,6 +115,7 @@ public class SoulChasm {
     public static GameTextureSection particlePhantomBodySection;
     public static GameTextureSection particleGhostSpawnSection;
     public static GameTextureSection particleMeleeGhostParticleSection;
+    public static GameTextureSection particleMonumentRingSection;
     public static GameSound argemiaplushie_meow;
     public static GameSound plushie_squeak;
 
@@ -380,6 +381,9 @@ public class SoulChasm {
 
         GameTexture meleeGhostParticleTexture = GameTexture.fromFile("particles/meleeghostparticle");
         particleMeleeGhostParticleSection = GameResources.particlesTextureGenerator.addTexture(meleeGhostParticleTexture);
+
+        GameTexture monumentRingParticleTexture = GameTexture.fromFile("particles/soulmonumentring");
+        particleMonumentRingSection = GameResources.particlesTextureGenerator.addTexture(monumentRingParticleTexture);
 
         GameTexture car_mask_sprites = GameTexture.fromFile("mobs/car_mask");
         int carSprites = car_mask_sprites.getHeight() / 64;
