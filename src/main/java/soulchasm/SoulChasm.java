@@ -339,7 +339,6 @@ public class SoulChasm {
         carmob.texture =  GameTexture.fromFile("mobs/car");
         carmob.texture_top = GameTexture.fromFile("mobs/car_top_mask");
         meleestatue.texture = GameTexture.fromFile("mobs/meleestatue");
-        meleestatue.glowtexture = GameTexture.fromFile("mobs/possesedstatue_glow");
         wisp.texture = GameTexture.fromFile("mobs/wisp");
         firefly.texture = GameTexture.fromFile("mobs/firefly");
         magestatue.texture = GameTexture.fromFile("mobs/magestatue");

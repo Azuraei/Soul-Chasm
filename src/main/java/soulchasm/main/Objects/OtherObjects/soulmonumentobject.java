@@ -103,7 +103,7 @@ public class soulmonumentobject extends FurnitureObject {
                 this.particleDelay = 0;
                 int posX = x * 32 + 16;
                 int posY = y * 32 + 16;
-                level.entityManager.addParticle((float)posX, (float)(posY), Particle.GType.COSMETIC).sprite(SoulChasm.particleMonumentRingSection).fadesAlphaTimeToCustomAlpha(100, 400, 0.4F).size((options, lifeTime, timeAlive, lifePercent) -> {
+                level.entityManager.addParticle((float)posX, (float)(posY), Particle.GType.COSMETIC).sprite(SoulChasm.particleMonumentRingSection).fadesAlphaTimeToCustomAlpha(100, 400, 0.2F).size((options, lifeTime, timeAlive, lifePercent) -> {
                 }).height(30.0F).heightMoves(30, 50).dontRotate().modify((options, lifeTime, timeAlive, lifePercent) -> {
                     options.size(30);
                 }).lifeTime(800);

@@ -1,8 +1,6 @@
 package soulchasm.main.Mobs.Agressive;
 
 import necesse.engine.gameLoop.tickManager.TickManager;
-import necesse.engine.network.PacketReader;
-import necesse.engine.network.PacketWriter;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameRandom;
@@ -30,8 +28,6 @@ import java.util.List;
 public class meleestatue extends HostileMob {
     public static LootTable lootTable = new LootTable();
     public static GameTexture texture;
-    public static GameTexture glowtexture;
-    private boolean showGlowEyes;
 
     public meleestatue() {
         super(500);
@@ -48,7 +44,6 @@ public class meleestatue extends HostileMob {
         super.init();
         this.ai = new BehaviourTreeAI<>(this, new EmptyAINode<meleestatue>() {});
         this.isHostile = false;
-        showGlowEyes = false;
     }
 
     protected void changeAI() {
@@ -67,16 +62,6 @@ public class meleestatue extends HostileMob {
         return lootTable;
     }
 
-    public void setupMovementPacket(PacketWriter writer) {
-        super.setupMovementPacket(writer);
-        writer.putNextBoolean(this.showGlowEyes);
-    }
-
-    public void applyMovementPacket(PacketReader reader, boolean isDirect) {
-        super.applyMovementPacket(reader, isDirect);
-        this.showGlowEyes = reader.getNextBoolean();
-    }
-
     public MobWasHitEvent isHit(MobWasHitEvent event, Attacker attacker) {
         if(!event.wasPrevented && attacker != null){
             changeAI();
@@ -92,7 +77,6 @@ public class meleestatue extends HostileMob {
 
     public void serverTick() {
         super.serverTick();
-        showGlowEyes = ai.blackboard.mover.hasMobTarget();
         if(!this.isInCombat() && !ai.blackboard.mover.hasMobTarget()){
             this.ai = new BehaviourTreeAI<>(this, new EmptyAINode<meleestatue>() {});
         }
@@ -112,11 +96,9 @@ public class meleestatue extends HostileMob {
         drawY += this.getBobbing(x, y);
         drawY += this.getLevel().getTile(this.getTileX(), this.getTileY()).getMobSinkingAmount(this);
         DrawOptions drawOptions = texture.initDraw().sprite(sprite.x, sprite.y, 64).light(light).pos(drawX, drawY);
-        DrawOptions glow = glowtexture.initDraw().sprite(sprite.x, sprite.y, 64).light(light.minLevelCopy(100)).pos(drawX, drawY).alpha(this.showGlowEyes?1:0);
         list.add(new MobDrawable() {
             public void draw(TickManager tickManager) {
                 drawOptions.draw();
-                glow.draw();
             }
         });
         this.addShadowDrawables(tileList, x, y, light, camera);
