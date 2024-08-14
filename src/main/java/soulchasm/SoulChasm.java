@@ -151,7 +151,9 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soultreesappling", new TreeSaplingObject("soultreesappling", "soultree", 20, 30, true), 1, true);
         ObjectRegistry.registerObject("lunartear", new lunartear(), 1, true);
         ObjectRegistry.registerObject("lunartearspath", new lunartearspath(), 1, true);
-        ObjectRegistry.registerObject("soultorch", new soultorch(), 1, true);
+        TorchObject torch = new TorchObject("soultorch", new Color(0x00A7FF), 240F, 0.3F);
+        torch.flameHue = 190;
+        ObjectRegistry.registerObject("soultorch", torch, 1, true);
         ObjectRegistry.registerObject("soulcavegrassobject", new soulcavegrassobject(), 0.0F, false);
         ObjectRegistry.registerObject("soulcrystalbig", new soulcrystalbig(), 0.0F, false);
         ObjectRegistry.registerObject("wispjarobject", new wispjarobject(), 1, false);
