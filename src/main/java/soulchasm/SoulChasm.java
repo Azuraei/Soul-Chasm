@@ -150,15 +150,20 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soultreesappling", new TreeSaplingObject("soultreesappling", "soultree", 20, 30, true), 1, true);
         ObjectRegistry.registerObject("lunartear", new lunartear(), 1, true);
         ObjectRegistry.registerObject("lunartearspath", new lunartearspath(), 1, true);
+        //
         TorchObject torch = new TorchObject("soultorch", new Color(0x00A7FF), 240F, 0.3F);
         torch.flameHue = 190;
         ObjectRegistry.registerObject("soultorch", torch, 1, true);
+        //
+        TorchObject soullantern = new TorchObject("soullantern", new Color(0x00A7FF), 240.0F, 0.3F);
+        soullantern.flameHue = 190;
+        ObjectRegistry.registerObject("soullantern", soullantern, 10, true);
+        //
         ObjectRegistry.registerObject("soulcavegrassobject", new soulcavegrassobject(), 0.0F, false);
         ObjectRegistry.registerObject("soulcrystalbig", new soulcrystalbig(), 0.0F, false);
         ObjectRegistry.registerObject("wispjarobject", new wispjarobject(), 1, false);
         ObjectRegistry.registerObject("fireflyjarobject", new fireflyjarobject(), 1, false);
         ObjectRegistry.registerObject("soulmonumentobject", new soulmonumentobject(), 100, true);
-        ObjectRegistry.registerObject("soullanternobject", new soullanternobject(), 10, false);
         ObjectRegistry.registerObject("oldbarrel", new InventoryObject("oldbarrel", 20, new Rectangle(8, 4, 16, 16), ToolType.PICKAXE, SoulFurnitureColor), 10, true);
         ObjectRegistry.registerObject("bigjarobject", new bigjarobject(), 10, true);
         ObjectRegistry.registerObject("chasmcrates", new RandomCrateObject("chasmcrates"), 0.0F, false);
@@ -240,7 +245,6 @@ public class SoulChasm {
         ItemRegistry.registerItem("wispjar", new wispjar(), 10, true);
         ItemRegistry.registerItem("fireflyitem", new fireflyitem(), 1, true);
         ItemRegistry.registerItem("fireflyjar", new fireflyjar(), 10, true);
-        ItemRegistry.registerItem("soullantern", new soullantern(), 20, true);
 
         ItemRegistry.registerItem("soulsigil", new soulsigil(), 200, false);
         ItemRegistry.registerItem("soulessence", new EssenceMatItem(120, Item.Rarity.EPIC, 2), 25.0F, true);
