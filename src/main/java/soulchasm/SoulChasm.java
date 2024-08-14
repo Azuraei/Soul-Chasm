@@ -52,7 +52,6 @@ import soulchasm.main.Buffs.TrinketsBuffs.SoulSealBuffs.*;
 import soulchasm.main.Buffs.TrinketsBuffs.phantomfeatherbuff;
 import soulchasm.main.Buffs.TrinketsBuffs.soulstealerbuff;
 import soulchasm.main.Items.Armor.*;
-import soulchasm.main.Items.Materials.*;
 import soulchasm.main.Items.Others.*;
 import soulchasm.main.Items.Tools.*;
 import soulchasm.main.Items.Trinkets.SealVariantsItems.*;
@@ -229,18 +228,20 @@ public class SoulChasm {
         BuffRegistry.registerBuff("rangesoulsealbuff", new rangesoulsealbuff());
         BuffRegistry.registerBuff("balancedsealbuff", new balancedsealbuff());
         //ITEMS
-        ItemRegistry.registerItem("soulwoodlogitem", new MatItem(999), 1, true);
-        ItemRegistry.registerItem("soulcoreitem", new soulcoreitem(), 15, true);
-        ItemRegistry.registerItem("souldragonscales", new souldragonscales(), 150, true);
-        ItemRegistry.registerItem("soulcaverockitem", new soulcaverockitem(), 1, true);
-        ItemRegistry.registerItem("crystalizedsouloreitem", new crystalizedsouloreitem(), 15, true);
+        ItemRegistry.registerItem("soulwoodlogitem", new MatItem(250), 1, true);
+        ItemRegistry.registerItem("soulcoreitem", new MatItem(250, Item.Rarity.UNCOMMON), 15, true);
+        ItemRegistry.registerItem("souldragonscales", new MatItem(250, Item.Rarity.EPIC), 150, true);
+        ItemRegistry.registerItem("soulcaverockitem", new MatItem(500, Item.Rarity.UNCOMMON), 1, true);
+        ItemRegistry.registerItem("crystalizedsouloreitem", new MatItem(250, Item.Rarity.UNCOMMON), 15, true);
+        ItemRegistry.registerItem("soulmetalbar", new MatItem(100, Item.Rarity.UNCOMMON), 80, true);
+
         ItemRegistry.registerItem("soulgrassseeditem", new GrassSeedItem("soulcavegrass"), 1, true);
         ItemRegistry.registerItem("wispitem", new wispitem(), 1, true);
         ItemRegistry.registerItem("wispjar", new wispjar(), 10, true);
         ItemRegistry.registerItem("fireflyitem", new fireflyitem(), 1, true);
         ItemRegistry.registerItem("fireflyjar", new fireflyjar(), 10, true);
         ItemRegistry.registerItem("soullantern", new soullantern(), 20, true);
-        ItemRegistry.registerItem("soulmetalbar", new soulmetalbar(), 80, true);
+
         ItemRegistry.registerItem("soulsigil", new soulsigil(), 200, false);
         ItemRegistry.registerItem("soulessence", new EssenceMatItem(120, Item.Rarity.EPIC, 2), 25.0F, true);
         //TrinketsAndOtherStuff
