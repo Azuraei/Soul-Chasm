@@ -1,6 +1,8 @@
 package soulchasm.main.Objects.OtherObjects;
 
 import necesse.engine.gameLoop.tickManager.TickManager;
+import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.particle.Particle;
@@ -102,7 +104,7 @@ public class soulcrystalbig extends GameObject {
 
     public void tickEffect(Level level, int x, int y) {
         super.tickEffect(level, x, y);
-        if (GameRandom.globalRandom.getChance(0.02F) && !level.getObject(x, y).drawsFullTile() && level.getLightLevel(x, y).getLevel() > 0.0F) {
+        if (GameRandom.globalRandom.getChance(0.04F) && !level.getObject(x, y).drawsFullTile() && level.getLightLevel(x, y).getLevel() > 0.0F) {
             int posX = x * 32 + GameRandom.globalRandom.nextInt(32);
             int posY = y * 32 + GameRandom.globalRandom.nextInt(20);
             boolean mirror = GameRandom.globalRandom.nextBoolean();
@@ -115,11 +117,15 @@ public class soulcrystalbig extends GameObject {
         return new LootTable(LootItem.between("crystalizedsouloreitem", 3, 5));
     }
 
+    public void playDamageSound(Level level, int x, int y, boolean damageDone) {
+        SoundManager.playSound(GameResources.crystalHit2, SoundEffect.effect((float)(x * 32 + 16), (float)(y * 32 + 16)).volume(2.0F).pitch(GameRandom.globalRandom.getFloatBetween(0.9F, 1.1F)));
+    }
+
     public int getLightLevel() {
         return 60;
     }
     @Override
     public GameLight getLight(Level level, int x, int y) {
-        return level.lightManager.newLight(240.0F, 0.3F, (float)this.getLightLevel());
+        return level.lightManager.newLight(240.0F, 0.2F, (float)this.getLightLevel());
     }
 }
