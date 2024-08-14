@@ -66,12 +66,9 @@ public class wispjarobject extends GameObject {
         TextureDrawOptions options = texture.initDraw().sprite(GameUtils.getAnim(level.getWorldEntity().getWorldTime(), 7, 800), 0, 32, 32).light(light.minLevelCopy(100F)).pos(drawX, drawY - (texture.getHeight() - 16));
 
         list.add(new LevelSortedDrawable(this, tileX, tileY) {
-            @Override
             public int getSortY() {
                 return 16;
             }
-
-            @Override
             public void draw(TickManager tickManager) {
                 options.draw();
             }
@@ -89,7 +86,6 @@ public class wispjarobject extends GameObject {
                 options.mirror(mirror, false);
             }).lifeTime(6000);
         }
-
     }
 
 
