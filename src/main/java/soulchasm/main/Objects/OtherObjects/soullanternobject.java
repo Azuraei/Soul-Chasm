@@ -45,7 +45,6 @@ public class soullanternobject extends GameObject {
         return new LootTable((new LootItem("soullantern")));
     }
 
-    @Override
     public void loadTextures() {
         super.loadTextures();
         texture = GameTexture.fromFile("objects/soullanternobject");

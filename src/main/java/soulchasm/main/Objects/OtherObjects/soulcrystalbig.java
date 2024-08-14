@@ -49,7 +49,6 @@ public class soulcrystalbig extends GameObject {
         super.loadTextures();
         this.texture = GameTexture.fromFile("objects/" + this.textureName);
         this.glowtexture = GameTexture.fromFile("objects/" + this.glowtextureName);
-
     }
 
     public int getRandomYOffset(int tileX, int tileY) {
