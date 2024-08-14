@@ -13,6 +13,7 @@ import necesse.inventory.item.armorItem.ArmorItem;
 import necesse.inventory.item.armorItem.HelmetArmorItem;
 import necesse.inventory.item.matItem.EssenceMatItem;
 import necesse.inventory.item.matItem.MatItem;
+import necesse.inventory.item.placeableItem.objectItem.ObjectItem;
 import necesse.inventory.item.placeableItem.tileItem.GrassSeedItem;
 import necesse.inventory.item.toolItem.ToolType;
 import necesse.inventory.lootTable.LootTable;
@@ -52,7 +53,8 @@ import soulchasm.main.Buffs.TrinketsBuffs.SoulSealBuffs.*;
 import soulchasm.main.Buffs.TrinketsBuffs.phantomfeatherbuff;
 import soulchasm.main.Buffs.TrinketsBuffs.soulstealerbuff;
 import soulchasm.main.Items.Armor.*;
-import soulchasm.main.Items.Others.*;
+import soulchasm.main.Items.Others.carkeys;
+import soulchasm.main.Items.Others.soulsigil;
 import soulchasm.main.Items.Tools.*;
 import soulchasm.main.Items.Trinkets.SealVariantsItems.*;
 import soulchasm.main.Items.Trinkets.phantomdasherstrinket;
@@ -241,13 +243,13 @@ public class SoulChasm {
         ItemRegistry.registerItem("soulmetalbar", new MatItem(100, Item.Rarity.UNCOMMON), 80, true);
 
         ItemRegistry.registerItem("soulgrassseeditem", new GrassSeedItem("soulcavegrass"), 1, true);
-        ItemRegistry.registerItem("wispitem", new wispitem(), 1, true);
-        ItemRegistry.registerItem("wispjar", new wispjar(), 10, true);
-        ItemRegistry.registerItem("fireflyitem", new fireflyitem(), 1, true);
-        ItemRegistry.registerItem("fireflyjar", new fireflyjar(), 10, true);
+        ItemRegistry.registerItem("wispitem", new MatItem(250, Item.Rarity.UNCOMMON, "glowingbugs"), 5, true);
+        ItemRegistry.registerItem("fireflyitem", new MatItem(250, Item.Rarity.UNCOMMON, "glowingbugs"), 5, true);
+        ItemRegistry.registerItem("fireflyjar", new ObjectItem(ObjectRegistry.getObject("fireflyjarobject")), 10, true);
+        ItemRegistry.registerItem("wispjar", new ObjectItem(ObjectRegistry.getObject("wispjarobject")), 10, true);
 
         ItemRegistry.registerItem("soulsigil", new soulsigil(), 200, false);
-        ItemRegistry.registerItem("soulessence", new EssenceMatItem(120, Item.Rarity.EPIC, 2), 25.0F, true);
+        ItemRegistry.registerItem("soulessence", new EssenceMatItem(250, Item.Rarity.EPIC, 2), 25.0F, true);
         //TrinketsAndOtherStuff
         ItemRegistry.registerItem("carkeys", new carkeys(), 2000, true);
         ItemRegistry.registerItem("phantomfeathertrinket", new phantomfeathertrinket(), 500, true);
@@ -338,8 +340,6 @@ public class SoulChasm {
         LevelEventRegistry.registerEvent("hauntedmodifierlevelevent", hauntedmodifierlevelevent.class);
         //INCURSION_MODS
         UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new hauntedincursionmodifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Medium));
-        //DEV
-        ItemRegistry.registerItem("devitem", new devitem(), 69, false);
     }
     public void initResources(){
         lostsoul.texture = GameTexture.fromFile("mobs/lostsoul");
