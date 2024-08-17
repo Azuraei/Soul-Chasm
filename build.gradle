@@ -4,8 +4,8 @@ plugins {
 
 project.ext.modID = "endzio.soulchasm"
 project.ext.modName = "Soul Chasm"
-project.ext.modVersion = "2.3.5"
-project.ext.gameVersion = "0.26.0"
+project.ext.modVersion = "2.3.1"
+project.ext.gameVersion = "0.26.1"
 project.ext.modDescription = "Adds new incursion, as well as new items, weapons, armor set, mobs and more"
 project.ext.author = "Endzio"
 
