@@ -20,7 +20,7 @@ public class soulcavearenapreset extends Preset {
         int lunartear = ObjectRegistry.getObjectID("lunartear");
         int lunartearpath = ObjectRegistry.getObjectID("lunartearspath");
         int wall = ObjectRegistry.getObjectID("soulbrickwall");
-        int lantern = ObjectRegistry.getObjectID("soullanternobject");
+        int lantern = ObjectRegistry.getObjectID("soullantern");
         int spike = ObjectRegistry.getObjectID("spikeobject");
 
         for(int x = 0; x < this.width; ++x) {

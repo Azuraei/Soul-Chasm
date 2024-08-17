@@ -16,7 +16,7 @@ public class soulcavesmallruinspreset extends Preset {
         int maxDistance = size / 2 * 32;
         int floor1 = TileRegistry.getTileID("soulcavebrickfloortile");
         int floor2 = TileRegistry.getTileID("soulcavefloortile");
-        int lantern = ObjectRegistry.getObjectID("soullanternobject");
+        int lantern = ObjectRegistry.getObjectID("soullantern");
 
 
         Point point = new Point(size/2, size/2);

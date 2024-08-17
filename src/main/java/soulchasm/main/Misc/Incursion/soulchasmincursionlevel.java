@@ -54,7 +54,7 @@ public class soulchasmincursionlevel extends IncursionLevel {
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcaverockssmall"), 0.01F);
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcavedecorations"), 0.008F);
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcrystalbig"), 0.006F);
-            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soullanternobject"), 0.0015F);
+            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soullantern"), 0.0015F);
         });
         GameEvents.triggerEvent(new GeneratedCaveMiniBiomesEvent(this, cg));
         GameEvents.triggerEvent(new GenerateCaveOresEvent(this, cg), (e) -> {
@@ -94,7 +94,7 @@ public class soulchasmincursionlevel extends IncursionLevel {
 
         });
 
-        soulchasmincursionbiome.generateEntrance(this, cg.random, 1, cg.rockTile, "soulcavebrickfloortile", "soulcavefloortile", "soullanternobject");
+        soulchasmincursionbiome.generateEntrance(this, cg.random, 1, cg.rockTile, "soulcavebrickfloortile", "soulcavefloortile", "soullantern");
         if (incursionData instanceof BiomeExtractionIncursionData) {
             cg.generateGuaranteedOreVeins(100, 12, 18, ObjectRegistry.getObjectID("crystalizedsoul"));
         }
