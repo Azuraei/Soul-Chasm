@@ -110,10 +110,12 @@ soulstealertrinket=When in combat, slowly converts your max health into more dam
 pickaxeheadtrinket=Mining slowly increases mining speed, up to 150%
 phantomdasherstrinket=Sprint even faster\nWhile sprinting you take more damage\nGrants water walking
 soularmorsetbonus=Press [input=setability] to increase attack and movement speed for short time\nUsing ability when buffed extends its time, but has 50% chance of applying debuff
-soulsealfragment=Fragment of whole\nCreates projectile that matches your weapon
+soulsealfragment=Fragment of whole
+soulsealfull=Whole again
+soulsealfragment2=Creates projectile that matches your weapon
 soulsealsummonfragment=Using summoner weapon summons spirit to aid you in battle\nSpirit's strength is based on weapon's stats
-soulsealfull=Whole again\nCreates projectile that matches your weapon
-soulsealbalanced=Bonds with new power\nCreates projectile that matches your weapon\nIncreases all damage dealt by 10%
+soulsealbalanced=Bonds with new power
+soulsealbalanced2=Increases all damage dealt by 10%
 soulmetalswordtip=Hitting enemy summons spirit swords
 soulscythe=Charging to second or greater level applies Bleeding Soul on target\nBleeding Soul decreases armor and damages overtime\nFully charged attacks shoot a decelerating, piercing projectile
 soulmetalbowtip=Press [input=mouse2] to activate overcharge mode\nWhen in overcharge, you gain significant attack speed bonus

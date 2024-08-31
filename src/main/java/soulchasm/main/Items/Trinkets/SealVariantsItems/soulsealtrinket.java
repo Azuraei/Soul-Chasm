@@ -29,6 +29,7 @@ public class soulsealtrinket extends TrinketItem {
     public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = super.getPreEnchantmentTooltips(item, perspective, blackboard);
         tooltips.add(Localization.translate("itemtooltip", "soulsealfull"));
+        tooltips.add(Localization.translate("itemtooltip", "soulsealfragment2"));
         tooltips.add(Localization.translate("itemtooltip", "soulsealsummonfragment"));
         return tooltips;
     }
