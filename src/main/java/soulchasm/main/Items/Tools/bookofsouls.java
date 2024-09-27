@@ -53,7 +53,7 @@ public class bookofsouls extends MagicProjectileToolItem implements ItemInteract
     public boolean getConstantUse(InventoryItem item) {
         return true;
     }
-    public boolean animDrawBehindHand() {
+    public boolean animDrawBehindHand(InventoryItem item) {
         return true;
     }
 
