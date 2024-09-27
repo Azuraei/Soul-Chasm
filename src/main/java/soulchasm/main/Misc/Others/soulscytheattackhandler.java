@@ -46,7 +46,7 @@ public class soulscytheattackhandler extends GreatswordAttackHandler {
         this.player.getLevel().entityManager.projectiles.add(projectile);
         projectile.moveDist(60.0);
         if (this.player.isServer()) {
-            this.player.getLevel().getServer().network.sendToClientsAtExcept(new PacketSpawnProjectile(projectile), this.player.getServerClient(), this.player.getServerClient());
+            this.player.getLevel().getServer().network.sendToClientsWithEntityExcept(new PacketSpawnProjectile(projectile), projectile, this.player.getServerClient());
         }
         if(buffMode){
             launchSmallerProjectiles(dir);
@@ -65,7 +65,7 @@ public class soulscytheattackhandler extends GreatswordAttackHandler {
                 projectile2.speed = velocity;
                 this.player.getLevel().entityManager.projectiles.add(projectile2);
                 if (this.player.isServer()) {
-                    this.player.getLevel().getServer().network.sendToClientsAtExcept(new PacketSpawnProjectile(projectile2), this.player.getServerClient(), this.player.getServerClient());
+                    this.player.getLevel().getServer().network.sendToClientsWithEntityExcept(new PacketSpawnProjectile(projectile2), projectile2, this.player.getServerClient());
                 }
             }
         }

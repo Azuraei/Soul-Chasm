@@ -8,6 +8,7 @@ import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.LevelSortedDrawable;
 import necesse.gfx.drawables.OrderableDrawables;
+import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.level.gameObject.RockObject;
@@ -35,6 +36,7 @@ public class decorationobject extends SingleRockSmall {
     @Override
     public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList, Level level, int tileX, int tileY, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
         GameLight light = level.getLightLevel(tileX, tileY);
+        GameTexture texture = this.texture.getDamagedTexture(this, level, tileX, tileY);
         int drawX = camera.getTileDrawX(tileX);
         int drawY = camera.getTileDrawY(tileY);
         final int randomYOffset = this.getRandomYOffset(tileX, tileY);
@@ -49,7 +51,7 @@ public class decorationobject extends SingleRockSmall {
             }
         }
         drawY += randomYOffset;
-        final TextureDrawOptions options = this.texture.initDraw().sprite(sprite, 0, 32, this.texture.getHeight()).light(light).mirror(mirror, false).pos(drawX, drawY - this.texture.getHeight() + 32);
+        final TextureDrawOptions options = texture.initDraw().sprite(sprite, 0, 32, texture.getHeight()).light(light).mirror(mirror, false).pos(drawX, drawY - texture.getHeight() + 32);
         list.add(new LevelSortedDrawable(this, tileX, tileY) {
             public int getSortY() {
                 return 16 + randomYOffset;

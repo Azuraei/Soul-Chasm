@@ -99,7 +99,7 @@ public class bookofsouls extends MagicProjectileToolItem implements ItemInteract
             projectile.moveDist(30.0);
             level.entityManager.projectiles.addHidden(projectile);
             if (level.isServer()) {
-                level.getServer().network.sendToClientsAtExcept(new PacketSpawnProjectile(projectile), player.getServerClient(), player.getServerClient());
+                level.getServer().network.sendToClientsWithEntityExcept(new PacketSpawnProjectile(projectile), projectile, player.getServerClient());
             }
         } else {
             item.getGndData().setFloat("energy",(float)(currentEnergy - 0.03));
@@ -113,7 +113,7 @@ public class bookofsouls extends MagicProjectileToolItem implements ItemInteract
                 projectile.moveDist(30.0);
                 level.entityManager.projectiles.addHidden(projectile);
                 if (level.isServer()) {
-                    level.getServer().network.sendToClientsAtExcept(new PacketSpawnProjectile(projectile), player.getServerClient(), player.getServerClient());
+                    level.getServer().network.sendToClientsWithEntityExcept(new PacketSpawnProjectile(projectile), projectile, player.getServerClient());
                 }
             }
         }

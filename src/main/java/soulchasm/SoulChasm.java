@@ -352,9 +352,6 @@ public class SoulChasm {
         GameTexture soulmageTexture = GameTexture.fromFile("mobs/soulmage");
         soulmage.texture = new HumanTexture(soulmageTexture,soulmageTexture,soulmageTexture);
         smallsoulsummon.texture = GameTexture.fromFile("mobs/smallsoul");
-        soulcavecaveling.texture = GameTexture.fromFile("mobs/soulcavecaveling");
-        soulcavecaveling.texture_back = GameTexture.fromFile("mobs/soulcavecaveling_back");
-        soulcavecaveling.texture_front = GameTexture.fromFile("mobs/soulcavecaveling_front");
         souldragonhead.texture = GameTexture.fromFile("mobs/souldragon");
         souldragonbody.texture = GameTexture.fromFile("mobs/souldragon");
         sphereeffectmob.texture_ball = GameTexture.fromFile("particles/altarball");

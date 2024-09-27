@@ -48,7 +48,7 @@ public class soulmetalspear extends ThrowToolItem {
         projectile.setModifier(new ResilienceOnHitProjectileModifier(this.getResilienceGain(item)));
         level.entityManager.projectiles.addHidden(projectile);
         if (level.isServer()) {
-            level.getServer().network.sendToClientsAtExcept(new PacketSpawnProjectile(projectile), player.getServerClient(), player.getServerClient());
+            level.getServer().network.sendToClientsWithEntityExcept(new PacketSpawnProjectile(projectile), projectile, player.getServerClient());
         }
         return item;
     }
