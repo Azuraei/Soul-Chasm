@@ -101,30 +101,31 @@ public class soulcrystalbig extends GameObject {
         texture.initDraw().sprite(sprite, 0, 64, this.texture.getHeight()).alpha(alpha).draw(drawX, drawY - this.texture.getHeight() + 32);
     }
 
-    public void tickEffect(Level level, int x, int y) {
-        super.tickEffect(level, x, y);
-        if (GameRandom.globalRandom.getChance(0.04F) && !level.getObject(x, y).drawsFullTile() && level.getLightLevel(x, y).getLevel() > 0.0F) {
-            int posX = x * 32 + GameRandom.globalRandom.nextInt(32);
-            int posY = y * 32 + GameRandom.globalRandom.nextInt(20);
+    public void tickEffect(Level level, int layerID, int tileX, int tileY) {
+        super.tickEffect(level, layerID, tileX, tileY);
+        if (GameRandom.globalRandom.getChance(0.04F) && !level.getObject(tileX, tileY).drawsFullTile() && level.getLightLevel(tileX, tileY).getLevel() > 0.0F) {
+            int posX = tileX * 32 + GameRandom.globalRandom.nextInt(32);
+            int posY = tileY * 32 + GameRandom.globalRandom.nextInt(20);
             boolean mirror = GameRandom.globalRandom.nextBoolean();
             level.entityManager.addParticle((float)posX, (float)(posY + 30), Particle.GType.COSMETIC).sprite(GameResources.magicSparkParticles.sprite(GameRandom.globalRandom.nextInt(4), 0, 22, 22)).color(new Color(0x76D6FF)).fadesAlpha(0.4F, 0.4F).size((options, lifeTime, timeAlive, lifePercent) -> {
             }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * (Float)GameRandom.globalRandom.getOneOf(new Float[]{1.0F, -1.0F}), GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * (Float)GameRandom.globalRandom.getOneOf(new Float[]{1.0F, -1.0F})).sizeFades(15, 25).modify((options, lifeTime, timeAlive, lifePercent) -> options.mirror(mirror, false)).lifeTime(3000);
         }
     }
 
-    public LootTable getLootTable(Level level, int tileX, int tileY) {
+    public LootTable getLootTable(Level level, int layerID, int tileX, int tileY) {
         return new LootTable(LootItem.between("crystalizedsouloreitem", 3, 5));
     }
 
     public void playDamageSound(Level level, int x, int y, boolean damageDone) {
-        SoundManager.playSound(GameResources.crystalHit2, SoundEffect.effect((float)(x * 32 + 16), (float)(y * 32 + 16)).volume(2.0F).pitch(GameRandom.globalRandom.getFloatBetween(0.9F, 1.1F)));
+        SoundManager.playSound(GameResources.crystalHit1, SoundEffect.effect((float)(x * 32 + 16), (float)(y * 32 + 16)).volume(1.0F).pitch(GameRandom.globalRandom.getFloatBetween(0.6F, 0.8F)));
     }
 
     public int getLightLevel() {
         return 60;
     }
+
     @Override
-    public GameLight getLight(Level level, int x, int y) {
+    public GameLight getLight(Level level, int layerI, int x, int y) {
         return level.lightManager.newLight(240.0F, 0.2F, (float)this.getLightLevel());
     }
 }

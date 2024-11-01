@@ -48,7 +48,7 @@ public class fireflyjarobject extends GameObject {
     }
 
     @Override
-    public LootTable getLootTable(Level level, int tileX, int tileY) {
+    public LootTable getLootTable(Level level, int layerID, int tileX, int tileY) {
         return new LootTable((new LootItem("fireflyjar")));
     }
 
@@ -75,11 +75,11 @@ public class fireflyjarobject extends GameObject {
         });
     }
 
-    public void tickEffect(Level level, int x, int y) {
-        super.tickEffect(level, x, y);
+    public void tickEffect(Level level, int layerID, int tileX, int tileY) {
+        super.tickEffect(level, layerID, tileX, tileY);
         if (GameRandom.globalRandom.getChance(0.020F)) {
-            int posX = x * 32 + GameRandom.globalRandom.nextInt(16);
-            int posY = y * 32 + GameRandom.globalRandom.nextInt(16);
+            int posX = tileX * 32 + GameRandom.globalRandom.nextInt(16);
+            int posY = tileY * 32 + GameRandom.globalRandom.nextInt(16);
             boolean mirror = GameRandom.globalRandom.nextBoolean();
             level.entityManager.addParticle((float)posX, (float)(posY + 15), Particle.GType.COSMETIC).sprite(SoulChasm.particleFireflySection).fadesAlpha(0.6F, 0.6F).size((options, lifeTime, timeAlive, lifePercent) -> {
             }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.5F, 1.0F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F), GameRandom.globalRandom.getFloatBetween(0.5F, 1.0F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F)).sizeFades(10, 15).modify((options, lifeTime, timeAlive, lifePercent) -> {

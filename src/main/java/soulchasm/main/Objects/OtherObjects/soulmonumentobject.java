@@ -85,14 +85,14 @@ public class soulmonumentobject extends FurnitureObject {
         });
     }
 
-    public void tickEffect(Level level, int x, int y) {
-        super.tickEffect(level, x, y);
-        ObjectEntity entity = level.entityManager.getObjectEntity(x, y);
+    public void tickEffect(Level level, int layerID, int tileX, int tileY) {
+        super.tickEffect(level, layerID, tileX, tileY);
+        ObjectEntity entity = level.entityManager.getObjectEntity(tileX, tileY);
         if (entity != null && ((OEInventory)entity).getInventory().getItem(0) != null) {
-            level.lightManager.refreshParticleLightFloat(x * 32, y * 32, new Color(0x36C2FF), 0.6F, 80);
+            level.lightManager.refreshParticleLightFloat(tileX * 32, tileY * 32, new Color(0x36C2FF), 0.6F, 80);
             if(GameRandom.globalRandom.getChance(0.080F)){
-                int posX = x * 32 + GameRandom.globalRandom.nextInt(32);
-                int posY = y * 32;
+                int posX = tileX * 32 + GameRandom.globalRandom.nextInt(32);
+                int posY = tileY * 32;
                 boolean mirror = GameRandom.globalRandom.nextBoolean();
                 level.entityManager.addParticle((float)posX, (float)(posY + 16), Particle.GType.COSMETIC).sprite(SoulChasm.particleWispSection).fadesAlpha(0.6F, 0.6F).size((options, lifeTime, timeAlive, lifePercent) -> {
                 }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.1F, 0.5F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F), GameRandom.globalRandom.getFloatBetween(-2.0F, -4.0F)).sizeFades(10, 15).modify((options, lifeTime, timeAlive, lifePercent) -> {
@@ -101,8 +101,8 @@ public class soulmonumentobject extends FurnitureObject {
             }
             if(particleDelay>=10){
                 this.particleDelay = 0;
-                int posX = x * 32 + 16;
-                int posY = y * 32 + 16;
+                int posX = tileX * 32 + 16;
+                int posY = tileY * 32 + 16;
                 level.entityManager.addParticle((float)posX, (float)(posY), Particle.GType.COSMETIC).sprite(SoulChasm.particleMonumentRingSection).fadesAlphaTimeToCustomAlpha(100, 400, 0.2F).size((options, lifeTime, timeAlive, lifePercent) -> {
                 }).height(30.0F).heightMoves(30, 50).dontRotate().modify((options, lifeTime, timeAlive, lifePercent) -> {
                     options.size(30);
