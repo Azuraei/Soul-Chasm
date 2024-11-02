@@ -35,7 +35,7 @@ public class lunartearspath extends GrassObject {
     }
 
     public String canPlace(Level level, int layerID, int x, int y, int rotation, boolean byPlayer, boolean ignoreOtherLayers) {
-        String error = super.canPlace(level, x, y, rotation, byPlayer);
+        String error = super.canPlace(level, layerID, x, y, rotation, byPlayer, ignoreOtherLayers);
         if (error != null) {
             return error;
         } else {
