@@ -4,7 +4,7 @@ import necesse.engine.localization.Localization;
 import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
-import necesse.entity.levelEvent.toolItemEvent.ToolItemEvent;
+import necesse.entity.levelEvent.mobAbilityLevelEvent.ToolItemMobAbilityEvent;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.projectile.modifiers.ResilienceOnHitProjectileModifier;
@@ -35,7 +35,7 @@ public class soulmetalsword extends SwordToolItem {
         return tooltips;
     }
 
-    public void hitMob(InventoryItem item, ToolItemEvent event, Level level, Mob target, Mob attacker) {
+    public void hitMob(InventoryItem item, ToolItemMobAbilityEvent event, Level level, Mob target, Mob attacker) {
         super.hitMob(item, event, level, target, attacker);
         for(int i = 0; i<3; i++){
             GameRandom random = new GameRandom();
