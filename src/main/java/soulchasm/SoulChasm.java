@@ -1,5 +1,6 @@
 package soulchasm;
 
+import necesse.engine.GameLoadingScreen;
 import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.registries.*;
 import necesse.engine.sound.gameSound.GameSound;
@@ -124,8 +125,8 @@ public class SoulChasm {
     public static GameSound plushie_squeak;
 
     public void init() {
-        System.out.println("no idea what to type here, so I will just say hi");
-        //GameLoadingScreen.drawLoadingString(Localization.translate("loading", "objects"));
+        //System.out.println("no idea what to type here, so I will just say hi");
+        GameLoadingScreen.drawLoadingString("Loading Soul Chasm");
         //TILES
         TileRegistry.registerTile("soulcavegrass", new soulcavegrass(), 1, true);
         TileRegistry.registerTile("soulcaverocktile", new soulcaverocktile(), 1, true);
@@ -146,7 +147,7 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soulcaverockssmall", new SingleRockSmall(soulcaverock, "soulcaverockssmall", SoulStoneColor), 0.0F, false);
         ObjectRegistry.registerObject("soulstonepressureplate", new MaskedPressurePlateObject("pressureplatemask", "soulcavefloortile", SoulStoneColor), 15.0F, true);
         //Wood
-        int[] soulWoodWallIDs = WallObject.registerWallObjects("soulwood", "soulwoodtexture", 0, SoulWoodColor, ToolType.ALL, 2.0F, 6.0F);
+        int[] soulWoodWallIDs = WallObject.registerWallObjects("soulwood", "soulbricktexture", 0, SoulWoodColor, ToolType.ALL, 2.0F, 6.0F);
         WallObject soulWoodWall = (WallObject)getObject(soulWoodWallIDs[0]);
         int soulwoodFenceID = ObjectRegistry.registerObject("soulwoodfence", new FenceObject("soulwoodfence", soulWoodWall.mapColor, 12, 10, -24), 2.0F, true);
         FenceGateObject.registerGatePair(soulwoodFenceID, "soulwoodfencegate", "soulwoodfencegate", soulWoodWall.mapColor, 12, 10, 4.0F);
