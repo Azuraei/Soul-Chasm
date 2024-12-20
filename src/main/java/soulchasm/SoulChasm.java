@@ -93,6 +93,9 @@ import soulchasm.main.Projectiles.souldiscprojectile;
 import soulchasm.main.Projectiles.soulhomingprojectile;
 
 import java.awt.*;
+
+import static necesse.engine.registries.ObjectRegistry.getObject;
+
 @ModEntry
 public class SoulChasm {
     public static Color SoulStoneColor = new Color(1, 37, 51,255);
@@ -122,6 +125,7 @@ public class SoulChasm {
 
     public void init() {
         System.out.println("no idea what to type here, so I will just say hi");
+        //GameLoadingScreen.drawLoadingString(Localization.translate("loading", "objects"));
         //TILES
         TileRegistry.registerTile("soulcavegrass", new soulcavegrass(), 1, true);
         TileRegistry.registerTile("soulcaverocktile", new soulcaverocktile(), 1, true);
@@ -141,12 +145,19 @@ public class SoulChasm {
         SingleRockObject.registerSurfaceRock(soulcaverock, "soulcaverocks", SoulStoneColor, 0.0F, false);
         ObjectRegistry.registerObject("soulcaverockssmall", new SingleRockSmall(soulcaverock, "soulcaverockssmall", SoulStoneColor), 0.0F, false);
         ObjectRegistry.registerObject("soulstonepressureplate", new MaskedPressurePlateObject("pressureplatemask", "soulcavefloortile", SoulStoneColor), 15.0F, true);
-        WallObject.registerWallObjects("soulwood", "soulwoodtexture", 0, SoulWoodColor, 0.5F, 1);
-        WallObject.registerWallObjects("soulbrick", "soulbricktexture", soulcaverock.toolTier, SoulStoneColor, 0.5F, 1);
-        ObjectRegistry.registerObject("soulstoneflametrap", new WallFlameTrapObject((WallObject)ObjectRegistry.getObject("soulbrickwall")), 50.0F, true);
+        //Wood
+        int[] soulWoodWallIDs = WallObject.registerWallObjects("soulwood", "soulwoodtexture", 0, SoulWoodColor, ToolType.ALL, 2.0F, 6.0F);
+        WallObject soulWoodWall = (WallObject)getObject(soulWoodWallIDs[0]);
+        int soulwoodFenceID = ObjectRegistry.registerObject("soulwoodfence", new FenceObject("soulwoodfence", SoulFurnitureColor, 12, 10, -24), 2.0F, true);
+        FenceGateObject.registerGatePair(soulwoodFenceID, "soulwoodfencegate", "soulwoodfencegate", SoulFurnitureColor, 12, 10, 4.0F);
+        //Brick
+        int[] soulBrickWallIDs = WallObject.registerWallObjects("soulbrick", "soulbricktexture", soulcaverock.toolTier, SoulStoneColor, 2.0F, 6.0F);
+        WallObject soulBrickWall = (WallObject)getObject(soulBrickWallIDs[0]);
+        //
+        ObjectRegistry.registerObject("soulstoneflametrap", new WallFlameTrapObject((WallObject) getObject("soulbrickwall")), 50.0F, true);
         ObjectRegistry.registerObject("soulcavedecorations", new decorationobject(soulcaverock, "soulcavedecorations", SoulStoneColor), 0.0F, false);
-        ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject((RockObject)ObjectRegistry.getObject("soulcaverock"), "oremask", "crystalizedsoulore", SoulStoneColor, "crystalizedsouloreitem"), 0.0F, false);
-        ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject((RockObject)ObjectRegistry.getObject("soulcaverock"), "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, 1), 0.0F, false);
+        ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject((RockObject) getObject("soulcaverock"), "oremask", "crystalizedsoulore", SoulStoneColor, "crystalizedsouloreitem"), 0.0F, false);
+        ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject((RockObject) getObject("soulcaverock"), "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, 1), 0.0F, false);
         ObjectRegistry.registerObject("upgradeshardsoulcaverock", new RockOreObject(soulcaverock, "oremask", "upgradeshardore", new Color(0, 27, 107), "upgradeshard", 1, 1, 1), 0.0F, false);
         ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesappling", SoulWoodColor, 60,80,100, "soultreeleaves"), 0.0F, false);
         ObjectRegistry.registerObject("soultreesappling", new TreeSaplingObject("soultreesappling", "soultree", 20, 30, true), 1, true);
@@ -194,8 +205,6 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soulwoodtoilet", new ToiletObject("soulwoodtoilet", SoulFurnitureColor), 10.0F, true);
         CandelabraObject soulwoodCandelabra = new CandelabraObject("soulwoodcandelabra", SoulFurnitureColor, 60.0F, 0.3F);
         ObjectRegistry.registerObject("soulwoodcandelabra", soulwoodCandelabra, 10.0F, true);
-        int soulwoodFenceID = ObjectRegistry.registerObject("soulwoodfence", new FenceObject("soulwoodfence", SoulFurnitureColor, 12, 10), 2.0F, true);
-        FenceGateObject.registerGatePair(soulwoodFenceID, "soulwoodfencegate", "soulwoodfencegate", SoulFurnitureColor, 12, 10, 4.0F);
         ObjectRegistry.registerObject("soulcavechest", new StorageBoxInventoryObject("soulcavechest",40, SoulStoneColor), 10.0F, true);
         //BIOMES_AND_LEVELS
         BiomeRegistry.registerBiome("soulcavern", new soulchasmbiome(), 0, null);
@@ -245,8 +254,8 @@ public class SoulChasm {
         ItemRegistry.registerItem("soulgrassseeditem", new GrassSeedItem("soulcavegrass"), 1, true);
         ItemRegistry.registerItem("wispitem", new MatItem(250, Item.Rarity.UNCOMMON, "glowingbugs"), 5, true);
         ItemRegistry.registerItem("fireflyitem", new MatItem(250, Item.Rarity.UNCOMMON, "glowingbugs"), 5, true);
-        ItemRegistry.registerItem("fireflyjar", new ObjectItem(ObjectRegistry.getObject("fireflyjarobject")), 10, true);
-        ItemRegistry.registerItem("wispjar", new ObjectItem(ObjectRegistry.getObject("wispjarobject")), 10, true);
+        ItemRegistry.registerItem("fireflyjar", new ObjectItem(getObject("fireflyjarobject")), 10, true);
+        ItemRegistry.registerItem("wispjar", new ObjectItem(getObject("wispjarobject")), 10, true);
 
         ItemRegistry.registerItem("soulsigil", new soulsigil(), 200, false);
         ItemRegistry.registerItem("soulessence", new EssenceMatItem(250, Item.Rarity.EPIC, 2), 25.0F, true);
