@@ -35,9 +35,7 @@ public class statueobject extends GameObject {
     @Override
     public void loadTextures() {
         super.loadTextures();
-        //woodwall
-        //texture = GameTexture.fromFile("objects/statueobject");
-        texture = GameTexture.fromFile("objects/woodwall");
+        texture = GameTexture.fromFile("objects/statueobject");
     }
 
     @Override
@@ -46,8 +44,7 @@ public class statueobject extends GameObject {
         int drawX = camera.getTileDrawX(tileX);
         int drawY = camera.getTileDrawY(tileY);
         int rotation = level.getObjectRotation(tileX, tileY) % 4;
-        //TextureDrawOptions options = texture.initDraw().sprite(rotation % 4, 0, 64, texture.getHeight()).light(light).pos(drawX  - 16, drawY - texture.getHeight() + 32);
-        TextureDrawOptions options = texture.initDraw().light(light).pos(drawX  - 16, drawY - texture.getHeight() + 32);
+        TextureDrawOptions options = texture.initDraw().sprite(rotation % 4, 0, 64, texture.getHeight()).light(light).pos(drawX  - 16, drawY - texture.getHeight() + 32);
         list.add(new LevelSortedDrawable(this, tileX, tileY) {
             @Override
             public int getSortY() {
