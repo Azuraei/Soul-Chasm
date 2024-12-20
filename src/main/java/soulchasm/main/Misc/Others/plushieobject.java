@@ -29,7 +29,7 @@ public class plushieobject extends GameObject {
     public GameTexture texture;
     public final GameRandom drawRandom;
     public final String textureName;
-    public String[] texts = {Localization.translate("ui", "plushie_tip")};
+    public String[] texts = {};
 
     public plushieobject(String textureName, Color mapColor) {
         super(new Rectangle(11, 11, 10, 10));
