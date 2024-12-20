@@ -29,7 +29,7 @@ public class plushieobject extends GameObject {
     public GameTexture texture;
     public final GameRandom drawRandom;
     public final String textureName;
-    public String[] texts = {"pet"};
+    public String[] texts = {Localization.translate("ui", "plushie_tip")};
 
     public plushieobject(String textureName, Color mapColor) {
         super(new Rectangle(11, 11, 10, 10));
@@ -76,8 +76,10 @@ public class plushieobject extends GameObject {
     }
 
     public void spawnFunniText(PlayerMob player, int x, int y){
-        String message = GameRandom.globalRandom.getOneOf(texts);
-        player.getServerClient().sendUniqueFloatText(x, y, new StaticMessage(message), null, 3);
+        if (texts.length>0){
+            String message = GameRandom.globalRandom.getOneOf(texts);
+            player.getServerClient().sendUniqueFloatText(x, y, new StaticMessage(message), null, 3);
+        }
     }
 
     public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList, Level level, int tileX, int tileY, TickManager tickManager, GameCamera camera, PlayerMob perspective) {

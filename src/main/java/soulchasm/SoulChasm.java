@@ -146,13 +146,12 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soulcaverockssmall", new SingleRockSmall(soulcaverock, "soulcaverockssmall", SoulStoneColor), 0.0F, false);
         ObjectRegistry.registerObject("soulstonepressureplate", new MaskedPressurePlateObject("pressureplatemask", "soulcavefloortile", SoulStoneColor), 15.0F, true);
         //Brick
-        int[] soulBrickWallIDs = WallObject.registerWallObjects("soulbrick", "soulbrickwall", soulcaverock.toolTier, SoulStoneColor, 2.0F, 6.0F);
-        WallObject soulBrickWall = (WallObject)getObject(soulBrickWallIDs[0]);
+        WallObject.registerWallObjects("soulbrick", "soulbrickwall", soulcaverock.toolTier, SoulStoneColor, 2.0F, 6.0F);
         //Wood
-        int[] soulWoodWallIDs = WallObject.registerWallObjects("soulwood", "soulwoodwall", 0, SoulWoodColor, ToolType.ALL, 2.0F, 6.0F);
-        WallObject soulWoodWall = (WallObject)getObject(soulWoodWallIDs[0]);
-        int soulWoodFenceID = ObjectRegistry.registerObject("soulwoodfence", new FenceObject("soulwoodfence", soulWoodWall.mapColor, 12, 10, -24), 2.0F, true);
-        FenceGateObject.registerGatePair(soulWoodFenceID, "soulwoodfencegate", "soulwoodfencegate", soulWoodWall.mapColor, 12, 10, 4.0F);
+        WallObject.registerWallObjects("soulwood", "soulwoodwall", 0, SoulWoodColor, ToolType.ALL, 2.0F, 6.0F);
+        //Fence
+        int soulWoodFenceID = ObjectRegistry.registerObject("soulwoodfence", new FenceObject("soulwoodfence", SoulWoodColor, 12, 10, -24), 2.0F, true);
+        FenceGateObject.registerGatePair(soulWoodFenceID, "soulwoodfencegate", "soulwoodfencegate", SoulWoodColor, 12, 10, 4.0F);
         //
         ObjectRegistry.registerObject("soulstoneflametrap", new WallFlameTrapObject((WallObject) getObject("soulbrickwall")), 50.0F, true);
         ObjectRegistry.registerObject("soulcavedecorations", new decorationobject(soulcaverock, "soulcavedecorations", SoulStoneColor), 0.0F, false);
