@@ -140,11 +140,16 @@ public class SoulChasm {
         TileRegistry.registerTile("soulcavebrickfloortile", new SimpleFloorTile("soulcavebrickfloortile", SoulStoneColorLight), 1, true);
         //OBJECTS
         RockObject soulcaverock;
-        ObjectRegistry.registerObject("soulcaverock", soulcaverock = new RockObject("soulcaverock", SoulStoneColor, "soulcaverockitem"), 0.0F, false);
+        ObjectRegistry.registerObject("soulcaverock", soulcaverock = new RockObject("soulcaverock", SoulStoneColor, "soulcaverockitem"), -1.0F, true);
         soulcaverock.toolTier = 4;
+        ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject(soulcaverock, "oremask", "crystalizedsoulore", SoulCrystalColor, "crystalizedsouloreitem", 1, 2, 1), -1.0F, true);
+        ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject(soulcaverock, "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, 1), -1.0F, true);
+        ObjectRegistry.registerObject("upgradeshardsoulcaverock", new RockOreObject(soulcaverock, "oremask", "upgradeshardore", new Color(0, 27, 107), "upgradeshard", 1, 1, 1), -1.0F, true);
         SingleRockObject.registerSurfaceRock(soulcaverock, "soulcaverocks", SoulStoneColor, 0.0F, false);
         ObjectRegistry.registerObject("soulcaverockssmall", new SingleRockSmall(soulcaverock, "soulcaverockssmall", SoulStoneColor), 0.0F, false);
         ObjectRegistry.registerObject("soulstonepressureplate", new MaskedPressurePlateObject("pressureplatemask", "soulcavefloortile", SoulStoneColor), 15.0F, true);
+        
+        
         //Brick
         WallObject.registerWallObjects("soulbrick", "soulbrickwall", soulcaverock.toolTier, SoulStoneColor, 2.0F, 6.0F);
         //Wood
@@ -155,9 +160,6 @@ public class SoulChasm {
         //
         ObjectRegistry.registerObject("soulstoneflametrap", new WallFlameTrapObject((WallObject) getObject("soulbrickwall")), 50.0F, true);
         ObjectRegistry.registerObject("soulcavedecorations", new decorationobject(soulcaverock, "soulcavedecorations", SoulStoneColor), 0.0F, false);
-        ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject((RockObject) getObject("soulcaverock"), "oremask", "crystalizedsoulore", SoulStoneColor, "crystalizedsouloreitem"), 0.0F, false);
-        ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject((RockObject) getObject("soulcaverock"), "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, 1), 0.0F, false);
-        ObjectRegistry.registerObject("upgradeshardsoulcaverock", new RockOreObject(soulcaverock, "oremask", "upgradeshardore", new Color(0, 27, 107), "upgradeshard", 1, 1, 1), 0.0F, false);
         ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesappling", SoulWoodColor, 60,80,100, "soultreeleaves"), 0.0F, false);
         ObjectRegistry.registerObject("soultreesappling", new TreeSaplingObject("soultreesappling", "soultree", 20, 30, true), 1, true);
         ObjectRegistry.registerObject("lunartear", new lunartear(), 1, true);
@@ -473,7 +475,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soulessence",
                 2,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("bloodessence", 1)
                 }
@@ -483,7 +485,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soulmetalsword",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulessence", 5),
                         new Ingredient("soulmetalbar", 12),
@@ -494,7 +496,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soulmetalspear",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulessence", 5),
                         new Ingredient("soulmetalbar", 16),
@@ -505,7 +507,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soulmetalrevolver",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulessence", 5),
                         new Ingredient("handgun", 1),
@@ -517,7 +519,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soulmetalbow",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulessence", 5),
                         new Ingredient("soulmetalbar", 12),
@@ -528,7 +530,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "bookofsouls",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulessence", 5),
                         new Ingredient("shadowbolt", 1),
@@ -540,7 +542,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soulstatue",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulessence", 6),
                         new Ingredient("soulmetalbar", 10),
@@ -551,7 +553,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soulabsorbshield",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulessence", 5),
                         new Ingredient("soulmetalbar", 12),
@@ -562,7 +564,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soularmorhelmet",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 10),
                         new Ingredient("soulcoreitem", 4),
@@ -573,7 +575,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soularmorhood",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 4),
                         new Ingredient("soulcoreitem", 12),
@@ -584,7 +586,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soularmorhat",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 4),
                         new Ingredient("soulcoreitem", 12),
@@ -595,7 +597,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soularmorcrown",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 8),
                         new Ingredient("soulcoreitem", 8),
@@ -606,7 +608,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soularmorchestplate",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 18),
                         new Ingredient("soulcoreitem", 4),
@@ -617,7 +619,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soularmorboots",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 12),
                         new Ingredient("soulcoreitem", 4),
@@ -628,7 +630,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soulsealtrinket",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("meleesoulsealtrinket", 1),
                         new Ingredient("rangesoulsealtrinket", 1),
@@ -643,7 +645,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "balancedsealtrinket",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulsealtrinket", 1),
                         new Ingredient("balancedfoci", 1),
@@ -656,7 +658,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "phantomdasherstrinket",
                 1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
+                RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("zephyrboots", 1),
                         new Ingredient("soulessence", 4),
@@ -698,7 +700,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "wispjar",
                 1,
-                RecipeTechRegistry.ADVANCED_WORKSTATION,
+                RecipeTechRegistry.WORKSTATION,
                 new Ingredient[]{
                         new Ingredient("wispitem", 2),
                         new Ingredient("bigjarobject", 1)
@@ -708,7 +710,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "magestatueobject",
                 1,
-                RecipeTechRegistry.ADVANCED_WORKSTATION,
+                RecipeTechRegistry.LANDSCAPING,
                 new Ingredient[]{
                         new Ingredient("soulcaverockitem", 25)
                 }
@@ -717,7 +719,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soultorch",
                 20,
-                RecipeTechRegistry.ADVANCED_WORKSTATION,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{
                         new Ingredient("torch", 20),
                         new Ingredient("soulcoreitem", 1)
@@ -727,7 +729,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soultikitorchobject",
                 1,
-                RecipeTechRegistry.ADVANCED_WORKSTATION,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{
                         new Ingredient("soultorch", 1),
                         new Ingredient("soulwoodlogitem", 1)

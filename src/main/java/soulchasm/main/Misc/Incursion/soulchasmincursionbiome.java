@@ -1,11 +1,15 @@
 package soulchasm.main.Misc.Incursion;
 
+import necesse.engine.localization.message.GameMessage;
+import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.network.server.Server;
+import necesse.engine.registries.BiomeRegistry;
 import necesse.engine.registries.ItemRegistry;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.LevelIdentifier;
 import necesse.engine.util.TicketSystemList;
 import necesse.engine.world.WorldEntity;
+import necesse.entity.mobs.Mob;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.item.Item;
 import necesse.inventory.item.miscItem.GatewayTabletItem;
@@ -28,6 +32,10 @@ import java.util.function.Supplier;
 public class soulchasmincursionbiome extends IncursionBiome {
     public soulchasmincursionbiome() {
         super("souldragonhead");
+    }
+
+    public GameMessage getNewLocalization() {
+        return new LocalMessage("biome", "deepcave", "biome", BiomeRegistry.getBiome("soulcavern").getLocalization());
     }
 
     public Collection<Item> getExtractionItems(IncursionData incursionData) {
@@ -55,9 +63,9 @@ public class soulchasmincursionbiome extends IncursionBiome {
     }
 
     public TicketSystemList<Supplier<IncursionData>> getAvailableIncursions(int tabletTier) {
-        TicketSystemList<Supplier<IncursionData>> system = new TicketSystemList<>();
-        system.addObject(100, () -> new BiomeHuntIncursionData(1.0F, this, tabletTier));
-        system.addObject(100, () -> new BiomeExtractionIncursionData(1.0F, this, tabletTier));
+        TicketSystemList<Supplier<IncursionData>> system = new TicketSystemList();
+        system.addObject(100, (Supplier)() -> new BiomeHuntIncursionData(1.0F, this, tabletTier));
+        system.addObject(100, (Supplier)() -> new BiomeExtractionIncursionData(1.0F, this, tabletTier));
         return system;
     }
 
@@ -85,5 +93,10 @@ public class soulchasmincursionbiome extends IncursionBiome {
         gatewayColors.add(new Color(102, 255, 255));
         gatewayColors.add(new Color(236, 240, 255));
         return gatewayColors;
+    }
+
+    public LootTable getExtraIncursionDrops(Mob mob) {
+        LootTable mobDrops = super.getExtraIncursionDrops(mob);
+        return mob.isBoss() ? new LootTable(mobDrops, new LootItem("soulessence", 1)) : mobDrops;
     }
 }

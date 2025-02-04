@@ -28,13 +28,12 @@ import static soulchasm.SoulChasm.SoulCaveChestRoomSet;
 import static soulchasm.SoulChasm.soulcavechestloottable;
 
 public class soulchasmincursionlevel extends IncursionLevel {
-
     public soulchasmincursionlevel(LevelIdentifier identifier, int width, int height, WorldEntity worldEntity) {
         super(identifier, width, height, worldEntity);
     }
 
     public soulchasmincursionlevel(LevelIdentifier identifier, BiomeMissionIncursionData incursion, WorldEntity worldEntity) {
-        super(identifier, 300, 300, incursion, worldEntity);
+        super(identifier, 150, 150, incursion, worldEntity);
         this.biome = BiomeRegistry.getBiome("soulcavern");
         this.isCave = true;
         this.generateLevel(incursion);
@@ -43,13 +42,39 @@ public class soulchasmincursionlevel extends IncursionLevel {
     public void generateLevel(BiomeMissionIncursionData incursionData) {
         CaveGeneration cg = new CaveGeneration(this, "soulcaverocktile", "soulcaverock");
         cg.random.setSeed(incursionData.getUniqueID());
-        GameEvents.triggerEvent(new GenerateCaveLayoutEvent(this, cg), (e) -> {
-            cg.generateLevel(0.40F, 4, 3, 6);
-        });
+        GameEvents.triggerEvent(new GenerateCaveLayoutEvent(this, cg), (e) -> cg.generateLevel(0.38F, 4, 3, 6));
         GameEvents.triggerEvent(new GeneratedCaveLayoutEvent(this, cg));
-        GameEvents.triggerEvent(new GenerateCaveMiniBiomesEvent(this, cg), (e) -> {
+        //STRUCTURES
+        PresetGeneration presets = new PresetGeneration(this);
+        GameEvents.triggerEvent(new GenerateCaveStructuresEvent(this, cg, presets), (e) -> {
+            cg.generateRandomCrates(0.03F, ObjectRegistry.getObjectID("chasmcrates"));
             GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.04F, 2, 7.0F, 25.0F, 3.0F, 12.0F, TileRegistry.getTileID("meltedsouls"), 1.0F, true);
+            cg.generateTileVeins(0.1F, 6, 12, TileRegistry.getTileID("soulcavecracktile"), ObjectRegistry.getObjectID("air"));
             this.liquidManager.calculateShores();
+            int smallRuinAmount = cg.random.getIntBetween(8, 15);
+            for(int ix = 0; ix < smallRuinAmount; ++ix) {
+                Preset smallRuin = new soulcavesmallruinspreset(8,cg.random);
+                presets.findRandomValidPositionAndApply(cg.random, 6, smallRuin, 10, true, true);
+            }
+            int shrineAmount = cg.random.getIntBetween(5, 10);
+            for(int ix = 0; ix < shrineAmount; ++ix) {
+                Preset shrine = new soulcaveshrinepreset(10,cg.random);
+                presets.findRandomValidPositionAndApply(cg.random, 6, shrine, 10, true, true);
+            }
+            AtomicInteger chestRoomRotation = new AtomicInteger();
+            int chestRoomAmount = cg.random.getIntBetween(10, 15);
+            for(int ix = 0; ix < chestRoomAmount; ++ix) {
+                Preset chestRoom = new RandomCaveChestRoom(cg.random, soulcavechestloottable, chestRoomRotation, SoulCaveChestRoomSet);
+                chestRoom.replaceTile(TileRegistry.getTileID("soulcavefloortile"), cg.random.getOneOf(TileRegistry.getTileID("soulcavefloortile"), TileRegistry.getTileID("soulcavebrickfloortile")));
+                presets.findRandomValidPositionAndApply(cg.random, 6, chestRoom, 10, true, true);
+            }
+            soulchasmincursionbiome.generateEntrance(this, cg.random, 1, cg.rockTile, "soulcavebrickfloortile", "soulcavefloortile", "soullantern");
+            Preset arena = new soulcavearenapreset(55, new GameRandom(this.getSeed()));
+            arena.applyToLevelCentered(this, this.width / 2, this.height / 2);
+        });
+        GameEvents.triggerEvent(new GeneratedCaveStructuresEvent(this, cg, presets));
+        //DECORATIONS
+        GameEvents.triggerEvent(new GenerateCaveMiniBiomesEvent(this, cg), (e) -> {
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcaverocks"), 0.005F);
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcaverockssmall"), 0.01F);
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcavedecorations"), 0.008F);
@@ -57,51 +82,14 @@ public class soulchasmincursionlevel extends IncursionLevel {
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soullantern"), 0.0015F);
         });
         GameEvents.triggerEvent(new GeneratedCaveMiniBiomesEvent(this, cg));
-        GameEvents.triggerEvent(new GenerateCaveOresEvent(this, cg), (e) -> {
-            cg.generateOreVeins(0.16F, 3, 6, ObjectRegistry.getObjectID("crystalizedsoul"));
-        });
-        GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.06F, 4, 4.0F, 8.0F, 3.0F, 6.0F, TileRegistry.getTileID("soulcavecracktile"), 0.8F, false);
-        GameEvents.triggerEvent(new GeneratedCaveOresEvent(this, cg));
-
-        PresetGeneration presets = new PresetGeneration(this);
-        GameEvents.triggerEvent(new GenerateCaveStructuresEvent(this, cg, presets), (e) -> {
-
-            int smallruinsAmount = cg.random.getIntBetween(8, 15);
-            for(int ix = 0; ix < smallruinsAmount; ++ix) {
-                Preset smallruins = new soulcavesmallruinspreset(8,cg.random);
-                presets.findRandomValidPositionAndApply(cg.random, 6, smallruins, 10, true, true);
-            }
-
-            int shrineAmount = cg.random.getIntBetween(5, 10);
-            for(int ix = 0; ix < shrineAmount; ++ix) {
-                Preset shrine = new soulcaveshrinepreset(10,cg.random);
-                presets.findRandomValidPositionAndApply(cg.random, 6, shrine, 10, true, true);
-            }
-
-            AtomicInteger chestRoomRotation = new AtomicInteger();
-            int chestRoomAmount = cg.random.getIntBetween(10, 15);
-
-            for(int ix = 0; ix < chestRoomAmount; ++ix) {
-                Preset chestRoom = new RandomCaveChestRoom(cg.random, soulcavechestloottable, chestRoomRotation, SoulCaveChestRoomSet);
-                chestRoom.replaceTile(TileRegistry.getTileID("soulcavefloortile"), cg.random.getOneOf(TileRegistry.getTileID("soulcavefloortile"), TileRegistry.getTileID("soulcavebrickfloortile")));
-                presets.findRandomValidPositionAndApply(cg.random, 6, chestRoom, 10, true, true);
-            }
-
-            cg.generateRandomCrates(0.03F, ObjectRegistry.getObjectID("chasmcrates"));
-
-            GameRandom random = new GameRandom(this.getSeed());
-            (new soulcavearenapreset(65, random)).applyToLevelCentered(this, this.width / 2, this.height / 2);
-
-        });
-
-        soulchasmincursionbiome.generateEntrance(this, cg.random, 1, cg.rockTile, "soulcavebrickfloortile", "soulcavefloortile", "soullantern");
+        //INCURSION
+        GenerationTools.checkValid(this);
         if (incursionData instanceof BiomeExtractionIncursionData) {
-            cg.generateGuaranteedOreVeins(100, 12, 18, ObjectRegistry.getObjectID("crystalizedsoul"));
+            cg.generateGuaranteedOreVeins(100, 8, 16, ObjectRegistry.getObjectID("crystalizedsoul"));
         }
         cg.generateGuaranteedOreVeins(100, 6, 12, ObjectRegistry.getObjectID("upgradeshardsoulcaverock"));
         cg.generateGuaranteedOreVeins(100, 6, 12, ObjectRegistry.getObjectID("alchemyshardsoulcaverock"));
-        GameEvents.triggerEvent(new GeneratedCaveStructuresEvent(this, cg, presets));
-        GenerationTools.checkValid(this);
+        GameEvents.triggerEvent(new GeneratedCaveOresEvent(this, cg));
     }
     public LootTable getCrateLootTable() {
         return LootTablePresets.incursionCrate;

@@ -11,6 +11,7 @@ import necesse.gfx.drawables.LevelSortedDrawable;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.item.toolItem.ToolType;
+import necesse.level.gameObject.GameObject;
 import necesse.level.gameObject.GrassObject;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
@@ -34,21 +35,22 @@ public class lunartearspath extends GrassObject {
     public void attackThrough(Level level, int x, int y, GameDamage damage, Attacker attacker) {
     }
 
+    @Override
     public String canPlace(Level level, int layerID, int x, int y, int rotation, boolean byPlayer, boolean ignoreOtherLayers) {
         String error = super.canPlace(level, layerID, x, y, rotation, byPlayer, ignoreOtherLayers);
         if (error != null) {
             return error;
         } else {
-            return !level.getTile(x, y).getStringID().equals("soulcavegrass") ? "wrongtile" : null;
+            return isValid(level, layerID, x, y) ? null : "wrongtile";
         }
     }
 
+    @Override
     public boolean isValid(Level level, int layerI, int x, int y) {
         if (!super.isValid(level, layerI, x, y)) {
             return false;
         } else {
-            int tileID = level.getTileID(x, y);
-            return tileID == TileRegistry.getTileID("soulcavegrass");
+            return level.getLevelTile(x, y).tile.isOrganic;
         }
     }
 
@@ -59,7 +61,7 @@ public class lunartearspath extends GrassObject {
         boolean mirror;
         int textureIndex;
         synchronized(this.drawRandom) {
-            yGaussian = this.drawRandom.seeded(this.getTileSeed(tileX, tileY, primeIndex)).nextFloat() * 2.0F - 1.0F;
+            yGaussian = this.drawRandom.seeded(getTileSeed(tileX, tileY, primeIndex)).nextFloat() * 2.0F - 1.0F;
             xGaussian = this.drawRandom.nextFloat() * 2.0F - 1.0F;
             mirror = this.drawRandom.nextBoolean();
             textureIndex = this.drawRandom.getIntBetween(minTextureIndex, maxTextureIndex);

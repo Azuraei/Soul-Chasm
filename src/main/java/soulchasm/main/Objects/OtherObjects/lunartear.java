@@ -29,21 +29,22 @@ public class lunartear extends GrassObject {
     public void attackThrough(Level level, int x, int y, GameDamage damage, Attacker attacker) {
     }
 
+    @Override
     public String canPlace(Level level, int layerID, int x, int y, int rotation, boolean byPlayer, boolean ignoreOtherLayers) {
         String error = super.canPlace(level, layerID, x, y, rotation, byPlayer, ignoreOtherLayers);
         if (error != null) {
             return error;
         } else {
-            return level.getTileID(x, y) != TileRegistry.getTileID("soulcavegrass") ? "wrongtile" : null;
+            return isValid(level, layerID, x, y) ? null : "wrongtile";
         }
     }
 
+    @Override
     public boolean isValid(Level level, int layerI, int x, int y) {
         if (!super.isValid(level, layerI, x, y)) {
             return false;
         } else {
-            int tileID = level.getTileID(x, y);
-            return tileID == TileRegistry.getTileID("soulcavegrass");
+            return level.getLevelTile(x, y).tile.isOrganic;
         }
     }
 }
