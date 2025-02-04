@@ -16,7 +16,7 @@ import necesse.level.maps.light.GameLight;
 import java.awt.*;
 import java.util.List;
 
-import static soulchasm.SoulChasm.SoulStoneColorLight;
+import static soulchasm.SoulChasm.chasmStoneLightMapColor;
 
 public class magestatueobject extends GameObject {
     public GameTexture texture;
@@ -26,7 +26,7 @@ public class magestatueobject extends GameObject {
         hoverHitbox = new Rectangle(0, -32, 32, 64);
         toolType = ToolType.PICKAXE;
         isLightTransparent = false;
-        mapColor = SoulStoneColorLight;
+        mapColor = chasmStoneLightMapColor;
     }
 
     public void loadTextures() {

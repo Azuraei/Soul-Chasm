@@ -86,6 +86,9 @@ import soulchasm.main.Mobs.Summon.smallsoulsummon;
 import soulchasm.main.Mobs.Summon.soulstatuesummon;
 import soulchasm.main.Objects.BiomeEnviroment.*;
 import soulchasm.main.Objects.OtherObjects.*;
+import soulchasm.main.Objects.OtherObjects.Plushies.argemiaplushieobject;
+import soulchasm.main.Objects.OtherObjects.Plushies.fairplushieobject;
+import soulchasm.main.Objects.OtherObjects.Plushies.v1plushieobject;
 import soulchasm.main.Projectiles.BossProjectiles.soulflamethrower;
 import soulchasm.main.Projectiles.BossProjectiles.spinspawnspikeprojectile;
 import soulchasm.main.Projectiles.SealProjectiles.*;
@@ -99,20 +102,20 @@ import static necesse.engine.registries.ObjectRegistry.getObject;
 
 @ModEntry
 public class SoulChasm {
-    public static Color SoulStoneColor = new Color(1, 37, 51,255);
-    public static Color SoulStoneColorLight = new Color(2, 68, 93,255);
-    public static Color SoulMagmaStone = new Color(7, 207, 255,255);
-    public static Color SoulCrystalColor = new Color(0, 134, 203,255);
-    public static Color SoulWoodColor = new Color(117, 165, 183,255);
-    public static Color SoulFurnitureColor = new Color(98, 153, 173, 255);
-    public static Color SoulGrassColor = new Color(93, 132, 143, 255);
-
+    public static Color chasmStoneMapColor = new Color(1, 37, 51,255);
+    public static Color chasmStoneLightMapColor = new Color(2, 68, 93,255);
+    public static Color chasmMagmaMapColor = new Color(7, 207, 255,255);
+    public static Color chasmCrystalMapColor = new Color(0, 134, 203,255);
+    public static Color chasmWoodMapColor = new Color(117, 165, 183,255);
+    public static Color chasmWoodFurnitureMapColor = new Color(98, 153, 173, 255);
+    public static Color chasmGrassMapColor = new Color(93, 132, 143, 255);
     public static Color chasmTorchMapColor = new Color(0, 167, 255);
+    public static Color asphaltTileMapColor = new Color(23, 23, 23);
 
-    public static ChestRoomSet SoulCaveChestRoomSet;
-    public static LootTable soulcavechestloottable;
-    public static LootTable soulcaveruinsloottable;
-    public static LootTable soulcavemonumentshrineloottable;
+    public static ChestRoomSet chasmChestRoomSet;
+    public static LootTable chasmChestLootTable;
+    public static LootTable chasmRuinLootTable;
+    public static LootTable chasmShrineLootTable;
     public static GameTexture[] car_mask;
     public static GameTexture eruption_shadow;
     public static GameTextureSection spinspawnvisual;
@@ -132,14 +135,14 @@ public class SoulChasm {
         //TILES
         TileRegistry.registerTile("soulcavegrass", new SoulCaveGrass(), 0.0F, true);
         TileRegistry.registerTile("soulcaverocktile", new soulcaverocktile(), 0.0F, true);
-        TileRegistry.registerTile("soulcavefloortile", new SimpleFloorTile("soulcavefloortile", SoulStoneColorLight), 0.0F, true);
+        TileRegistry.registerTile("soulcavefloortile", new SimpleFloorTile("soulcavefloortile", chasmStoneLightMapColor), 0.0F, true);
 
-        TileRegistry.registerTile("soulcavebrickfloortile", new SimpleFloorTile("soulcavebrickfloortile", SoulStoneColorLight), 2.0F, true);
+        TileRegistry.registerTile("soulcavebrickfloortile", new SimpleFloorTile("soulcavebrickfloortile", chasmStoneLightMapColor), 2.0F, true);
         TileRegistry.registerTile("soulcavetiledfloortile", new soulcavetiledfloortile(), 2.0F, true);
 
-        TileRegistry.registerTile("soulwoodfloor", new SimpleFloorTile("soulwoodfloor", SoulChasm.SoulWoodColor), 2.0F, true);
-        TileRegistry.registerTile("soulwoodtiledfloor", new SimpleTiledFloorTile("soulwoodtiledfloor", SoulChasm.SoulWoodColor), 2.0F, true);
-        TileRegistry.registerTile("soulwoodpath", new PathTiledTile("soulwoodpath", SoulChasm.SoulWoodColor), 5.0F, true);
+        TileRegistry.registerTile("soulwoodfloor", new SimpleFloorTile("soulwoodfloor", SoulChasm.chasmWoodMapColor), 2.0F, true);
+        TileRegistry.registerTile("soulwoodtiledfloor", new SimpleTiledFloorTile("soulwoodtiledfloor", SoulChasm.chasmWoodMapColor), 2.0F, true);
+        TileRegistry.registerTile("soulwoodpath", new PathTiledTile("soulwoodpath", SoulChasm.chasmWoodMapColor), 5.0F, true);
 
         TileRegistry.registerTile("meltedsouls", new meltedsouls(), 10.0F, true);
         TileRegistry.registerTile("soulcavecracktile", new soulcavecracktile(), 0.0F, false);
@@ -148,23 +151,23 @@ public class SoulChasm {
 
         //OBJECTS
         RockObject chasmrock;
-        ObjectRegistry.registerObject("soulcaverock", chasmrock = new RockObject("soulcaverock", SoulStoneColor, "soulcaverockitem"), -1.0F, true);
+        ObjectRegistry.registerObject("soulcaverock", chasmrock = new RockObject("soulcaverock", chasmStoneMapColor, "soulcaverockitem"), -1.0F, true);
         chasmrock.toolTier = 4;
-        SingleRockObject.registerSurfaceRock(chasmrock, "soulcaverocks", SoulStoneColor, -0.1F, false);
-        ObjectRegistry.registerObject("soulcaverockssmall", new SingleRockSmall(chasmrock, "soulcaverockssmall", SoulStoneColor), 0.0F, false);
+        SingleRockObject.registerSurfaceRock(chasmrock, "soulcaverocks", chasmStoneMapColor, -0.1F, false);
+        ObjectRegistry.registerObject("soulcaverockssmall", new SingleRockSmall(chasmrock, "soulcaverockssmall", chasmStoneMapColor), 0.0F, false);
 
-        ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject(chasmrock, "oremask", "crystalizedsoulore", SoulCrystalColor, "crystalizedsouloreitem", 1, 2, 1), -1.0F, true);
+        ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject(chasmrock, "oremask", "crystalizedsoulore", chasmCrystalMapColor, "crystalizedsouloreitem", 1, 2, 1), -1.0F, true);
         ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject(chasmrock, "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, 1), -1.0F, true);
         ObjectRegistry.registerObject("upgradeshardsoulcaverock", new RockOreObject(chasmrock, "oremask", "upgradeshardore", new Color(0, 27, 107), "upgradeshard", 1, 1, 1), -1.0F, true);
 
-        ObjectRegistry.registerObject("soulstonepressureplate", new MaskedPressurePlateObject("pressureplatemask", "soulcavefloortile", SoulStoneColor), 15.0F, true);
+        ObjectRegistry.registerObject("soulstonepressureplate", new MaskedPressurePlateObject("pressureplatemask", "soulcavefloortile", chasmStoneMapColor), 15.0F, true);
         ObjectRegistry.registerObject("soulstoneflametrap", new WallFlameTrapObject((WallObject) getObject("soulbrickwall")), 50.0F, true);
-        ObjectRegistry.registerObject("soulcavedecorations", new decorationobject(chasmrock, "soulcavedecorations", SoulStoneColor), 0.0F, false);
+        ObjectRegistry.registerObject("soulcavedecorations", new decorationobject(chasmrock, "soulcavedecorations", chasmStoneMapColor), 0.0F, false);
 
-        WallObject.registerWallObjects("soulbrick", "soulbrickwall", chasmrock.toolTier, SoulStoneColor, 2.0F, 6.0F);
-        WallObject.registerWallObjects("soulwood", "soulwoodwall", 0, SoulWoodColor, ToolType.ALL, 2.0F, 6.0F);
+        WallObject.registerWallObjects("soulbrick", "soulbrickwall", chasmrock.toolTier, chasmStoneMapColor, 2.0F, 6.0F);
+        WallObject.registerWallObjects("soulwood", "soulwoodwall", 0, chasmWoodMapColor, ToolType.ALL, 2.0F, 6.0F);
 
-        ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesappling", SoulWoodColor, 60,80,100, "soultreeleaves"), 0.0F, false);
+        ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesappling", chasmWoodMapColor, 60,80,100, "soultreeleaves"), 0.0F, false);
         ObjectRegistry.registerObject("soultreesappling", new TreeSaplingObject("soultreesappling", "soultree", 1800, 2700, true), 5.0F, true);
 
         ObjectRegistry.registerObject("lunartear", new lunartear(), 5.0F, true);
@@ -185,7 +188,7 @@ public class SoulChasm {
         ObjectRegistry.registerObject("fireflyjarobject", new fireflyjarobject(), 0.0F, false);
 
         ObjectRegistry.registerObject("soulmonumentobject", new soulmonumentobject(), 50.0F, true);
-        ObjectRegistry.registerObject("oldbarrel", new InventoryObject("oldbarrel", 20, new Rectangle(8, 4, 16, 16), ToolType.PICKAXE, SoulFurnitureColor), 10.0F, true);
+        ObjectRegistry.registerObject("oldbarrel", new InventoryObject("oldbarrel", 20, new Rectangle(8, 4, 16, 16), ToolType.PICKAXE, chasmWoodFurnitureMapColor), 10.0F, true);
         ObjectRegistry.registerObject("chasmcrates", new RandomCrateObject("chasmcrates"), 0.0F, false);
         ObjectRegistry.registerObject("statueobject", new statueobject(), 50.0F, true);
         ObjectRegistry.registerObject("magestatueobject", new magestatueobject(), 50.0F, true);
@@ -206,34 +209,33 @@ public class SoulChasm {
         ObjectRegistry.registerObject("v1plushieobject", new v1plushieobject(), 10.0F, true);
 
         //Furniture
-        BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", SoulFurnitureColor, 10.0F);
-        BedObject.registerBed("soulwoodbed", "soulwoodbed", SoulFurnitureColor, 100.0F);
-        BenchObject.registerBench("soulwoodbench", "soulwoodbench", SoulFurnitureColor, 10.0F);
-        DinnerTableObject.registerDinnerTable("soulwooddinnertable", "soulwooddinnertable", SoulFurnitureColor, 20.0F);
-        ObjectRegistry.registerObject("soulwoodbookshelf", new BookshelfObject("soulwoodbookshelf", SoulFurnitureColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwoodcabinet", new CabinetObject("soulwoodcabinet", SoulFurnitureColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwoodchair", new ChairObject("soulwoodchair", SoulFurnitureColor), 5.0F, true);
-        ObjectRegistry.registerObject("soulwoodchest", new StorageBoxInventoryObject("soulwoodchest",40, SoulFurnitureColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwoodclock", new ClockObject("soulwoodclock", SoulFurnitureColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwooddesk", new DeskObject("soulwooddesk", SoulFurnitureColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwooddisplay", new DisplayStandObject("soulwooddisplay",ToolType.PICKAXE, SoulFurnitureColor, 32), 10.0F, true);
-        ObjectRegistry.registerObject("soulwooddresser", new DresserObject("soulwooddresser", SoulFurnitureColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwoodmodulartable", new ModularTableObject("soulwoodmodulartable", SoulFurnitureColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwoodtoilet", new ToiletObject("soulwoodtoilet", SoulFurnitureColor), 10.0F, true);
+        BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", chasmWoodFurnitureMapColor, 10.0F);
+        BedObject.registerBed("soulwoodbed", "soulwoodbed", chasmWoodFurnitureMapColor, 100.0F);
+        BenchObject.registerBench("soulwoodbench", "soulwoodbench", chasmWoodFurnitureMapColor, 10.0F);
+        DinnerTableObject.registerDinnerTable("soulwooddinnertable", "soulwooddinnertable", chasmWoodFurnitureMapColor, 20.0F);
+        ObjectRegistry.registerObject("soulwoodbookshelf", new BookshelfObject("soulwoodbookshelf", chasmWoodFurnitureMapColor), 10.0F, true);
+        ObjectRegistry.registerObject("soulwoodcabinet", new CabinetObject("soulwoodcabinet", chasmWoodFurnitureMapColor), 10.0F, true);
+        ObjectRegistry.registerObject("soulwoodchair", new ChairObject("soulwoodchair", chasmWoodFurnitureMapColor), 5.0F, true);
+        ObjectRegistry.registerObject("soulwoodchest", new StorageBoxInventoryObject("soulwoodchest",40, chasmWoodFurnitureMapColor), 10.0F, true);
+        ObjectRegistry.registerObject("soulwoodclock", new ClockObject("soulwoodclock", chasmWoodFurnitureMapColor), 10.0F, true);
+        ObjectRegistry.registerObject("soulwooddesk", new DeskObject("soulwooddesk", chasmWoodFurnitureMapColor), 10.0F, true);
+        ObjectRegistry.registerObject("soulwooddisplay", new DisplayStandObject("soulwooddisplay",ToolType.PICKAXE, chasmWoodFurnitureMapColor, 32), 10.0F, true);
+        ObjectRegistry.registerObject("soulwooddresser", new DresserObject("soulwooddresser", chasmWoodFurnitureMapColor), 10.0F, true);
+        ObjectRegistry.registerObject("soulwoodmodulartable", new ModularTableObject("soulwoodmodulartable", chasmWoodFurnitureMapColor), 10.0F, true);
+        ObjectRegistry.registerObject("soulwoodtoilet", new ToiletObject("soulwoodtoilet", chasmWoodFurnitureMapColor), 10.0F, true);
 
-        CandelabraObject soulWoodCandelabra = new CandelabraObject("soulwoodcandelabra", SoulFurnitureColor, 60.0F, 0.3F);
+        CandelabraObject soulWoodCandelabra = new CandelabraObject("soulwoodcandelabra", chasmWoodFurnitureMapColor, 60.0F, 0.3F);
         ObjectRegistry.registerObject("soulwoodcandelabra", soulWoodCandelabra, 10.0F, true);
 
-        ObjectRegistry.registerObject("soulcavechest", new StorageBoxInventoryObject("soulcavechest",40, SoulStoneColor), 10.0F, true);
+        ObjectRegistry.registerObject("soulcavechest", new StorageBoxInventoryObject("soulcavechest",40, chasmStoneMapColor), 10.0F, true);
 
-        int soulWoodFenceID = ObjectRegistry.registerObject("soulwoodfence", new FenceObject("soulwoodfence", SoulWoodColor, 12, 10, -24), 2.0F, true);
-        FenceGateObject.registerGatePair(soulWoodFenceID, "soulwoodfencegate", "soulwoodfencegate", SoulWoodColor, 12, 10, 4.0F);
+        int soulWoodFenceID = ObjectRegistry.registerObject("soulwoodfence", new FenceObject("soulwoodfence", chasmWoodMapColor, 12, 10, -24), 2.0F, true);
+        FenceGateObject.registerGatePair(soulWoodFenceID, "soulwoodfencegate", "soulwoodfencegate", chasmWoodMapColor, 12, 10, 4.0F);
 
-        //BIOMES_AND_LEVELS
+        //INCURSION
         BiomeRegistry.registerBiome("soulcavern", new soulchasmbiome(), 0, null);
         IncursionBiomeRegistry.registerBiome("soulchasmincursionbiome", new soulchasmincursionbiome(), 2);
         LevelRegistry.registerLevel("soulchasmincursionlevel", soulchasmincursionlevel.class);
-
 
         //BUFFS
         BuffRegistry.registerBuff("soulstealerbuff", new soulstealerbuff());
@@ -437,12 +439,12 @@ public class SoulChasm {
         ForestBiome.defaultSurfaceCritters.add(80, "firefly");
         PlainsBiome.defaultSurfaceCritters.add(80, "firefly");
         SwampBiome.surfaceCritters.add(100, "firefly");
-        SoulCaveChestRoomSet = new ChestRoomSet("soulcavefloortile", "soulstonepressureplate", WallSet.loadByStringID("soulbrick"), "soulcavechest", "soulstoneflametrap");
+        chasmChestRoomSet = new ChestRoomSet("soulcavefloortile", "soulstonepressureplate", WallSet.loadByStringID("soulbrick"), "soulcavechest", "soulstoneflametrap");
         OneOfTicketLootItems oneOfItems = new OneOfTicketLootItems(new Object[]{50, LootItem.offset("bonearrow", 20, 15), 100, LootItem.between("greaterhealthpotion", 2, 8), 50, LootItem.between("greatermanapotion", 2, 8), 25, LootItem.offset("soultorch", 20, 3), 25, new LootItem("travelscroll")});
         OneOfTicketLootItems oneOfPotions = new OneOfTicketLootItems(new Object[]{50, IncursionCrateLootTable.greaterPotions, 25, IncursionCrateLootTable.potions});
 
         //SHRINE MONUMENT LOOT
-        soulcavemonumentshrineloottable = new LootTable(new LootItemList(
+        chasmShrineLootTable = new LootTable(new LootItemList(
                 new OneOfLootItems(
                         new ChanceLootItem(0.8F,"phantomfeathertrinket"),
                         new ChanceLootItem(0.8F,"soulstealertrinket"),
@@ -453,7 +455,7 @@ public class SoulChasm {
         ));
 
         //CAVE CHEST LOOT
-        soulcavechestloottable = new LootTable(new LootItemList(
+        chasmChestLootTable = new LootTable(new LootItemList(
                 new OneOfLootItems(
                         new LootItem("phantomfeathertrinket"),
                         new LootItem("soulstealertrinket"),
@@ -469,7 +471,7 @@ public class SoulChasm {
         ));
 
         //CAVE RUINS LOOT
-        soulcaveruinsloottable = new LootTable(new LootItemList(
+        chasmRuinLootTable = new LootTable(new LootItemList(
                 LootItem.between("crystalizedsouloreitem", 2, 6),
                 oneOfItems,
                 oneOfPotions,

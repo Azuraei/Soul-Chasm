@@ -36,7 +36,7 @@ public class soulcaveshrinepreset extends Preset {
             }
         }
         this.setObject(point.x, point.y, monument);
-        this.addInventory(SoulChasm.soulcavemonumentshrineloottable, random, point.x, point.y, monument);
+        this.addInventory(SoulChasm.chasmShrineLootTable, random, point.x, point.y, monument);
         this.setObject(point.x+4, point.y, ObjectRegistry.getObjectID("statueobject"), 3);
         this.setObject(point.x-4, point.y, ObjectRegistry.getObjectID("statueobject"), 1);
         this.setObject(point.x, point.y+4, ObjectRegistry.getObjectID("statueobject"), 0);

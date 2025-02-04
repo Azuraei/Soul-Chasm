@@ -24,7 +24,7 @@ import java.awt.*;
 import java.util.Arrays;
 
 import static necesse.level.gameTile.LiquidTile.LAVA_ATTACKER;
-import static soulchasm.SoulChasm.SoulMagmaStone;
+import static soulchasm.SoulChasm.chasmMagmaMapColor;
 
 public class soulcavecracktile extends TerrainSplatterTile {
     private final GameRandom drawRandom;
@@ -32,7 +32,7 @@ public class soulcavecracktile extends TerrainSplatterTile {
 
     public soulcavecracktile() {
         super(false, "soulcavecracktile");
-        this.mapColor = SoulMagmaStone;
+        this.mapColor = chasmMagmaMapColor;
         this.canBeMined = true;
         this.drawRandom = new GameRandom();
         this.tileHealth = 100;

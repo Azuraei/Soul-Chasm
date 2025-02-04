@@ -20,7 +20,7 @@ public class SoulCaveGrass extends TerrainSplatterTile {
 
     public SoulCaveGrass() {
         super(false, "soulcavegrass");
-        this.mapColor = SoulChasm.SoulGrassColor;
+        this.mapColor = SoulChasm.chasmGrassMapColor;
         this.canBeMined = true;
         this.drawRandom = new GameRandom();
         this.isOrganic = true;

@@ -31,7 +31,7 @@ public class meltedsouls extends LiquidTile {
     protected final GameRandom drawRandom;
 
     public meltedsouls() {
-        super(SoulChasm.SoulMagmaStone, "meltedsouls");
+        super(SoulChasm.chasmMagmaMapColor, "meltedsouls");
         this.lightLevel = 100;
         this.lightHue = 220.0F;
         this.lightSat = 0.4F;
@@ -44,7 +44,7 @@ public class meltedsouls extends LiquidTile {
     }
 
     public Color getLiquidColor(Level level, int i, int i1) {
-        return SoulChasm.SoulMagmaStone;
+        return SoulChasm.chasmMagmaMapColor;
     }
 
     public double getPathCost(Level level, int tileX, int tileY, Mob mob) {

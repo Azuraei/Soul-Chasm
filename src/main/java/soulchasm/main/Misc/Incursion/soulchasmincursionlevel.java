@@ -24,8 +24,8 @@ import soulchasm.main.Misc.Presets.soulcavesmallruinspreset;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static soulchasm.SoulChasm.SoulCaveChestRoomSet;
-import static soulchasm.SoulChasm.soulcavechestloottable;
+import static soulchasm.SoulChasm.chasmChestRoomSet;
+import static soulchasm.SoulChasm.chasmChestLootTable;
 
 public class soulchasmincursionlevel extends IncursionLevel {
     public soulchasmincursionlevel(LevelIdentifier identifier, int width, int height, WorldEntity worldEntity) {
@@ -64,7 +64,7 @@ public class soulchasmincursionlevel extends IncursionLevel {
             AtomicInteger chestRoomRotation = new AtomicInteger();
             int chestRoomAmount = cg.random.getIntBetween(10, 15);
             for(int ix = 0; ix < chestRoomAmount; ++ix) {
-                Preset chestRoom = new RandomCaveChestRoom(cg.random, soulcavechestloottable, chestRoomRotation, SoulCaveChestRoomSet);
+                Preset chestRoom = new RandomCaveChestRoom(cg.random, chasmChestLootTable, chestRoomRotation, chasmChestRoomSet);
                 chestRoom.replaceTile(TileRegistry.getTileID("soulcavefloortile"), cg.random.getOneOf(TileRegistry.getTileID("soulcavefloortile"), TileRegistry.getTileID("soulcavebrickfloortile")));
                 presets.findRandomValidPositionAndApply(cg.random, 6, chestRoom, 10, true, true);
             }

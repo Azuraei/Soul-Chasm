@@ -1,4 +1,4 @@
-package soulchasm.main.Objects.OtherObjects;
+package soulchasm.main.Objects.OtherObjects.Plushies;
 
 import soulchasm.main.Misc.Others.plushieobject;
 

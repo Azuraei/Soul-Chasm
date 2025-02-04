@@ -27,7 +27,7 @@ import soulchasm.SoulChasm;
 import java.awt.*;
 import java.util.List;
 
-import static soulchasm.SoulChasm.SoulStoneColorLight;
+import static soulchasm.SoulChasm.chasmStoneLightMapColor;
 
 public class soulmonumentobject extends FurnitureObject {
     public GameTexture texture;
@@ -40,7 +40,7 @@ public class soulmonumentobject extends FurnitureObject {
         this.hoverHitbox = new Rectangle(2, 0, 30, 30);
         this.toolType = ToolType.PICKAXE;
         this.isLightTransparent = true;
-        this.mapColor = SoulStoneColorLight;
+        this.mapColor = chasmStoneLightMapColor;
         this.drawRandom = new GameRandom();
         this.particleDelay = 0;
     }

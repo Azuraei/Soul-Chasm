@@ -17,7 +17,7 @@ import necesse.level.maps.light.GameLight;
 import java.awt.*;
 import java.util.List;
 
-import static soulchasm.SoulChasm.SoulStoneColor;
+import static soulchasm.SoulChasm.chasmStoneMapColor;
 
 public class spikeobject extends GameObject {
     public GameTexture texture;
@@ -28,7 +28,7 @@ public class spikeobject extends GameObject {
         hoverHitbox = new Rectangle(0, -32, 32, 64);
         toolType = ToolType.UNBREAKABLE;
         isLightTransparent = false;
-        mapColor = SoulStoneColor;
+        mapColor = chasmStoneMapColor;
         this.drawRandom = new GameRandom();
     }
 

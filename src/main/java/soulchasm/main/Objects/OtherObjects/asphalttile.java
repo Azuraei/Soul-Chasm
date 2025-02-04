@@ -4,12 +4,13 @@ import necesse.engine.modifiers.ModifierValue;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.level.gameTile.PathTiledTile;
+import soulchasm.SoulChasm;
 
 import java.awt.*;
 
 public class asphalttile extends PathTiledTile {
     public asphalttile() {
-        super("asphalttile", new Color(0x171717));
+        super("asphalttile", SoulChasm.asphaltTileMapColor);
         this.stackSize = 1000;
     }
 

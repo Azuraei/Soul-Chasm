@@ -21,7 +21,7 @@ import necesse.level.maps.light.GameLight;
 import java.awt.*;
 import java.util.List;
 
-import static soulchasm.SoulChasm.SoulCrystalColor;
+import static soulchasm.SoulChasm.chasmCrystalMapColor;
 
 public class soulcrystalbig extends GameObject {
     protected String textureName;
@@ -34,7 +34,7 @@ public class soulcrystalbig extends GameObject {
         super(new Rectangle(7, 7, 22, 18));
         this.textureName = "soulcrystalbig";
         this.glowtextureName = "soulcrystalbig_glow";
-        this.mapColor = SoulCrystalColor;
+        this.mapColor = chasmCrystalMapColor;
         this.toolTier = 5;
         this.displayMapTooltip = true;
         this.drawDamage = false;

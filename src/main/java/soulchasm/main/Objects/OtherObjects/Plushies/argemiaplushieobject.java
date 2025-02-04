@@ -1,4 +1,4 @@
-package soulchasm.main.Objects.OtherObjects;
+package soulchasm.main.Objects.OtherObjects.Plushies;
 
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.sound.SoundManager;

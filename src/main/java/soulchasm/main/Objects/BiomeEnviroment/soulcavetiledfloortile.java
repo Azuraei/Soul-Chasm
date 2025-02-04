@@ -10,14 +10,14 @@ import necesse.level.maps.Level;
 
 import java.awt.*;
 
-import static soulchasm.SoulChasm.SoulStoneColorLight;
+import static soulchasm.SoulChasm.chasmStoneLightMapColor;
 
 public class soulcavetiledfloortile extends TerrainSplatterTile {
     private final GameRandom drawRandom;
 
     public soulcavetiledfloortile() {
         super(false, "soulcavetiledfloortile");
-        this.mapColor = SoulStoneColorLight;
+        this.mapColor = chasmStoneLightMapColor;
         this.canBeMined = true;
         this.drawRandom = new GameRandom();
     }
