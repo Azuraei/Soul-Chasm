@@ -1,16 +1,11 @@
-package soulchasm.main.Objects.Plushies;
+package soulchasm.main.Objects.Plushies.old;
 
 import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.localization.Localization;
-import necesse.engine.localization.message.StaticMessage;
-import necesse.engine.sound.SoundEffect;
-import necesse.engine.sound.SoundManager;
-import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.objectEntity.ObjectEntity;
-import necesse.entity.objectEntity.PortalObjectEntity;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.LevelSortedDrawable;
@@ -23,7 +18,6 @@ import necesse.inventory.item.toolItem.ToolType;
 import necesse.level.gameObject.GameObject;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.SoulChasm;
 
 import java.awt.*;
 import java.util.List;

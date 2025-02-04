@@ -13,6 +13,7 @@ import necesse.inventory.item.armorItem.ArmorItem;
 import necesse.inventory.item.armorItem.HelmetArmorItem;
 import necesse.inventory.item.matItem.EssenceMatItem;
 import necesse.inventory.item.matItem.MatItem;
+import necesse.inventory.item.placeableItem.MobSpawnItem;
 import necesse.inventory.item.placeableItem.StonePlaceableItem;
 import necesse.inventory.item.placeableItem.objectItem.ObjectItem;
 import necesse.inventory.item.placeableItem.tileItem.GrassSeedItem;
@@ -85,9 +86,8 @@ import soulchasm.main.Mobs.Passive.Wisp;
 import soulchasm.main.Mobs.Summon.CarMob;
 import soulchasm.main.Mobs.Summon.SmallSoulSummon;
 import soulchasm.main.Mobs.Summon.SoulStatueSummon;
-import soulchasm.main.Objects.Plushies.argemiaplushieobject;
-import soulchasm.main.Objects.Plushies.fairplushieobject;
-import soulchasm.main.Objects.Plushies.v1plushieobject;
+import soulchasm.main.Objects.Plushies.PlushieItem;
+import soulchasm.main.Objects.Plushies.V1Plushie;
 import soulchasm.main.Projectiles.BossProjectiles.SoulFlamethrowerProjectile;
 import soulchasm.main.Projectiles.BossProjectiles.SpinSpawnSpikeProjectile;
 import soulchasm.main.Projectiles.SealProjectiles.*;
@@ -203,9 +203,9 @@ public class SoulChasm {
         }
         ObjectRegistry.registerObject("soultikitorchobject", soulTikiTorch, 2.0F, true);
 
-        ObjectRegistry.registerObject("argemiaplushieobject", new argemiaplushieobject(), 10.0F, true);
-        ObjectRegistry.registerObject("fairplushieobject", new fairplushieobject(), 10.0F, true);
-        ObjectRegistry.registerObject("v1plushieobject", new v1plushieobject(), 10.0F, true);
+        //ObjectRegistry.registerObject("argemiaplushieobject", new argemiaplushieobject(), 10.0F, true);
+        //ObjectRegistry.registerObject("fairplushieobject", new fairplushieobject(), 10.0F, true);
+        //ObjectRegistry.registerObject("v1plushieobject", new v1plushieobject(), 10.0F, true);
 
         //Furniture
         BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", chasmWoodFurnitureMapColor, 10.0F);
@@ -383,8 +383,14 @@ public class SoulChasm {
 
         //INCURSION_MODS
         UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new HauntedIncursionModifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Medium));
+
+        //PLUSHIE
+        MobRegistry.registerMob("v1plushie", V1Plushie.class, false);
+        ItemRegistry.registerItem("v1plushieitem", new PlushieItem("v1plushie"), 50.0F, true);
     }
     public void initResources(){
+        V1Plushie.texture = GameTexture.fromFile("mobs/v1plushie");
+
         LostSoul.texture = GameTexture.fromFile("mobs/lostsoul");
         CarMob.texture =  GameTexture.fromFile("mobs/car");
         CarMob.texture_top = GameTexture.fromFile("mobs/car_top_mask");

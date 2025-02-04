@@ -1,13 +1,8 @@
-package soulchasm.main.Objects.Plushies;
+package soulchasm.main.Objects.Plushies.old;
 
 import necesse.engine.util.GameRandom;
-import necesse.entity.mobs.Mob;
-import necesse.entity.mobs.PlayerMob;
 import necesse.entity.objectEntity.ObjectEntity;
-import necesse.entity.objectEntity.interfaces.OEUsers;
 import necesse.level.maps.Level;
-
-import java.awt.*;
 
 public class PlushieObjectEntity extends ObjectEntity {
     public static double squishDuration = 1000;
@@ -36,6 +31,7 @@ public class PlushieObjectEntity extends ObjectEntity {
         if (isClient()){
             System.out.println("sex");
         }
+
         time = this.getWorldTime();
         duration = time + squishDuration;
     }
