@@ -53,7 +53,7 @@ public class soulcrystalbig extends GameObject {
 
     public int getRandomYOffset(int tileX, int tileY) {
         synchronized(this.drawRandom) {
-            return (int)((this.drawRandom.seeded(this.getTileSeed(tileX, tileY, 1)).nextFloat() * 2.0F - 1.0F) * 8.0F) - 4;
+            return (int)((this.drawRandom.seeded(getTileSeed(tileX, tileY, 1)).nextFloat() * 2.0F - 1.0F) * 8.0F) - 4;
         }
     }
 
@@ -70,7 +70,7 @@ public class soulcrystalbig extends GameObject {
         final int randomYOffset = this.getRandomYOffset(tileX, tileY);
         int sprite;
         synchronized(this.drawRandom) {
-            sprite = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).nextInt(this.texture.getWidth() / 64);
+            sprite = this.drawRandom.seeded(getTileSeed(tileX, tileY)).nextInt(this.texture.getWidth() / 64);
         }
 
         drawY += randomYOffset;
@@ -95,7 +95,7 @@ public class soulcrystalbig extends GameObject {
         final int randomYOffset = this.getRandomYOffset(tileX, tileY);
         int sprite;
         synchronized(this.drawRandom) {
-            sprite = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).nextInt(this.texture.getWidth() / 64);
+            sprite = this.drawRandom.seeded(getTileSeed(tileX, tileY)).nextInt(this.texture.getWidth() / 64);
         }
         drawY += randomYOffset;
         texture.initDraw().sprite(sprite, 0, 64, this.texture.getHeight()).alpha(alpha).draw(drawX, drawY - this.texture.getHeight() + 32);
@@ -108,7 +108,7 @@ public class soulcrystalbig extends GameObject {
             int posY = tileY * 32 + GameRandom.globalRandom.nextInt(20);
             boolean mirror = GameRandom.globalRandom.nextBoolean();
             level.entityManager.addParticle((float)posX, (float)(posY + 30), Particle.GType.COSMETIC).sprite(GameResources.magicSparkParticles.sprite(GameRandom.globalRandom.nextInt(4), 0, 22, 22)).color(new Color(0x76D6FF)).fadesAlpha(0.4F, 0.4F).size((options, lifeTime, timeAlive, lifePercent) -> {
-            }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * (Float)GameRandom.globalRandom.getOneOf(new Float[]{1.0F, -1.0F}), GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * (Float)GameRandom.globalRandom.getOneOf(new Float[]{1.0F, -1.0F})).sizeFades(15, 25).modify((options, lifeTime, timeAlive, lifePercent) -> options.mirror(mirror, false)).lifeTime(3000);
+            }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * GameRandom.globalRandom.getOneOf(new Float[]{1.0F, -1.0F}), GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * (Float)GameRandom.globalRandom.getOneOf(new Float[]{1.0F, -1.0F})).sizeFades(15, 25).modify((options, lifeTime, timeAlive, lifePercent) -> options.mirror(mirror, false)).lifeTime(3000);
         }
     }
 
