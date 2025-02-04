@@ -47,7 +47,10 @@ public class soulchasmincursionbiome extends IncursionBiome {
     }
 
     public LootTable getBossDrop(IncursionData incursionData) {
-        return new LootTable(LootItem.between("soulessence", 20, 25), new LootItemInterface() {
+        return new LootTable(LootItem.between("soulessence", 20, 25),
+                LootItem.between("souldragonscales", 15, 20),
+                new ChanceLootItem(0.08F, "carkeys"),
+                new LootItemInterface() {
             public void addPossibleLoot(LootList list, Object... extra) {
                 InventoryItem gatewayTablet = new InventoryItem("gatewaytablet");
                 gatewayTablet.getGndData().setInt("displayTier", soulchasmincursionbiome.this.increaseTabletTierByX(incursionData.getTabletTier(), 1));

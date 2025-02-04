@@ -14,6 +14,7 @@ import necesse.inventory.item.armorItem.ArmorItem;
 import necesse.inventory.item.armorItem.HelmetArmorItem;
 import necesse.inventory.item.matItem.EssenceMatItem;
 import necesse.inventory.item.matItem.MatItem;
+import necesse.inventory.item.placeableItem.StonePlaceableItem;
 import necesse.inventory.item.placeableItem.objectItem.ObjectItem;
 import necesse.inventory.item.placeableItem.tileItem.GrassSeedItem;
 import necesse.inventory.item.toolItem.ToolType;
@@ -55,7 +56,6 @@ import soulchasm.main.Buffs.TrinketsBuffs.phantomfeatherbuff;
 import soulchasm.main.Buffs.TrinketsBuffs.soulstealerbuff;
 import soulchasm.main.Items.Armor.*;
 import soulchasm.main.Items.Others.carkeys;
-import soulchasm.main.Items.Others.soulsigil;
 import soulchasm.main.Items.Tools.*;
 import soulchasm.main.Items.Trinkets.SealVariantsItems.*;
 import soulchasm.main.Items.Trinkets.phantomdasherstrinket;
@@ -113,8 +113,6 @@ public class SoulChasm {
     public static Color asphaltTileMapColor = new Color(23, 23, 23);
 
     public static ChestRoomSet chasmChestRoomSet;
-    public static LootTable chasmChestLootTable;
-    public static LootTable chasmRuinLootTable;
     public static LootTable chasmShrineLootTable;
     public static GameTexture[] car_mask;
     public static GameTexture eruption_shadow;
@@ -270,24 +268,26 @@ public class SoulChasm {
         BuffRegistry.registerBuff("magicsoulsealbuff", new magicsoulsealbuff());
         BuffRegistry.registerBuff("rangesoulsealbuff", new rangesoulsealbuff());
         BuffRegistry.registerBuff("balancedsealbuff", new balancedsealbuff());
+
         //ITEMS
-        ItemRegistry.registerItem("soulwoodlogitem", new MatItem(250), 1, true);
+        ItemRegistry.registerItem("soulessence", new EssenceMatItem(250, Item.Rarity.EPIC, 2), 30.0F, true);
         ItemRegistry.registerItem("soulcoreitem", new MatItem(250, Item.Rarity.UNCOMMON), 15, true);
         ItemRegistry.registerItem("souldragonscales", new MatItem(250, Item.Rarity.EPIC), 150, true);
-        ItemRegistry.registerItem("soulcaverockitem", new MatItem(500, Item.Rarity.UNCOMMON), 1, true);
-        ItemRegistry.registerItem("crystalizedsouloreitem", new MatItem(250, Item.Rarity.UNCOMMON), 15, true);
-        ItemRegistry.registerItem("soulmetalbar", new MatItem(100, Item.Rarity.UNCOMMON), 80, true);
 
-        ItemRegistry.registerItem("soulgrassseeditem", new GrassSeedItem("soulcavegrass"), 1, true);
-        ItemRegistry.registerItem("wispitem", new MatItem(250, Item.Rarity.UNCOMMON, "glowingbugs"), 5, true);
-        ItemRegistry.registerItem("fireflyitem", new MatItem(250, Item.Rarity.UNCOMMON, "glowingbugs"), 5, true);
-        ItemRegistry.registerItem("fireflyjar", new ObjectItem(getObject("fireflyjarobject")), 10, true);
-        ItemRegistry.registerItem("wispjar", new ObjectItem(getObject("wispjarobject")), 10, true);
+        ItemRegistry.registerItem("soulcaverockitem", new StonePlaceableItem(5000), 0.1F, true);
+        ItemRegistry.registerItem("crystalizedsouloreitem", new MatItem(500, Item.Rarity.UNCOMMON), 15, true);
+        ItemRegistry.registerItem("soulmetalbar", new MatItem(250, Item.Rarity.UNCOMMON), 80, true);
+        ItemRegistry.registerItem("soulwoodlogitem", (new MatItem(500, "anylog")).setItemCategory("materials", "logs"), 2.0F, true);
 
-        ItemRegistry.registerItem("soulsigil", new soulsigil(), 200, false);
-        ItemRegistry.registerItem("soulessence", new EssenceMatItem(250, Item.Rarity.EPIC, 2), 25.0F, true);
-        //TrinketsAndOtherStuff
+        ItemRegistry.registerItem("soulgrassseeditem", new GrassSeedItem("soulcavegrass"), 2.0F, true);
+
+        ItemRegistry.registerItem("wispitem", new MatItem(500, Item.Rarity.UNCOMMON, "glowingbugs"), 5.0F, true);
+        ItemRegistry.registerItem("fireflyitem", new MatItem(500, Item.Rarity.UNCOMMON, "glowingbugs"), 5.0F, true);
+        ItemRegistry.registerItem("fireflyjar", new ObjectItem(getObject("fireflyjarobject")), 20.0F, true);
+        ItemRegistry.registerItem("wispjar", new ObjectItem(getObject("wispjarobject")), 20.0F, true);
+
         ItemRegistry.registerItem("carkeys", new carkeys(), 2000, true);
+        //Trinkets
         ItemRegistry.registerItem("phantomfeathertrinket", new phantomfeathertrinket(), 500, true);
         ItemRegistry.registerItem("soulstealertrinket", new soulstealertrinket(), 500, true);
         ItemRegistry.registerItem("pickaxeheadtrinket", new pickaxeheadtrinket(), 500, true);
@@ -302,22 +302,23 @@ public class SoulChasm {
         ItemRegistry.registerItem("bookofsouls", new bookofsouls(), 500, true);
         ItemRegistry.registerItem("soulstatue", new soulstatue(), 500, true);
         //Armor
-        ItemRegistry.registerItem("soularmorboots", new soularmorboots(), 750, true);
-        ItemRegistry.registerItem("soularmorchestplate", new soularmorchestplate(), 750, true);
-        ItemRegistry.registerItem("soularmorcrown", new soularmorcrown(), 750, true);
-        ItemRegistry.registerItem("soularmorhelmet", new soularmorhelmet(), 750, true);
-        ItemRegistry.registerItem("soularmorhood", new soularmorhood(), 750, true);
-        ItemRegistry.registerItem("soularmorhat", new soularmorhat(),750, true);
-        //SealTrinketsItems
+        ItemRegistry.registerItem("soularmorboots", new soularmorboots(), 200.0F, true);
+        ItemRegistry.registerItem("soularmorchestplate", new soularmorchestplate(), 200.0F, true);
+        ItemRegistry.registerItem("soularmorcrown", new soularmorcrown(), 200.0F, true);
+        ItemRegistry.registerItem("soularmorhelmet", new soularmorhelmet(), 200.0F, true);
+        ItemRegistry.registerItem("soularmorhood", new soularmorhood(), 200.0F, true);
+        ItemRegistry.registerItem("soularmorhat", new soularmorhat(),200.0F, true);
+        //Seal
         ItemRegistry.registerItem("meleesoulsealtrinket", new meleesoulsealtrinket(), 200, true);
         ItemRegistry.registerItem("summonsoulsealtrinket", new summonsoulsealtrinket(), 200, true);
         ItemRegistry.registerItem("magicsoulsealtrinket", new magicsoulsealtrinket(), 200, true);
         ItemRegistry.registerItem("rangesoulsealtrinket", new rangesoulsealtrinket(), 200, true);
-        ItemRegistry.registerItem("soulsealtrinket", new soulsealtrinket(), 1000, true);
-        ItemRegistry.registerItem("balancedsealtrinket", new balancedsealtrinket(), 2000, true);
-        //Other
-        ItemRegistry.registerItem("lunartearflowerhead", new HelmetArmorItem(0, (DamageType)null, 0, Item.Rarity.RARE, "lunartearflowerhead").hairDrawMode(ArmorItem.HairDrawMode.OVER_HAIR), 50.0F, true);
-        ItemRegistry.registerItem("tobeblindfold", new HelmetArmorItem(0, (DamageType)null, 0, Item.Rarity.EPIC, "tobeblindfold").hairDrawMode(ArmorItem.HairDrawMode.UNDER_HAIR), 250.0F, true);
+        ItemRegistry.registerItem("soulsealtrinket", new soulsealtrinket(), 750, true);
+        ItemRegistry.registerItem("balancedsealtrinket", new balancedsealtrinket(), 1250, true);
+        //Vanity
+        ItemRegistry.registerItem("lunartearflowerhead", new HelmetArmorItem(0, null, 0, Item.Rarity.RARE, "lunartearflowerhead").hairDrawMode(ArmorItem.HairDrawMode.OVER_HAIR), 50.0F, true);
+        ItemRegistry.registerItem("tobeblindfold", new HelmetArmorItem(0, null, 0, Item.Rarity.EPIC, "tobeblindfold").hairDrawMode(ArmorItem.HairDrawMode.UNDER_HAIR), 250.0F, true);
+
         //MOBS
         MobRegistry.registerMob("lostsoul", lostsoul.class, true);
         MobRegistry.registerMob("carmob", carmob.class, false);
@@ -333,6 +334,7 @@ public class SoulChasm {
         MobRegistry.registerMob("sphereeffectmob", sphereeffectmob.class, false);
         MobRegistry.registerMob("meleeghost", meleeghost.class, false);
         MobRegistry.registerMob("soulstatuesummon", soulstatuesummon.class, false);
+
         //PROJECTILES
         ProjectileRegistry.registerProjectile("soulwaveprojectile", soulwaveprojectile.class, "soulwaveprojectile", null);
         ProjectileRegistry.registerProjectile("soularrowprojectile", soularrowprojectile.class, "soularrowprojectile", null);
@@ -366,6 +368,7 @@ public class SoulChasm {
         UniqueIncursionRewardsRegistry.registerIncursionBodyArmors("soularmorbody", new UniqueIncursionReward(armorReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
         UniqueIncursionRewardsRegistry.registerIncursionFeetArmors("soularmorfeet", new UniqueIncursionReward(bootsReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
         UniqueIncursionRewardsRegistry.registerGreatswordWeapon("soulscythereward", new UniqueIncursionReward(scytheReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
+
         //LEVEL_EVENTS
         LevelEventRegistry.registerEvent("dragongrounderuptionevent", dragongrounderuptionevent.class);
         LevelEventRegistry.registerEvent("dragonexplosionevent", dragonexplosionevent.class);
@@ -374,6 +377,7 @@ public class SoulChasm {
         LevelEventRegistry.registerEvent("idolshieldvisualevent", idolshieldvisualevent.class);
         LevelEventRegistry.registerEvent("meleeghostspawnevent", meleeghostspawnevent.class);
         LevelEventRegistry.registerEvent("hauntedmodifierlevelevent", hauntedmodifierlevelevent.class);
+
         //INCURSION_MODS
         UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new hauntedincursionmodifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Medium));
     }
@@ -439,11 +443,8 @@ public class SoulChasm {
         ForestBiome.defaultSurfaceCritters.add(80, "firefly");
         PlainsBiome.defaultSurfaceCritters.add(80, "firefly");
         SwampBiome.surfaceCritters.add(100, "firefly");
-        chasmChestRoomSet = new ChestRoomSet("soulcavefloortile", "soulstonepressureplate", WallSet.loadByStringID("soulbrick"), "soulcavechest", "soulstoneflametrap");
-        OneOfTicketLootItems oneOfItems = new OneOfTicketLootItems(new Object[]{50, LootItem.offset("bonearrow", 20, 15), 100, LootItem.between("greaterhealthpotion", 2, 8), 50, LootItem.between("greatermanapotion", 2, 8), 25, LootItem.offset("soultorch", 20, 3), 25, new LootItem("travelscroll")});
-        OneOfTicketLootItems oneOfPotions = new OneOfTicketLootItems(new Object[]{50, IncursionCrateLootTable.greaterPotions, 25, IncursionCrateLootTable.potions});
 
-        //SHRINE MONUMENT LOOT
+        chasmChestRoomSet = new ChestRoomSet("soulcavefloortile", "soulstonepressureplate", WallSet.loadByStringID("soulbrick"), "soulcavechest", "soulstoneflametrap");
         chasmShrineLootTable = new LootTable(new LootItemList(
                 new OneOfLootItems(
                         new ChanceLootItem(0.8F,"phantomfeathertrinket"),
@@ -453,40 +454,6 @@ public class SoulChasm {
                         new ChanceLootItem(0.05F, "carkeys")
                 )
         ));
-
-        //CAVE CHEST LOOT
-        chasmChestLootTable = new LootTable(new LootItemList(
-                new OneOfLootItems(
-                        new LootItem("phantomfeathertrinket"),
-                        new LootItem("soulstealertrinket"),
-                        new LootItem("pickaxeheadtrinket")
-                ),
-                LootItem.between("crystalizedsouloreitem", 8, 22),
-                oneOfItems,
-                oneOfPotions,
-                oneOfPotions,
-                oneOfPotions,
-                LootItem.offset("coin", 400, 100),
-                new ChanceLootItem(0.05F, "carkeys")
-        ));
-
-        //CAVE RUINS LOOT
-        chasmRuinLootTable = new LootTable(new LootItemList(
-                LootItem.between("crystalizedsouloreitem", 2, 6),
-                oneOfItems,
-                oneOfPotions,
-                oneOfPotions,
-                LootItem.offset("coin", 40, 10)
-        ));
-
-        //DRAGON_LOOT
-        LootItemList dragon_loot_list = new LootItemList(
-                LootItem.between("soulcoreitem", 10, 20),
-                LootItem.between("souldragonscales", 15, 20),
-                new ChanceLootItem(0.05F, "soulscythe"),
-                new ChanceLootItem(0.08F, "carkeys")
-        );
-        souldragonhead.lootTable = new LootTable(dragon_loot_list);
 
         //---CRAFTING---//
         Recipes.registerModRecipe(new Recipe(

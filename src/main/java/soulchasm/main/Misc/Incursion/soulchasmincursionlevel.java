@@ -25,7 +25,6 @@ import soulchasm.main.Misc.Presets.soulcavesmallruinspreset;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static soulchasm.SoulChasm.chasmChestRoomSet;
-import static soulchasm.SoulChasm.chasmChestLootTable;
 
 public class soulchasmincursionlevel extends IncursionLevel {
     public soulchasmincursionlevel(LevelIdentifier identifier, int width, int height, WorldEntity worldEntity) {
@@ -51,15 +50,11 @@ public class soulchasmincursionlevel extends IncursionLevel {
             GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.04F, 2, 7.0F, 25.0F, 3.0F, 12.0F, TileRegistry.getTileID("meltedsouls"), 1.0F, true);
             cg.generateTileVeins(0.1F, 6, 12, TileRegistry.getTileID("soulcavecracktile"), ObjectRegistry.getObjectID("air"));
             this.liquidManager.calculateShores();
+            /*
             int smallRuinAmount = cg.random.getIntBetween(8, 15);
             for(int ix = 0; ix < smallRuinAmount; ++ix) {
                 Preset smallRuin = new soulcavesmallruinspreset(8,cg.random);
                 presets.findRandomValidPositionAndApply(cg.random, 6, smallRuin, 10, true, true);
-            }
-            int shrineAmount = cg.random.getIntBetween(5, 10);
-            for(int ix = 0; ix < shrineAmount; ++ix) {
-                Preset shrine = new soulcaveshrinepreset(10,cg.random);
-                presets.findRandomValidPositionAndApply(cg.random, 6, shrine, 10, true, true);
             }
             AtomicInteger chestRoomRotation = new AtomicInteger();
             int chestRoomAmount = cg.random.getIntBetween(10, 15);
@@ -67,6 +62,12 @@ public class soulchasmincursionlevel extends IncursionLevel {
                 Preset chestRoom = new RandomCaveChestRoom(cg.random, chasmChestLootTable, chestRoomRotation, chasmChestRoomSet);
                 chestRoom.replaceTile(TileRegistry.getTileID("soulcavefloortile"), cg.random.getOneOf(TileRegistry.getTileID("soulcavefloortile"), TileRegistry.getTileID("soulcavebrickfloortile")));
                 presets.findRandomValidPositionAndApply(cg.random, 6, chestRoom, 10, true, true);
+            }
+             */
+            int shrineAmount = cg.random.getIntBetween(5, 10);
+            for(int ix = 0; ix < shrineAmount; ++ix) {
+                Preset shrine = new soulcaveshrinepreset(10,cg.random);
+                presets.findRandomValidPositionAndApply(cg.random, 6, shrine, 10, true, true);
             }
             soulchasmincursionbiome.generateEntrance(this, cg.random, 1, cg.rockTile, "soulcavebrickfloortile", "soulcavefloortile", "soullantern");
             Preset arena = new soulcavearenapreset(55, new GameRandom(this.getSeed()));
