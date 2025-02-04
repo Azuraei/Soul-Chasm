@@ -155,8 +155,8 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soulcaverockssmall", new SingleRockSmall(chasmrock, "soulcaverockssmall", chasmStoneMapColor), 0.0F, false);
 
         ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject(chasmrock, "oremask", "crystalizedsoulore", chasmCrystalMapColor, "crystalizedsouloreitem", 1, 2, 1), -1.0F, true);
-        ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject(chasmrock, "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, 1), -1.0F, true);
-        ObjectRegistry.registerObject("upgradeshardsoulcaverock", new RockOreObject(chasmrock, "oremask", "upgradeshardore", new Color(0, 27, 107), "upgradeshard", 1, 1, 1), -1.0F, true);
+        ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject(chasmrock, "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, 1, false), -1.0F, true);
+        ObjectRegistry.registerObject("upgradeshardsoulcaverock", new RockOreObject(chasmrock, "oremask", "upgradeshardore", new Color(0, 27, 107), "upgradeshard", 1, 1, 1, false), -1.0F, true);
 
         ObjectRegistry.registerObject("soulcavedecorations", new ChasmDecorationObject(chasmrock, "soulcavedecorations", chasmStoneMapColor), 0.0F, false);
 

@@ -5,9 +5,12 @@ import necesse.engine.localization.Localization;
 import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.sound.SoundManager;
+import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
+import necesse.engine.util.GameUtils;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.objectEntity.ObjectEntity;
+import necesse.entity.objectEntity.PortalObjectEntity;
 import necesse.gfx.camera.GameCamera;
 import necesse.gfx.drawOptions.texture.TextureDrawOptions;
 import necesse.gfx.drawables.LevelSortedDrawable;
@@ -29,7 +32,6 @@ public class PlushieObject extends GameObject {
     public GameTexture texture;
     public final GameRandom drawRandom;
     public final String textureName;
-    public String[] texts = {};
 
     public PlushieObject(String textureName, Color mapColor) {
         super(new Rectangle(11, 11, 10, 10));
@@ -63,22 +65,24 @@ public class PlushieObject extends GameObject {
         return true;
     }
     public void interact(Level level, int x, int y, PlayerMob player) {
-        if(level.isClient()){
-            playSqueak(x * 32 + 16, y * 32 + 16);
-        } else {
-            spawnFunniText(player, x * 32 + 16, y * 32 + 16);
+        if (level.isServer() && player.isServerClient()) {
+            ObjectEntity objectEntity = level.entityManager.getObjectEntity(x, y);
+            if (objectEntity instanceof PlushieObjectEntity) {
+                ((PlushieObjectEntity)objectEntity).use();
+            }
         }
+        super.interact(level, x, y, player);
     }
 
-    public void playSqueak(int x, int y){
-        float pitch = GameRandom.globalRandom.getFloatBetween(0.8F, 1.6F);
-        SoundManager.playSound(SoulChasm.plushie_squeak, SoundEffect.effect(x, y).volume(0.4F).pitch(pitch));
-    }
-
-    public void spawnFunniText(PlayerMob player, int x, int y){
-        if (texts.length>0){
-            String message = GameRandom.globalRandom.getOneOf(texts);
-            player.getServerClient().sendUniqueFloatText(x, y, new StaticMessage(message), null, 3);
+    public float getSquish(Level level, int x, int y){
+        ObjectEntity objectEntity = level.entityManager.getObjectEntity(x, y);
+        if (objectEntity instanceof PlushieObjectEntity) {
+            PlushieObjectEntity object = (PlushieObjectEntity) objectEntity;
+            float perc = GameUtils.getAnimFloat((long) (object.duration - object.time), (int) PlushieObjectEntity.squishDuration);
+            //(float)(Math.sin((double)perc * Math.PI * (double)2.0F) + (double)1.0F) / 2.0F
+            return object.test;
+        } else {
+            return 1;
         }
     }
 
@@ -92,7 +96,7 @@ public class PlushieObject extends GameObject {
         }
         int drawX = camera.getTileDrawX(tileX) + drawRandomX;
         int drawY = camera.getTileDrawY(tileY) + drawRandomY;
-        TextureDrawOptions options = texture.initDraw().sprite(0, 0, 31, 32).light(light).pos(drawX, drawY - 12);
+        TextureDrawOptions options = texture.initDraw().sprite(0, 0, 31, 32).size(31, (int) (32 * getSquish(level, tileX, tileY))).light(light).pos(drawX, drawY - 12);
         list.add(new LevelSortedDrawable(this, tileX, tileY) {
             public int getSortY() {
                 return 16;
@@ -115,6 +119,6 @@ public class PlushieObject extends GameObject {
     }
 
     public ObjectEntity getNewObjectEntity(Level level, int x, int y) {
-        return null;
+        return new PlushieObjectEntity(level, x, y);
     }
 }
