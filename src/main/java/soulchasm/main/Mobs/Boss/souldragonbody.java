@@ -42,11 +42,6 @@ public class souldragonbody extends BossWormMobBody<souldragonhead, souldragonbo
         this.selectBox = new Rectangle(-32, -80, 64, 84);
     }
 
-    public GameMessage getLocalization() {
-        souldragonhead head = this.master.get(this.getLevel());
-        return head != null ? head.getLocalization() : new StaticMessage("flyingspiritsbody");
-    }
-
     public GameDamage getCollisionDamage(Mob target) {
         return souldragonhead.souldragonCollisionDamage;
     }

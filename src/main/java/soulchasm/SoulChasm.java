@@ -330,8 +330,8 @@ public class SoulChasm {
         MobRegistry.registerMob("soulmage", soulmage.class, true);
         MobRegistry.registerMob("smallsoulsummon", smallsoulsummon.class, false);
         MobRegistry.registerMob("soulcavecaveling", soulcavecaveling.class, true);
-        MobRegistry.registerMob("souldragonhead", souldragonhead.class, true);
-        MobRegistry.registerMob("souldragonbody", souldragonbody.class, false);
+        MobRegistry.registerMob("souldragonhead", souldragonhead.class, true, true);
+        MobRegistry.registerMob("souldragonbody", souldragonbody.class, false, true);
         MobRegistry.registerMob("sphereeffectmob", sphereeffectmob.class, false);
         MobRegistry.registerMob("meleeghost", meleeghost.class, false);
         MobRegistry.registerMob("soulstatuesummon", soulstatuesummon.class, false);

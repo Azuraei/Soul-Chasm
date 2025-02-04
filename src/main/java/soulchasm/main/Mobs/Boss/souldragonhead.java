@@ -6,6 +6,7 @@ import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.modifiers.ModifierValue;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;
+import necesse.engine.network.client.Client;
 import necesse.engine.network.packet.PacketChatMessage;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.registries.MusicRegistry;
@@ -60,7 +61,7 @@ import java.util.stream.Stream;
 
 public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhead> {
     public static RotationLootItem uniqueDrops = RotationLootItem.privateLootRotation(new LootItem("meleesoulsealtrinket"), new LootItem("rangesoulsealtrinket"), new LootItem("magicsoulsealtrinket"), new LootItem("summonsoulsealtrinket"));
-    public static LootTable lootTable;
+    public static LootTable lootTable = new LootTable();
     public static LootTable privateLootTable;
     public static float lengthPerBodyPart = 40.0F;
     public static float waveLength = 800.0F;
@@ -264,16 +265,16 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
         return this.isVisible();
     }
 
-    public void drawOnMap(TickManager tickManager, int x, int y) {
-        super.drawOnMap(tickManager, x, y);
-        int drawX = x - 16;
-        int drawY = y - 16;
+    public void drawOnMap(TickManager tickManager, Client client, int x, int y, double tileScale, Rectangle drawBounds, boolean isMinimap) {
+        super.drawOnMap(tickManager, client, x, y, tileScale, drawBounds, isMinimap);
+        int drawX = x - 32;
+        int drawY = y - 32;
         float headAngle = GameMath.fixAngle(GameMath.getAngle(new Point2D.Float(this.dx, this.dy)));
-        texture.initDraw().sprite(0, 6, 64).rotate(headAngle + 90.0F, 16, 16).size(32, 32).draw(drawX, drawY);
+        texture.initDraw().sprite(0, 0, 64).rotate(headAngle + 90.0F, 32, 32).size(48, 48).draw(drawX, drawY);
     }
 
-    public Rectangle drawOnMapBox() {
-        return new Rectangle(-12, -12, 24, 24);
+    public Rectangle drawOnMapBox(double tileScale, boolean isMinimap) {
+        return new Rectangle(-15, -15, 30, 30);
     }
 
     public GameTooltips getMapTooltips() {
@@ -281,7 +282,7 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
     }
 
     public Stream<ModifierValue<?>> getDefaultModifiers() {
-        return Stream.of((new ModifierValue(BuffModifiers.SLOW, 0.0F)).max(0.0F));
+        return Stream.of((new ModifierValue(BuffModifiers.SLOW, 0.0F)).max(0.2F));
     }
 
     protected void onDeath(Attacker attacker, HashSet<Attacker> attackers) {
@@ -303,10 +304,10 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
 
     public static class SoulDragonHeadAI<T extends souldragonhead> extends SelectorAINode<T> {
         public SoulDragonHeadAI() {
-            SequenceAINode<T> chaserSequence = new SequenceAINode();
+            SequenceAINode<T> chaserSequence = new SequenceAINode<>();
             this.addChild(chaserSequence);
-            chaserSequence.addChild(new RemoveOnNoTargetNode(100));
-            final TargetFinderAINode targetFinder;
+            chaserSequence.addChild(new RemoveOnNoTargetNode<>(100));
+            final TargetFinderAINode<T> targetFinder;
             chaserSequence.addChild(targetFinder = new TargetFinderAINode<T>(3200) {
                 public GameAreaStream<? extends Mob> streamPossibleTargets(T mob, Point base, TargetFinderDistance<T> distance) {
                     return TargetFinderAINode.streamPlayers(mob, base, distance);
@@ -315,7 +316,6 @@ public class souldragonhead extends BossWormMobHead<souldragonbody, souldragonhe
             targetFinder.moveToAttacker = false;
             ChargingCirclingChaserAINode chaserAI;
             chaserSequence.addChild(chaserAI = new ChargingCirclingChaserAINode(300, 40));
-
             chaserSequence.addChild(new souldragonhead.IdleTime(4000, chaserAI));
             chaserSequence.addChild(new souldragonhead.FragmentAttackRotation<>());
             chaserSequence.addChild(new souldragonhead.EruptionAttackRotation<>(chaserAI,4));
