@@ -42,7 +42,7 @@ public class soulcavesmallruinspreset extends Preset {
                 if (distancePerc <= 0.6F && this.getObject(x, y) != -1 && random.getChance(0.2F)){
                     String[] chests = new String[]{"soulcavechest", "oldbarrel", "chasmcrates"};
                     this.setObject(x, y, ObjectRegistry.getObjectID(chests[random.nextInt(chests.length)]), random.nextInt(4));
-                    this.addInventory(SoulChasm.chasmRuinLootTable, random, x, y);
+                    //this.addInventory(SoulChasm.chasmRuinLootTable, random, x, y);
                 }
             }
 

@@ -10,7 +10,7 @@ import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.item.toolItem.swordToolItem.greatswordToolItem.GreatswordToolItem;
 import necesse.level.maps.Level;
-import soulchasm.main.Misc.Others.soulscytheattackhandler;
+import soulchasm.main.Misc.soulscytheattackhandler;
 
 import java.awt.*;
 

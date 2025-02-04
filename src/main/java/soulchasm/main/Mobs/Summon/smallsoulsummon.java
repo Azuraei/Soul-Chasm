@@ -20,7 +20,7 @@ import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.Misc.Others.playerflyingfollowershooterAI;
+import soulchasm.main.Misc.playerflyingfollowershooterAI;
 import soulchasm.main.Projectiles.soulhomingprojectile;
 
 import java.awt.*;

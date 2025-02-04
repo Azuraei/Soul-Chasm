@@ -13,6 +13,7 @@ import necesse.gfx.gameTexture.GameSprite;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
+import necesse.inventory.item.ItemCategory;
 import necesse.inventory.item.toolItem.projectileToolItem.throwToolItem.ThrowToolItem;
 import necesse.level.maps.Level;
 
@@ -29,6 +30,10 @@ public class soulmetalspear extends ThrowToolItem {
         this.attackXOffset = 8;
         this.attackYOffset = 8;
         this.stackSize = 1;
+        this.setItemCategory("equipment", "weapons", "throwweapons");
+        this.setItemCategory(ItemCategory.equipmentManager, "weapons", "throwweapons");
+        this.setItemCategory(ItemCategory.craftingManager, "equipment", "weapons", "throwweapons");
+        this.keyWords.add("throw");
     }
 
     public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {

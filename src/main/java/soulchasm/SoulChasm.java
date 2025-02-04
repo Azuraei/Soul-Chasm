@@ -5,7 +5,6 @@ import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.registries.*;
 import necesse.engine.sound.gameSound.GameSound;
 import necesse.entity.mobs.HumanTexture;
-import necesse.entity.mobs.gameDamageType.DamageType;
 import necesse.gfx.GameResources;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTexture.GameTextureSection;
@@ -20,7 +19,6 @@ import necesse.inventory.item.placeableItem.tileItem.GrassSeedItem;
 import necesse.inventory.item.toolItem.ToolType;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.*;
-import necesse.inventory.lootTable.presets.IncursionCrateLootTable;
 import necesse.inventory.recipe.Ingredient;
 import necesse.inventory.recipe.Recipe;
 import necesse.inventory.recipe.Recipes;
@@ -35,15 +33,15 @@ import necesse.level.maps.biomes.swamp.SwampBiome;
 import necesse.level.maps.incursion.UniqueIncursionReward;
 import necesse.level.maps.presets.set.ChestRoomSet;
 import necesse.level.maps.presets.set.WallSet;
-import soulchasm.main.Buffs.Buffs.idolshieldbuff;
-import soulchasm.main.Buffs.Buffs.soulstatuebuff;
-import soulchasm.main.Buffs.Debuffs.soulbleedstackbuff;
-import soulchasm.main.Buffs.Debuffs.soulfirebuff;
-import soulchasm.main.Buffs.SetBonusBuffs.*;
-import soulchasm.main.Buffs.ToolBuffs.BookOfSoulsBuffs.bookofsoulbuff;
-import soulchasm.main.Buffs.ToolBuffs.BookOfSoulsBuffs.soulofsoulsoverchargebuff;
-import soulchasm.main.Buffs.ToolBuffs.SoulMetalBowBuffs.soulbowbuff;
-import soulchasm.main.Buffs.ToolBuffs.SoulMetalBowBuffs.soulbowcooldownbuff;
+import soulchasm.main.Buffs.idolshieldbuff;
+import soulchasm.main.Buffs.soulstatuebuff;
+import soulchasm.main.Buffs.soulbleedstackbuff;
+import soulchasm.main.Buffs.soulfirebuff;
+import soulchasm.main.Buffs.ArmorBuffs.*;
+import soulchasm.main.Buffs.ToolBuffs.BookBuffs.bookofsoulbuff;
+import soulchasm.main.Buffs.ToolBuffs.BookBuffs.soulofsoulsoverchargebuff;
+import soulchasm.main.Buffs.ToolBuffs.BowBuffs.soulbowbuff;
+import soulchasm.main.Buffs.ToolBuffs.BowBuffs.soulbowcooldownbuff;
 import soulchasm.main.Buffs.ToolBuffs.soulabsorbshieldbuff;
 import soulchasm.main.Buffs.ToolBuffs.souldeathmarkstackbuff;
 import soulchasm.main.Buffs.ToolBuffs.soulscythebuff;
@@ -55,9 +53,9 @@ import soulchasm.main.Buffs.TrinketsBuffs.SoulSealBuffs.*;
 import soulchasm.main.Buffs.TrinketsBuffs.phantomfeatherbuff;
 import soulchasm.main.Buffs.TrinketsBuffs.soulstealerbuff;
 import soulchasm.main.Items.Armor.*;
-import soulchasm.main.Items.Others.carkeys;
+import soulchasm.main.Items.carkeys;
 import soulchasm.main.Items.Tools.*;
-import soulchasm.main.Items.Trinkets.SealVariantsItems.*;
+import soulchasm.main.Items.Trinkets.SealTrinkets.*;
 import soulchasm.main.Items.Trinkets.phantomdasherstrinket;
 import soulchasm.main.Items.Trinkets.phantomfeathertrinket;
 import soulchasm.main.Items.Trinkets.pickaxeheadtrinket;
@@ -68,12 +66,15 @@ import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.spinspawnevent;
 import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
 import soulchasm.main.Misc.Events.idolshieldvisualevent;
 import soulchasm.main.Misc.Events.meleeghostspawnevent;
-import soulchasm.main.Misc.Incursion.HauntedModifier.hauntedincursionmodifier;
-import soulchasm.main.Misc.Incursion.HauntedModifier.hauntedmodifierlevelevent;
+import soulchasm.main.Misc.HauntedModifier.hauntedincursionmodifier;
+import soulchasm.main.Misc.HauntedModifier.hauntedmodifierlevelevent;
 import soulchasm.main.Misc.Incursion.soulchasmbiome;
 import soulchasm.main.Misc.Incursion.soulchasmincursionbiome;
 import soulchasm.main.Misc.Incursion.soulchasmincursionlevel;
-import soulchasm.main.Misc.Others.decorationobject;
+import soulchasm.main.Objects.*;
+import soulchasm.main.Objects.Jars.bigjarobject;
+import soulchasm.main.Objects.Jars.fireflyjarobject;
+import soulchasm.main.Objects.Jars.wispjarobject;
 import soulchasm.main.Mobs.Agressive.*;
 import soulchasm.main.Mobs.Boss.souldragonbody;
 import soulchasm.main.Mobs.Boss.souldragonhead;
@@ -84,17 +85,16 @@ import soulchasm.main.Mobs.Passive.wisp;
 import soulchasm.main.Mobs.Summon.carmob;
 import soulchasm.main.Mobs.Summon.smallsoulsummon;
 import soulchasm.main.Mobs.Summon.soulstatuesummon;
-import soulchasm.main.Objects.BiomeEnviroment.*;
-import soulchasm.main.Objects.OtherObjects.*;
-import soulchasm.main.Objects.OtherObjects.Plushies.argemiaplushieobject;
-import soulchasm.main.Objects.OtherObjects.Plushies.fairplushieobject;
-import soulchasm.main.Objects.OtherObjects.Plushies.v1plushieobject;
+import soulchasm.main.Objects.Plushies.argemiaplushieobject;
+import soulchasm.main.Objects.Plushies.fairplushieobject;
+import soulchasm.main.Objects.Plushies.v1plushieobject;
 import soulchasm.main.Projectiles.BossProjectiles.soulflamethrower;
 import soulchasm.main.Projectiles.BossProjectiles.spinspawnspikeprojectile;
 import soulchasm.main.Projectiles.SealProjectiles.*;
 import soulchasm.main.Projectiles.WeaponProjectiles.*;
 import soulchasm.main.Projectiles.souldiscprojectile;
 import soulchasm.main.Projectiles.soulhomingprojectile;
+import soulchasm.main.Tiles.*;
 
 import java.awt.*;
 
@@ -136,7 +136,7 @@ public class SoulChasm {
         TileRegistry.registerTile("soulcavefloortile", new SimpleFloorTile("soulcavefloortile", chasmStoneLightMapColor), 0.0F, true);
 
         TileRegistry.registerTile("soulcavebrickfloortile", new SimpleFloorTile("soulcavebrickfloortile", chasmStoneLightMapColor), 2.0F, true);
-        TileRegistry.registerTile("soulcavetiledfloortile", new soulcavetiledfloortile(), 2.0F, true);
+        TileRegistry.registerTile("soulcavetiledfloortile", new SimpleTiledFloorTile("soulcavetiledfloortile", chasmStoneLightMapColor), 2.0F, true);
 
         TileRegistry.registerTile("soulwoodfloor", new SimpleFloorTile("soulwoodfloor", SoulChasm.chasmWoodMapColor), 2.0F, true);
         TileRegistry.registerTile("soulwoodtiledfloor", new SimpleTiledFloorTile("soulwoodtiledfloor", SoulChasm.chasmWoodMapColor), 2.0F, true);
@@ -158,12 +158,13 @@ public class SoulChasm {
         ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject(chasmrock, "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, 1), -1.0F, true);
         ObjectRegistry.registerObject("upgradeshardsoulcaverock", new RockOreObject(chasmrock, "oremask", "upgradeshardore", new Color(0, 27, 107), "upgradeshard", 1, 1, 1), -1.0F, true);
 
-        ObjectRegistry.registerObject("soulstonepressureplate", new MaskedPressurePlateObject("pressureplatemask", "soulcavefloortile", chasmStoneMapColor), 15.0F, true);
-        ObjectRegistry.registerObject("soulstoneflametrap", new WallFlameTrapObject((WallObject) getObject("soulbrickwall")), 50.0F, true);
-        ObjectRegistry.registerObject("soulcavedecorations", new decorationobject(chasmrock, "soulcavedecorations", chasmStoneMapColor), 0.0F, false);
+        ObjectRegistry.registerObject("soulcavedecorations", new ChasmDecorationObject(chasmrock, "soulcavedecorations", chasmStoneMapColor), 0.0F, false);
 
         WallObject.registerWallObjects("soulbrick", "soulbrickwall", chasmrock.toolTier, chasmStoneMapColor, 2.0F, 6.0F);
         WallObject.registerWallObjects("soulwood", "soulwoodwall", 0, chasmWoodMapColor, ToolType.ALL, 2.0F, 6.0F);
+
+        ObjectRegistry.registerObject("soulstoneflametrap", new WallFlameTrapObject((WallObject)getObject("soulbrickwall")), 50.0F, true);
+        ObjectRegistry.registerObject("soulstonepressureplate", new MaskedPressurePlateObject("pressureplatemask", "soulcavefloortile", chasmStoneMapColor), 15.0F, true);
 
         ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesappling", chasmWoodMapColor, 60,80,100, "soultreeleaves"), 0.0F, false);
         ObjectRegistry.registerObject("soultreesappling", new TreeSaplingObject("soultreesappling", "soultree", 1800, 2700, true), 5.0F, true);
@@ -461,16 +462,16 @@ public class SoulChasm {
                 1,
                 RecipeTechRegistry.FORGE,
                 new Ingredient[]{
-                        new Ingredient("crystalizedsouloreitem", 3)
+                        new Ingredient("crystalizedsouloreitem", 4)
                 }
         ).showAfter("ancientfossilbar"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soulessence",
-                2,
-                RecipeTechRegistry.FALLEN_ANVIL,
+                1,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{
-                        new Ingredient("bloodessence", 1)
+                        new Ingredient("anytier2essence", 2)
                 }
         ).showAfter("slimeessence"));
 
@@ -526,7 +527,7 @@ public class SoulChasm {
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulessence", 5),
-                        new Ingredient("shadowbolt", 1),
+                        new Ingredient("book", 3),
                         new Ingredient("soulmetalbar", 4),
                         new Ingredient("soulcoreitem", 12)
                 }
@@ -560,8 +561,7 @@ public class SoulChasm {
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 10),
-                        new Ingredient("soulcoreitem", 4),
-                        new Ingredient("souldragonscales", 4)
+                        new Ingredient("soulcoreitem", 4)
                 }
         ).showAfter("soulabsorbshield"));
 
@@ -571,8 +571,7 @@ public class SoulChasm {
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 4),
-                        new Ingredient("soulcoreitem", 12),
-                        new Ingredient("souldragonscales", 2)
+                        new Ingredient("soulcoreitem", 12)
                 }
         ).showAfter("soularmorhelmet"));
 
@@ -582,8 +581,7 @@ public class SoulChasm {
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 4),
-                        new Ingredient("soulcoreitem", 12),
-                        new Ingredient("souldragonscales", 2)
+                        new Ingredient("soulcoreitem", 12)
                 }
         ).showAfter("soularmorhood"));
 
@@ -593,8 +591,7 @@ public class SoulChasm {
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 8),
-                        new Ingredient("soulcoreitem", 8),
-                        new Ingredient("souldragonscales", 2)
+                        new Ingredient("soulcoreitem", 8)
                 }
         ).showAfter("soularmorhat"));
 
@@ -604,8 +601,7 @@ public class SoulChasm {
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 18),
-                        new Ingredient("soulcoreitem", 4),
-                        new Ingredient("souldragonscales", 6)
+                        new Ingredient("soulcoreitem", 4)
                 }
         ).showAfter("soularmorcrown"));
 
@@ -615,8 +611,7 @@ public class SoulChasm {
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 4),
-                        new Ingredient("souldragonscales", 3)
+                        new Ingredient("soulcoreitem", 4)
                 }
         ).showAfter("soularmorchestplate"));
 
@@ -630,8 +625,7 @@ public class SoulChasm {
                         new Ingredient("magicsoulsealtrinket", 1),
                         new Ingredient("summonsoulsealtrinket", 1),
                         new Ingredient("soulessence", 5),
-                        new Ingredient("souldragonscales", 6),
-                        new Ingredient("soulcoreitem", 10),
+                        new Ingredient("soulcoreitem", 10)
                 }
         ).showAfter("soularmorboots"));
 
@@ -655,8 +649,7 @@ public class SoulChasm {
                 new Ingredient[]{
                         new Ingredient("zephyrboots", 1),
                         new Ingredient("soulessence", 4),
-                        new Ingredient("souldragonscales", 4),
-                        new Ingredient("soulcoreitem", 8),
+                        new Ingredient("soulcoreitem", 8)
                 }
         ).showAfter("balancedsealtrinket"));
 
@@ -693,7 +686,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "wispjar",
                 1,
-                RecipeTechRegistry.WORKSTATION,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{
                         new Ingredient("wispitem", 2),
                         new Ingredient("bigjarobject", 1)
@@ -705,7 +698,7 @@ public class SoulChasm {
                 1,
                 RecipeTechRegistry.LANDSCAPING,
                 new Ingredient[]{
-                        new Ingredient("soulcaverockitem", 25)
+                        new Ingredient("soulcaverockitem", 50)
                 }
         ).showAfter("soulcavetiledfloortile"));
 
@@ -732,7 +725,7 @@ public class SoulChasm {
         Recipes.registerModRecipe(new Recipe(
                 "soullantern",
                 1,
-                RecipeTechRegistry.CARPENTER,
+                RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{
                         new Ingredient("soulmetalbar", 3),
                         new Ingredient("soultorch", 1)
@@ -741,33 +734,33 @@ public class SoulChasm {
 
         Recipes.registerModRecipe(new Recipe(
                 "soulwoodwall",
-                1, RecipeTechRegistry.ADVANCED_WORKSTATION,
+                1, RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{new Ingredient("soulwoodlogitem", 2)}
         ).showAfter("deadwoodfloor"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soulwooddoor",
-                1, RecipeTechRegistry.ADVANCED_WORKSTATION,
+                1, RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{new Ingredient("soulwoodlogitem", 4)}
         ).showAfter("soulwoodwall"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soulwoodfloor",
-                1, RecipeTechRegistry.ADVANCED_WORKSTATION,
+                1, RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{new Ingredient("soulwoodlogitem", 1)}
 
         ).showAfter("soulwooddoor"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soulwoodpath",
-                1, RecipeTechRegistry.ADVANCED_WORKSTATION,
+                1, RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{new Ingredient("soulwoodlogitem", 1)}
 
         ).showAfter("soulwoodfloor"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soulwoodtiledfloor",
-                1, RecipeTechRegistry.ADVANCED_WORKSTATION,
+                1, RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{new Ingredient("soulwoodlogitem", 2)}
         ).showAfter("soulwoodpath"));
 
@@ -879,37 +872,37 @@ public class SoulChasm {
 
         Recipes.registerModRecipe(new Recipe(
                 "soulbrickdoor",
-                1, RecipeTechRegistry.ADVANCED_WORKSTATION,
+                1, RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{new Ingredient("soulcaverockitem", 15)}
         ).showAfter("soulbrickwall"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soulbrickwall",
-                1, RecipeTechRegistry.ADVANCED_WORKSTATION,
+                1, RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{new Ingredient("soulcaverockitem", 5)}
         ).showAfter("deepswampstonebrickfloor"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soulcavefloortile",
-                1, RecipeTechRegistry.ADVANCED_WORKSTATION,
+                1, RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{new Ingredient("soulcaverockitem", 1)}
         ).showAfter("soulbrickdoor"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soulcavebrickfloortile",
-                1, RecipeTechRegistry.ADVANCED_WORKSTATION,
+                1, RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{new Ingredient("soulcaverockitem", 1)}
         ).showAfter("soulcavefloortile"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soulcavetiledfloortile",
-                1, RecipeTechRegistry.ADVANCED_WORKSTATION,
+                1, RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{new Ingredient("soulcaverockitem", 1)}
         ).showAfter("soulcavebrickfloortile"));
 
         Recipes.registerModRecipe(new Recipe(
                 "soulstonepressureplate",
-                1, RecipeTechRegistry.ADVANCED_WORKSTATION,
+                1, RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{new Ingredient("soulcaverockitem", 1)}
         ).showAfter("deepswampstonepressureplate"));
     }

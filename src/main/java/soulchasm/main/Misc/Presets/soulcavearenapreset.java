@@ -41,10 +41,10 @@ public class soulcavearenapreset extends Preset {
                 if (distancePerc <= 0.8F && this.getObject(x, y) != -1 && random.getChance(0.015F) && this.getTile(x, y)==grasstile) {
                     this.setObject(x, y, tree);
                 }
-                if (distancePerc <= 0.8F && this.getObject(x, y) != -1 && random.getChance(0.2F) && this.getTile(x, y)==grasstile) {
+                if (distancePerc <= 0.8F && this.getObject(x, y) != -1 && random.getChance(0.15F) && this.getTile(x, y)==grasstile) {
                     this.setObject(x, y, grass);
                 }
-                if (distancePerc <= 0.8F && this.getObject(x, y) != -1 && random.getChance(0.05F) && this.getTile(x, y)==grasstile) {
+                if (distancePerc <= 0.8F && this.getObject(x, y) != -1 && random.getChance(0.1F) && this.getTile(x, y)==grasstile) {
                     this.setObject(x, y, random.getChance(0.5F)? lunartear:lunartearpath);
                 }
 
