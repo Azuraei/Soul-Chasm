@@ -4,11 +4,10 @@ import necesse.engine.sound.SoundEffect;
 import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameRandom;
 import soulchasm.SoulChasm;
-import soulchasm.main.Objects.plushieobject;
 
 import java.awt.*;
 
-public class argemiaplushieobject extends plushieobject {
+public class argemiaplushieobject extends PlushieObject {
     public argemiaplushieobject() {
         super("argemiaplushieobject", new Color(255, 0, 92));
         this.texts = new String[]{"pet", "meow", "shrimp", ">^-^<"};

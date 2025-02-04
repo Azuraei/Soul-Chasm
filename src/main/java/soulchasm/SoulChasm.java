@@ -33,67 +33,67 @@ import necesse.level.maps.biomes.swamp.SwampBiome;
 import necesse.level.maps.incursion.UniqueIncursionReward;
 import necesse.level.maps.presets.set.ChestRoomSet;
 import necesse.level.maps.presets.set.WallSet;
-import soulchasm.main.Buffs.idolshieldbuff;
-import soulchasm.main.Buffs.soulstatuebuff;
-import soulchasm.main.Buffs.soulbleedstackbuff;
-import soulchasm.main.Buffs.soulfirebuff;
+import soulchasm.main.Buffs.IdolShieldBuff;
+import soulchasm.main.Buffs.SoulStatueBuff;
+import soulchasm.main.Buffs.SoulBleedStackBuff;
+import soulchasm.main.Buffs.SoulFireBuff;
 import soulchasm.main.Buffs.ArmorBuffs.*;
-import soulchasm.main.Buffs.ToolBuffs.BookBuffs.bookofsoulbuff;
-import soulchasm.main.Buffs.ToolBuffs.BookBuffs.soulofsoulsoverchargebuff;
-import soulchasm.main.Buffs.ToolBuffs.BowBuffs.soulbowbuff;
-import soulchasm.main.Buffs.ToolBuffs.BowBuffs.soulbowcooldownbuff;
-import soulchasm.main.Buffs.ToolBuffs.soulabsorbshieldbuff;
-import soulchasm.main.Buffs.ToolBuffs.souldeathmarkstackbuff;
-import soulchasm.main.Buffs.ToolBuffs.soulscythebuff;
-import soulchasm.main.Buffs.TrinketsBuffs.PhantomDashersBuffs.phantomdashersactivebuff;
-import soulchasm.main.Buffs.TrinketsBuffs.PhantomDashersBuffs.phantomdashersbuff;
-import soulchasm.main.Buffs.TrinketsBuffs.PickaxeheadBuffs.pickaxeheadbuff;
-import soulchasm.main.Buffs.TrinketsBuffs.PickaxeheadBuffs.pickaxeheadstackbuff;
+import soulchasm.main.Buffs.ToolBuffs.BookBuffs.BookofSoulBuff;
+import soulchasm.main.Buffs.ToolBuffs.BookBuffs.SoulofSoulsOverchargeBuff;
+import soulchasm.main.Buffs.ToolBuffs.BowBuffs.SoulBowBuff;
+import soulchasm.main.Buffs.ToolBuffs.BowBuffs.SoulBowCooldownBuff;
+import soulchasm.main.Buffs.ToolBuffs.SoulAbsorbShieldBuff;
+import soulchasm.main.Buffs.ToolBuffs.SoulDeathMarkStackBuff;
+import soulchasm.main.Buffs.ToolBuffs.SoulScytheBuff;
+import soulchasm.main.Buffs.TrinketsBuffs.PhantomDashersBuffs.PhantomDashersActiveBuff;
+import soulchasm.main.Buffs.TrinketsBuffs.PhantomDashersBuffs.PhantomDashersBuff;
+import soulchasm.main.Buffs.TrinketsBuffs.PickaxeheadBuffs.PickaxeHeadBuff;
+import soulchasm.main.Buffs.TrinketsBuffs.PickaxeheadBuffs.PickaxeHeadStackBuff;
 import soulchasm.main.Buffs.TrinketsBuffs.SoulSealBuffs.*;
-import soulchasm.main.Buffs.TrinketsBuffs.phantomfeatherbuff;
-import soulchasm.main.Buffs.TrinketsBuffs.soulstealerbuff;
+import soulchasm.main.Buffs.TrinketsBuffs.PhantomFeatherBuff;
+import soulchasm.main.Buffs.TrinketsBuffs.SoulStealerBuff;
 import soulchasm.main.Items.Armor.*;
-import soulchasm.main.Items.carkeys;
+import soulchasm.main.Items.CarKeys;
 import soulchasm.main.Items.Tools.*;
 import soulchasm.main.Items.Trinkets.SealTrinkets.*;
-import soulchasm.main.Items.Trinkets.phantomdasherstrinket;
-import soulchasm.main.Items.Trinkets.phantomfeathertrinket;
-import soulchasm.main.Items.Trinkets.pickaxeheadtrinket;
-import soulchasm.main.Items.Trinkets.soulstealertrinket;
-import soulchasm.main.Misc.Events.GroundEruptionEvent.dragonexplosionevent;
-import soulchasm.main.Misc.Events.GroundEruptionEvent.dragongrounderuptionevent;
-import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.spinspawnevent;
-import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.spinspawnvisualevent;
-import soulchasm.main.Misc.Events.idolshieldvisualevent;
-import soulchasm.main.Misc.Events.meleeghostspawnevent;
-import soulchasm.main.Misc.HauntedModifier.hauntedincursionmodifier;
-import soulchasm.main.Misc.HauntedModifier.hauntedmodifierlevelevent;
-import soulchasm.main.Misc.Incursion.soulchasmbiome;
-import soulchasm.main.Misc.Incursion.soulchasmincursionbiome;
-import soulchasm.main.Misc.Incursion.soulchasmincursionlevel;
+import soulchasm.main.Items.Trinkets.PhantomDashersTrinket;
+import soulchasm.main.Items.Trinkets.PhantomFeatherTrinket;
+import soulchasm.main.Items.Trinkets.PickaxeHeadTrinket;
+import soulchasm.main.Items.Trinkets.SoulStealerTrinket;
+import soulchasm.main.Misc.Events.GroundEruptionEvent.DragonExplosionEvent;
+import soulchasm.main.Misc.Events.GroundEruptionEvent.DragonGroundEruptionEvent;
+import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.SpinSpawnEvent;
+import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.SpinSpawnVisualEvent;
+import soulchasm.main.Misc.Events.IdolShieldVisualEvent;
+import soulchasm.main.Misc.Events.MeleeGhostSpawnEvent;
+import soulchasm.main.Misc.HauntedModifier.HauntedIncursionModifier;
+import soulchasm.main.Misc.HauntedModifier.HauntedModifierLevelEvent;
+import soulchasm.main.Misc.Incursion.SoulChasmBiome;
+import soulchasm.main.Misc.Incursion.SoulChasmIncursionBiome;
+import soulchasm.main.Misc.Incursion.SoulChasmIncursionLevel;
+import soulchasm.main.Mobs.Boss.SoulDragon;
 import soulchasm.main.Objects.*;
-import soulchasm.main.Objects.Jars.bigjarobject;
-import soulchasm.main.Objects.Jars.fireflyjarobject;
-import soulchasm.main.Objects.Jars.wispjarobject;
+import soulchasm.main.Objects.Jars.BigJarObject;
+import soulchasm.main.Objects.Jars.FireFlyJarObject;
+import soulchasm.main.Objects.Jars.WispJarObject;
 import soulchasm.main.Mobs.Agressive.*;
-import soulchasm.main.Mobs.Boss.souldragonbody;
-import soulchasm.main.Mobs.Boss.souldragonhead;
-import soulchasm.main.Mobs.Passive.firefly;
-import soulchasm.main.Mobs.Passive.soulcavecaveling;
-import soulchasm.main.Mobs.Passive.sphereeffectmob;
-import soulchasm.main.Mobs.Passive.wisp;
-import soulchasm.main.Mobs.Summon.carmob;
-import soulchasm.main.Mobs.Summon.smallsoulsummon;
-import soulchasm.main.Mobs.Summon.soulstatuesummon;
+import soulchasm.main.Mobs.Boss.SoulDragonBody;
+import soulchasm.main.Mobs.Passive.Firefly;
+import soulchasm.main.Mobs.Passive.SoulCaveCaveling;
+import soulchasm.main.Mobs.Passive.SphereEffectMob;
+import soulchasm.main.Mobs.Passive.Wisp;
+import soulchasm.main.Mobs.Summon.CarMob;
+import soulchasm.main.Mobs.Summon.SmallSoulSummon;
+import soulchasm.main.Mobs.Summon.SoulStatueSummon;
 import soulchasm.main.Objects.Plushies.argemiaplushieobject;
 import soulchasm.main.Objects.Plushies.fairplushieobject;
 import soulchasm.main.Objects.Plushies.v1plushieobject;
-import soulchasm.main.Projectiles.BossProjectiles.soulflamethrower;
-import soulchasm.main.Projectiles.BossProjectiles.spinspawnspikeprojectile;
+import soulchasm.main.Projectiles.BossProjectiles.SoulFlamethrowerProjectile;
+import soulchasm.main.Projectiles.BossProjectiles.SpinSpawnSpikeProjectile;
 import soulchasm.main.Projectiles.SealProjectiles.*;
 import soulchasm.main.Projectiles.WeaponProjectiles.*;
-import soulchasm.main.Projectiles.souldiscprojectile;
-import soulchasm.main.Projectiles.soulhomingprojectile;
+import soulchasm.main.Projectiles.SoulDiscProjectile;
+import soulchasm.main.Projectiles.SoulHomingProjectile;
 import soulchasm.main.Tiles.*;
 
 import java.awt.*;
@@ -132,7 +132,7 @@ public class SoulChasm {
         GameLoadingScreen.drawLoadingString("Loading Soul Chasm");
         //TILES
         TileRegistry.registerTile("soulcavegrass", new SoulCaveGrass(), 0.0F, true);
-        TileRegistry.registerTile("soulcaverocktile", new soulcaverocktile(), 0.0F, true);
+        TileRegistry.registerTile("soulcaverocktile", new SoulCaveRockTile(), 0.0F, true);
         TileRegistry.registerTile("soulcavefloortile", new SimpleFloorTile("soulcavefloortile", chasmStoneLightMapColor), 0.0F, true);
 
         TileRegistry.registerTile("soulcavebrickfloortile", new SimpleFloorTile("soulcavebrickfloortile", chasmStoneLightMapColor), 2.0F, true);
@@ -142,10 +142,10 @@ public class SoulChasm {
         TileRegistry.registerTile("soulwoodtiledfloor", new SimpleTiledFloorTile("soulwoodtiledfloor", SoulChasm.chasmWoodMapColor), 2.0F, true);
         TileRegistry.registerTile("soulwoodpath", new PathTiledTile("soulwoodpath", SoulChasm.chasmWoodMapColor), 5.0F, true);
 
-        TileRegistry.registerTile("meltedsouls", new meltedsouls(), 10.0F, true);
-        TileRegistry.registerTile("soulcavecracktile", new soulcavecracktile(), 0.0F, false);
+        TileRegistry.registerTile("meltedsouls", new MeltedSouls(), 10.0F, true);
+        TileRegistry.registerTile("soulcavecracktile", new SoulCaveCrackTile(), 0.0F, false);
 
-        TileRegistry.registerTile("asphalttile", new asphalttile(), 20.0F, true);
+        TileRegistry.registerTile("asphalttile", new AsphaltTile(), 20.0F, true);
 
         //OBJECTS
         RockObject chasmrock;
@@ -169,8 +169,8 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesappling", chasmWoodMapColor, 60,80,100, "soultreeleaves"), 0.0F, false);
         ObjectRegistry.registerObject("soultreesappling", new TreeSaplingObject("soultreesappling", "soultree", 1800, 2700, true), 5.0F, true);
 
-        ObjectRegistry.registerObject("lunartear", new lunartear(), 5.0F, true);
-        ObjectRegistry.registerObject("lunartearspath", new lunartearspath(), 5.0F, true);
+        ObjectRegistry.registerObject("lunartear", new LunarTearObject(), 5.0F, true);
+        ObjectRegistry.registerObject("lunartearspath", new LunarTearsPathObject(), 5.0F, true);
 
         TorchObject soulTorch = new TorchObject("soultorch", chasmTorchMapColor, 240F, 0.3F);
         soulTorch.flameHue = 190;
@@ -180,18 +180,18 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soullantern", soulLantern, 10, true);
 
         ObjectRegistry.registerObject("soulcavegrassobject", new GrassObject("soulcavegrassobject", 4), 0.0F, false);
-        ObjectRegistry.registerObject("soulcrystalbig", new soulcrystalbig(), 0.0F, false);
+        ObjectRegistry.registerObject("soulcrystalbig", new SoulCrystalBigObject(), 0.0F, false);
 
-        ObjectRegistry.registerObject("bigjarobject", new bigjarobject(), 10.0F, true);
-        ObjectRegistry.registerObject("wispjarobject", new wispjarobject(), 0.0F, false);
-        ObjectRegistry.registerObject("fireflyjarobject", new fireflyjarobject(), 0.0F, false);
+        ObjectRegistry.registerObject("bigjarobject", new BigJarObject(), 10.0F, true);
+        ObjectRegistry.registerObject("wispjarobject", new WispJarObject(), 0.0F, false);
+        ObjectRegistry.registerObject("fireflyjarobject", new FireFlyJarObject(), 0.0F, false);
 
-        ObjectRegistry.registerObject("soulmonumentobject", new soulmonumentobject(), 50.0F, true);
+        ObjectRegistry.registerObject("soulmonumentobject", new SoulMonumentObject(), 50.0F, true);
         ObjectRegistry.registerObject("oldbarrel", new InventoryObject("oldbarrel", 20, new Rectangle(8, 4, 16, 16), ToolType.PICKAXE, chasmWoodFurnitureMapColor), 10.0F, true);
         ObjectRegistry.registerObject("chasmcrates", new RandomCrateObject("chasmcrates"), 0.0F, false);
-        ObjectRegistry.registerObject("statueobject", new statueobject(), 50.0F, true);
-        ObjectRegistry.registerObject("magestatueobject", new magestatueobject(), 50.0F, true);
-        ObjectRegistry.registerObject("spikeobject", new spikeobject(), 0.0F, false);
+        ObjectRegistry.registerObject("statueobject", new StatueObject(), 50.0F, true);
+        ObjectRegistry.registerObject("magestatueobject", new MageStatueObject(), 50.0F, true);
+        ObjectRegistry.registerObject("spikeobject", new SpikeObject(), 0.0F, false);
 
         TikiTorchObject soulTikiTorch = new TikiTorchObject();
         {
@@ -232,48 +232,47 @@ public class SoulChasm {
         FenceGateObject.registerGatePair(soulWoodFenceID, "soulwoodfencegate", "soulwoodfencegate", chasmWoodMapColor, 12, 10, 4.0F);
 
         //INCURSION
-        BiomeRegistry.registerBiome("soulcavern", new soulchasmbiome(), 0, null);
-        IncursionBiomeRegistry.registerBiome("soulchasmincursionbiome", new soulchasmincursionbiome(), 2);
-        LevelRegistry.registerLevel("soulchasmincursionlevel", soulchasmincursionlevel.class);
+        BiomeRegistry.registerBiome("soulcavern", new SoulChasmBiome(), 0, null);
+        IncursionBiomeRegistry.registerBiome("soulchasmincursionbiome", new SoulChasmIncursionBiome(), 2);
+        LevelRegistry.registerLevel("soulchasmincursionlevel", SoulChasmIncursionLevel.class);
 
         //BUFFS
-        BuffRegistry.registerBuff("soulstealerbuff", new soulstealerbuff());
-        BuffRegistry.registerBuff("phantomfeatherbuff", new phantomfeatherbuff());
-        BuffRegistry.registerBuff("soulfirebuff", new soulfirebuff());
-        BuffRegistry.registerBuff("soulabsorbshieldbuff", new soulabsorbshieldbuff());
-        BuffRegistry.registerBuff("soulsealfollowerbuff", new soulsealfollowerbuff());
-        BuffRegistry.registerBuff("soulbleedstackbuff", new soulbleedstackbuff());
-        BuffRegistry.registerBuff("soulscythebuff", new soulscythebuff());
-        BuffRegistry.registerBuff("souldeathmarkstackbuff", new souldeathmarkstackbuff());
-        BuffRegistry.registerBuff("pickaxeheadbuff", new pickaxeheadbuff());
-        BuffRegistry.registerBuff("pickaxeheadstackbuff", new pickaxeheadstackbuff());
-        BuffRegistry.registerBuff("phantomdashersactivebuff", new phantomdashersactivebuff());
-        BuffRegistry.registerBuff("phantomdashersbuff", new phantomdashersbuff());
-        BuffRegistry.registerBuff("bookofsoulbuff", new bookofsoulbuff());
-        BuffRegistry.registerBuff("soulofsoulsoverchargebuff", new soulofsoulsoverchargebuff());
-        BuffRegistry.registerBuff("soulbowbuff", new soulbowbuff());
-        BuffRegistry.registerBuff("soulbowcooldownbuff", new soulbowcooldownbuff());
-        BuffRegistry.registerBuff("idolshieldbuff", new idolshieldbuff());
-        BuffRegistry.registerBuff("soulstatuebuff", new soulstatuebuff());
+        BuffRegistry.registerBuff("soulstealerbuff", new SoulStealerBuff());
+        BuffRegistry.registerBuff("phantomfeatherbuff", new PhantomFeatherBuff());
+        BuffRegistry.registerBuff("soulfirebuff", new SoulFireBuff());
+        BuffRegistry.registerBuff("soulabsorbshieldbuff", new SoulAbsorbShieldBuff());
+        BuffRegistry.registerBuff("soulsealfollowerbuff", new SoulSealFollowerBuff());
+        BuffRegistry.registerBuff("soulbleedstackbuff", new SoulBleedStackBuff());
+        BuffRegistry.registerBuff("soulscythebuff", new SoulScytheBuff());
+        BuffRegistry.registerBuff("souldeathmarkstackbuff", new SoulDeathMarkStackBuff());
+        BuffRegistry.registerBuff("pickaxeheadbuff", new PickaxeHeadBuff());
+        BuffRegistry.registerBuff("pickaxeheadstackbuff", new PickaxeHeadStackBuff());
+        BuffRegistry.registerBuff("phantomdashersactivebuff", new PhantomDashersActiveBuff());
+        BuffRegistry.registerBuff("phantomdashersbuff", new PhantomDashersBuff());
+        BuffRegistry.registerBuff("bookofsoulbuff", new BookofSoulBuff());
+        BuffRegistry.registerBuff("soulofsoulsoverchargebuff", new SoulofSoulsOverchargeBuff());
+        BuffRegistry.registerBuff("soulbowbuff", new SoulBowBuff());
+        BuffRegistry.registerBuff("soulbowcooldownbuff", new SoulBowCooldownBuff());
+        BuffRegistry.registerBuff("idolshieldbuff", new IdolShieldBuff());
+        BuffRegistry.registerBuff("soulstatuebuff", new SoulStatueBuff());
         //SetBonus
-        BuffRegistry.registerBuff("soularmorhelmetsetbonus", new soularmorhelmetsetbonus());
-        BuffRegistry.registerBuff("soularmorhoodsetbonus", new soularmorhoodsetbonus());
-        BuffRegistry.registerBuff("soularmorcrownsetbonus", new soularmorcrownsetbonus());
-        BuffRegistry.registerBuff("soularmorhatsetbonus", new soularmorhatsetbonus());
-        BuffRegistry.registerBuff("soularmorcooldown", new soularmorcooldown());
-        BuffRegistry.registerBuff("souldischargebuff", new souldischargebuff());
-        BuffRegistry.registerBuff("souldischargesicknessdebuff", new souldischargesicknessdebuff());
+        BuffRegistry.registerBuff("soularmorhelmetsetbonus", new SoulArmorHelmetSetBonus());
+        BuffRegistry.registerBuff("soularmorhoodsetbonus", new SoulArmorHoodSetBonus());
+        BuffRegistry.registerBuff("soularmorcrownsetbonus", new SoulArmorCrownSetBonus());
+        BuffRegistry.registerBuff("soularmorhatsetbonus", new SoulArmorHatSetBonus());
+        BuffRegistry.registerBuff("soularmorcooldown", new SoulArmorCooldown());
+        BuffRegistry.registerBuff("souldischargebuff", new SoulDischargeBuff());
+        BuffRegistry.registerBuff("souldischargesicknessdebuff", new SoulDischargeSicknessDebuff());
         //SealTrinketsBuffs
-        BuffRegistry.registerBuff("meleesoulsealbuff", new meleesoulsealbuff());
-        BuffRegistry.registerBuff("summonsoulsealbuff", new summonsoulsealbuff());
-        BuffRegistry.registerBuff("magicsoulsealbuff", new magicsoulsealbuff());
-        BuffRegistry.registerBuff("rangesoulsealbuff", new rangesoulsealbuff());
-        BuffRegistry.registerBuff("balancedsealbuff", new balancedsealbuff());
+        BuffRegistry.registerBuff("meleesoulsealbuff", new MeleeSoulSealBuff());
+        BuffRegistry.registerBuff("summonsoulsealbuff", new SummonSoulSealBuff());
+        BuffRegistry.registerBuff("magicsoulsealbuff", new MagicSoulSealBuff());
+        BuffRegistry.registerBuff("rangesoulsealbuff", new RangeSoulSealBuff());
+        BuffRegistry.registerBuff("balancedsealbuff", new BalancedSealBuff());
 
         //ITEMS
         ItemRegistry.registerItem("soulessence", new EssenceMatItem(250, Item.Rarity.EPIC, 2), 30.0F, true);
         ItemRegistry.registerItem("soulcoreitem", new MatItem(250, Item.Rarity.UNCOMMON), 15, true);
-        ItemRegistry.registerItem("souldragonscales", new MatItem(250, Item.Rarity.EPIC), 150, true);
 
         ItemRegistry.registerItem("soulcaverockitem", new StonePlaceableItem(5000), 0.1F, true);
         ItemRegistry.registerItem("crystalizedsouloreitem", new MatItem(500, Item.Rarity.UNCOMMON), 15, true);
@@ -287,73 +286,76 @@ public class SoulChasm {
         ItemRegistry.registerItem("fireflyjar", new ObjectItem(getObject("fireflyjarobject")), 20.0F, true);
         ItemRegistry.registerItem("wispjar", new ObjectItem(getObject("wispjarobject")), 20.0F, true);
 
-        ItemRegistry.registerItem("carkeys", new carkeys(), 2000, true);
+        ItemRegistry.registerItem("carkeys", new CarKeys(), 2000, true);
         //Trinkets
-        ItemRegistry.registerItem("phantomfeathertrinket", new phantomfeathertrinket(), 500, true);
-        ItemRegistry.registerItem("soulstealertrinket", new soulstealertrinket(), 500, true);
-        ItemRegistry.registerItem("pickaxeheadtrinket", new pickaxeheadtrinket(), 500, true);
-        ItemRegistry.registerItem("soulabsorbshield", new soulabsorbshield(), 750, true);
-        ItemRegistry.registerItem("phantomdasherstrinket", new phantomdasherstrinket(), 750, true);
+        ItemRegistry.registerItem("phantomfeathertrinket", new PhantomFeatherTrinket(), 500, true);
+        ItemRegistry.registerItem("soulstealertrinket", new SoulStealerTrinket(), 500, true);
+        ItemRegistry.registerItem("pickaxeheadtrinket", new PickaxeHeadTrinket(), 500, true);
+        ItemRegistry.registerItem("soulabsorbshield", new SoulAbsorbShield(), 750, true);
+        ItemRegistry.registerItem("phantomdasherstrinket", new PhantomDashersTrinket(), 750, true);
         //Weapons
-        ItemRegistry.registerItem("soulscythe", new soulscythe(), 2000, true);
-        ItemRegistry.registerItem("soulmetalbow", new soulmetalbow(), 500, true);
-        ItemRegistry.registerItem("soulmetalsword", new soulmetalsword(), 500, true);
-        ItemRegistry.registerItem("soulmetalspear", new soulmetalspear(), 500, true);
-        ItemRegistry.registerItem("soulmetalrevolver", new soulmetalrevolver(), 500, true);
-        ItemRegistry.registerItem("bookofsouls", new bookofsouls(), 500, true);
-        ItemRegistry.registerItem("soulstatue", new soulstatue(), 500, true);
+        ItemRegistry.registerItem("soulscythe", new SoulScythe(), 2000, true);
+        ItemRegistry.registerItem("soulmetalbow", new SoulMetalBow(), 500, true);
+        ItemRegistry.registerItem("soulmetalsword", new SoulMetalSword(), 500, true);
+        ItemRegistry.registerItem("soulmetalspear", new SoulMetalSpear(), 500, true);
+        ItemRegistry.registerItem("soulmetalrevolver", new SoulMetalRevolver(), 500, true);
+        ItemRegistry.registerItem("bookofsouls", new BookofSouls(), 500, true);
+        ItemRegistry.registerItem("soulstatue", new SoulStatue(), 500, true);
         //Armor
-        ItemRegistry.registerItem("soularmorboots", new soularmorboots(), 200.0F, true);
-        ItemRegistry.registerItem("soularmorchestplate", new soularmorchestplate(), 200.0F, true);
-        ItemRegistry.registerItem("soularmorcrown", new soularmorcrown(), 200.0F, true);
-        ItemRegistry.registerItem("soularmorhelmet", new soularmorhelmet(), 200.0F, true);
-        ItemRegistry.registerItem("soularmorhood", new soularmorhood(), 200.0F, true);
-        ItemRegistry.registerItem("soularmorhat", new soularmorhat(),200.0F, true);
+        ItemRegistry.registerItem("soularmorboots", new SoulArmorBoots(), 200.0F, true);
+        ItemRegistry.registerItem("soularmorchestplate", new SoulArmorChestplate(), 200.0F, true);
+        ItemRegistry.registerItem("soularmorcrown", new SoulArmorCrown(), 200.0F, true);
+        ItemRegistry.registerItem("soularmorhelmet", new SoulArmorHelmet(), 200.0F, true);
+        ItemRegistry.registerItem("soularmorhood", new SoulArmorHood(), 200.0F, true);
+        ItemRegistry.registerItem("soularmorhat", new SoulArmorHat(),200.0F, true);
         //Seal
-        ItemRegistry.registerItem("meleesoulsealtrinket", new meleesoulsealtrinket(), 200, true);
-        ItemRegistry.registerItem("summonsoulsealtrinket", new summonsoulsealtrinket(), 200, true);
-        ItemRegistry.registerItem("magicsoulsealtrinket", new magicsoulsealtrinket(), 200, true);
-        ItemRegistry.registerItem("rangesoulsealtrinket", new rangesoulsealtrinket(), 200, true);
-        ItemRegistry.registerItem("soulsealtrinket", new soulsealtrinket(), 750, true);
-        ItemRegistry.registerItem("balancedsealtrinket", new balancedsealtrinket(), 1250, true);
+        ItemRegistry.registerItem("meleesoulsealtrinket", new MeleeSoulSealTrinket(), 200, true);
+        ItemRegistry.registerItem("summonsoulsealtrinket", new SummonSoulSealTrinket(), 200, true);
+        ItemRegistry.registerItem("magicsoulsealtrinket", new MagicSoulSealTrinket(), 200, true);
+        ItemRegistry.registerItem("rangesoulsealtrinket", new RangeSoulSealTrinket(), 200, true);
+        ItemRegistry.registerItem("soulsealtrinket", new SoulSealTrinket(), 750, true);
+        ItemRegistry.registerItem("balancedsealtrinket", new BalancedSealTrinket(), 1250, true);
         //Vanity
         ItemRegistry.registerItem("lunartearflowerhead", new HelmetArmorItem(0, null, 0, Item.Rarity.RARE, "lunartearflowerhead").hairDrawMode(ArmorItem.HairDrawMode.OVER_HAIR), 50.0F, true);
         ItemRegistry.registerItem("tobeblindfold", new HelmetArmorItem(0, null, 0, Item.Rarity.EPIC, "tobeblindfold").hairDrawMode(ArmorItem.HairDrawMode.UNDER_HAIR), 250.0F, true);
 
         //MOBS
-        MobRegistry.registerMob("lostsoul", lostsoul.class, true);
-        MobRegistry.registerMob("carmob", carmob.class, false);
-        MobRegistry.registerMob("meleestatue", meleestatue.class, true);
-        MobRegistry.registerMob("wisp", wisp.class, false);
-        MobRegistry.registerMob("firefly", firefly.class, false);
-        MobRegistry.registerMob("magestatue", magestatue.class, true);
-        MobRegistry.registerMob("soulmage", soulmage.class, true);
-        MobRegistry.registerMob("smallsoulsummon", smallsoulsummon.class, false);
-        MobRegistry.registerMob("soulcavecaveling", soulcavecaveling.class, true);
-        MobRegistry.registerMob("souldragonhead", souldragonhead.class, true, true);
-        MobRegistry.registerMob("souldragonbody", souldragonbody.class, false, true);
-        MobRegistry.registerMob("sphereeffectmob", sphereeffectmob.class, false);
-        MobRegistry.registerMob("meleeghost", meleeghost.class, false);
-        MobRegistry.registerMob("soulstatuesummon", soulstatuesummon.class, false);
+        MobRegistry.registerMob("souldragonhead", SoulDragon.class, true, true);
+        MobRegistry.registerMob("souldragonbody", SoulDragonBody.class, false, true);
+
+        MobRegistry.registerMob("lostsoul", LostSoul.class, true);
+        MobRegistry.registerMob("meleestatue", MeleeStatue.class, true);
+        MobRegistry.registerMob("magestatue", MageStatue.class, true);
+        MobRegistry.registerMob("soulmage", SoulMage.class, true);
+        MobRegistry.registerMob("meleeghost", MeleeGhost.class, false);
+
+        MobRegistry.registerMob("wisp", Wisp.class, false);
+        MobRegistry.registerMob("firefly", Firefly.class, false);
+        MobRegistry.registerMob("soulcavecaveling", SoulCaveCaveling.class, true);
+
+        MobRegistry.registerMob("carmob", CarMob.class, false);
+        MobRegistry.registerMob("smallsoulsummon", SmallSoulSummon.class, false);
+        MobRegistry.registerMob("soulstatuesummon", SoulStatueSummon.class, false);
+        MobRegistry.registerMob("sphereeffectmob", SphereEffectMob.class, false);
 
         //PROJECTILES
-        ProjectileRegistry.registerProjectile("soulwaveprojectile", soulwaveprojectile.class, "soulwaveprojectile", null);
-        ProjectileRegistry.registerProjectile("soularrowprojectile", soularrowprojectile.class, "soularrowprojectile", null);
-        ProjectileRegistry.registerProjectile("soulhomingprojectile", soulhomingprojectile.class, "soulhomingprojectile",null);
-        ProjectileRegistry.registerProjectile("soulmissileprojectile", soulmissileprojectile.class, "soulmissileprojectile",null);
-        ProjectileRegistry.registerProjectile("soulflamethrower", soulflamethrower.class, "shadow_simple",null);
-        ProjectileRegistry.registerProjectile("soulspearprojectile", soulspearprojectile.class, "soulspearprojectile",null);
-        ProjectileRegistry.registerProjectile("spiritswordprojectile", spiritswordprojectile.class, "spiritswordprojectile",null);
-        ProjectileRegistry.registerProjectile("soulrevolverprojectile", soulrevolverprojectile.class, null, null);
-        ProjectileRegistry.registerProjectile("soulboomerangprojectile", soulboomerangprojectile.class, "soulboomerangprojectile", null);
-        ProjectileRegistry.registerProjectile("soulpointywaveprojectile", soulpointywaveprojectile.class, "soulpointywaveprojectile", null);
-        ProjectileRegistry.registerProjectile("soulbigbulletprojectile", soulbigbulletprojectile.class, null, null);
-        ProjectileRegistry.registerProjectile("spinspawnspikeprojectile", spinspawnspikeprojectile.class, "spinspawnspikeprojectile",null);
-        ProjectileRegistry.registerProjectile("bookofsoulsmainprojectile", bookofsoulsmainprojectile.class, "bookofsoulsmainprojectile",null);
-        ProjectileRegistry.registerProjectile("bookofsoulssmallprojectile", bookofsoulssmallprojectile.class, "soulmissileprojectile",null);
-        ProjectileRegistry.registerProjectile("soulscytheprojectile", soulscytheprojectile.class, "soulscytheprojectile",null);
-        ProjectileRegistry.registerProjectile("soulscythesmallprojectile", soulscythesmallprojectile.class, "soulscythesmallprojectile",null);
-        ProjectileRegistry.registerProjectile("souldiscprojectile", souldiscprojectile.class, "soulboomerangprojectile", null);
+        ProjectileRegistry.registerProjectile("soulwaveprojectile", SoulWaveProjectile.class, "soulwaveprojectile", null);
+        ProjectileRegistry.registerProjectile("soularrowprojectile", SoulArrowProjectile.class, "soularrowprojectile", null);
+        ProjectileRegistry.registerProjectile("soulhomingprojectile", SoulHomingProjectile.class, "soulhomingprojectile",null);
+        ProjectileRegistry.registerProjectile("soulmissileprojectile", SoulMissileProjectile.class, "soulmissileprojectile",null);
+        ProjectileRegistry.registerProjectile("soulflamethrower", SoulFlamethrowerProjectile.class, "shadow_simple",null);
+        ProjectileRegistry.registerProjectile("soulspearprojectile", SoulSpearProjectile.class, "soulspearprojectile",null);
+        ProjectileRegistry.registerProjectile("spiritswordprojectile", SpiritSwordProjectile.class, "spiritswordprojectile",null);
+        ProjectileRegistry.registerProjectile("soulrevolverprojectile", SoulRevolverProjectile.class, null, null);
+        ProjectileRegistry.registerProjectile("soulboomerangprojectile", SoulBoomerangProjectile.class, "soulboomerangprojectile", null);
+        ProjectileRegistry.registerProjectile("soulpointywaveprojectile", SoulPointyWaveProjectile.class, "soulpointywaveprojectile", null);
+        ProjectileRegistry.registerProjectile("soulbigbulletprojectile", SoulBigBulletProjectile.class, null, null);
+        ProjectileRegistry.registerProjectile("spinspawnspikeprojectile", SpinSpawnSpikeProjectile.class, "spinspawnspikeprojectile",null);
+        ProjectileRegistry.registerProjectile("bookofsoulsmainprojectile", BookofSoulsMainProjectile.class, "bookofsoulsmainprojectile",null);
+        ProjectileRegistry.registerProjectile("bookofsoulssmallprojectile", BookofSoulsSmallProjectile.class, "soulmissileprojectile",null);
+        ProjectileRegistry.registerProjectile("soulscytheprojectile", SoulScytheProjectile.class, "soulscytheprojectile",null);
+        ProjectileRegistry.registerProjectile("soulscythesmallprojectile", SoulScytheSmallProjectile.class, "soulscythesmallprojectile",null);
+        ProjectileRegistry.registerProjectile("souldiscprojectile", SoulDiscProjectile.class, "soulboomerangprojectile", null);
 
         //INCURSION_LOOT
         LootTable helmetReward = new LootTable(new LootItemList(new OneOfLootItems(
@@ -371,34 +373,34 @@ public class SoulChasm {
         UniqueIncursionRewardsRegistry.registerGreatswordWeapon("soulscythereward", new UniqueIncursionReward(scytheReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
 
         //LEVEL_EVENTS
-        LevelEventRegistry.registerEvent("dragongrounderuptionevent", dragongrounderuptionevent.class);
-        LevelEventRegistry.registerEvent("dragonexplosionevent", dragonexplosionevent.class);
-        LevelEventRegistry.registerEvent("spinspawnevent", spinspawnevent.class);
-        LevelEventRegistry.registerEvent("spinspawnvisualevent", spinspawnvisualevent.class);
-        LevelEventRegistry.registerEvent("idolshieldvisualevent", idolshieldvisualevent.class);
-        LevelEventRegistry.registerEvent("meleeghostspawnevent", meleeghostspawnevent.class);
-        LevelEventRegistry.registerEvent("hauntedmodifierlevelevent", hauntedmodifierlevelevent.class);
+        LevelEventRegistry.registerEvent("dragongrounderuptionevent", DragonGroundEruptionEvent.class);
+        LevelEventRegistry.registerEvent("dragonexplosionevent", DragonExplosionEvent.class);
+        LevelEventRegistry.registerEvent("spinspawnevent", SpinSpawnEvent.class);
+        LevelEventRegistry.registerEvent("spinspawnvisualevent", SpinSpawnVisualEvent.class);
+        LevelEventRegistry.registerEvent("idolshieldvisualevent", IdolShieldVisualEvent.class);
+        LevelEventRegistry.registerEvent("meleeghostspawnevent", MeleeGhostSpawnEvent.class);
+        LevelEventRegistry.registerEvent("hauntedmodifierlevelevent", HauntedModifierLevelEvent.class);
 
         //INCURSION_MODS
-        UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new hauntedincursionmodifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Medium));
+        UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new HauntedIncursionModifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Medium));
     }
     public void initResources(){
-        lostsoul.texture = GameTexture.fromFile("mobs/lostsoul");
-        carmob.texture =  GameTexture.fromFile("mobs/car");
-        carmob.texture_top = GameTexture.fromFile("mobs/car_top_mask");
-        meleestatue.texture = GameTexture.fromFile("mobs/meleestatue");
-        wisp.texture = GameTexture.fromFile("mobs/wisp");
-        firefly.texture = GameTexture.fromFile("mobs/firefly");
-        magestatue.texture = GameTexture.fromFile("mobs/magestatue");
+        LostSoul.texture = GameTexture.fromFile("mobs/lostsoul");
+        CarMob.texture =  GameTexture.fromFile("mobs/car");
+        CarMob.texture_top = GameTexture.fromFile("mobs/car_top_mask");
+        MeleeStatue.texture = GameTexture.fromFile("mobs/meleestatue");
+        Wisp.texture = GameTexture.fromFile("mobs/wisp");
+        Firefly.texture = GameTexture.fromFile("mobs/firefly");
+        MageStatue.texture = GameTexture.fromFile("mobs/magestatue");
         GameTexture soulmageTexture = GameTexture.fromFile("mobs/soulmage");
-        soulmage.texture = new HumanTexture(soulmageTexture,soulmageTexture,soulmageTexture);
-        smallsoulsummon.texture = GameTexture.fromFile("mobs/smallsoul");
-        souldragonhead.texture = GameTexture.fromFile("mobs/souldragon");
-        souldragonbody.texture = GameTexture.fromFile("mobs/souldragon");
-        sphereeffectmob.texture_ball = GameTexture.fromFile("particles/altarball");
-        meleeghost.texture = GameTexture.fromFile("mobs/lostsoul");
-        soulstatuesummon.texture = GameTexture.fromFile("items/magestatueobject");
-        soulstatuesummon.texture_ring = GameTexture.fromFile("particles/soulstatuering");
+        SoulMage.texture = new HumanTexture(soulmageTexture,soulmageTexture,soulmageTexture);
+        SmallSoulSummon.texture = GameTexture.fromFile("mobs/smallsoul");
+        SoulDragon.texture = GameTexture.fromFile("mobs/souldragon");
+        SoulDragonBody.texture = GameTexture.fromFile("mobs/souldragon");
+        SphereEffectMob.texture_ball = GameTexture.fromFile("particles/altarball");
+        MeleeGhost.texture = GameTexture.fromFile("mobs/lostsoul");
+        SoulStatueSummon.texture = GameTexture.fromFile("items/magestatueobject");
+        SoulStatueSummon.texture_ring = GameTexture.fromFile("particles/soulstatuering");
 
         //TextureSections
         eruption_shadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");
