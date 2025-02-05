@@ -6,8 +6,10 @@ import necesse.engine.localization.message.GameMessage;
 import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.network.NetworkClient;
 import necesse.engine.network.client.Client;
+import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
+import necesse.entity.mobs.Attacker;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
 import necesse.entity.mobs.PlayerMob;
@@ -34,6 +36,7 @@ import java.util.List;
 public class PlushieMob extends FriendlyMob {
     public static GameTexture texture;
     public String name;
+    private long timePressed;
 
     public PlushieMob(String name) {
         super(1);
@@ -42,7 +45,10 @@ public class PlushieMob extends FriendlyMob {
         this.selectBox = new Rectangle(-16, -16 - 8, 32, 32);
         this.canDespawn = false;
         this.name = name;
-        this.setTeam(-2);
+    }
+
+    public boolean canBeHit(Attacker attacker) {
+        return attacker.getAttackOwner().isPlayer;
     }
 
     public boolean isVisibleOnMap(Client client, LevelMap map) {
@@ -60,7 +66,7 @@ public class PlushieMob extends FriendlyMob {
     }
 
     public LootTable getLootTable() {
-        return new LootTable(new LootItem(name+"item"));
+        return new LootTable(new LootItem(name + "plushieitem"));
     }
 
     public boolean canInteract(Mob mob) {
@@ -69,11 +75,7 @@ public class PlushieMob extends FriendlyMob {
 
     public void interact(PlayerMob player) {
         super.interact(player);
-        if (getLevel().isClient()){
-            System.out.println("e");
-        } else {
-            System.out.println("a");
-        }
+        this.timePressed = player.getTime();
     }
 
     public void init() {
@@ -85,7 +87,7 @@ public class PlushieMob extends FriendlyMob {
         return true;
     }
     public boolean canBeTargeted(Mob attacker, NetworkClient attackerClient) {
-        return false;
+        return true;
     }
     public boolean canPushMob(Mob other) {
         return false;
@@ -100,12 +102,42 @@ public class PlushieMob extends FriendlyMob {
     protected void playHitSound() {}
     public void spawnDamageText(int dmg, int size, boolean isCrit) {}
 
+    public float getBouncyAnimation(float progress) {
+        return (float)Math.abs((Math.cos(0 + Math.PI * progress)));
+    }
+
     public void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
         super.addDrawables(list, tileList, topList, level, x, y, tickManager, camera, perspective);
         GameLight light = level.getLightLevel(x, y);
         int drawX = camera.getDrawX(x);
         int drawY = camera.getDrawY(y);
-        TextureDrawOptions options = texture.initDraw().sprite(0, 0, texture.getWidth(), texture.getHeight()).light(light).pos(drawX - texture.getWidth() / 2, drawY - texture.getHeight() + 8);
+
+        long squishTime = 500L;
+
+        long timePress = this.timePressed;
+        long animTime = timePress + squishTime;
+        long remainingTime = animTime - level.getTime();
+        float progress = 0;
+        final float widthSize;
+        final float heightSize;
+        if (remainingTime>=0){
+            progress = 1.0F - ((float)remainingTime / squishTime);
+            float bouncePercent = this.getBouncyAnimation(progress);
+            float bounceWidth = GameMath.lerp(bouncePercent, 1.0F, 0.4F);
+            float bounceHeight = GameMath.lerp(bouncePercent, 1.0F, 0.6F);
+            widthSize = GameMath.lerp(progress, bounceWidth, 1.0F);
+            heightSize = GameMath.lerp(progress, bounceHeight, 1.0F);
+        } else {
+            widthSize = 1.0F;
+            heightSize = 1.0F;
+        }
+        int wiggleWidth = (int)((float)texture.getWidth() * (1 + (1 - widthSize)));
+        int widthDiff = wiggleWidth;
+
+        int wiggleHeight = (int)((float)texture.getHeight() * heightSize);
+        int heightDiff = texture.getHeight() - wiggleHeight;
+
+        TextureDrawOptions options = texture.initDraw().sprite(0, 0, texture.getWidth(), texture.getHeight()).size(wiggleWidth, wiggleHeight).light(light).pos(drawX - widthDiff / 2, drawY - texture.getHeight() + 8 + heightDiff);
         topList.add((tm) -> options.draw());
     }
 }
