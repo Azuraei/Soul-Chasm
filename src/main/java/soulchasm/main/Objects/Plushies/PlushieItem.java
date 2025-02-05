@@ -2,6 +2,7 @@ package soulchasm.main.Objects.Plushies;
 
 import necesse.engine.localization.Localization;
 import necesse.engine.localization.message.GameMessage;
+import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.network.PacketReader;
 import necesse.engine.registries.MobRegistry;
@@ -24,6 +25,11 @@ public class PlushieItem extends MobSpawnItem {
         super(100, true, mobType);
         this.mobType = mobType;
         this.addCustomTip = addCustomTip;
+    }
+
+    @Override
+    public GameMessage getNewLocalization() {
+        return new StaticMessage("");
     }
 
     public GameMessage getLocalization(InventoryItem item) {

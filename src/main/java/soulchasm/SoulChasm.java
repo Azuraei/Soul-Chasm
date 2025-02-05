@@ -385,9 +385,9 @@ public class SoulChasm {
         UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new HauntedIncursionModifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Medium));
 
         //PLUSHIE
-        registerPlushie("v1", V1Plushie.class, true, 50.0F);
-        registerPlushie("fair", FairPlushie.class, false, 100.0F);
-        registerPlushie("argemia", ArgemiaPlushie.class, false, 50.0F);
+        registerPlushie("v1", V1Plushie.class, true, 500.0F);
+        registerPlushie("fair", FairPlushie.class, false, 1000.0F);
+        registerPlushie("argemia", ArgemiaPlushie.class, true, 500.0F);
     }
 
     private void registerPlushie(String id, Class<? extends Mob> mob_class, boolean addTooltip, float price){
