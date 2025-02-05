@@ -3,6 +3,7 @@ package soulchasm.main.Objects.Plushies;
 import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.localization.Localization;
 import necesse.engine.localization.message.GameMessage;
+import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.network.NetworkClient;
 import necesse.engine.network.client.Client;
@@ -40,9 +41,9 @@ public class PlushieMob extends FriendlyMob {
 
     public PlushieMob(String name) {
         super(1);
-        this.collision = new Rectangle(-16, -16 - 8, 32, 32);
-        this.hitBox = new Rectangle(-16, -16 - 8, 32, 32);
-        this.selectBox = new Rectangle(-16, -16 - 8, 32, 32);
+        this.collision = new Rectangle(-16, -24, 32, 32);
+        this.hitBox = new Rectangle(-16, -24, 32, 32);
+        this.selectBox = new Rectangle(-16, -24, 32, 32);
         this.canDespawn = false;
         this.name = name;
     }
@@ -53,16 +54,6 @@ public class PlushieMob extends FriendlyMob {
 
     public boolean isVisibleOnMap(Client client, LevelMap map) {
         return false;
-    }
-
-    public String getMapInteractTooltip() {
-        return Localization.translate("ui", "plushie_tip");
-    }
-
-    public GameMessage getLocalization() {
-        String message;
-        message = Localization.translate("ui", name + "plushieitem") + " " + Localization.translate("ui", "plushie");
-        return new StaticMessage(message);
     }
 
     public LootTable getLootTable() {
@@ -93,7 +84,7 @@ public class PlushieMob extends FriendlyMob {
         return false;
     }
     public boolean canBePushed(Mob other) {
-        return true;
+        return false;
     }
     public boolean isHealthBarVisible() {
         return false;
@@ -117,7 +108,7 @@ public class PlushieMob extends FriendlyMob {
         long timePress = this.timePressed;
         long animTime = timePress + squishTime;
         long remainingTime = animTime - level.getTime();
-        float progress = 0;
+        float progress;
         final float widthSize;
         final float heightSize;
         if (remainingTime>=0){
@@ -136,6 +127,11 @@ public class PlushieMob extends FriendlyMob {
         int heightDiff = texture.getHeight() - wiggleHeight;
 
         TextureDrawOptions options = texture.initDraw().sprite(0, 0, texture.getWidth(), texture.getHeight()).size(wiggleWidth, wiggleHeight).light(light).pos(drawX - wiggleWidth / 2, drawY - texture.getHeight() + 8 + heightDiff);
-        topList.add((tm) -> options.draw());
+        list.add(new MobDrawable() {
+            public void draw(TickManager tickManager) {
+                options.draw();
+            }
+        });
+        this.addShadowDrawables(tileList, x, y, light, camera);
     }
 }

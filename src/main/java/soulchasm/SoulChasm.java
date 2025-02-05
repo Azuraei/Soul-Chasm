@@ -386,7 +386,7 @@ public class SoulChasm {
 
         //PLUSHIE
         MobRegistry.registerMob("v1plushie", V1Plushie.class, false);
-        ItemRegistry.registerItem("v1plushieitem", new PlushieItem("v1plushie"), 50.0F, true);
+        ItemRegistry.registerItem("v1plushieitem", new PlushieItem("v1plushie", true), 50.0F, true);
     }
     public void initResources(){
         V1Plushie.texture = GameTexture.fromFile("mobs/v1plushie");
