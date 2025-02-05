@@ -6,6 +6,7 @@ import necesse.engine.registries.*;
 import necesse.engine.sound.gameSound.GameSound;
 import necesse.entity.mobs.HumanTexture;
 import necesse.entity.mobs.Mob;
+import necesse.entity.mobs.friendly.human.humanShop.TravelingMerchantMob;
 import necesse.gfx.GameResources;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTexture.GameTextureSection;
@@ -384,16 +385,16 @@ public class SoulChasm {
         UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new HauntedIncursionModifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Medium));
 
         //PLUSHIE
-        registerPlushie("v1", V1Plushie.class, true, 500.0F);
-        registerPlushie("fair", FairPlushie.class, false, 1000.0F);
-        registerPlushie("argemia", ArgemiaPlushie.class, true, 500.0F);
+        registerPlushie("v1", V1Plushie.class, true);
+        registerPlushie("fair", FairPlushie.class, false);
+        registerPlushie("argemia", ArgemiaPlushie.class, true);
     }
 
-    private void registerPlushie(String id, Class<? extends Mob> mob_class, boolean addTooltip, float price){
+    private void registerPlushie(String id, Class<? extends Mob> mob_class, boolean addTooltip){
         String mob_id = id+"plushie";
         String item_id = mob_id + "item";
         MobRegistry.registerMob(mob_id, mob_class, false);
-        ItemRegistry.registerItem(item_id, new PlushieItem(mob_id, addTooltip), price, true);
+        ItemRegistry.registerItem(item_id, new PlushieItem(mob_id, addTooltip), (float) 500.0, true);
     }
 
     public void initResources(){

@@ -21,13 +21,15 @@ public class TravelingMerchantMethodPatch {
         GameRandom seededRandom1 = new GameRandom(mob.getShopSeed());
         if(client.characterStats().completed_incursions.getData("soulchasmincursionbiome").getTotal() > 0 && seededRandom1.getChance(0.1F)){
             GameRandom random = new GameRandom(mob.getShopSeed()).nextSeeded(42);
-            items.add(ShopItem.item("tobeblindfold", random.getIntBetween(500, 600)));
+            String item = "tobeblindfold";
+            InventoryItem inventoryItem = new InventoryItem(ItemRegistry.getItem(item));
+            items.add(ShopItem.item(item, (int) inventoryItem.getBrokerValue() + random.getIntBetween(100, 200)));
         }
         if(client.characterStats().completed_incursions.getTotal() > 0 && seededRandom1.getChance(0.2F)){
             GameRandom random = new GameRandom(mob.getShopSeed()).nextSeeded(42);
-            String plushie = random.getOneOf("argemiaplushieobject", "fairplushieobject", "v1plushieobject");
+            String plushie = random.getOneOf("argemiaplushieitem", "fairplushieitem", "v1plushieitem");
             InventoryItem inventoryItem = new InventoryItem(ItemRegistry.getItem(plushie));
-            items.add(ShopItem.item(plushie, (int) inventoryItem.getBrokerValue()));
+            items.add(ShopItem.item(plushie, (int) inventoryItem.getBrokerValue() + random.getIntBetween(100, 200)));
         }
     }
 }

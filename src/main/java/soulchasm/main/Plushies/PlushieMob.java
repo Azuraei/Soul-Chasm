@@ -66,7 +66,7 @@ public class PlushieMob extends FriendlyMob {
         super.interact(player);
         this.timePressed = player.getTime();
         if (player.getLevel().isClient()){
-            float pitch = GameRandom.globalRandom.getFloatBetween(0.6F, 1.2F);
+            float pitch = GameRandom.globalRandom.getFloatBetween(1.0F, 1.2F);
             SoundManager.playSound(SoulChasm.plushie_squeak, SoundEffect.effect(x, y).volume(0.4F).pitch(pitch));
         }
     }
