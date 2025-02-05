@@ -1,4 +1,4 @@
-package soulchasm.main.Objects.Plushies;
+package soulchasm.main.Plushies;
 
 import necesse.gfx.gameTexture.GameTexture;
 

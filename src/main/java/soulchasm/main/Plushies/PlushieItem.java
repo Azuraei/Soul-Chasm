@@ -1,8 +1,7 @@
-package soulchasm.main.Objects.Plushies;
+package soulchasm.main.Plushies;
 
 import necesse.engine.localization.Localization;
 import necesse.engine.localization.message.GameMessage;
-import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.network.PacketReader;
 import necesse.engine.registries.MobRegistry;
