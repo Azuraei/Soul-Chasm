@@ -132,12 +132,10 @@ public class PlushieMob extends FriendlyMob {
             heightSize = 1.0F;
         }
         int wiggleWidth = (int)((float)texture.getWidth() * (1 + (1 - widthSize)));
-        int widthDiff = wiggleWidth;
-
         int wiggleHeight = (int)((float)texture.getHeight() * heightSize);
         int heightDiff = texture.getHeight() - wiggleHeight;
 
-        TextureDrawOptions options = texture.initDraw().sprite(0, 0, texture.getWidth(), texture.getHeight()).size(wiggleWidth, wiggleHeight).light(light).pos(drawX - widthDiff / 2, drawY - texture.getHeight() + 8 + heightDiff);
+        TextureDrawOptions options = texture.initDraw().sprite(0, 0, texture.getWidth(), texture.getHeight()).size(wiggleWidth, wiggleHeight).light(light).pos(drawX - wiggleWidth / 2, drawY - texture.getHeight() + 8 + heightDiff);
         topList.add((tm) -> options.draw());
     }
 }
