@@ -398,11 +398,9 @@ public class SoulChasm {
     }
 
     public void initResources(){
-        V1Plushie.texture = GameTexture.fromFile("mobs/v1plushie");
-        FairPlushie.texture = GameTexture.fromFile("mobs/fairplushie");
-
-
-        ArgemiaPlushie.texture = GameTexture.fromFile("mobs/argemiaplushie");
+        V1Plushie.gameTexture = GameTexture.fromFile("mobs/v1plushie");
+        FairPlushie.gameTexture = GameTexture.fromFile("mobs/fairplushie");
+        ArgemiaPlushie.gameTexture = GameTexture.fromFile("mobs/argemiaplushie");
 
         LostSoul.texture = GameTexture.fromFile("mobs/lostsoul");
         CarMob.texture =  GameTexture.fromFile("mobs/car");

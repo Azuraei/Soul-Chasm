@@ -39,7 +39,7 @@ import java.awt.*;
 import java.util.List;
 
 public class PlushieMob extends FriendlyMob {
-    public static GameTexture texture;
+    public GameTexture texture;
     public String name;
     private long timePressed;
 
@@ -133,11 +133,11 @@ public class PlushieMob extends FriendlyMob {
             widthSize = 1.0F;
             heightSize = 1.0F;
         }
-        int wiggleWidth = (int)((float)texture.getWidth() * (1 + (1 - widthSize)));
-        int wiggleHeight = (int)((float)texture.getHeight() * heightSize);
-        int heightDiff = texture.getHeight() - wiggleHeight;
+        int wiggleWidth = (int)((float)this.texture.getWidth() * (1 + (1 - widthSize)));
+        int wiggleHeight = (int)((float)this.texture.getHeight() * heightSize);
+        int heightDiff = this.texture.getHeight() - wiggleHeight;
 
-        TextureDrawOptions options = texture.initDraw().sprite(0, 0, texture.getWidth(), texture.getHeight()).size(wiggleWidth, wiggleHeight).light(light).pos(drawX - wiggleWidth / 2, drawY - texture.getHeight() + 8 + heightDiff);
+        TextureDrawOptions options = this.texture.initDraw().sprite(0, 0, this.texture.getWidth(), this.texture.getHeight()).size(wiggleWidth, wiggleHeight).light(light).pos(drawX - wiggleWidth / 2, drawY - this.texture.getHeight() + 8 + heightDiff);
         list.add(new MobDrawable() {
             public void draw(TickManager tickManager) {
                 options.draw();
