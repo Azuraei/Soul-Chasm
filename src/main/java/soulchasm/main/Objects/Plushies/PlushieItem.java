@@ -27,7 +27,7 @@ public class PlushieItem extends MobSpawnItem {
     }
 
     public GameMessage getLocalization(InventoryItem item) {
-        String message = Localization.translate("itemtooltip", mobType + "item") + " " + Localization.translate("itemtooltip", "plushie");
+        String message = Localization.translate("itemtooltip", mobType) + " " + Localization.translate("itemtooltip", "plushie");
         return new StaticMessage(message);
     }
 
@@ -50,7 +50,7 @@ public class PlushieItem extends MobSpawnItem {
 
     @Override
     public ListGameTooltips getTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
-        ListGameTooltips tooltips = super.getTooltips(item, perspective, blackboard);
+        ListGameTooltips tooltips = this.getBaseTooltips(item, perspective, blackboard);
         tooltips.add(new StringTooltips(Localization.translate("itemtooltip", "placetip")));
         if (addCustomTip){
             tooltips.add(new StringTooltips(Localization.translate("itemtooltip", this.mobType+"tip")));

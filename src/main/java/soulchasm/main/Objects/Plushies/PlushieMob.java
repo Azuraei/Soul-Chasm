@@ -7,6 +7,8 @@ import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.network.NetworkClient;
 import necesse.engine.network.client.Client;
+import necesse.engine.sound.SoundEffect;
+import necesse.engine.sound.SoundManager;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.engine.util.GameUtils;
@@ -23,12 +25,14 @@ import necesse.gfx.drawables.LevelSortedDrawable;
 import necesse.gfx.drawables.OrderableDrawables;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTooltips.GameTooltips;
+import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.lootTable.LootList;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.level.maps.Level;
 import necesse.level.maps.LevelMap;
 import necesse.level.maps.light.GameLight;
+import soulchasm.SoulChasm;
 import soulchasm.main.Mobs.Agressive.MeleeStatue;
 
 import java.awt.*;
@@ -52,6 +56,9 @@ public class PlushieMob extends FriendlyMob {
         return attacker.getAttackOwner().isPlayer;
     }
 
+    @Override
+    protected void addHoverTooltips(ListGameTooltips tooltips, boolean debug) {}
+
     public boolean isVisibleOnMap(Client client, LevelMap map) {
         return false;
     }
@@ -67,6 +74,10 @@ public class PlushieMob extends FriendlyMob {
     public void interact(PlayerMob player) {
         super.interact(player);
         this.timePressed = player.getTime();
+        if (player.getLevel().isClient()){
+            float pitch = GameRandom.globalRandom.getFloatBetween(0.6F, 1.2F);
+            SoundManager.playSound(SoulChasm.plushie_squeak, SoundEffect.effect(x, y).volume(0.4F).pitch(pitch));
+        }
     }
 
     public void init() {
