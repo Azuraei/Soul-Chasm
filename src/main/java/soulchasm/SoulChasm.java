@@ -5,6 +5,7 @@ import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.registries.*;
 import necesse.engine.sound.gameSound.GameSound;
 import necesse.entity.mobs.HumanTexture;
+import necesse.entity.mobs.Mob;
 import necesse.gfx.GameResources;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTexture.GameTextureSection;
@@ -86,8 +87,7 @@ import soulchasm.main.Mobs.Passive.Wisp;
 import soulchasm.main.Mobs.Summon.CarMob;
 import soulchasm.main.Mobs.Summon.SmallSoulSummon;
 import soulchasm.main.Mobs.Summon.SoulStatueSummon;
-import soulchasm.main.Objects.Plushies.PlushieItem;
-import soulchasm.main.Objects.Plushies.V1Plushie;
+import soulchasm.main.Objects.Plushies.*;
 import soulchasm.main.Projectiles.BossProjectiles.SoulFlamethrowerProjectile;
 import soulchasm.main.Projectiles.BossProjectiles.SpinSpawnSpikeProjectile;
 import soulchasm.main.Projectiles.SealProjectiles.*;
@@ -385,11 +385,24 @@ public class SoulChasm {
         UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new HauntedIncursionModifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Medium));
 
         //PLUSHIE
-        MobRegistry.registerMob("v1plushie", V1Plushie.class, false);
-        ItemRegistry.registerItem("v1plushieitem", new PlushieItem("v1plushie", true), 50.0F, true);
+        registerPlushie("v1", V1Plushie.class, true, 50.0F);
+        registerPlushie("fair", FairPlushie.class, false, 100.0F);
+        registerPlushie("argemia", ArgemiaPlushie.class, false, 50.0F);
     }
+
+    private void registerPlushie(String id, Class<? extends Mob> mob_class, boolean addTooltip, float price){
+        String mob_id = id+"plushie";
+        String item_id = mob_id + "item";
+        MobRegistry.registerMob(mob_id, mob_class, false);
+        ItemRegistry.registerItem(item_id, new PlushieItem(mob_id, addTooltip), price, true);
+    }
+
     public void initResources(){
         V1Plushie.texture = GameTexture.fromFile("mobs/v1plushie");
+        FairPlushie.texture = GameTexture.fromFile("mobs/fairplushie");
+
+
+        ArgemiaPlushie.texture = GameTexture.fromFile("mobs/argemiaplushie");
 
         LostSoul.texture = GameTexture.fromFile("mobs/lostsoul");
         CarMob.texture =  GameTexture.fromFile("mobs/car");

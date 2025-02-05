@@ -2,9 +2,9 @@ package soulchasm.main.Objects.Plushies;
 
 import necesse.gfx.gameTexture.GameTexture;
 
-public class V1Plushie extends PlushieMob {
+public class ArgemiaPlushie extends PlushieMob {
     public static GameTexture texture;
-    public V1Plushie() {
-        super("v1");
+    public ArgemiaPlushie() {
+        super("argemia");
     }
 }

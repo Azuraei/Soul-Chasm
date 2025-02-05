@@ -64,7 +64,7 @@ public class PlushieMob extends FriendlyMob {
     }
 
     public LootTable getLootTable() {
-        return new LootTable(new LootItem(name + "plushieitem"));
+        return new LootTable(new LootItem(this.name + "plushieitem"));
     }
 
     public boolean canInteract(Mob mob) {
