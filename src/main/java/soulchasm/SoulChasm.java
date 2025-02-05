@@ -388,6 +388,7 @@ public class SoulChasm {
         registerPlushie("v1", V1Plushie.class, true);
         registerPlushie("fair", FairPlushie.class, false);
         registerPlushie("argemia", ArgemiaPlushie.class, true);
+        registerPlushie("fumo", FumoPlushie.class, true);
     }
 
     private void registerPlushie(String id, Class<? extends Mob> mob_class, boolean addTooltip){
@@ -401,6 +402,7 @@ public class SoulChasm {
         V1Plushie.gameTexture = GameTexture.fromFile("mobs/v1plushie");
         FairPlushie.gameTexture = GameTexture.fromFile("mobs/fairplushie");
         ArgemiaPlushie.gameTexture = GameTexture.fromFile("mobs/argemiaplushie");
+        FumoPlushie.gameTexture = GameTexture.fromFile("mobs/fumoplushie");
 
         LostSoul.texture = GameTexture.fromFile("mobs/lostsoul");
         CarMob.texture =  GameTexture.fromFile("mobs/car");
