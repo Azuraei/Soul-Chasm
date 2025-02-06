@@ -111,6 +111,7 @@ public class SoulChasm {
     public static Color chasmGrassMapColor = new Color(93, 132, 143, 255);
     public static Color chasmTorchMapColor = new Color(0, 167, 255);
     public static Color asphaltTileMapColor = new Color(23, 23, 23);
+    public static Color lunarTearMapColor = new Color(227, 245, 251);
 
     public static ChestRoomSet chasmChestRoomSet;
     public static LootTable chasmShrineLootTable;
@@ -125,7 +126,6 @@ public class SoulChasm {
     public static GameTextureSection particleGhostSpawnSection;
     public static GameTextureSection particleMeleeGhostParticleSection;
     public static GameTextureSection particleMonumentRingSection;
-    public static GameSound argemiaplushie_meow;
     public static GameSound plushie_squeak;
 
     public void init() {
@@ -170,7 +170,7 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soultreesappling", new TreeSaplingObject("soultreesappling", "soultree", 1800, 2700, true), 5.0F, true);
 
         ObjectRegistry.registerObject("lunartear", new LunarTearObject(), 5.0F, true);
-        ObjectRegistry.registerObject("lunartearspath", new LunarTearsPathObject(), 5.0F, true);
+        ObjectRegistry.registerObject("lunartearspath", new FlowerPatchObject("lunartearspath", lunarTearMapColor), 5.0F, true);
 
         TorchObject soulTorch = new TorchObject("soultorch", chasmTorchMapColor, 240F, 0.3F);
         soulTorch.flameHue = 190;
@@ -456,7 +456,6 @@ public class SoulChasm {
             car_mask[i] = new GameTexture(car_mask_sprites, 0, i, 64);
         }
 
-        argemiaplushie_meow = GameSound.fromFile("argemiaplushie_meow");
         plushie_squeak = GameSound.fromFile("plushie_squeak");
     }
     public void postInit() {
