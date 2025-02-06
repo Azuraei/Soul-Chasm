@@ -16,11 +16,11 @@ public class SoulCaveArenaPreset extends Preset {
         int soulstonetile = TileRegistry.getTileID("soulcavebrickfloortile");
         int additionaltile = TileRegistry.getTileID("soulcavefloortile");
         int tree = ObjectRegistry.getObjectID("soultree");
+        int treesappling = ObjectRegistry.getObjectID("soultreesapling");
         int grass = ObjectRegistry.getObjectID("soulcavegrassobject");
         int lunartear = ObjectRegistry.getObjectID("lunartear");
         int lunartearpath = ObjectRegistry.getObjectID("lunartearspath");
         int wall = ObjectRegistry.getObjectID("soulbrickwall");
-        int lantern = ObjectRegistry.getObjectID("soullantern");
         int spike = ObjectRegistry.getObjectID("spikeobject");
 
         for(int x = 0; x < this.width; ++x) {
@@ -37,33 +37,25 @@ public class SoulCaveArenaPreset extends Preset {
                         this.setObject(x, y, 0);
                     }
                 }
-
-                if (distancePerc <= 0.8F && this.getObject(x, y) != -1 && random.getChance(0.015F) && this.getTile(x, y)==grasstile) {
-                    this.setObject(x, y, tree);
+                if (distancePerc <= 0.8F && this.getObject(x, y) != -1 && random.getChance(0.02F) && this.getTile(x, y)==grasstile) {
+                    this.setObject(x, y, random.getChance(0.8F)?tree:treesappling);
                 }
                 if (distancePerc <= 0.8F && this.getObject(x, y) != -1 && random.getChance(0.15F) && this.getTile(x, y)==grasstile) {
                     this.setObject(x, y, grass);
                 }
-                if (distancePerc <= 0.8F && this.getObject(x, y) != -1 && random.getChance(0.1F) && this.getTile(x, y)==grasstile) {
+                if (distancePerc <= 0.8F && this.getObject(x, y) != -1 && random.getChance(0.2F) && this.getTile(x, y)==grasstile) {
                     this.setObject(x, y, random.getChance(0.5F)? lunartear:lunartearpath);
                 }
-
                 if (distance < (float)maxDistance && distance >= (float)(maxDistance - 40) && random.getChance(0.9F)) {
                     this.setObject(x, y, wall);
                 }
-
             }
         }
         this.addMob("sphereeffectmob", mid, mid, false);
-        int spikeOffset = 5;
-        this.setObject(mid+spikeOffset, mid, spike, 3);
-        this.setObject(mid-spikeOffset, mid, spike, 1);
-        this.setObject(mid, mid+spikeOffset-1, spike, 0);
-        this.setObject(mid, mid-spikeOffset+1, spike, 2);
-        int lanternOffset = 2;
-        this.setObject(mid+lanternOffset, mid+lanternOffset, lantern);
-        this.setObject(mid+lanternOffset, mid-lanternOffset, lantern);
-        this.setObject(mid-lanternOffset, mid+lanternOffset, lantern);
-        this.setObject(mid-lanternOffset, mid-lanternOffset, lantern);
+        int spikeOffset = 4;
+        this.setObject(mid+spikeOffset + 1, mid, spike, 3);
+        this.setObject(mid-spikeOffset - 1, mid, spike, 1);
+        this.setObject(mid, mid+spikeOffset, spike, 0);
+        this.setObject(mid, mid-spikeOffset, spike, 2);
     }
 }

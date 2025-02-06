@@ -111,7 +111,7 @@ public class SoulChasm {
     public static Color chasmGrassMapColor = new Color(93, 132, 143, 255);
     public static Color chasmTorchMapColor = new Color(0, 167, 255);
     public static Color asphaltTileMapColor = new Color(23, 23, 23);
-    public static Color lunarTearMapColor = new Color(118, 167, 181, 255);
+    public static Color lunarTearMapColor = new Color(106, 149, 162, 255);
 
     public static ChestRoomSet chasmChestRoomSet;
     public static LootTable chasmShrineLootTable;
@@ -167,12 +167,12 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soulstoneflametrap", new WallFlameTrapObject((WallObject)getObject("soulbrickwall")), 50.0F, true);
         ObjectRegistry.registerObject("soulstonepressureplate", new MaskedPressurePlateObject("pressureplatemask", "soulcavefloortile", chasmStoneMapColor), 15.0F, true);
 
-        ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesappling", chasmWoodMapColor, 60,80,100, "soultreeleaves"), 0.0F, false);
-        ObjectRegistry.registerObject("soultreesappling", new TreeSaplingObject("soultreesappling", "soultree", 1800, 2700, true), 5.0F, true);
+        ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesapling", chasmWoodMapColor, 60,80,100, "soultreeleaves"), 0.0F, false);
+        ObjectRegistry.registerObject("soultreesapling", new TreeSaplingObject("soultreesapling", "soultree", 1800, 2700, false, "soulcavegrass"), 5.0F, true);
 
         ObjectRegistry.registerObject("lunartear", new LunarTearObject(), 5.0F, true);
         FlowerPatchObject lunarpath = new FlowerPatchObject("lunartearspath", lunarTearMapColor);
-        lunarpath.lightLevel = 25;
+        lunarpath.lightLevel = 30;
         lunarpath.lightHue = 240.0F;
         lunarpath.lightSat = 0.05F;
         ObjectRegistry.registerObject("lunartearspath", lunarpath, 5.0F, true);

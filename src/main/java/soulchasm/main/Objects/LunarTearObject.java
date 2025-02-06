@@ -14,7 +14,7 @@ public class LunarTearObject extends GrassObject {
         super("lunartears", 3);
         this.toolType = ToolType.PICKAXE;
         this.attackThrough = true;
-        this.lightLevel = 30;
+        this.lightLevel = 25;
         this.lightHue = 240.0F;
         this.lightSat = 0.05F;
         this.mapColor = SoulChasm.lunarTearMapColor;

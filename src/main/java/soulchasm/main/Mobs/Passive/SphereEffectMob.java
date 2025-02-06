@@ -75,7 +75,7 @@ public class SphereEffectMob extends Mob {
     private void spinningParticle(Level level, int x, int y, float distance, Color color, float speedMultiplier, float height){
         AtomicReference<Float> currentAngle = new AtomicReference<>(GameRandom.globalRandom.nextFloat() * 360.0F);
         int lifeTimeMod = (int) (1/speedMultiplier * 5000);
-        level.entityManager.addParticle(x + GameMath.sin(currentAngle.get()) * distance, y + GameMath.cos(currentAngle.get()) * distance * 0.80F, Particle.GType.IMPORTANT_COSMETIC).lifeTime(lifeTimeMod).minDrawLight(60).color(color).height(32F).moves((pos, delta, lifeTime, timeAlive, lifePercent) -> {
+        level.entityManager.addParticle(x + GameMath.sin(currentAngle.get()) * distance, y + GameMath.cos(currentAngle.get()) * distance * 0.80F, Particle.GType.IMPORTANT_COSMETIC).lifeTime(lifeTimeMod).minDrawLight(75).color(color).height(32F).moves((pos, delta, lifeTime, timeAlive, lifePercent) -> {
             float lifeMod = GameMath.limit(1 - (float) timeAlive/lifeTime, 0.0F, 0.999F);
             float angle = currentAngle.accumulateAndGet(delta * 100.0F / 250.0F * speedMultiplier * (1-lifeMod), Float::sum);
             float distY = distance * 0.80F * lifeMod;
@@ -106,6 +106,7 @@ public class SphereEffectMob extends Mob {
     public void clientTick() {
         super.clientTick();
         spawnBallParticles(this.getLevel(), (int) x, (int) y);
+        this.getLevel().lightManager.refreshParticleLightFloat(this.x, this.y, new Color(54, 194, 255), 0.6F, 80);
     }
 
     public void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
