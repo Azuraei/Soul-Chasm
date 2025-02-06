@@ -27,7 +27,7 @@ import necesse.level.maps.light.GameLight;
 import java.awt.*;
 import java.util.List;
 
-import static soulchasm.SoulChasm.car_mask;
+import static soulchasm.SoulChasm.carMask;
 
 public class CarMob extends MountFollowingMob {
     protected TicksPerSecond particleTicks = TicksPerSecond.ticksPerSecond(30);
@@ -197,6 +197,6 @@ public class CarMob extends MountFollowingMob {
         return -14;
     }
     public GameTexture getRiderMask() {
-        return car_mask[GameMath.limit(this.getDir(), 0, car_mask.length - 1)];
+        return carMask[GameMath.limit(this.getDir(), 0, carMask.length - 1)];
     }
 }

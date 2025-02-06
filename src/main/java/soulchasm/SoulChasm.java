@@ -116,9 +116,9 @@ public class SoulChasm {
     public static HumanTexture chasmCaveling;
     public static ChestRoomSet chasmChestRoomSet;
     public static LootTable chasmShrineLootTable;
-    public static GameTexture[] car_mask;
-    public static GameTexture eruption_shadow;
-    public static GameTextureSection spinspawnvisual;
+    public static GameTexture[] carMask;
+    public static GameTexture eruptionShadow;
+    public static GameTextureSection spinSpawnVisual;
     public static GameTextureSection particleFlamethrowerSection;
     public static GameTextureSection particleFireflySection;
     public static GameTextureSection particleWispSection;
@@ -127,10 +127,11 @@ public class SoulChasm {
     public static GameTextureSection particleGhostSpawnSection;
     public static GameTextureSection particleMeleeGhostParticleSection;
     public static GameTextureSection particleMonumentRingSection;
-    public static GameSound plushie_squeak;
+    public static GameSound plushieSqueak;
 
     public void init() {
         GameLoadingScreen.drawLoadingString("Loading Soul Chasm");
+        GameLoadingScreen.drawLoadingSub("Hopefully my wonderful and carefully crafted masterpiece of a code won't crash your game ^-^ \n (that was sarcasm if it wasn't clear)");
 
         //TILES
         TileRegistry.registerTile("soulcavegrass", new SoulCaveGrass(), 0.0F, true);
@@ -430,13 +431,12 @@ public class SoulChasm {
         MeleeGhost.texture = GameTexture.fromFile("mobs/lostsoul");
         SoulStatueSummon.texture = GameTexture.fromFile("items/magestatueobject");
         SoulStatueSummon.texture_ring = GameTexture.fromFile("particles/soulstatuering");
-
         chasmCaveling = new HumanTexture(GameTexture.fromFile("mobs/chasmcaveling"), GameTexture.fromFile("mobs/chasmcavelingarms_front"), GameTexture.fromFile("mobs/chasmcavelingarms_back"));
 
         //TextureSections
-        eruption_shadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");
+        eruptionShadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");
         GameTexture spinspawnvisualtexture = GameTexture.fromFile("particles/spinspawnvisual");
-        spinspawnvisual = GameResources.particlesTextureGenerator.addTexture(spinspawnvisualtexture);
+        spinSpawnVisual = GameResources.particlesTextureGenerator.addTexture(spinspawnvisualtexture);
 
         GameTexture meleeghostspawnparticle = GameTexture.fromFile("particles/meleeghostspawnparticle");
         particleGhostSpawnSection = GameResources.particlesTextureGenerator.addTexture(meleeghostspawnparticle);
@@ -464,13 +464,13 @@ public class SoulChasm {
 
         GameTexture car_mask_sprites = GameTexture.fromFile("mobs/car_mask");
         int carSprites = car_mask_sprites.getHeight() / 64;
-        car_mask = new GameTexture[carSprites];
+        carMask = new GameTexture[carSprites];
 
         for(int i = 0; i < carSprites; ++i) {
-            car_mask[i] = new GameTexture(car_mask_sprites, 0, i, 64);
+            carMask[i] = new GameTexture(car_mask_sprites, 0, i, 64);
         }
 
-        plushie_squeak = GameSound.fromFile("plushie_squeak");
+        plushieSqueak = GameSound.fromFile("plushie_squeak");
     }
     public void postInit() {
         ForestBiome.defaultSurfaceCritters.add(80, "firefly");

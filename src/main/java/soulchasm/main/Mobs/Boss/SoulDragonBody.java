@@ -40,7 +40,7 @@ public class SoulDragonBody extends BossWormMobBody<SoulDragon, SoulDragonBody> 
     }
 
     public GameDamage getCollisionDamage(Mob target) {
-        return SoulDragon.souldragonCollisionDamage;
+        return SoulDragon.soulDragonCollisionDamage;
     }
 
     public boolean canCollisionHit(Mob target) {

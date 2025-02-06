@@ -14,7 +14,7 @@ import necesse.level.maps.light.GameLight;
 
 import java.util.List;
 
-import static soulchasm.SoulChasm.eruption_shadow;
+import static soulchasm.SoulChasm.eruptionShadow;
 
 public class DragonGroundEruptionParticle extends Particle {
     protected static final int[] frameTimes = new int[]{30, 30, 30, 30, 30, 60, 60, 60, 60, 60, 60, 120, 120, 120, 120};
@@ -67,7 +67,7 @@ public class DragonGroundEruptionParticle extends Particle {
                 rotation = (float)((double)eventTime / 4.0);
                 sizeMod += (float)(Math.sin((double)eventTime / 240.0) / 10.0);
             }
-            TextureDrawOptions shadowOptions = eruption_shadow.initDraw().sprite(frame, 0, 128, 192).light(light.minLevelCopy(Math.min(light.getLevel() + 100.0F, 150.0F))).mirror(this.mirror, false).rotate(rotation, (int)(64.0F * sizeMod), (int)(96.0F * sizeMod)).size((int)(128.0F * sizeMod), (int)(192.0F * sizeMod)).posMiddle(drawX, drawY);
+            TextureDrawOptions shadowOptions = eruptionShadow.initDraw().sprite(frame, 0, 128, 192).light(light.minLevelCopy(Math.min(light.getLevel() + 100.0F, 150.0F))).mirror(this.mirror, false).rotate(rotation, (int)(64.0F * sizeMod), (int)(96.0F * sizeMod)).size((int)(128.0F * sizeMod), (int)(192.0F * sizeMod)).posMiddle(drawX, drawY);
             orderableDrawables.add((tm) -> shadowOptions.draw());
         }
     }

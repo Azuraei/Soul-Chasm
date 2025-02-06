@@ -33,7 +33,7 @@ import java.awt.*;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static soulchasm.SoulChasm.spinspawnvisual;
+import static soulchasm.SoulChasm.spinSpawnVisual;
 
 public class MageStatue extends HostileMob implements OEVicinityBuff {
     public static LootTable lootTable;
@@ -66,7 +66,7 @@ public class MageStatue extends HostileMob implements OEVicinityBuff {
             }
             public void shootTarget(MageStatue mob, Mob target) {
                 for(int i = -1; i<=1; i++){
-                    SoulHomingProjectile projectile = new SoulHomingProjectile(mob.getLevel(), mob, mob.x, mob.y, target.x, target.y, 50.0F, 800, new GameDamage(65.0F), 30);
+                    SoulHomingProjectile projectile = new SoulHomingProjectile(mob.getLevel(), mob, mob.x, mob.y, target.x, target.y, 50.0F, 800, new GameDamage(45.0F), 30);
                     projectile.turnSpeed = projectile.turnSpeed * 0.55F;
                     projectile.clearTargetPosWhenAligned = true;
                     projectile.setAngle(projectile.getAngle() + 25 * i);
@@ -132,7 +132,7 @@ public class MageStatue extends HostileMob implements OEVicinityBuff {
 
     private void attackParticle(int lifetime, int fadeIn, int fadeOut){
         float height = 64.0F + 32;
-        this.getLevel().entityManager.addParticle(this.x, this.y + 14 + 64, Particle.GType.IMPORTANT_COSMETIC).sprite(spinspawnvisual).givesLight(230.0F, 0.3F).fadesAlphaTime(fadeIn, fadeOut).lifeTime(lifetime).height(height).size((options, lifeTime, timeAlive, lifePercent) -> options.size(20, 20));
+        this.getLevel().entityManager.addParticle(this.x, this.y + 14 + 64, Particle.GType.IMPORTANT_COSMETIC).sprite(spinSpawnVisual).givesLight(230.0F, 0.3F).fadesAlphaTime(fadeIn, fadeOut).lifeTime(lifetime).height(height).size((options, lifeTime, timeAlive, lifePercent) -> options.size(20, 20));
 
     }
 

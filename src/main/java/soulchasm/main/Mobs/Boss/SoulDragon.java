@@ -67,14 +67,15 @@ public class SoulDragon extends BossWormMobHead<SoulDragonBody, SoulDragon> {
     public static float waveLength = 800.0F;
     public static final int totalBodyParts = 12;
     public static GameTexture texture;
-    public static GameDamage souldragonFragmentDamage;
-    public static GameDamage souldragonHomingProjectileDamage;
-    public static GameDamage souldragonFlamethrowerDamage;
-    public static GameDamage souldragonCollisionDamage;
-    public static GameDamage souldragonEruptionDamage;
+    public static GameDamage soulDragonFragmentDamage;
+    public static GameDamage soulDragonHomingProjectileDamage;
+    public static GameDamage soulDragonFlamethrowerDamage;
+    public static GameDamage soulDragonCollisionDamage;
+    public static GameDamage soulDragonEruptionDamage;
     private static float dragonHeadAngle;
     private static float dragonHeadX;
     private static float dragonHeadY;
+    public static MaxHealthGetter MAX_HEALTH;
     protected MobHealthScaling scaling = new MobHealthScaling(this);
     public EmptyMobAbility roarAbility;
     public EmptyMobAbility roarAbility2;
@@ -82,7 +83,8 @@ public class SoulDragon extends BossWormMobHead<SoulDragonBody, SoulDragon> {
     protected FloatMobAbility temporarySpeedAbility;
 
     public SoulDragon() {
-        super(50000, waveLength, 100.0F, totalBodyParts, 10.0F, -40.0F);
+        super(100, waveLength, 100.0F, totalBodyParts, 10.0F, -40.0F);
+        this.difficultyChanges.setMaxHealth(MAX_HEALTH);
         this.moveAccuracy = 100;
         this.movementUpdateCooldown = 100;
         this.movePosTolerance = 400.0F;
@@ -135,6 +137,13 @@ public class SoulDragon extends BossWormMobHead<SoulDragonBody, SoulDragon> {
         super.applyHealthPacket(reader, isFull);
     }
 
+    public void setMaxHealth(int maxHealth) {
+        super.setMaxHealth(maxHealth);
+        if (this.scaling != null) {
+            this.scaling.updatedMaxHealth();
+        }
+    }
+
     public boolean isHealthBarVisible() {
         return false;
     }
@@ -165,7 +174,7 @@ public class SoulDragon extends BossWormMobHead<SoulDragonBody, SoulDragon> {
     }
 
     public GameDamage getCollisionDamage(Mob target) {
-        return souldragonCollisionDamage.modDamage(1.5F);
+        return soulDragonCollisionDamage.modDamage(1.5F);
     }
 
     public void init() {
@@ -294,11 +303,12 @@ public class SoulDragon extends BossWormMobHead<SoulDragonBody, SoulDragon> {
     }
 
     static {
-        souldragonCollisionDamage = new GameDamage(75.0F);
-        souldragonFragmentDamage = new GameDamage(60.0F);
-        souldragonHomingProjectileDamage = new GameDamage(55.0F);
-        souldragonFlamethrowerDamage = new GameDamage(50.0F);
-        souldragonEruptionDamage = new GameDamage(70.0F);
+        MAX_HEALTH = new MaxHealthGetter(40000, 45000, 50000, 55000, 60000);
+        soulDragonCollisionDamage = new GameDamage(75.0F);
+        soulDragonFragmentDamage = new GameDamage(50.0F);
+        soulDragonHomingProjectileDamage = new GameDamage(45.0F);
+        soulDragonFlamethrowerDamage = new GameDamage(45.0F);
+        soulDragonEruptionDamage = new GameDamage(65.0F);
         privateLootTable = new LootTable(uniqueDrops);
     }
 
@@ -413,7 +423,7 @@ public class SoulDragon extends BossWormMobHead<SoulDragonBody, SoulDragon> {
             double targetX = mob().x + distance*Math.cos(Math.toRadians(selfAngle));
             double targetY = mob().y + distance*Math.sin(Math.toRadians(selfAngle));
             for(int i = -1; i < 1; i++){
-                SoulFlamethrowerProjectile projectile = new SoulFlamethrowerProjectile(mob.getLevel(), dragonHeadX, dragonHeadY, (float) targetX, (float) targetY, (int) (450 + mob.getCurrentSpeed()), SoulDragon.souldragonFlamethrowerDamage, mob);
+                SoulFlamethrowerProjectile projectile = new SoulFlamethrowerProjectile(mob.getLevel(), dragonHeadX, dragonHeadY, (float) targetX, (float) targetY, (int) (450 + mob.getCurrentSpeed()), SoulDragon.soulDragonFlamethrowerDamage, mob);
                 projectile.setAngle(projectile.getAngle() + 10 * i);
                 mob.getLevel().entityManager.projectiles.add(projectile);
             }
@@ -443,7 +453,7 @@ public class SoulDragon extends BossWormMobHead<SoulDragonBody, SoulDragon> {
             double targetY = mob().y + distance*Math.sin(Math.toRadians(selfAngle));
             float angle = 40;
             for(int i = -4; i<4; i++){
-                SoulHomingProjectile projectile = new SoulHomingProjectile(mob.getLevel(), mob, mob.x, mob.y, (float) targetX, (float) targetY, 40, 600,  SoulDragon.souldragonHomingProjectileDamage, 20);
+                SoulHomingProjectile projectile = new SoulHomingProjectile(mob.getLevel(), mob, mob.x, mob.y, (float) targetX, (float) targetY, 40, 600,  SoulDragon.soulDragonHomingProjectileDamage, 20);
                 projectile.setAngle(projectile.getAngle() + angle * i);
                 projectile.turnSpeed = 0.025F;
                 mob.getLevel().entityManager.projectiles.add(projectile);
@@ -482,7 +492,7 @@ public class SoulDragon extends BossWormMobHead<SoulDragonBody, SoulDragon> {
                         int range = 300;
                         int pos_x = x + GameRandom.globalRandom.getIntBetween(-range, range);
                         int pos_y = y + GameRandom.globalRandom.getIntBetween(-range, range);
-                        DragonGroundEruptionEvent event = new DragonGroundEruptionEvent(mob, pos_x, pos_y, GameRandom.globalRandom.nextSeeded(), souldragonEruptionDamage);
+                        DragonGroundEruptionEvent event = new DragonGroundEruptionEvent(mob, pos_x, pos_y, GameRandom.globalRandom.nextSeeded(), soulDragonEruptionDamage);
                         level.entityManager.addLevelEvent(event);
                     }
                 });
@@ -506,7 +516,7 @@ public class SoulDragon extends BossWormMobHead<SoulDragonBody, SoulDragon> {
             int y = (int) mob.y;
             SpinSpawnVisualEvent event = new SpinSpawnVisualEvent(x, y, duration * 3.5F);
             level.entityManager.addLevelEvent(event);
-            SpinSpawnEvent event2 = new SpinSpawnEvent(mob, x, y, GameRandom.globalRandom.nextSeeded(), souldragonFragmentDamage, duration);
+            SpinSpawnEvent event2 = new SpinSpawnEvent(mob, x, y, GameRandom.globalRandom.nextSeeded(), soulDragonFragmentDamage, duration);
             level.entityManager.addLevelEvent(event2);
             return AINodeResult.SUCCESS;
         }

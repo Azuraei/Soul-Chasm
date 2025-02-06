@@ -44,7 +44,7 @@ public class MeleeGhost extends HostileMob {
 
     public void init() {
         super.init();
-        this.ai = new BehaviourTreeAI(this, new CollisionPlayerChaserWandererAI(null, 500, new GameDamage(65.0F), 100, 40000), new FlyingAIMover());
+        this.ai = new BehaviourTreeAI(this, new CollisionPlayerChaserWandererAI(null, 500, new GameDamage(55.0F), 100, 40000), new FlyingAIMover());
     }
 
     public boolean isLavaImmune() {
