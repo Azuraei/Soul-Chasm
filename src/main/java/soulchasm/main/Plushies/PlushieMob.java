@@ -44,7 +44,7 @@ public class PlushieMob extends FriendlyMob {
     }
 
     public boolean canBeHit(Attacker attacker) {
-        return attacker.getAttackOwner().isPlayer;
+        return attacker.getAttackOwner().isPlayer && !attacker.getAttackOwner().isSummoned;
     }
 
     @Override
