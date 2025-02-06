@@ -1,6 +1,7 @@
 package soulchasm;
 
 import necesse.engine.GameLoadingScreen;
+import necesse.engine.journal.JournalEntry;
 import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.registries.*;
 import necesse.engine.sound.gameSound.GameSound;
@@ -384,6 +385,11 @@ public class SoulChasm {
 
         //INCURSION_MODS
         UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new HauntedIncursionModifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Medium));
+
+        JournalEntry soulchasm_entry = new JournalEntry(new SoulChasmIncursionBiome());
+        soulchasm_entry.addMobEntries("lostsoul", "soulmage", "magestatue", "meleestatue", "souldragonhead");
+        soulchasm_entry.addBiomeLootEntry("crystalizedsouloreitem", "alchemyshard", "upgradeshard", "soulcaverockitem", "soulwoodlogitem");
+        JournalRegistry.registerJournalEntry("soulchasm", soulchasm_entry);
 
         //PLUSHIE
         registerPlushie("v1", V1Plushie.class, true);

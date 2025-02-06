@@ -8,6 +8,8 @@ import necesse.entity.mobs.PlayerMob;
 import necesse.inventory.lootTable.LootTable;
 import necesse.level.maps.Level;
 import necesse.level.maps.biomes.Biome;
+import necesse.level.maps.biomes.FishingLootTable;
+import necesse.level.maps.biomes.FishingSpot;
 import necesse.level.maps.biomes.MobSpawnTable;
 
 public class SoulChasmBiome extends Biome {
@@ -25,7 +27,9 @@ public class SoulChasmBiome extends Biome {
     public MobSpawnTable getMobSpawnTable(Level level) {
         return mobs;
     }
-    public LootTable getExtraMobDrops(Mob mob) {return super.getExtraMobDrops(mob);}
+    public LootTable getExtraMobDrops(Mob mob) {
+        return super.getExtraMobDrops(mob);
+    }
 
     static {
         critters = (new MobSpawnTable()).add(25, "soulcavecaveling").add(100, "wisp");
