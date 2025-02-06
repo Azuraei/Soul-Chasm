@@ -100,7 +100,7 @@ public class PlushieMob extends FriendlyMob {
 
     public void addDrawables(List<MobDrawable> list, OrderableDrawables tileList, OrderableDrawables topList, Level level, int x, int y, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
         super.addDrawables(list, tileList, topList, level, x, y, tickManager, camera, perspective);
-        GameLight light = level.getLightLevel(x, y);
+        GameLight light = level.getLightLevel(x / 32, y / 32);
         int drawX = camera.getDrawX(x);
         int drawY = camera.getDrawY(y);
 
