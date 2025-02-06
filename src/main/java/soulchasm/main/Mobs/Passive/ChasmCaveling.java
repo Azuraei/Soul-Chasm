@@ -1,22 +1,24 @@
 package soulchasm.main.Mobs.Passive;
 
 import necesse.engine.util.GameRandom;
+import necesse.entity.mobs.HumanTexture;
 import necesse.entity.mobs.friendly.critters.caveling.CavelingMob;
+import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.LootItem;
 import soulchasm.SoulChasm;
 
-public class SoulCaveCaveling extends CavelingMob {
-    public SoulCaveCaveling() {
-        super(350, 55);
+public class ChasmCaveling extends CavelingMob {
+    public ChasmCaveling() {
+        super(500, 50);
     }
 
     public void init() {
         super.init();
         this.texture = SoulChasm.chasmCaveling;
         this.popParticleColor = SoulChasm.chasmStoneLightMapColor;
-        this.singleRockSmallStringID = "soulcaverocks";
+        this.singleRockSmallStringID = "soulcaverocksmall";
         if (this.item == null) {
             this.item = GameRandom.globalRandom.getOneOf(new InventoryItem("crystalizedsouloreitem", GameRandom.globalRandom.getIntBetween(8, 12)));
         }

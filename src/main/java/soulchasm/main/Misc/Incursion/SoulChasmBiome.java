@@ -29,7 +29,7 @@ public class SoulChasmBiome extends Biome {
     }
 
     static {
-        critters = (new MobSpawnTable()).add(25, "soulcavecaveling").add(100, "wisp");
+        critters = (new MobSpawnTable()).add(25, "chasmcaveling").add(100, "wisp");
         mobs = (new MobSpawnTable()).add(80, "lostsoul").add(40, "soulmage").add(10, "magestatue").add(10, "meleestatue");
     }
 }

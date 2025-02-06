@@ -7,7 +7,6 @@ import necesse.engine.registries.*;
 import necesse.engine.sound.gameSound.GameSound;
 import necesse.entity.mobs.HumanTexture;
 import necesse.entity.mobs.Mob;
-import necesse.entity.mobs.friendly.human.humanShop.TravelingMerchantMob;
 import necesse.gfx.GameResources;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTexture.GameTextureSection;
@@ -82,7 +81,7 @@ import soulchasm.main.Objects.Jars.WispJarObject;
 import soulchasm.main.Mobs.Agressive.*;
 import soulchasm.main.Mobs.Boss.SoulDragonBody;
 import soulchasm.main.Mobs.Passive.Firefly;
-import soulchasm.main.Mobs.Passive.SoulCaveCaveling;
+import soulchasm.main.Mobs.Passive.ChasmCaveling;
 import soulchasm.main.Mobs.Passive.SphereEffectMob;
 import soulchasm.main.Mobs.Passive.Wisp;
 import soulchasm.main.Mobs.Summon.CarMob;
@@ -330,7 +329,7 @@ public class SoulChasm {
 
         MobRegistry.registerMob("wisp", Wisp.class, false);
         MobRegistry.registerMob("firefly", Firefly.class, false);
-        MobRegistry.registerMob("soulcavecaveling", SoulCaveCaveling.class, true);
+        MobRegistry.registerMob("chasmcaveling", ChasmCaveling.class, true);
 
         MobRegistry.registerMob("carmob", CarMob.class, false);
         MobRegistry.registerMob("smallsoulsummon", SmallSoulSummon.class, false);
@@ -432,6 +431,8 @@ public class SoulChasm {
         SoulStatueSummon.texture = GameTexture.fromFile("items/magestatueobject");
         SoulStatueSummon.texture_ring = GameTexture.fromFile("particles/soulstatuering");
 
+        chasmCaveling = new HumanTexture(GameTexture.fromFile("mobs/chasmcaveling"), GameTexture.fromFile("mobs/chasmcavelingarms_front"), GameTexture.fromFile("mobs/chasmcavelingarms_back"));
+
         //TextureSections
         eruption_shadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");
         GameTexture spinspawnvisualtexture = GameTexture.fromFile("particles/spinspawnvisual");
@@ -460,8 +461,6 @@ public class SoulChasm {
 
         GameTexture monumentRingParticleTexture = GameTexture.fromFile("particles/soulmonumentring");
         particleMonumentRingSection = GameResources.particlesTextureGenerator.addTexture(monumentRingParticleTexture);
-
-        chasmCaveling = new HumanTexture(GameTexture.fromFile("chasmcaveling"), GameTexture.fromFile("chasmcavelingarms_front"), GameTexture.fromFile("chasmcavelingarms_back"));
 
         GameTexture car_mask_sprites = GameTexture.fromFile("mobs/car_mask");
         int carSprites = car_mask_sprites.getHeight() / 64;
