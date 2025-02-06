@@ -26,8 +26,7 @@ wispjarobject=Jarre à eau
 fireflyjarobject=Bocal à lucioles
 soulmonumentobject=Monument du gouffre des âmes
 soulstonepressureplate=Plaque de pression en pierre du gouffre de l'âme
-soulstoneflametrap=Piège à flammes en pierre du gouffre de l'âme
-soulbricktexturetrap=Piège à briques et à flammes du gouffre de l'âme
+soulbrickwalltrap=Piège à flammes en pierre du gouffre de l'âme
 soullantern=Lanterne des âmes
 oldbarrel=Vieux tonneau
 soulcavechest=Vieux coffre
@@ -133,7 +132,6 @@ devplushie=Peluche Endzio
 
 argemiaplushietip=Adore les crevettes
 v1plushietip=§6Le sang, c'est du carburant
-devplushietip=(^-^)
 
 [mob]
 souldragonhead=Dragon antique

@@ -43,10 +43,6 @@ public class PlushieMob extends FriendlyMob {
         this.name = name;
     }
 
-    public boolean canBeHit(Attacker attacker) {
-        return attacker.getAttackOwner().isPlayer && !attacker.getAttackOwner().isSummoned;
-    }
-
     @Override
     protected void addHoverTooltips(ListGameTooltips tooltips, boolean debug) {}
 
@@ -79,8 +75,11 @@ public class PlushieMob extends FriendlyMob {
     public boolean canTakeDamage() {
         return true;
     }
-    public boolean canBeTargeted(Mob attacker, NetworkClient attackerClient) {
+    public boolean canBeHit(Attacker attacker) {
         return true;
+    }
+    public boolean canBeTargeted(Mob attacker, NetworkClient attackerClient) {
+        return attacker.isPlayer && !attacker.isSummoned;
     }
     public boolean canPushMob(Mob other) {
         return false;

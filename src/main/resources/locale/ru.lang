@@ -26,8 +26,7 @@ wispjarobject=Банка с огоньком
 fireflyjarobject=Банка со светлячком
 soulmonumentobject=Монумент пропасти душ
 soulstonepressureplate=Нажимная плита камня пропасти душ
-soulstoneflametrap=Огненная ловушка из камня пропасти душ
-soulbricktexturetrap=Огненная ловушка из кирпича пропасти душ
+soulbrickwalltrap=Огненная ловушка из камня пропасти душ
 soullantern=Фонарь души
 oldbarrel=Старая бочка
 soulcavechest=Стырый сундук
@@ -125,15 +124,11 @@ bookofsoulstip=Стреляет медленным большим самонав
 bookofsoulssecondarytip=Нажмите [input=mouse2], чтобы активировать перелив энергии и быстро стрелять меньшими самонаводящимися снарядами
 soulstatuetip=Призывает Идола Души, чтобы помочь вам в бою\nИдол усиливает ближайших игроков в радиусе действия\При уровне здоровья более 80% усиливает урон и скорость атаки, в противном случае восстанавливает здоровье и устойчивость
 
-argemiaplushieobject=Аргемия Плюшевая
-fairplushieobject=Fair Плюшевая
-v1plushieobject=V1 Плюшевая
+argemiaplushie=Аргемия Плюшевая
+fairplushie=Fair Плюшевая
+v1plushie=V1 Плюшевая
 fumoplushie=Fumo Плюшевая
 devplushie=Endzio Плюшевая
-
-argemiaplushieobject=Loves shrimp
-v1plushieobject=§6Blood is fuel
-devplushietip=(^-^)
 
 [mob]
 souldragonhead=Древний дракон

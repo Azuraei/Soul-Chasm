@@ -7,6 +7,7 @@ import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.ChanceLootItem;
 import necesse.level.gameObject.GrassObject;
 import necesse.level.maps.Level;
+import soulchasm.SoulChasm;
 
 public class LunarTearObject extends GrassObject {
     public LunarTearObject() {
@@ -16,6 +17,7 @@ public class LunarTearObject extends GrassObject {
         this.lightLevel = 30;
         this.lightHue = 240.0F;
         this.lightSat = 0.05F;
+        this.mapColor = SoulChasm.lunarTearMapColor;
     }
 
     public LootTable getLootTable(Level level, int layerID, int tileX, int tileY) {

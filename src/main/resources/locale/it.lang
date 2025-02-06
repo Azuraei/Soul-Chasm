@@ -26,8 +26,7 @@ wispjarobject=Barattolo di Fuoco Fauto
 fireflyjarobject=Barattolo di Lucciola
 soulmonumentobject=Monumento dell'Abisso dell'Anima
 soulstonepressureplate=Pedana in Pietra dell'Abisso dell'Anima
-soulstoneflametrap=Trappola di Fiamme in Pietra dell'Abisso dell'Anima
-soulbricktexturetrap=Trappola di Fiamme in Pietra dell'Abisso dell'Anima
+soulbrickwalltrap=Trappola di Fiamme in Pietra dell'Abisso dell'Anima
 soullantern=Lanterna dell'Anima
 oldbarrel=Vecchio Barile
 soulcavechest=Vecchia Cassa
@@ -125,15 +124,13 @@ bookofsoulstip=Spara lentamente un grosso proiettile a ricerca
 bookofsoulssecondarytip=Premi [input=mouse2] per attivare il sovraccarico di energia e sparare rapidamente piccoli proiettili a ricerca
 soulstatuetip=Evoca l'Idolo dell'Anima per aiutarti in battaglia\nL'Idolo potenzia i giocatori vicini al raggio d'azione\nQuando supera l'80% degli HP, aumenta il danno e la velocità d'attacco, rigenera gli HP e la resilienza
 
-argemiaplushieobject=Peluche di Argemia
-fairplushieobject=Peluche di Fair
-v1plushieobject=Peluche di V1
+argemiaplushie=Peluche di Argemia
+fairplushie=Peluche di Fair
+v1plushie=Peluche di V1
 fumoplushie=Peluche di Fumo
 devplushie=Peluche di Endzio
 
-argemiaplushieobject=Ama i gamberetti
-v1plushieobject=§6Blood is fuel
-devplushietip=(^-^)
+argemiaplushietip=Ama i gamberetti
 
 [mob]
 souldragonhead=Drago Antico
