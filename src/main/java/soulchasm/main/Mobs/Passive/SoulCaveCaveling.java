@@ -14,8 +14,9 @@ public class SoulCaveCaveling extends CavelingMob {
 
     public void init() {
         super.init();
+        this.texture = SoulChasm.chasmCaveling;
         this.popParticleColor = SoulChasm.chasmStoneLightMapColor;
-        this.singleRockSmallStringID = "soulcaverocksmall";
+        this.singleRockSmallStringID = "soulcaverocks";
         if (this.item == null) {
             this.item = GameRandom.globalRandom.getOneOf(new InventoryItem("crystalizedsouloreitem", GameRandom.globalRandom.getIntBetween(8, 12)));
         }
@@ -26,6 +27,6 @@ public class SoulCaveCaveling extends CavelingMob {
     }
 
     public LootTable getCavelingDropsAsLootTable() {
-        return new LootTable(new LootItem("crystalizedsouloreitem", GameRandom.globalRandom.getIntBetween(8, 12)));
+        return new LootTable(new LootItem("crystalizedsouloreitem", 1));
     }
 }

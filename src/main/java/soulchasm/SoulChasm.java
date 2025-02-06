@@ -114,6 +114,7 @@ public class SoulChasm {
     public static Color asphaltTileMapColor = new Color(23, 23, 23);
     public static Color lunarTearMapColor = new Color(93, 132, 143);
 
+    public static HumanTexture chasmCaveling;
     public static ChestRoomSet chasmChestRoomSet;
     public static LootTable chasmShrineLootTable;
     public static GameTexture[] car_mask;
@@ -459,6 +460,8 @@ public class SoulChasm {
 
         GameTexture monumentRingParticleTexture = GameTexture.fromFile("particles/soulmonumentring");
         particleMonumentRingSection = GameResources.particlesTextureGenerator.addTexture(monumentRingParticleTexture);
+
+        chasmCaveling = new HumanTexture(GameTexture.fromFile("chasmcaveling"), GameTexture.fromFile("chasmcavelingarms_front"), GameTexture.fromFile("chasmcavelingarms_back"));
 
         GameTexture car_mask_sprites = GameTexture.fromFile("mobs/car_mask");
         int carSprites = car_mask_sprites.getHeight() / 64;
