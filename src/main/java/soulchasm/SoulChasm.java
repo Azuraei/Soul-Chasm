@@ -145,14 +145,15 @@ public class SoulChasm {
         TileRegistry.registerTile("meltedsouls", new MeltedSouls(), 10.0F, true);
         TileRegistry.registerTile("soulcavecracktile", new SoulCaveCrackTile(), 0.0F, false);
 
-        TileRegistry.registerTile("asphalttile", new AsphaltTile(), 20.0F, true);
+        TileRegistry.registerTile("asphalttile", new AsphaltTile(), -1.0F, true);
 
         //OBJECTS
         RockObject chasmrock;
         ObjectRegistry.registerObject("soulcaverock", chasmrock = new RockObject("soulcaverock", chasmStoneMapColor, "soulcaverockitem"), -1.0F, true);
         chasmrock.toolTier = 4;
-        SingleRockObject.registerSurfaceRock(chasmrock, "soulcaverocks", chasmStoneMapColor, -0.1F, false);
-        ObjectRegistry.registerObject("soulcaverockssmall", new SingleRockSmall(chasmrock, "soulcaverockssmall", chasmStoneMapColor), 0.0F, false);
+
+        SingleRockObject.registerSurfaceRock(chasmrock, "soulcaverocks", chasmStoneMapColor, -1.0F, true);
+        ObjectRegistry.registerObject("soulcaverocksmall", new SingleRockSmall(chasmrock, "soulcaverocksmall", chasmStoneMapColor), -1.0F, true);
 
         ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject(chasmrock, "oremask", "crystalizedsoulore", chasmCrystalMapColor, "crystalizedsouloreitem", 1, 2, 1), -1.0F, true);
         ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject(chasmrock, "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, 1, false), -1.0F, true);
@@ -177,12 +178,12 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soultorch", soulTorch, 1, true);
         TorchObject soulLantern = new TorchObject("soullantern", chasmTorchMapColor, 240.0F, 0.3F);
         soulLantern.flameHue = 190;
-        ObjectRegistry.registerObject("soullantern", soulLantern, 10, true);
+        ObjectRegistry.registerObject("soullantern", soulLantern, -1.0F, true);
 
         ObjectRegistry.registerObject("soulcavegrassobject", new GrassObject("soulcavegrassobject", 4), 0.0F, false);
         ObjectRegistry.registerObject("soulcrystalbig", new SoulCrystalBigObject(), 0.0F, false);
 
-        ObjectRegistry.registerObject("bigjarobject", new BigJarObject(), 10.0F, true);
+        ObjectRegistry.registerObject("bigjarobject", new BigJarObject(), -1.0F, true);
         ObjectRegistry.registerObject("wispjarobject", new WispJarObject(), 0.0F, false);
         ObjectRegistry.registerObject("fireflyjarobject", new FireFlyJarObject(), 0.0F, false);
 
@@ -190,7 +191,7 @@ public class SoulChasm {
         ObjectRegistry.registerObject("oldbarrel", new InventoryObject("oldbarrel", 20, new Rectangle(8, 4, 16, 16), ToolType.PICKAXE, chasmWoodFurnitureMapColor), 10.0F, true);
         ObjectRegistry.registerObject("chasmcrates", new RandomCrateObject("chasmcrates"), 0.0F, false);
         ObjectRegistry.registerObject("statueobject", new StatueObject(), 50.0F, true);
-        ObjectRegistry.registerObject("magestatueobject", new MageStatueObject(), 50.0F, true);
+        ObjectRegistry.registerObject("magestatueobject", new MageStatueObject(), -1.0F, true);
         ObjectRegistry.registerObject("spikeobject", new SpikeObject(), 0.0F, false);
 
         TikiTorchObject soulTikiTorch = new TikiTorchObject();
@@ -201,31 +202,31 @@ public class SoulChasm {
             soulTikiTorch.lightSat = 0.3F;
             soulTikiTorch.mapColor = chasmTorchMapColor;
         }
-        ObjectRegistry.registerObject("soultikitorchobject", soulTikiTorch, 2.0F, true);
+        ObjectRegistry.registerObject("soultikitorchobject", soulTikiTorch, -1.0F, true);
 
         //Furniture
-        BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", chasmWoodFurnitureMapColor, 10.0F);
-        BedObject.registerBed("soulwoodbed", "soulwoodbed", chasmWoodFurnitureMapColor, 100.0F);
-        BenchObject.registerBench("soulwoodbench", "soulwoodbench", chasmWoodFurnitureMapColor, 10.0F);
-        DinnerTableObject.registerDinnerTable("soulwooddinnertable", "soulwooddinnertable", chasmWoodFurnitureMapColor, 20.0F);
-        ObjectRegistry.registerObject("soulwoodbookshelf", new BookshelfObject("soulwoodbookshelf", chasmWoodFurnitureMapColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwoodcabinet", new CabinetObject("soulwoodcabinet", chasmWoodFurnitureMapColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwoodchair", new ChairObject("soulwoodchair", chasmWoodFurnitureMapColor), 5.0F, true);
-        ObjectRegistry.registerObject("soulwoodchest", new StorageBoxInventoryObject("soulwoodchest",40, chasmWoodFurnitureMapColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwoodclock", new ClockObject("soulwoodclock", chasmWoodFurnitureMapColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwooddesk", new DeskObject("soulwooddesk", chasmWoodFurnitureMapColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwooddisplay", new DisplayStandObject("soulwooddisplay",ToolType.PICKAXE, chasmWoodFurnitureMapColor, 32), 10.0F, true);
-        ObjectRegistry.registerObject("soulwooddresser", new DresserObject("soulwooddresser", chasmWoodFurnitureMapColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwoodmodulartable", new ModularTableObject("soulwoodmodulartable", chasmWoodFurnitureMapColor), 10.0F, true);
-        ObjectRegistry.registerObject("soulwoodtoilet", new ToiletObject("soulwoodtoilet", chasmWoodFurnitureMapColor), 10.0F, true);
+        BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", chasmWoodFurnitureMapColor, -1.0F);
+        BedObject.registerBed("soulwoodbed", "soulwoodbed", chasmWoodFurnitureMapColor, -1.0F);
+        BenchObject.registerBench("soulwoodbench", "soulwoodbench", chasmWoodFurnitureMapColor, -1.0F);
+        DinnerTableObject.registerDinnerTable("soulwooddinnertable", "soulwooddinnertable", chasmWoodFurnitureMapColor, -1.0F);
+        ObjectRegistry.registerObject("soulwoodbookshelf", new BookshelfObject("soulwoodbookshelf", chasmWoodFurnitureMapColor), -1.0F, true);
+        ObjectRegistry.registerObject("soulwoodcabinet", new CabinetObject("soulwoodcabinet", chasmWoodFurnitureMapColor), -1.0F, true);
+        ObjectRegistry.registerObject("soulwoodchair", new ChairObject("soulwoodchair", chasmWoodFurnitureMapColor), -1.0F, true);
+        ObjectRegistry.registerObject("soulwoodchest", new StorageBoxInventoryObject("soulwoodchest",40, chasmWoodFurnitureMapColor), -1.0F, true);
+        ObjectRegistry.registerObject("soulwoodclock", new ClockObject("soulwoodclock", chasmWoodFurnitureMapColor), -1.0F, true);
+        ObjectRegistry.registerObject("soulwooddesk", new DeskObject("soulwooddesk", chasmWoodFurnitureMapColor), -1.0F, true);
+        ObjectRegistry.registerObject("soulwooddisplay", new DisplayStandObject("soulwooddisplay",ToolType.PICKAXE, chasmWoodFurnitureMapColor, 32), -1.0F, true);
+        ObjectRegistry.registerObject("soulwooddresser", new DresserObject("soulwooddresser", chasmWoodFurnitureMapColor), -1.0F, true);
+        ObjectRegistry.registerObject("soulwoodmodulartable", new ModularTableObject("soulwoodmodulartable", chasmWoodFurnitureMapColor), -1.0F, true);
+        ObjectRegistry.registerObject("soulwoodtoilet", new ToiletObject("soulwoodtoilet", chasmWoodFurnitureMapColor), -1.0F, true);
 
         CandelabraObject soulWoodCandelabra = new CandelabraObject("soulwoodcandelabra", chasmWoodFurnitureMapColor, 60.0F, 0.3F);
-        ObjectRegistry.registerObject("soulwoodcandelabra", soulWoodCandelabra, 10.0F, true);
+        ObjectRegistry.registerObject("soulwoodcandelabra", soulWoodCandelabra, -1.0F, true);
 
         ObjectRegistry.registerObject("soulcavechest", new StorageBoxInventoryObject("soulcavechest",40, chasmStoneMapColor), 10.0F, true);
 
-        int soulWoodFenceID = ObjectRegistry.registerObject("soulwoodfence", new FenceObject("soulwoodfence", chasmWoodMapColor, 12, 10, -24), 2.0F, true);
-        FenceGateObject.registerGatePair(soulWoodFenceID, "soulwoodfencegate", "soulwoodfencegate", chasmWoodMapColor, 12, 10, 4.0F);
+        int soulWoodFenceID = ObjectRegistry.registerObject("soulwoodfence", new FenceObject("soulwoodfence", chasmWoodMapColor, 12, 10, -24), -1.0F, true);
+        FenceGateObject.registerGatePair(soulWoodFenceID, "soulwoodfencegate", "soulwoodfencegate", chasmWoodMapColor, 12, 10, -1.0F);
 
         //INCURSION
         BiomeRegistry.registerBiome("soulcavern", new SoulChasmBiome(), 0, null);
@@ -271,16 +272,16 @@ public class SoulChasm {
         ItemRegistry.registerItem("soulcoreitem", new MatItem(250, Item.Rarity.UNCOMMON), 15, true);
 
         ItemRegistry.registerItem("soulcaverockitem", new StonePlaceableItem(5000), 0.1F, true);
-        ItemRegistry.registerItem("crystalizedsouloreitem", new MatItem(500, Item.Rarity.UNCOMMON), 15, true);
-        ItemRegistry.registerItem("soulmetalbar", new MatItem(250, Item.Rarity.UNCOMMON), 80, true);
+        ItemRegistry.registerItem("crystalizedsouloreitem", new MatItem(500, Item.Rarity.UNCOMMON), 10.0F, true);
+        ItemRegistry.registerItem("soulmetalbar", new MatItem(250, Item.Rarity.UNCOMMON), -1.0F, true);
         ItemRegistry.registerItem("soulwoodlogitem", (new MatItem(500, "anylog")).setItemCategory("materials", "logs"), 2.0F, true);
 
         ItemRegistry.registerItem("soulgrassseeditem", new GrassSeedItem("soulcavegrass"), 2.0F, true);
 
-        ItemRegistry.registerItem("wispitem", new MatItem(500, Item.Rarity.UNCOMMON, "glowingbugs"), 5.0F, true);
-        ItemRegistry.registerItem("fireflyitem", new MatItem(500, Item.Rarity.UNCOMMON, "glowingbugs"), 5.0F, true);
-        ItemRegistry.registerItem("fireflyjar", new ObjectItem(getObject("fireflyjarobject")), 20.0F, true);
-        ItemRegistry.registerItem("wispjar", new ObjectItem(getObject("wispjarobject")), 20.0F, true);
+        ItemRegistry.registerItem("wispitem", new MatItem(500, Item.Rarity.UNCOMMON, "glowingbugs"), 1.0F, true);
+        ItemRegistry.registerItem("fireflyitem", new MatItem(500, Item.Rarity.UNCOMMON, "glowingbugs"), 1.0F, true);
+        ItemRegistry.registerItem("fireflyjar", new ObjectItem(getObject("fireflyjarobject")), -1.0F, true);
+        ItemRegistry.registerItem("wispjar", new ObjectItem(getObject("wispjarobject")), -1.0F, true);
 
         ItemRegistry.registerItem("carkeys", new CarKeys(), 2000, true);
         //Trinkets
@@ -291,26 +292,26 @@ public class SoulChasm {
         ItemRegistry.registerItem("phantomdasherstrinket", new PhantomDashersTrinket(), 750, true);
         //Weapons
         ItemRegistry.registerItem("soulscythe", new SoulScythe(), 2000, true);
-        ItemRegistry.registerItem("soulmetalbow", new SoulMetalBow(), 500, true);
-        ItemRegistry.registerItem("soulmetalsword", new SoulMetalSword(), 500, true);
-        ItemRegistry.registerItem("soulmetalspear", new SoulMetalSpear(), 500, true);
-        ItemRegistry.registerItem("soulmetalrevolver", new SoulMetalRevolver(), 500, true);
-        ItemRegistry.registerItem("bookofsouls", new BookofSouls(), 500, true);
-        ItemRegistry.registerItem("soulstatue", new SoulStatue(), 500, true);
+        ItemRegistry.registerItem("soulmetalbow", new SoulMetalBow(), -1.0F, true);
+        ItemRegistry.registerItem("soulmetalsword", new SoulMetalSword(), -1.0F, true);
+        ItemRegistry.registerItem("soulmetalspear", new SoulMetalSpear(), -1.0F, true);
+        ItemRegistry.registerItem("soulmetalrevolver", new SoulMetalRevolver(), -1.0F, true);
+        ItemRegistry.registerItem("bookofsouls", new BookofSouls(), -1.0F, true);
+        ItemRegistry.registerItem("soulstatue", new SoulStatue(), -1.0F, true);
         //Armor
-        ItemRegistry.registerItem("soularmorboots", new SoulArmorBoots(), 200.0F, true);
-        ItemRegistry.registerItem("soularmorchestplate", new SoulArmorChestplate(), 200.0F, true);
-        ItemRegistry.registerItem("soularmorcrown", new SoulArmorCrown(), 200.0F, true);
-        ItemRegistry.registerItem("soularmorhelmet", new SoulArmorHelmet(), 200.0F, true);
-        ItemRegistry.registerItem("soularmorhood", new SoulArmorHood(), 200.0F, true);
-        ItemRegistry.registerItem("soularmorhat", new SoulArmorHat(),200.0F, true);
+        ItemRegistry.registerItem("soularmorboots", new SoulArmorBoots(), -1.0F, true);
+        ItemRegistry.registerItem("soularmorchestplate", new SoulArmorChestplate(), -1.0F, true);
+        ItemRegistry.registerItem("soularmorcrown", new SoulArmorCrown(), -1.0F, true);
+        ItemRegistry.registerItem("soularmorhelmet", new SoulArmorHelmet(), -1.0F, true);
+        ItemRegistry.registerItem("soularmorhood", new SoulArmorHood(), -1.0F, true);
+        ItemRegistry.registerItem("soularmorhat", new SoulArmorHat(),-1.0F, true);
         //Seal
         ItemRegistry.registerItem("meleesoulsealtrinket", new MeleeSoulSealTrinket(), 200, true);
         ItemRegistry.registerItem("summonsoulsealtrinket", new SummonSoulSealTrinket(), 200, true);
         ItemRegistry.registerItem("magicsoulsealtrinket", new MagicSoulSealTrinket(), 200, true);
         ItemRegistry.registerItem("rangesoulsealtrinket", new RangeSoulSealTrinket(), 200, true);
-        ItemRegistry.registerItem("soulsealtrinket", new SoulSealTrinket(), 750, true);
-        ItemRegistry.registerItem("balancedsealtrinket", new BalancedSealTrinket(), 1250, true);
+        ItemRegistry.registerItem("soulsealtrinket", new SoulSealTrinket(), -1.0F, true);
+        ItemRegistry.registerItem("balancedsealtrinket", new BalancedSealTrinket(), -1.0F, true);
         //Vanity
         ItemRegistry.registerItem("lunartearflowerhead", new HelmetArmorItem(0, null, 0, Item.Rarity.RARE, "lunartearflowerhead").hairDrawMode(ArmorItem.HairDrawMode.OVER_HAIR), 50.0F, true);
         ItemRegistry.registerItem("tobeblindfold", new HelmetArmorItem(0, null, 0, Item.Rarity.EPIC, "tobeblindfold").hairDrawMode(ArmorItem.HairDrawMode.UNDER_HAIR), 250.0F, true);
@@ -491,7 +492,7 @@ public class SoulChasm {
                 new Ingredient[]{
                         new Ingredient("anytier2essence", 2)
                 }
-        ).showAfter("slimeessence"));
+        ));
 
         //ARMOR_AND_WEAPONS
         Recipes.registerModRecipe(new Recipe(
@@ -578,8 +579,8 @@ public class SoulChasm {
                 1,
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
-                        new Ingredient("soulmetalbar", 10),
-                        new Ingredient("soulcoreitem", 4)
+                        new Ingredient("soulmetalbar", 12),
+                        new Ingredient("soulcoreitem", 20)
                 }
         ).showAfter("soulabsorbshield"));
 
@@ -588,8 +589,8 @@ public class SoulChasm {
                 1,
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
-                        new Ingredient("soulmetalbar", 4),
-                        new Ingredient("soulcoreitem", 12)
+                        new Ingredient("soulmetalbar", 12),
+                        new Ingredient("soulcoreitem", 20)
                 }
         ).showAfter("soularmorhelmet"));
 
@@ -598,8 +599,8 @@ public class SoulChasm {
                 1,
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
-                        new Ingredient("soulmetalbar", 4),
-                        new Ingredient("soulcoreitem", 12)
+                        new Ingredient("soulmetalbar", 12),
+                        new Ingredient("soulcoreitem", 20)
                 }
         ).showAfter("soularmorhood"));
 
@@ -608,8 +609,8 @@ public class SoulChasm {
                 1,
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
-                        new Ingredient("soulmetalbar", 8),
-                        new Ingredient("soulcoreitem", 8)
+                        new Ingredient("soulmetalbar", 12),
+                        new Ingredient("soulcoreitem", 20)
                 }
         ).showAfter("soularmorhat"));
 
@@ -618,8 +619,8 @@ public class SoulChasm {
                 1,
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
-                        new Ingredient("soulmetalbar", 18),
-                        new Ingredient("soulcoreitem", 4)
+                        new Ingredient("soulmetalbar", 16),
+                        new Ingredient("soulcoreitem", 30)
                 }
         ).showAfter("soularmorcrown"));
 
@@ -628,8 +629,8 @@ public class SoulChasm {
                 1,
                 RecipeTechRegistry.FALLEN_ANVIL,
                 new Ingredient[]{
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 4)
+                        new Ingredient("soulmetalbar", 8),
+                        new Ingredient("soulcoreitem", 15)
                 }
         ).showAfter("soularmorchestplate"));
 
@@ -643,7 +644,7 @@ public class SoulChasm {
                         new Ingredient("magicsoulsealtrinket", 1),
                         new Ingredient("summonsoulsealtrinket", 1),
                         new Ingredient("soulessence", 5),
-                        new Ingredient("soulcoreitem", 10)
+                        new Ingredient("soulcoreitem", 20)
                 }
         ).showAfter("soularmorboots"));
 
@@ -654,9 +655,9 @@ public class SoulChasm {
                 new Ingredient[]{
                         new Ingredient("soulsealtrinket", 1),
                         new Ingredient("balancedfoci", 1),
-                        new Ingredient("soulmetalbar", 10),
                         new Ingredient("soulessence", 5),
-                        new Ingredient("soulcoreitem", 10),
+                        new Ingredient("soulmetalbar", 5),
+                        new Ingredient("soulcoreitem", 20),
                 }
         ).showAfter("soulsealtrinket"));
 
@@ -711,6 +712,7 @@ public class SoulChasm {
                 }
         ).showAfter("fireflyjar"));
 
+        //LANDSCAPING
         Recipes.registerModRecipe(new Recipe(
                 "magestatueobject",
                 1,
@@ -721,12 +723,69 @@ public class SoulChasm {
         ).showAfter("soulcavetiledfloortile"));
 
         Recipes.registerModRecipe(new Recipe(
+                "soulcaverock",
+                1,
+                RecipeTechRegistry.LANDSCAPING,
+                new Ingredient[]{
+                        new Ingredient("soulcaverockitem", 4)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "crystalizedsoul",
+                1,
+                RecipeTechRegistry.LANDSCAPING,
+                new Ingredient[]{
+                        new Ingredient("soulcaverockitem", 4),
+                        new Ingredient("crystalizedsouloreitem", 1)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "upgradeshardsoulcaverock",
+                1,
+                RecipeTechRegistry.LANDSCAPING,
+                new Ingredient[]{
+                        new Ingredient("soulcaverockitem", 4),
+                        new Ingredient("upgradeshard", 1)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "alchemyshardsoulcaverock",
+                1,
+                RecipeTechRegistry.LANDSCAPING,
+                new Ingredient[]{
+                        new Ingredient("soulcaverockitem", 4),
+                        new Ingredient("alchemyshard", 1)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soulcaverocksmall",
+                1,
+                RecipeTechRegistry.LANDSCAPING,
+                new Ingredient[]{
+                        new Ingredient("soulcaverockitem", 20)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
+                "soulcaverocks",
+                1,
+                RecipeTechRegistry.LANDSCAPING,
+                new Ingredient[]{
+                        new Ingredient("soulcaverockitem", 30)
+                }
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
                 "soultorch",
-                20,
+                8,
                 RecipeTechRegistry.FALLEN_WORKSTATION,
                 new Ingredient[]{
-                        new Ingredient("torch", 20),
-                        new Ingredient("soulcoreitem", 1)
+                        new Ingredient("soulcoreitem", 1),
+                        new Ingredient("soulwoodlogitem", 1)
                 }
         ).showAfter("torch"));
 

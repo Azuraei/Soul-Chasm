@@ -63,7 +63,7 @@ public class SoulChasmIncursionLevel extends IncursionLevel {
         //DECORATIONS
         GameEvents.triggerEvent(new GenerateCaveMiniBiomesEvent(this, cg), (e) -> {
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcaverocks"), 0.005F);
-            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcaverockssmall"), 0.01F);
+            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcaverocksmall"), 0.01F);
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcavedecorations"), 0.008F);
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcrystalbig"), 0.006F);
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soullantern"), 0.0015F);
