@@ -63,9 +63,9 @@ public class SpinSpawnSpikeProjectile extends Projectile {
     }
 
     public Trail getTrail() {
-        return new Trail(this, this.getLevel(), new Color(0x2C96FF), 12.0F, 700, this.getHeight()) {
+        return new Trail(this, this.getLevel(), new Color(0x65BCF0), 12.0F, 700, this.getHeight()) {
             public Color getColor() {
-                return new Color(0x2C96FF);
+                return new Color(0x65BCF0);
             }
         };
     }

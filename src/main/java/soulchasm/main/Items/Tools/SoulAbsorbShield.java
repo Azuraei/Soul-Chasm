@@ -76,7 +76,7 @@ public class SoulAbsorbShield extends ShieldTrinketItem {
             int angle = (int)((float)i * anglePerParticle + GameRandom.globalRandom.nextFloat() * anglePerParticle);
             float dx = (float)Math.sin(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(25, 50);
             float dy = (float)Math.cos(Math.toRadians(angle)) * (float)GameRandom.globalRandom.getIntBetween(25, 50);
-            mob.getLevel().entityManager.addParticle(mob, typeSwitcher.next()).color(new Color(48, 123, 255)).movesFriction(dx, dy, 0.8F).sprite(GameResources.magicSparkParticles.sprite(GameRandom.globalRandom.nextInt(4), 0, 22)).sizeFades(30, 40).givesLight(180.0F, 200.0F).lifeTime(500);
+            mob.getLevel().entityManager.addParticle(mob, typeSwitcher.next()).color(new Color(101, 188, 240)).movesFriction(dx, dy, 0.8F).sprite(GameResources.magicSparkParticles.sprite(GameRandom.globalRandom.nextInt(4), 0, 22)).sizeFades(30, 40).givesLight(180.0F, 200.0F).lifeTime(500);
         }
 
     }

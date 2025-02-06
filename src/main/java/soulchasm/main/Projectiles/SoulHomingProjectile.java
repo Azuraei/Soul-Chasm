@@ -60,7 +60,7 @@ public class SoulHomingProjectile extends FollowingProjectile {
     }
 
     public Trail getTrail() {
-        Trail trail = new Trail(this, this.getLevel(), new Color(68, 106, 255), 30.0F, 250, this.height);
+        Trail trail = new Trail(this, this.getLevel(), new Color(101, 188, 240), 30.0F, 250, this.height);
         trail.sprite = new GameSprite(GameResources.chains, 7, 0, 32);
         return trail;
     }
@@ -94,8 +94,8 @@ public class SoulHomingProjectile extends FollowingProjectile {
         if (!this.removed()) {
             GameLight light = level.getLightLevel(this);
             int drawX = camera.getDrawX(this.x) - this.texture.getWidth() / 2;
-            int drawY = camera.getDrawY(this.y);
-            final TextureDrawOptions options = this.texture.initDraw().light(light.minLevelCopy(Math.min(light.getLevel() + 100.0F, 150.0F))).rotate(this.getAngle(), this.texture.getWidth() / 2, 0).pos(drawX, drawY - (int)this.getHeight());
+            int drawY = camera.getDrawY(this.y)  - (int) this.getHeight();
+            final TextureDrawOptions options = this.texture.initDraw().light(light.minLevelCopy(Math.min(light.getLevel() + 100.0F, 150.0F))).rotate(this.getAngle(), this.texture.getWidth() / 2, 0).pos(drawX, drawY);
             list.add(new EntityDrawable(this) {
                 public void draw(TickManager tickManager) {
                     options.draw();
