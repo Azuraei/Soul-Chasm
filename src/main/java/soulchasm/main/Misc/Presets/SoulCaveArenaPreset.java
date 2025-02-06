@@ -55,6 +55,8 @@ public class SoulCaveArenaPreset extends Preset {
         int spikeOffset = 4;
         this.setObject(mid+spikeOffset + 1, mid, spike, 3);
         this.setObject(mid-spikeOffset - 1, mid, spike, 1);
+        this.setTile(mid+spikeOffset + 1, mid, additionaltile);
+        this.setTile(mid-spikeOffset - 1, mid, additionaltile);
         this.setObject(mid, mid+spikeOffset, spike, 0);
         this.setObject(mid, mid-spikeOffset, spike, 2);
     }
