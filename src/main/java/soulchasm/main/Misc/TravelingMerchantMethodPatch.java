@@ -19,13 +19,13 @@ public class TravelingMerchantMethodPatch {
     @Advice.OnMethodExit
     static void onExit(@Advice.This TravelingMerchantMob mob, @Advice.Argument(0) VillageShopsData data, @Advice.Argument(1) ServerClient client, @Advice.Return(readOnly = false) ArrayList<ShopItem> items) {
         GameRandom seededRandom1 = new GameRandom(mob.getShopSeed());
-        if(client.characterStats().completed_incursions.getData("soulchasmincursionbiome").getTotal() > 0 && seededRandom1.getChance(0.1F)){
+        if(client.characterStats().completed_incursions.getData("soulchasmincursionbiome").getTotal() > 0 && seededRandom1.getChance(0.2F)){
             GameRandom random = new GameRandom(mob.getShopSeed()).nextSeeded(42);
             String item = "tobeblindfold";
             InventoryItem inventoryItem = new InventoryItem(ItemRegistry.getItem(item));
             items.add(ShopItem.item(item, (int) inventoryItem.getBrokerValue() + random.getIntBetween(100, 200)));
         }
-        if(client.characterStats().completed_incursions.getTotal() > 0 && seededRandom1.getChance(0.2F)){
+        if(client.characterStats().completed_incursions.getTotal() > 0 && seededRandom1.getChance(0.4F)){
             GameRandom random = new GameRandom(mob.getShopSeed()).nextSeeded(42);
             String plushie = random.getOneOf("argemiaplushieitem", "fairplushieitem", "v1plushieitem", "fumoplushieitem", "devplushieitem");
             InventoryItem inventoryItem = new InventoryItem(ItemRegistry.getItem(plushie));
