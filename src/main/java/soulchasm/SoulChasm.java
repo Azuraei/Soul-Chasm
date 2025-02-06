@@ -102,16 +102,16 @@ import static necesse.engine.registries.ObjectRegistry.getObject;
 
 @ModEntry
 public class SoulChasm {
-    public static Color chasmStoneMapColor = new Color(1, 37, 51,255);
-    public static Color chasmStoneLightMapColor = new Color(2, 68, 93,255);
-    public static Color chasmMagmaMapColor = new Color(7, 207, 255,255);
-    public static Color chasmCrystalMapColor = new Color(0, 134, 203,255);
-    public static Color chasmWoodMapColor = new Color(117, 165, 183,255);
-    public static Color chasmWoodFurnitureMapColor = new Color(98, 153, 173, 255);
-    public static Color chasmGrassMapColor = new Color(93, 132, 143, 255);
-    public static Color chasmTorchMapColor = new Color(0, 167, 255);
+    public static Color chasmStoneMapColor = new Color(1, 30, 42);
+    public static Color chasmStoneLightMapColor = new Color(2, 59, 80);
+    public static Color chasmMagmaMapColor = new Color(8, 197, 246);
+    public static Color chasmCrystalMapColor = new Color(12, 106, 154);
+    public static Color chasmWoodMapColor = new Color(82, 137, 157);
+    public static Color chasmWoodFurnitureMapColor = new Color(117, 165, 183);
+    public static Color chasmGrassMapColor = new Color(93, 132, 143);
+    public static Color chasmTorchMapColor = new Color(128, 235, 255);
     public static Color asphaltTileMapColor = new Color(23, 23, 23);
-    public static Color lunarTearMapColor = new Color(106, 149, 162, 255);
+    public static Color lunarTearMapColor = new Color(93, 132, 143);
 
     public static ChestRoomSet chasmChestRoomSet;
     public static LootTable chasmShrineLootTable;
