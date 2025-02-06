@@ -32,7 +32,7 @@ public class PlushieItem extends MobSpawnItem {
     }
 
     public GameMessage getLocalization(InventoryItem item) {
-        String message = Localization.translate("itemtooltip", mobType) + " " + Localization.translate("itemtooltip", "plushie");
+        String message = Localization.translate("itemtooltip", mobType + "plushie");
         return new StaticMessage(message);
     }
 

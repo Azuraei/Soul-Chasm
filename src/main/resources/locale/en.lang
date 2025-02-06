@@ -76,7 +76,6 @@ soulstealertrinket=Soul Ring
 pickaxeheadtrinket=Old Pickaxe Head
 phantomdasherstrinket=Phantom Dashers
 carkeys=Car Keys
-souldragonscales=Ancient Dragon Scales
 soulwoodlogitem=Phantom Wood Log
 soulcoreitem=Soul Core
 soulcaverockitem=Soul Chasm Stone
@@ -117,7 +116,6 @@ soulscythe=Charging to second or greater level applies Bleeding Soul on target\n
 soulmetalbowtip=Press [input=mouse2] to activate overcharge mode\nWhen in overcharge, you gain significant attack speed bonus
 soulmetalrevolvertip=Converts regular bullets into soul infused ones\nHitting enemy with soul infused bullet marks it\nEnemy marked three times are weakened and take damage over time
 soulmetalspeartip=Can be thrown\nCreates small explosion on hit
-soulsigil=Summons the Soul Chasm boss\nMust be used in Soul Chasm
 cartip=Summons car mount\nPress [input=mouse2] out of inventory to change colors
 soulsealfollowerbuff=Has heard your call
 bigjarobject=Can be used to store and display item
@@ -127,16 +125,15 @@ bookofsoulstip=Shoots slowly big, homing projectile
 bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow and shoot rapidly smaller, homing projectiles
 soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, regenerates hp and resilience
 
-plushie=Plushie
-
-argemiaplushie=Argemia
-fairplushie=Fair
-v1plushie=V1
-fumoplushie=Fumo
+argemiaplushie=Argemia Plushie
+fairplushie=Fair Plushie
+v1plushie=V1 Plushie
+fumoplushie=Fumo Plushie
+devplushie=Endzio Plushie
 
 argemiaplushietip=Loves shrimp
 v1plushietip=§6Blood is fuel
-fumoplushietiop=ᗜ_ᗜ
+devplushietip=(^-^)
 
 [mob]
 souldragonhead=Ancient Dragon

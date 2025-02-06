@@ -203,10 +203,6 @@ public class SoulChasm {
         }
         ObjectRegistry.registerObject("soultikitorchobject", soulTikiTorch, 2.0F, true);
 
-        //ObjectRegistry.registerObject("argemiaplushieobject", new argemiaplushieobject(), 10.0F, true);
-        //ObjectRegistry.registerObject("fairplushieobject", new fairplushieobject(), 10.0F, true);
-        //ObjectRegistry.registerObject("v1plushieobject", new v1plushieobject(), 10.0F, true);
-
         //Furniture
         BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", chasmWoodFurnitureMapColor, 10.0F);
         BedObject.registerBed("soulwoodbed", "soulwoodbed", chasmWoodFurnitureMapColor, 100.0F);
@@ -388,7 +384,8 @@ public class SoulChasm {
         registerPlushie("v1", V1Plushie.class, true);
         registerPlushie("fair", FairPlushie.class, false);
         registerPlushie("argemia", ArgemiaPlushie.class, true);
-        registerPlushie("fumo", FumoPlushie.class, true);
+        registerPlushie("fumo", FumoPlushie.class, false);
+        registerPlushie("dev", DevPlushie.class, true);
     }
 
     private void registerPlushie(String id, Class<? extends Mob> mob_class, boolean addTooltip){
@@ -403,6 +400,7 @@ public class SoulChasm {
         FairPlushie.gameTexture = GameTexture.fromFile("mobs/fairplushie");
         ArgemiaPlushie.gameTexture = GameTexture.fromFile("mobs/argemiaplushie");
         FumoPlushie.gameTexture = GameTexture.fromFile("mobs/fumoplushie");
+        DevPlushie.gameTexture = GameTexture.fromFile("mobs/devplushie");
 
         LostSoul.texture = GameTexture.fromFile("mobs/lostsoul");
         CarMob.texture =  GameTexture.fromFile("mobs/car");

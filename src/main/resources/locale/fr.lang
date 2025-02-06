@@ -58,9 +58,6 @@ soulwoodfence=Clôture en bois fantôme
 soulwoodfencegate=Porte de clôture en bois fantôme
 magestatueobject=Statue de mage
 soultikitorchobject=Torche tiki des âmes
-argemiaplushieobject=Peluche Argemia
-fairplushieobject=Peluche Fair
-v1plushieobject=Peluche V1
 [item]
 soulscythe=Faucheur d'âmes
 soulmetalbow=Arc fantôme
@@ -79,7 +76,6 @@ soulstealertrinket=Anneau des âmes
 pickaxeheadtrinket=Ancienne tête de pioche
 phantomdasherstrinket=Lanceur fantôme
 carkeys=Clés de voiture
-souldragonscales=Écailles de dragon antique
 soulwoodlogitem=Bûche de bois fantôme
 soulcoreitem=Noyau d'âme
 soulcaverockitem=Pierre du gouffre de l'âme
@@ -120,7 +116,6 @@ soulscythe=Le fait de charger au niveau 2 ou supérieur permet d'appliquer le pr
 soulmetalbowtip=Appuyez [input=mouse2] pour activer le mode surcharge\nEn surcharge, vous bénéficiez d'un bonus de vitesse d'attaque important
 soulmetalrevolvertip=Transforme les balles ordinaires en balles infusées d'âme\nToucher l'ennemi avec une balle infusée à l'âme le marque\nLes ennemis marqués trois fois sont affaiblis et subissent des dégâts sur la durée
 soulmetalspeartip=Peut être lancé\nCrée une petite explosion en cas de succès
-soulsigil=Invoque le boss du Gouffre des âmes\nDoit être utilisé dans le gouffre de l'âme
 cartip=Supports de voiture à sommation\nAppuyez [input=mouse2] en rupture d'inventaire pour changer de couleur
 soulsealfollowerbuff=A entendu votre appel
 bigjarobject=Peut être utilisé pour stocker et présenter des objets
@@ -129,9 +124,17 @@ glowingjarobject=Fournit une petite quantité de lumière lorsqu'il est placé o
 bookofsoulstip=Tire lentement un gros projectile à tête chercheuse
 bookofsoulssecondarytip=Appuyez [input=mouse2] pour activer le débordement d'énergie et tirer des projectiles à tête chercheuse rapidement plus petits
 soulstatuetip=Invoque l'Idole de l'âme pour vous aider dans la bataille.\nL'idole améliore les joueurs à proximité\nLorsqu'il est à plus de 80 % de ses points de vie, il augmente les dégâts et la vitesse d'attaque, régénère les points de vie et la résilience
-argemiaplushieobject=Adore les crevettes
-fairplushieobject="Fabrication de Necesse :)"
-v1plushieobject=§6Le sang, c'est du carburant
+
+argemiaplushie=Peluche Argemia
+fairplushie=Peluche Fair
+v1plushie=Peluche V1
+fumoplushie=Peluche Fumo
+devplushie=Peluche Endzio
+
+argemiaplushietip=Adore les crevettes
+v1plushietip=§6Le sang, c'est du carburant
+devplushietip=(^-^)
+
 [mob]
 souldragonhead=Dragon antique
 souldragonbody=Dragon antique

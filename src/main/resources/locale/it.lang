@@ -58,9 +58,6 @@ soulwoodfence=Recinzione in Legno Fantasma
 soulwoodfencegate=Cancello in Legno Fantasma
 magestatueobject=Statua del Mago
 soultikitorchobject=Torcia Tiki dell'Anima
-argemiaplushieobject=Peluche di Argemia
-fairplushieobject=Peluche di Fair
-v1plushieobject=Peluche di V1
 [item]
 soulscythe=Mietitore di Anime
 soulmetalbow=Arco Fantasma
@@ -79,7 +76,6 @@ soulstealertrinket=Anello dell'Anima
 pickaxeheadtrinket=Vecchia Testa di Piccone
 phantomdasherstrinket=Stivali Fantasma
 carkeys=Chiavi della Macchina
-souldragonscales=Antiche Scaglie di Drago
 soulwoodlogitem=Tronco di Legno Fantasma
 soulcoreitem=Nucleo dell'Anima
 soulcaverockitem=Pietra dell'Abisso dell'Anima
@@ -120,7 +116,6 @@ soulscythe=Caricare al secondo livello o superiore causa l'effetto Anima Sanguin
 soulmetalbowtip=Premi [input=mouse2] per attivare la modalità sovraccarico\nQuando sei in sovraccarico, ottieni un significativo aumento alla velocità d'attacco
 soulmetalrevolvertip=Converte i proiettili normali in proiettili infusi d'anima\nColpire il nemico con proiettili infusi d'anima lo marchia\nI nemici marchiati tre volte vengono indeboliti e subisco danni nel tempo
 soulmetalspeartip=Può essere lanciato\nCrea una piccola esplosione all'impatto
-soulsigil=Evoca il boss dell'Abisso dell'Anima\nDeve essere usato nell'Abisso dell'Anima
 cartip=Evoca una macchina\nPremi [input=mouse2] fuori dall'inventario per cambiare colore
 soulsealfollowerbuff=Ha sentito la tua chiamata
 bigjarobject=Può essere utilizzato per conservare ed esporre oggetti
@@ -129,9 +124,17 @@ glowingjarobject=Produce una piccola quantità di luce quando posizionato o tenu
 bookofsoulstip=Spara lentamente un grosso proiettile a ricerca
 bookofsoulssecondarytip=Premi [input=mouse2] per attivare il sovraccarico di energia e sparare rapidamente piccoli proiettili a ricerca
 soulstatuetip=Evoca l'Idolo dell'Anima per aiutarti in battaglia\nL'Idolo potenzia i giocatori vicini al raggio d'azione\nQuando supera l'80% degli HP, aumenta il danno e la velocità d'attacco, rigenera gli HP e la resilienza
+
+argemiaplushieobject=Peluche di Argemia
+fairplushieobject=Peluche di Fair
+v1plushieobject=Peluche di V1
+fumoplushie=Peluche di Fumo
+devplushie=Peluche di Endzio
+
 argemiaplushieobject=Ama i gamberetti
-fairplushieobject="Creando Necesse :)"
 v1plushieobject=§6Blood is fuel
+devplushietip=(^-^)
+
 [mob]
 souldragonhead=Drago Antico
 souldragonbody=Drago Antico

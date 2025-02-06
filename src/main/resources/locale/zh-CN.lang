@@ -61,9 +61,6 @@ soulwoodfence=幽灵木围栏
 soulwoodfencegate=幽灵木围栏门
 magestatueobject=法师雕像
 soultikitorchobject=灵魂提基火把
-argemiaplushieobject=阿尔吉米亚毛绒玩具
-fairplushieobject=公平毛绒玩具
-v1plushieobject=V1 毛绒玩具
 
 [item]
 soulscythe=灵魂收割者
@@ -83,7 +80,6 @@ soulstealertrinket=灵魂戒指
 pickaxeheadtrinket=旧镐头饰品
 phantomdasherstrinket=幻影疾跑者饰品
 carkeys=车钥匙
-souldragonscales=远古龙鳞
 soulwoodlogitem=幽灵木原木
 soulcoreitem=灵魂核心
 soulcaverockitem=灵魂裂谷石
@@ -125,7 +121,6 @@ soulscythe=充能到第二级或更高级别会在目标上应用出血灵魂\n�
 soulmetalbowtip=按下[input=mouse2]激活过载模式\n过载时，你会获得显著的攻击速度加成
 soulmetalrevolvertip=将普通子弹转换为灵魂注入的子弹\n用灵魂注入的子弹击中敌人会标记它\n被标记三次的敌人会被削弱，并随时间受到伤害
 soulmetalspeartip=可以投掷\n命中时会造成小范围爆炸
-soulsigil=召唤灵魂裂谷首领\n必须在灵魂裂谷中使用
 cartip=召唤汽车坐骑\n按住[input=mouse2]在库存外改变颜色
 soulsealfollowerbuff=已经听到你的呼唤
 bigjarobject=可用于存储和展示物品
@@ -134,6 +129,12 @@ glowingjarobject=放置或手持时提供少量光源
 bookofsoulstip=射出缓慢的大型追踪弹丸
 bookofsoulssecondarytip=按下[input=mouse2]激活能量溢出，快速射出较小的追踪弹丸
 soulstatuetip=召唤灵魂偶像协助你战斗\n偶像会给范围内附近的玩家带来增益效果\n当生命值超过80%时，增益包括提高伤害和攻击速度，恢复生命值和韧性
+
+argemiaplushie=阿尔吉米亚毛绒玩具
+fairplushie=公平毛绒玩具
+v1plushie=V1 毛绒玩具
+fumoplushie=Fumo 毛绒玩具
+devplushie=Endzio 毛绒玩具
 
 [mob]
 souldragonhead=远古龙头部

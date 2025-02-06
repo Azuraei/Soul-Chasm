@@ -27,7 +27,7 @@ public class TravelingMerchantMethodPatch {
         }
         if(client.characterStats().completed_incursions.getTotal() > 0 && seededRandom1.getChance(0.2F)){
             GameRandom random = new GameRandom(mob.getShopSeed()).nextSeeded(42);
-            String plushie = random.getOneOf("argemiaplushieitem", "fairplushieitem", "v1plushieitem");
+            String plushie = random.getOneOf("argemiaplushieitem", "fairplushieitem", "v1plushieitem", "fumoplushieitem", "devplushieitem");
             InventoryItem inventoryItem = new InventoryItem(ItemRegistry.getItem(plushie));
             items.add(ShopItem.item(plushie, (int) inventoryItem.getBrokerValue() + random.getIntBetween(100, 200)));
         }
