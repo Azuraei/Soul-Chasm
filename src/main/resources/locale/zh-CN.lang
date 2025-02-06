@@ -172,5 +172,5 @@ plushie_tip=宠物
 soulchasmincursionbiome=灵魂裂谷入侵环境
 soulchasmbiome=灵魂裂谷环境
 [journal]
-soulchasm=Soul Chasm Incursion
-//灵魂裂谷环境副本 (rough translation), will use 灵魂深渊的入侵
+soulchasmincursion=Soul Chasm Incursion
+//灵魂裂谷环境副本 (rough translation), different would be 灵魂深渊的入侵, not sure which one I should choose

@@ -168,7 +168,6 @@ soulstatuebuff=Idol's Blessing
 incursionmodifierhaunted=Haunted
 incursionmodifierhauntedinfo=After an enemy dies, his ghost appears.
 [biome]
-soulchasmincursionbiome=Soul Chasm
-soulchasmbiome=Soul Chasm
+soulchasm=Soul Chasm
 [journal]
-soulchasm=Soul Chasm Incursion
+soulchasmincursion=Soul Chasm Incursion

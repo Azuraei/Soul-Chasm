@@ -27,9 +27,6 @@ public class SoulChasmBiome extends Biome {
     public MobSpawnTable getMobSpawnTable(Level level) {
         return mobs;
     }
-    public LootTable getExtraMobDrops(Mob mob) {
-        return super.getExtraMobDrops(mob);
-    }
 
     static {
         critters = (new MobSpawnTable()).add(25, "soulcavecaveling").add(100, "wisp");

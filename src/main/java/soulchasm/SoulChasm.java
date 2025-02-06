@@ -131,6 +131,7 @@ public class SoulChasm {
 
     public void init() {
         GameLoadingScreen.drawLoadingString("Loading Soul Chasm");
+
         //TILES
         TileRegistry.registerTile("soulcavegrass", new SoulCaveGrass(), 0.0F, true);
         TileRegistry.registerTile("soulcaverocktile", new SoulCaveRockTile(), 0.0F, true);
@@ -232,11 +233,6 @@ public class SoulChasm {
 
         int soulWoodFenceID = ObjectRegistry.registerObject("soulwoodfence", new FenceObject("soulwoodfence", chasmWoodMapColor, 12, 10, -24), -1.0F, true);
         FenceGateObject.registerGatePair(soulWoodFenceID, "soulwoodfencegate", "soulwoodfencegate", chasmWoodMapColor, 12, 10, -1.0F);
-
-        //INCURSION
-        BiomeRegistry.registerBiome("soulcavern", new SoulChasmBiome(), 0, null);
-        IncursionBiomeRegistry.registerBiome("soulchasmincursionbiome", new SoulChasmIncursionBiome(), 2);
-        LevelRegistry.registerLevel("soulchasmincursionlevel", SoulChasmIncursionLevel.class);
 
         //BUFFS
         BuffRegistry.registerBuff("soulstealerbuff", new SoulStealerBuff());
@@ -383,13 +379,18 @@ public class SoulChasm {
         LevelEventRegistry.registerEvent("meleeghostspawnevent", MeleeGhostSpawnEvent.class);
         LevelEventRegistry.registerEvent("hauntedmodifierlevelevent", HauntedModifierLevelEvent.class);
 
+        //INCURSION
+        BiomeRegistry.registerBiome("soulcavern", new SoulChasmBiome(), 0, null);
+        IncursionBiomeRegistry.registerBiome("soulchasm", new SoulChasmIncursionBiome(), 2);
+        LevelRegistry.registerLevel("soulchasmincursion", SoulChasmIncursionLevel.class);
+
         //INCURSION_MODS
         UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new HauntedIncursionModifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Medium));
 
-        JournalEntry soulchasm_entry = new JournalEntry(new SoulChasmIncursionBiome());
-        soulchasm_entry.addMobEntries("lostsoul", "soulmage", "magestatue", "meleestatue", "souldragonhead");
-        soulchasm_entry.addBiomeLootEntry("crystalizedsouloreitem", "alchemyshard", "upgradeshard", "soulcaverockitem", "soulwoodlogitem");
-        JournalRegistry.registerJournalEntry("soulchasm", soulchasm_entry);
+        //JOURNAL
+        JournalEntry soulchasmIncursion = JournalRegistry.registerJournalEntry("soulchasmincursion", new JournalEntry(IncursionBiomeRegistry.getBiome("soulchasm")));
+        soulchasmIncursion.addBiomeLootEntry("crystalizedsouloreitem", "alchemyshard", "upgradeshard", "soulcaverockitem", "soulwoodlogitem");
+        soulchasmIncursion.addMobEntries("lostsoul", "soulmage", "magestatue", "meleestatue", "souldragonhead");
 
         //PLUSHIE
         registerPlushie("v1", V1Plushie.class, true);
