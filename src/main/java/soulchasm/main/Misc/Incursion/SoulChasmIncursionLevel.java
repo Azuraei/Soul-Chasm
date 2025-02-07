@@ -42,9 +42,9 @@ public class SoulChasmIncursionLevel extends IncursionLevel {
         PresetGeneration presets = new PresetGeneration(this);
         GameEvents.triggerEvent(new GenerateCaveStructuresEvent(this, cg, presets), (e) -> {
             cg.generateRandomCrates(0.03F, ObjectRegistry.getObjectID("chasmcrates"));
-            GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.01F, 3, 7.0F, 15.0F, 3.0F, 8.0F, TileRegistry.getTileID("soulcavefloortile"), 0.8F, false);
+            GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.025F, 6, 7.0F, 20.0F, 4.0F, 8.0F, TileRegistry.getTileID("soulcavefloortile"), 0.7F, false);
             GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.04F, 2, 7.0F, 25.0F, 3.0F, 12.0F, TileRegistry.getTileID("meltedsouls"), 1.0F, true);
-            cg.generateTileVeins(0.1F, 6, 12, TileRegistry.getTileID("soulcavecracktile"), ObjectRegistry.getObjectID("air"));
+            GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.025F, 6, 7.0F, 20.0F, 1.0F, 3.0F, TileRegistry.getTileID("soulcavecracktile"), 0.8F, false);
             this.liquidManager.calculateShores();
 
             Preset shrineBig = new SoulCaveBigShrinePreset(cg.random);
