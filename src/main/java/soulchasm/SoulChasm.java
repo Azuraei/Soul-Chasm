@@ -435,11 +435,11 @@ public class SoulChasm {
 
         //TextureSections
         eruptionShadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");
-        GameTexture spinspawnvisualtexture = GameTexture.fromFile("particles/spinspawnvisual");
-        spinSpawnVisual = GameResources.particlesTextureGenerator.addTexture(spinspawnvisualtexture);
+        GameTexture spinSpawnVisualTexture = GameTexture.fromFile("particles/spinspawnvisual");
+        spinSpawnVisual = GameResources.particlesTextureGenerator.addTexture(spinSpawnVisualTexture);
 
-        GameTexture meleeghostspawnparticle = GameTexture.fromFile("particles/meleeghostspawnparticle");
-        particleGhostSpawnSection = GameResources.particlesTextureGenerator.addTexture(meleeghostspawnparticle);
+        GameTexture meleeGhostSpawnParticle = GameTexture.fromFile("particles/meleeghostspawnparticle");
+        particleGhostSpawnSection = GameResources.particlesTextureGenerator.addTexture(meleeGhostSpawnParticle);
 
         GameTexture flamethrowerParticleTexture = GameTexture.fromFile("particles/soulfiresparks");
         particleFlamethrowerSection = GameResources.particlesTextureGenerator.addTexture(flamethrowerParticleTexture);
