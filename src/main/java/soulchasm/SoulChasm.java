@@ -26,6 +26,7 @@ import necesse.inventory.recipe.Recipe;
 import necesse.inventory.recipe.Recipes;
 import necesse.level.gameObject.*;
 import necesse.level.gameObject.furniture.*;
+import necesse.level.gameObject.furniture.doubleBed.DoubleBedBaseObject;
 import necesse.level.gameTile.PathTiledTile;
 import necesse.level.gameTile.SimpleFloorTile;
 import necesse.level.gameTile.SimpleTiledFloorTile;
@@ -214,6 +215,7 @@ public class SoulChasm {
         //Furniture
         BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", chasmWoodFurnitureMapColor, -1.0F);
         BedObject.registerBed("soulwoodbed", "soulwoodbed", chasmWoodFurnitureMapColor, -1.0F);
+        DoubleBedBaseObject.registerDoubleBed("soulwooddoublebed", "soulwooddoublebed", chasmWoodFurnitureMapColor, -1.0F);
         BenchObject.registerBench("soulwoodbench", "soulwoodbench", chasmWoodFurnitureMapColor, -1.0F);
         DinnerTableObject.registerDinnerTable("soulwooddinnertable", "soulwooddinnertable", chasmWoodFurnitureMapColor, -1.0F);
         ObjectRegistry.registerObject("soulwoodbookshelf", new BookshelfObject("soulwoodbookshelf", chasmWoodFurnitureMapColor), -1.0F, true);
