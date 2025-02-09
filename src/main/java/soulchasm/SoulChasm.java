@@ -871,6 +871,13 @@ public class SoulChasm {
         ));
 
         Recipes.registerModRecipe(new Recipe(
+                "soulwooddoublebed",
+                1, RecipeTechRegistry.CARPENTER,
+                new Ingredient[]{new Ingredient("soulwoodlogitem", 20),
+                        new Ingredient("wool", 20)}
+        ));
+
+        Recipes.registerModRecipe(new Recipe(
                 "soulwoodbench",
                 1, RecipeTechRegistry.CARPENTER,
                 new Ingredient[]{new Ingredient("soulwoodlogitem", 10)}

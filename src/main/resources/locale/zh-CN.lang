@@ -1,4 +1,5 @@
 # Translation made by shenyx110 (https://steamcommunity.com/profiles/76561198875431749/)
+#Small changes / additions by Endzio
 
 [tile]
 soulcavegrass=灵魂裂谷草
@@ -43,6 +44,7 @@ soulbrickwall=灵魂裂谷砖墙
 soulbrickdoor=灵魂裂谷砖门
 soulwoodbathtub=幽灵木浴缸
 soulwoodbed=幽灵木床
+soulwooddoublebed=幽灵木双人床
 soulwoodbench=幽灵木长椅
 soulwooddinnertable=幽灵木餐桌
 soulwoodbookshelf=幽灵木书架

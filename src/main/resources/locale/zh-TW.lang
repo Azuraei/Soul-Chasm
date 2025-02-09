@@ -1,5 +1,6 @@
 # Simplified Chinese Translation made by shenyx110 (https://steamcommunity.com/profiles/76561198875431749/)
 #Translated into Chinese - Traditional by (https://steamcommunity.com/profiles/76561198318064338/)
+#Small changes / additions by Endzio
 
 [tile]
 soulcavegrass=靈魂裂縫草
@@ -44,6 +45,7 @@ soulbrickwall=靈魂裂縫磚墻
 soulbrickdoor=靈魂裂縫磚門
 soulwoodbathtub=幽靈木浴缸
 soulwoodbed=幽靈木床
+soulwooddoublebed=幽靈木雙人床
 soulwoodbench=幽靈木長椅
 soulwooddinnertable=幽靈木餐桌
 soulwoodbookshelf=幽靈木書架
