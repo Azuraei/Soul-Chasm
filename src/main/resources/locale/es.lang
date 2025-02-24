@@ -1,0 +1,174 @@
+[tile]
+soulcavegrass=Hierva del abismo del alma
+soulcaverocktile=Piedra del abismo del alma
+soulwoodfloor=Suelo de madera fantasmal
+soulwoodpath=Camino de madera fantasmal
+soulwoodtiledfloor=Suelo de baldosas de madera fantasmal
+soulcavefloortile=Suelo de piedra del abismo del alma
+soulcavebrickfloortile=Suelo de ladrillos del abismo del alma
+soulcavetiledfloortile=Suelo de baldosas del abismo del alma
+asphalttile=Asfalto
+meltedsouls=Espíritus de magma
+soulcavecracktile=Grietas
+[object]
+crystalizedsoul=Almas cristalizadas
+crystalizedsoulore=Almas cristalizadas
+soultree=Arbol fantasmal
+soulcavegrassobject=Hierva del abismo del alma
+soulwood=Madera fantasmal
+soulbrick=Ladrillo del abismo del alma
+soultreesapling=Retoño de arbol fantasmal
+lunartear=Lágrima lunar
+lunartearspath=Camino de lágrimas Lunares
+soultorch=Antorcha fantasmal
+soulcrystalbig=Cristal de alma grande
+wispjarobject=Frasco de fuego fatuo
+fireflyjarobject=Frasco de luciérnagas
+soulmonumentobject=Monumento del abismo del alma
+soulstonepressureplate=Placa de presión de piedra del abismo del alma
+soulbrickwalltrap=Pared de piedra del abismo del alma con trampa de llamas
+soullantern=Farol del alma
+oldbarrel=Barril antiguo
+soulcavechest=Cofre antiguo
+bigjarobject=Frasco de vidrio grande
+chasmcrates=Caja antigua
+statueobject=Estatua de caballero
+soulcaverock=Piedra del abismo
+soulwoodwall=Pared de madera fantasmal
+soulwooddoor=Puerta de madera fantasmal
+soulbrickwall=Pared de ladrillos del abismo del alma
+soulbrickdoor=Puerta de ladrillos del abismo del alma
+soulwoodbathtub=Bañera de madera fantasmal
+soulwoodbed=Cama de madera fantasmal
+soulwooddoublebed=Cama doble de madera fantasmal
+soulwoodbench=Banco de madera fantasmal
+soulwooddinnertable=Mesa de madera fantasmal
+soulwoodbookshelf=Librería de madera fantasmal
+soulwoodcabinet=Gabinete de madera fantasmal
+soulwoodchair=Silla de madera fantasmal
+soulwoodchest=Cofre de madera fantasmal
+soulwoodclock=Reloj de madera fantasmal
+soulwooddesk=Escritorio de madera fantasmal
+soulwooddisplay=Mostrador de madera fantasmal
+soulwooddresser=Vestidor de madera fantasmal
+soulwoodmodulartable=Mesa modular de madera fantasmal
+soulwoodtoilet=Retrete de madera fantasmal
+soulwoodcandelabra=Candelabro de madera fantasmal
+soulwoodfence=Valla de madera fantasmal
+soulwoodfencegate=Puerta de valla de madera fantasmal
+magestatueobject=Estatua de mago
+soultikitorchobject=Antorcha de alama Tiki
+soulcavedecorations=Piedra del abismo del alma
+soulbrickdoorlocked=Puerta de ladrillos del abismo del alma cerrada
+soulwooddoorlocked=Puerta de madera fantasmal cerrada
+spikeobject=Objeto con púas
+[item]
+soulscythe=Segador de almas
+soulmetalbow=Arco fantasma
+soulmetalsword=Furia del alma
+soulmetalspear=Tridente maldito
+soulmetalrevolver=El tomador de almas
+soulabsorbshield=Escudo rompe almas
+soularmorboots=Botas de almas de acero
+soularmorchestplate=Pechera de almas de acero
+soularmorcrown=Corona de almas de acero
+soularmorhelmet=Casco de almas de acero
+soularmorhood=Capucha de almas de acero
+soularmorhat=Sombrero de de almas de acero
+phantomfeathertrinket=Pluma fantasma
+soulstealertrinket=Anillo del alma
+pickaxeheadtrinket=Cabeza de pico antigua
+phantomdasherstrinket=Botas fantasmales veloces
+carkeys=Llaves del auto
+soulwoodlogitem=Tronco de madera fantasmal
+soulcoreitem=Núcleo del alma
+soulcaverockitem=Piedra del abismo del alma
+crystalizedsouloreitem=Mena de almas cristalizadas
+soulgrassseeditem=Semillas de hierva del abismo del alma
+soulessence=Esencia del alma
+wispitem=Fuego fatuo
+wispjar=Frasco de fuego fatuo
+fireflyitem=Luciérnagas
+fireflyjar=Frasco de luciérnagas
+soullantern=Farol del alma
+soulmetalbar=Barra de metal del alma
+meleesoulsealtrinket=Fragmento de artefacto de combate cuerpo a cuerpo
+summonsoulsealtrinket=Fragmento de artefacto de invocación
+magicsoulsealtrinket=Fragmento de artefacto mágico
+rangesoulsealtrinket=Fragmento de artefacto de rango
+soulsealtrinket=Sello del alma
+balancedsealtrinket=Sello del alma equilibrado
+bookofsouls=Libro de almas
+soulstatue=Ídolo del alma
+lunartearflowerhead=Flor de lágrima lunar
+tobeblindfold=Venda de ojos negra
+[itemtooltip]
+soulabsorbshield=Bloquear daño dispara una ráfaga de llamas hacia el atacante\nBloquear también aumenta brevemente la velocidad de ataque y la obtención de resiliencia
+phantomfeathertrinket=Disminuye la vida máximos en un 25% y otorga cuatro impulsos adicionales
+soulstealertrinket=Mientras estás en combate, convierte lentamente tu salud máxima en más daño\nFuera del combate, el proceso se invierte
+pickaxeheadtrinket=Aumenta hasta un 150% la velocidad de minería mientras extraes minerales
+phantomdasherstrinket=Corre aun más rápido\nAumenta el daño recibido mientras corres\nPermite caminar sobre el agua
+soularmorsetbonus=Presiona [input=setability] para incrementar la velocidad de ataque y la de movimiento por un breve tiempo\nUsar habilidades mientras dura el beneficio extiende su duración, pero tiene un 50% de probabilidad de aplicar un desventaja
+soulsealfragment=Fragmento de entero
+soulsealfull=Entero otra vez
+soulsealfragment2=Crea un proyectil que coincide con tu arma
+soulsealsummonfragment=Usar un arma de invocación invoca un espíritu que te ayuda en combate\nLa fuerza del espíritu se basa en las estadísticas del arma
+soulsealbalanced=Vínculos con nuevo poder
+soulsealbalanced2=Aumenta todo el daño infligido en un 10%
+soulmetalswordtip=Golpear al enemigo invoca espadas espirituales
+soulscythe=Cargar al segundo nivel o superior aplica Alma Sangrante al objetivo\nAlma Sangrante disminuye la armadura y daño en el tiempo\nLos ataques completamente cargados disparan un proyectil penetrante y desacelerador
+soulmetalbowtip=Presiona [input=mouse2] para activar el modo Sobrecarga\nCuando hay Sobrecarga, obtienes una importante bonificación en la velocidad de ataque
+soulmetalrevolvertip=Convierte la munición en munición de alma infundida\nGolpear al enemigo con una bala de alma infundida los deja marcados\nLos enemigos marcados tres veces se debilitan y sufren daño en el tiempo
+soulmetalspeartip=Se puede lanzar\nCrea pequeñas explosiones al golpear
+cartip=Invoca una montura de auto\nPresiona [input=mouse2] fuera del inventario para cambiar el color
+soulsealfollowerbuff=Ha escuchado tu llamado
+bigjarobject=Se puede usar para guardar y mostrar un ítem
+glowingbugs=Criatura pequeña y resplandeciente
+glowingjarobject=Proporciona una pequeña cantidad de luz cuando se coloca o se sostiene
+bookofsoulstip=Dispara lentamente un gran proyectil teledirigido
+bookofsoulssecondarytip=Presiona [input=mouse2] para activar Exceso de Energia y disparar pequeños proyectiles teledirigidos
+soulstatuetip=Invoca un ídolo del alma para que te ayude en combate\nEl ídolo da beneficios a los jugadores que se encuentran cerca\nAl tener más del 80% de vida, otorga daño y velocidad de ataque, recupera salud y resiliencia
+
+argemiaplushie=Peluche Argemia
+fairplushie=Peluche Fair
+v1plushie=Peluche V1
+fumoplushie=Peluche Fumo
+devplushie=Peluche Endzio
+
+argemiaplushietip=Le encanta el camarón
+v1plushietip=§6Usa sangre como combustible
+devplushietip=(^-^)
+
+[mob]
+souldragonhead=Dragón Antiguo
+souldragonbody=Dragón Antiguo
+lostsoul=Alma Perdida
+meleestatue=Estatua de Guerrero
+meleeghost=Fantasma
+wisp=Fuego Fatuo
+firefly=Luciérnagas
+magestatue=Ídolo del Alma
+soulmage=Invocador de Espíritus
+smallsoulsummon=Alma Inferior
+chasmcaveling=Caverna del abismo del alma
+carmob=Automóvil
+[buff]
+soulfirebuff=Espíritu del Inferno
+soulabsorbshieldbuff=Ataque Absorbido
+souldischargebuff=Conversión del Alma
+soularmorcooldown=Tiempo de Recuperación para Armadura de Almas de Acero
+soulsealfollowerbuff=Espíritu Invocado
+soulbleedstackbuff=Alma Sangrante
+souldischargesicknessdebuff=Enfermedad de Conversión
+bookofsoulbuff=Energia del Alma
+soulofsoulsoverchargebuff=Exceso de Energia del Alma
+soulbowbuff=Sobrecarga Fantasmal
+soulbowcooldownbuff=Tiempo de Recuperación para Arco Fantasma
+soulstatuebuff=Bendición del Ídol
+[ui]
+incursionmodifierhaunted=Embrujado
+incursionmodifierhauntedinfo=Cuando un enemigo muere, aparece su fantasma
+[biome]
+soulchasm=Abismo del Alma
+[journal]
+soulchasmincursion=Incursión del Abismo del Alma
