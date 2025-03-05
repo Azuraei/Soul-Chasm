@@ -4,6 +4,7 @@ import necesse.engine.localization.Localization;
 import necesse.engine.localization.message.GameMessage;
 import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.network.PacketReader;
+import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.sound.SoundEffect;
 import necesse.engine.sound.SoundManager;
@@ -37,10 +38,10 @@ public class PlushieItem extends MobSpawnItem {
     }
 
     @Override
-    public InventoryItem onPlace(Level level, int x, int y, PlayerMob player, InventoryItem item, PacketReader contentReader) {
+    public InventoryItem onPlace(Level level, int x, int y, PlayerMob player, int seed, InventoryItem item, GNDItemMap mapContent) {
         if (level.isServer()) {
             Mob mob = MobRegistry.getMob(this.mobType, level);
-            this.beforeSpawned(level, x, y, player, item, contentReader, mob);
+            this.beforeSpawned(level, x, y, player, item, mapContent, mob);
             level.entityManager.addMob(mob, x, y);
         }
         if (this.singleUse) {

@@ -47,7 +47,7 @@ public class SmallSoulSummon extends FlyingAttackingFollowingMob {
             protected boolean shootAtTarget(Mob mob, Mob target) {
                 float angle = 15;
                 for (int i = -1; i <= 1; ++i) {
-                    SoulHomingProjectile entity = new SoulHomingProjectile(mob.getLevel(), mob, mob.x, mob.y + 20, target.x, target.y, 150, 1200, SmallSoulSummon.this.damage, 75);
+                    SoulHomingProjectile entity = new SoulHomingProjectile(mob.getLevel(), mob, mob.x, mob.y + 20, target.x, target.y, 150, 1200, SmallSoulSummon.this.summonDamage, 75);
                     entity.setAngle(entity.getAngle() + angle * i);
                     entity.piercing = 0;
                     mob.getLevel().entityManager.projectiles.add(entity);

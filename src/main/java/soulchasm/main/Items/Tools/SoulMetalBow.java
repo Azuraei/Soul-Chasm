@@ -2,6 +2,7 @@ package soulchasm.main.Items.Tools;
 
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
+import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameMath;
@@ -10,6 +11,8 @@ import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
+import necesse.entity.mobs.itemAttacker.ItemAttackSlot;
+import necesse.entity.mobs.itemAttacker.ItemAttackerMob;
 import necesse.entity.projectile.Projectile;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
@@ -34,15 +37,15 @@ public class SoulMetalBow extends BowProjectileToolItem implements ItemInteractA
         this.attackYOffset = 28;
     }
 
-    public boolean canLevelInteract(Level level, int x, int y, PlayerMob player, InventoryItem item) {
-        boolean hasBuffs = player.buffManager.hasBuff("soulbowbuff") || player.buffManager.hasBuff("soulbowcooldownbuff") ;
+    public boolean canLevelInteract(Level level, int x, int y, ItemAttackerMob attackerMob, InventoryItem item) {
+        boolean hasBuffs = attackerMob.buffManager.hasBuff("soulbowbuff") || attackerMob.buffManager.hasBuff("soulbowcooldownbuff") ;
         return !hasBuffs;
     }
 
-    public InventoryItem onLevelInteract(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int seed, PacketReader contentReader) {
+    public InventoryItem onLevelInteract(Level level, int x, int y, ItemAttackerMob attackerMob, int attackHeight, InventoryItem item, ItemAttackSlot slot, int seed, GNDItemMap mapContent) {
         float duration = 5;
-        player.buffManager.addBuff(new ActiveBuff("soulbowbuff", player, duration, null), false);
-        player.buffManager.addBuff(new ActiveBuff("soulbowcooldownbuff", player, duration*4, null), false);
+        attackerMob.buffManager.addBuff(new ActiveBuff("soulbowbuff", attackerMob, duration, null), false);
+        attackerMob.buffManager.addBuff(new ActiveBuff("soulbowcooldownbuff", attackerMob, duration*4, null), false);
         return item;
     }
 
@@ -50,24 +53,24 @@ public class SoulMetalBow extends BowProjectileToolItem implements ItemInteractA
         return perspective.buffManager.getBuffDurationLeftSeconds(BuffRegistry.getBuff("soulbowcooldownbuff")) / 8.0F;
     }
     @Override
-    public Projectile getProjectile(Level level, int x, int y, Mob owner, InventoryItem item, int seed, ArrowItem arrow, boolean consumeAmmo, PacketReader contentReader) {
-        boolean altFire = owner.buffManager.hasBuff("soulbowbuff");
-        float velocity = arrow.modVelocity((float)this.getProjectileVelocity(item, owner));
+    public Projectile getProjectile(Level level, int x, int y, ItemAttackerMob attackerMob, InventoryItem item, int seed, ArrowItem arrow, boolean consumeAmmo, GNDItemMap mapContent) {
+        boolean altFire = attackerMob.buffManager.hasBuff("soulbowbuff");
+        float velocity = arrow.modVelocity((float)this.getProjectileVelocity(item, attackerMob));
         int range = arrow.modRange(this.getAttackRange(item));
         GameDamage damage = arrow.modDamage(this.getAttackDamage(item));
-        int knockback = arrow.modKnockback(this.getKnockback(item, owner));
+        int knockback = arrow.modKnockback(this.getKnockback(item, attackerMob));
         float resilienceGain = this.getResilienceGain(item);
         if (altFire) {
             GameRandom random = GameRandom.globalRandom;
             int randomPosX = GameRandom.getIntBetween(random, -10, 10);
             int randomPosY = GameRandom.getIntBetween(random, -10, 10);
-            Point2D.Float dir = GameMath.normalize(owner.x - (float)x, owner.y - (float)y);
+            Point2D.Float dir = GameMath.normalize(attackerMob.x - (float)x, attackerMob.y - (float)y);
             int offsetDistance = random.getIntBetween(0, 15);
             Point2D.Float offset = new Point2D.Float(-dir.x * (float)offsetDistance, -dir.y * (float)offsetDistance);
             offset = GameMath.getPerpendicularPoint(offset, (float)random.getIntBetween(-20, 20), dir);
-            return new SoulArrowProjectile(level, owner, owner.x + offset.x, owner.y + offset.y, (float) x + randomPosX, (float) y + randomPosY, velocity, range, damage, knockback);
+            return new SoulArrowProjectile(level, attackerMob, attackerMob.x + offset.x, attackerMob.y + offset.y, (float) x + randomPosX, (float) y + randomPosY, velocity, range, damage, knockback);
         }  else {
-            return this.getProjectile(level, x, y, owner, item, seed, arrow, consumeAmmo, velocity, range, damage, knockback, resilienceGain, contentReader);
+            return this.getProjectile(level, x, y, attackerMob, item, seed, arrow, consumeAmmo, velocity, range, damage, knockback, resilienceGain, mapContent);
         }
     }
 

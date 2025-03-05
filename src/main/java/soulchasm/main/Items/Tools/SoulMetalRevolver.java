@@ -2,6 +2,7 @@ package soulchasm.main.Items.Tools;
 
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
+import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.network.packet.PacketSpawnProjectile;
 import necesse.engine.registries.ItemRegistry;
 import necesse.engine.sound.SoundEffect;
@@ -10,6 +11,7 @@ import necesse.engine.util.GameBlackboard;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.AttackAnimMob;
 import necesse.entity.mobs.PlayerMob;
+import necesse.entity.mobs.itemAttacker.ItemAttackerMob;
 import necesse.entity.projectile.Projectile;
 import necesse.entity.projectile.modifiers.ResilienceOnHitProjectileModifier;
 import necesse.gfx.GameResources;
@@ -43,35 +45,27 @@ public class SoulMetalRevolver extends GunProjectileToolItem {
     }
 
     @Override
-    protected void fireProjectiles(Level level, int x, int y, PlayerMob player, InventoryItem item, int seed, BulletItem bullet, boolean consumeAmmo, PacketReader contentReader) {
+    protected void fireProjectiles(Level level, int x, int y, ItemAttackerMob attackerMob, InventoryItem item, int seed, BulletItem bullet, boolean dropItem, GNDItemMap mapContent) {
         int range;
-        Projectile projectile;
         if (this.controlledRange) {
-            Point newTarget = this.controlledRangePosition(new GameRandom(seed + 10), player, x, y, item, this.controlledMinRange, this.controlledInaccuracy);
+            Point newTarget = this.controlledRangePosition(new GameRandom((long)(seed + 10)), attackerMob, x, y, item, this.controlledMinRange, this.controlledInaccuracy);
             x = newTarget.x;
             y = newTarget.y;
-            range = (int)player.getDistance((float)x, (float)y);
+            range = (int)attackerMob.getDistance((float)x, (float)y);
         } else {
             range = this.getAttackRange(item);
         }
 
+        Projectile projectile;
         if(bullet != ItemRegistry.getItem("simplebullet")){
-            projectile = this.getProjectile(item, bullet, player.x, player.y, (float)x, (float)y, range, player);
-        }else {
-            projectile = new SoulRevolverProjectile(player.x, player.y, x, y, this.getFlatVelocity(item), range, this.getAttackDamage(item), this.getKnockback(item, player), player);
+            projectile = this.getProjectile(item, bullet, attackerMob.x, attackerMob.y, (float)x, (float)y, range, attackerMob);
+        } else {
+            projectile = new SoulRevolverProjectile(attackerMob.x, attackerMob.y, x, y, this.getFlatVelocity(item), range, this.getAttackDamage(item), this.getKnockback(item, attackerMob), attackerMob);
         }
-
-        projectile.dropItem = consumeAmmo;
-        projectile.getUniqueID(new GameRandom(seed));
         projectile.setModifier(new ResilienceOnHitProjectileModifier(this.getResilienceGain(item)));
-        level.entityManager.projectiles.addHidden(projectile);
-        if (this.moveDist != 0) {
-            projectile.moveDist(this.moveDist);
-        }
-
-        if (level.isServer()) {
-            level.getServer().network.sendToClientsWithEntityExcept(new PacketSpawnProjectile(projectile), projectile, player.getServerClient());
-        }
+        projectile.dropItem = dropItem;
+        projectile.getUniqueID(new GameRandom(seed));
+        attackerMob.addAndSendAttackerProjectile(projectile, this.moveDist);
     }
 
     public void playFireSound(AttackAnimMob mob) {

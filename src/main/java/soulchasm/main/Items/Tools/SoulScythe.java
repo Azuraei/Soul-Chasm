@@ -2,9 +2,12 @@ package soulchasm.main.Items.Tools;
 
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
+import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.util.GameBlackboard;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.attackHandler.GreatswordChargeLevel;
+import necesse.entity.mobs.itemAttacker.ItemAttackSlot;
+import necesse.entity.mobs.itemAttacker.ItemAttackerMob;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.PlayerInventorySlot;
@@ -31,8 +34,8 @@ public class SoulScythe extends GreatswordToolItem {
         return new GreatswordChargeLevel[]{new GreatswordChargeLevel(level1Time, 1.0F, new Color(208, 223, 255, 255)), new GreatswordChargeLevel(level2Time, 1.5F, new Color(84, 183, 255)), new GreatswordChargeLevel(level3Time, 2.0F, new Color(0, 130, 220))};
     }
 
-    public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
-        player.startAttackHandler(new SoulScytheAttackHandler(player, slot, item, this, seed, x, y, this.chargeLevels));
+    public InventoryItem onAttack(Level level, int x, int y, ItemAttackerMob attackerMob, int attackHeight, InventoryItem item, ItemAttackSlot slot, int animAttack, int seed, GNDItemMap mapContent) {
+        attackerMob.startAttackHandler(new SoulScytheAttackHandler(attackerMob, slot, item, this, seed, x, y, this.chargeLevels));
         return item;
     }
 
