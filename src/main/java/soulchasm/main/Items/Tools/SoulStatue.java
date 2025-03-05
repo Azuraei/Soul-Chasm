@@ -36,12 +36,6 @@ public class SoulStatue extends SummonToolItem {
         }
     }
 
-    @Override
-    public GameTooltips getSpaceTakenTooltip(InventoryItem item, PlayerMob perspective) {
-        float spaceTaken = this.getSummonSpaceTaken(item, perspective);
-        return spaceTaken != 1.0F ? new StringTooltips(Localization.translate("itemtooltip", "summonuseslots", "count", (int) spaceTaken)) : null;
-    }
-
     public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = new ListGameTooltips();
         tooltips.add(Localization.translate("itemtooltip", "soulstatuetip"), 400);

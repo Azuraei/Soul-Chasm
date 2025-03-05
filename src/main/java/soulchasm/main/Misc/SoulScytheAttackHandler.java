@@ -1,6 +1,5 @@
 package soulchasm.main.Misc;
 
-import necesse.engine.network.packet.PacketSpawnProjectile;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.attackHandler.GreatswordAttackHandler;

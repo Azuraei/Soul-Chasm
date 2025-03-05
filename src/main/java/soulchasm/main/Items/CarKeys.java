@@ -30,7 +30,7 @@ public class CarKeys extends MountItem implements ItemInteractAction {
     }
 
     public InventoryItem onLevelInteract(Level level, int x, int y, ItemAttackerMob attackerMob, int attackHeight, InventoryItem item, ItemAttackSlot slot, int seed, GNDItemMap mapContent) {
-        String[] colors = new String[]{"Red", "Orange", "Yellow", "Green", "Blue", "Purple", "White", "Black"};
+        String[] colors = new String[]{"Orange", "Yellow", "Green", "Blue", "Purple", "White", "Black", "Red"};
         item.getGndData().getInt("carColorIndex", 4);
         int index =  item.getGndData().getInt("carColorIndex");
         String message;
