@@ -38,7 +38,7 @@ public class MagicSoulSealBuff extends TrinketBuff {
                         Point2D.Float offset = new Point2D.Float(dir.x * (float) offsetDistance, dir.y * (float) offsetDistance);
                         offset = GameMath.getPerpendicularPoint(offset, (float) random.getIntBetween(-50, 50), dir);
                         SoulMissileProjectile projectile = new SoulMissileProjectile(level, attackerMob.x + offset.x, attackerMob.y + offset.y, (float) targetX, (float) targetY, velocity, 800, finalDamage.modDamage(0.33F), 25, attackerMob);
-                        attackerMob.addAndSendAttackerProjectile(projectile);
+                        level.entityManager.projectiles.add(projectile);
                     }
                 }
             }

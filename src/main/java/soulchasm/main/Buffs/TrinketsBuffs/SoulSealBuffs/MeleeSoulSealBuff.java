@@ -34,13 +34,13 @@ public class MeleeSoulSealBuff extends TrinketBuff {
                     GameDamage finalDamage = ((SwordToolItem) item.item).getAttackDamage(item).modDamage(0.6F);
                     float velocity = 150.0F * attackerMob.buffManager.getModifier(BuffModifiers.PROJECTILE_VELOCITY);
                     SoulWaveProjectile projectile = new SoulWaveProjectile(level, attackerMob.x, attackerMob.y, (float) targetX, (float) targetY, velocity, 800, finalDamage, attackerMob);
-                    attackerMob.addAndSendAttackerProjectile(projectile);
+                    level.entityManager.projectiles.add(projectile);
                 }
             } else if (item.item instanceof SpearToolItem) {
                 GameDamage finalDamage = ((SpearToolItem) item.item).getAttackDamage(item).modDamage(0.6F);
                 float velocity = 300.0F * attackerMob.buffManager.getModifier(BuffModifiers.PROJECTILE_VELOCITY);
                 SoulPointyWaveProjectile projectile = new SoulPointyWaveProjectile(level, attackerMob.x, attackerMob.y, (float) targetX, (float) targetY, velocity, 800, finalDamage, attackerMob);
-                attackerMob.addAndSendAttackerProjectile(projectile);
+                level.entityManager.projectiles.add(projectile);
             } else if (item.item instanceof BoomerangToolItem) {
                 GameDamage finalDamage = ((BoomerangToolItem) item.item).getAttackDamage(item).modDamage(0.3F);
                 float velocity = ((BoomerangToolItem) item.item).getFlatVelocity(item) * attackerMob.buffManager.getModifier(BuffModifiers.PROJECTILE_VELOCITY);
@@ -49,7 +49,7 @@ public class MeleeSoulSealBuff extends TrinketBuff {
                         SoulBoomerangProjectile projectile = new SoulBoomerangProjectile(level, attackerMob.x, attackerMob.y, (float) targetX, (float) targetY, velocity, 650, finalDamage, attackerMob);
                         float angle = projectile.getAngleToTarget((float) targetX, (float) targetY);
                         projectile.setAngle(angle + 10 * i);
-                        attackerMob.addAndSendAttackerProjectile(projectile);
+                        level.entityManager.projectiles.add(projectile);
                     }
                 }
 
