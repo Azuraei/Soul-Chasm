@@ -12,6 +12,8 @@ import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.AttackAnimMob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
+import necesse.entity.mobs.itemAttacker.ItemAttackSlot;
+import necesse.entity.mobs.itemAttacker.ItemAttackerMob;
 import necesse.entity.projectile.modifiers.ResilienceOnHitProjectileModifier;
 import necesse.gfx.GameResources;
 import necesse.gfx.camera.GameCamera;
@@ -82,58 +84,55 @@ public class BookofSouls extends MagicProjectileToolItem implements ItemInteract
         super.tickHolding(item, player);
     }
 
-    public void showAttack(Level level, int x, int y, AttackAnimMob mob, int attackHeight, InventoryItem item, int seed, PacketReader contentReader) {
+    @Override
+    public void showAttack(Level level, int x, int y, ItemAttackerMob attackerMob, int attackHeight, InventoryItem item, int animAttack, int seed, GNDItemMap mapContent) {
+        super.showAttack(level, x, y, attackerMob, attackHeight, item, animAttack, seed, mapContent);
         if (level.isClient()) {
-            SoundManager.playSound(GameResources.magicbolt2, SoundEffect.effect(mob).volume(0.3F).pitch(GameRandom.globalRandom.getFloatBetween(1.5F, 1.6F)));
+            SoundManager.playSound(GameResources.magicbolt2, SoundEffect.effect(attackerMob).volume(0.3F).pitch(GameRandom.globalRandom.getFloatBetween(1.5F, 1.6F)));
         }
     }
 
-    public InventoryItem onAttack(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int animAttack, int seed, PacketReader contentReader) {
+    @Override
+    public InventoryItem onAttack(Level level, int x, int y, ItemAttackerMob attackerMob, int attackHeight, InventoryItem item, ItemAttackSlot slot, int animAttack, int seed, GNDItemMap mapContent) {
         GNDItemMap gndData = item.getGndData();
         float currentEnergy = item.getGndData().getFloat("energy");
-        if(!gndData.getBoolean("altFireActive") && !player.buffManager.hasBuff("soulofsoulsoverchargebuff")){
+        if(!gndData.getBoolean("altFireActive") && !attackerMob.buffManager.hasBuff("soulofsoulsoverchargebuff")){
             item.getGndData().setFloat("energy", (float)(currentEnergy + 0.025 * this.getAttackDamage(item).finalDamageMultiplier));
-            BookofSoulsMainProjectile projectile = new BookofSoulsMainProjectile(level, player, player.x, player.y, (float)x, (float)y, this.getProjectileVelocity(item, player), 1000, this.getAttackDamage(item), this.getKnockback(item, player));
+            BookofSoulsMainProjectile projectile = new BookofSoulsMainProjectile(level, attackerMob, attackerMob.x, attackerMob.y, (float)x, (float)y, this.getProjectileVelocity(item, attackerMob), 1000, this.getAttackDamage(item), this.getKnockback(item, attackerMob));
             projectile.setModifier(new ResilienceOnHitProjectileModifier(this.getResilienceGain(item)));
             projectile.resetUniqueID(new GameRandom(seed));
-            projectile.moveDist(30.0);
-            level.entityManager.projectiles.addHidden(projectile);
-            if (level.isServer()) {
-                level.getServer().network.sendToClientsWithEntityExcept(new PacketSpawnProjectile(projectile), projectile, player.getServerClient());
-            }
+            attackerMob.addAndSendAttackerProjectile(projectile, 30);
         } else {
             item.getGndData().setFloat("energy",(float)(currentEnergy - 0.03));
-            float angle = GameMath.getAngle(new Point2D.Float(player.dx, player.dy));
+            float angle = GameMath.getAngle(new Point2D.Float(attackerMob.dx, attackerMob.dy));
             float randomAngleOffset = 80.0F;
             int projectiles = 4;
             for(int i = 0; i < projectiles; ++i) {
                 Point2D.Float dir = GameMath.getAngleDir(angle + GameRandom.globalRandom.getFloatBetween(-randomAngleOffset, randomAngleOffset));
-                BookofSoulsSmallProjectile projectile = new BookofSoulsSmallProjectile(level, player, player.x, player.y, (float)x + dir.x * 80.0F, (float)y + dir.y * 80.0F, this.getProjectileVelocity(item, player), 800, this.getAttackDamage(item).modDamage(0.3F), 5);
+                BookofSoulsSmallProjectile projectile = new BookofSoulsSmallProjectile(level, attackerMob, attackerMob.x, attackerMob.y, (float)x + dir.x * 80.0F, (float)y + dir.y * 80.0F, this.getProjectileVelocity(item, attackerMob), 800, this.getAttackDamage(item).modDamage(0.3F), 5);
                 projectile.resetUniqueID(new GameRandom(seed));
-                projectile.moveDist(30.0);
-                level.entityManager.projectiles.addHidden(projectile);
-                if (level.isServer()) {
-                    level.getServer().network.sendToClientsWithEntityExcept(new PacketSpawnProjectile(projectile), projectile, player.getServerClient());
-                }
+                projectile.resetUniqueID(new GameRandom(seed));
+                attackerMob.addAndSendAttackerProjectile(projectile, 30);
             }
         }
-        this.consumeMana(player, item);
+        this.consumeMana(attackerMob, item);
         return item;
     }
 
-    public boolean canLevelInteract(Level level, int x, int y, PlayerMob player, InventoryItem item) {
+
+    public boolean canLevelInteract(Level level, int x, int y, ItemAttackerMob attackerMob, InventoryItem item) {
         return true;
     }
 
-    public InventoryItem onLevelInteract(Level level, int x, int y, PlayerMob player, int attackHeight, InventoryItem item, PlayerInventorySlot slot, int seed, PacketReader contentReader) {
+    public InventoryItem onLevelInteract(Level level, int x, int y, ItemAttackerMob attackerMob, int attackHeight, InventoryItem item, ItemAttackSlot slot, int seed, GNDItemMap mapContent) {
         GNDItemMap gndData = item.getGndData();
         boolean altFire = gndData.getBoolean("altFireActive");
         gndData.setBoolean("altFireActive", !altFire);
         if (level.isClient()) {
             if(altFire){
-                SoundManager.playSound(GameResources.fadedeath1, SoundEffect.effect(player).volume(1.0F).pitch(0.6F));
+                SoundManager.playSound(GameResources.fadedeath1, SoundEffect.effect(attackerMob).volume(1.0F).pitch(0.6F));
             } else {
-                SoundManager.playSound(GameResources.fadedeath1, SoundEffect.effect(player).volume(1.0F).pitch(1.2F));
+                SoundManager.playSound(GameResources.fadedeath1, SoundEffect.effect(attackerMob).volume(1.0F).pitch(1.2F));
             }
         }
         return item;

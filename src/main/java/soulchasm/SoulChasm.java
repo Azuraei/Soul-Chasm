@@ -424,8 +424,8 @@ public class SoulChasm {
         Wisp.texture = GameTexture.fromFile("mobs/wisp");
         Firefly.texture = GameTexture.fromFile("mobs/firefly");
         MageStatue.texture = GameTexture.fromFile("mobs/magestatue");
-        GameTexture soulmageTexture = GameTexture.fromFile("mobs/soulmage");
-        SoulMage.texture = new HumanTexture(soulmageTexture,soulmageTexture,soulmageTexture);
+        GameTexture soulMageTexture = GameTexture.fromFile("mobs/soulmage");
+        SoulMage.texture = new HumanTexture(soulMageTexture,soulMageTexture,soulMageTexture);
         SmallSoulSummon.texture = GameTexture.fromFile("mobs/smallsoul");
         SoulDragon.texture = GameTexture.fromFile("mobs/souldragon");
         SoulDragonBody.texture = GameTexture.fromFile("mobs/souldragon");

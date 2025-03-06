@@ -46,7 +46,7 @@ public class LostSoul extends FlyingHostileMob {
 
     public void init() {
         super.init();
-        this.ai = new BehaviourTreeAI(this, new CollisionPlayerChaserWandererAI((Supplier)null, 448, new GameDamage(65.0F), 100, 40000), new FlyingAIMover());
+        this.ai = new BehaviourTreeAI(this, new CollisionPlayerChaserWandererAI(null, 448, new GameDamage(65.0F), 100, 40000), new FlyingAIMover());
     }
 
     @Override

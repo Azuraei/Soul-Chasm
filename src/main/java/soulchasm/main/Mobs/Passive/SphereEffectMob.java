@@ -50,7 +50,7 @@ public class SphereEffectMob extends Mob {
         return false;
     }
 
-    public void onFollowingAnotherLevel(PlayerMob player) {}
+    public void onFollowingAnotherLevel(Mob followingMob) {}
 
     public boolean isVisibleOnMap(Client client, LevelMap map) {
         return false;
