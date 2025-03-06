@@ -30,15 +30,14 @@ public class RangeSoulSealBuff extends TrinketBuff {
                 GameDamage finalDamage = ((BowProjectileToolItem) item.item).getAttackDamage(item).modFinalMultiplier(0.6F);
                 float velocity = ((BowProjectileToolItem) item.item).getProjectileVelocity(item, attackerMob);
                 SoulArrowProjectile projectile = new SoulArrowProjectile(level, attackerMob, attackerMob.x, attackerMob.y, (float) targetX, (float) targetY, velocity, 800, finalDamage, 20);
-                projectile.moveDist(10);
-                level.entityManager.projectiles.add(projectile);
+                attackerMob.addAndSendAttackerProjectile(projectile, 10);
             }else if (item.item instanceof GunProjectileToolItem) {
                 if(currentcharge>=chargesToExplosiveBullet){
                     buff.getGndData().setInt("currentcharge", 0);
                     float velocity = ((GunProjectileToolItem) item.item).getProjectileVelocity(item, attackerMob) * 2.0F;
                     GameDamage finalDamage = ((GunProjectileToolItem) item.item).getAttackDamage(item).modFinalMultiplier(1.5F);
                     SoulBigBulletProjectile projectile = new SoulBigBulletProjectile(attackerMob.x, attackerMob.y, (float) targetX, (float) targetY, velocity, 1200, finalDamage, 20, attackerMob);
-                    level.entityManager.projectiles.add(projectile);
+                    attackerMob.addAndSendAttackerProjectile(projectile);
                 }else {
                     buff.getGndData().setInt("currentcharge", currentcharge + 1);
                 }

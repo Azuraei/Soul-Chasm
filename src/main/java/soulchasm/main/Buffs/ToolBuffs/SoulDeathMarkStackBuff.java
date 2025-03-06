@@ -33,7 +33,7 @@ public class SoulDeathMarkStackBuff extends Buff {
         return true;
     }
 
-    public int getStackSize() {
+    public int getStackSize(ActiveBuff buff) {
         return 3;
     }
 
@@ -81,7 +81,7 @@ public class SoulDeathMarkStackBuff extends Buff {
                     currentColor = color1;
                     distance = 40F;
             }
-            owner.getLevel().entityManager.addParticle(owner.x + GameMath.sin(currentAngle.get()) * distance, owner.y + GameMath.cos((Float)currentAngle.get()) * distance * 0.75F, Particle.GType.CRITICAL).color(currentColor).height(0.5F).moves((pos, delta, lifeTime, timeAlive, lifePercent) -> {
+            owner.getLevel().entityManager.addParticle(owner.x + GameMath.sin(currentAngle.get()) * distance, owner.y + GameMath.cos(currentAngle.get()) * distance * 0.75F, Particle.GType.CRITICAL).color(currentColor).height(0.5F).moves((pos, delta, lifeTime, timeAlive, lifePercent) -> {
                 float angle = currentAngle.accumulateAndGet(delta * 150.0F / 250.0F, Float::sum);
                 float distY = distance * 0.75F;
                 pos.x = owner.x + GameMath.sin(angle) * distance;
@@ -99,9 +99,7 @@ public class SoulDeathMarkStackBuff extends Buff {
         explosion.lifetime = 400;
         explosion.popOptions = piercerPopExplosion;
         explosion.particleLightHue = 211.0F;
-        explosion.explosionSound = (pos, height, random) -> {
-            SoundManager.playSound(GameResources.fireworkExplosion, SoundEffect.effect(pos.x, pos.y).pitch((Float)random.getOneOf(new Float[]{0.95F, 1.0F, 1.05F})).volume(0.2F).falloffDistance(1500));
-        };
+        explosion.explosionSound = (pos, height, random) -> SoundManager.playSound(GameResources.fireworkExplosion, SoundEffect.effect(pos.x, pos.y).pitch(random.getOneOf(0.95F, 1.0F, 1.05F)).volume(0.2F).falloffDistance(1500));
         explosion.spawnExplosion(buff.owner.getLevel(), buff.owner.x, buff.owner.y, 10, GameRandom.globalRandom);
     }
 

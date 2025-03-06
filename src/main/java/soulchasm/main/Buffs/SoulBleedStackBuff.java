@@ -20,8 +20,7 @@ public class SoulBleedStackBuff extends Buff {
         return true;
     }
 
-    @Override
-    public int getStackSize() {
+    public int getStackSize(ActiveBuff activeBuff) {
         return 8;
     }
 

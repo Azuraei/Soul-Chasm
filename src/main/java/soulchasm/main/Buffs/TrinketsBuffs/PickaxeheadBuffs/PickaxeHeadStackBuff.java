@@ -22,7 +22,7 @@ public class PickaxeHeadStackBuff extends Buff {
     }
 
     @Override
-    public int getStackSize() {
+    public int getStackSize(ActiveBuff activeBuff) {
         return 50;
     }
 

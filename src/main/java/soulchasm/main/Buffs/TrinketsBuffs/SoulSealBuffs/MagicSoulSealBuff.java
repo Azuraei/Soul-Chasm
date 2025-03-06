@@ -3,7 +3,6 @@ package soulchasm.main.Buffs.TrinketsBuffs.SoulSealBuffs;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.GameDamage;
-import necesse.entity.mobs.PlayerMob;
 import necesse.entity.mobs.buffs.ActiveBuff;
 import necesse.entity.mobs.buffs.BuffEventSubscriber;
 import necesse.entity.mobs.buffs.BuffModifiers;
@@ -11,7 +10,6 @@ import necesse.entity.mobs.buffs.staticBuffs.armorBuffs.trinketBuffs.TrinketBuff
 import necesse.entity.mobs.itemAttacker.ItemAttackSlot;
 import necesse.entity.mobs.itemAttacker.ItemAttackerMob;
 import necesse.inventory.InventoryItem;
-import necesse.inventory.PlayerInventorySlot;
 import necesse.inventory.item.toolItem.projectileToolItem.magicProjectileToolItem.MagicProjectileToolItem;
 import necesse.level.maps.Level;
 import soulchasm.main.Projectiles.SealProjectiles.SoulMissileProjectile;
@@ -40,7 +38,7 @@ public class MagicSoulSealBuff extends TrinketBuff {
                         Point2D.Float offset = new Point2D.Float(dir.x * (float) offsetDistance, dir.y * (float) offsetDistance);
                         offset = GameMath.getPerpendicularPoint(offset, (float) random.getIntBetween(-50, 50), dir);
                         SoulMissileProjectile projectile = new SoulMissileProjectile(level, attackerMob.x + offset.x, attackerMob.y + offset.y, (float) targetX, (float) targetY, velocity, 800, finalDamage.modDamage(0.33F), 25, attackerMob);
-                        level.entityManager.projectiles.add(projectile);
+                        attackerMob.addAndSendAttackerProjectile(projectile);
                     }
                 }
             }
