@@ -361,12 +361,7 @@ public class SoulChasm {
         ProjectileRegistry.registerProjectile("souldiscprojectile", SoulDiscProjectile.class, "soulboomerangprojectile", null);
 
         //INCURSION_LOOT
-        LootTable helmetReward = new LootTable(new LootItemList(new OneOfLootItems(
-                        new LootItem("soularmorhelmet"),
-                        new LootItem("soularmorhood"),
-                        new LootItem("soularmorhat"),
-                        new LootItem("soularmorcrown")
-        )));
+        LootTable helmetReward = new LootTable(new LootItemList(new OneOfLootItems(new LootItem("soularmorhelmet"), new LootItem("soularmorhood"), new LootItem("soularmorhat"), new LootItem("soularmorcrown"))));
         LootTable armorReward = new LootTable(new LootItemList(new LootItem("soularmorchestplate")));
         LootTable bootsReward = new LootTable(new LootItemList(new LootItem("soularmorboots")));
         LootTable scytheReward = new LootTable(new LootItemList(new LootItem("soulscythe")));
