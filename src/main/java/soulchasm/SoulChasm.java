@@ -3,6 +3,7 @@ package soulchasm;
 import necesse.engine.GameLoadingScreen;
 import necesse.engine.journal.JournalEntry;
 import necesse.engine.modLoader.annotations.ModEntry;
+import necesse.engine.network.gameNetworkData.GNDItemMap;
 import necesse.engine.registries.*;
 import necesse.engine.sound.gameSound.GameSound;
 import necesse.entity.mobs.HumanTexture;
@@ -98,6 +99,7 @@ import soulchasm.main.Projectiles.SoulHomingProjectile;
 import soulchasm.main.Tiles.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import static necesse.engine.registries.ObjectRegistry.getObject;
 
@@ -474,535 +476,94 @@ public class SoulChasm {
 
         plushieSqueak = GameSound.fromFile("plushie_squeak");
     }
+
+    public void registerModRecipes(ArrayList<Recipe> recipes){
+        for (Recipe recipe : recipes) {
+            Recipes.registerModRecipe(recipe);
+        }
+    }
+
     public void postInit() {
         ForestBiome.defaultSurfaceCritters.add(80, "firefly");
         PlainsBiome.defaultSurfaceCritters.add(80, "firefly");
         SwampBiome.surfaceCritters.add(100, "firefly");
 
         chasmChestRoomSet = new ChestRoomSet("soulcavefloortile", "soulstonepressureplate", WallSet.loadByStringID("soulbrick"), "soulcavechest", "soulstoneflametrap");
-        chasmShrineLootTable = new LootTable(new LootItemList(
-                new OneOfLootItems(
-                        new ChanceLootItem(0.8F,"phantomfeathertrinket"),
-                        new ChanceLootItem(0.8F,"soulstealertrinket"),
-                        new ChanceLootItem(0.8F,"pickaxeheadtrinket"),
-                        new ChanceLootItem(0.2F,"soulmetalsword"),
-                        new ChanceLootItem(0.05F, "carkeys")
-                )
-        ));
-
-        //---CRAFTING---//
-        Recipes.registerModRecipe(new Recipe(
-                "soulmetalbar",
-                1,
-                RecipeTechRegistry.FORGE,
-                new Ingredient[]{
-                        new Ingredient("crystalizedsouloreitem", 4)
-                }
-        ).showAfter("ancientfossilbar"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulessence",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("anytier2essence", 2)
-                }
-        ));
-
-        //ARMOR_AND_WEAPONS
-        Recipes.registerModRecipe(new Recipe(
-                "soulmetalsword",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 5)
-                }
-        ).showAfter("nightsteelboots"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulmetalspear",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("soulmetalbar", 16),
-                        new Ingredient("soulcoreitem", 5)
-                }
-        ).showAfter("soulmetalsword"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulmetalrevolver",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("handgun", 1),
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 5),
-                }
-        ).showAfter("soulmetalspear"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulmetalbow",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 5)
-                }
-        ).showAfter("soulmetalrevolver"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "bookofsouls",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("book", 3),
-                        new Ingredient("soulmetalbar", 4),
-                        new Ingredient("soulcoreitem", 12)
-                }
-        ).showAfter("soulmetalbow"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulstatue",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 6),
-                        new Ingredient("soulmetalbar", 10),
-                        new Ingredient("soulcoreitem", 12)
-                }
-        ).showAfter("bookofsouls"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulabsorbshield",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 8),
-                }
-        ).showAfter("soulstatue"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soularmorhelmet",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 20)
-                }
-        ).showAfter("soulabsorbshield"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soularmorhood",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 20)
-                }
-        ).showAfter("soularmorhelmet"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soularmorhat",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 20)
-                }
-        ).showAfter("soularmorhood"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soularmorcrown",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 12),
-                        new Ingredient("soulcoreitem", 20)
-                }
-        ).showAfter("soularmorhat"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soularmorchestplate",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 16),
-                        new Ingredient("soulcoreitem", 30)
-                }
-        ).showAfter("soularmorcrown"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soularmorboots",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 8),
-                        new Ingredient("soulcoreitem", 15)
-                }
-        ).showAfter("soularmorchestplate"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulsealtrinket",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("meleesoulsealtrinket", 1),
-                        new Ingredient("rangesoulsealtrinket", 1),
-                        new Ingredient("magicsoulsealtrinket", 1),
-                        new Ingredient("summonsoulsealtrinket", 1),
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("soulcoreitem", 20)
-                }
-        ).showAfter("soularmorboots"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "balancedsealtrinket",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("soulsealtrinket", 1),
-                        new Ingredient("balancedfoci", 1),
-                        new Ingredient("soulessence", 5),
-                        new Ingredient("soulmetalbar", 5),
-                        new Ingredient("soulcoreitem", 20),
-                }
-        ).showAfter("soulsealtrinket"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "phantomdasherstrinket",
-                1,
-                RecipeTechRegistry.FALLEN_ANVIL,
-                new Ingredient[]{
-                        new Ingredient("zephyrboots", 1),
-                        new Ingredient("soulessence", 4),
-                        new Ingredient("soulcoreitem", 8)
-                }
-        ).showAfter("balancedsealtrinket"));
-
-        //MISC_AND_FURNITURE
-        Recipes.registerModRecipe(new Recipe(
-                "asphalttile",
-                100,
-                RecipeTechRegistry.ALCHEMY,
-                new Ingredient[]{
-                        new Ingredient("anystone", 100),
-                        new Ingredient("speedpotion", 2),
-                }
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "bigjarobject",
-                1,
-                RecipeTechRegistry.FORGE,
-                new Ingredient[]{
-                        new Ingredient("sandstonetile", 5)
-                }
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "fireflyjar",
-                1,
-                RecipeTechRegistry.WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("fireflyitem", 3),
-                        new Ingredient("bigjarobject", 1)
-                }
-        ).showAfter("torch"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "wispjar",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("wispitem", 2),
-                        new Ingredient("bigjarobject", 1)
-                }
-        ).showAfter("fireflyjar"));
-
-        //LANDSCAPING
-        Recipes.registerModRecipe(new Recipe(
-                "magestatueobject",
-                1,
-                RecipeTechRegistry.LANDSCAPING,
-                new Ingredient[]{
-                        new Ingredient("soulcaverockitem", 50)
-                }
-        ).showAfter("soulcavetiledfloortile"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulcaverock",
-                1,
-                RecipeTechRegistry.LANDSCAPING,
-                new Ingredient[]{
-                        new Ingredient("soulcaverockitem", 4)
-                }
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "crystalizedsoul",
-                1,
-                RecipeTechRegistry.LANDSCAPING,
-                new Ingredient[]{
-                        new Ingredient("soulcaverockitem", 4),
-                        new Ingredient("crystalizedsouloreitem", 1)
-                }
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "upgradeshardsoulcaverock",
-                1,
-                RecipeTechRegistry.LANDSCAPING,
-                new Ingredient[]{
-                        new Ingredient("soulcaverockitem", 4),
-                        new Ingredient("upgradeshard", 1)
-                }
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "alchemyshardsoulcaverock",
-                1,
-                RecipeTechRegistry.LANDSCAPING,
-                new Ingredient[]{
-                        new Ingredient("soulcaverockitem", 4),
-                        new Ingredient("alchemyshard", 1)
-                }
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulcaverocksmall",
-                1,
-                RecipeTechRegistry.LANDSCAPING,
-                new Ingredient[]{
-                        new Ingredient("soulcaverockitem", 20)
-                }
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulcaverocks",
-                1,
-                RecipeTechRegistry.LANDSCAPING,
-                new Ingredient[]{
-                        new Ingredient("soulcaverockitem", 30)
-                }
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soultorch",
-                8,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulcoreitem", 1),
-                        new Ingredient("soulwoodlogitem", 1)
-                }
-        ).showAfter("torch"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soultikitorchobject",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soultorch", 1),
-                        new Ingredient("soulwoodlogitem", 1)
-                }
-        ).showAfter("tikitorch"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soullantern",
-                1,
-                RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{
-                        new Ingredient("soulmetalbar", 3),
-                        new Ingredient("soultorch", 1)
-                }
-        ).showAfter("goldlamp"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodwall",
-                1, RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 2)}
-        ).showAfter("deadwoodfloor"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwooddoor",
-                1, RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 4)}
-        ).showAfter("soulwoodwall"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodfloor",
-                1, RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 1)}
-
-        ).showAfter("soulwooddoor"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodpath",
-                1, RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 1)}
-
-        ).showAfter("soulwoodfloor"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodtiledfloor",
-                1, RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 2)}
-        ).showAfter("soulwoodpath"));
-
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodbathtub",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 12)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodbed",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 10),
-                        new Ingredient("wool", 10)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwooddoublebed",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 20),
-                        new Ingredient("wool", 20)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodbench",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 10)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwooddinnertable",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 16)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodbookshelf",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 10)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodcabinet",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 10)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodchair",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 4)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodchest",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 8)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodclock",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 8),
-                        new Ingredient("ironbar", 2)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwooddesk",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 8)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwooddisplay",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 10)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwooddresser",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 8)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodmodulartable",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 8)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodtoilet",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 6)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodcandelabra",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 6),
-                        new Ingredient("torch", 3)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodfencegate",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 4)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulwoodfence",
-                1, RecipeTechRegistry.CARPENTER,
-                new Ingredient[]{new Ingredient("soulwoodlogitem", 2)}
-        ));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulbrickdoor",
-                1, RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{new Ingredient("soulcaverockitem", 15)}
-        ).showAfter("soulbrickwall"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulbrickwall",
-                1, RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{new Ingredient("soulcaverockitem", 5)}
-        ).showAfter("deepswampstonebrickfloor"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulcavefloortile",
-                1, RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{new Ingredient("soulcaverockitem", 1)}
-        ).showAfter("soulbrickdoor"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulcavebrickfloortile",
-                1, RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{new Ingredient("soulcaverockitem", 1)}
-        ).showAfter("soulcavefloortile"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulcavetiledfloortile",
-                1, RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{new Ingredient("soulcaverockitem", 1)}
-        ).showAfter("soulcavebrickfloortile"));
-
-        Recipes.registerModRecipe(new Recipe(
-                "soulstonepressureplate",
-                1, RecipeTechRegistry.FALLEN_WORKSTATION,
-                new Ingredient[]{new Ingredient("soulcaverockitem", 1)}
-        ).showAfter("deepswampstonepressureplate"));
+        chasmShrineLootTable = new LootTable(new LootItemList(new OneOfLootItems(new ChanceLootItem(0.8F,"phantomfeathertrinket"), new ChanceLootItem(0.8F,"soulstealertrinket"), new ChanceLootItem(0.8F,"pickaxeheadtrinket"), new ChanceLootItem(0.2F,"soulmetalsword"), new ChanceLootItem(0.05F, "carkeys"))));
+
+        ArrayList<Recipe> modRecipes = new ArrayList<>();
+
+        modRecipes.add(new Recipe("soulmetalbar", 1, RecipeTechRegistry.FORGE, Recipes.ingredientsFromScript("{{crystalizedsouloreitem, 4}}")));
+        modRecipes.add(new Recipe("soulessence", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{anytier2essence, 2}}")));
+
+        modRecipes.add(new Recipe("soulmetalsword", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {soulmetalbar, 12}, {soulcoreitem, 5}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
+        modRecipes.add(new Recipe("soulmetalspear", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {soulmetalbar, 16}, {soulcoreitem, 5}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
+        modRecipes.add(new Recipe("soulmetalrevolver", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {handgun, 1}, {soulmetalbar, 12}, {soulcoreitem, 5}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
+        modRecipes.add(new Recipe("soulmetalbow", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {soulmetalbar, 12}, {soulcoreitem, 5}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
+        modRecipes.add(new Recipe("bookofsouls", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {book, 3}, {soulmetalbar, 4}, {soulcoreitem, 12}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
+        modRecipes.add(new Recipe("soulstatue", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 6}, {soulmetalbar, 10}, {soulcoreitem, 12}}")));
+
+        modRecipes.add(new Recipe("soularmorhelmet", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 12}, {soulcoreitem, 20}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
+        modRecipes.add(new Recipe("soularmorhood", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 12}, {soulcoreitem, 20}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
+        modRecipes.add(new Recipe("soularmorhat", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 12}, {soulcoreitem, 20}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
+        modRecipes.add(new Recipe("soularmorcrown", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 12}, {soulcoreitem, 20}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
+        modRecipes.add(new Recipe("soularmorchestplate", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 16}, {soulcoreitem, 30}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
+        modRecipes.add(new Recipe("soularmorboots", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 8}, {soulcoreitem, 15}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
+
+        modRecipes.add(new Recipe("soulabsorbshield", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {soulmetalbar, 12}, {soulcoreitem, 8}}")));
+        modRecipes.add(new Recipe("soulsealtrinket", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{meleesoulsealtrinket, 1}, {rangesoulsealtrinket, 1}, {magicsoulsealtrinket, 1}, {summonsoulsealtrinket, 1}, {soulessence, 5}, {soulcoreitem, 20}}")));
+        modRecipes.add(new Recipe("balancedsealtrinket", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulsealtrinket, 1}, {balancedfoci, 1}, {soulessence, 5}, {soulmetalbar, 5}, {soulcoreitem, 20}}")));
+        modRecipes.add(new Recipe("phantomdasherstrinket", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{zephyrboots, 1}, {soulessence, 4}, {soulcoreitem, 8}}")));
+
+        modRecipes.add(new Recipe("asphalttile", 100, RecipeTechRegistry.ALCHEMY, Recipes.ingredientsFromScript("{{anystone, 100}, {speedpotion, 2}}")));
+        modRecipes.add(new Recipe("bigjarobject", 1, RecipeTechRegistry.FORGE, Recipes.ingredientsFromScript("{{sandstonetile, 5}}")));
+        modRecipes.add(new Recipe("fireflyjar", 1, RecipeTechRegistry.WORKSTATION, Recipes.ingredientsFromScript("{{fireflyitem, 3}, {bigjarobject, 1}}")));
+        modRecipes.add(new Recipe("wispjar", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{wispitem, 2}, {bigjarobject, 1}}")));
+
+        modRecipes.add(new Recipe("soultorch", 8, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulcoreitem, 1}, {soulwoodlogitem, 1}}")));
+        modRecipes.add(new Recipe("soultikitorchobject", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soultorch, 1}, {soulwoodlogitem, 1}}")));
+        modRecipes.add(new Recipe("soullantern", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulmetalbar, 3}, {soultorch, 1}}")));
+
+        modRecipes.add(new Recipe("soulwoodwall", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulwoodlogitem, 2}}")));
+        modRecipes.add(new Recipe("soulwooddoor", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulwoodlogitem, 4}}")));
+        modRecipes.add(new Recipe("soulwoodfloor", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulwoodlogitem, 1}}")));
+        modRecipes.add(new Recipe("soulwoodpath", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulwoodlogitem, 1}}")));
+        modRecipes.add(new Recipe("soulwoodtiledfloor", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulwoodlogitem, 2}}")));
+
+        modRecipes.add(new Recipe("soulbrickdoor", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulcaverockitem, 15}}")));
+        modRecipes.add(new Recipe("soulbrickwall", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulcaverockitem, 5}}")));
+        modRecipes.add(new Recipe("soulcavefloortile", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulcaverockitem, 1}}")));
+        modRecipes.add(new Recipe("soulcavebrickfloortile", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulcaverockitem, 1}}")));
+        modRecipes.add(new Recipe("soulcavetiledfloortile", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulcaverockitem, 1}}")));
+        modRecipes.add(new Recipe("soulstonepressureplate", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulcaverockitem, 1}}")));
+
+        modRecipes.add(new Recipe("soulcaverock", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{soulcaverockitem, 4}}")));
+        modRecipes.add(new Recipe("crystalizedsoul", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{soulcaverockitem, 4}, {crystalizedsouloreitem, 1}}")));
+        modRecipes.add(new Recipe("upgradeshardsoulcaverock", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{soulcaverockitem, 4}, {upgradeshard, 1}}")));
+        modRecipes.add(new Recipe("alchemyshardsoulcaverock", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{soulcaverockitem, 4}, {alchemyshard, 1}}")));
+        modRecipes.add(new Recipe("soulcaverocksmall", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{soulcaverockitem, 20}}")));
+        modRecipes.add(new Recipe("soulcaverocks", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{soulcaverockitem, 30}}")));
+        modRecipes.add(new Recipe("magestatueobject", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{soulcaverockitem, 50}}")));
+
+        modRecipes.add(new Recipe("soulwoodbathtub", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 12}}")));
+        modRecipes.add(new Recipe("soulwoodbed", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 10}, {wool, 10}}")));
+        modRecipes.add(new Recipe("soulwooddoublebed", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 20}, {wool, 20}}")));
+        modRecipes.add(new Recipe("soulwoodbench", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 10}}")));
+        modRecipes.add(new Recipe("soulwooddinnertable", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 16}}")));
+        modRecipes.add(new Recipe("soulwoodbookshelf", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 10}}")));
+        modRecipes.add(new Recipe("soulwoodcabinet", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 10}}")));
+        modRecipes.add(new Recipe("soulwoodchair", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 4}}")));
+        modRecipes.add(new Recipe("soulwoodchest", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 8}}")));
+        modRecipes.add(new Recipe("soulwoodclock", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 8}, {ironbar, 2}}")));
+        modRecipes.add(new Recipe("soulwooddesk", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 8}}")));
+        modRecipes.add(new Recipe("soulwooddisplay", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 10}}")));
+        modRecipes.add(new Recipe("soulwooddresser", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 8}}")));
+        modRecipes.add(new Recipe("soulwoodmodulartable", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 8}}")));
+        modRecipes.add(new Recipe("soulwoodtoilet", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 6}}")));
+        modRecipes.add(new Recipe("soulwoodcandelabra", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 6}, {torch, 3}}")));
+        modRecipes.add(new Recipe("soulwoodfencegate", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 4}}")));
+        modRecipes.add(new Recipe("soulwoodfence", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 2}}")));
+
+        registerModRecipes(modRecipes);
     }
 }
