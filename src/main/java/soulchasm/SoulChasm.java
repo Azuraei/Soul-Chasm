@@ -22,7 +22,6 @@ import necesse.inventory.item.placeableItem.tileItem.GrassSeedItem;
 import necesse.inventory.item.toolItem.ToolType;
 import necesse.inventory.lootTable.LootTable;
 import necesse.inventory.lootTable.lootItem.*;
-import necesse.inventory.recipe.Ingredient;
 import necesse.inventory.recipe.Recipe;
 import necesse.inventory.recipe.Recipes;
 import necesse.level.gameObject.*;

@@ -19,7 +19,7 @@ public class SoulDischargeSicknessDebuff extends Buff {
         this.isImportant =  true;
     }
 
-    public int getStackSize() {
+    public int getStackSize(ActiveBuff buff) {
         return 4;
     }
 
