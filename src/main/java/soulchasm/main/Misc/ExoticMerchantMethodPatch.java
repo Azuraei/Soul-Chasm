@@ -8,6 +8,7 @@ import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.friendly.human.humanShop.ExoticMerchantHumanMob;
 import necesse.entity.mobs.friendly.human.humanShop.HumanShop;
 import necesse.entity.mobs.friendly.human.humanShop.SellingShopItem;
+import necesse.entity.mobs.friendly.human.humanShop.ShopManager;
 import necesse.inventory.InventoryItem;
 import net.bytebuddy.asm.Advice;
 
@@ -19,17 +20,9 @@ public class ExoticMerchantMethodPatch {
 
     @Advice.OnMethodExit
     static void onExit(@Advice.This ExoticMerchantHumanMob merchantMob) {
-        SellingShopItem.ShopItemRequirement hasCompletedChasm = new SellingShopItem.ShopItemRequirement() {
-            public boolean test(GameRandom random, ServerClient client, HumanShop mob, GameBlackboard blackboard) {
-                System.out.print("debug1");
-                return client.characterStats().completed_incursions.getData("soulchasmincursionbiome").getTotal() > 0;
-            }
-        };
-
-        ArrayList<String> plushieList = new ArrayList<>(Arrays.asList("argemiaplushieitem", "v1plushieitem", "fairplushieitem", "fumoplushieitem", "devplushieitem"));
-        GameRandom random = new GameRandom(merchantMob.getShopSeed());
-        InventoryItem item = new InventoryItem(random.getOneOf(plushieList));
-        merchantMob.shop.addSellingItem("plushie", new SellingShopItem(2, 2)).setItem(item).setRandomPrice(100, 200);
-        merchantMob.shop.addSellingItem("tobeblindfold", new SellingShopItem()).setRandomPrice(100, 200).addRequirement(hasCompletedChasm);
+        String[] plushies = new String[]{"argemiaplushieitem", "v1plushieitem", "fairplushieitem", "fumoplushieitem", "devplushieitem"};
+        GameRandom random = new GameRandom();
+        merchantMob.shop.addSellingItem("plushie", new SellingShopItem(2, 2)).setItem(random.getOneOf(plushies)).setRandomPrice(100, 200);
+        merchantMob.shop.addSellingItem("tobeblindfold", new SellingShopItem()).setRandomPrice(100, 200);
     }
 }
