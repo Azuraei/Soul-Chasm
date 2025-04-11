@@ -8,6 +8,8 @@ import necesse.engine.registries.*;
 import necesse.engine.sound.gameSound.GameSound;
 import necesse.entity.mobs.HumanTexture;
 import necesse.entity.mobs.Mob;
+import necesse.entity.mobs.friendly.human.humanShop.ExoticMerchantHumanMob;
+import necesse.entity.mobs.friendly.human.humanShop.ShopManager;
 import necesse.gfx.GameResources;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTexture.GameTextureSection;

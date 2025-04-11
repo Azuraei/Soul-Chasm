@@ -1,7 +1,12 @@
 package soulchasm.main.Misc;
 
 import necesse.engine.modLoader.annotations.ModConstructorPatch;
+import necesse.engine.network.server.ServerClient;
+import necesse.engine.seasons.GameSeasons;
+import necesse.engine.util.GameBlackboard;
+import necesse.engine.util.GameRandom;
 import necesse.entity.mobs.friendly.human.humanShop.ExoticMerchantHumanMob;
+import necesse.entity.mobs.friendly.human.humanShop.HumanShop;
 import necesse.entity.mobs.friendly.human.humanShop.SellingShopItem;
 import necesse.inventory.InventoryItem;
 import net.bytebuddy.asm.Advice;
@@ -14,9 +19,17 @@ public class ExoticMerchantMethodPatch {
 
     @Advice.OnMethodExit
     static void onExit(@Advice.This ExoticMerchantHumanMob merchantMob) {
-        //ArrayList<String> plushie = new ArrayList<>(Arrays.asList("argemiaplushieitem", "fairplushieitem", "v1plushieitem", "fumoplushieitem", "devplushieitem"));
-        //merchantMob.shop.addSellingItem("randomplushie", new SellingShopItem(2, 1).setRandomPrice(100, 200).setItem((random, client, m) -> new InventoryItem(plushie.get(random.nextInt(plushie.size())))));
-        //merchantMob.shop.addSellingItem("tobeblindfold", new SellingShopItem()).setRandomPrice(100, 200).addRequirement((random, client, m, blackboard) -> client.characterStats().completed_incursions.getData("soulchasmincursionbiome").getTotal() > 0);
-        //System.out.println("Exited constructor: " + merchantMob.getStringID());
+        SellingShopItem.ShopItemRequirement hasCompletedChasm = new SellingShopItem.ShopItemRequirement() {
+            public boolean test(GameRandom random, ServerClient client, HumanShop mob, GameBlackboard blackboard) {
+                System.out.print("debug1");
+                return client.characterStats().completed_incursions.getData("soulchasmincursionbiome").getTotal() > 0;
+            }
+        };
+
+        ArrayList<String> plushieList = new ArrayList<>(Arrays.asList("argemiaplushieitem", "v1plushieitem", "fairplushieitem", "fumoplushieitem", "devplushieitem"));
+        GameRandom random = new GameRandom(merchantMob.getShopSeed());
+        InventoryItem item = new InventoryItem(random.getOneOf(plushieList));
+        merchantMob.shop.addSellingItem("plushie", new SellingShopItem(2, 2)).setItem(item).setRandomPrice(100, 200);
+        merchantMob.shop.addSellingItem("tobeblindfold", new SellingShopItem()).setRandomPrice(100, 200).addRequirement(hasCompletedChasm);
     }
 }
