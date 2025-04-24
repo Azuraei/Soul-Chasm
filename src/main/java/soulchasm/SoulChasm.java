@@ -8,8 +8,6 @@ import necesse.engine.registries.*;
 import necesse.engine.sound.gameSound.GameSound;
 import necesse.entity.mobs.HumanTexture;
 import necesse.entity.mobs.Mob;
-import necesse.entity.mobs.friendly.human.humanShop.ExoticMerchantHumanMob;
-import necesse.entity.mobs.friendly.human.humanShop.ShopManager;
 import necesse.gfx.GameResources;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTexture.GameTextureSection;
@@ -416,8 +414,11 @@ public class SoulChasm {
         DevPlushie.gameTexture = GameTexture.fromFile("mobs/devplushie");
 
         LostSoul.texture = GameTexture.fromFile("mobs/lostsoul");
-        CarMob.texture =  GameTexture.fromFile("mobs/car");
-        CarMob.texture_top = GameTexture.fromFile("mobs/car_top_mask");
+
+        CarMob.texture_body =  GameTexture.fromFile("mobs/car_body");
+        CarMob.texture_top =  GameTexture.fromFile("mobs/car_top");
+        CarMob.texture_mask = GameTexture.fromFile("mobs/car_top_mask");
+
         MeleeStatue.texture = GameTexture.fromFile("mobs/meleestatue");
         Wisp.texture = GameTexture.fromFile("mobs/wisp");
         Firefly.texture = GameTexture.fromFile("mobs/firefly");
@@ -465,7 +466,6 @@ public class SoulChasm {
         GameTexture car_mask_sprites = GameTexture.fromFile("mobs/car_mask");
         int carSprites = car_mask_sprites.getHeight() / 64;
         carMask = new GameTexture[carSprites];
-
         for(int i = 0; i < carSprites; ++i) {
             carMask[i] = new GameTexture(car_mask_sprites, 0, i, 64);
         }

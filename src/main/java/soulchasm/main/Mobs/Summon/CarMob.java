@@ -25,15 +25,18 @@ import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static soulchasm.SoulChasm.carMask;
 
 public class CarMob extends MountFollowingMob {
     protected TicksPerSecond particleTicks = TicksPerSecond.ticksPerSecond(30);
-    public static GameTexture texture;
+    public static GameTexture texture_body;
     public static GameTexture texture_top;
-    public int textureColorIndex;
+    public static GameTexture texture_mask;
+    public int colorIndex;
+    private final ArrayList<Color> colors = new ArrayList<>();
 
     public CarMob() {
         super(100);
@@ -45,18 +48,26 @@ public class CarMob extends MountFollowingMob {
         this.collision = new Rectangle(-10, -7, 20, 14);
         this.hitBox = new Rectangle(-14, -14, 28, 28);
         this.selectBox = new Rectangle(-15, -15, 30, 30);
+        this.colors.add(new Color(208, 0, 0));
+        this.colors.add(new Color(234, 93, 0));
+        this.colors.add(new Color(227, 202, 0));
+        this.colors.add(new Color(12, 225, 0));
+        this.colors.add(new Color(15, 82, 175));
+        this.colors.add(new Color(182, 0, 202));
+        this.colors.add(new Color(228, 228, 228));
+        this.colors.add(new Color(36, 36, 36));
     }
 
     @Override
     public void setupSpawnPacket(PacketWriter writer) {
         super.setupSpawnPacket(writer);
-        writer.putNextInt(textureColorIndex);
+        writer.putNextInt(colorIndex);
     }
 
     @Override
     public void applySpawnPacket(PacketReader reader) {
         super.applySpawnPacket(reader);
-        this.textureColorIndex = reader.getNextInt();
+        this.colorIndex = reader.getNextInt();
     }
 
     public void tickMovement(float delta) {
@@ -134,14 +145,17 @@ public class CarMob extends MountFollowingMob {
         int drawY = camera.getDrawY(y) - 40;
         Point sprite = this.getAnimSprite(x, y, this.getDir());
         drawY += this.getBobbing(x, y);
-        final DrawOptions options = texture.initDraw().sprite(textureColorIndex, sprite.y, 64).light(light).pos(drawX , drawY);
+        Color current_color = colors.get(colorIndex);
+        final DrawOptions options_body = texture_body.initDraw().sprite(0, sprite.y, 64).colorMult(current_color).light(light).pos(drawX , drawY);
         final DrawOptions options_top = texture_top.initDraw().sprite(0, sprite.y, 64).light(light).pos(drawX , drawY);
+        final DrawOptions options_mask = texture_mask.initDraw().sprite(0, sprite.y, 64).light(light).pos(drawX , drawY);
         list.add(new MobDrawable() {
             public void draw(TickManager tickManager) {
-                options_top.draw();
+                options_mask.draw();
             }
             public void drawBehindRider(TickManager tickManager) {
-                options.draw();
+                options_body.draw();
+                options_top.draw();
             }
         });
         this.addShadowDrawables(tileList, x, y, light, camera);

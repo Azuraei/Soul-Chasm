@@ -31,8 +31,8 @@ public class CarKeys extends MountItem implements ItemInteractAction {
 
     public InventoryItem onLevelInteract(Level level, int x, int y, ItemAttackerMob attackerMob, int attackHeight, InventoryItem item, ItemAttackSlot slot, int seed, GNDItemMap mapContent) {
         String[] colors = new String[]{"Orange", "Yellow", "Green", "Blue", "Purple", "White", "Black", "Red"};
-        item.getGndData().getInt("carColorIndex", 4);
-        int index =  item.getGndData().getInt("carColorIndex");
+        item.getGndData().getInt("carColorIndex", 5);
+        int index = item.getGndData().getInt("carColorIndex");
         String message;
         if(attackerMob.getLevel().isServer()) {
             if (index < 7) {
@@ -51,7 +51,7 @@ public class CarKeys extends MountItem implements ItemInteractAction {
 
     protected void beforeSpawn(Mob mob, InventoryItem item, PlayerMob player) {
         CarMob c = (CarMob) mob;
-        c.textureColorIndex = item.getGndData().getInt("carColorIndex");
+        c.colorIndex = item.getGndData().getInt("carColorIndex");
     }
 
     public ListGameTooltips getTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
