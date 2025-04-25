@@ -11,6 +11,7 @@ import necesse.entity.mobs.Mob;
 import necesse.gfx.GameResources;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTexture.GameTextureSection;
+import necesse.gfx.ui.ButtonTexture;
 import necesse.inventory.item.Item;
 import necesse.inventory.item.armorItem.ArmorItem;
 import necesse.inventory.item.armorItem.HelmetArmorItem;
@@ -63,6 +64,8 @@ import soulchasm.main.Items.Trinkets.PhantomDashersTrinket;
 import soulchasm.main.Items.Trinkets.PhantomFeatherTrinket;
 import soulchasm.main.Items.Trinkets.PickaxeHeadTrinket;
 import soulchasm.main.Items.Trinkets.SoulStealerTrinket;
+import soulchasm.main.Misc.CarColorInterface.CarColorContainer;
+import soulchasm.main.Misc.CarColorInterface.CarColorContainerForm;
 import soulchasm.main.Misc.Events.GroundEruptionEvent.DragonExplosionEvent;
 import soulchasm.main.Misc.Events.GroundEruptionEvent.DragonGroundEruptionEvent;
 import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.SpinSpawnEvent;
@@ -104,6 +107,8 @@ import static necesse.engine.registries.ObjectRegistry.getObject;
 
 @ModEntry
 public class SoulChasm {
+    public static int CAR_COLOR_CONTAINER;
+    public static final ArrayList<Color> carColors = new ArrayList<>();
     public static Color chasmStoneMapColor = new Color(1, 30, 42);
     public static Color chasmStoneLightMapColor = new Color(2, 59, 80);
     public static Color chasmMagmaMapColor = new Color(8, 197, 246);
@@ -130,6 +135,7 @@ public class SoulChasm {
     public static GameTextureSection particleMeleeGhostParticleSection;
     public static GameTextureSection particleMonumentRingSection;
     public static GameSound plushieSqueak;
+    public static GameTexture carColorContainerIcon;
 
     public void init() {
         GameLoadingScreen.drawLoadingString("Loading Soul Chasm");
@@ -391,12 +397,24 @@ public class SoulChasm {
         soulchasmIncursion.addBiomeLootEntry("crystalizedsouloreitem", "alchemyshard", "upgradeshard", "soulcaverockitem", "soulwoodlogitem");
         soulchasmIncursion.addMobEntries("lostsoul", "soulmage", "magestatue", "meleestatue", "souldragonhead");
 
+        //CONTAINERS
+        CAR_COLOR_CONTAINER = ContainerRegistry.registerContainer((client, uniqueSeed, content) -> new CarColorContainerForm(client, new CarColorContainer(client.getClient(), uniqueSeed, content)), (client, uniqueSeed, content, serverObject) -> new CarColorContainer(client, uniqueSeed, content));
+
         //PLUSHIE
         registerPlushie("v1", V1Plushie.class, true);
         registerPlushie("fair", FairPlushie.class, false);
         registerPlushie("argemia", ArgemiaPlushie.class, true);
         registerPlushie("fumo", FumoPlushie.class, false);
         registerPlushie("dev", DevPlushie.class, true);
+
+        carColors.add(new Color(210, 0, 0));
+        carColors.add(new Color(210, 59, 0));
+        carColors.add(new Color(210, 191, 0));
+        carColors.add(new Color(11, 210, 0));
+        carColors.add(new Color(0, 81, 210));
+        carColors.add(new Color(210, 0, 210));
+        carColors.add(new Color(210, 210, 210));
+        carColors.add(new Color(36, 36, 36));
     }
 
     private void registerPlushie(String id, Class<? extends Mob> mob_class, boolean addTooltip){
@@ -469,6 +487,7 @@ public class SoulChasm {
         for(int i = 0; i < carSprites; ++i) {
             carMask[i] = new GameTexture(car_mask_sprites, 0, i, 64);
         }
+        carColorContainerIcon = GameTexture.fromFile("ui/paint_bucket");
 
         plushieSqueak = GameSound.fromFile("plushie_squeak");
     }

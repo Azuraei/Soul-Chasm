@@ -61,7 +61,7 @@ public class PlushieItem extends MobSpawnItem {
         if (addCustomTip){
             tooltips.add(new StringTooltips(Localization.translate("itemtooltip", this.mobType+"tip")));
         }
-        //tooltips.add(new StringTooltips(Localization.translate("global", "soulchasm")));
+        tooltips.add(new StringTooltips(Localization.translate("global", "soulchasm")));
         return tooltips;
     }
 }

@@ -1,52 +1,67 @@
 package soulchasm.main.Items;
 
 import necesse.engine.localization.Localization;
-import necesse.engine.localization.message.StaticMessage;
-import necesse.engine.network.gameNetworkData.GNDItemMap;
+import necesse.engine.network.packet.PacketOpenContainer;
+import necesse.engine.network.server.ServerClient;
+import necesse.engine.registries.ContainerRegistry;
 import necesse.engine.util.GameBlackboard;
-import necesse.engine.util.GameMath;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
-import necesse.entity.mobs.itemAttacker.ItemAttackSlot;
-import necesse.entity.mobs.itemAttacker.ItemAttackerMob;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.inventory.InventoryItem;
-import necesse.inventory.item.ItemInteractAction;
+import necesse.inventory.PlayerInventorySlot;
+import necesse.inventory.container.Container;
+import necesse.inventory.container.ContainerActionResult;
+import necesse.inventory.container.item.ItemInventoryContainer;
+import necesse.inventory.container.slots.ContainerSlot;
+import necesse.inventory.item.miscItem.InternalInventoryItemInterface;
 import necesse.inventory.item.mountItem.MountItem;
-import necesse.level.maps.Level;
+import soulchasm.SoulChasm;
 import soulchasm.main.Mobs.Summon.CarMob;
 
-public class CarKeys extends MountItem implements ItemInteractAction {
+import java.util.function.Supplier;
+
+public class CarKeys extends MountItem implements InternalInventoryItemInterface {
 
     public CarKeys() {
         super("carmob");
         this.rarity = Rarity.LEGENDARY;
     }
 
-    public boolean canLevelInteract(Level level, int x, int y, ItemAttackerMob attackerMob, InventoryItem item) {
-        float distance;
-        distance = GameMath.preciseDistance(x, y, attackerMob.x, attackerMob.y);
-        return !(distance > 150);
+    public Supplier<ContainerActionResult> getInventoryRightClickAction(Container container, InventoryItem item, int slotIndex, ContainerSlot slot) {
+        return () -> {
+            PlayerInventorySlot playerSlot = null;
+            if (slot.getInventory() == container.getClient().playerMob.getInv().main) {
+                playerSlot = new PlayerInventorySlot(container.getClient().playerMob.getInv().main, slot.getInventorySlot());
+            }
+
+            if (slot.getInventory() == container.getClient().playerMob.getInv().cloud) {
+                playerSlot = new PlayerInventorySlot(container.getClient().playerMob.getInv().cloud, slot.getInventorySlot());
+            }
+
+            if (playerSlot != null) {
+                if (container.getClient().isServer()) {
+                    ServerClient client = container.getClient().getServerClient();
+                    this.openContainer(client, playerSlot);
+                }
+
+                return new ContainerActionResult(-1002911334);
+            } else {
+                return new ContainerActionResult(208675834, Localization.translate("itemtooltip", "rclickinvopenerror"));
+            }
+        };
     }
 
-    public InventoryItem onLevelInteract(Level level, int x, int y, ItemAttackerMob attackerMob, int attackHeight, InventoryItem item, ItemAttackSlot slot, int seed, GNDItemMap mapContent) {
-        String[] colors = new String[]{"Orange", "Yellow", "Green", "Blue", "Purple", "White", "Black", "Red"};
-        item.getGndData().getInt("carColorIndex", 5);
-        int index = item.getGndData().getInt("carColorIndex");
-        String message;
-        if(attackerMob.getLevel().isServer()) {
-            if (index < 7) {
-                item.getGndData().setInt("carColorIndex", index + 1);
-            } else {
-                item.getGndData().setInt("carColorIndex", 0);
-            }
-        }
-        message = colors[index];
-        if(attackerMob.getLevel().isServer() && attackerMob.isPlayer) {
-            PlayerMob playerMob = (PlayerMob) attackerMob;
-            playerMob.getServerClient().sendUniqueFloatText(attackerMob.getX(), attackerMob.getY() - 32, new StaticMessage(message), null, 5);
-        }
-        return item;
+    protected void openContainer(ServerClient client, PlayerInventorySlot inventorySlot) {
+        PacketOpenContainer p = new PacketOpenContainer(SoulChasm.CAR_COLOR_CONTAINER, ItemInventoryContainer.getContainerContent(this, inventorySlot));
+        ContainerRegistry.openAndSendContainer(client, p);
+    }
+
+    public ListGameTooltips getTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
+        ListGameTooltips tooltips = super.getTooltips(item, perspective, blackboard);
+        tooltips.add(Localization.translate("itemtooltip", "rclickinvopentip"));
+        tooltips.add(Localization.translate("itemtooltip", "cartip"));
+        return tooltips;
     }
 
     protected void beforeSpawn(Mob mob, InventoryItem item, PlayerMob player) {
@@ -54,9 +69,13 @@ public class CarKeys extends MountItem implements ItemInteractAction {
         c.colorIndex = item.getGndData().getInt("carColorIndex");
     }
 
-    public ListGameTooltips getTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
-        ListGameTooltips tooltips = super.getTooltips(item, perspective, blackboard);
-        tooltips.add(Localization.translate("itemtooltip", "cartip"));
-        return tooltips;
+    @Override
+    public int getInternalInventorySize() {
+        return 0;
+    }
+
+    @Override
+    public boolean isValidItem(InventoryItem item) {
+        return false;
     }
 }

@@ -23,6 +23,7 @@ import necesse.level.gameObject.GameObject;
 import necesse.level.gameTile.GameTile;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
+import soulchasm.SoulChasm;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class CarMob extends MountFollowingMob {
     public static GameTexture texture_top;
     public static GameTexture texture_mask;
     public int colorIndex;
-    private final ArrayList<Color> colors = new ArrayList<>();
+    private final ArrayList<Color> colors = SoulChasm.carColors;
 
     public CarMob() {
         super(100);
@@ -48,14 +49,7 @@ public class CarMob extends MountFollowingMob {
         this.collision = new Rectangle(-10, -7, 20, 14);
         this.hitBox = new Rectangle(-14, -14, 28, 28);
         this.selectBox = new Rectangle(-15, -15, 30, 30);
-        this.colors.add(new Color(208, 0, 0));
-        this.colors.add(new Color(234, 93, 0));
-        this.colors.add(new Color(227, 202, 0));
-        this.colors.add(new Color(12, 225, 0));
-        this.colors.add(new Color(15, 82, 175));
-        this.colors.add(new Color(182, 0, 202));
-        this.colors.add(new Color(228, 228, 228));
-        this.colors.add(new Color(36, 36, 36));
+
     }
 
     @Override
