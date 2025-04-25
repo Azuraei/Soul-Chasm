@@ -58,6 +58,11 @@ public class CarColorContainerForm extends ContainerFormSwitcher<CarColorContain
     }
 
     @Override
+    public boolean isControllerFocus() {
+        return true;
+    }
+
+    @Override
     public boolean shouldOpenInventory() {
         return false;
     }
