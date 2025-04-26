@@ -31,12 +31,17 @@ public class CarKeys extends MountItem implements InternalInventoryItemInterface
     public Supplier<ContainerActionResult> getInventoryRightClickAction(Container container, InventoryItem item, int slotIndex, ContainerSlot slot) {
         return () -> {
             PlayerInventorySlot playerSlot = null;
+            System.out.println(slot.getInventorySlot());
             if (slot.getInventory() == container.getClient().playerMob.getInv().main) {
                 playerSlot = new PlayerInventorySlot(container.getClient().playerMob.getInv().main, slot.getInventorySlot());
             }
 
             if (slot.getInventory() == container.getClient().playerMob.getInv().cloud) {
                 playerSlot = new PlayerInventorySlot(container.getClient().playerMob.getInv().cloud, slot.getInventorySlot());
+            }
+
+            if (slotIndex == container.CLIENT_MOUNT_SLOT){
+                playerSlot = new PlayerInventorySlot(container.getClient().playerMob.getInv().equipment.getSelectedEquipmentInventory(), container.getSlot(container.CLIENT_MOUNT_SLOT).getInventorySlot());
             }
 
             if (playerSlot != null) {
@@ -62,6 +67,11 @@ public class CarKeys extends MountItem implements InternalInventoryItemInterface
         tooltips.add(Localization.translate("itemtooltip", "rclickinvopentip"));
         //tooltips.add(Localization.translate("itemtooltip", "cartip"));
         return tooltips;
+    }
+
+    @Override
+    public String getInventoryRightClickControlTip(Container container, InventoryItem item, int slotIndex, ContainerSlot slot) {
+        return null;
     }
 
     protected void beforeSpawn(Mob mob, InventoryItem item, PlayerMob player) {
