@@ -8,6 +8,7 @@ import necesse.engine.network.PacketWriter;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
+import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.MobDrawable;
 import necesse.entity.mobs.PlayerMob;
@@ -26,6 +27,7 @@ import necesse.level.maps.light.GameLight;
 import soulchasm.SoulChasm;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,8 +48,8 @@ public class CarMob extends MountFollowingMob {
         this.setSwimSpeed(0.2F);
         this.accelerationMod = 0.2F;
         this.decelerationMod = 0.5F;
-        this.collision = new Rectangle(-10, -7, 20, 14);
-        this.hitBox = new Rectangle(-14, -14, 28, 28);
+        this.collision = new Rectangle(-16, -16, 32, 32);
+        this.hitBox = new Rectangle(-15, -15, 30, 30);
         this.selectBox = new Rectangle(-15, -15, 30, 30);
     }
 
@@ -111,6 +113,23 @@ public class CarMob extends MountFollowingMob {
         }
     }
 
+    public boolean canCollisionHit(Mob target) {
+        return this.currentSpeed > this.getSpeed() * 0.5 && super.canCollisionHit(target);
+    }
+
+    public float getSpeedCarMult(){
+        return this.getCurrentSpeed()/this.getSpeed();
+    }
+
+    public GameDamage getCollisionDamage(Mob target) {
+
+        return new GameDamage(100 * getSpeedCarMult(), 10, 100.0F);
+    }
+
+    public int getCollisionKnockback(Mob target) {
+        return (int) (300 * getSpeedCarMult());
+    }
+
     public void serverTick() {
         super.serverTick();
         if (!this.isMounted()) {
@@ -165,6 +184,11 @@ public class CarMob extends MountFollowingMob {
         drawY += mob.getBobbing(x, y);
         drawY += mob.getLevel().getTile(x / 32, y / 32).getMobSinkingAmount(mob);
         return shadowTexture.initDraw().sprite(0, dir, 64).light(light).pos(drawX, drawY);
+    }
+
+    @Override
+    public boolean canBePushed(Mob other) {
+        return other instanceof CarMob;
     }
 
     @Override

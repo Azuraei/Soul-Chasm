@@ -31,7 +31,6 @@ public class CarKeys extends MountItem implements InternalInventoryItemInterface
     public Supplier<ContainerActionResult> getInventoryRightClickAction(Container container, InventoryItem item, int slotIndex, ContainerSlot slot) {
         return () -> {
             PlayerInventorySlot playerSlot = null;
-            System.out.println(slot.getInventorySlot());
             if (slot.getInventory() == container.getClient().playerMob.getInv().main) {
                 playerSlot = new PlayerInventorySlot(container.getClient().playerMob.getInv().main, slot.getInventorySlot());
             }
