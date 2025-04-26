@@ -63,7 +63,7 @@ public class CarKeys extends MountItem implements InternalInventoryItemInterface
 
     public ListGameTooltips getTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = super.getTooltips(item, perspective, blackboard);
-        tooltips.add(Localization.translate("itemtooltip", "rclickinvopentip"));
+        tooltips.add(Localization.translate("itemtooltip", "cartip"));
         return tooltips;
     }
 

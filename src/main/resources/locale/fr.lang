@@ -116,7 +116,7 @@ soulscythe=Le fait de charger au niveau 2 ou supérieur permet d'appliquer le pr
 soulmetalbowtip=Appuyez [input=mouse2] pour activer le mode surcharge\nEn surcharge, vous bénéficiez d'un bonus de vitesse d'attaque important
 soulmetalrevolvertip=Transforme les balles ordinaires en balles infusées d'âme\nToucher l'ennemi avec une balle infusée à l'âme le marque\nLes ennemis marqués trois fois sont affaiblis et subissent des dégâts sur la durée
 soulmetalspeartip=Peut être lancé\nCrée une petite explosion en cas de succès
-cartip=Supports de voiture à sommation\nAppuyez [input=mouse2] en rupture d'inventaire pour changer de couleur
+cartip=[input=mouse2] dans l'inventaire pour changer de couleur
 soulsealfollowerbuff=A entendu votre appel
 bigjarobject=Peut être utilisé pour stocker et présenter des objets
 glowingbugs=Une petite créature brillante

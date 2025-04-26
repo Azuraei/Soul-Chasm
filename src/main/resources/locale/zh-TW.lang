@@ -123,7 +123,7 @@ soulscythe=充能到第二級或更高級別會在目標上應用出血靈魂\n�
 soulmetalbowtip=按下[input=mouse2]激活過載模式\n過載時，你會獲得顯著的攻擊速度加成
 soulmetalrevolvertip=將普通子彈轉換為靈魂注入的子彈\n用靈魂注入的子彈擊中敵人會標記它\n被標記三次的敵人會被削弱，並隨時間受到傷害
 soulmetalspeartip=可以投擲\n命中時會造成小範圍爆炸
-cartip=召喚汽車坐騎\n按住[input=mouse2]在庫存外改變顏色
+cartip=[input=mouse2] 以更改顏色
 soulsealfollowerbuff=已經聽到你的呼喚
 bigjarobject=可用於存儲和展示物品
 glowingbugs=發光的小生物

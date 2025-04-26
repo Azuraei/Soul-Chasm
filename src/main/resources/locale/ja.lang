@@ -119,7 +119,7 @@ soulscythe=第二レベル以上に充能すると、ターゲットに出血の
 soulmetalbowtip=按下[input=mouse2]オーバーロードモードを有効にする\n過負荷時、あなたは顕著な攻撃速度のボーナスを得る。
 soulmetalrevolvertip=普通の弾丸を魂を注入した弾丸に変換する\n魂を注入した弾丸で敵を撃つと、その敵にマークが付けられます。\n3回マークされた敵は弱体化し、時間とともにダメージを受けます。
 soulmetalspeartip=投げることができます。\n命中時に小範囲の爆発を引き起こします。
-cartip=車の騎乗を召喚する\n押し続ける[input=mouse2]在庫外の色を変更する
+cartip=[input=mouse2]を使用して色を変更
 soulsealfollowerbuff=あなたの呼びかけを聞きました。
 bigjarobject=物品を保存し展示するために使用できる
 glowingbugs=光る小さな生き物

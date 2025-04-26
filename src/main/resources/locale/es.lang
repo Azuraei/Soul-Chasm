@@ -120,7 +120,7 @@ soulscythe=Cargar al segundo nivel o superior aplica Alma Sangrante al objetivo\
 soulmetalbowtip=Presiona [input=mouse2] para activar el modo Sobrecarga\nCuando hay Sobrecarga, obtienes una importante bonificación en la velocidad de ataque
 soulmetalrevolvertip=Convierte la munición en munición de alma infundida\nGolpear al enemigo con una bala de alma infundida los deja marcados\nLos enemigos marcados tres veces se debilitan y sufren daño en el tiempo
 soulmetalspeartip=Se puede lanzar\nCrea pequeñas explosiones al golpear
-cartip=Invoca una montura de auto\nPresiona [input=mouse2] fuera del inventario para cambiar el color
+cartip=[input=mouse2] en el inventario para cambiar de color
 soulsealfollowerbuff=Ha escuchado tu llamado
 bigjarobject=Se puede usar para guardar y mostrar un ítem
 glowingbugs=Criatura pequeña y resplandeciente

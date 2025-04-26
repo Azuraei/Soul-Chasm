@@ -120,7 +120,7 @@ soulscythe=Charging to second or greater level applies Bleeding Soul on target\n
 soulmetalbowtip=Press [input=mouse2] to activate overcharge mode\nWhen in overcharge, you gain significant attack speed bonus
 soulmetalrevolvertip=Converts regular bullets into soul infused ones\nHitting enemy with soul infused bullet marks it\nEnemy marked three times are weakened and take damage over time
 soulmetalspeartip=Can be thrown\nCreates small explosion on hit
-cartip=Summons car mount\nPress [input=mouse2] out of inventory to change colors
+cartip=[input=mouse2] in inventory to change color
 soulsealfollowerbuff=Has heard your call
 bigjarobject=Can be used to store and display item
 glowingbugs=Small, glowing creature
