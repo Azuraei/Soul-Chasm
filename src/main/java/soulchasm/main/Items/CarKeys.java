@@ -1,6 +1,7 @@
 package soulchasm.main.Items;
 
 import necesse.engine.localization.Localization;
+import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.network.packet.PacketOpenContainer;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.ContainerRegistry;

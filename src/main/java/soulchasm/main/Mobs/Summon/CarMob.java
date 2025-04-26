@@ -49,7 +49,6 @@ public class CarMob extends MountFollowingMob {
         this.collision = new Rectangle(-10, -7, 20, 14);
         this.hitBox = new Rectangle(-14, -14, 28, 28);
         this.selectBox = new Rectangle(-15, -15, 30, 30);
-
     }
 
     @Override

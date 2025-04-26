@@ -29,9 +29,8 @@ public class CarColorContainer extends Container {
                 if (client.isServer()) {
                     if (item.item instanceof CarKeys){
                         item.getGndData().setInt("carColorIndex", Integer.parseInt(s));
-                        System.out.println("Maybe works, not sure");
                     } else {
-                        System.out.println("ERROR - invalid item");
+                        System.out.println("CarKeys Error - invalid item!");
                     }
                     client.getServerClient().closeContainer(true);
                 }

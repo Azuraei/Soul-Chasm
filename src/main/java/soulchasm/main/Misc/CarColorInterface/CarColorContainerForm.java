@@ -30,7 +30,7 @@ public class CarColorContainerForm extends ContainerFormSwitcher<CarColorContain
         this.colorForm = this.addComponent(new Form(form_size, form_size));
         this.colorForm.drawBase = false;
 
-        Point2D central_point = new Point(form_size/2, form_size/2);
+        Point2D central_point = new Point(form_size/2, form_size/2 - 16);
         float angle_per_color = (float) 360.0 / colors.size();
 
         for (int i = 0; i < colors.size(); i++){

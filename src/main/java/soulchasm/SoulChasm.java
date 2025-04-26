@@ -408,12 +408,15 @@ public class SoulChasm {
         registerPlushie("dev", DevPlushie.class, true);
 
         carColors.add(new Color(210, 0, 0));
-        carColors.add(new Color(210, 59, 0));
+        carColors.add(new Color(210, 91, 0));
         carColors.add(new Color(210, 191, 0));
         carColors.add(new Color(11, 210, 0));
+        carColors.add(new Color(0, 207, 210));
         carColors.add(new Color(0, 81, 210));
         carColors.add(new Color(210, 0, 210));
+        carColors.add(new Color(165, 0, 210));
         carColors.add(new Color(210, 210, 210));
+        carColors.add(new Color(105, 105, 105));
         carColors.add(new Color(36, 36, 36));
     }
 
