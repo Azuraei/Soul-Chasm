@@ -1,7 +1,6 @@
 package soulchasm.main.Items;
 
 import necesse.engine.localization.Localization;
-import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.network.packet.PacketOpenContainer;
 import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.ContainerRegistry;
@@ -66,7 +65,6 @@ public class CarKeys extends MountItem implements InternalInventoryItemInterface
     public ListGameTooltips getTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = super.getTooltips(item, perspective, blackboard);
         tooltips.add(Localization.translate("itemtooltip", "rclickinvopentip"));
-        //tooltips.add(Localization.translate("itemtooltip", "cartip"));
         return tooltips;
     }
 
