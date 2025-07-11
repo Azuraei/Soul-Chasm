@@ -16,9 +16,6 @@ import necesse.entity.mobs.buffs.staticBuffs.armorBuffs.trinketBuffs.TrinketBuff
 import necesse.gfx.camera.GameCamera;
 
 public class PhantomDashersBuff extends TrinketBuff implements ActiveBuffAbility {
-    public PhantomDashersBuff() {
-    }
-
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
     }
 
@@ -37,16 +34,15 @@ public class PhantomDashersBuff extends TrinketBuff implements ActiveBuffAbility
         if (buff.owner.isRiding()) {
             return false;
         } else {
-            return player.isServer() && Settings.giveClientsPower || StaminaBuff.canStartStaminaUsage(buff.owner);
+            return player.isServer() && !Settings.strictServerAuthority ? true : StaminaBuff.canStartStaminaUsage(buff.owner);
         }
     }
 
     public void onActiveAbilityStarted(PlayerMob player, ActiveBuff buff, Packet content) {
         PacketReader reader = new PacketReader(content);
-        if (!player.isServer() || Settings.giveClientsPower) {
+        if (!player.isServer() || !Settings.strictServerAuthority) {
             StaminaBuff.readStaminaData(player, reader);
         }
-
         player.buffManager.addBuff(new ActiveBuff(BuffRegistry.getBuff("phantomdashersactivebuff"), player, 1.0F, (Attacker)null), false);
     }
 

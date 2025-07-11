@@ -11,7 +11,6 @@ import necesse.entity.mobs.Mob;
 import necesse.gfx.GameResources;
 import necesse.gfx.gameTexture.GameTexture;
 import necesse.gfx.gameTexture.GameTextureSection;
-import necesse.gfx.ui.ButtonTexture;
 import necesse.inventory.item.Item;
 import necesse.inventory.item.armorItem.ArmorItem;
 import necesse.inventory.item.armorItem.HelmetArmorItem;
@@ -205,7 +204,7 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soulmonumentobject", new SoulMonumentObject(), 50.0F, true);
         ObjectRegistry.registerObject("oldbarrel", new InventoryObject("oldbarrel", 20, new Rectangle(8, 4, 16, 16), ToolType.PICKAXE, chasmWoodFurnitureMapColor), 10.0F, true);
         ObjectRegistry.registerObject("chasmcrates", new RandomCrateObject("chasmcrates"), 0.0F, false);
-        ObjectRegistry.registerObject("statueobject", new StatueObject(), 50.0F, true);
+        ObjectRegistry.registerObject("statueobject", new ChasmStatueObject(), 50.0F, true);
         ObjectRegistry.registerObject("magestatueobject", new MageStatueObject(), -1.0F, true);
         ObjectRegistry.registerObject("spikeobject", new SpikeObject(), 0.0F, false);
 
@@ -424,7 +423,7 @@ public class SoulChasm {
         String mob_id = id+"plushie";
         String item_id = mob_id + "item";
         MobRegistry.registerMob(mob_id, mob_class, false);
-        ItemRegistry.registerItem(item_id, new PlushieItem(mob_id, addTooltip), (float) 500.0, true);
+        ItemRegistry.registerItem(item_id, new PlushieItem(mob_id, addTooltip, true), (float) 500.0, true);
     }
 
     public void initResources(){

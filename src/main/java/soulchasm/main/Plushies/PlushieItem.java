@@ -12,6 +12,7 @@ import necesse.engine.util.GameBlackboard;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.PlayerMob;
 import necesse.gfx.GameResources;
+import necesse.gfx.gameTexture.GameSprite;
 import necesse.gfx.gameTooltips.ListGameTooltips;
 import necesse.gfx.gameTooltips.StringTooltips;
 import necesse.inventory.InventoryItem;
@@ -21,8 +22,8 @@ import necesse.level.maps.Level;
 public class PlushieItem extends MobSpawnItem {
     private final String mobType;
     private final boolean addCustomTip;
-    public PlushieItem(String mobType, boolean addCustomTip) {
-        super(100, true, mobType);
+    public PlushieItem(String mobType, boolean addCustomTip, boolean singleUse) {
+        super(100, singleUse, mobType);
         this.mobType = mobType;
         this.addCustomTip = addCustomTip;
     }
@@ -38,13 +39,18 @@ public class PlushieItem extends MobSpawnItem {
     }
 
     @Override
+    public GameSprite getItemSprite(InventoryItem item, PlayerMob perspective) {
+        return new GameSprite(this.itemTexture);
+    }
+
+    @Override
     public InventoryItem onPlace(Level level, int x, int y, PlayerMob player, int seed, InventoryItem item, GNDItemMap mapContent) {
         if (level.isServer()) {
             Mob mob = MobRegistry.getMob(this.mobType, level);
             this.beforeSpawned(level, x, y, player, item, mapContent, mob);
             level.entityManager.addMob(mob, x, y);
         }
-        if (this.singleUse) {
+        if (this.isSingleUse(player)) {
             item.setAmount(item.getAmount() - 1);
         }
 

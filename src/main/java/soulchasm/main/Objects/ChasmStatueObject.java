@@ -19,11 +19,11 @@ import java.util.List;
 
 import static soulchasm.SoulChasm.chasmStoneLightMapColor;
 
-public class StatueObject extends GameObject {
+public class ChasmStatueObject extends GameObject {
     public GameTexture texture;
     protected final GameRandom drawRandom;
 
-    public StatueObject() {
+    public ChasmStatueObject() {
         super(new Rectangle(4, 4, 26, 26));
         hoverHitbox = new Rectangle(0, -32, 32, 64);
         toolType = ToolType.PICKAXE;
