@@ -1,0 +1,174 @@
+[tile]
+soulcavegrass=Derin Ruh Mağarası Çimi
+soulcaverocktile=Derin Ruh Mağarası Taşı
+soulwoodfloor=Ruhani Ahşap Zemini
+soulwoodpath=Ruhani Ahşap Yol
+soulwoodtiledfloor=Ruhani Ahşap Döşeme
+soulcavefloortile=Derin Ruh Mağara Zemini
+soulcavebrickfloortile=Derin Ruh Mağara Tuğla Zemin
+soulcavetiledfloortile=Derin Ruh Mağara Karo Döşeme
+asphalttile=Asfalt
+meltedsouls=Erimiş Ruhlar
+soulcavecracktile=Çatlaklar
+[object]
+crystalizedsoul=Kristalleşmiş Ruhlar
+crystalizedsoulore=Kristalize Ruhlar
+soultree=Ruhani Ağaç
+soulcavegrassobject=Derin Ruh Çimeni
+soulwood=Ruhani Ahşap
+soulbrick=Derin Ruh Tuğlası
+soultreesapling=Ruhani Ağaç Fidesi
+lunartear=Ay Gözyaşı
+lunartearspath=Ay Gözyaşları Patikası
+soultorch=Ruhani Meşale
+soulcrystalbig=Büyük Ruh Kristali
+wispjarobject=Wisp Kavanozu
+fireflyjarobject=Ateşböceği Kavanozu
+soulmonumentobject=Derin Ruh Heykeli
+soulstonepressureplate=Derin Ruh Basınç Plakası
+soulbrickwalltrap=Derin Ruh Ateş Tuzağı
+soullantern=Ruh Feneri
+oldbarrel=Eski Fıçı
+soulcavechest=Eski Sandık
+bigjarobject=Büyük Cam Kavanoz
+chasmcrates=Eski Kasa
+statueobject=Şovalye Heykeli
+soulcaverock=Derin Taş
+soulwoodwall=Ruhani Ahşap Duvarı
+soulwooddoor=Ruhani Ahşap Kapı
+soulbrickwall=Derin Ruh Tuğla Duvarı
+soulbrickdoor=Derin Ruh Tuğla Kapı
+soulwoodbathtub=Ruhani Ahşap Küvet
+soulwoodbed=Ruhani Ahşap Yatak
+soulwooddoublebed=Ruhani Çifte Yatak
+soulwoodbench=Ruhani Ahşap Bank
+soulwooddinnertable=Ruhani Ahşap Yemek Masası
+soulwoodbookshelf=Ruhani Kitaplık
+soulwoodcabinet=Ruhani Ahşap Dolap
+soulwoodchair=Ruhani Ahşap Sandalye
+soulwoodchest=Ruhani Ahşap Sandık
+soulwoodclock=Ruhani Ahşap Saat
+soulwooddesk=Ruhani Ahşap Masa
+soulwooddisplay=Ruhani Ahşap Sergi
+soulwooddresser=Ruhani Ahşap Şifonyer
+soulwoodmodulartable=Ruhani Ahşap Modüler Masa
+soulwoodtoilet=Ruhani Ahşap Tuvalet
+soulwoodcandelabra=Ruhani Ahşap Şamdan
+soulwoodfence=Ruhani Ahşap Çit
+soulwoodfencegate=Ruhani Ahşap Çit Kapısı
+magestatueobject=Büyücü Heykeli
+soultikitorchobject=Ruh Tiki Meşalesi
+soulcavedecorations=Derin Ruh Taşı
+soulbrickdoorlocked=Kilitli Derin Ruh Tuğla Kapı
+soulwooddoorlocked=Kilitli Derin Ruh Ahşap Kapı
+spikeobject=
+[item]
+soulscythe=Ölüm Meleği
+soulmetalbow=Ruhani Yay
+soulmetalsword=Ruh Hiddeti
+soulmetalspear=Lanetli Üç Dişli Mızrak
+soulmetalrevolver=Ruhçalan
+soulabsorbshield=Ruh Kıran Kalkan
+soularmorboots=Ruh Çeliği Botlar
+soularmorchestplate=Ruh Çeliği Göğüs Zırhı
+soularmorcrown=Ruh Çeliği Taç
+soularmorhelmet=Ruh Çeliği Miğfer
+soularmorhood=Ruh Kapşonu
+soularmorhat=Ruh Şapkası
+phantomfeathertrinket=Hayali Tüy
+soulstealertrinket=Ruh Yüzüğü
+pickaxeheadtrinket=Eski Kazma Başı
+phantomdasherstrinket=Ruhani Sıçrama
+carkeys=Araç Anahtarı
+soulwoodlogitem=Hayali Ahşap Kütük
+soulcoreitem=Ruh Çekirdeği
+soulcaverockitem=Derin Ruh Taşı
+crystalizedsouloreitem=Kristalize Ruh Cevheri
+soulgrassseeditem=Derin Ruh Çimen Tohumları
+soulessence=Ruh Özü
+wispitem=Wisp
+wispjar=Wisp Kavanozu
+fireflyitem=Ateşböceği
+fireflyjar=Ateşböceği Kavanozu
+soullantern=Ruh Feneri
+soulmetalbar=Ruh Metali Çubuk
+meleesoulsealtrinket=Yakın Dövüş Eser Parças
+summonsoulsealtrinket=Çağırma Eser Parçası
+magicsoulsealtrinket=Büyü Eser Parçası
+rangesoulsealtrinket=Menzilli Eser Parçası
+soulsealtrinket=Ruh Mührü
+balancedsealtrinket=Dengeli Ruh Mührü
+bookofsouls=Ruhlar Kitabı
+soulstatue=Ruh Putu
+lunartearflowerhead=Ay Gözyaşı Çiçeği
+tobeblindfold=Kara Gözbağı
+[itemtooltip]
+soulabsorbshield=Engelleme hasarı saldırgana doğru alev patlaması fırlatır\nBaşarılı blok ayrıca kısa süreli saldırı hızını ve esneklik kazanımını artırır
+phantomfeathertrinket=Azami gücü %25 azaltır ve ilave dört sıçrama yükü kazandırır
+soulstealertrinket=Çatışmadayken, maksimum sağlığınızı yavaşça daha fazla hasara dönüştürür\nSavaş dışı süreç tersine döner
+pickaxeheadtrinket=Madencilik yavaşça madencilik hızını %150'ye kadar artırır
+phantomdasherstrinket=Sıçramalar daha hızlı olur\nKoşarken daha fazla hasar alırsınız\nSuda yürüme sağlar
+soularmorsetbonus=Ayarlanmış [input=setability]tuşa basarak hızınızı kısa süreliğine arttırın\Yeteneği güçlendirilmiş halde kullanmak süreyi uzatır, ancak %50 zayıflatma etki şansı vardır
+soulsealfragment=Bütünün bir parçası
+soulsealfull=Yeniden tek parça
+soulsealfragment2=Silahınızla uygun mermi yaratır
+soulsealsummonfragment=Çağırma silahı kullanmak savaşta size yardımcı olacak ruh çağırır\nRuhun gücü silahın özelliklerine bağlıdır
+soulsealbalanced=Yeni bir güç ile bağlar
+soulsealbalanced2=Verilen tüm hasarı %10 artırır
+soulmetalswordtip=Düşmana vurmak ruh kılıçlarını çağırır
+soulscythe=İkinci veya daha yüksek seviyeye şarj etmek hedefe Kanayan Ruh etkisi uygular\nKanayan Ruh zırhı ve hasarı zamanla azaltır\nTam şarjlı saldırılar yavaşlayan delici bir mermi fırlatır
+soulmetalbowtip=[input=mouse2] Basarak Aşırı yükleme modunu açın\nAşırı yükleniyorken, önemli bir saldırı hızı bonusu kazanırsınız
+soulmetalrevolvertip=Normal mermileri ruh aşılanmış mermilere dönüştürür\nRuh aşılanmış mermi ile düşmana vurmak onu işaretler\nÜç kez işaretlenen düşman zayıflar ve zamanla hasar alır
+soulmetalspeartip=Fırtalıtlabilir\nİsabet halinde küçük bir patlama yaratır
+cartip=[input=mouse2] envanterde renk değiştirmek için
+soulsealfollowerbuff=Çağrını duydu
+bigjarobject=Eşyaları saklamak ve sergilemek için kullanılabilir
+glowingbugs=Küçük, parlayan bir yaratık
+glowingjarobject=Yerleştirildiğinde veya tutulduğunda az miktarda ışık sağlar
+bookofsoulstip=Yavaşça büyük, güdümlü mermi fırlatır
+bookofsoulssecondarytip=[input=mouse2] Enerji taşmasını etkinleştirmek ve hızla daha küçük, güdümlü mermiler fırlatmak için basın
+soulstatuetip=Savaşta size yardımcı olması için Ruh Putu çağırır\nPut, menzil içindeki yakın oyuncuları güçlendirir\nHp'nin %80'ini aştığında, hasarı ve saldırı hızını güçlendirir, hp ve direnci yeniler
+
+argemiaplushie=Argemia Pelüşü
+fairplushie=Panayır Pelüşü
+v1plushie=V1 Pelüşü
+fumoplushie=Fumo Pelüşü
+devplushie=Endzio Pelüşü
+
+argemiaplushietip=Karides sever
+v1plushietip=§6Kan yakıttır
+devplushietip=(^-^)
+
+[mob]
+souldragonhead=Antik Ejder
+souldragonbody=Antik Ejder
+lostsoul=Kayıp Ruh
+meleestatue=Savaşçı Heykeli
+meleeghost=Hayalet
+wisp=Wisp
+firefly=Ateşböcekleri
+magestatue=Ruh Putu
+soulmage=Ruh Çağıran
+smallsoulsummon=Küçük Ruh
+chasmcaveling=Derin Ruh Mağarası Yaratığı
+carmob=Araba
+[buff]
+soulfirebuff=Cehennem Ruhu
+soulabsorbshieldbuff=Soğurulmuş Saldırı
+souldischargebuff=Ruh Dönüşümü
+soularmorcooldown=Ruh Çeliği Zırhı Bekleme Süresi
+soulsealfollowerbuff=Çağırılmış Ruh
+soulbleedstackbuff=Kanayan Ruh
+souldischargesicknessdebuff=Dönüşüm Hastalığı
+bookofsoulbuff=Ruh Enerjisi
+soulofsoulsoverchargebuff=Ruh Enerjisinin Taşması
+soulbowbuff=Ruhani'nin Aşırı Yüklenmesi
+soulbowcooldownbuff=Ruhani Yay Bekleme Süresi
+soulstatuebuff=Put'un Kutsaması
+[ui]
+incursionmodifierhaunted=Lanetli
+incursionmodifierhauntedinfo=Bir düşman öldükten sonra hayaleti ortaya çıkar.
+[biome]
+soulchasm=Derin Ruh
+[journal]
+soulchasmincursion=Derin Ruh Incursion
