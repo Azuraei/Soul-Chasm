@@ -26,7 +26,7 @@ import java.util.List;
 
 public class Firefly extends CritterMob {
     public static GameTexture texture;
-    public static LootTable lootTable = new LootTable(new LootItemList(LootItem.between("fireflyitem", 2, 6)));
+    public static LootTable lootTable = new LootTable(new LootItemList(LootItem.between("fireflyitem", 6, 12)));
     public LootTable getLootTable() {
         return lootTable;
     }

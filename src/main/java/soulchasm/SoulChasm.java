@@ -501,11 +501,11 @@ public class SoulChasm {
     }
 
     public void postInit() {
-        ForestBiome.defaultSurfaceCritters.add(80, "firefly");
-        PlainsBiome.defaultSurfaceCritters.add(80, "firefly");
-        SwampBiome.surfaceCritters.add(100, "firefly");
+        ForestBiome.defaultSurfaceCritters.add(100, "firefly");
+        PlainsBiome.defaultSurfaceCritters.add(100, "firefly");
+        SwampBiome.surfaceCritters.add(120, "firefly");
 
-        chasmChestRoomSet = new ChestRoomSet("soulcavefloortile", "soulstonepressureplate", WallSet.loadByStringID("soulbrick"), "soulcavechest", "soulstoneflametrap");
+        chasmChestRoomSet = new ChestRoomSet("soulcavefloortiles", "soulstonepressureplate", WallSet.loadByStringID("soulbrick"), "soulcavechest", "soulstoneflametrap");
         chasmShrineLootTable = new LootTable(new LootItemList(new OneOfLootItems(new ChanceLootItem(0.8F,"phantomfeathertrinket"), new ChanceLootItem(0.8F,"soulstealertrinket"), new ChanceLootItem(0.8F,"pickaxeheadtrinket"), new ChanceLootItem(0.2F,"soulmetalsword"), new ChanceLootItem(0.05F, "carkeys"))));
 
         ArrayList<Recipe> modRecipes = new ArrayList<>();
@@ -533,9 +533,9 @@ public class SoulChasm {
         modRecipes.add(new Recipe("phantomdasherstrinket", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{zephyrboots, 1}, {soulessence, 4}, {soulcoreitem, 8}}")));
 
         modRecipes.add(new Recipe("asphalttile", 100, RecipeTechRegistry.ALCHEMY, Recipes.ingredientsFromScript("{{anystone, 100}, {speedpotion, 2}}")));
-        modRecipes.add(new Recipe("bigjarobject", 1, RecipeTechRegistry.FORGE, Recipes.ingredientsFromScript("{{sandstonetile, 5}}")));
+        modRecipes.add(new Recipe("bigjarobject", 1, RecipeTechRegistry.WORKSTATION, Recipes.ingredientsFromScript("{{glass, 2}}")));
         modRecipes.add(new Recipe("fireflyjar", 1, RecipeTechRegistry.WORKSTATION, Recipes.ingredientsFromScript("{{fireflyitem, 3}, {bigjarobject, 1}}")));
-        modRecipes.add(new Recipe("wispjar", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{wispitem, 2}, {bigjarobject, 1}}")));
+        modRecipes.add(new Recipe("wispjar", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{wispitem, 3}, {bigjarobject, 1}}")));
 
         modRecipes.add(new Recipe("soultorch", 8, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulcoreitem, 1}, {soulwoodlogitem, 1}}")));
         modRecipes.add(new Recipe("soultikitorchobject", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soultorch, 1}, {soulwoodlogitem, 1}}")));
