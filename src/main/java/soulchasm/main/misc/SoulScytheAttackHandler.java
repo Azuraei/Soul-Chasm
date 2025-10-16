@@ -13,8 +13,8 @@ import necesse.entity.projectile.modifiers.ResilienceOnHitProjectileModifier;
 import necesse.inventory.InventoryItem;
 import necesse.inventory.enchants.ToolItemModifiers;
 import necesse.inventory.item.toolItem.swordToolItem.greatswordToolItem.GreatswordToolItem;
-import soulchasm.main.projectiles.WeaponProjectiles.SoulScytheProjectile;
-import soulchasm.main.projectiles.WeaponProjectiles.SoulScytheSmallProjectile;
+import soulchasm.main.projectiles.weaponprojectiles.SoulScytheProjectile;
+import soulchasm.main.projectiles.weaponprojectiles.SoulScytheSmallProjectile;
 
 import java.awt.geom.Point2D;
 

@@ -22,8 +22,8 @@ import necesse.inventory.item.ItemInteractAction;
 import necesse.inventory.item.toolItem.projectileToolItem.magicProjectileToolItem.MagicProjectileToolItem;
 import necesse.inventory.lootTable.presets.IncursionMagicWeaponsLootTable;
 import necesse.level.maps.Level;
-import soulchasm.main.projectiles.WeaponProjectiles.BookofSoulsMainProjectile;
-import soulchasm.main.projectiles.WeaponProjectiles.BookofSoulsSmallProjectile;
+import soulchasm.main.projectiles.weaponprojectiles.BookofSoulsMainProjectile;
+import soulchasm.main.projectiles.weaponprojectiles.BookofSoulsSmallProjectile;
 
 import java.awt.*;
 import java.awt.geom.Point2D;

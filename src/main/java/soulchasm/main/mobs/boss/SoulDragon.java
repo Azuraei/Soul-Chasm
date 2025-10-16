@@ -47,10 +47,10 @@ import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.inventory.lootTable.lootItem.RotationLootItem;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.misc.levelevents.GroundEruptionEvent.DragonGroundEruptionEvent;
-import soulchasm.main.misc.levelevents.SpinningProjectileSpawnerEvent.SpinSpawnEvent;
-import soulchasm.main.misc.levelevents.SpinningProjectileSpawnerEvent.SpinSpawnVisualEvent;
-import soulchasm.main.projectiles.BossProjectiles.SoulFlamethrowerProjectile;
+import soulchasm.main.misc.levelevents.grounderuptionevents.DragonGroundEruptionEvent;
+import soulchasm.main.misc.levelevents.spinningspawnerevents.SpinSpawnEvent;
+import soulchasm.main.misc.levelevents.spinningspawnerevents.SpinSpawnVisualEvent;
+import soulchasm.main.projectiles.bossprojectiles.SoulFlamethrowerProjectile;
 import soulchasm.main.projectiles.SoulHomingProjectile;
 
 import java.awt.*;
