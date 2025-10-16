@@ -25,6 +25,7 @@ import necesse.inventory.lootTable.lootItem.*;
 import necesse.inventory.recipe.Recipe;
 import necesse.inventory.recipe.Recipes;
 import necesse.level.gameObject.*;
+import necesse.level.gameObject.container.*;
 import necesse.level.gameObject.furniture.*;
 import necesse.level.gameObject.furniture.doubleBed.DoubleBedBaseObject;
 import necesse.level.gameTile.PathTiledTile;
@@ -33,75 +34,75 @@ import necesse.level.gameTile.SimpleTiledFloorTile;
 import necesse.level.maps.biomes.forest.ForestBiome;
 import necesse.level.maps.biomes.plains.PlainsBiome;
 import necesse.level.maps.biomes.swamp.SwampBiome;
-import necesse.level.maps.incursion.UniqueIncursionReward;
 import necesse.level.maps.presets.set.ChestRoomSet;
 import necesse.level.maps.presets.set.WallSet;
-import soulchasm.main.Buffs.IdolShieldBuff;
-import soulchasm.main.Buffs.SoulStatueBuff;
-import soulchasm.main.Buffs.SoulBleedStackBuff;
-import soulchasm.main.Buffs.SoulFireBuff;
-import soulchasm.main.Buffs.ArmorBuffs.*;
-import soulchasm.main.Buffs.ToolBuffs.BookBuffs.BookofSoulBuff;
-import soulchasm.main.Buffs.ToolBuffs.BookBuffs.SoulofSoulsOverchargeBuff;
-import soulchasm.main.Buffs.ToolBuffs.BowBuffs.SoulBowBuff;
-import soulchasm.main.Buffs.ToolBuffs.BowBuffs.SoulBowCooldownBuff;
-import soulchasm.main.Buffs.ToolBuffs.SoulAbsorbShieldBuff;
-import soulchasm.main.Buffs.ToolBuffs.SoulDeathMarkStackBuff;
-import soulchasm.main.Buffs.ToolBuffs.SoulScytheBuff;
-import soulchasm.main.Buffs.TrinketsBuffs.PhantomDashersBuffs.PhantomDashersActiveBuff;
-import soulchasm.main.Buffs.TrinketsBuffs.PhantomDashersBuffs.PhantomDashersBuff;
-import soulchasm.main.Buffs.TrinketsBuffs.PickaxeheadBuffs.PickaxeHeadBuff;
-import soulchasm.main.Buffs.TrinketsBuffs.PickaxeheadBuffs.PickaxeHeadStackBuff;
-import soulchasm.main.Buffs.TrinketsBuffs.SoulSealBuffs.*;
-import soulchasm.main.Buffs.TrinketsBuffs.PhantomFeatherBuff;
-import soulchasm.main.Buffs.TrinketsBuffs.SoulStealerBuff;
-import soulchasm.main.Items.Armor.*;
-import soulchasm.main.Items.CarKeys;
-import soulchasm.main.Items.Tools.*;
-import soulchasm.main.Items.Trinkets.SealTrinkets.*;
-import soulchasm.main.Items.Trinkets.PhantomDashersTrinket;
-import soulchasm.main.Items.Trinkets.PhantomFeatherTrinket;
-import soulchasm.main.Items.Trinkets.PickaxeHeadTrinket;
-import soulchasm.main.Items.Trinkets.SoulStealerTrinket;
-import soulchasm.main.Misc.CarColorInterface.CarColorContainer;
-import soulchasm.main.Misc.CarColorInterface.CarColorContainerForm;
-import soulchasm.main.Misc.Events.GroundEruptionEvent.DragonExplosionEvent;
-import soulchasm.main.Misc.Events.GroundEruptionEvent.DragonGroundEruptionEvent;
-import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.SpinSpawnEvent;
-import soulchasm.main.Misc.Events.SpinningProjectileSpawnerEvent.SpinSpawnVisualEvent;
-import soulchasm.main.Misc.Events.IdolShieldVisualEvent;
-import soulchasm.main.Misc.Events.MeleeGhostSpawnEvent;
-import soulchasm.main.Misc.HauntedModifier.HauntedIncursionModifier;
-import soulchasm.main.Misc.HauntedModifier.HauntedModifierLevelEvent;
-import soulchasm.main.Misc.Incursion.SoulChasmBiome;
-import soulchasm.main.Misc.Incursion.SoulChasmIncursionBiome;
-import soulchasm.main.Misc.Incursion.SoulChasmIncursionLevel;
-import soulchasm.main.Mobs.Boss.SoulDragon;
-import soulchasm.main.Objects.*;
-import soulchasm.main.Objects.Jars.BigJarObject;
-import soulchasm.main.Objects.Jars.FireFlyJarObject;
-import soulchasm.main.Objects.Jars.WispJarObject;
-import soulchasm.main.Mobs.Agressive.*;
-import soulchasm.main.Mobs.Boss.SoulDragonBody;
-import soulchasm.main.Mobs.Passive.Firefly;
-import soulchasm.main.Mobs.Passive.ChasmCaveling;
-import soulchasm.main.Mobs.Passive.SphereEffectMob;
-import soulchasm.main.Mobs.Passive.Wisp;
-import soulchasm.main.Mobs.Summon.CarMob;
-import soulchasm.main.Mobs.Summon.SmallSoulSummon;
-import soulchasm.main.Mobs.Summon.SoulStatueSummon;
-import soulchasm.main.Plushies.*;
-import soulchasm.main.Projectiles.BossProjectiles.SoulFlamethrowerProjectile;
-import soulchasm.main.Projectiles.BossProjectiles.SpinSpawnSpikeProjectile;
-import soulchasm.main.Projectiles.SealProjectiles.*;
-import soulchasm.main.Projectiles.WeaponProjectiles.*;
-import soulchasm.main.Projectiles.SoulDiscProjectile;
-import soulchasm.main.Projectiles.SoulHomingProjectile;
-import soulchasm.main.Tiles.*;
+import soulchasm.main.buffs.IdolShieldBuff;
+import soulchasm.main.buffs.SoulStatueBuff;
+import soulchasm.main.buffs.SoulBleedStackBuff;
+import soulchasm.main.buffs.SoulFireBuff;
+import soulchasm.main.buffs.armorbuffs.*;
+import soulchasm.main.buffs.toolbuffs.BookBuffs.BookofSoulBuff;
+import soulchasm.main.buffs.toolbuffs.BookBuffs.SoulofSoulsOverchargeBuff;
+import soulchasm.main.buffs.toolbuffs.BowBuffs.SoulBowBuff;
+import soulchasm.main.buffs.toolbuffs.BowBuffs.SoulBowCooldownBuff;
+import soulchasm.main.buffs.toolbuffs.SoulAbsorbShieldBuff;
+import soulchasm.main.buffs.toolbuffs.SoulDeathMarkStackBuff;
+import soulchasm.main.buffs.toolbuffs.SoulScytheBuff;
+import soulchasm.main.buffs.trinketbuffs.PhantomDashersBuffs.PhantomDashersActiveBuff;
+import soulchasm.main.buffs.trinketbuffs.PhantomDashersBuffs.PhantomDashersBuff;
+import soulchasm.main.buffs.trinketbuffs.PickaxeheadBuffs.PickaxeHeadBuff;
+import soulchasm.main.buffs.trinketbuffs.PickaxeheadBuffs.PickaxeHeadStackBuff;
+import soulchasm.main.buffs.trinketbuffs.SoulSealBuffs.*;
+import soulchasm.main.buffs.trinketbuffs.PhantomFeatherBuff;
+import soulchasm.main.buffs.trinketbuffs.SoulStealerBuff;
+import soulchasm.main.items.armor.*;
+import soulchasm.main.items.CarKeys;
+import soulchasm.main.items.tools.*;
+import soulchasm.main.items.trinkets.SealTrinkets.*;
+import soulchasm.main.items.trinkets.PhantomDashersTrinket;
+import soulchasm.main.items.trinkets.PhantomFeatherTrinket;
+import soulchasm.main.items.trinkets.PickaxeHeadTrinket;
+import soulchasm.main.items.trinkets.SoulStealerTrinket;
+import soulchasm.main.misc.carcolorsui.CarColorContainer;
+import soulchasm.main.misc.carcolorsui.CarColorContainerForm;
+import soulchasm.main.misc.levelevents.GroundEruptionEvent.DragonExplosionEvent;
+import soulchasm.main.misc.levelevents.GroundEruptionEvent.DragonGroundEruptionEvent;
+import soulchasm.main.misc.levelevents.SpinningProjectileSpawnerEvent.SpinSpawnEvent;
+import soulchasm.main.misc.levelevents.SpinningProjectileSpawnerEvent.SpinSpawnVisualEvent;
+import soulchasm.main.misc.levelevents.IdolShieldVisualEvent;
+import soulchasm.main.misc.levelevents.MeleeGhostSpawnEvent;
+import soulchasm.main.misc.haunted.HauntedIncursionModifier;
+import soulchasm.main.misc.haunted.HauntedModifierLevelEvent;
+import soulchasm.main.misc.incursion.SoulChasmBiome;
+import soulchasm.main.misc.incursion.SoulChasmIncursionBiome;
+import soulchasm.main.misc.incursion.SoulChasmIncursionLevel;
+import soulchasm.main.mobs.boss.SoulDragon;
+import soulchasm.main.objects.*;
+import soulchasm.main.objects.jars.BigJarObject;
+import soulchasm.main.objects.jars.FireFlyJarObject;
+import soulchasm.main.objects.jars.WispJarObject;
+import soulchasm.main.mobs.hostile.*;
+import soulchasm.main.mobs.boss.SoulDragonBody;
+import soulchasm.main.mobs.friendly.Firefly;
+import soulchasm.main.mobs.friendly.ChasmCaveling;
+import soulchasm.main.mobs.friendly.SphereEffectMob;
+import soulchasm.main.mobs.friendly.Wisp;
+import soulchasm.main.mobs.summons.CarMob;
+import soulchasm.main.mobs.summons.SmallSoulSummon;
+import soulchasm.main.mobs.summons.SoulStatueSummon;
+import soulchasm.main.plushies.*;
+import soulchasm.main.projectiles.BossProjectiles.SoulFlamethrowerProjectile;
+import soulchasm.main.projectiles.BossProjectiles.SpinSpawnSpikeProjectile;
+import soulchasm.main.projectiles.SealProjectiles.*;
+import soulchasm.main.projectiles.WeaponProjectiles.*;
+import soulchasm.main.projectiles.SoulDiscProjectile;
+import soulchasm.main.projectiles.SoulHomingProjectile;
+import soulchasm.main.tiles.*;
 
 import java.awt.*;
 import java.util.ArrayList;
 
+import static necesse.engine.registries.JournalRegistry.registerJournalEntry;
 import static necesse.engine.registries.ObjectRegistry.getObject;
 
 @ModEntry
@@ -138,7 +139,7 @@ public class SoulChasm {
 
     public void init() {
         GameLoadingScreen.drawLoadingString("Loading Soul Chasm");
-        GameLoadingScreen.drawLoadingSub("Hopefully my wonderful and carefully crafted masterpiece of a code won't crash your game ^-^ \n (that was sarcasm if it wasn't clear)");
+        GameLoadingScreen.drawLoadingSub("Hopefully my wonderful and carefully crafted masterpiece of a code won't crash your game ^-^");
 
         //TILES
         TileRegistry.registerTile("soulcavegrass", new SoulCaveGrass(), 0.0F, true);
@@ -323,8 +324,8 @@ public class SoulChasm {
         ItemRegistry.registerItem("soulsealtrinket", new SoulSealTrinket(), -1.0F, true);
         ItemRegistry.registerItem("balancedsealtrinket", new BalancedSealTrinket(), -1.0F, true);
         //Vanity
-        ItemRegistry.registerItem("lunartearflowerhead", new HelmetArmorItem(0, null, 0, Item.Rarity.RARE, "lunartearflowerhead").hairDrawMode(ArmorItem.HairDrawMode.OVER_HAIR), 50.0F, true);
-        ItemRegistry.registerItem("tobeblindfold", new HelmetArmorItem(0, null, 0, Item.Rarity.EPIC, "tobeblindfold").hairDrawMode(ArmorItem.HairDrawMode.UNDER_HAIR), 250.0F, true);
+        ItemRegistry.registerItem("lunartearflowerhead", new HelmetArmorItem(0, null, 0, Item.Rarity.RARE, "lunartearflowerhead", null).hairDrawMode(ArmorItem.HairDrawMode.OVER_HAIR), 50.0F, true);
+        ItemRegistry.registerItem("tobeblindfold", new HelmetArmorItem(0, null, 0, Item.Rarity.EPIC, "tobeblindfold", null).hairDrawMode(ArmorItem.HairDrawMode.UNDER_HAIR), 250.0F, true);
 
         //MOBS
         MobRegistry.registerMob("souldragonhead", SoulDragon.class, true, true);
@@ -365,14 +366,13 @@ public class SoulChasm {
         ProjectileRegistry.registerProjectile("souldiscprojectile", SoulDiscProjectile.class, "soulboomerangprojectile", null);
 
         //INCURSION_LOOT
-        LootTable helmetReward = new LootTable(new LootItemList(new OneOfLootItems(new LootItem("soularmorhelmet"), new LootItem("soularmorhood"), new LootItem("soularmorhat"), new LootItem("soularmorcrown"))));
-        LootTable armorReward = new LootTable(new LootItemList(new LootItem("soularmorchestplate")));
-        LootTable bootsReward = new LootTable(new LootItemList(new LootItem("soularmorboots")));
-        LootTable scytheReward = new LootTable(new LootItemList(new LootItem("soulscythe")));
-        UniqueIncursionRewardsRegistry.registerIncursionHeadArmors("soularmorhead", new UniqueIncursionReward(helmetReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
-        UniqueIncursionRewardsRegistry.registerIncursionBodyArmors("soularmorbody", new UniqueIncursionReward(armorReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
-        UniqueIncursionRewardsRegistry.registerIncursionFeetArmors("soularmorfeet", new UniqueIncursionReward(bootsReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
-        UniqueIncursionRewardsRegistry.registerGreatswordWeapon("soulscythereward", new UniqueIncursionReward(scytheReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
+        /* UniqueIncursionRewardsRegistry.registerGreatswordWeapon("soulscythereward", new UniqueIncursionReward(scytheReward, UniqueIncursionModifierRegistry.ModifierChallengeLevel.Hard));
+
+        UniqueIncursionRewardsRegistry.registerIncursionHeadArmors("soularmorhead", new UniqueIncursionReward(LootTablePresets.incursionHeadArmor));
+        UniqueIncursionRewardsRegistry.registerIncursionBodyArmors("soularmorbody", new UniqueIncursionReward(LootTablePresets.incursionBodyArmor));
+        UniqueIncursionRewardsRegistry.registerIncursionFeetArmors("soularmorfeet", new UniqueIncursionReward(LootTablePresets.incursionFeetArmor));
+        UniqueIncursionRewardsRegistry.registerRareIncursionWeapons("rareincursionweapons", new UniqueIncursionReward(LootTablePresets.rareIncursionWeapons));
+        */
 
         //LEVEL_EVENTS
         LevelEventRegistry.registerEvent("dragongrounderuptionevent", DragonGroundEruptionEvent.class);
@@ -384,17 +384,17 @@ public class SoulChasm {
         LevelEventRegistry.registerEvent("hauntedmodifierlevelevent", HauntedModifierLevelEvent.class);
 
         //INCURSION
-        BiomeRegistry.registerBiome("soulcavern", new SoulChasmBiome(), 0, null);
+        BiomeRegistry.registerBiome("soulchasm", new SoulChasmBiome(), false);
         IncursionBiomeRegistry.registerBiome("soulchasm", new SoulChasmIncursionBiome(), 2);
         LevelRegistry.registerLevel("soulchasmincursion", SoulChasmIncursionLevel.class);
 
         //INCURSION_MODS
-        UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new HauntedIncursionModifier(UniqueIncursionModifierRegistry.ModifierChallengeLevel.Medium));
+        UniqueIncursionModifierRegistry.registerUniqueModifier("haunted", new HauntedIncursionModifier());
 
         //JOURNAL
-        JournalEntry soulchasmIncursion = JournalRegistry.registerJournalEntry("soulchasmincursion", new JournalEntry(IncursionBiomeRegistry.getBiome("soulchasm")));
-        soulchasmIncursion.addBiomeLootEntry("crystalizedsouloreitem", "alchemyshard", "upgradeshard", "soulcaverockitem", "soulwoodlogitem");
-        soulchasmIncursion.addMobEntries("lostsoul", "soulmage", "magestatue", "meleestatue", "souldragonhead");
+        JournalEntry soulChasmIncursion = registerJournalEntry("soulchasmincursion", new JournalEntry(BiomeRegistry.getBiome("soulchasm"), IncursionBiomeRegistry.getBiome("soulchasm")));
+        soulChasmIncursion.addBiomeLootEntry("crystalizedsouloreitem", "alchemyshard", "upgradeshard", "soulcaverockitem", "soulwoodlogitem");
+        soulChasmIncursion.addMobEntries("lostsoul", "soulmage", "magestatue", "meleestatue", "souldragonhead");
 
         //CONTAINERS
         CAR_COLOR_CONTAINER = ContainerRegistry.registerContainer((client, uniqueSeed, content) -> new CarColorContainerForm(client, new CarColorContainer(client.getClient(), uniqueSeed, content)), (client, uniqueSeed, content, serverObject) -> new CarColorContainer(client, uniqueSeed, content));
@@ -505,7 +505,7 @@ public class SoulChasm {
         PlainsBiome.defaultSurfaceCritters.add(100, "firefly");
         SwampBiome.surfaceCritters.add(120, "firefly");
 
-        chasmChestRoomSet = new ChestRoomSet("soulcavefloortiles", "soulstonepressureplate", WallSet.loadByStringID("soulbrick"), "soulcavechest", "soulstoneflametrap");
+        chasmChestRoomSet = new ChestRoomSet("soulcavefloortiles", "soulstonepressureplate", new WallSet("soulbrick"), null, null, "soulstoneflametrap");
         chasmShrineLootTable = new LootTable(new LootItemList(new OneOfLootItems(new ChanceLootItem(0.8F,"phantomfeathertrinket"), new ChanceLootItem(0.8F,"soulstealertrinket"), new ChanceLootItem(0.8F,"pickaxeheadtrinket"), new ChanceLootItem(0.2F,"soulmetalsword"), new ChanceLootItem(0.05F, "carkeys"))));
 
         ArrayList<Recipe> modRecipes = new ArrayList<>();
