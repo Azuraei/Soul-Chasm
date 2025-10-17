@@ -463,7 +463,7 @@ public class SoulChasm {
         modRecipes.add(new Recipe("soulmetalrevolver", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {handgun, 1}, {soulmetalbar, 12}, {soulcore, 5}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("soulmetalbow", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {soulmetalbar, 12}, {soulcore, 5}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("bookofsouls", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {book, 3}, {soulmetalbar, 4}, {soulcore, 12}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
-        modRecipes.add(new Recipe("soulstatuesummon", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 6}, {soulmetalbar, 10}, {soulcore, 12}}")));
+        modRecipes.add(new Recipe("idolsummon", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 6}, {soulmetalbar, 10}, {soulcore, 12}}")));
 
         modRecipes.add(new Recipe("soularmorhelmet", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 12}, {soulcore, 20}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("soularmorhood", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 12}, {soulcore, 20}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
