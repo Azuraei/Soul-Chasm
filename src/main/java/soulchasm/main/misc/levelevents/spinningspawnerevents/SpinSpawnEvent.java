@@ -14,7 +14,7 @@ import necesse.entity.mobs.DeathMessageTable;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.gfx.GameResources;
-import soulchasm.main.projectiles.bossprojectiles.SpinSpawnSpikeProjectile;
+import soulchasm.main.projectiles.bossprojectiles.SpinnerSpikeProjectile;
 
 import java.awt.geom.Point2D;
 
@@ -87,7 +87,7 @@ public class SpinSpawnEvent extends MobAbilityLevelEvent implements Attacker {
             long eventTime = this.level.getWorldEntity().getTime() - this.spawnTime;
             if(this.tickCounter <= 18){
                 Point2D.Float dir = GameMath.getAngleDir(shootNextAngle + randomAngleOffset);
-                SpinSpawnSpikeProjectile projectile = new SpinSpawnSpikeProjectile(this.getLevel(), x, y, x + dir.x * 100.0F, y + dir.y * 100.0F, 1200, damage, 20, owner);
+                SpinnerSpikeProjectile projectile = new SpinnerSpikeProjectile(this.getLevel(), x, y, x + dir.x * 100.0F, y + dir.y * 100.0F, 1200, damage, 20, owner);
                 projectile.moveDist(30.0);
                 this.getLevel().entityManager.projectiles.add(projectile);
                 shootNextAngle += 20;

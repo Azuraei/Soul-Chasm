@@ -11,7 +11,7 @@ import necesse.entity.mobs.Mob;
 import necesse.entity.particle.Particle;
 import necesse.gfx.GameResources;
 import soulchasm.SoulChasm;
-import soulchasm.main.mobs.hostile.MeleeGhost;
+import soulchasm.main.mobs.hostile.LesserSoul;
 
 import java.awt.*;
 
@@ -58,7 +58,7 @@ public class MeleeGhostSpawnEvent extends LevelEvent {
     }
 
     private void spawnMob(){
-        Mob mob = new MeleeGhost();
+        Mob mob = new LesserSoul();
         Mob source = sourceMob;
         mob.isSummoned = true;
         mob.setMaxHealth(source.getMaxHealthFlat());

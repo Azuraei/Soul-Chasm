@@ -25,7 +25,7 @@ import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
-import soulchasm.main.mobs.hostile.MeleeStatue;
+import soulchasm.main.mobs.hostile.ChasmWarriorStatue;
 
 import java.awt.*;
 import java.util.List;
@@ -82,7 +82,7 @@ public class SoulStatueSummon extends AttackingFollowingMob implements OEVicinit
 
     public void spawnDeathParticles(float knockbackX, float knockbackY) {
         for (int i = 0; i < 8; i++) {
-            getLevel().entityManager.addParticle(new FleshParticle(getLevel(), MeleeStatue.texture, GameRandom.globalRandom.nextInt(5), 8, 32, x, y, 20f, knockbackX, knockbackY), Particle.GType.IMPORTANT_COSMETIC);
+            getLevel().entityManager.addParticle(new FleshParticle(getLevel(), ChasmWarriorStatue.texture, GameRandom.globalRandom.nextInt(5), 8, 32, x, y, 20f, knockbackX, knockbackY), Particle.GType.IMPORTANT_COSMETIC);
         }
     }
 

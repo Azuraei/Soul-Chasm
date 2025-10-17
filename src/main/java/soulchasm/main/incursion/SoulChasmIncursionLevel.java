@@ -19,9 +19,9 @@ import necesse.level.maps.incursion.BiomeExtractionIncursionData;
 import necesse.level.maps.incursion.BiomeMissionIncursionData;
 import necesse.level.maps.incursion.IncursionBiome;
 import necesse.level.maps.presets.Preset;
-import soulchasm.main.misc.presets.SoulCaveArenaPreset;
-import soulchasm.main.misc.presets.SoulCaveBigShrinePreset;
-import soulchasm.main.misc.presets.SoulCaveShrinePreset;
+import soulchasm.main.misc.presets.ChasmArenaPreset;
+import soulchasm.main.misc.presets.ChasmBigShrinePreset;
+import soulchasm.main.misc.presets.ChasmShrinePreset;
 
 public class SoulChasmIncursionLevel extends IncursionLevel {
     public SoulChasmIncursionLevel(LevelIdentifier identifier, int width, int height, WorldEntity worldEntity) {
@@ -54,18 +54,18 @@ public class SoulChasmIncursionLevel extends IncursionLevel {
             GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.025F, 6, 7.0F, 20.0F, 1.0F, 3.0F, TileRegistry.getTileID("soulcavecracktile"), 0.8F, false);
             this.liquidManager.calculateShores();
             //Big shrine
-            Preset shrineBig = new SoulCaveBigShrinePreset(cg.random);
+            Preset shrineBig = new ChasmBigShrinePreset(cg.random);
             presets.findRandomValidPositionAndApply(cg.random, 5, shrineBig, 10, false, false);
             //Shrine
             int shrineAmount = cg.random.getIntBetween(3, 5);
             for(int ix = 0; ix < shrineAmount; ++ix) {
-                Preset shrine = new SoulCaveShrinePreset(10,cg.random);
+                Preset shrine = new ChasmShrinePreset(10,cg.random);
                 presets.findRandomValidPositionAndApply(cg.random, 6, shrine, 10, true, true);
             }
 
             int spawnSize = 10;
             entranceAndPerkPresets.addOccupiedSpace(centerX - spawnSize / 2, centerY - spawnSize / 2, spawnSize, spawnSize);
-            Preset arena = new SoulCaveArenaPreset(55, new GameRandom(this.getSeed()));
+            Preset arena = new ChasmArenaPreset(55, new GameRandom(this.getSeed()));
             arena.applyToLevelCentered(this, centerX, centerY);
         });
         GameEvents.triggerEvent(new GeneratedCaveStructuresEvent(this, cg, presets));

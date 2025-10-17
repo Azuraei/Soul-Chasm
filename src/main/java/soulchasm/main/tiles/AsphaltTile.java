@@ -8,7 +8,7 @@ import soulchasm.SoulChasm;
 
 public class AsphaltTile extends PathTiledTile {
     public AsphaltTile() {
-        super("asphalttile", SoulChasm.asphaltTileMapColor);
+        super("asphalttile", SoulChasm.asphaltMapColor);
         this.stackSize = 1000;
     }
 

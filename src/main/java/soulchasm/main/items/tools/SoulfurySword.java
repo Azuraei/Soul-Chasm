@@ -13,7 +13,7 @@ import necesse.inventory.InventoryItem;
 import necesse.inventory.item.toolItem.swordToolItem.SwordToolItem;
 import necesse.inventory.lootTable.presets.IncursionCloseRangeWeaponsLootTable;
 import necesse.level.maps.Level;
-import soulchasm.main.projectiles.weaponprojectiles.SpiritSwordProjectile;
+import soulchasm.main.projectiles.weaponprojectiles.SouldSwordProjectile;
 
 import java.awt.geom.Point2D;
 
@@ -43,7 +43,7 @@ public class SoulfurySword extends SwordToolItem {
             GameRandom random = new GameRandom();
             int randomAngle = random.getIntBetween(0, 360);
             Point2D.Float dir = GameMath.getAngleDir(randomAngle);
-            SpiritSwordProjectile projectile = new SpiritSwordProjectile(attacker.getLevel(), target.x + dir.x * 120, target.y +  + dir.y * 120, target.x, target.y, 250 * random.getFloatBetween(0.7F, 1), 300, this.getAttackDamage(item).modDamage(0.33F), 10, attacker);
+            SouldSwordProjectile projectile = new SouldSwordProjectile(attacker.getLevel(), target.x + dir.x * 120, target.y +  + dir.y * 120, target.x, target.y, 250 * random.getFloatBetween(0.7F, 1), 300, this.getAttackDamage(item).modDamage(0.33F), 10, attacker);
             projectile.resetUniqueID(random);
             projectile.setModifier(new ResilienceOnHitProjectileModifier(this.getResilienceGain(item)));
             attacker.getLevel().entityManager.projectiles.add(projectile);
