@@ -27,11 +27,11 @@ import soulchasm.SoulChasm;
 import java.awt.*;
 import java.util.List;
 
-public class MeltedSouls extends LiquidTile {
+public class MoltenSpirits extends LiquidTile {
     public GameTextureSection texture;
     protected final GameRandom drawRandom;
 
-    public MeltedSouls() {
+    public MoltenSpirits() {
         super(SoulChasm.chasmMagmaMapColor, "meltedsouls");
         this.lightLevel = 100;
         this.lightHue = 220.0F;

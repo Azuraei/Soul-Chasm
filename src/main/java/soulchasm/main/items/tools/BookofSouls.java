@@ -22,7 +22,7 @@ import necesse.inventory.item.ItemInteractAction;
 import necesse.inventory.item.toolItem.projectileToolItem.magicProjectileToolItem.MagicProjectileToolItem;
 import necesse.inventory.lootTable.presets.IncursionMagicWeaponsLootTable;
 import necesse.level.maps.Level;
-import soulchasm.main.projectiles.weaponprojectiles.BookofSoulsMainProjectile;
+import soulchasm.main.projectiles.weaponprojectiles.BookofSoulsProjectile;
 import soulchasm.main.projectiles.weaponprojectiles.BookofSoulsSmallProjectile;
 
 import java.awt.*;
@@ -96,7 +96,7 @@ public class BookofSouls extends MagicProjectileToolItem implements ItemInteract
         float currentEnergy = item.getGndData().getFloat("energy");
         if(!gndData.getBoolean("altFireActive") && !attackerMob.buffManager.hasBuff("soulofsoulsoverchargebuff")){
             item.getGndData().setFloat("energy", (float)(currentEnergy + 0.025 * this.getAttackDamage(item).finalDamageMultiplier));
-            BookofSoulsMainProjectile projectile = new BookofSoulsMainProjectile(level, attackerMob, attackerMob.x, attackerMob.y, (float)x, (float)y, this.getProjectileVelocity(item, attackerMob), 1000, this.getAttackDamage(item), this.getKnockback(item, attackerMob));
+            BookofSoulsProjectile projectile = new BookofSoulsProjectile(level, attackerMob, attackerMob.x, attackerMob.y, (float)x, (float)y, this.getProjectileVelocity(item, attackerMob), 1000, this.getAttackDamage(item), this.getKnockback(item, attackerMob));
             projectile.setModifier(new ResilienceOnHitProjectileModifier(this.getResilienceGain(item)));
             projectile.resetUniqueID(new GameRandom(seed));
             attackerMob.addAndSendAttackerProjectile(projectile, 30);

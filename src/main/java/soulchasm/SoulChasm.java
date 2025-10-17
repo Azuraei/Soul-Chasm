@@ -153,7 +153,7 @@ public class SoulChasm {
         TileRegistry.registerTile("soulwoodtiledfloor", new SimpleTiledFloorTile("soulwoodtiledfloor", SoulChasm.chasmWoodMapColor), 2.0F, true);
         TileRegistry.registerTile("soulwoodpath", new PathTiledTile("soulwoodpath", SoulChasm.chasmWoodMapColor), 5.0F, true);
 
-        TileRegistry.registerTile("meltedsouls", new MeltedSouls(), 10.0F, true);
+        TileRegistry.registerTile("moltenspirits", new MoltenSpirits(), 10.0F, true);
         TileRegistry.registerTile("soulcavecracktile", new SoulCaveCrackTile(), 0.0F, false);
 
         TileRegistry.registerTile("asphalttile", new AsphaltTile(), -1.0F, true);
@@ -170,7 +170,7 @@ public class SoulChasm {
         ObjectRegistry.registerObject("alchemyshardsoulcaverock", new RockOreObject(chasmrock, "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, 1, false), -1.0F, true);
         ObjectRegistry.registerObject("upgradeshardsoulcaverock", new RockOreObject(chasmrock, "oremask", "upgradeshardore", new Color(0, 27, 107), "upgradeshard", 1, 1, 1, false), -1.0F, true);
 
-        ObjectRegistry.registerObject("soulcavedecorations", new ChasmDecorationObject(chasmrock, "soulcavedecorations", chasmStoneMapColor), 0.0F, false);
+        ObjectRegistry.registerObject("soulcavedecorations", new ChasmDebreeObject(chasmrock, "soulcavedecorations", chasmStoneMapColor), 0.0F, false);
 
         WallObject.registerWallObjects("soulbrick", "soulbrickwall", chasmrock.toolTier, chasmStoneMapColor, 2.0F, 6.0F);
         WallObject.registerWallObjects("soulwood", "soulwoodwall", 0, chasmWoodMapColor, ToolType.ALL, 2.0F, 6.0F);
@@ -196,18 +196,18 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soullantern", soulLantern, -1.0F, true);
 
         ObjectRegistry.registerObject("soulcavegrassobject", new GrassObject("soulcavegrassobject", 4), 0.0F, false);
-        ObjectRegistry.registerObject("soulcrystalbig", new SoulCrystalBigObject(), 0.0F, false);
+        ObjectRegistry.registerObject("soulcrystalbig", new BigSoulCrystalObject(), 0.0F, false);
 
         ObjectRegistry.registerObject("bigjarobject", new BigJarObject(), -1.0F, true);
         ObjectRegistry.registerObject("wispjarobject", new WispJarObject(), 0.0F, false);
         ObjectRegistry.registerObject("fireflyjarobject", new FireFlyJarObject(), 0.0F, false);
 
-        ObjectRegistry.registerObject("soulmonumentobject", new SoulMonumentObject(), 50.0F, true);
+        ObjectRegistry.registerObject("soulmonumentobject", new ChasmMonumentObject(), 50.0F, true);
         ObjectRegistry.registerObject("oldbarrel", new InventoryObject("oldbarrel", 20, new Rectangle(8, 4, 16, 16), ToolType.PICKAXE, chasmWoodFurnitureMapColor), 10.0F, true);
         ObjectRegistry.registerObject("chasmcrates", new RandomCrateObject("chasmcrates"), 0.0F, false);
         ObjectRegistry.registerObject("statueobject", new ChasmStatueObject(), 50.0F, true);
         ObjectRegistry.registerObject("magestatueobject", new MageStatueObject(), -1.0F, true);
-        ObjectRegistry.registerObject("spikeobject", new SpikeObject(), 0.0F, false);
+        ObjectRegistry.registerObject("spikeobject", new AltarSpikeObject(), 0.0F, false);
 
         TikiTorchObject soulTikiTorch = new TikiTorchObject();
         {
@@ -359,7 +359,7 @@ public class SoulChasm {
         ProjectileRegistry.registerProjectile("soulpointywaveprojectile", SoulPointyWaveProjectile.class, "soulpointywaveprojectile", null);
         ProjectileRegistry.registerProjectile("soulbigbulletprojectile", SoulBigBulletProjectile.class, null, null);
         ProjectileRegistry.registerProjectile("spinspawnspikeprojectile", SpinSpawnSpikeProjectile.class, "spinspawnspikeprojectile",null);
-        ProjectileRegistry.registerProjectile("bookofsoulsmainprojectile", BookofSoulsMainProjectile.class, "bookofsoulsmainprojectile",null);
+        ProjectileRegistry.registerProjectile("bookofsoulsmainprojectile", BookofSoulsProjectile.class, "bookofsoulsmainprojectile",null);
         ProjectileRegistry.registerProjectile("bookofsoulssmallprojectile", BookofSoulsSmallProjectile.class, "soulmissileprojectile",null);
         ProjectileRegistry.registerProjectile("soulscytheprojectile", SoulScytheProjectile.class, "soulscytheprojectile",null);
         ProjectileRegistry.registerProjectile("soulscythesmallprojectile", SoulScytheSmallProjectile.class, "soulscythesmallprojectile",null);

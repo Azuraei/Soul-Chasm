@@ -27,12 +27,12 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-public class BookofSoulsMainProjectile extends FollowingProjectile {
-    public BookofSoulsMainProjectile() {
+public class BookofSoulsProjectile extends FollowingProjectile {
+    public BookofSoulsProjectile() {
         this.height = 18.0F;
     }
 
-    public BookofSoulsMainProjectile(Level level, Mob owner, float x, float y, float targetX, float targetY, float speed, int distance, GameDamage damage, int knockback) {
+    public BookofSoulsProjectile(Level level, Mob owner, float x, float y, float targetX, float targetY, float speed, int distance, GameDamage damage, int knockback) {
         this();
         this.setLevel(level);
         this.setOwner(owner);

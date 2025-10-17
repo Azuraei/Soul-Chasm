@@ -29,13 +29,13 @@ import java.util.List;
 
 import static soulchasm.SoulChasm.chasmStoneLightMapColor;
 
-public class SoulMonumentObject extends FurnitureObject {
+public class ChasmMonumentObject extends FurnitureObject {
     public GameTexture texture;
     public GameTexture glow_texture;
     protected final GameRandom drawRandom;
     private int particleDelay;
 
-    public SoulMonumentObject() {
+    public ChasmMonumentObject() {
         super(new Rectangle(2, 0, 30, 30));
         this.hoverHitbox = new Rectangle(2, 0, 30, 30);
         this.toolType = ToolType.PICKAXE;

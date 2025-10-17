@@ -23,14 +23,14 @@ import java.util.List;
 
 import static soulchasm.SoulChasm.chasmCrystalMapColor;
 
-public class SoulCrystalBigObject extends GameObject {
+public class BigSoulCrystalObject extends GameObject {
     protected String textureName;
     protected String glowtextureName;
     public GameTexture texture;
     public GameTexture glowtexture;
     protected final GameRandom drawRandom;
 
-    public SoulCrystalBigObject() {
+    public BigSoulCrystalObject() {
         super(new Rectangle(7, 7, 22, 18));
         this.textureName = "soulcrystalbig";
         this.glowtextureName = "soulcrystalbig_glow";

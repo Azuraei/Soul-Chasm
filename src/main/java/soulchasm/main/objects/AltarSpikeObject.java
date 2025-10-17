@@ -19,11 +19,11 @@ import java.util.List;
 
 import static soulchasm.SoulChasm.chasmStoneMapColor;
 
-public class SpikeObject extends GameObject {
+public class AltarSpikeObject extends GameObject {
     public GameTexture texture;
     protected final GameRandom drawRandom;
 
-    public SpikeObject() {
+    public AltarSpikeObject() {
         super(new Rectangle(4, 4, 26, 26));
         hoverHitbox = new Rectangle(0, -32, 32, 64);
         toolType = ToolType.UNBREAKABLE;

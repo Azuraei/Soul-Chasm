@@ -19,9 +19,9 @@ import necesse.level.maps.light.GameLight;
 import java.awt.*;
 import java.util.List;
 
-public class ChasmDecorationObject extends SingleRockSmall {
+public class ChasmDebreeObject extends SingleRockSmall {
     String droppedStone;
-    public ChasmDecorationObject(RockObject type, String textureName, Color mapColor) {
+    public ChasmDebreeObject(RockObject type, String textureName, Color mapColor) {
         super(type, textureName, mapColor);
         this.canPlaceOnLiquid = false;
         this.type = type;
