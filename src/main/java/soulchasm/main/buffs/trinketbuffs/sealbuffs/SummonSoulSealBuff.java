@@ -63,7 +63,7 @@ public class SummonSoulSealBuff extends TrinketBuff {
     }
 
     public void runSummon(Level level, ItemAttackerMob attackerMob) {
-        AttackingFollowingMob mob = (AttackingFollowingMob) MobRegistry.getMob("smallsoulsummon", level);
+        AttackingFollowingMob mob = (AttackingFollowingMob) MobRegistry.getMob("sealghostsummon", level);
         this.summonMob(attackerMob, mob);
     }
     public void summonMob(ItemAttackerMob attackerMob, AttackingFollowingMob mob) {

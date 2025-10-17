@@ -36,7 +36,7 @@ public class SoulChasmIncursionLevel extends IncursionLevel {
     }
 
     public void generateLevel(BiomeMissionIncursionData incursionData, AltarData altarData) {
-        CaveGeneration cg = new CaveGeneration(this, "soulcaverocktile", "soulcaverock");
+        CaveGeneration cg = new CaveGeneration(this, "chasmrocktile", "chasmrock");
         cg.random.setSeed(incursionData.getUniqueID());
         GameEvents.triggerEvent(new GenerateCaveLayoutEvent(this, cg), (e) -> cg.generateLevel(0.38F, 4, 3, 6));
         GameEvents.triggerEvent(new GeneratedCaveLayoutEvent(this, cg));
@@ -49,9 +49,9 @@ public class SoulChasmIncursionLevel extends IncursionLevel {
         //STRUCTURES
         GameEvents.triggerEvent(new GenerateCaveStructuresEvent(this, cg, presets), (e) -> {
             cg.generateRandomCrates(0.03F, ObjectRegistry.getObjectID("chasmcrates"));
-            GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.025F, 6, 7.0F, 20.0F, 4.0F, 8.0F, TileRegistry.getTileID("soulcavefloortile"), 0.7F, false);
+            GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.025F, 6, 7.0F, 20.0F, 4.0F, 8.0F, TileRegistry.getTileID("chasmfloortile"), 0.7F, false);
             GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.04F, 2, 7.0F, 25.0F, 3.0F, 12.0F, TileRegistry.getTileID("moltenspirits"), 1.0F, true);
-            GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.025F, 6, 7.0F, 20.0F, 1.0F, 3.0F, TileRegistry.getTileID("soulcavecracktile"), 0.8F, false);
+            GenerationTools.generateRandomSmoothTileVeins(this, cg.random, 0.025F, 6, 7.0F, 20.0F, 1.0F, 3.0F, TileRegistry.getTileID("chasmcracktile"), 0.8F, false);
             this.liquidManager.calculateShores();
             //Big shrine
             Preset shrineBig = new ChasmBigShrinePreset(cg.random);
@@ -72,10 +72,10 @@ public class SoulChasmIncursionLevel extends IncursionLevel {
 
         //DECORATIONS
         GameEvents.triggerEvent(new GenerateCaveMiniBiomesEvent(this, cg), (e) -> {
-            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcaverocks"), 0.005F);
-            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcaverocksmall"), 0.01F);
-            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcavedecorations"), 0.008F);
-            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soulcrystalbig"), 0.006F);
+            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("chasmrocks"), 0.005F);
+            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("chasmrocksmall"), 0.01F);
+            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("chasmdebree"), 0.008F);
+            cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("bigsoulcrystal"), 0.006F);
             cg.generateRandomSingleRocks(ObjectRegistry.getObjectID("soullantern"), 0.0015F);
         });
         GameEvents.triggerEvent(new GeneratedCaveMiniBiomesEvent(this, cg));
@@ -86,9 +86,9 @@ public class SoulChasmIncursionLevel extends IncursionLevel {
         if (incursionData instanceof BiomeExtractionIncursionData) {
             cg.generateGuaranteedOreVeins(100, 8, 16, ObjectRegistry.getObjectID("crystalizedsoul"));
         }
-        cg.generateGuaranteedOreVeins(75, 6, 12, ObjectRegistry.getObjectID("upgradeshardsoulcaverock"));
-        cg.generateGuaranteedOreVeins(75, 6, 12, ObjectRegistry.getObjectID("alchemyshardsoulcaverock"));
-        this.generateUpgradeAndAlchemyVeinsBasedOnPerks(altarData, cg, "upgradeshardsoulcaverock", "alchemyshardsoulcaverock", cg.random);
+        cg.generateGuaranteedOreVeins(75, 6, 12, ObjectRegistry.getObjectID("upgradeshardchasmrock"));
+        cg.generateGuaranteedOreVeins(75, 6, 12, ObjectRegistry.getObjectID("alchemyshardchasmrock"));
+        this.generateUpgradeAndAlchemyVeinsBasedOnPerks(altarData, cg, "upgradeshardchasmrock", "alchemyshardchasmrock", cg.random);
         GameEvents.triggerEvent(new GeneratedCaveOresEvent(this, cg));
     }
     public LootTable getCrateLootTable() {

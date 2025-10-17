@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 
 public class SoulChasmIncursionBiome extends IncursionBiome {
     public SoulChasmIncursionBiome() {
-        super("souldragonhead");
+        super("chasmdragon");
     }
 
     public Collection<Item> getExtractionItems(IncursionData incursionData) {
@@ -30,11 +30,11 @@ public class SoulChasmIncursionBiome extends IncursionBiome {
     }
 
     public LootTable getHuntDrop(IncursionData incursionData) {
-        return new LootTable(new ChanceLootItem(0.7F, "soulcoreitem"));
+        return new LootTable(new ChanceLootItem(0.7F, "soulcore"));
     }
 
     public LootTable getBossDrop(IncursionData incursionData) {
-        return new LootTable(super.getBossDrop(incursionData), LootItem.between("soulessence", 20, 25), new ChanceLootItem(0.08F, "carkeys"));
+        return new LootTable(super.getBossDrop(incursionData), LootItem.between("soulessence", 20, 25), new ChanceLootItem(0.1F, "carkeys"));
     }
 
     public TicketSystemList<Supplier<IncursionData>> getAvailableIncursions(int tabletTier, IncursionData incursionData) {
