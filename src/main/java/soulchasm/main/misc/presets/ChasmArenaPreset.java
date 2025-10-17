@@ -12,16 +12,16 @@ public class ChasmArenaPreset extends Preset {
         super(size, size);
         int mid = size / 2;
         int maxDistance = size / 2 * 32;
-        int grasstile = TileRegistry.getTileID("soulcavegrass");
-        int soulstonetile = TileRegistry.getTileID("soulcavebrickfloortile");
-        int additionaltile = TileRegistry.getTileID("soulcavefloortile");
+        int grasstile = TileRegistry.getTileID("chasmgrass");
+        int soulstonetile = TileRegistry.getTileID("chasmbrickfloortile");
+        int additionaltile = TileRegistry.getTileID("chasmfloortile");
         int tree = ObjectRegistry.getObjectID("soultree");
         int treesappling = ObjectRegistry.getObjectID("soultreesapling");
-        int grass = ObjectRegistry.getObjectID("soulcavegrassobject");
+        int grass = ObjectRegistry.getObjectID("chasmgrassobject");
         int lunartear = ObjectRegistry.getObjectID("lunartear");
         int lunartearpath = ObjectRegistry.getObjectID("lunartearspath");
-        int wall = ObjectRegistry.getObjectID("soulbrickwall");
-        int spike = ObjectRegistry.getObjectID("spikeobject");
+        int wall = ObjectRegistry.getObjectID("chasmbrickwall");
+        int spike = ObjectRegistry.getObjectID("altarspikeobject");
 
         for(int x = 0; x < this.width; ++x) {
             for(int y = 0; y < this.height; ++y) {
@@ -51,7 +51,7 @@ public class ChasmArenaPreset extends Preset {
                 }
             }
         }
-        this.addMob("sphereeffectmob", mid, mid, false);
+        this.addMob("altareffectentity", mid, mid, false);
         int spikeOffset = 4;
         this.setObject(mid+spikeOffset + 1, mid, spike, 3);
         this.setObject(mid-spikeOffset - 1, mid, spike, 1);

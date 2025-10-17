@@ -14,9 +14,9 @@ public class ChasmShrinePreset extends Preset {
         super(size, size);
         int mid = this.width / 2;
         int maxDistance = size / 2 * 32;
-        int floor1 = TileRegistry.getTileID("soulcavebrickfloortile");
-        int floor2 = TileRegistry.getTileID("soulcavefloortile");
-        int monument = ObjectRegistry.getObjectID("soulmonumentobject");
+        int floor1 = TileRegistry.getTileID("chasmbrickfloortile");
+        int floor2 = TileRegistry.getTileID("chasmfloortile");
+        int monument = ObjectRegistry.getObjectID("chasmmonumentobject");
 
         Point point = new Point(size/2, size/2);
         for(int x = 0; x < this.width; ++x) {
@@ -37,9 +37,9 @@ public class ChasmShrinePreset extends Preset {
         }
         this.setObject(point.x, point.y, monument);
         this.addInventory(SoulChasm.chasmShrineLootTable, random, point.x, point.y, monument);
-        this.setObject(point.x+4, point.y, ObjectRegistry.getObjectID("statueobject"), 3);
-        this.setObject(point.x-4, point.y, ObjectRegistry.getObjectID("statueobject"), 1);
-        this.setObject(point.x, point.y+4, ObjectRegistry.getObjectID("statueobject"), 0);
-        this.setObject(point.x, point.y-4, ObjectRegistry.getObjectID("statueobject"), 2);
+        this.setObject(point.x+4, point.y, ObjectRegistry.getObjectID("chasmstatueobject"), 3);
+        this.setObject(point.x-4, point.y, ObjectRegistry.getObjectID("chasmstatueobject"), 1);
+        this.setObject(point.x, point.y+4, ObjectRegistry.getObjectID("chasmstatueobject"), 0);
+        this.setObject(point.x, point.y-4, ObjectRegistry.getObjectID("chasmstatueobject"), 2);
     }
 }
