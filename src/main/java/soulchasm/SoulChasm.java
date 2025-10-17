@@ -501,11 +501,11 @@ public class SoulChasm {
 
         modRecipes.add(new Recipe("chasmrock", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 4}}")));
         modRecipes.add(new Recipe("crystalizedsoul", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 4}, {crystalizedsouloreitem, 1}}")));
-        modRecipes.add(new Recipe("upgradeshardsoulcaverock", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 4}, {upgradeshard, 1}}")));
-        modRecipes.add(new Recipe("alchemyshardsoulcaverock", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 4}, {alchemyshard, 1}}")));
-        modRecipes.add(new Recipe("soulcaverocksmall", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 20}}")));
-        modRecipes.add(new Recipe("soulcaverocks", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 30}}")));
-        modRecipes.add(new Recipe("magestatueobject", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 50}}")));
+        modRecipes.add(new Recipe("upgradeshardchasmrock", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 4}, {upgradeshard, 1}}")));
+        modRecipes.add(new Recipe("alchemyshardchasmrock", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 4}, {alchemyshard, 1}}")));
+        modRecipes.add(new Recipe("chasmrocksmall", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 20}}")));
+        modRecipes.add(new Recipe("chasmrocks", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 30}}")));
+        modRecipes.add(new Recipe("chasmmagestatueobject", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 50}}")));
         modRecipes.add(new Recipe("soulwoodbathtub", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 12}}")));
         modRecipes.add(new Recipe("soulwoodbed", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 10}, {wool, 10}}")));
         modRecipes.add(new Recipe("soulwooddoublebed", 1, RecipeTechRegistry.CARPENTER, Recipes.ingredientsFromScript("{{soulwoodlogitem, 20}, {wool, 20}}")));
