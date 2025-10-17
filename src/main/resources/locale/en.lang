@@ -128,17 +128,14 @@ glowingjarobject=Provides small amount of light when placed or held
 bookofsoulstip=Shoots slowly big, homing projectile
 bookofsoulssecondarytip=Press [input=mouse2] to activate energy overflow and shoot rapidly smaller, homing projectiles
 soulstatuetip=Summons Soul Idol to aid you in battle\nIdol buffs nearby players in range\nWhen over 80% of hp, buffs damage and attack speed, regenerates hp and resilience
-
 argemiaplushie=Argemia Plushie
 fairplushie=Fair Plushie
 v1plushie=V1 Plushie
 fumoplushie=Fumo Plushie
 devplushie=Endzio Plushie
-
 argemiaplushietip=Loves shrimp
 v1plushietip=§6Blood is fuel
 devplushietip=(^-^)
-
 [mob]
 chasmdragon=Ancient Dragon
 chasmdragonbody=Ancient Dragon
