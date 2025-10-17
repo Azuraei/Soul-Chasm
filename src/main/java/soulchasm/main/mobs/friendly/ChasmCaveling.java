@@ -16,7 +16,7 @@ public class ChasmCaveling extends CavelingMob {
         super.init();
         this.texture = SoulChasm.chasmCaveling;
         this.popParticleColor = SoulChasm.chasmStoneLightMapColor;
-        this.singleRockSmallStringID = "soulcaverocksmall";
+        this.singleRockSmallStringID = "chasmrocksmall";
         if (this.item == null) {
             this.item = GameRandom.globalRandom.getOneOf(new InventoryItem("crystalizedsouloreitem", GameRandom.globalRandom.getIntBetween(8, 12)));
         }

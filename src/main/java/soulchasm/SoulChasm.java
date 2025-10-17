@@ -394,7 +394,7 @@ public class SoulChasm {
         // === Friendly Textures ===
         Wisp.texture = GameTexture.fromFile("mobs/wisp");
         Firefly.texture = GameTexture.fromFile("mobs/firefly");
-        SoulStatueSummon.texture = GameTexture.fromFile("items/magestatueobject");
+        SoulStatueSummon.texture = GameTexture.fromFile("items/chasmmagestatueobject");
         SoulStatueSummon.texture_ring = GameTexture.fromFile("particles/soulstatuering");
         chasmCaveling = new HumanTexture(GameTexture.fromFile("mobs/chasmcaveling"), GameTexture.fromFile("mobs/chasmcavelingarms_front"), GameTexture.fromFile("mobs/chasmcavelingarms_back"));
         SealGhostSummon.texture = GameTexture.fromFile("mobs/sealghostsummon");
