@@ -25,12 +25,12 @@ public class ChasmDebreeObject extends SingleRockSmall {
         super(type, textureName, mapColor);
         this.canPlaceOnLiquid = false;
         this.type = type;
-        this.droppedStone = "soulcaverockitem";
+        this.droppedStone = "chasmrockitem";
     }
 
     @Override
     public GameMessage getNewLocalization() {
-        return new LocalMessage("object", "soulcavedecorations");
+        return new LocalMessage("object", "chasmdebree");
     }
 
     @Override

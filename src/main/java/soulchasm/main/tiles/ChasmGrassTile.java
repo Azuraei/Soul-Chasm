@@ -19,7 +19,7 @@ public class ChasmGrassTile extends TerrainSplatterTile {
     private final GameRandom drawRandom;
 
     public ChasmGrassTile() {
-        super(false, "soulcavegrass");
+        super(false, "chasmgrass");
         this.mapColor = SoulChasm.chasmGrassMapColor;
         this.canBeMined = true;
         this.drawRandom = new GameRandom();
@@ -27,11 +27,11 @@ public class ChasmGrassTile extends TerrainSplatterTile {
     }
 
     public LootTable getLootTable(Level level, int tileX, int tileY) {
-        return new LootTable(new ChanceLootItem(0.08F, "soulgrassseeditem"));
+        return new LootTable(new ChanceLootItem(0.08F, "chasmgrassseeditem"));
     }
 
     public void addSimulateLogic(Level level, int x, int y, long ticks, SimulatePriorityList list, boolean sendChanges) {
-        GrassTile.addSimulateGrow(level, x, y, growChance, ticks, "soulcavegrassobject", list, sendChanges);
+        GrassTile.addSimulateGrow(level, x, y, growChance, ticks, "chasmgrassobject", list, sendChanges);
         GrassTile.addSimulateGrow(level, x, y, growChance, ticks, "lunartear", list, sendChanges);
         GrassTile.addSimulateGrow(level, x, y, growChance, ticks, "lunartearspath", list, sendChanges);
     }

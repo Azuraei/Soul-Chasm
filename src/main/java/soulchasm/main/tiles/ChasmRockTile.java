@@ -11,7 +11,7 @@ public class ChasmRockTile extends TerrainSplatterTile {
     private final GameRandom drawRandom;
 
     public ChasmRockTile() {
-        super(false, "soulcaverocktile");
+        super(false, "chasmrocktile");
         this.mapColor = new Color(17, 45, 57, 255);
         this.canBeMined = true;
         this.drawRandom = new GameRandom();

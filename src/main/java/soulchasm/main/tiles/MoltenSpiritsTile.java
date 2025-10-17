@@ -32,7 +32,7 @@ public class MoltenSpiritsTile extends LiquidTile {
     protected final GameRandom drawRandom;
 
     public MoltenSpiritsTile() {
-        super(SoulChasm.chasmMagmaMapColor, "meltedsouls");
+        super(SoulChasm.chasmMagmaMapColor, "moltenspirits");
         this.lightLevel = 100;
         this.lightHue = 220.0F;
         this.lightSat = 0.4F;
@@ -41,7 +41,7 @@ public class MoltenSpiritsTile extends LiquidTile {
 
     protected void loadTextures() {
         super.loadTextures();
-        this.texture = tileTextures.addTexture(GameTexture.fromFile("tiles/meltedsouls"));
+        this.texture = tileTextures.addTexture(GameTexture.fromFile("tiles/moltenspirits"));
     }
 
     @Override

@@ -32,8 +32,8 @@ public class BigSoulCrystalObject extends GameObject {
 
     public BigSoulCrystalObject() {
         super(new Rectangle(7, 7, 22, 18));
-        this.textureName = "soulcrystalbig";
-        this.glowtextureName = "soulcrystalbig_glow";
+        this.textureName = "bigsoulcrystal";
+        this.glowtextureName = "bigsoulcrystal_glow";
         this.mapColor = chasmCrystalMapColor;
         this.toolTier = 5;
         this.displayMapTooltip = true;

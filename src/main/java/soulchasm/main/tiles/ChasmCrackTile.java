@@ -31,7 +31,7 @@ public class ChasmCrackTile extends TerrainSplatterTile {
     private GameTextureSection particleSection;
 
     public ChasmCrackTile() {
-        super(false, "soulcavecracktile");
+        super(false, "chasmcracktile");
         this.mapColor = chasmMagmaMapColor;
         this.canBeMined = true;
         this.drawRandom = new GameRandom();

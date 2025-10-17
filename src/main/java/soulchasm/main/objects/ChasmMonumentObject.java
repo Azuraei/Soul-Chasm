@@ -47,8 +47,8 @@ public class ChasmMonumentObject extends FurnitureObject {
 
     public void loadTextures() {
         super.loadTextures();
-        texture = GameTexture.fromFile("objects/soulmonumentobject");
-        glow_texture = GameTexture.fromFile("objects/soulmonumentobject_glow");
+        texture = GameTexture.fromFile("objects/chasmmonumentobject");
+        glow_texture = GameTexture.fromFile("objects/chasmmonumentobject_glow");
     }
 
     @Override

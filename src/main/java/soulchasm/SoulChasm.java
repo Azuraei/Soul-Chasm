@@ -255,7 +255,7 @@ public class SoulChasm {
         ItemRegistry.registerItem("crystalizedsouloreitem", new MatItem(500, Item.Rarity.UNCOMMON), 10.0F, true);
         ItemRegistry.registerItem("soulmetalbar", new MatItem(250, Item.Rarity.UNCOMMON), -1.0F, true);
         ItemRegistry.registerItem("soulwoodlogitem", (new MatItem(500, "anylog")).setItemCategory("materials", "logs"), 2.0F, true);
-        ItemRegistry.registerItem("soulgrassseeditem", new GrassSeedItem("chasmgrass"), 2.0F, true);
+        ItemRegistry.registerItem("chasmgrassseeditem", new GrassSeedItem("chasmgrass"), 2.0F, true);
         ItemRegistry.registerItem("wispitem", new MatItem(500, Item.Rarity.UNCOMMON, "glowingbugs"), 1.0F, true);
         ItemRegistry.registerItem("fireflyitem", new MatItem(500, Item.Rarity.UNCOMMON, "glowingbugs"), 1.0F, true);
         ItemRegistry.registerItem("fireflyjar", new ObjectItem(getObject("fireflyjarobject")), -1.0F, true);

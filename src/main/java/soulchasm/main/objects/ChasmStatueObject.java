@@ -35,7 +35,7 @@ public class ChasmStatueObject extends GameObject {
     @Override
     public void loadTextures() {
         super.loadTextures();
-        texture = GameTexture.fromFile("objects/statueobject");
+        texture = GameTexture.fromFile("objects/chasmstatueobject");
     }
 
     @Override

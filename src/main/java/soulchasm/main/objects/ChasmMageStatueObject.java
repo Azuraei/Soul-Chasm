@@ -31,7 +31,7 @@ public class ChasmMageStatueObject extends GameObject {
 
     public void loadTextures() {
         super.loadTextures();
-        texture = GameTexture.fromFile("objects/magestatueobject");
+        texture = GameTexture.fromFile("objects/chasmmagestatueobject");
     }
 
     public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList, Level level, int tileX, int tileY, TickManager tickManager, GameCamera camera, PlayerMob perspective) {

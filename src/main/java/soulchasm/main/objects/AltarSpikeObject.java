@@ -35,7 +35,7 @@ public class AltarSpikeObject extends GameObject {
     @Override
     public void loadTextures() {
         super.loadTextures();
-        texture = GameTexture.fromFile("objects/spikeobject");
+        texture = GameTexture.fromFile("objects/altarspikeobject");
     }
 
     public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList, Level level, int tileX, int tileY, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
