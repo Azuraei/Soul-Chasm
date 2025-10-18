@@ -48,8 +48,8 @@ public class ChasmWarriorStatue extends HostileMob {
     }
 
     protected void changeAI() {
-        CollisionPlayerChaserAI<ChasmWarriorStatue> chasmwarriorai = new CollisionPlayerChaserAI(1200, new GameDamage(80.0F), 25);
-        this.ai = new BehaviourTreeAI<>(this, chasmwarriorai);
+        CollisionPlayerChaserAI<ChasmWarriorStatue> chasmWarriorAI = new CollisionPlayerChaserAI(1200, new GameDamage(80.0F), 25);
+        this.ai = new BehaviourTreeAI<>(this, chasmWarriorAI);
         this.isHostile = true;
     }
 
@@ -85,7 +85,7 @@ public class ChasmWarriorStatue extends HostileMob {
         return super.isHit(event, attacker);
     }
 
-    private void spawnSoul(){
+    private void spawnSoul() {
         MeleeGhostSpawnEvent event = new MeleeGhostSpawnEvent((int) this.x, (int)this.y, 2000, this);
         this.getLevel().entityManager.events.add(event);
     }
