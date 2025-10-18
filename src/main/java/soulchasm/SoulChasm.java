@@ -354,6 +354,7 @@ public class SoulChasm {
         registerPlushie("argemia", ArgemiaPlushie.class, true);
         registerPlushie("fumo", FumoPlushie.class, false);
         registerPlushie("dev", DevPlushie.class, true);
+        registerPlushie("shark", SharkPlushie.class, false);
         // == Car Colors ==
         carColors.add(new Color(210, 0, 0));
         carColors.add(new Color(210, 91, 0));
@@ -382,6 +383,7 @@ public class SoulChasm {
         ArgemiaPlushie.gameTexture = GameTexture.fromFile("mobs/plushies/argemiaplushie");
         FumoPlushie.gameTexture = GameTexture.fromFile("mobs/plushies/fumoplushie");
         DevPlushie.gameTexture = GameTexture.fromFile("mobs/plushies/devplushie");
+        SharkPlushie.gameTexture = GameTexture.fromFile("mobs/plushies/sharkplushie");
         // === Car Textures ===
         CarMob.texture_body =  GameTexture.fromFile("mobs/car_body");
         CarMob.texture_top =  GameTexture.fromFile("mobs/car_top");
