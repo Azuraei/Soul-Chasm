@@ -20,7 +20,6 @@ import necesse.inventory.lootTable.LootTable;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 import soulchasm.main.misc.levelevents.MeleeGhostSpawnEvent;
-import soulchasm.main.mobs.boss.ChasmDragon;
 import soulchasm.main.projectiles.SoulHomingProjectile;
 
 import java.awt.*;
