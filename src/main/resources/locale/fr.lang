@@ -58,6 +58,10 @@ soulwoodfence=Clôture en bois fantôme
 soulwoodfencegate=Porte de clôture en bois fantôme
 magestatueobject=Statue de mage
 soultikitorchobject=Torche tiki des âmes
+chasmdebree=Soul Chasm Stone
+chasmbrickdoorlocked=Locked Soul Chasm Brick Door
+soulwooddoorlocked=Locked Phantom Wood Door
+altarspikeobject=Spike
 [item]
 soulscythe=Faucheur d'âmes
 soulmetalbow=Arc fantôme
@@ -124,16 +128,14 @@ glowingjarobject=Fournit une petite quantité de lumière lorsqu'il est placé o
 bookofsoulstip=Tire lentement un gros projectile à tête chercheuse
 bookofsoulssecondarytip=Appuyez [input=mouse2] pour activer le débordement d'énergie et tirer des projectiles à tête chercheuse rapidement plus petits
 soulstatuetip=Invoque l'Idole de l'âme pour vous aider dans la bataille.\nL'idole améliore les joueurs à proximité\nLorsqu'il est à plus de 80 % de ses points de vie, il augmente les dégâts et la vitesse d'attaque, régénère les points de vie et la résilience
-
 argemiaplushie=Peluche Argemia
 fairplushie=Peluche Fair
 v1plushie=Peluche V1
 fumoplushie=Peluche Fumo
 devplushie=Peluche Endzio
-
 argemiaplushietip=Adore les crevettes
 v1plushietip=§6Le sang, c'est du carburant
-
+devplushietip=(^-^)
 [mob]
 souldragonhead=Dragon antique
 souldragonbody=Dragon antique
@@ -163,9 +165,7 @@ soulstatuebuff=Bénédiction de l'idole
 [ui]
 incursionmodifierhaunted=Hanté
 incursionmodifierhauntedinfo=Lorsqu'un ennemi meurt, son fantôme apparaît.
-plushie_tip=Hanw
 [biome]
-soulchasmincursionbiome=Le gouffre des âmes
 soulchasmbiome=Le gouffre des âmes
 [journal]
 soulchasmincursion=Le gouffre des âmes Incursion

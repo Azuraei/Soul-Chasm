@@ -58,6 +58,10 @@ soulwoodfence=Забор из Фантомного дерева
 soulwoodfencegate=Калитка из Фантомного дерева
 magestatueobject=Статуя Мага
 soultikitorchobject=Факел Души Тики
+chasmdebree=Soul Chasm Stone
+chasmbrickdoorlocked=Locked Soul Chasm Brick Door
+soulwooddoorlocked=Locked Phantom Wood Door
+altarspikeobject=Spike
 [item]
 soulscythe=Жнец душ
 soulmetalbow=Призрачный лук
@@ -124,13 +128,14 @@ glowingjarobject=Обеспечивает небольшое количеств�
 bookofsoulstip=Стреляет медленным большим самонаводящимся снарядом
 bookofsoulssecondarytip=Нажмите [input=mouse2], чтобы активировать перелив энергии и быстро стрелять меньшими самонаводящимися снарядами
 soulstatuetip=Призывает Идола Души, чтобы помочь вам в бою\nИдол усиливает ближайших игроков в радиусе действия\При уровне здоровья более 80% усиливает урон и скорость атаки, в противном случае восстанавливает здоровье и устойчивость
-
 argemiaplushie=Аргемия Плюшевая
 fairplushie=Fair Плюшевая
 v1plushie=V1 Плюшевая
 fumoplushie=Fumo Плюшевая
 devplushie=Endzio Плюшевая
-
+argemiaplushietip=Loves shrimp
+v1plushietip=§6Blood is fuel
+devplushietip=(^-^)
 [mob]
 souldragonhead=Древний дракон
 souldragonbody=Древний дракон 
@@ -160,9 +165,7 @@ soulstatuebuff=Благословение идола
 [ui]
 incursionmodifierhaunted=Населенный призраками
 incursionmodifierhauntedinfo=После смерти врага появляется его призрак
-plushie_tip=Погладить
 [biome]
-soulcavernincursionbiome=Пропасть душ
 soulcavernbiome=Пропасть душ
 [journal]
 soulchasmincursion=Вторжение в Пропасть душ

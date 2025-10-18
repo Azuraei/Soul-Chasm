@@ -1,6 +1,3 @@
-# Translation made by shenyx110 (https://steamcommunity.com/profiles/76561198875431749/)
-#Small changes / additions by Endzio
-
 [tile]
 soulcavegrass=灵魂裂谷草
 soulcaverocktile=灵魂裂谷石地砖
@@ -13,7 +10,6 @@ soulcavetiledfloortile=灵魂裂谷瓷砖地板
 asphalttile=沥青
 meltedsouls=熔融灵魂
 soulcavecracktile=裂缝
-
 [object]
 crystalizedsoul=结晶灵魂
 crystalizedsoulore=结晶灵魂矿石
@@ -62,7 +58,10 @@ soulwoodfence=幽灵木围栏
 soulwoodfencegate=幽灵木围栏门
 magestatueobject=法师雕像
 soultikitorchobject=灵魂提基火把
-
+chasmdebree=Soul Chasm Stone
+chasmbrickdoorlocked=Locked Soul Chasm Brick Door
+soulwooddoorlocked=Locked Phantom Wood Door
+altarspikeobject=Spike
 [item]
 soulscythe=灵魂收割者
 soulmetalbow=幻影弓
@@ -103,7 +102,6 @@ bookofsouls=灵魂之书
 soulstatue=灵魂偶像
 lunartearflowerhead=月之泪花
 tobeblindfold=黑色眼罩
-
 [itemtooltip]
 soulabsorbshield=格挡伤害会向攻击者发射火焰爆发\n成功格挡还会短暂增加攻击速度和韧性获得
 phantomfeathertrinket=减少最大生命值25%，并额外获得四个冲刺堆叠
@@ -130,13 +128,14 @@ glowingjarobject=放置或手持时提供少量光源
 bookofsoulstip=射出缓慢的大型追踪弹丸
 bookofsoulssecondarytip=按下[input=mouse2]激活能量溢出，快速射出较小的追踪弹丸
 soulstatuetip=召唤灵魂偶像协助你战斗\n偶像会给范围内附近的玩家带来增益效果\n当生命值超过80%时，增益包括提高伤害和攻击速度，恢复生命值和韧性
-
 argemiaplushie=阿尔吉米亚毛绒玩具
 fairplushie=公平毛绒玩具
 v1plushie=V1 毛绒玩具
 fumoplushie=Fumo 毛绒玩具
 devplushie=Endzio 毛绒玩具
-
+argemiaplushietip=Loves shrimp
+v1plushietip=§6Blood is fuel
+devplushietip=(^-^)
 [mob]
 souldragonhead=远古龙头部
 souldragonbody=远古龙身体
@@ -150,7 +149,6 @@ soulmage=灵魂召唤师
 smallsoulsummon=次级灵魂
 chasmcaveling=灵魂裂谷穴居人
 carmob=汽车
-
 [buff]
 soulfirebuff=灵魂烈焰
 soulabsorbshieldbuff=吸收攻击
@@ -164,14 +162,10 @@ soulofsoulsoverchargebuff=灵魂能量溢出
 soulbowbuff=幻影过载
 soulbowcooldownbuff=幻影弓冷却时间
 soulstatuebuff=偶像祝福
-
 [ui]
 incursionmodifierhaunted=闹鬼
 incursionmodifierhauntedinfo=敌人死后，它的鬼魂会出现。
-plushie_tip=宠物
-
 [biome]
-soulchasmincursionbiome=灵魂裂谷入侵环境
 soulchasmbiome=灵魂裂谷环境
 [journal]
 soulchasmincursion=灵魂深渊的入侵

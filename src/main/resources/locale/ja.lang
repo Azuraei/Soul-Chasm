@@ -10,7 +10,6 @@ soulcavetiledfloortile=ソウルケイブタイルフロア
 asphalttile=アスファルトタイル
 meltedsouls=溶けたソウル
 soulcavecracktile=クラックタイル
-
 [object]
 crystalizedsoul=結晶した魂
 crystalizedsoulore=結晶した魂の鉱石
@@ -59,7 +58,10 @@ soulwoodfence=幽霊木のフェンス
 soulwoodfencegate=幽霊木のフェンスゲート
 magestatueobject=魔法使いの像
 soultikitorchobject=ソウルトーチ
-
+chasmdebree=Soul Chasm Stone
+chasmbrickdoorlocked=Locked Soul Chasm Brick Door
+soulwooddoorlocked=Locked Phantom Wood Door
+altarspikeobject=Spike
 [item]
 soulscythe=ソウルサイズ
 soulmetalbow=ファントムボウ
@@ -100,7 +102,6 @@ bookofsouls=霊魂の書
 soulstatue=霊魂の像
 lunartearflowerhead=月の涙の花
 tobeblindfold=黒いアイマスク
-
 [itemtooltip]
 soulabsorbshield=ガードによるダメージは攻撃者に炎の爆発を発射します。\n成功したガードは、一時的に攻撃速度と耐久性を増加させます。 
 phantomfeathertrinket=最大HPを25%減少させ、さらに4つのダッシュスタックを獲得します。  
@@ -127,12 +128,14 @@ glowingjarobject=置いたり手に持ったりすると少量の光を提供す
 bookofsoulstip=ゆっくりと飛ぶ大型の追尾弾丸を発射する
 bookofsoulssecondarytip=押す[input=mouse2]エネルギーを活性化し、小さな追尾弾を素早く発射する。
 soulstatuetip=魂の像を召喚して戦いを助ける\n像は範囲内の近くのプレイヤーにバフ効果を与えます。\n生命値が80%を超えると、バフにはダメージと攻撃速度の向上、生命値と耐久力の回復が含まれます。
-
 argemiaplushie=アルゲミアぬいぐるみ
 fairplushie=公平ぬいぐるみ
 v1plushie=V1ぬいぐるみ
 fumoplushie=フモぬいぐるみ
 devplushie=エンジオぬいぐるみ
+argemiaplushietip=Loves shrimp
+v1plushietip=§6Blood is fuel
+devplushietip=(^-^)
 [mob]
 souldragonhead=古代ドラゴンの頭
 souldragonbody=古代ドラゴンの体
@@ -146,7 +149,6 @@ soulmage=魂の召喚士
 smallsoulsummon=小さな魂の召喚
 chasmcaveling=魂の亀裂の穴居人
 carmob=車
-
 [buff]
 soulfirebuff=ソウルファイア
 soulabsorbshieldbuff=攻撃吸収
@@ -163,9 +165,7 @@ soulstatuebuff=彫像の祝福
 [ui]
 incursionmodifierhaunted=幽霊
 incursionmodifierhauntedinfo=敵が死んだ後、その魂が現れます。
-plushie_tip=ペット
 [biome]
-soulchasmincursionbiome=ソウルクレバス侵入環境
 soulchasmbiome=ソウルクレバス環境
 [journal]
 soulchasmincursion=魂の裂け目の侵入

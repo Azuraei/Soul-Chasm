@@ -61,7 +61,7 @@ soultikitorchobject=Ruh Tiki Meşalesi
 soulcavedecorations=Derin Ruh Taşı
 soulbrickdoorlocked=Kilitli Derin Ruh Tuğla Kapı
 soulwooddoorlocked=Kilitli Derin Ruh Ahşap Kapı
-spikeobject=
+spikeobject=Spike
 [item]
 soulscythe=Ölüm Meleği
 soulmetalbow=Ruhani Yay
@@ -128,17 +128,14 @@ glowingjarobject=Yerleştirildiğinde veya tutulduğunda az miktarda ışık sa�
 bookofsoulstip=Yavaşça büyük, güdümlü mermi fırlatır
 bookofsoulssecondarytip=[input=mouse2] Enerji taşmasını etkinleştirmek ve hızla daha küçük, güdümlü mermiler fırlatmak için basın
 soulstatuetip=Savaşta size yardımcı olması için Ruh Putu çağırır\nPut, menzil içindeki yakın oyuncuları güçlendirir\nHp'nin %80'ini aştığında, hasarı ve saldırı hızını güçlendirir, hp ve direnci yeniler
-
 argemiaplushie=Argemia Pelüşü
 fairplushie=Panayır Pelüşü
 v1plushie=V1 Pelüşü
 fumoplushie=Fumo Pelüşü
 devplushie=Endzio Pelüşü
-
 argemiaplushietip=Karides sever
 v1plushietip=§6Kan yakıttır
 devplushietip=(^-^)
-
 [mob]
 souldragonhead=Antik Ejder
 souldragonbody=Antik Ejder

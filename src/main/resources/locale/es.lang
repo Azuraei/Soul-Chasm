@@ -128,17 +128,14 @@ glowingjarobject=Proporciona una pequeña cantidad de luz cuando se coloca o se 
 bookofsoulstip=Dispara lentamente un gran proyectil teledirigido
 bookofsoulssecondarytip=Presiona [input=mouse2] para activar Exceso de Energia y disparar pequeños proyectiles teledirigidos
 soulstatuetip=Invoca un ídolo del alma para que te ayude en combate\nEl ídolo da beneficios a los jugadores que se encuentran cerca\nAl tener más del 80% de vida, otorga daño y velocidad de ataque, recupera salud y resiliencia
-
 argemiaplushie=Peluche Argemia
 fairplushie=Peluche Fair
 v1plushie=Peluche V1
 fumoplushie=Peluche Fumo
 devplushie=Peluche Endzio
-
 argemiaplushietip=Le encanta el camarón
 v1plushietip=§6Usa sangre como combustible
 devplushietip=(^-^)
-
 [mob]
 souldragonhead=Dragón Antiguo
 souldragonbody=Dragón Antiguo

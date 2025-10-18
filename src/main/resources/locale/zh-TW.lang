@@ -1,7 +1,3 @@
-# Simplified Chinese Translation made by shenyx110 (https://steamcommunity.com/profiles/76561198875431749/)
-#Translated into Chinese - Traditional by (https://steamcommunity.com/profiles/76561198318064338/)
-#Small changes / additions by Endzio
-
 [tile]
 soulcavegrass=靈魂裂縫草
 soulcaverocktile=靈魂裂縫石地磚
@@ -14,7 +10,6 @@ soulcavetiledfloortile=靈魂裂縫瓷磚地板
 asphalttile=瀝青
 meltedsouls=熔融靈魂
 soulcavecracktile=裂縫
-
 [object]
 crystalizedsoul=結晶靈魂
 crystalizedsoulore=結晶靈魂礦石
@@ -63,7 +58,10 @@ soulwoodfence=幽靈木圍欄
 soulwoodfencegate=幽靈木圍欄門
 magestatueobject=法師雕像
 soultikitorchobject=靈魂火炬
-
+chasmdebree=Soul Chasm Stone
+chasmbrickdoorlocked=Locked Soul Chasm Brick Door
+soulwooddoorlocked=Locked Phantom Wood Door
+altarspikeobject=Spike
 [item]
 soulscythe=靈魂收割者
 soulmetalbow=幻影弓
@@ -104,7 +102,6 @@ bookofsouls=靈魂之書
 soulstatue=靈魂雕像
 lunartearflowerhead=月之淚花
 tobeblindfold=黑色眼罩
-
 [itemtooltip]
 soulabsorbshield=格擋傷害會向攻擊者發射火焰爆發\n成功格擋還會短暫增加攻擊速度和韌性獲得
 phantomfeathertrinket=減少最大生命值25%，並額外獲得四個沖刺堆疊
@@ -131,13 +128,14 @@ glowingjarobject=放置或手持時提供少量光源
 bookofsoulstip=射出緩慢的大型追蹤彈丸
 bookofsoulssecondarytip=按下[input=mouse2]激活能量溢出，快速射出較小的追蹤彈丸
 soulstatuetip=召喚靈魂雕像協助你戰鬥\n雕像會給範圍內附近的玩家帶來增益效果\n當生命值超過80%時，增益包括提高傷害和攻擊速度，恢覆生命值和韌性
-
 argemiaplushie=阿爾吉米亞毛絨玩具
 fairplushie=公平毛絨玩具
 v1plushie=V1 毛絨玩具
 fumoplushie=Fumo 毛絨玩具
 devplushie=Endzio 毛絨玩具
-
+argemiaplushietip=Loves shrimp
+v1plushietip=§6Blood is fuel
+devplushietip=(^-^)
 [mob]
 souldragonhead=遠古龍頭部
 souldragonbody=遠古龍身體
@@ -151,7 +149,6 @@ soulmage=靈魂召喚師
 smallsoulsummon=次級靈魂
 chasmcaveling=靈魂裂縫穴居人
 carmob=汽車
-
 [buff]
 soulfirebuff=靈魂烈焰
 soulabsorbshieldbuff=吸收攻擊
@@ -165,14 +162,10 @@ soulofsoulsoverchargebuff=靈魂能量溢出
 soulbowbuff=幻影過載
 soulbowcooldownbuff=幻影弓冷卻時間
 soulstatuebuff=雕像祝福
-
 [ui]
 incursionmodifierhaunted=鬧鬼
 incursionmodifierhauntedinfo=敵人死後，它的鬼魂會出現。
-plushie_tip=寵物
-
 [biome]
-soulchasmincursionbiome=靈魂裂縫入侵環境
 soulchasmbiome=靈魂裂縫環境
 [journal]
 soulchasmincursion=靈魂裂縫的入侵

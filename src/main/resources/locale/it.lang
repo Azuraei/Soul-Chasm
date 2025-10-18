@@ -58,6 +58,10 @@ soulwoodfence=Recinzione in Legno Fantasma
 soulwoodfencegate=Cancello in Legno Fantasma
 magestatueobject=Statua del Mago
 soultikitorchobject=Torcia Tiki dell'Anima
+chasmdebree=Soul Chasm Stone
+chasmbrickdoorlocked=Locked Soul Chasm Brick Door
+soulwooddoorlocked=Locked Phantom Wood Door
+altarspikeobject=Spike
 [item]
 soulscythe=Mietitore di Anime
 soulmetalbow=Arco Fantasma
@@ -124,15 +128,14 @@ glowingjarobject=Produce una piccola quantità di luce quando posizionato o tenu
 bookofsoulstip=Spara lentamente un grosso proiettile a ricerca
 bookofsoulssecondarytip=Premi [input=mouse2] per attivare il sovraccarico di energia e sparare rapidamente piccoli proiettili a ricerca
 soulstatuetip=Evoca l'Idolo dell'Anima per aiutarti in battaglia\nL'Idolo potenzia i giocatori vicini al raggio d'azione\nQuando supera l'80% degli HP, aumenta il danno e la velocità d'attacco, rigenera gli HP e la resilienza
-
 argemiaplushie=Peluche di Argemia
 fairplushie=Peluche di Fair
 v1plushie=Peluche di V1
 fumoplushie=Peluche di Fumo
 devplushie=Peluche di Endzio
-
 argemiaplushietip=Ama i gamberetti
-
+v1plushietip=§6Blood is fuel
+devplushietip=(^-^)
 [mob]
 souldragonhead=Drago Antico
 souldragonbody=Drago Antico
@@ -162,9 +165,7 @@ soulstatuebuff=Benedizione dell'Idolo
 [ui]
 incursionmodifierhaunted=Infestato
 incursionmodifierhauntedinfo=Dopo la morte di un nemico, appare il suo fantasma.
-plushie_tip=Accarezzalo
 [biome]
-soulchasmincursionbiome=Abisso dell'Anima
 soulchasmbiome=Abisso dell'Anima
 [journal]
 soulchasmincursion=Incursione nelle'Abisso dell'Anima
