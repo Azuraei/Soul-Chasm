@@ -151,7 +151,7 @@ public class SoulChasm {
         TileRegistry.registerTile("soulwoodpath", new PathTiledTile("soulwoodpath", SoulChasm.chasmWoodMapColor), 5.0F, true);
         TileRegistry.registerTile("moltenspirits", new MoltenSpiritsTile(), 10.0F, true);
         TileRegistry.registerTile("chasmcracktile", new ChasmCrackTile(), 0.0F, false);
-        TileRegistry.registerTile("asphalt", new AsphaltTile(), -1.0F, true);
+        TileRegistry.registerTile("asphalttile", new AsphaltTile(), -1.0F, true);
         // === Objects ===
         RockObject chasmrock;
         ObjectRegistry.registerObject("chasmrock", chasmrock = new RockObject("chasmrock", chasmStoneMapColor, "chasmrockitem"), -1.0F, true);
