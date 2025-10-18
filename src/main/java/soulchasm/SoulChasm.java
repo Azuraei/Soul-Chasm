@@ -65,6 +65,7 @@ import soulchasm.main.items.trinkets.PickaxeHeadTrinket;
 import soulchasm.main.items.trinkets.SoulStealerTrinket;
 import soulchasm.main.misc.carcolorsui.CarColorContainer;
 import soulchasm.main.misc.carcolorsui.CarColorContainerForm;
+import soulchasm.main.misc.levelevents.HomingProjectilesEvent;
 import soulchasm.main.misc.levelevents.grounderuptionevents.DragonExplosionEvent;
 import soulchasm.main.misc.levelevents.grounderuptionevents.DragonGroundEruptionEvent;
 import soulchasm.main.misc.levelevents.spinningspawnerevents.SpinSpawnEvent;
@@ -335,6 +336,7 @@ public class SoulChasm {
         LevelEventRegistry.registerEvent("idolshieldvisualevent", IdolShieldVisualEvent.class);
         LevelEventRegistry.registerEvent("meleeghostspawnevent", MeleeGhostSpawnEvent.class);
         LevelEventRegistry.registerEvent("hauntedmodifierlevelevent", HauntedModifierLevelEvent.class);
+        LevelEventRegistry.registerEvent("homingprojectileslevelevent", HomingProjectilesEvent.class);
         // === Incursion ===
         BiomeRegistry.registerBiome("soulchasm", new SoulChasmBiome(), false);
         IncursionBiomeRegistry.registerBiome("soulchasm", new SoulChasmIncursionBiome(), 2);

@@ -62,7 +62,6 @@ public class SoulChasmIncursionLevel extends IncursionLevel {
                 Preset shrine = new ChasmShrinePreset(10,cg.random);
                 presets.findRandomValidPositionAndApply(cg.random, 6, shrine, 10, true, true);
             }
-
             int spawnSize = 10;
             entranceAndPerkPresets.addOccupiedSpace(centerX - spawnSize / 2, centerY - spawnSize / 2, spawnSize, spawnSize);
             Preset arena = new ChasmArenaPreset(55, new GameRandom(this.getSeed()));
@@ -81,7 +80,7 @@ public class SoulChasmIncursionLevel extends IncursionLevel {
         GameEvents.triggerEvent(new GeneratedCaveMiniBiomesEvent(this, cg));
 
         //INCURSION
-        IncursionBiome.addReturnPortal(this, (float) (centerX * 32.0), (float) (centerY * 32.0));
+        IncursionBiome.addReturnPortal(this, (float) (centerX * 32.0 + 0.5), (float) (centerY * 32.0 + 0.5));
         GenerationTools.checkValid(this);
         if (incursionData instanceof BiomeExtractionIncursionData) {
             cg.generateGuaranteedOreVeins(100, 8, 16, ObjectRegistry.getObjectID("crystalizedsoul"));

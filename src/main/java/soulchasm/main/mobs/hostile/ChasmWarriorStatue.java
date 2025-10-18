@@ -19,8 +19,8 @@ import necesse.gfx.gameTexture.GameTexture;
 import necesse.inventory.lootTable.LootTable;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
+import soulchasm.main.misc.levelevents.HomingProjectilesEvent;
 import soulchasm.main.misc.levelevents.MeleeGhostSpawnEvent;
-import soulchasm.main.projectiles.SoulHomingProjectile;
 
 import java.awt.*;
 import java.util.HashSet;
@@ -53,23 +53,13 @@ public class ChasmWarriorStatue extends HostileMob {
         this.isHostile = true;
     }
 
-    protected void homingShots(Attacker attacker) {
-        GameRandom random = new GameRandom();
-        for(int i = 0; i<3; i++){
-            float angle = random.getIntBetween(0, 360);
-            SoulHomingProjectile projectile = new SoulHomingProjectile(this.getLevel(), this, this.x, this.y, attacker.getAttackOwner().x, attacker.getAttackOwner().y, 40, 600, new GameDamage(40.0F), 20);
-            projectile.setAngle(projectile.getAngle() + angle * i);
-            projectile.turnSpeed = 0.015F;
-            this.getLevel().entityManager.projectiles.add(projectile);
-        }
-    }
-
     public boolean isLavaImmune() {
         return true;
     }
     public boolean canBePushed(Mob other) {
         return false;
     }
+
     public LootTable getLootTable() {
         return lootTable;
     }
@@ -80,7 +70,7 @@ public class ChasmWarriorStatue extends HostileMob {
             SoundManager.playSound(GameResources.fadedeath3, SoundEffect.effect(this).pitch(0.5F).volume(0.6F));
         }
         if (this.isHostile) {
-            homingShots(attacker);
+            this.getLevel().entityManager.events.add(new HomingProjectilesEvent(this, this.getTileX(), this.getTileY(), GameRandom.globalRandom.nextSeeded(), new GameDamage(30.0F), 1));
         }
         return super.isHit(event, attacker);
     }
