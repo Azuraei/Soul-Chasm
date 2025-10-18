@@ -93,9 +93,6 @@ public class ChasmWarriorStatue extends HostileMob {
 
     public void serverTick() {
         super.serverTick();
-        if(!this.isInCombat() && !ai.blackboard.mover.hasMobTarget()){
-            this.ai = new BehaviourTreeAI<>(this, new EmptyAINode<ChasmWarriorStatue>() {});
-        }
     }
 
     protected void onDeath(Attacker attacker, HashSet<Attacker> attackers) {

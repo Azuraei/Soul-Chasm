@@ -488,13 +488,13 @@ public class ChasmDragon extends BossWormMobHead<ChasmDragonBody, ChasmDragon> {
                     x = (int) mob.x;
                     y = (int) mob.y;
                 }
-                level.entityManager.addLevelEventHidden(new WaitForSecondsEvent(delay * i) {
+                level.entityManager.events.addHidden(new WaitForSecondsEvent(delay * i) {
                     public void onWaitOver() {
                         int range = 300;
                         int pos_x = x + GameRandom.globalRandom.getIntBetween(-range, range);
                         int pos_y = y + GameRandom.globalRandom.getIntBetween(-range, range);
                         DragonGroundEruptionEvent event = new DragonGroundEruptionEvent(mob, pos_x, pos_y, GameRandom.globalRandom.nextSeeded(), soulDragonEruptionDamage);
-                        level.entityManager.addLevelEvent(event);
+                        level.entityManager.events.add(event);
                     }
                 });
             }
@@ -516,9 +516,9 @@ public class ChasmDragon extends BossWormMobHead<ChasmDragonBody, ChasmDragon> {
             int x = (int) mob.x;
             int y = (int) mob.y;
             SpinSpawnVisualEvent event = new SpinSpawnVisualEvent(x, y, duration * 3.5F);
-            level.entityManager.addLevelEvent(event);
+            level.entityManager.events.add(event);
             SpinSpawnEvent event2 = new SpinSpawnEvent(mob, x, y, GameRandom.globalRandom.nextSeeded(), soulDragonFragmentDamage, duration);
-            level.entityManager.addLevelEvent(event2);
+            level.entityManager.events.add(event2);
             return AINodeResult.SUCCESS;
         }
         public void end(T mob, Blackboard<T> blackboard) {
