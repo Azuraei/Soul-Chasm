@@ -375,11 +375,11 @@ public class SoulChasm {
 
     public void initResources(){
         // === Plushie Textures ===
-        V1Plushie.gameTexture = GameTexture.fromFile("mobs/v1plushie");
-        FairPlushie.gameTexture = GameTexture.fromFile("mobs/fairplushie");
-        ArgemiaPlushie.gameTexture = GameTexture.fromFile("mobs/argemiaplushie");
-        FumoPlushie.gameTexture = GameTexture.fromFile("mobs/fumoplushie");
-        DevPlushie.gameTexture = GameTexture.fromFile("mobs/devplushie");
+        V1Plushie.gameTexture = GameTexture.fromFile("mobs/plushies/v1plushie");
+        FairPlushie.gameTexture = GameTexture.fromFile("mobs/plushies/fairplushie");
+        ArgemiaPlushie.gameTexture = GameTexture.fromFile("mobs/plushies/argemiaplushie");
+        FumoPlushie.gameTexture = GameTexture.fromFile("mobs/plushies/fumoplushie");
+        DevPlushie.gameTexture = GameTexture.fromFile("mobs/plushies/devplushie");
         // === Car Textures ===
         CarMob.texture_body =  GameTexture.fromFile("mobs/car_body");
         CarMob.texture_top =  GameTexture.fromFile("mobs/car_top");
@@ -394,7 +394,7 @@ public class SoulChasm {
         // === Friendly Textures ===
         Wisp.texture = GameTexture.fromFile("mobs/wisp");
         Firefly.texture = GameTexture.fromFile("mobs/firefly");
-        SoulStatueSummon.texture = GameTexture.fromFile("items/chasmmagestatueobject");
+        SoulStatueSummon.texture = GameTexture.fromFile("mobs/soulstatuesummon");
         SoulStatueSummon.texture_ring = GameTexture.fromFile("particles/soulstatuering");
         chasmCaveling = new HumanTexture(GameTexture.fromFile("mobs/chasmcaveling"), GameTexture.fromFile("mobs/chasmcavelingarms_front"), GameTexture.fromFile("mobs/chasmcavelingarms_back"));
         SealGhostSummon.texture = GameTexture.fromFile("mobs/sealghostsummon");

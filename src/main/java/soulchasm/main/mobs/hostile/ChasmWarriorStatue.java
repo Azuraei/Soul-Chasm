@@ -20,6 +20,8 @@ import necesse.inventory.lootTable.LootTable;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
 import soulchasm.main.misc.levelevents.MeleeGhostSpawnEvent;
+import soulchasm.main.mobs.boss.ChasmDragon;
+import soulchasm.main.projectiles.SoulHomingProjectile;
 
 import java.awt.*;
 import java.util.HashSet;
@@ -30,8 +32,8 @@ public class ChasmWarriorStatue extends HostileMob {
     public static GameTexture texture;
 
     public ChasmWarriorStatue() {
-        super(500);
-        this.setSpeed(110.0F);
+        super(1500);
+        this.setSpeed(35.0F);
         this.setFriction(6.0F);
         this.setArmor(100);
         this.collision = new Rectangle(-10, -7, 20, 14);
@@ -47,9 +49,20 @@ public class ChasmWarriorStatue extends HostileMob {
     }
 
     protected void changeAI() {
-        CollisionPlayerChaserAI<ChasmWarriorStatue> wickedsoulAI = new CollisionPlayerChaserAI(800, new GameDamage(80.0F), 25);
-        this.ai = new BehaviourTreeAI<>(this, wickedsoulAI);
+        CollisionPlayerChaserAI<ChasmWarriorStatue> chasmwarriorai = new CollisionPlayerChaserAI(1200, new GameDamage(80.0F), 25);
+        this.ai = new BehaviourTreeAI<>(this, chasmwarriorai);
         this.isHostile = true;
+    }
+
+    protected void homingShots(Attacker attacker) {
+        GameRandom random = new GameRandom();
+        for(int i = 0; i<3; i++){
+            float angle = random.getIntBetween(0, 360);
+            SoulHomingProjectile projectile = new SoulHomingProjectile(this.getLevel(), this, this.x, this.y, attacker.getAttackOwner().x, attacker.getAttackOwner().y, 40, 600, new GameDamage(40.0F), 20);
+            projectile.setAngle(projectile.getAngle() + angle * i);
+            projectile.turnSpeed = 0.015F;
+            this.getLevel().entityManager.projectiles.add(projectile);
+        }
     }
 
     public boolean isLavaImmune() {
@@ -63,16 +76,19 @@ public class ChasmWarriorStatue extends HostileMob {
     }
 
     public MobWasHitEvent isHit(MobWasHitEvent event, Attacker attacker) {
-        if(!event.wasPrevented && attacker != null){
+        if(!event.wasPrevented && attacker != null && !this.isHostile){
             changeAI();
             SoundManager.playSound(GameResources.fadedeath3, SoundEffect.effect(this).pitch(0.5F).volume(0.6F));
+        }
+        if (this.isHostile) {
+            homingShots(attacker);
         }
         return super.isHit(event, attacker);
     }
 
     private void spawnSoul(){
         MeleeGhostSpawnEvent event = new MeleeGhostSpawnEvent((int) this.x, (int)this.y, 2000, this);
-        this.getLevel().entityManager.addLevelEvent(event);
+        this.getLevel().entityManager.events.add(event);
     }
 
     public void serverTick() {

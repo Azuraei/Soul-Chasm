@@ -58,7 +58,7 @@ public class ChasmMonumentObject extends FurnitureObject {
         int drawY = camera.getTileDrawY(tileY);
         int bobbing;
         synchronized(this.drawRandom) {
-            bobbing = (int)(GameUtils.getBobbing(level.getWorldEntity().getTime(), 800 + this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).getIntBetween(0,200)) * 5.0F);
+            bobbing = (int)(GameUtils.getBobbing(level.getWorldEntity().getTime(), 800 + this.drawRandom.seeded(getTileSeed(tileX, tileY)).getIntBetween(0,200)) * 5.0F);
         }
         ObjectEntity ent = level.entityManager.getObjectEntity(tileX, tileY);
         final DrawOptions item;
@@ -70,7 +70,7 @@ public class ChasmMonumentObject extends FurnitureObject {
             item = () -> {
             };
         }
-        int frame = GameUtils.getAnim((long)this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).nextInt(800) + level.getWorldEntity().getWorldTime(), 4, 800);
+        int frame = GameUtils.getAnim((long)this.drawRandom.seeded(getTileSeed(tileX, tileY)).nextInt(800) + level.getWorldEntity().getWorldTime(), 4, 800);
         TextureDrawOptions options = texture.initDraw().sprite(frame, 0, 64, texture.getHeight()).light(light).pos(drawX - 16, drawY - texture.getHeight() + 32);
         TextureDrawOptions glow = glow_texture.initDraw().sprite(frame, 0, 64, texture.getHeight()).light(light.minLevelCopy(100)).alpha(0.8F).pos(drawX - 16, drawY - texture.getHeight() + 32);
         list.add(new LevelSortedDrawable(this, tileX, tileY) {
@@ -135,7 +135,7 @@ public class ChasmMonumentObject extends FurnitureObject {
         int drawY = camera.getTileDrawY(tileY);
         int sprite;
         synchronized(this.drawRandom) {
-            sprite = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).nextInt(this.texture.getWidth() / 64);
+            sprite = this.drawRandom.seeded(getTileSeed(tileX, tileY)).nextInt(this.texture.getWidth() / 64);
         }
         texture.initDraw().sprite(sprite, 0, 64, texture.getHeight()).alpha(alpha).draw(drawX - 16, drawY - texture.getHeight() + 32);
     }

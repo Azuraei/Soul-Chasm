@@ -3,6 +3,7 @@ package soulchasm.main.mobs.boss;
 import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.engine.gameLoop.tickManager.TicksPerSecond;
 import necesse.engine.modifiers.ModifierValue;
+import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
@@ -39,7 +40,7 @@ public class ChasmDragonBody extends BossWormMobBody<ChasmDragon, ChasmDragonBod
         this.selectBox = new Rectangle(-32, -80, 64, 84);
     }
 
-    public GameDamage getCollisionDamage(Mob target) {
+    public GameDamage getCollisionDamage(Mob target, boolean fromPacket, ServerClient packetSubmitter) {
         return ChasmDragon.soulDragonCollisionDamage;
     }
 
@@ -92,7 +93,7 @@ public class ChasmDragonBody extends BossWormMobBody<ChasmDragon, ChasmDragonBod
         }
     }
 
-    protected TextureDrawOptions getShadowDrawOptions(int x, int y, GameLight light, GameCamera camera) {
+    protected TextureDrawOptions getShadowDrawOptions(Level level, int x, int y, GameLight light, GameCamera camera) {
         GameTexture shadowTexture = MobRegistry.Textures.swampGuardian_shadow;
         int res = shadowTexture.getHeight();
         int drawX = camera.getDrawX(x) - res / 2;

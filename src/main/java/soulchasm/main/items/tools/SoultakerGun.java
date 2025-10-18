@@ -48,7 +48,7 @@ public class SoultakerGun extends GunProjectileToolItem {
     protected void fireProjectiles(Level level, int x, int y, ItemAttackerMob attackerMob, InventoryItem item, int seed, BulletItem bullet, boolean dropItem, GNDItemMap mapContent) {
         int range;
         if (this.controlledRange) {
-            Point newTarget = this.controlledRangePosition(new GameRandom((long)(seed + 10)), attackerMob, x, y, item, this.controlledMinRange, this.controlledInaccuracy);
+            Point newTarget = this.controlledRangePosition(new GameRandom(seed + 10), attackerMob, x, y, item, this.controlledMinRange, this.controlledInaccuracy);
             x = newTarget.x;
             y = newTarget.y;
             range = (int)attackerMob.getDistance((float)x, (float)y);

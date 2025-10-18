@@ -4,7 +4,6 @@ import necesse.engine.registries.BuffRegistry;
 import necesse.engine.registries.DamageTypeRegistry;
 import necesse.engine.registries.TileRegistry;
 import necesse.engine.util.GameRandom;
-import necesse.entity.mobs.Attacker;
 import necesse.entity.mobs.GameDamage;
 import necesse.entity.mobs.Mob;
 import necesse.entity.mobs.buffs.ActiveBuff;
@@ -96,7 +95,7 @@ public class ChasmCrackTile extends TerrainSplatterTile {
                 mob.isServerHit(new GameDamage(DamageTypeRegistry.TRUE, dmg), 0.0F, 0.0F, 0.0F, LAVA_ATTACKER);
             }
             mob.startGenericCooldown("lavadmg", 500);
-            mob.addBuff(new ActiveBuff(BuffRegistry.getBuffID("soulfirebuff"), mob, 5.0F, (Attacker)null), true);
+            mob.addBuff(new ActiveBuff(BuffRegistry.getBuffID("soulfirebuff"), mob, 5.0F, null), true);
         }
     }
 
@@ -112,7 +111,7 @@ public class ChasmCrackTile extends TerrainSplatterTile {
             int posY = y * 32 + GameRandom.globalRandom.nextInt(32);
             boolean mirror = GameRandom.globalRandom.nextBoolean();
             level.entityManager.addParticle((float)posX, (float)(posY + 30), Particle.GType.COSMETIC).sprite(particleSection.sprite(GameRandom.globalRandom.nextInt(6), 0, 20, 20)).givesLight(30).fadesAlpha(0.4F, 0.4F).size((options, lifeTime, timeAlive, lifePercent) -> {
-            }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.3F, 0.8F) * (Float)GameRandom.globalRandom.getOneOf(new Float[]{1.0F, -1.0F}), GameRandom.globalRandom.getFloatBetween(-1.0F, -4.0F)).sizeFades(15, 25).modify((options, lifeTime, timeAlive, lifePercent) -> {
+            }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.3F, 0.8F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F), GameRandom.globalRandom.getFloatBetween(-1.0F, -4.0F)).sizeFades(15, 25).modify((options, lifeTime, timeAlive, lifePercent) -> {
                 options.mirror(mirror, false);
             }).lifeTime(4000);
         }
@@ -121,7 +120,7 @@ public class ChasmCrackTile extends TerrainSplatterTile {
     public Point getTerrainSprite(GameTextureSection terrainTexture, Level level, int tileX, int tileY) {
         int tile;
         synchronized(this.drawRandom) {
-            tile = this.drawRandom.seeded(this.getTileSeed(tileX, tileY)).nextInt(terrainTexture.getHeight() / 32);
+            tile = this.drawRandom.seeded(getTileSeed(tileX, tileY)).nextInt(terrainTexture.getHeight() / 32);
         }
 
         return new Point(0, tile);

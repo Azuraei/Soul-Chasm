@@ -5,6 +5,7 @@ import necesse.engine.gameLoop.tickManager.TicksPerSecond;
 import necesse.engine.localization.Localization;
 import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;
+import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.util.GameMath;
 import necesse.engine.util.GameRandom;
@@ -120,8 +121,7 @@ public class CarMob extends MountFollowingMob {
         return this.getCurrentSpeed()/this.getSpeed();
     }
 
-    public GameDamage getCollisionDamage(Mob target) {
-
+    public GameDamage getCollisionDamage(Mob target, boolean fromPacket, ServerClient packetSubmitter) {
         return new GameDamage(100 * getSpeedCarMult(), 10, 100.0F);
     }
 
@@ -170,19 +170,6 @@ public class CarMob extends MountFollowingMob {
             }
         });
         this.addShadowDrawables(tileList, level, x, y, light, camera);
-    }
-
-    protected TextureDrawOptions getShadowDrawOptions(int x, int y, GameLight light, GameCamera camera) {
-        return getShadowDrawOptions(this, x, y, 0, this.getDir(), light, camera);
-    }
-
-    public static TextureDrawOptions getShadowDrawOptions(Mob mob, int x, int y, int yOffset, int dir, GameLight light, GameCamera camera) {
-        GameTexture shadowTexture = MobRegistry.Textures.minecart_shadow;
-        int drawX = camera.getDrawX(x) - 32;
-        int drawY = camera.getDrawY(y) - 47 + yOffset;
-        drawY += mob.getBobbing(x, y);
-        drawY += mob.getLevel().getTile(x / 32, y / 32).getMobSinkingAmount(mob);
-        return shadowTexture.initDraw().sprite(0, dir, 64).light(light).pos(drawX, drawY);
     }
 
     @Override

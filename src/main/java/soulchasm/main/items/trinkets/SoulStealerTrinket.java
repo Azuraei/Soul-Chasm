@@ -20,8 +20,6 @@ public class SoulStealerTrinket extends TrinketItem {
         return new TrinketBuff[]{(TrinketBuff)BuffRegistry.getBuff("soulstealerbuff")};
     }
 
-
-
     public ListGameTooltips getPreEnchantmentTooltips(InventoryItem item, PlayerMob perspective, GameBlackboard blackboard) {
         ListGameTooltips tooltips = super.getPreEnchantmentTooltips(item, perspective, blackboard);
         tooltips.add(Localization.translate("itemtooltip", "soulstealertrinket"));

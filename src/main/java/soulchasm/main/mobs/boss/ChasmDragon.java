@@ -8,6 +8,7 @@ import necesse.engine.network.PacketReader;
 import necesse.engine.network.PacketWriter;
 import necesse.engine.network.client.Client;
 import necesse.engine.network.packet.PacketChatMessage;
+import necesse.engine.network.server.ServerClient;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.registries.MusicRegistry;
 import necesse.engine.sound.SoundEffect;
@@ -173,7 +174,7 @@ public class ChasmDragon extends BossWormMobHead<ChasmDragonBody, ChasmDragon> {
         return bodyPart;
     }
 
-    public GameDamage getCollisionDamage(Mob target) {
+    public GameDamage getCollisionDamage(Mob target, boolean fromPacket, ServerClient packetSubmitter) {
         return soulDragonCollisionDamage.modDamage(1.5F);
     }
 
@@ -261,7 +262,7 @@ public class ChasmDragon extends BossWormMobHead<ChasmDragonBody, ChasmDragon> {
         }
     }
 
-    protected TextureDrawOptions getShadowDrawOptions(int x, int y, GameLight light, GameCamera camera) {
+    protected TextureDrawOptions getShadowDrawOptions(Level level, int x, int y, GameLight light, GameCamera camera) {
         GameTexture shadowTexture = MobRegistry.Textures.swampGuardian_shadow;
         int res = shadowTexture.getHeight();
         int drawX = camera.getDrawX(x) - res / 2;

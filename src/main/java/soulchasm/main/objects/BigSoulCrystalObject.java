@@ -108,7 +108,7 @@ public class BigSoulCrystalObject extends GameObject {
             int posY = tileY * 32 + GameRandom.globalRandom.nextInt(20);
             boolean mirror = GameRandom.globalRandom.nextBoolean();
             level.entityManager.addParticle((float)posX, (float)(posY + 30), Particle.GType.COSMETIC).sprite(GameResources.magicSparkParticles.sprite(GameRandom.globalRandom.nextInt(4), 0, 22, 22)).color(new Color(0x76D6FF)).fadesAlpha(0.4F, 0.4F).size((options, lifeTime, timeAlive, lifePercent) -> {
-            }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * GameRandom.globalRandom.getOneOf(new Float[]{1.0F, -1.0F}), GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * (Float)GameRandom.globalRandom.getOneOf(new Float[]{1.0F, -1.0F})).sizeFades(15, 25).modify((options, lifeTime, timeAlive, lifePercent) -> options.mirror(mirror, false)).lifeTime(3000);
+            }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F), GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * GameRandom.globalRandom.getOneOf(new Float[]{1.0F, -1.0F})).sizeFades(15, 25).modify((options, lifeTime, timeAlive, lifePercent) -> options.mirror(mirror, false)).lifeTime(3000);
         }
     }
 

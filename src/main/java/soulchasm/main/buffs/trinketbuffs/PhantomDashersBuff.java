@@ -34,7 +34,7 @@ public class PhantomDashersBuff extends TrinketBuff implements ActiveBuffAbility
         if (buff.owner.isRiding()) {
             return false;
         } else {
-            return player.isServer() && !Settings.strictServerAuthority ? true : StaminaBuff.canStartStaminaUsage(buff.owner);
+            return player.isServer() && !Settings.strictServerAuthority || StaminaBuff.canStartStaminaUsage(buff.owner);
         }
     }
 

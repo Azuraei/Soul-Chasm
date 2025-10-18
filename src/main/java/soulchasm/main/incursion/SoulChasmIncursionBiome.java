@@ -38,7 +38,7 @@ public class SoulChasmIncursionBiome extends IncursionBiome {
     }
 
     public TicketSystemList<Supplier<IncursionData>> getAvailableIncursions(int tabletTier, IncursionData incursionData) {
-        TicketSystemList<Supplier<IncursionData>> system = new TicketSystemList();
+        TicketSystemList<Supplier<IncursionData>> system = new TicketSystemList<>();
         int huntTickets = 100;
         int extractionTickets = 100;
         if (incursionData != null) {

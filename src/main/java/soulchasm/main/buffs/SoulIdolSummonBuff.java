@@ -51,7 +51,7 @@ public class SoulIdolSummonBuff extends Buff {
         }
         if(owner!=null && attacker!=null){
             IdolShieldVisualEvent event = new IdolShieldVisualEvent(attacker, owner);
-            buff.owner.getLevel().entityManager.addLevelEvent(event);
+            buff.owner.getLevel().entityManager.events.add(event);
         }
         changeBuffMode(buff);
     }
