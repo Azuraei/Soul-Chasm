@@ -477,7 +477,7 @@ public class SoulChasm {
         modRecipes.add(new Recipe("balancedsealtrinket", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulsealtrinket, 1}, {balancedfoci, 1}, {soulessence, 5}, {soulmetalbar, 5}, {soulcore, 20}}")));
         modRecipes.add(new Recipe("phantomdasherstrinket", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{zephyrboots, 1}, {soulessence, 4}, {soulcore, 8}}")));
 
-        modRecipes.add(new Recipe("asphalt", 100, RecipeTechRegistry.ALCHEMY, Recipes.ingredientsFromScript("{{anystone, 100}, {speedpotion, 2}}")));
+        modRecipes.add(new Recipe("asphalttile", 100, RecipeTechRegistry.ALCHEMY, Recipes.ingredientsFromScript("{{anystone, 100}, {speedpotion, 2}}")));
         modRecipes.add(new Recipe("bigjarobject", 1, RecipeTechRegistry.WORKSTATION, Recipes.ingredientsFromScript("{{glass, 2}}")));
         modRecipes.add(new Recipe("fireflyjar", 1, RecipeTechRegistry.WORKSTATION, Recipes.ingredientsFromScript("{{fireflyitem, 3}, {bigjarobject, 1}}")));
         modRecipes.add(new Recipe("wispjar", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{wispitem, 3}, {bigjarobject, 1}}")));
