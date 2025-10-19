@@ -34,7 +34,7 @@ public class SoulChasmIncursionBiome extends IncursionBiome {
     }
 
     public LootTable getBossDrop(IncursionData incursionData) {
-        return new LootTable(super.getBossDrop(incursionData), LootItem.between("soulessence", 20, 25), new ChanceLootItem(0.1F, "carkeys"));
+        return new LootTable(super.getBossDrop(incursionData), LootItem.between("soulessence", 20, 25), new ChanceLootItem(0.25F, "carkeys"));
     }
 
     public TicketSystemList<Supplier<IncursionData>> getAvailableIncursions(int tabletTier, IncursionData incursionData) {
