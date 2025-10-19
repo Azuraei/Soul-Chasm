@@ -42,8 +42,8 @@ public class SoulChasmIncursionBiome extends IncursionBiome {
         int huntTickets = 100;
         int extractionTickets = 100;
         if (incursionData != null) {
-            huntTickets = (int)((float)huntTickets * (Float)incursionData.nextIncursionModifiers.getModifier(IncursionDataModifiers.MODIFIER_HUNT_DROPS));
-            extractionTickets = (int)((float)extractionTickets * (Float)incursionData.nextIncursionModifiers.getModifier(IncursionDataModifiers.MODIFIER_EXTRACTION_DROPS));
+            huntTickets = (int)((float)huntTickets * incursionData.nextIncursionModifiers.getModifier(IncursionDataModifiers.MODIFIER_HUNT_DROPS));
+            extractionTickets = (int)((float)extractionTickets * incursionData.nextIncursionModifiers.getModifier(IncursionDataModifiers.MODIFIER_EXTRACTION_DROPS));
         }
 
         system.addObject(huntTickets, (Supplier)() -> new BiomeHuntIncursionData(1.0F, this, tabletTier));
