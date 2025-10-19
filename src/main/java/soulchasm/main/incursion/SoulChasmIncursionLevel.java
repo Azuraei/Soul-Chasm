@@ -80,7 +80,7 @@ public class SoulChasmIncursionLevel extends IncursionLevel {
         GameEvents.triggerEvent(new GeneratedCaveMiniBiomesEvent(this, cg));
 
         //INCURSION
-        IncursionBiome.addReturnPortal(this, (float) (centerX * 32.0 + 0.5), (float) (centerY * 32.0 + 0.5));
+        IncursionBiome.addReturnPortal(this, (float) (centerX * 32.0 + 16), (float) (centerY * 32.0 + 16));
         GenerationTools.checkValid(this);
         if (incursionData instanceof BiomeExtractionIncursionData) {
             cg.generateGuaranteedOreVeins(100, 8, 16, ObjectRegistry.getObjectID("crystalizedsoul"));

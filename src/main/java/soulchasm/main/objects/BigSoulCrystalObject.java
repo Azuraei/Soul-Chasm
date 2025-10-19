@@ -17,6 +17,7 @@ import necesse.inventory.lootTable.lootItem.LootItem;
 import necesse.level.gameObject.GameObject;
 import necesse.level.maps.Level;
 import necesse.level.maps.light.GameLight;
+import soulchasm.SoulChasm;
 
 import java.awt.*;
 import java.util.List;
@@ -103,12 +104,23 @@ public class BigSoulCrystalObject extends GameObject {
 
     public void tickEffect(Level level, int layerID, int tileX, int tileY) {
         super.tickEffect(level, layerID, tileX, tileY);
-        if (GameRandom.globalRandom.getChance(0.04F) && !level.getObject(tileX, tileY).drawsFullTile() && level.getLightLevel(tileX, tileY).getLevel() > 0.0F) {
-            int posX = tileX * 32 + GameRandom.globalRandom.nextInt(32);
-            int posY = tileY * 32 + GameRandom.globalRandom.nextInt(20);
-            boolean mirror = GameRandom.globalRandom.nextBoolean();
-            level.entityManager.addParticle((float)posX, (float)(posY + 30), Particle.GType.COSMETIC).sprite(GameResources.magicSparkParticles.sprite(GameRandom.globalRandom.nextInt(4), 0, 22, 22)).color(new Color(0x76D6FF)).fadesAlpha(0.4F, 0.4F).size((options, lifeTime, timeAlive, lifePercent) -> {
-            }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F), GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * GameRandom.globalRandom.getOneOf(new Float[]{1.0F, -1.0F})).sizeFades(15, 25).modify((options, lifeTime, timeAlive, lifePercent) -> options.mirror(mirror, false)).lifeTime(3000);
+        if (!level.getObject(tileX, tileY).drawsFullTile() && level.getLightLevel(tileX, tileY).getLevel() > 0.0F) {
+            if (GameRandom.globalRandom.getChance(0.04F)) {
+                int posX = tileX * 32 + GameRandom.globalRandom.nextInt(32);
+                int posY = tileY * 32 + GameRandom.globalRandom.nextInt(20);
+                boolean mirror = GameRandom.globalRandom.nextBoolean();
+                level.entityManager.addParticle((float)posX, (float)(posY + 30), Particle.GType.COSMETIC).sprite(GameResources.magicSparkParticles.sprite(GameRandom.globalRandom.nextInt(4), 0, 22, 22)).color(new Color(0x76D6FF)).fadesAlpha(0.4F, 0.4F).size((options, lifeTime, timeAlive, lifePercent) -> {
+                }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F), GameRandom.globalRandom.getFloatBetween(0.2F, 0.2F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F)).sizeFades(15, 25).modify((options, lifeTime, timeAlive, lifePercent) -> options.mirror(mirror, false)).lifeTime(3000);
+            }
+            if (GameRandom.globalRandom.getChance(0.06F)) {
+                boolean mirror = GameRandom.globalRandom.nextBoolean();
+                int posX = tileX * 32 + GameRandom.globalRandom.getIntBetween(256, -256);
+                int posY = tileY * 32 + GameRandom.globalRandom.getIntBetween(256, -256);
+                level.entityManager.addParticle(posX, posY, Particle.GType.COSMETIC).sprite(SoulChasm.particleWispSection).fadesAlpha(0.6F, 0.6F).size((options, lifeTime, timeAlive, lifePercent) -> {
+                }).height(30.0F).movesConstant(GameRandom.globalRandom.getFloatBetween(0.5F, 2.5F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F), GameRandom.globalRandom.getFloatBetween(0.5F, 2.5F) * GameRandom.globalRandom.getOneOf(1.0F, -1.0F)).sizeFades(15, 20).givesLight(240.0F, 0.3F).givesLight(70).modify((options, lifeTime, timeAlive, lifePercent) -> {
+                    options.mirror(mirror, false);
+                }).lifeTime(6000);
+            }
         }
     }
 
