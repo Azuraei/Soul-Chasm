@@ -385,6 +385,7 @@ public class SoulChasm {
         FumoPlushie.gameTexture = GameTexture.fromFile("mobs/plushies/fumoplushie");
         DevPlushie.gameTexture = GameTexture.fromFile("mobs/plushies/devplushie");
         SharkPlushie.gameTexture = GameTexture.fromFile("mobs/plushies/sharkplushie");
+        RockPlushie.gameTexture = GameTexture.fromFile("mobs/plushies/rockplushie");
         // === Car Textures ===
         CarMob.texture_body =  GameTexture.fromFile("mobs/car_body");
         CarMob.texture_top =  GameTexture.fromFile("mobs/car_top");
