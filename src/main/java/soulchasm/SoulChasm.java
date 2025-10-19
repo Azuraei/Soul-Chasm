@@ -355,6 +355,7 @@ public class SoulChasm {
         registerPlushie("fumo", FumoPlushie.class, false);
         registerPlushie("dev", DevPlushie.class, true);
         registerPlushie("shark", SharkPlushie.class, false);
+        registerPlushie("rock", RockPlushie.class, false);
         // == Car Colors ==
         carColors.add(new Color(210, 0, 0));
         carColors.add(new Color(210, 91, 0));

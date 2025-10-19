@@ -13,9 +13,10 @@ import net.bytebuddy.asm.Advice;
 public class ExoticMerchantMethodPatch {
     @Advice.OnMethodExit
     static void onExit(@Advice.This ExoticMerchantHumanMob merchantMob) {
-        String[] plushies = new String[]{"argemiaplushieitem", "v1plushieitem", "fairplushieitem", "fumoplushieitem", "devplushieitem", "sharkplushieitem"};
+        String[] plushies = new String[]{"argemiaplushieitem", "v1plushieitem", "fairplushieitem", "fumoplushieitem", "devplushieitem", "sharkplushieitem", "rockplushieitem"};
         GameRandom random = new GameRandom();
         merchantMob.shop.addSellingItem("plushie", new SellingShopItem(5, 2)).setItem(random.getOneOf(plushies)).setRandomPrice(100, 200);
-        merchantMob.shop.addSellingItem("tobeblindfold", new SellingShopItem()).setRandomPrice(100, 200);
+        merchantMob.shop.addSellingItem("plushie_extra", new SellingShopItem(2, 2)).setItem(random.getOneOf(plushies)).setRandomPrice(100, 200).addRandomAvailableRequirement(0.25F);
+        merchantMob.shop.addSellingItem("tobeblindfold", new SellingShopItem()).setRandomPrice(100, 200).addRandomAvailableRequirement(0.15F);
     }
 }
