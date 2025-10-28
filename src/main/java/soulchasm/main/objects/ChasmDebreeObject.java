@@ -34,35 +34,6 @@ public class ChasmDebreeObject extends SingleRockSmall {
     }
 
     @Override
-    public void addDrawables(List<LevelSortedDrawable> list, OrderableDrawables tileList, Level level, int tileX, int tileY, TickManager tickManager, GameCamera camera, PlayerMob perspective) {
-        GameLight light = level.getLightLevel(tileX, tileY);
-        GameTexture texture = this.texture.getDamagedTexture(this, level, tileX, tileY);
-        int drawX = camera.getTileDrawX(tileX);
-        int drawY = camera.getTileDrawY(tileY);
-        final int randomYOffset = this.getRandomYOffset(tileX, tileY);
-        int sprite;
-        boolean mirror;
-        synchronized(this.drawRandom) {
-            mirror = this.drawRandom.seeded(getTileSeed(tileX, tileY)).nextBoolean();
-            if(this.drawRandom.seeded(getTileSeed(tileX, tileY)).getChance(0.8F)){
-                sprite = this.drawRandom.seeded(getTileSeed(tileX, tileY)).nextInt(6);
-            } else {
-                sprite = this.drawRandom.seeded(getTileSeed(tileX, tileY)).nextInt(5,8);
-            }
-        }
-        drawY += randomYOffset;
-        final TextureDrawOptions options = texture.initDraw().sprite(sprite, 0, 32, texture.getHeight()).light(light).mirror(mirror, false).pos(drawX, drawY - texture.getHeight() + 32);
-        list.add(new LevelSortedDrawable(this, tileX, tileY) {
-            public int getSortY() {
-                return 16 + randomYOffset;
-            }
-
-            public void draw(TickManager tickManager) {
-                options.draw();
-            }
-        });
-    }
-    @Override
     public LootTable getLootTable(Level level, int layerID, int tileX, int tileY) {
         return new LootTable(LootItem.between(this.droppedStone, 2, 6));
     }
