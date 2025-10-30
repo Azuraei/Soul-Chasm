@@ -31,7 +31,7 @@ import static soulchasm.SoulChasm.chasmStoneLightMapColor;
 
 public class ChasmMonumentObject extends FurnitureObject {
     public GameTexture texture;
-    public GameTexture glow_texture;
+    public GameTexture textureGlow;
     protected final GameRandom drawRandom;
     private int particleDelay;
 
@@ -48,7 +48,7 @@ public class ChasmMonumentObject extends FurnitureObject {
     public void loadTextures() {
         super.loadTextures();
         texture = GameTexture.fromFile("objects/chasmmonumentobject");
-        glow_texture = GameTexture.fromFile("objects/chasmmonumentobject_glow");
+        textureGlow = GameTexture.fromFile("objects/chasmmonumentobject_glow");
     }
 
     @Override
@@ -72,7 +72,7 @@ public class ChasmMonumentObject extends FurnitureObject {
         }
         int frame = GameUtils.getAnim((long)this.drawRandom.seeded(getTileSeed(tileX, tileY)).nextInt(800) + level.getWorldEntity().getWorldTime(), 4, 800);
         TextureDrawOptions options = texture.initDraw().sprite(frame, 0, 64, texture.getHeight()).light(light).pos(drawX - 16, drawY - texture.getHeight() + 32);
-        TextureDrawOptions glow = glow_texture.initDraw().sprite(frame, 0, 64, texture.getHeight()).light(light.minLevelCopy(100)).alpha(0.8F).pos(drawX - 16, drawY - texture.getHeight() + 32);
+        TextureDrawOptions glow = textureGlow.initDraw().sprite(frame, 0, 64, texture.getHeight()).light(light.minLevelCopy(100)).alpha(0.8F).pos(drawX - 16, drawY - texture.getHeight() + 32);
         list.add(new LevelSortedDrawable(this, tileX, tileY) {
             public int getSortY() {
                 return 16;

@@ -20,6 +20,7 @@ public class LunarTearObject extends GrassObject {
         this.mapColor = SoulChasm.lunarTearMapColor;
     }
 
+    @Override
     public LootTable getLootTable(Level level, int layerID, int tileX, int tileY) {
         LootTable lootTableBase = super.getLootTable(level, layerID, tileX, tileY);
         lootTableBase.items.add(new ChanceLootItem(0.01F, "lunartearflowerhead"));

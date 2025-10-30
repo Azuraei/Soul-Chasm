@@ -25,10 +25,10 @@ public class AltarSpikeObject extends GameObject {
 
     public AltarSpikeObject() {
         super(new Rectangle(4, 4, 26, 26));
-        hoverHitbox = new Rectangle(0, -32, 32, 64);
-        toolType = ToolType.UNBREAKABLE;
-        isLightTransparent = false;
-        mapColor = chasmStoneMapColor;
+        this.hoverHitbox = new Rectangle(0, -32, 32, 64);
+        this.toolType = ToolType.UNBREAKABLE;
+        this.isLightTransparent = false;
+        this.mapColor = chasmStoneMapColor;
         this.drawRandom = new GameRandom();
     }
 
@@ -58,9 +58,5 @@ public class AltarSpikeObject extends GameObject {
         int drawX = camera.getTileDrawX(tileX);
         int drawY = camera.getTileDrawY(tileY);
         texture.initDraw().sprite(rotation % 4, 0, 64, texture.getHeight()).alpha(alpha).draw(drawX - 16, drawY - texture.getHeight() + 32);
-    }
-
-    public ObjectEntity getNewObjectEntity(Level level, int x, int y) {
-        return null;
     }
 }

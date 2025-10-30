@@ -25,16 +25,12 @@ import java.util.List;
 import static soulchasm.SoulChasm.chasmCrystalMapColor;
 
 public class BigSoulCrystalObject extends GameObject {
-    protected String textureName;
-    protected String glowtextureName;
     public GameTexture texture;
-    public GameTexture glowtexture;
+    public GameTexture textureGlow;
     protected final GameRandom drawRandom;
 
     public BigSoulCrystalObject() {
         super(new Rectangle(7, 7, 22, 18));
-        this.textureName = "bigsoulcrystal";
-        this.glowtextureName = "bigsoulcrystal_glow";
         this.mapColor = chasmCrystalMapColor;
         this.toolTier = 5;
         this.displayMapTooltip = true;
@@ -48,8 +44,8 @@ public class BigSoulCrystalObject extends GameObject {
 
     public void loadTextures() {
         super.loadTextures();
-        this.texture = GameTexture.fromFile("objects/" + this.textureName);
-        this.glowtexture = GameTexture.fromFile("objects/" + this.glowtextureName);
+        this.texture = GameTexture.fromFile("objects/" + "bigsoulcrystal");
+        this.textureGlow = GameTexture.fromFile("objects/" + "bigsoulcrystal_glow");
     }
 
     public int getRandomYOffset(int tileX, int tileY) {
@@ -73,15 +69,13 @@ public class BigSoulCrystalObject extends GameObject {
         synchronized(this.drawRandom) {
             sprite = this.drawRandom.seeded(getTileSeed(tileX, tileY)).nextInt(this.texture.getWidth() / 64);
         }
-
         drawY += randomYOffset;
         final TextureDrawOptions options = this.texture.initDraw().sprite(sprite, 0, 64, this.texture.getHeight()).light(light).pos(drawX, drawY - this.texture.getHeight() + 32);
-        final TextureDrawOptions glow = this.glowtexture.initDraw().sprite(sprite, 0, 64, this.texture.getHeight()).light(light.minLevelCopy(30F)).pos(drawX, drawY - this.texture.getHeight() + 32);
+        final TextureDrawOptions glow = this.textureGlow.initDraw().sprite(sprite, 0, 64, this.texture.getHeight()).light(light.minLevelCopy(30F)).pos(drawX, drawY - this.texture.getHeight() + 32);
         list.add(new LevelSortedDrawable(this, tileX, tileY) {
             public int getSortY() {
                 return 16 + randomYOffset;
             }
-
             public void draw(TickManager tickManager) {
                 options.draw();
                 glow.draw();

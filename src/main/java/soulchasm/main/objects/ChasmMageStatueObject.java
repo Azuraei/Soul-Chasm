@@ -54,8 +54,4 @@ public class ChasmMageStatueObject extends GameObject {
         int drawY = camera.getTileDrawY(tileY);
         texture.initDraw().sprite(0, 0, 64, texture.getHeight()).alpha(alpha).draw(drawX - 16, drawY - texture.getHeight() + 32);
     }
-
-    public ObjectEntity getNewObjectEntity(Level level, int x, int y) {
-        return null;
-    }
 }

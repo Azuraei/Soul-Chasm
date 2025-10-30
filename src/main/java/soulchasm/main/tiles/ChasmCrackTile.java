@@ -68,7 +68,6 @@ public class ChasmCrackTile extends TerrainSplatterTile {
                 }
             }
         }
-
     }
 
     protected void loadTextures() {
@@ -122,7 +121,6 @@ public class ChasmCrackTile extends TerrainSplatterTile {
         synchronized(this.drawRandom) {
             tile = this.drawRandom.seeded(getTileSeed(tileX, tileY)).nextInt(terrainTexture.getHeight() / 32);
         }
-
         return new Point(0, tile);
     }
 

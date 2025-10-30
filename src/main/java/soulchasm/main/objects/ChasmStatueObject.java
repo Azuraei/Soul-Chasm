@@ -25,10 +25,10 @@ public class ChasmStatueObject extends GameObject {
 
     public ChasmStatueObject() {
         super(new Rectangle(4, 4, 26, 26));
-        hoverHitbox = new Rectangle(0, -32, 32, 64);
-        toolType = ToolType.PICKAXE;
-        isLightTransparent = true;
-        mapColor = chasmStoneLightMapColor;
+        this.hoverHitbox = new Rectangle(0, -32, 32, 64);
+        this.toolType = ToolType.PICKAXE;
+        this.isLightTransparent = true;
+        this.mapColor = chasmStoneLightMapColor;
         this.drawRandom = new GameRandom();
     }
 
@@ -62,10 +62,5 @@ public class ChasmStatueObject extends GameObject {
         int drawX = camera.getTileDrawX(tileX);
         int drawY = camera.getTileDrawY(tileY);
         texture.initDraw().sprite(rotation % 4, 0, 64, texture.getHeight()).alpha(alpha).draw(drawX - 16, drawY - texture.getHeight() + 32);
-    }
-
-    @Override
-    public ObjectEntity getNewObjectEntity(Level level, int x, int y) {
-        return null;
     }
 }

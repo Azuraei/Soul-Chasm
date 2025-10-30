@@ -244,9 +244,9 @@ public class ChasmDragon extends BossWormMobHead<ChasmDragonBody, ChasmDragon> {
                 GameLight shoulderLight = level.getLightLevel((int)(shoulderPos.x / 32.0), (int)(shoulderPos.y / 32.0));
                 int shoulderDrawX = camera.getDrawX((float)shoulderPos.x) - 32;
                 int shoulderDrawY = camera.getDrawY((float)shoulderPos.y);
-                float shoulderHeight = this.getWaveHeight(shoulderLine.object.object.movedDist + ((Double)shoulderLine.get()).floatValue());
+                float shoulderHeight = this.getWaveHeight(shoulderLine.object.object.movedDist + shoulderLine.get().floatValue());
                 float shoulderAngle = GameMath.fixAngle((float)GameMath.getAngle(new Point2D.Double((double)this.x - shoulderPos.x, (double)(this.y - this.height) - (shoulderPos.y - (double)shoulderHeight))));
-                shoulderDrawable = WormMobHead.getAngledDrawable(new GameSprite(texture, 0, 2, 64), (GameTexture)null, shoulderLight, (int)shoulderHeight, shoulderAngle, shoulderDrawX, shoulderDrawY, 96);
+                shoulderDrawable = WormMobHead.getAngledDrawable(new GameSprite(texture, 0, 2, 64), null, shoulderLight, (int)shoulderHeight, shoulderAngle, shoulderDrawX, shoulderDrawY, 96);
             } else {
                 shoulderDrawable = null;
             }
