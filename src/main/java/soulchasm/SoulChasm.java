@@ -315,13 +315,13 @@ public class SoulChasm {
         ProjectileRegistry.registerProjectile("soularrowprojectile", SoulArrowProjectile.class, "soularrowprojectile", null);
         ProjectileRegistry.registerProjectile("soulhomingprojectile", SoulHomingProjectile.class, "soulhomingprojectile",null);
         ProjectileRegistry.registerProjectile("soulmissileprojectile", SoulMissileProjectile.class, "soulmissileprojectile",null);
-        ProjectileRegistry.registerProjectile("soulflamethrower", SoulFlamethrowerProjectile.class, "shadow_simple",null);
+        ProjectileRegistry.registerProjectile("soulflamethrower", SoulFlamethrowerProjectile.class, null,null);
         ProjectileRegistry.registerProjectile("soulspearprojectile", SoulSpearProjectile.class, "soulspearprojectile",null);
         ProjectileRegistry.registerProjectile("spiritswordprojectile", SouldSwordProjectile.class, "spiritswordprojectile",null);
         ProjectileRegistry.registerProjectile("soulrevolverprojectile", SoulRevolverProjectile.class, null, null);
+        ProjectileRegistry.registerProjectile("soulbigbulletprojectile", SoulBigBulletProjectile.class, null, null);
         ProjectileRegistry.registerProjectile("soulboomerangprojectile", SoulBoomerangProjectile.class, "soulboomerangprojectile", null);
         ProjectileRegistry.registerProjectile("soulpointywaveprojectile", SoulPointyWaveProjectile.class, "soulpointywaveprojectile", null);
-        ProjectileRegistry.registerProjectile("soulbigbulletprojectile", SoulBigBulletProjectile.class, null, null);
         ProjectileRegistry.registerProjectile("spinspawnspikeprojectile", SpinnerSpikeProjectile.class, "spinspawnspikeprojectile",null);
         ProjectileRegistry.registerProjectile("bookofsoulsmainprojectile", BookofSoulsProjectile.class, "bookofsoulsmainprojectile",null);
         ProjectileRegistry.registerProjectile("bookofsoulssmallprojectile", BookofSoulsSmallProjectile.class, "soulmissileprojectile",null);
