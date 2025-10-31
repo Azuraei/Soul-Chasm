@@ -413,9 +413,8 @@ public class SoulChasm {
         ChasmDragonBody.texture = GameTexture.fromFile("mobs/chasmdragon");
         // === Misc Textures ===
         AltarEffectEntity.texture_ball = GameTexture.fromFile("particles/altarball");
-        // = Sections =
         eruptionShadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");
-
+        // = Sections =
         spinSpawnVisual = generateTextureSection("particles/spinspawnvisual");
         particleGhostSpawnSection = generateTextureSection("particles/meleeghostspawnparticle");
         particleFlamethrowerSection = generateTextureSection("particles/soulfiresparks");
