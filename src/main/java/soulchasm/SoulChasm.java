@@ -157,14 +157,14 @@ public class SoulChasm {
         RockObject chasmrock;
         ObjectRegistry.registerObject("chasmrock", chasmrock = new RockObject("chasmrock", chasmStoneMapColor, "chasmrockitem"), -1.0F, true);
         chasmrock.toolTier = 4;
+        WallObject.registerWallObjects("chasmbrick", "chasmbrickwall", chasmrock.toolTier, chasmStoneMapColor, 2.0F, 6.0F);
+        WallObject.registerWallObjects("soulwood", "soulwoodwall", 0, chasmWoodMapColor, ToolType.ALL, 2.0F, 6.0F);
         SingleRockObject.registerSurfaceRock(chasmrock, "chasmrocks", chasmStoneMapColor, -1.0F, true);
         ObjectRegistry.registerObject("chasmrocksmall", new SingleRockSmall(chasmrock, "chasmrocksmall", chasmStoneMapColor), -1.0F, true);
         ObjectRegistry.registerObject("crystalizedsoul", new RockOreObject(chasmrock, "oremask", "crystalizedsoulore", chasmCrystalMapColor, "crystalizedsouloreitem", 1, 2, 1), -1.0F, true);
         ObjectRegistry.registerObject("alchemyshardchasmrock", new RockOreObject(chasmrock, "oremask", "alchemyshardore", new Color(102, 0, 61), "alchemyshard", 1, 1, 1, false), -1.0F, true);
         ObjectRegistry.registerObject("upgradeshardchasmrock", new RockOreObject(chasmrock, "oremask", "upgradeshardore", new Color(0, 27, 107), "upgradeshard", 1, 1, 1, false), -1.0F, true);
         ObjectRegistry.registerObject("chasmdebree", new ChasmDebreeObject(chasmrock, "chasmdebree", chasmStoneMapColor), 0.0F, false);
-        WallObject.registerWallObjects("chasmbrick", "chasmbrickwall", chasmrock.toolTier, chasmStoneMapColor, 2.0F, 6.0F);
-        WallObject.registerWallObjects("soulwood", "soulwoodwall", 0, chasmWoodMapColor, ToolType.ALL, 2.0F, 6.0F);
         ObjectRegistry.registerObject("chasmflametrap", new WallFlameTrapObject((WallObject)getObject("chasmbrickwall")), 50.0F, true);
         ObjectRegistry.registerObject("chasmpressureplate", new MaskedPressurePlateObject("pressureplatemask", "chasmfloortile", chasmStoneMapColor), 15.0F, true);
         ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesapling", chasmWoodMapColor, 60,80,100, "soultreeleaves"), 0.0F, false);
@@ -195,27 +195,9 @@ public class SoulChasm {
         TikiTorchObject soulTikiTorch = new TikiTorchObject();
         {soulTikiTorch.flameHue = 190; soulTikiTorch.lightLevel = 130; soulTikiTorch.lightHue = 240F; soulTikiTorch.lightSat = 0.3F; soulTikiTorch.mapColor = chasmTorchMapColor;}
         ObjectRegistry.registerObject("soultikitorchobject", soulTikiTorch, -1.0F, true);
-        // = Furniture =
-        BathtubObject.registerBathtub("soulwoodbathtub", "soulwoodbathtub", chasmWoodFurnitureMapColor, -1.0F);
-        BedObject.registerBed("soulwoodbed", "soulwoodbed", chasmWoodFurnitureMapColor, -1.0F);
-        DoubleBedBaseObject.registerDoubleBed("soulwooddoublebed", "soulwooddoublebed", chasmWoodFurnitureMapColor, -1.0F);
-        BenchObject.registerBench("soulwoodbench", "soulwoodbench", chasmWoodFurnitureMapColor, -1.0F);
-        DinnerTableObject.registerDinnerTable("soulwooddinnertable", "soulwooddinnertable", chasmWoodFurnitureMapColor, -1.0F);
-        ObjectRegistry.registerObject("soulwoodbookshelf", new BookshelfObject("soulwoodbookshelf", chasmWoodFurnitureMapColor), -1.0F, true);
-        ObjectRegistry.registerObject("soulwoodcabinet", new CabinetObject("soulwoodcabinet", chasmWoodFurnitureMapColor), -1.0F, true);
-        ObjectRegistry.registerObject("soulwoodchair", new ChairObject("soulwoodchair", chasmWoodFurnitureMapColor), -1.0F, true);
-        ObjectRegistry.registerObject("soulwoodchest", new StorageBoxInventoryObject("soulwoodchest",40, chasmWoodFurnitureMapColor), -1.0F, true);
-        ObjectRegistry.registerObject("soulwoodclock", new ClockObject("soulwoodclock", chasmWoodFurnitureMapColor), -1.0F, true);
-        ObjectRegistry.registerObject("soulwooddesk", new DeskObject("soulwooddesk", chasmWoodFurnitureMapColor), -1.0F, true);
-        ObjectRegistry.registerObject("soulwooddisplay", new DisplayStandObject("soulwooddisplay",ToolType.PICKAXE, chasmWoodFurnitureMapColor, 32), -1.0F, true);
-        ObjectRegistry.registerObject("soulwooddresser", new DresserObject("soulwooddresser", chasmWoodFurnitureMapColor), -1.0F, true);
-        ObjectRegistry.registerObject("soulwoodmodulartable", new ModularTableObject("soulwoodmodulartable", chasmWoodFurnitureMapColor), -1.0F, true);
-        ObjectRegistry.registerObject("soulwoodtoilet", new ToiletObject("soulwoodtoilet", chasmWoodFurnitureMapColor), -1.0F, true);
-        CandelabraObject soulWoodCandelabra = new CandelabraObject("soulwoodcandelabra", chasmWoodFurnitureMapColor, 60.0F, 0.3F);
-        ObjectRegistry.registerObject("soulwoodcandelabra", soulWoodCandelabra, -1.0F, true);
         ObjectRegistry.registerObject("chasmchest", new StorageBoxInventoryObject("chasmchest",40, chasmStoneMapColor), 10.0F, true);
-        int soulWoodFenceID = ObjectRegistry.registerObject("soulwoodfence", new FenceObject("soulwoodfence", chasmWoodMapColor, 12, 10, -24), -1.0F, true);
-        FenceGateObject.registerGatePair(soulWoodFenceID, "soulwoodfencegate", "soulwoodfencegate", chasmWoodMapColor, 12, 10, -1.0F);
+        // = Furniture =
+        registerFurnitureSet("soulwood", chasmWoodFurnitureMapColor, 60.0F, 0.3F);
         // === Buffs/Debuffs ===
         BuffRegistry.registerBuff("soulstealerbuff", new SoulStealerBuff());
         BuffRegistry.registerBuff("phantomfeatherbuff", new PhantomFeatherBuff());
@@ -375,6 +357,28 @@ public class SoulChasm {
         String item_id = mob_id + "item";
         MobRegistry.registerMob(mob_id, mob_class, false);
         ItemRegistry.registerItem(item_id, new PlushieItem(mob_id, addTooltip, true), (float) 500.0, true);
+    }
+
+    private void registerFurnitureSet(String setID, Color mapColor, float lightHue, float lightSat) {
+        BathtubObject.registerBathtub(setID+"bathtub", setID+"bathtub", mapColor, -1.0F);
+        BedObject.registerBed(setID+"bed", setID+"bed", mapColor, -1.0F);
+        DoubleBedBaseObject.registerDoubleBed(setID+"doublebed", setID+"doublebed", mapColor, -1.0F);
+        BenchObject.registerBench(setID+"bench", setID+"bench", mapColor, -1.0F);
+        DinnerTableObject.registerDinnerTable(setID+"dinnertable", setID+"dinnertable", mapColor, -1.0F);
+        ObjectRegistry.registerObject(setID+"bookshelf", new BookshelfObject(setID+"bookshelf", mapColor), -1.0F, true);
+        ObjectRegistry.registerObject(setID+"cabinet", new CabinetObject(setID+"cabinet", mapColor), -1.0F, true);
+        ObjectRegistry.registerObject(setID+"chair", new ChairObject(setID+"chair", mapColor), -1.0F, true);
+        ObjectRegistry.registerObject(setID+"chest", new StorageBoxInventoryObject(setID+"chest",40, mapColor), -1.0F, true);
+        ObjectRegistry.registerObject(setID+"clock", new ClockObject(setID+"clock", mapColor), -1.0F, true);
+        ObjectRegistry.registerObject(setID+"desk", new DeskObject(setID+"desk", mapColor), -1.0F, true);
+        ObjectRegistry.registerObject(setID+"display", new DisplayStandObject(setID+"display",ToolType.PICKAXE, mapColor, 32), -1.0F, true);
+        ObjectRegistry.registerObject(setID+"dresser", new DresserObject(setID+"dresser", mapColor), -1.0F, true);
+        ObjectRegistry.registerObject(setID+"modulartable", new ModularTableObject(setID+"modulartable", mapColor), -1.0F, true);
+        ObjectRegistry.registerObject(setID+"toilet", new ToiletObject(setID+"toilet", mapColor), -1.0F, true);
+        CandelabraObject soulWoodCandelabra = new CandelabraObject(setID+"candelabra", mapColor, lightHue, lightSat);
+        ObjectRegistry.registerObject(setID+"candelabra", soulWoodCandelabra, -1.0F, true);
+        int soulWoodFenceID = ObjectRegistry.registerObject(setID+"fence", new FenceObject(setID+"fence", mapColor, 12, 10, -24), -1.0F, true);
+        FenceGateObject.registerGatePair(soulWoodFenceID, setID+"fencegate", setID+"fencegate", mapColor, 12, 10, -1.0F);
     }
 
     public void initResources(){
