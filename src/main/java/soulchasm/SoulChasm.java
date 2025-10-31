@@ -394,8 +394,8 @@ public class SoulChasm {
         LostSoul.texture = GameTexture.fromFile("mobs/lostsoul");
         ChasmWarriorStatue.texture = GameTexture.fromFile("mobs/chasmwarriorstatue");
         ChasmMageStatue.texture = GameTexture.fromFile("mobs/chasmmagestatue");
-        GameTexture soulMageTexture = GameTexture.fromFile("mobs/chasmmage");
-        ChasmMage.texture = new HumanTexture(soulMageTexture,soulMageTexture,soulMageTexture);
+        //GameTexture soulMageTexture = ;
+        ChasmMage.texture = new HumanTexture(GameTexture.fromFile("mobs/chasmmage"), null, null);
         LesserSoul.texture = GameTexture.fromFile("mobs/lostsoul");
         // === Friendly Textures ===
         Wisp.texture = GameTexture.fromFile("mobs/wisp");
@@ -411,39 +411,29 @@ public class SoulChasm {
         AltarEffectEntity.texture_ball = GameTexture.fromFile("particles/altarball");
         // = Sections =
         eruptionShadow = GameTexture.fromFile("particles/dragongrounderuption_shadow");
-        GameTexture spinSpawnVisualTexture = GameTexture.fromFile("particles/spinspawnvisual");
-        spinSpawnVisual = GameResources.particlesTextureGenerator.addTexture(spinSpawnVisualTexture);
 
-        GameTexture meleeGhostSpawnParticle = GameTexture.fromFile("particles/meleeghostspawnparticle");
-        particleGhostSpawnSection = GameResources.particlesTextureGenerator.addTexture(meleeGhostSpawnParticle);
-
-        GameTexture flamethrowerParticleTexture = GameTexture.fromFile("particles/soulfiresparks");
-        particleFlamethrowerSection = GameResources.particlesTextureGenerator.addTexture(flamethrowerParticleTexture);
-
-        GameTexture fireflyParticleTexture = GameTexture.fromFile("particles/fireflyparticle");
-        particleFireflySection = GameResources.particlesTextureGenerator.addTexture(fireflyParticleTexture);
-
-        GameTexture wispParticleTexture = GameTexture.fromFile("particles/wispparticle");
-        particleWispSection = GameResources.particlesTextureGenerator.addTexture(wispParticleTexture);
-
-        GameTexture bookParticleTexture = GameTexture.fromFile("particles/bookparticle");
-        particleBookSection = GameResources.particlesTextureGenerator.addTexture(bookParticleTexture);
-
-        GameTexture phantomBodyParticleTexture = GameTexture.fromFile("particles/phantombody");
-        particlePhantomBodySection = GameResources.particlesTextureGenerator.addTexture(phantomBodyParticleTexture);
-
-        GameTexture meleeGhostParticleTexture = GameTexture.fromFile("particles/meleeghostparticle");
-        particleMeleeGhostParticleSection = GameResources.particlesTextureGenerator.addTexture(meleeGhostParticleTexture);
-
-        GameTexture monumentRingParticleTexture = GameTexture.fromFile("particles/soulmonumentring");
-        particleMonumentRingSection = GameResources.particlesTextureGenerator.addTexture(monumentRingParticleTexture);
-
+        spinSpawnVisual = generateTextureSection("particles/spinspawnvisual");
+        particleGhostSpawnSection = generateTextureSection("particles/meleeghostspawnparticle");
+        particleFlamethrowerSection = generateTextureSection("particles/soulfiresparks");
+        particleFireflySection = generateTextureSection("particles/fireflyparticle");
+        particleWispSection = generateTextureSection("particles/wispparticle");
+        particleBookSection = generateTextureSection("particles/bookparticle");
+        particlePhantomBodySection = generateTextureSection("particles/phantombody");
+        particleMeleeGhostParticleSection = generateTextureSection("particles/meleeghostparticle");
+        particleMonumentRingSection = generateTextureSection("particles/soulmonumentring");
+        // = Car textures =
         GameTexture car_mask_sprites = GameTexture.fromFile("mobs/car_mask");
         int carSprites = car_mask_sprites.getHeight() / 64;
         carMask = new GameTexture[carSprites];
         for(int i = 0; i < carSprites; ++i) {carMask[i] = new GameTexture(car_mask_sprites, 0, i, 64);}
         carColorContainerIcon = GameTexture.fromFile("ui/paint_bucket");
+        // === Sounds ===
         plushieSqueak = GameSound.fromFile("plushie_squeak");
+    }
+
+    public GameTextureSection generateTextureSection(String texture_path) {
+        GameTexture gameTexture = GameTexture.fromFile(texture_path);
+        return GameResources.particlesTextureGenerator.addTexture(gameTexture);
     }
 
     public void registerModRecipes(ArrayList<Recipe> recipes){
