@@ -39,13 +39,13 @@ public class SoulArmorSetBonus extends SetBonusBuff implements BuffAbility {
         float cooldown = 5.0F;
         owner.buffManager.addBuff(new ActiveBuff(BuffRegistry.getBuff("souldischargebuff"), owner, active, null), false);
         owner.buffManager.addBuff(new ActiveBuff(BuffRegistry.getBuff("soularmorcooldown"), owner, cooldown, null), false);
-        spawnProjectiles(player);
+        spawnParticles(player);
         if(GameRandom.globalRandom.getChance(0.5) && owner.buffManager.hasBuff("souldischargebuff")){
             buff.owner.buffManager.addBuff(new ActiveBuff(BuffRegistry.getBuff("souldischargesicknessdebuff"), buff.owner, 30F, null), false);
         }
     }
 
-    private void spawnProjectiles(PlayerMob playerMob){
+    private void spawnParticles(PlayerMob playerMob){
         Level level = playerMob.getLevel();
         Color color = new Color(41, 137, 255);
         if (level.isClient()) {

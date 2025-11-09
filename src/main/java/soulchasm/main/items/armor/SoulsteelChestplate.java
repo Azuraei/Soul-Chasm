@@ -12,10 +12,10 @@ import necesse.inventory.lootTable.presets.IncursionHeadArmorLootTable;
 public class SoulsteelChestplate extends ChestArmorItem {
 
     public SoulsteelChestplate() {
-        super(36, 1500, Rarity.EPIC, "soularmorchestplate", "soularmorarms", IncursionHeadArmorLootTable.incursionHeadArmor);
+        super(34, 1900, Rarity.EPIC, "soularmorchestplate", "soularmorarms", IncursionHeadArmorLootTable.incursionHeadArmor);
     }
 
     public ArmorModifiers getArmorModifiers(InventoryItem item, Mob mob) {
-        return new ArmorModifiers(new ModifierValue(BuffModifiers.ALL_DAMAGE, 0.1F));
+        return new ArmorModifiers(new ModifierValue(BuffModifiers.ALL_DAMAGE, 0.15F));
     }
 }

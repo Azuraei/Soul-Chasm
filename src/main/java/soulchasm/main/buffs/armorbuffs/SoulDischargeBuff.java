@@ -22,9 +22,9 @@ public class SoulDischargeBuff extends Buff {
     }
 
     public void init(ActiveBuff buff, BuffEventSubscriber eventSubscriber) {
-        buff.setModifier(BuffModifiers.SPEED, 0.5F);
-        buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.4F);
-        buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.4F);
+        buff.setModifier(BuffModifiers.SPEED, 0.6F);
+        buff.setModifier(BuffModifiers.ATTACK_SPEED, 0.5F);
+        buff.setModifier(BuffModifiers.ALL_DAMAGE, 0.5F);
     }
 
     public void clientTick(ActiveBuff buff) {
