@@ -82,7 +82,7 @@ public class ChasmCrackTile extends TerrainSplatterTile {
 
     @Override
     public LootTable getLootTable(Level level, int tileX, int tileY) {
-        return new LootTable(new LootItem("soulcaverockitem", 1), new ChanceLootItem(0.1F,"soulcoreitem"));
+        return new LootTable(new LootItem("chasmrockitem", 1), new ChanceLootItem(0.1F,"soulcore"));
     }
 
     public void tick(Mob mob, Level level, int x, int y) {
@@ -100,7 +100,7 @@ public class ChasmCrackTile extends TerrainSplatterTile {
 
     @Override
     public int getDestroyedTile() {
-        return TileRegistry.getTileID("soulcaverocktile");
+        return TileRegistry.getTileID("chasmrocktile");
     }
 
     public void tickEffect(Level level, int x, int y) {

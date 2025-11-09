@@ -170,16 +170,11 @@ public class SoulChasm {
         ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesapling", chasmWoodMapColor, 60,80,100, "soultreeleaves"), 0.0F, false);
         ObjectRegistry.registerObject("soultreesapling", new TreeSaplingObject("soultreesapling", "soultree", 1800, 2700, false, "chasmgrass"), 5.0F, true);
         ObjectRegistry.registerObject("lunartear", new LunarTearObject(), 5.0F, true);
-        FlowerPatchObject lunartearspath = new FlowerPatchObject("lunartearspath", lunarTearMapColor);
-        lunartearspath.lightLevel = 30;
-        lunartearspath.lightHue = 240.0F;
-        lunartearspath.lightSat = 0.05F;
+        FlowerPatchObject lunartearspath = new FlowerPatchObject("lunartearspath", lunarTearMapColor);{lunartearspath.lightLevel = 30;lunartearspath.lightHue = 240.0F;lunartearspath.lightSat = 0.05F;}
         ObjectRegistry.registerObject("lunartearspath", lunartearspath, 5.0F, true);
-        TorchObject soulTorch = new TorchObject("soultorch", chasmTorchMapColor, 240F, 0.3F);
-        soulTorch.flameHue = 190;
+        TorchObject soulTorch = new TorchObject("soultorch", chasmTorchMapColor, 240F, 0.3F);{soulTorch.flameHue = 190;}
         ObjectRegistry.registerObject("soultorch", soulTorch, 1, true);
-        TorchObject soulLantern = new TorchObject("soullantern", chasmTorchMapColor, 240.0F, 0.3F);
-        soulLantern.flameHue = 190;
+        TorchObject soulLantern = new TorchObject("soullantern", chasmTorchMapColor, 240.0F, 0.3F);{soulLantern.flameHue = 190;}
         ObjectRegistry.registerObject("soullantern", soulLantern, -1.0F, true);
         ObjectRegistry.registerObject("chasmgrassobject", new GrassObject("chasmgrassobject", 4), 0.0F, false);
         ObjectRegistry.registerObject("bigsoulcrystal", new BigSoulCrystalObject(), 0.0F, false);
@@ -192,8 +187,7 @@ public class SoulChasm {
         ObjectRegistry.registerObject("chasmstatueobject", new ChasmStatueObject(), 50.0F, true);
         ObjectRegistry.registerObject("chasmmagestatueobject", new ChasmMageStatueObject(), -1.0F, true);
         ObjectRegistry.registerObject("altarspikeobject", new AltarSpikeObject(), 0.0F, false);
-        TikiTorchObject soulTikiTorch = new TikiTorchObject();
-        {soulTikiTorch.flameHue = 190; soulTikiTorch.lightLevel = 130; soulTikiTorch.lightHue = 240F; soulTikiTorch.lightSat = 0.3F; soulTikiTorch.mapColor = chasmTorchMapColor;}
+        TikiTorchObject soulTikiTorch = new TikiTorchObject();{soulTikiTorch.flameHue = 190; soulTikiTorch.lightLevel = 130; soulTikiTorch.lightHue = 240F; soulTikiTorch.lightSat = 0.3F; soulTikiTorch.mapColor = chasmTorchMapColor;}
         ObjectRegistry.registerObject("soultikitorchobject", soulTikiTorch, -1.0F, true);
         ObjectRegistry.registerObject("chasmchest", new StorageBoxInventoryObject("chasmchest",40, chasmStoneMapColor), 10.0F, true);
         // = Furniture =
