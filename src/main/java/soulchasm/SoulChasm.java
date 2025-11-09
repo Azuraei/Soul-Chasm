@@ -121,7 +121,6 @@ public class SoulChasm {
     public static Color chasmTorchMapColor = new Color(128, 235, 255);
     public static Color asphaltMapColor = new Color(23, 23, 23);
     public static Color lunarTearMapColor = new Color(93, 132, 143);
-
     public static HumanTexture chasmCaveling;
     public static ChestRoomSet chasmChestRoomSet;
     public static LootTable chasmShrineLootTable;
@@ -450,48 +449,40 @@ public class SoulChasm {
         ArrayList<Recipe> modRecipes = new ArrayList<>();
         modRecipes.add(new Recipe("soulmetalbar", 1, RecipeTechRegistry.FORGE, Recipes.ingredientsFromScript("{{crystalizedsouloreitem, 4}}")));
         modRecipes.add(new Recipe("soulessence", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{anytier2essence, 2}}")));
-
         modRecipes.add(new Recipe("soulmetalsword", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {soulmetalbar, 12}, {soulcore, 5}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("soulmetalspear", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {soulmetalbar, 16}, {soulcore, 5}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("soulmetalrevolver", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {handgun, 1}, {soulmetalbar, 12}, {soulcore, 5}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("soulmetalbow", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {soulmetalbar, 12}, {soulcore, 5}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("bookofsouls", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {book, 3}, {soulmetalbar, 4}, {soulcore, 12}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("idolsummon", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 6}, {soulmetalbar, 10}, {soulcore, 12}}")));
-
         modRecipes.add(new Recipe("soularmorhelmet", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 12}, {soulcore, 20}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("soularmorhood", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 12}, {soulcore, 20}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("soularmorhat", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 12}, {soulcore, 20}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("soularmorcrown", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 12}, {soulcore, 20}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("soularmorchestplate", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 16}, {soulcore, 30}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
         modRecipes.add(new Recipe("soularmorboots", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulmetalbar, 8}, {soulcore, 15}}"), false, (new GNDItemMap()).setInt("upgradeLevel", 100)));
-
         modRecipes.add(new Recipe("soulabsorbshield", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulessence, 5}, {soulmetalbar, 12}, {soulcore, 8}}")));
         modRecipes.add(new Recipe("soulsealtrinket", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{meleesoulsealtrinket, 1}, {rangesoulsealtrinket, 1}, {magicsoulsealtrinket, 1}, {summonsoulsealtrinket, 1}, {soulessence, 5}, {soulcore, 20}}")));
         modRecipes.add(new Recipe("balancedsealtrinket", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{soulsealtrinket, 1}, {balancedfoci, 1}, {soulessence, 5}, {soulmetalbar, 5}, {soulcore, 20}}")));
         modRecipes.add(new Recipe("phantomdasherstrinket", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{zephyrboots, 1}, {soulessence, 4}, {soulcore, 8}}")));
-
         modRecipes.add(new Recipe("asphalttile", 100, RecipeTechRegistry.ALCHEMY, Recipes.ingredientsFromScript("{{anystone, 100}, {speedpotion, 2}}")));
         modRecipes.add(new Recipe("bigjarobject", 1, RecipeTechRegistry.WORKSTATION, Recipes.ingredientsFromScript("{{glass, 2}}")));
         modRecipes.add(new Recipe("fireflyjar", 1, RecipeTechRegistry.WORKSTATION, Recipes.ingredientsFromScript("{{fireflyitem, 3}, {bigjarobject, 1}}")));
         modRecipes.add(new Recipe("wispjar", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{wispitem, 3}, {bigjarobject, 1}}")));
-
         modRecipes.add(new Recipe("soultorch", 8, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulcore, 1}, {soulwoodlogitem, 1}}")));
         modRecipes.add(new Recipe("soultikitorchobject", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soultorch, 1}, {soulwoodlogitem, 1}}")));
         modRecipes.add(new Recipe("soullantern", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulmetalbar, 3}, {soultorch, 1}}")));
-
         modRecipes.add(new Recipe("soulwoodwall", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulwoodlogitem, 2}}")));
         modRecipes.add(new Recipe("soulwooddoor", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulwoodlogitem, 4}}")));
         modRecipes.add(new Recipe("soulwoodfloor", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulwoodlogitem, 1}}")));
         modRecipes.add(new Recipe("soulwoodpath", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulwoodlogitem, 1}}")));
         modRecipes.add(new Recipe("soulwoodtiledfloor", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulwoodlogitem, 2}}")));
-
         modRecipes.add(new Recipe("chasmbrickdoor", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{chasmrockitem, 15}}")));
         modRecipes.add(new Recipe("chasmbrickwall", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{chasmrockitem, 5}}")));
         modRecipes.add(new Recipe("chasmfloortile", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{chasmrockitem, 1}}")));
         modRecipes.add(new Recipe("chasmbrickfloortile", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{chasmrockitem, 1}}")));
         modRecipes.add(new Recipe("chasmtiledfloortile", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{chasmrockitem, 1}}")));
         modRecipes.add(new Recipe("chasmpressureplate", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{chasmrockitem, 1}}")));
-
         modRecipes.add(new Recipe("chasmrock", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 4}}")));
         modRecipes.add(new Recipe("crystalizedsoul", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 4}, {crystalizedsouloreitem, 1}}")));
         modRecipes.add(new Recipe("upgradeshardchasmrock", 1, RecipeTechRegistry.LANDSCAPING, Recipes.ingredientsFromScript("{{chasmrockitem, 4}, {upgradeshard, 1}}")));
