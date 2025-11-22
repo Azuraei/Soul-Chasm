@@ -1,32 +1,39 @@
+# Traduction réalisée par Yibbel (https://steamcommunity.com/id/yibbelthefennec/) et Caranud (https://steamcommunity.com/id/Caranud/)
+# Version de mod : 2.5.16 [09/11/25]
+# Version de jeu : 1.0.2
+# Date de la dernière traduction : 16/11/2025
+# Note de Caranud : n’hésitez pas à reprendre cette traduction si je ne suis plus actif et disponible depuis un moment ! :) Je suis également sur le serveur Discord (https://discord.com/invite/HSvuUuA).
+
 [tile]
-chasmgrass=Herbe du gouffre de l'âme
-chasmrocktile=Pierre du gouffre de l'âme
+chasmgrass=Herbe du gouffre des âmes
+chasmrocktile=Pierre du gouffre des âmes
 soulwoodfloor=Plancher en bois fantôme
-soulwoodpath=Chemin du bois fantôme
+soulwoodpath=Chemin en bois fantôme
 soulwoodtiledfloor=Sol carrelé en bois fantôme
-chasmfloortile=Sol rocheux du gouffre de l'âme
-chasmbrickfloortile=Sol en briques du gouffre de l'âme
-chasmtiledfloortile=Sol carrelé du gouffre de l'âme
+chasmfloortile=Sol rocheux du gouffre des âmes
+chasmbrickfloortile=Sol en briques du gouffre des âmes
+chasmtiledfloortile=Sol carrelé du gouffre des âmes
 asphalttile=Bitume
-moltenspirits=Spiritueux en fusion
+moltenspirits=Esprits en fusion
 chasmcracktile=Fissures
+
 [object]
 crystalizedsoul=Âmes cristallisées
 crystalizedsoulore=Âmes cristallisées
 soultree=Arbre fantôme
-chasmgrassobject=Herbe du gouffre de l'âme
+chasmgrassobject=Herbe du gouffre des âmes
 soulwood=Bois fantôme
-chasmbrick=Brique du gouffre de l'âme
+chasmbrick=Brique du gouffre des âmes
 soultreesapling=Jeune arbre fantôme
 lunartear=Larme lunaire
-lunartearspath=Chemin des larmes lunaires
+lunartearspath=Chemin en larme lunaire
 soultorch=Torche fantôme
-bigsoulcrystal=Cristal de la grande âme
-wispjarobject=Jarre à eau
+bigsoulcrystal=Grand cristal d’âme
+wispjarobject=Jarre à feux follets
 fireflyjarobject=Bocal à lucioles
 chasmmonumentobject=Monument du gouffre des âmes
-chasmpressureplate=Plaque de pression en pierre du gouffre de l'âme
-chasmflametrap=Piège à flammes en pierre du gouffre de l'âme
+chasmpressureplate=Plaque de pression en pierre du gouffre des âmes
+chasmflametrap=Piège à flammes en pierre du gouffre des âmes
 soullantern=Lanterne des âmes
 oldbarrel=Vieux tonneau
 chasmchest=Vieux coffre
@@ -34,100 +41,104 @@ bigjarobject=Grande jarre en verre
 chasmcrates=Vieille caisse
 chasmstatueobject=Statue de chevalier
 chasmrock=Pierre d'abîme
-soulwoodwall=Mur de bois fantôme
+soulwoodwall=Mur en bois fantôme
 soulwooddoor=Porte en bois fantôme
-chasmbrickwall=Mur de briques du gouffre de l'âme
-chasmbrickdoor=Porte en briques du gouffre de l'âme
+chasmbrickwall=Mur de briques du gouffre des âmes
+chasmbrickdoor=Porte en briques du gouffre des âmes
 soulwoodbathtub=Baignoire en bois fantôme
 soulwoodbed=Lit en bois fantôme
-soulwooddoublebed=Phantom Wood Double Bed
+soulwooddoublebed=Lit double en bois fantôme
 soulwoodbench=Banc en bois fantôme
 soulwooddinnertable=Table à dîner en bois fantôme
 soulwoodbookshelf=Bibliothèque en bois fantôme
-soulwoodcabinet=Armoire fantôme en bois
+soulwoodcabinet=Armoire en bois fantôme
 soulwoodchair=Chaise en bois fantôme
 soulwoodchest=Coffre en bois fantôme
 soulwoodclock=Horloge en bois fantôme
 soulwooddesk=Bureau en bois fantôme
 soulwooddisplay=Présentoir en bois fantôme
 soulwooddresser=Commode en bois fantôme
-soulwoodmodulartable=Table modulaire fantôme en bois
+soulwoodmodulartable=Table modulaire en bois fantôme
 soulwoodtoilet=Toilette en bois fantôme
 soulwoodcandelabra=Candélabre en bois fantôme
 soulwoodfence=Clôture en bois fantôme
 soulwoodfencegate=Porte de clôture en bois fantôme
 chasmmagestatueobject=Statue de mage
 soultikitorchobject=Torche tiki des âmes
-chasmdebree=Soul Chasm Stone
-chasmbrickdoorlocked=Locked Soul Chasm Brick Door
-soulwooddoorlocked=Locked Phantom Wood Door
-altarspikeobject=Spike
+chasmdebree=Pierre du gouffre des âmes
+chasmbrickdoorlocked=Porte fermée en brique du gouffre des âmes
+soulwooddoorlocked=Porte fermée en bois fantôme
+altarspikeobject=Pointes
+
 [item]
-soulscythe=Faucheur d'âmes
-soulmetalbow=Arc fantôme
-soulmetalsword=L'esprit de la mort
-soulmetalspear=Trident maudit
-soulmetalrevolver=L'empereur des âmes
 soulabsorbshield=Bouclier brise-âme
-soularmorboots=Bottes en acier
-soularmorchestplate=Plastron d'acier
-soularmorcrown=Couronne d'acier
-soularmorhelmet=Casque en acier
-soularmorhood=Capuchon en acier
-soularmorhat=Chapeau en acier
-phantomfeathertrinket=Plume de fantôme
+phantomfeathertrinket=Plume fantôme
 soulstealertrinket=Anneau des âmes
-pickaxeheadtrinket=Ancienne tête de pioche
-phantomdasherstrinket=Lanceur fantôme
+pickaxeheadtrinket=Vieille tête de pioche animée
+phantomdasherstrinket=Chaussures de course fantômatiques
+soularmorboots=Bottes volâme
+soularmorchestplate=Plastron volâme
+soularmorcrown=Couronne volâme
+soularmorhelmet=Casque volâme
+soularmorhood=Capuche volâme
+soularmorhat=Chapeau volâme
+meleesoulsealtrinket=Fragment d'artefact (mêlée)
+summonsoulsealtrinket=Fragment d'artefact (invocation)
+magicsoulsealtrinket=Fragment d'artefact (magie)
+rangesoulsealtrinket=Fragment d'artefact (distance)
+soulsealtrinket=Sceau d'âme
+balancedsealtrinket=Sceau d'âme équilibré
+soulmetalsword=Colère des esprits
+soulscythe=Faucheur d'âmes
+soulmetalbow=Arc fantômatique
+soulmetalrevolver=Infuseur d’âmes
+soulmetalspear=Trident maudit
 carkeys=Clés de voiture
+wispitem=Feu folet
+wispjar=Jarre de feu folet
+fireflyitem=Luciole
+fireflyjar=Jarre de luciole
+bookofsouls=Livre des âmes
+idolsummon=Idole de l'âme
 soulwoodlogitem=Bûche de bois fantôme
 soulcore=Noyau d'âme
 chasmrockitem=Pierre du gouffre de l'âme
 crystalizedsouloreitem=Minerai d'âmes cristallisées
 chasmgrassseeditem=Graines d'herbe du gouffre de l'âme
-soulessence=Essence de l'âme
-wispitem=Feu folet
-wispjar=Jarre de feu folet
-fireflyitem=Luciole
-fireflyjar=Jarre de luciole
+soulessence=Essence d'âme
 soullantern=Lanterne des âmes
 soulmetalbar=Lingot de métal d'âme
-meleesoulsealtrinket=Fragment d'artefact pour la mêlée
-summonsoulsealtrinket=Fragment d'artefact pour l'invocation
-magicsoulsealtrinket=Fragment d'artefact pour la magie
-rangesoulsealtrinket=Fragment d'artefact pour la distance
-soulsealtrinket=Sceau d'âme
-balancedsealtrinket=Sceau de l'âme équilibrée
-bookofsouls=Livre des âmes
-idolsummon=Idole de l'âme
 lunartearflowerhead=Fleur de larme lunaire
 tobeblindfold=Bandeau noir
+
 [itemtooltip]
-soulabsorbshield=Si vous bloquez les dégâts, une rafale de flammes est projetée vers l'attaquant\nUn blocage réussi augmente également la vitesse d'attaque et le gain de résilience dans un court laps de temps
-phantomfeathertrinket=Diminue la puissance maximale de 25 % et accorde quatre piles supplémentaires d'attaque.
-soulstealertrinket=Quand vous êtes en combat, convertit lentement votre santé maximale en dégâts supplémentaires.\nQuand vous quittez le combat, le processus de mise hors combat est inversé
-pickaxeheadtrinket=L'exploitation minière augmente lentement la vitesse d'exploitation, jusqu'à 150%.
-phantomdasherstrinket=Sprinter encore plus rapidement\nEn sprintant, vous subissez des dégâts\nPermet de marcher sur l'eau
-soularmorsetbonus=Appuyez [input=setability] pour augmenter la vitesse d'attaque et de déplacement pendant une courte période\nUtiliser la capacité lorsqu'elle est améliorée prolonge sa durée, mais a 50 % de chances d'appliquer un affaiblissement sur vous même
+
+soulabsorbshield=Bloquer les dégâts projette une rafale de flammes vers l'attaquant\nUn blocage réussi augmente également la vitesse d'attaque et le gain de résilience dans un court laps de temps
+phantomfeathertrinket=Diminue les PV maximum de 25 % et accorde quatre sprints supplémentaires.
+soulstealertrinket=Quand vous êtes en combat, convertit lentement votre santé maximale en dégâts supplémentaires.\nHors combat, le processus est inversé.
+pickaxeheadtrinket=Miner augmente lentement la vitesse de minage, jusqu'à 150%.
+phantomdasherstrinket=Permet de sprinter encore plus rapidement\nEn sprintant, vous subissez des dégâts\nPermet de marcher sur l'eau
+soularmorsetbonus=Appuyez sur [input=setability] pour augmenter la vitesse d'attaque et de déplacement pendant une courte période\nUtiliser la capacité lorsqu'elle est améliorée prolonge sa durée mais a 50% de chances de vous appliquer un malus.
 soulsealfragment=Fragment d'un ensemble
-soulsealfull=A nouveau complet
+soulsealfull=À nouveau complet
 soulsealfragment2=Crée un projectile adapté à votre arme
-soulsealsummonfragment=L'utilisation d'une arme d'invocation permet d'invoquer un esprit pour vous aider dans la bataille.\nLa force de l'esprit est basée sur les statistiques de l'arme
-soulsealbalanced=Des liens avec un nouveau pouvoir
+soulsealsummonfragment=L'utilisation de l’arme d'invocation permet d'invoquer un esprit pour vous aider dans la bataille.\nLa force de l'esprit est basée sur les statistiques de l'arme.
+soulsealfollowerbuff=A entendu votre appel
+soulsealbalanced=Se lie avec un nouveau pouvoir
 soulsealbalanced2=Augmente tous les dégâts infligés de 10%
 soulmetalswordtip=Frapper des ennemis permet d'invoquer des épées spirituelles
-soulscythe=Le fait de charger au niveau 2 ou supérieur permet d'appliquer le principe de l'âme saignante sur la cible.\nL'âme qui saigne diminue l'armure et les dégâts pendant un temps supplémentaire.\nLes attaques entièrement chargées envoient un projectile décélérant et perforant
-soulmetalbowtip=Appuyez [input=mouse2] pour activer le mode surcharge\nEn surcharge, vous bénéficiez d'un bonus de vitesse d'attaque important
-soulmetalrevolvertip=Transforme les balles ordinaires en balles infusées d'âme\nToucher l'ennemi avec une balle infusée à l'âme le marque\nLes ennemis marqués trois fois sont affaiblis et subissent des dégâts sur la durée
-soulmetalspeartip=Peut être lancé\nCrée une petite explosion en cas de succès
+soulscythe=Le fait de charger au niveau 2 ou supérieur permet d'appliquer "Saignement de l’âme" sur la cible.\nSaignement de l’âme diminue l'armure et les dégâts en continu.\nLes attaques entièrement chargées envoient un projectile décélérant et perforant.
+soulmetalbowtip=Appuyez [input=mouse2] pour activer le mode surcharge\nEn surcharge, vous bénéficiez d'un bonus de vitesse d'attaque important.
+soulmetalrevolvertip=Transforme les balles ordinaires en balles spirituelles.\nToucher l'ennemi avec une balle spirituelle le marque.\nLes ennemis marqués trois fois sont affaiblis et subissent des dégâts continus.
+soulmetalspeartip=Peut être lancé\nCrée une petite explosion si vous touchez l’ennemi.
 cartip=[input=mouse2] dans l'inventaire pour changer de couleur
-soulsealfollowerbuff=A entendu votre appel
 bigjarobject=Peut être utilisé pour stocker et présenter des objets
 glowingbugs=Une petite créature brillante
 glowingjarobject=Fournit une petite quantité de lumière lorsqu'il est placé ou tenu en main
 bookofsoulstip=Tire lentement un gros projectile à tête chercheuse
-bookofsoulssecondarytip=Appuyez [input=mouse2] pour activer le débordement d'énergie et tirer des projectiles à tête chercheuse rapidement plus petits
+bookofsoulssecondarytip=Appuyez sur [input=mouse2] pour activer le débordement d'énergie et tirer des projectiles rapides à tête chercheuse, plus petits.
 soulstatuetip=Invoque l'Idole de l'âme pour vous aider dans la bataille.\nL'idole améliore les joueurs à proximité\nLorsqu'il est à plus de 80 % de ses points de vie, il augmente les dégâts et la vitesse d'attaque, régénère les points de vie et la résilience
+
 argemiaplushie=Peluche Argemia
 fairplushie=Peluche Fair
 v1plushie=Peluche V1
@@ -136,6 +147,9 @@ devplushie=Peluche Endzio
 argemiaplushietip=Adore les crevettes
 v1plushietip=§6Le sang, c'est du carburant
 devplushietip=(^-^)
+sharkplushie=Peluche de requin
+rockplushie=Peluche de rocher
+
 [mob]
 chasmdragon=Dragon antique
 chasmdragonbody=Dragon antique
@@ -144,28 +158,33 @@ chasmwarriorstatue=Statue de guerrier
 lessersoul=Fantôme
 wisp=Feu folet
 firefly=Luciole
-chasmmagestatue=L'idole des âmes
-chasmmage=Statue du mage
-sealghostsummon=Petite âme
-chasmcaveling=Caveling du gouffre de l'âme
-carmob=La voiture
+chasmmagestatue=Idole des âmes
+chasmmage=Invocateur d’esprit
+sealghostsummon=Âme inférieure
+chasmcaveling=Cavernier du gouffre des âmes
+carmob=Voiture rouge
+
 [buff]
 soulfirebuff=Esprit infernal
 soulabsorbshieldbuff=Attaque absorbée
 souldischargebuff=Conversion de l'âme
 soularmorcooldown=Temps de recharge de l'armure d'âme
 soulsealfollowerbuff=Esprit invoqué
-soulbleedstackbuff=Âme saignante
+soulbleedstackbuff=Saignement de l’âme
 souldischargesicknessdebuff=Maladie de conversion
-bookofsoulbuff=Energie de l'âme
+bookofsoulbuff=Énergie de l'âme
 soulofsoulsoverchargebuff=Débordement de l'énergie de l'âme
 soulbowbuff=Surcharge du fantôme
 soulbowcooldownbuff=Temps de recharge de l'arc fantôme
 soulstatuebuff=Bénédiction de l'idole
+
 [ui]
+
 incursionmodifierhaunted=Hanté
 incursionmodifierhauntedinfo=Lorsqu'un ennemi meurt, son fantôme apparaît.
+
 [biome]
 soulchasm=Le gouffre des âmes
+
 [journal]
-soulchasmincursion=Le gouffre des âmes Incursion
+soulchasmincursion=Gouffre des âmes (Incursion)
