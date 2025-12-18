@@ -87,7 +87,7 @@ public class SoulChasmIncursionLevel extends IncursionLevel {
         }
         cg.generateGuaranteedOreVeins(75, 6, 12, ObjectRegistry.getObjectID("upgradeshardchasmrock"));
         cg.generateGuaranteedOreVeins(75, 6, 12, ObjectRegistry.getObjectID("alchemyshardchasmrock"));
-        this.generateUpgradeAndAlchemyVeinsBasedOnPerks(altarData, cg, "upgradeshardchasmrock", "alchemyshardchasmrock", cg.random);
+        this.generateOresBasedOnPerks(altarData, cg, this, this.baseBiome, cg.random);
         GameEvents.triggerEvent(new GeneratedCaveOresEvent(this, cg));
     }
     public LootTable getCrateLootTable() {
