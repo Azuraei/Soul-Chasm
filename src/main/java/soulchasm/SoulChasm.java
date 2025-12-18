@@ -84,7 +84,6 @@ import soulchasm.main.objects.jars.FireFlyJarObject;
 import soulchasm.main.objects.jars.WispJarObject;
 import soulchasm.main.mobs.hostile.*;
 import soulchasm.main.mobs.boss.ChasmDragonBody;
-import soulchasm.main.mobs.friendly.Firefly;
 import soulchasm.main.mobs.friendly.ChasmCaveling;
 import soulchasm.main.mobs.friendly.AltarEffectEntity;
 import soulchasm.main.mobs.friendly.Wisp;
@@ -233,7 +232,6 @@ public class SoulChasm {
         ItemRegistry.registerItem("soulwoodlogitem", (new MatItem(500, "anylog")).setItemCategory("materials", "logs"), 2.0F, true);
         ItemRegistry.registerItem("chasmgrassseeditem", new GrassSeedItem("chasmgrass"), 2.0F, true);
         ItemRegistry.registerItem("wispitem", new MatItem(500, Item.Rarity.UNCOMMON, "glowingbugs"), 1.0F, true);
-        ItemRegistry.registerItem("fireflyitem", new MatItem(500, Item.Rarity.UNCOMMON, "glowingbugs"), 1.0F, true);
         ItemRegistry.registerItem("fireflyjar", new ObjectItem(getObject("fireflyjarobject")), -1.0F, true);
         ItemRegistry.registerItem("wispjar", new ObjectItem(getObject("wispjarobject")), -1.0F, true);
         ItemRegistry.registerItem("carkeys", new CarKeys(), 2000, true);
@@ -279,7 +277,6 @@ public class SoulChasm {
         MobRegistry.registerMob("lessersoul", LesserSoul.class, false);
         // = Friendly =
         MobRegistry.registerMob("wisp", Wisp.class, false);
-        MobRegistry.registerMob("firefly", Firefly.class, false);
         MobRegistry.registerMob("chasmcaveling", ChasmCaveling.class, true);
         MobRegistry.registerMob("carmob", CarMob.class, false);
         MobRegistry.registerMob("sealghostsummon", SealGhostSummon.class, false);
@@ -396,7 +393,6 @@ public class SoulChasm {
         LesserSoul.texture = GameTexture.fromFile("mobs/lostsoul");
         // === Friendly Textures ===
         Wisp.texture = GameTexture.fromFile("mobs/wisp");
-        Firefly.texture = GameTexture.fromFile("mobs/firefly");
         SoulStatueSummon.texture = GameTexture.fromFile("mobs/soulstatuesummon");
         SoulStatueSummon.texture_ring = GameTexture.fromFile("particles/soulstatuering");
         chasmCaveling = new HumanTexture(GameTexture.fromFile("mobs/chasmcaveling"), GameTexture.fromFile("mobs/chasmcavelingarms_front"), GameTexture.fromFile("mobs/chasmcavelingarms_back"));
@@ -439,10 +435,6 @@ public class SoulChasm {
     }
 
     public void postInit() {
-        ForestBiome.defaultSurfaceCritters.add(100, "firefly");
-        PlainsBiome.defaultSurfaceCritters.add(100, "firefly");
-        SwampBiome.surfaceCritters.add(120, "firefly");
-
         chasmChestRoomSet = new ChestRoomSet("chasmfloortiles", "chasmpressureplate", new WallSet("chasmbrick"), null, null, "chasmflametrap");
         chasmShrineLootTable = new LootTable(new LootItemList(new OneOfLootItems(new ChanceLootItem(0.8F,"phantomfeathertrinket"), new ChanceLootItem(0.8F,"soulstealertrinket"), new ChanceLootItem(0.8F,"pickaxeheadtrinket"), new ChanceLootItem(0.2F,"soulmetalsword"), new ChanceLootItem(0.05F, "carkeys"))));
 
@@ -467,7 +459,7 @@ public class SoulChasm {
         modRecipes.add(new Recipe("phantomdasherstrinket", 1, RecipeTechRegistry.FALLEN_ANVIL, Recipes.ingredientsFromScript("{{zephyrboots, 1}, {soulessence, 4}, {soulcore, 8}}")));
         modRecipes.add(new Recipe("asphalttile", 100, RecipeTechRegistry.ALCHEMY, Recipes.ingredientsFromScript("{{anystone, 100}, {speedpotion, 2}}")));
         modRecipes.add(new Recipe("bigjarobject", 1, RecipeTechRegistry.WORKSTATION, Recipes.ingredientsFromScript("{{glass, 2}}")));
-        modRecipes.add(new Recipe("fireflyjar", 1, RecipeTechRegistry.WORKSTATION, Recipes.ingredientsFromScript("{{fireflyitem, 3}, {bigjarobject, 1}}")));
+        modRecipes.add(new Recipe("fireflyjar", 1, RecipeTechRegistry.WORKSTATION, Recipes.ingredientsFromScript("{{fireflygreen, 3}, {bigjarobject, 1}}")));
         modRecipes.add(new Recipe("wispjar", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{wispitem, 3}, {bigjarobject, 1}}")));
         modRecipes.add(new Recipe("soultorch", 8, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soulcore, 1}, {soulwoodlogitem, 1}}")));
         modRecipes.add(new Recipe("soultikitorchobject", 1, RecipeTechRegistry.FALLEN_WORKSTATION, Recipes.ingredientsFromScript("{{soultorch, 1}, {soulwoodlogitem, 1}}")));

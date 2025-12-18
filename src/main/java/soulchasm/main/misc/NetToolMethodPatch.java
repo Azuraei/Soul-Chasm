@@ -21,8 +21,5 @@ public class NetToolMethodPatch {
         if (mob instanceof Wisp) {
             result = true;
         }
-        if (mob instanceof Firefly) {
-            result = true;
-        }
     }
 }
