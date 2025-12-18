@@ -5,7 +5,6 @@ import necesse.entity.levelEvent.mobAbilityLevelEvent.ToolItemMobAbilityEvent;
 import necesse.entity.mobs.Mob;
 import necesse.inventory.item.toolItem.miscToolItem.NetToolItem;
 import net.bytebuddy.asm.Advice;
-import soulchasm.main.mobs.friendly.Firefly;
 import soulchasm.main.mobs.friendly.Wisp;
 
 
