@@ -166,7 +166,7 @@ public class SoulChasm {
         ObjectRegistry.registerObject("chasmflametrap", new WallFlameTrapObject((WallObject)getObject("chasmbrickwall")), 50.0F, true);
         ObjectRegistry.registerObject("chasmpressureplate", new MaskedPressurePlateObject("pressureplatemask", "chasmfloortile", chasmStoneMapColor), 15.0F, true);
         ObjectRegistry.registerObject("soultree", new TreeObject("soultree", "soulwoodlogitem", "soultreesapling", chasmWoodMapColor, 60,80,100, "soultreeleaves"), 0.0F, false);
-        ObjectRegistry.registerObject("soultreesapling", new TreeSaplingObject("soultreesapling", "soultree", 1800, 2700, false, "chasmgrass"), 5.0F, true);
+        ObjectRegistry.registerObject("soultreesapling", new TreeSaplingObject("soultreesapling", chasmWoodMapColor, "soultree", 1800, 2700, false, "chasmgrass"), 5.0F, true);
         ObjectRegistry.registerObject("lunartear", new LunarTearObject(), 5.0F, true);
         FlowerPatchObject lunartearspath = new FlowerPatchObject("lunartearspath", lunarTearMapColor);{lunartearspath.lightLevel = 30;lunartearspath.lightHue = 240.0F;lunartearspath.lightSat = 0.05F;}
         ObjectRegistry.registerObject("lunartearspath", lunartearspath, 5.0F, true);

@@ -14,7 +14,7 @@ import necesse.inventory.lootTable.presets.IncursionSummonWeaponsLootTable;
 import necesse.level.maps.Level;
 
 public class SoulIdolSummon extends SummonToolItem {
-    private static final int summonCost = 2;
+    private static final float summonCost = 2.0F;
     public SoulIdolSummon() {
         super("soulstatuesummon", FollowPosition.WALK_CLOSE, summonCost, 2200, IncursionSummonWeaponsLootTable.incursionSummonWeapons);
         this.rarity = Rarity.EPIC;
@@ -29,11 +29,10 @@ public class SoulIdolSummon extends SummonToolItem {
             if (maxSummons > 999) {
                 maxSummons = 999;
             }
-            if (maxSummons % summonCost == 0) {
-                String amountString = String.valueOf(maxSummons / summonCost);
-                int width = FontManager.bit.getWidthCeil(amountString, tipFontOptions);
-                FontManager.bit.drawString((float)(x + 28 - width), (float)(y + 16), amountString, tipFontOptions);
-            }
+            int maxSummonsDraw = (int) Math.floor((float) maxSummons / summonCost);
+            String amountString = String.valueOf(maxSummonsDraw);
+            int width = FontManager.bit.getWidthCeil(amountString, tipFontOptions);
+            FontManager.bit.drawString((float)(x + 28 - width), (float)(y + 16), amountString, tipFontOptions);
         }
     }
 

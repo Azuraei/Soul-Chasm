@@ -85,7 +85,7 @@ public class ChasmDragonBody extends BossWormMobBody<ChasmDragon, ChasmDragonBod
             if (this.next != null) {
                 Point2D.Float dir = new Point2D.Float(this.next.x - (float)x, this.next.y - this.next.height - ((float)y - this.height));
                 float angle = GameMath.fixAngle(GameMath.getAngle(dir));
-                MobDrawable drawOptions = WormMobHead.getAngledDrawable(new GameSprite(texture, 0, this.spriteY, 64), null, light, (int)this.height, angle, drawX, drawY, 96);
+                MobDrawable drawOptions = WormMobHead.getAngledDrawable(this, new GameSprite(texture, 0, this.spriteY, 64), null, light, (int)this.height, angle, drawX, drawY, 96, perspective);
                 topList.add(drawOptions);
             }
 

@@ -232,11 +232,11 @@ public class ChasmDragon extends BossWormMobHead<ChasmDragonBody, ChasmDragon> {
             int drawX = camera.getDrawX(this.x) - 32;
             int drawY = camera.getDrawY(this.y);
             float headAngle = GameMath.fixAngle(GameMath.getAngle(new Point2D.Float(this.dx, this.dy)));
-            final MobDrawable headDrawable = WormMobHead.getAngledDrawable(new GameSprite(texture, 0, 0, 64), null, light, (int)this.height, headAngle, drawX, drawY, 96);
+            final MobDrawable headDrawable = WormMobHead.getAngledDrawable(this, new GameSprite(texture, 0, 0, 64), null, light, (int)this.height, headAngle, drawX, drawY, 96, perspective);
             dragonHeadAngle = headAngle;
             dragonHeadX = x;
             dragonHeadY = y;
-            new ComputedObjectValue(null, () -> 0.0);
+            //new ComputedObjectValue(null, () -> 0.0);
             ComputedObjectValue<GameLinkedList<WormMoveLine>.Element, Double> shoulderLine = WormMobHead.moveDistance(this.moveLines.getFirstElement(), 35.0);
             final MobDrawable shoulderDrawable;
             if (shoulderLine.object != null) {
@@ -246,7 +246,7 @@ public class ChasmDragon extends BossWormMobHead<ChasmDragonBody, ChasmDragon> {
                 int shoulderDrawY = camera.getDrawY((float)shoulderPos.y);
                 float shoulderHeight = this.getWaveHeight(shoulderLine.object.object.movedDist + shoulderLine.get().floatValue());
                 float shoulderAngle = GameMath.fixAngle((float)GameMath.getAngle(new Point2D.Double((double)this.x - shoulderPos.x, (double)(this.y - this.height) - (shoulderPos.y - (double)shoulderHeight))));
-                shoulderDrawable = WormMobHead.getAngledDrawable(new GameSprite(texture, 0, 2, 64), null, shoulderLight, (int)shoulderHeight, shoulderAngle, shoulderDrawX, shoulderDrawY, 96);
+                shoulderDrawable = WormMobHead.getAngledDrawable(this, new GameSprite(texture, 0, 2, 64), null, shoulderLight, (int)shoulderHeight, shoulderAngle, shoulderDrawX, shoulderDrawY, 96, perspective);
             } else {
                 shoulderDrawable = null;
             }

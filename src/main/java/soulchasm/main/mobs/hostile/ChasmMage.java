@@ -79,7 +79,7 @@ public class ChasmMage extends HostileMob {
         HumanDrawOptions humanDrawOptions = (new HumanDrawOptions(level, texture)).sprite(sprite).dir(this.getDir()).light(light);
         float animProgress = this.getAttackAnimProgress();
         if (this.isAttacking) {
-            ItemAttackDrawOptions attackOptions = ItemAttackDrawOptions.start(this.getDir()).itemSprite(texture.body, 0, 9, 32).itemRotatePoint(3, 3).itemEnd().armSprite(texture.body, 0, 8, 32).swingRotation(animProgress).light(light);
+            ItemAttackDrawOptions attackOptions = ItemAttackDrawOptions.start(this.getDir()).itemSprite(texture.body, 0, 9, 32).itemRotatePoint(3, 3).itemEnd().armSprite(texture.body, 0, 8, 32).swingRotation(animProgress);
             humanDrawOptions.attackAnim(attackOptions, animProgress);
         }
 
